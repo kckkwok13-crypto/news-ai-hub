@@ -118,6 +118,27 @@ export default function NewsPage() {
 
   const t = LABELS[lang];
 
+  // 1. Initial Load from LocalStorage for instant perception
+  useEffect(() => {
+    const cached = localStorage.getItem(`news_cache_${category}_${lang}`);
+    if (cached) {
+      try {
+        setNews(JSON.parse(cached));
+      } catch (e) {
+        console.error("Cache parse error", e);
+      }
+    }
+    
+    const saved = localStorage.getItem("savedNews");
+    if (saved) setSavedIds(new Set(JSON.parse(saved)));
+    
+    const dark = localStorage.getItem("darkMode");
+    if (dark) setDarkMode(dark === "true");
+    
+    const savedLang = localStorage.getItem("newsLang") as Lang;
+    if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
+  }, [category, lang]);
+
   const speak = useCallback((item: NewsItem) => {
     if (!window.speechSynthesis) return;
     window.speechSynthesis.cancel();
@@ -148,38 +169,56 @@ export default function NewsPage() {
     setIsSpeaking(false);
   }, []);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("savedNews");
-    if (saved) setSavedIds(new Set(JSON.parse(saved)));
-    const dark = localStorage.getItem("darkMode");
-    if (dark) setDarkMode(dark === "true");
-    const savedLang = localStorage.getItem("newsLang") as Lang;
-    if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
-  }, []);
-
-  useEffect(() => {
-    if (savedIds.size > 0) {
-      localStorage.setItem("savedNews", JSON.stringify([...savedIds]));
+  // 2. Fetch News with Background Update pattern
+  const fetchNews = useCallback(async (isInitial = false) => {
+    if (isInitial && news.length > 0) {
+      // If we have cache, don't show full page loading spinner
+      // just a small indicator if needed
+    } else {
+      setLoading(true);
     }
-  }, [savedIds]);
+    
+    setError("");
+    try {
+      const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}`);
+      const data = await res.json();
+      if (data.success && data.items) {
+        setNews(data.items);
+        // Update cache
+        localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
+      } else {
+        if (news.length === 0) setNews([]);
+      }
+    } catch {
+      if (news.length === 0) setError("Network error");
+    }
+    setLoading(false);
+  }, [category, lang, news.length]);
+
+  // 3. Optimized AI Summary trigger
+  const fetchAiSummary = useCallback(async () => {
+    if (news.length === 0) return;
+    setSummaryLoading(true);
+    try {
+      const res = await fetch('/api/ai-summary', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: news.slice(0, 10), lang })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setAiSummary(data.analysis);
+      }
+    } catch (err) {
+      console.error('Analysis failed:', err);
+    }
+    setSummaryLoading(false);
+  }, [news.slice(0, 10), lang]);
 
   useEffect(() => {
-    localStorage.setItem("darkMode", String(darkMode));
-  }, [darkMode]);
-
-  useEffect(() => {
-    localStorage.setItem("newsLang", lang);
-  }, [lang]);
-
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    fetchNews();
+    fetchNews(true);
     if (autoRefresh) {
-      const interval = setInterval(fetchNews, 300000);
+      const interval = setInterval(() => fetchNews(false), 300000);
       return () => clearInterval(interval);
     }
   }, [category, autoRefresh, lang]);
@@ -196,52 +235,6 @@ export default function NewsPage() {
       return () => clearTimeout(timer);
     }
   }, [toast]);
-
-  const fetchNews = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}`);
-      const data = await res.json();
-      if (data.success && data.items) {
-        setNews(data.items);
-      } else {
-        setNews([]);
-      }
-    } catch {
-      setError("Failed to load news");
-    }
-    setLoading(false);
-  };
-
-  const fetchAiSummary = async () => {
-    setSummaryLoading(true);
-    try {
-      const visibleNews = showSaved
-        ? news.filter(n => savedIds.has(n.title))
-        : news;
-      const toAnalyze = visibleNews.slice(0, 5);
-      if (toAnalyze.length === 0) return;
-      const body = {
-        items: toAnalyze.map(n => ({
-          title: n.title,
-          title_zh: n.title_zh || n.title,
-          desc: n.desc || "",
-          desc_zh: n.desc_zh || "",
-          source: n.source,
-        })),
-        lang,
-      };
-      const res = await fetch("/api/ai-summary", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      if (data.success) setAiSummary(data);
-    } catch { /* silent */ }
-    setSummaryLoading(false);
-  };
 
   const toggleSaved = (title: string) => {
     setSavedIds(prev => {
