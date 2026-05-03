@@ -5,11 +5,15 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   world: [
     { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC World' },
     { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', source: 'NYTimes' },
-    { url: 'https://www.theguardian.com/world/rss', source: 'Guardian' },
+    { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera' },
+    { url: 'https://rss.dw.com/rdf/rss-en-all', source: 'DW News' },
+    { url: 'https://www.scmp.com/rss/91/feed', source: 'SCMP' },
+    { url: 'https://www3.nhk.or.jp/nhkworld/rd/rss/english/index.rdf', source: 'NHK World' },
   ],
   finance: [
-    { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.investing.com/rss/news.rss', source: 'Investing.com' },
+    { url: 'https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best', source: 'Reuters' },
+    { url: 'https://asia.nikkei.com/rss/feed/nar', source: 'Nikkei Asia' },
+    { url: 'https://search.cnbc.com/rs/search/view.xml?partnerId=2000&keywords=finance', source: 'CNBC' },
     { url: 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml', source: 'WSJ Markets' },
   ],
   crypto: [
@@ -29,12 +33,14 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD&hl=zh-CN&gl=CN&ceid=CN:zh-Hans', source: 'Google News China' },
   ],
   business: [
-    { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
+    { url: 'https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best', source: 'Reuters' },
+    { url: 'https://asia.nikkei.com/rss/feed/nar', source: 'Nikkei Asia' },
     { url: 'https://www.investing.com/rss/news.rss', source: 'Investing.com' },
   ],
   technology: [
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
     { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
+    { url: 'https://www.wired.com/feed/rss', source: 'Wired' },
   ],
 }
 
