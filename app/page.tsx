@@ -182,8 +182,7 @@ export default function NewsPage() {
   // 2. Fetch News with Background Update pattern
   const fetchNews = useCallback(async (isInitial = false) => {
     if (isInitial && news.length > 0) {
-      // If we have cache, don't show full page loading spinner
-      // just a small indicator if needed
+      // Background update, no spinner
     } else {
       setLoading(true);
     }
@@ -194,15 +193,17 @@ export default function NewsPage() {
       const data = await res.json();
       if (data.success && data.items) {
         setNews(data.items);
-        // Update cache
         localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
       } else {
         if (news.length === 0) setNews([]);
+        setError(data.error || "Failed to load news");
       }
-    } catch {
+    } catch (err) {
+      console.error("Fetch news failed", err);
       if (news.length === 0) setError("Network error");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, [category, lang, news.length]);
 
   // 3. Optimized AI Summary trigger
@@ -216,14 +217,15 @@ export default function NewsPage() {
         body: JSON.stringify({ items: news.slice(0, 10), lang })
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success && data.analysis) {
         setAiSummary(data.analysis);
       }
     } catch (err) {
       console.error('Analysis failed:', err);
+    } finally {
+      setSummaryLoading(false);
     }
-    setSummaryLoading(false);
-  }, [news.slice(0, 10), lang]);
+  }, [news, lang]);
 
   useEffect(() => {
     fetchNews(true);
@@ -472,7 +474,11 @@ export default function NewsPage() {
               const isRead = readIds.has(item.title);
               const isSaved = savedIds.has(item.title);
               const isSpeakingThis = speakingId === item.title;
-              const details = aiSummary?.details?.find((d: any) => d.id === item.id);
+              
+              // Safe access to details array
+              const details = Array.isArray(aiSummary?.details) 
+                ? aiSummary.details.find((d: any) => d.id === item.id)
+                : null;
 
               return (
                 <div key={i} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
