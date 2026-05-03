@@ -1,0 +1,102 @@
+'use client'
+
+import { useState } from 'react'
+import { ChevronLeft, Mail, Send, MapPin, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
+
+export default function ContactPage() {
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-white font-sans">
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <Link href="/" className="inline-flex items-center text-blue-400 hover:text-blue-300 mb-8 transition-colors">
+          <ChevronLeft className="w-5 h-5 mr-1" />
+          返去首頁
+        </Link>
+
+        <header className="mb-12">
+          <h1 className="text-4xl font-extrabold mb-4">聯繫我哋</h1>
+          <p className="text-slate-400 text-lg">有任何問題、建議或者商務合作？隨時話俾我哋聽！</p>
+        </header>
+
+        <div className="grid md:grid-cols-3 gap-12">
+          <div className="md:col-span-1 space-y-8">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-blue-500/20 text-blue-400">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-1">Email</h3>
+                <p className="text-slate-400 text-sm">kckkwok13@gmail.com</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-purple-500/20 text-purple-400">
+                <MessageCircle className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-1">支援</h3>
+                <p className="text-slate-400 text-sm">24小時內回覆</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-green-500/20 text-green-400">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-1">位置</h3>
+                <p className="text-slate-400 text-sm">Hong Kong</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:col-span-2">
+            {submitted ? (
+              <div className="p-12 rounded-2xl bg-slate-800/50 border border-slate-700 text-center">
+                <div className="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Send className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold mb-2">發送成功！</h3>
+                <p className="text-slate-400">多謝你嘅聯絡，我哋會盡快回覆你。</p>
+                <button onClick={() => setSubmitted(false)} className="mt-6 text-blue-400 hover:underline">
+                  再發送一條訊息
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-slate-400">姓名</label>
+                    <input required className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 focus:border-blue-500 focus:outline-none transition-colors" placeholder="你的姓名" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-slate-400">Email</label>
+                    <input required type="email" className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 focus:border-blue-500 focus:outline-none transition-colors" placeholder="your@email.com" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-slate-400">訊息</label>
+                  <textarea required rows={5} className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 focus:border-blue-500 focus:outline-none transition-colors" placeholder="你想同我哋講咩？"></textarea>
+                </div>
+                <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2">
+                  <Send className="w-5 h-5" />
+                  發送訊息
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+
+        <footer className="mt-20 pt-8 border-t border-slate-800 text-center text-slate-500">
+          <p>© 2026 NewsFlow · AI-Powered Global News</p>
+        </footer>
+      </div>
+    </div>
+  )
+}

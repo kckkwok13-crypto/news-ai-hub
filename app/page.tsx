@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, Volume2, VolumeX, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
@@ -602,8 +603,13 @@ export default function NewsPage() {
         )}
       </main>
 
-      <footer className={`text-center py-6 text-xs ${darkMode ? "text-gray-600" : "text-gray-400"}`}>
-        NewsFlow · AI-Powered Global News
+      <footer className={`mt-12 py-8 text-center text-xs border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
+        <div className="flex justify-center gap-6 mb-4 font-medium text-[10px] md:text-xs">
+          <Link href="/about" className="hover:text-blue-500 transition-colors uppercase tracking-wider">關於我們 / About</Link>
+          <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
+          <Link href="/contact" className="hover:text-blue-500 transition-colors uppercase tracking-wider">聯繫我們 / Contact</Link>
+        </div>
+        <p>NewsFlow · AI-Powered Global News © 2026</p>
       </footer>
     </div>
   );
