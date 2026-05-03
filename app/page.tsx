@@ -121,8 +121,17 @@ export default function NewsPage() {
     window.speechSynthesis.cancel();
     const text = lang === "en" ? item.title : (item.title_zh || item.title);
     const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = lang === "en" ? "en-US" : "zh-TW";
-    utt.rate = 1;
+    // 改做广东话 zh-HK，如果浏览器冇支援会 fallback 到其他中文语音
+    utt.lang = lang === "en" ? "en-US" : "zh-HK";
+    utt.rate = 0.9;
+    // 搵支援广东话嘅语音
+    const voices = window.speechSynthesis.getVoices();
+    const cantoneseVoice = voices.find(v => 
+      v.lang.includes('zh-HK') || 
+      v.lang.includes('zh-TW') || 
+      v.lang.includes('zh-CN')
+    );
+    if (cantoneseVoice) utt.voice = cantoneseVoice;
     utt.onend = () => setSpeakingId(null);
     utt.onerror = () => setSpeakingId(null);
     speechRef.current = utt;
