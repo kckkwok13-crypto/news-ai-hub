@@ -440,7 +440,7 @@ export default function NewsPage() {
             </button>
           ))}
           <div className="ml-auto flex items-center gap-1.5">
-            <button onClick={fetchNews} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
+            <button onClick={() => fetchNews(false)} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
               <RefreshCw size={16} />
             </button>
             <button onClick={() => setAutoRefresh(v => !v)} className={`px-3 py-1.5 rounded-xl text-xs font-medium transition ${autoRefresh ? "bg-green-500/20 text-green-500" : darkMode ? "bg-gray-800 text-gray-500" : "bg-gray-100 text-gray-400"}`}>
