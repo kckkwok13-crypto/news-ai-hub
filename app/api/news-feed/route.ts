@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// RSS sources by category
+// RSS sources
 const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   world: [
     { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC World' },
@@ -9,7 +9,7 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   finance: [
     { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.theguardian.com/business/rss', source: 'Guardian Business' },
+    { url: 'https://www.bloomberg.com/markets/rss', source: 'Bloomberg Markets' },
   ],
   crypto: [
     { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph' },
@@ -26,7 +26,7 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   business: [
     { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.theguardian.com/business/rss', source: 'Guardian Business' },
+    { url: 'https://www.bloomberg.com/markets/rss', source: 'Bloomberg Markets' },
   ],
   technology: [
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
