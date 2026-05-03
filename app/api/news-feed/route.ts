@@ -145,6 +145,8 @@ export async function GET(request: NextRequest) {
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)',
         },
+        // Using a shorter cache time for finance
+        next: { revalidate: category === 'finance' ? 300 : 900 },
         signal: AbortSignal.timeout(10000),
       })
       
@@ -183,6 +185,7 @@ export async function GET(request: NextRequest) {
             desc_zh,
             link,
             pubDate,
+            pubTimestamp: pubDate ? new Date(pubDate).getTime() : 0,
             img: img ? true : false,
             img_url: img || '',
             source: source.source,
@@ -195,10 +198,19 @@ export async function GET(request: NextRequest) {
     }
   }
   
+  // 1. Sort by date descending (newest first)
+  const sortedItems = items.sort((a, b) => b.pubTimestamp - a.pubTimestamp)
+  
+  // 2. Take the top 40 freshest items
+  const freshestItems = sortedItems.slice(0, 40)
+  
+  // 3. Shuffle ONLY the freshest items to maintain diversity while ensuring speed
+  const finalItems = freshestItems.sort(() => Math.random() - 0.5).slice(0, 25)
+  
   return NextResponse.json({
     success: true,
     category,
-    items: items.sort(() => Math.random() - 0.5).slice(0, 25),
+    items: finalItems,
     timestamp: Date.now(),
   })
 }
