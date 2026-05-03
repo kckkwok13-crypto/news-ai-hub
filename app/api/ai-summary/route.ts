@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Simple analysis without external AI
-function analyzeNews(items: any[]) {
+// Simple analysis without external AI (for free tier)
+function analyzeNews(items: any[], lang: string) {
   // Count sources
   const sources: Record<string, number> = {}
   for (const item of items) {
@@ -9,11 +9,11 @@ function analyzeNews(items: any[]) {
   }
   
   // Extract keywords from titles
-  const allTitles = items.map(i => i.title).join(' ')
+  const allTitles = items.map(i => i.title_zh || i.title).join(' ')
   const words = allTitles.toLowerCase().split(/\s+/)
   const wordCount: Record<string, number> = {}
   for (const w of words) {
-    if (w.length > 4) wordCount[w] = (wordCount[w] || 0) + 1
+    if (w.length > 3) wordCount[w] = (wordCount[w] || 0) + 1
   }
   const topKeywords = Object.entries(wordCount)
     .sort((a, b) => b[1] - a[1])
@@ -21,12 +21,12 @@ function analyzeNews(items: any[]) {
     .map(([word]) => word)
   
   // Sentiment (simple heuristic)
-  const positive = ['surge', 'gain', 'rise', 'grow', 'positive', 'success', 'win', 'boost', 'rally']
-  const negative = ['crash', 'fall', 'drop', 'loss', 'fail', 'crisis', 'war', 'threat', 'concern']
+  const positive = ['surge', 'gain', 'rise', 'grow', 'positive', 'success', 'win', 'boost', 'rally', '上漲', '增長', '成功']
+  const negative = ['crash', 'fall', 'drop', 'loss', 'fail', 'crisis', 'war', 'threat', 'concern', '下跌', '危機', '戰爭']
   
   let posCount = 0, negCount = 0
   for (const item of items) {
-    const text = (item.title + ' ' + item.desc).toLowerCase()
+    const text = ((item.title_zh || item.title) + ' ' + (item.desc_zh || item.desc)).toLowerCase()
     if (positive.some(w => text.includes(w))) posCount++
     if (negative.some(w => text.includes(w))) negCount++
   }
@@ -38,13 +38,16 @@ function analyzeNews(items: any[]) {
     neutral: Math.round(100 - (posCount / total) * 100 - (negCount / total) * 100),
   }
   
+  const isZh = lang.startsWith('zh')
+  
   return {
+    success: true,
     summary_zh: `今日新聞共收錄 ${items.length} 條，來自 ${Object.keys(sources).length} 個來源。主要話題包括 ${topKeywords.slice(0, 3).join('、')} 等。`,
     summary_en: `Today's news includes ${items.length} articles from ${Object.keys(sources).length} sources. Key topics include ${topKeywords.slice(0, 3).join(', ')}.`,
-    categories: Object.entries(sources).map(([name, count]) => ({ name, count })),
+    categories: Object.keys(sources),
     sentiment,
     trends: topKeywords,
-    highlights: items.slice(0, 3).map(i => i.title),
+    highlights: items.slice(0, 3).map(i => i.title_zh || i.title),
   }
 }
 
@@ -52,6 +55,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const items = body.items || []
+    const lang = body.lang || 'zh-TW'
     
     if (items.length === 0) {
       return NextResponse.json({
@@ -60,7 +64,7 @@ export async function POST(request: NextRequest) {
       })
     }
     
-    const analysis = analyzeNews(items)
+    const analysis = analyzeNews(items, lang)
     
     return NextResponse.json({
       success: true,

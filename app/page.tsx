@@ -1,412 +1,530 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import { 
-  Globe, DollarSign, Bitcoin, MapPin, 
-  Moon, Sun, Volume2, VolumeX, Bookmark, 
-  BookmarkCheck, Share2, Bell, BellOff,
-  TrendingUp, TrendingDown, Minus, Search,
-  ChevronDown, ChevronUp, Heart, HeartOff,
-  Languages, Zap, Clock, Filter, RefreshCw,
-  Newspaper, BarChart3, Tag, ExternalLink, Languages as LangIcon
-} from 'lucide-react'
+import { useState, useEffect, useCallback, useRef } from "react";
+import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, Volume2, VolumeX, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp } from "lucide-react";
 
-// Types
+type Lang = "zh-TW" | "zh-CN" | "en";
+type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology";
+
 interface NewsItem {
-  id: string
-  title: string
-  title_zh: string
-  desc: string
-  desc_zh: string
-  link: string
-  pubDate: string
-  img: string
-  img_url: string
-  source: string
+  title: string; title_zh: string; desc: string; desc_zh: string; link: string;
+  pubDate: string; source: string; img: boolean; img_url: string;
+  translated: boolean; translationError?: string;
 }
 
-interface Analysis {
-  summary_zh: string
-  summary_en: string
-  categories: {name: string, count: number}[]
-  sentiment: {positive: number, negative: number, neutral: number}
-  trends: string[]
-  highlights: string[]
-}
-
-// Language options
 const LANG_OPTIONS = [
-  { id: 'zh', flag: '🇭🇰', label: '中文' },
-  { id: 'en', flag: '🇺🇸', label: 'English' },
-]
+  { id: "zh-TW" as Lang, label: "繁體", flag: "🇭🇰" },
+  { id: "zh-CN" as Lang, label: "简体", flag: "🇨🇳" },
+  { id: "en" as Lang, label: "English", flag: "🇺🇸" },
+];
 
-// Categories
-const CATEGORIES = [
-  { id: 'world', icon: Globe, emoji: '🌍', label: { zh: '國際', en: 'World' }, color: 'from-blue-500 to-cyan-500' },
-  { id: 'finance', icon: DollarSign, emoji: '💰', label: { zh: '財經', en: 'Finance' }, color: 'from-green-500 to-emerald-500' },
-  { id: 'crypto', icon: Bitcoin, emoji: '₿', label: { zh: '加密幣', en: 'Crypto' }, color: 'from-orange-500 to-yellow-500' },
-  { id: 'hk', icon: MapPin, emoji: '🇭🇰', label: { zh: '香港', en: 'HK' }, color: 'from-red-500 to-pink-500' },
-]
+const CATEGORIES: { id: Category; icon: string; color: string }[] = [
+  { id: "world", icon: "🌍", color: "bg-blue-500" },
+  { id: "finance", icon: "💰", color: "bg-green-500" },
+  { id: "crypto", icon: "₿", color: "bg-orange-500" },
+  { id: "hk", icon: "🇭🇰", color: "bg-red-500" },
+  { id: "tw", icon: "🌴", color: "bg-blue-400" },
+  { id: "china", icon: "🐉", color: "bg-yellow-500" },
+  { id: "business", icon: "💼", color: "bg-purple-500" },
+  { id: "technology", icon: "🚀", color: "bg-indigo-500" },
+];
 
-export default function NewsHub() {
-  const [lang, setLang] = useState<'zh' | 'en'>('zh')
-  const [darkMode, setDarkMode] = useState(true)
-  const [category, setCategory] = useState('world')
-  const [news, setNews] = useState<NewsItem[]>([])
-  const [analysis, setAnalysis] = useState<Analysis | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [savedIds, setSavedIds] = useState<Set<string>>(new Set())
-  const [keywords, setKeywords] = useState<string[]>([])
-  const [newKeyword, setNewKeyword] = useState('')
-  const [speakingId, setSpeakingId] = useState<string | null>(null)
-  const [showAnalysis, setShowAnalysis] = useState(false)
-  const [autoTranslate, setAutoTranslate] = useState(true)
-  const [translating, setTranslating] = useState(false)
+const LABELS = {
+  "zh-TW": {
+    title: "NewsFlow 全球資訊", subtitle: "即時翻譯 · AI 分析 · 多元分類",
+    searchPlaceholder: "搜尋新聞...", loading: "載入中...", noResults: "沒有找到新聞",
+    saved: "已收藏", removed: "已移除", copied: "已複製連結", read: "已讀",
+    darkOn: "深色模式", darkOff: "淺色模式",
+    subscribe: "Email 訂閱", subscribeTitle: "每日精選摘要", subscribeDesc: "每天定時收到重點新聞摘要",
+    emailPlaceholder: "你的 Email", subscribeBtn: "立即訂閱",
+    subscribeSuccess: "訂閱成功！", subscribeError: "請輸入有效 Email",
+    refresh: "刷新", autoRefresh: "自動刷新", refreshOff: "關閉自動刷新",
+    aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入中...", keyAlert: "沒有 API Key，無法使用 AI 功能",
+    trend: "熱門話題", related: "相關新聞",
+    categories: {
+      world: "國際", finance: "財經", crypto: "加密幣", hk: "香港", tw: "台灣", china: "中國", business: "商業", technology: "科技"
+    },
+    savedNews: "收藏", allNews: "全部", source: "來源",
+    readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
+    langChanged: "語言已切換", ttsOn: "朗讀中", ttsOff: "已停止朗讀",
+    shareSuccess: "分享成功", emailRequired: "請輸入 Email 地址",
+  },
+  "zh-CN": {
+    title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI 分析 · 多元分类",
+    searchPlaceholder: "搜索新闻...", loading: "载入中...", noResults: "没有找到新闻",
+    saved: "已收藏", removed: "已移除", copied: "已复制链接", read: "已读",
+    darkOn: "深色模式", darkOff: "浅色模式",
+    subscribe: "Email 订阅", subscribeTitle: "每日精选摘要", subscribeDesc: "每天定时收到重点新闻摘要",
+    emailPlaceholder: "你的 Email", subscribeBtn: "立即订阅",
+    subscribeSuccess: "订阅成功！", subscribeError: "请输入有效 Email",
+    refresh: "刷新", autoRefresh: "自动刷新", refreshOff: "关闭自动刷新",
+    aiSummary: "AI 智能摘要", noSummary: "AI 摘要载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
+    trend: "热门话题", related: "相关新闻",
+    categories: {
+      world: "国际", finance: "财经", crypto: "加密币", hk: "香港", tw: "台湾", china: "中国", business: "商业", technology: "科技"
+    },
+    savedNews: "收藏", allNews: "全部", source: "来源",
+    readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
+    langChanged: "语言已切换", ttsOn: "朗读中", ttsOff: "已停止朗读",
+    shareSuccess: "分享成功", emailRequired: "请输入 Email 地址",
+  },
+  "en": {
+    title: "NewsFlow Global News", subtitle: "Real-time Translation · AI Analysis · Multi-category",
+    searchPlaceholder: "Search news...", loading: "Loading...", noResults: "No news found",
+    saved: "Saved", removed: "Removed", copied: "Link copied", read: "Read",
+    darkOn: "Dark Mode", darkOff: "Light Mode",
+    subscribe: "Email Subscribe", subscribeTitle: "Daily Digest", subscribeDesc: "Get daily news highlights delivered to your inbox",
+    emailPlaceholder: "Your Email", subscribeBtn: "Subscribe Now",
+    subscribeSuccess: "Subscribed!", subscribeError: "Please enter a valid email",
+    refresh: "Refresh", autoRefresh: "Auto Refresh", refreshOff: "Turn Off Auto Refresh",
+    aiSummary: "AI Summary", noSummary: "AI Summary loading...", keyAlert: "No API Key, AI features unavailable",
+    trend: "Trending Topics", related: "Related News",
+    categories: {
+      world: "World", finance: "Finance", crypto: "Crypto", hk: "Hong Kong", tw: "Taiwan", china: "China", business: "Business", technology: "Tech"
+    },
+    savedNews: "Saved", allNews: "All", source: "Source",
+    readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
+    langChanged: "Language changed", ttsOn: "Playing", ttsOff: "Stopped",
+    shareSuccess: "Share success", emailRequired: "Please enter email address",
+  },
+};
 
-  const t = (zh: string, en: string) => lang === 'zh' ? zh : en
+export default function NewsPage() {
+  const [lang, setLang] = useState<Lang>("zh-TW");
+  const [darkMode, setDarkMode] = useState(true);
+  const [category, setCategory] = useState<Category>("world");
+  const [news, setNews] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
+  const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
+  const [readIds, setReadIds] = useState<Set<string>>(new Set());
+  const [showSaved, setShowSaved] = useState(false);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  const [showSearch, setShowSearch] = useState(false);
+  const [toast, setToast] = useState("");
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [aiSummary, setAiSummary] = useState<any>(null);
+  const [summaryLoading, setSummaryLoading] = useState(false);
+  const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-  // Fetch news
-  const fetchNews = useCallback(async () => {
-    setLoading(true)
-    setError(null)
+  const t = LABELS[lang];
+
+  const speak = useCallback((item: NewsItem) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const text = lang === "en" ? item.title : (item.title_zh || item.title);
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = lang === "en" ? "en-US" : "zh-TW";
+    utt.rate = 1;
+    utt.onend = () => setSpeakingId(null);
+    utt.onerror = () => setSpeakingId(null);
+    speechRef.current = utt;
+    setSpeakingId(item.title);
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utt);
+  }, [lang]);
+
+  const stopSpeak = useCallback(() => {
+    window.speechSynthesis?.cancel();
+    setSpeakingId(null);
+    setIsSpeaking(false);
+  }, []);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("savedNews");
+    if (saved) setSavedIds(new Set(JSON.parse(saved)));
+    const dark = localStorage.getItem("darkMode");
+    if (dark) setDarkMode(dark === "true");
+    const savedLang = localStorage.getItem("newsLang") as Lang;
+    if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
+  }, []);
+
+  useEffect(() => {
+    if (savedIds.size > 0) {
+      localStorage.setItem("savedNews", JSON.stringify([...savedIds]));
+    }
+  }, [savedIds]);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", String(darkMode));
+  }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem("newsLang", lang);
+  }, [lang]);
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    fetchNews();
+    if (autoRefresh) {
+      const interval = setInterval(fetchNews, 300000);
+      return () => clearInterval(interval);
+    }
+  }, [category, autoRefresh, lang]);
+
+  useEffect(() => {
+    if (news.length > 0) {
+      fetchAiSummary();
+    }
+  }, [news.length, lang]);
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(""), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  const fetchNews = async () => {
+    setLoading(true);
+    setError("");
     try {
-      const res = await fetch(`/api/news-feed?category=${category}&translate=${autoTranslate}`)
-      const data = await res.json()
-      if (data.success) {
-        setNews(data.items || [])
+      const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}`);
+      const data = await res.json();
+      if (data.success && data.items) {
+        setNews(data.items);
       } else {
-        setError(data.error || 'Failed to fetch')
+        setNews([]);
       }
-    } catch (err) {
-      setError('Network error')
+    } catch {
+      setError("Failed to load news");
     }
-    setLoading(false)
-  }, [category, autoTranslate])
+    setLoading(false);
+  };
 
-  // Fetch AI analysis
-  const fetchAnalysis = useCallback(async () => {
-    if (news.length === 0) return
+  const fetchAiSummary = async () => {
+    setSummaryLoading(true);
     try {
-      const res = await fetch('/api/ai-summary', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: news.slice(0, 10) })
-      })
-      const data = await res.json()
-      if (data.success) {
-        setAnalysis(data.analysis)
-      }
-    } catch (err) {
-      console.error('Analysis failed:', err)
-    }
-  }, [news])
+      const visibleNews = showSaved
+        ? news.filter(n => savedIds.has(n.title))
+        : news;
+      const toAnalyze = visibleNews.slice(0, 5);
+      if (toAnalyze.length === 0) return;
+      const body = {
+        items: toAnalyze.map(n => ({
+          title: n.title,
+          title_zh: n.title_zh || n.title,
+          desc: n.desc || "",
+          desc_zh: n.desc_zh || "",
+          source: n.source,
+        })),
+        lang,
+      };
+      const res = await fetch("/api/ai-summary", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (data.success) setAiSummary(data);
+    } catch { /* silent */ }
+    setSummaryLoading(false);
+  };
 
-  useEffect(() => { fetchNews() }, [fetchNews])
-  useEffect(() => { if (news.length > 0) fetchAnalysis() }, [fetchAnalysis])
+  const toggleSaved = (title: string) => {
+    setSavedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(title)) { next.delete(title); setToast(t.removed); }
+      else { next.add(title); setToast(t.saved); }
+      return next;
+    });
+  };
 
-  // TTS
-  const speak = (id: string, text: string) => {
-    if (speakingId === id) {
-      window.speechSynthesis.cancel()
-      setSpeakingId(null)
-    } else {
-      window.speechSynthesis.cancel()
-      const u = new SpeechSynthesisUtterance(text)
-      u.lang = lang === 'zh' ? 'zh-HK' : 'en-US'
-      u.onend = () => setSpeakingId(null)
-      window.speechSynthesis.speak(u)
-      setSpeakingId(id)
-    }
-  }
+  const toggleRead = (title: string) => {
+    setReadIds(prev => { const next = new Set(prev); next.add(title); return next; });
+    setExpandedId(title === expandedId ? null : title);
+  };
 
-  // Save/Share
-  const toggleSave = (id: string) => {
-    const s = new Set(savedIds)
-    s.has(id) ? s.delete(id) : s.add(id)
-    setSavedIds(s)
-  }
-
-  const share = async (item: NewsItem) => {
+  const shareNews = (item: NewsItem) => {
     if (navigator.share) {
-      await navigator.share({ title: item.title, url: item.link })
+      navigator.share({ title: item.title_zh || item.title, url: item.link });
     } else {
-      await navigator.clipboard.writeText(item.link)
-      alert(t('連結已複製', 'Link copied'))
+      navigator.clipboard.writeText(item.link);
+      setToast(t.copied);
     }
-  }
+  };
 
-  // Keywords
-  const addKeyword = () => {
-    if (newKeyword.trim() && !keywords.includes(newKeyword.trim())) {
-      setKeywords([...keywords, newKeyword.trim()])
-      setNewKeyword('')
-    }
-  }
-  const removeKeyword = (k: string) => setKeywords(keywords.filter(x => x !== k))
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!subscribeEmail.includes("@")) { setToast(t.subscribeError); return; }
+    setToast(t.subscribeSuccess);
+    setSubscribeEmail("");
+    setShowSubscribe(false);
+  };
 
-  // Filter news by keywords
-  const filteredNews = keywords.length > 0 
-    ? news.filter(n => keywords.some(k => 
-        n.title.toLowerCase().includes(k.toLowerCase()) ||
-        n.title_zh.includes(k) ||
-        n.desc.toLowerCase().includes(k.toLowerCase()) ||
-        n.desc_zh.includes(k)
-      ))
-    : news
+  const filteredNews = news.filter(n => {
+    if (!search) return true;
+    const q = search.toLowerCase();
+    return (n.title_zh || n.title).toLowerCase().includes(q) ||
+           n.title.toLowerCase().includes(q) ||
+           (n.desc_zh || n.desc).toLowerCase().includes(q);
+  });
 
-  const formatDate = (d: string) => {
-    try { return new Date(d).toLocaleString(lang === 'zh' ? 'zh-HK' : 'en-US') }
-    catch { return d }
-  }
+  const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : filteredNews;
 
-  const getCardImage = (item: NewsItem) => item.img_url || `https://picsum.photos/seed/${item.id}/400/300`
-
-  // Get display text based on language
-  const getDisplayTitle = (item: NewsItem) => {
-    if (lang === 'zh') {
-      return item.title_zh || item.title
-    }
-    return item.title
-  }
-
-  const getDisplayDesc = (item: NewsItem) => {
-    if (lang === 'zh') {
-      return item.desc_zh || item.desc
-    }
-    return item.desc
-  }
+  const getCardBg = (isRead: boolean) => {
+    if (darkMode) return isRead ? "bg-gray-900/50 border-gray-700" : "bg-gray-800/90 border-gray-700";
+    return isRead ? "bg-gray-100 border-gray-200" : "bg-white border-gray-200";
+  };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white' : 'bg-gradient-to-br from-slate-50 via-white to-blue-50 text-slate-900'}`}>
+    <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-gray-950" : "bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"}`}>
+      {/* Toast */}
+      {toast && (
+        <div className="fixed top-4 right-4 z-50 px-4 py-2 rounded-xl shadow-lg text-sm font-medium bg-black/80 text-white/90 backdrop-blur-sm animate-fade-in">
+          {toast}
+        </div>
+      )}
+
       {/* Header */}
-      <header className={`sticky top-0 z-50 backdrop-blur-xl ${darkMode ? 'bg-slate-900/80 border-b border-slate-700' : 'bg-white/80 border-b border-slate-200'}`}>
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              📰 News AI Hub
-            </h1>
+      <header className={`sticky top-0 z-40 backdrop-blur-xl ${darkMode ? "bg-gray-900/80 border-gray-800" : "bg-white/80 border-gray-200"} border-b`}>
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            {/* Logo */}
             <div className="flex items-center gap-3">
-              {/* Language Toggle */}
-              <div className="flex gap-1">
-                {LANG_OPTIONS.map(l => (
-                  <button key={l.id} onClick={() => setLang(l.id as 'zh'|'en')}
-                    className={`px-2 py-1 rounded text-sm ${lang === l.id ? 'bg-blue-500 text-white' : darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}>
-                    {l.flag}
-                  </button>
-                ))}
+              <div className="text-3xl font-black tracking-tight">
+                <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">NewsFlow</span>
               </div>
-              {/* Auto Translate Toggle */}
-              <button onClick={() => setAutoTranslate(!autoTranslate)}
-                className={`p-2 rounded-full ${autoTranslate ? 'bg-green-500 text-white' : darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}
-                title={t('自動翻譯', 'Auto Translate')}>
-                <LangIcon className="w-5 h-5" />
+              <div className="hidden sm:block">
+                <p className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{currentTime.toLocaleTimeString(lang === "en" ? "en-US" : lang === "zh-CN" ? "zh-CN" : "zh-TW", { hour: "2-digit", minute: "2-digit" })}</p>
+                <p className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{currentTime.toLocaleDateString(lang === "en" ? "en-US" : lang === "zh-CN" ? "zh-CN" : "zh-TW", { weekday: "short", month: "short", day: "numeric" })}</p>
+              </div>
+            </div>
+
+            {/* Controls */}
+            <div className="flex items-center gap-2">
+              {/* Search Toggle */}
+              <button onClick={() => setShowSearch(v => !v)} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
+                <Search size={18} />
               </button>
+
               {/* Dark Mode */}
-              <button onClick={() => setDarkMode(!darkMode)} 
-                className={`p-2 rounded-full ${darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-200 hover:bg-slate-300'}`}>
-                {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              <button onClick={() => setDarkMode(v => !v)} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-yellow-400" : "hover:bg-gray-100 text-gray-600"}`}>
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               </button>
-              {/* Analysis Toggle */}
-              <button onClick={() => setShowAnalysis(!showAnalysis)}
-                className={`p-2 rounded-full ${showAnalysis ? 'bg-purple-500 text-white' : darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}>
-                <BarChart3 className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
 
-          {/* Categories */}
-          <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
-            {CATEGORIES.map(c => (
-              <button key={c.id} onClick={() => setCategory(c.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all
-                  ${category === c.id 
-                    ? `bg-gradient-to-r ${c.color} text-white shadow-lg` 
-                    : darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-200 hover:bg-slate-300'}`}>
-                <span className="text-lg">{c.emoji}</span>
-                {t(c.label.zh, c.label.en)}
+              {/* Saved */}
+              <button onClick={() => { setShowSaved(v => !v); setShowSaved ? fetchAiSummary() : null; }} className={`p-2 rounded-xl transition ${showSaved ? "bg-blue-500 text-white" : darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
+                <Bookmark size={18} />
               </button>
-            ))}
-          </div>
 
-          {/* Keyword Tracker */}
-          <div className="mt-4">
-            <div className="flex gap-2">
-              <input value={newKeyword} onChange={e => setNewKeyword(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && addKeyword()}
-                placeholder={t('追蹤關鍵字...', 'Track keywords...')}
-                className={`flex-1 px-4 py-2 rounded-lg text-sm ${darkMode ? 'bg-slate-700 border-slate-600' : 'bg-white border-slate-300'} border`}
-              />
-              <button onClick={addKeyword} 
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600">
-                <Bell className="w-4 h-4" />
+              {/* Subscribe */}
+              <button onClick={() => setShowSubscribe(true)} className={`px-3 py-1.5 rounded-xl text-xs font-medium transition ${darkMode ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90"}`}>
+                📬 {t.subscribe}
               </button>
-            </div>
-            {keywords.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-2">
-                {keywords.map(k => (
-                  <span key={k} 
-                    className={`flex items-center gap-1 px-3 py-1 rounded-full text-sm ${darkMode ? 'bg-blue-500/20 text-blue-300' : 'bg-blue-100 text-blue-700'}`}>
-                    <Bell className="w-3 h-3" />
-                    {k}
-                    <button onClick={() => removeKeyword(k)} className="ml-1 hover:text-red-400">×</button>
-                  </span>
-                ))}
+
+              {/* Language */}
+              <div className="relative">
+                <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
+                  {LANG_OPTIONS.find(l => l.id === lang)?.flag} {LANG_OPTIONS.find(l => l.id === lang)?.label} <ChevronDown size={12} />
+                </button>
+                {showLangMenu && (
+                  <div className={`absolute right-0 mt-1 py-1 rounded-xl shadow-xl z-50 min-w-[120px] ${darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"}`}>
+                    {LANG_OPTIONS.map(l => (
+                      <button key={l.id} onClick={() => { setLang(l.id); setShowLangMenu(false); setToast(t.langChanged); }} className={`w-full text-left px-3 py-2 text-sm hover:bg-opacity-50 ${darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} ${lang === l.id ? (darkMode ? "text-blue-400" : "text-blue-600") : ""}`}>
+                        {l.flag} {l.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
+
+          {/* Search Bar */}
+          {showSearch && (
+            <div className="mt-3 relative">
+              <Search className={`absolute left-3 top-1/2 -translate-y-1/2 ${darkMode ? "text-gray-500" : "text-gray-400"}`} size={16} />
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder={t.searchPlaceholder} className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-sm outline-none transition ${darkMode ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500" : "bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:border-blue-400"}`} />
+              {search && (
+                <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2"><X size={14} className={darkMode ? "text-gray-500" : "text-gray-400"} /></button>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-6">
-        {/* AI Analysis Panel */}
-        {showAnalysis && analysis && (
-          <div className={`mb-6 p-6 rounded-2xl ${darkMode ? 'bg-slate-800/50' : 'bg-white shadow-lg'}`}>
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Zap className="w-6 h-6 text-yellow-500" />
-              {t('AI 分析', 'AI Analysis')}
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {/* Summary */}
-              <div className={`p-4 rounded-xl ${darkMode ? 'bg-slate-700/50' : 'bg-slate-100'}`}>
-                <h3 className="font-semibold mb-2">{t('摘要', 'Summary')}</h3>
-                <p className="text-sm leading-relaxed">{lang === 'zh' ? analysis.summary_zh : analysis.summary_en}</p>
-              </div>
-              {/* Sentiment */}
-              <div className={`p-4 rounded-xl ${darkMode ? 'bg-slate-700/50' : 'bg-slate-100'}`}>
-                <h3 className="font-semibold mb-2">{t('情感分析', 'Sentiment')}</h3>
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-1">
-                    <TrendingUp className="w-4 h-4 text-green-500" />
-                    <span className="text-sm">{analysis.sentiment.positive}%</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Minus className="w-4 h-4 text-gray-400" />
-                    <span className="text-sm">{analysis.sentiment.neutral}%</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <TrendingDown className="w-4 h-4 text-red-500" />
-                    <span className="text-sm">{analysis.sentiment.negative}%</span>
-                  </div>
-                </div>
-              </div>
-              {/* Trends */}
-              <div className={`p-4 rounded-xl ${darkMode ? 'bg-slate-700/50' : 'bg-slate-100'}`}>
-                <h3 className="font-semibold mb-2">{t('趨勢', 'Trends')}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {analysis.trends.map((t, i) => (
-                    <span key={i} className="px-2 py-1 bg-blue-500/20 rounded text-xs">{t}</span>
-                  ))}
-                </div>
-              </div>
-              {/* Highlights */}
-              <div className={`p-4 rounded-xl ${darkMode ? 'bg-slate-700/50' : 'bg-slate-100'}`}>
-                <h3 className="font-semibold mb-2">{t('重點', 'Highlights')}</h3>
-                <ul className="text-sm space-y-1">
-                  {analysis.highlights.map((h, i) => (
-                    <li key={i}>• {h}</li>
-                  ))}
-                </ul>
-              </div>
+      {/* Subscribe Modal */}
+      {showSubscribe && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
+          <div className={`w-full max-w-md rounded-2xl p-6 ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold">{t.subscribeTitle}</h3>
+              <button onClick={() => setShowSubscribe(false)}><X size={20} /></button>
             </div>
+            <p className={`text-sm mb-4 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.subscribeDesc}</p>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input type="email" value={subscribeEmail} onChange={e => setSubscribeEmail(e.target.value)} placeholder={t.emailPlaceholder} className={`flex-1 px-4 py-2.5 rounded-xl text-sm outline-none ${darkMode ? "bg-gray-800 border border-gray-700 text-white" : "bg-gray-50 border border-gray-200"}`} />
+              <button type="submit" className="px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl text-sm font-medium hover:opacity-90">{t.subscribeBtn}</button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <main className="max-w-6xl mx-auto px-4 py-6">
+        {/* AI Summary */}
+        {(summaryLoading || aiSummary) && (
+          <div className={`mb-6 rounded-2xl p-5 ${darkMode ? "bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-800/50" : "bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200"}`}>
+            <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+              <span className="text-lg">🧠</span> {t.aiSummary}
+              {summaryLoading && <span className="text-xs animate-pulse">...</span>}
+            </h3>
+            {aiSummary && (
+              <div className="space-y-3">
+                {aiSummary.summary_zh && <p className="text-sm leading-relaxed">{aiSummary.summary_zh}</p>}
+                {aiSummary.summary_en && lang === "en" && <p className="text-sm leading-relaxed">{aiSummary.summary_en}</p>}
+                {aiSummary.categories?.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {aiSummary.categories.map((c: string) => (
+                      <span key={c} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-indigo-800/60 text-indigo-300" : "bg-blue-100 text-blue-700"}`}>{c}</span>
+                    ))}
+                  </div>
+                )}
+                {aiSummary.highlights?.length > 0 && (
+                  <div className="mt-2">
+                    <span className="text-xs font-medium opacity-60">{t.trend}: </span>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {aiSummary.highlights.map((h: string, i: number) => (
+                        <span key={i} className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-yellow-900/40 text-yellow-400" : "bg-yellow-100 text-yellow-700"}`}>🔥 {h}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
-        {/* Loading State */}
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-lg">{t('載入新聞中...', 'Loading news...')}</p>
-          </div>
-        ) : error ? (
-          <div className="text-center py-20">
-            <p className="text-red-500 mb-4">{error}</p>
-            <button onClick={fetchNews} className="px-4 py-2 bg-blue-500 text-white rounded-lg">
-              {t('重試', 'Retry')}
+        {/* Category Tabs */}
+        <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
+          {CATEGORIES.map(c => (
+            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-2 rounded-2xl text-sm font-medium whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
+              <span>{c.icon}</span> {(t.categories as any)[c.id] || c.id}
+            </button>
+          ))}
+          <div className="ml-auto flex items-center gap-1.5">
+            <button onClick={fetchNews} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
+              <RefreshCw size={16} />
+            </button>
+            <button onClick={() => setAutoRefresh(v => !v)} className={`px-3 py-1.5 rounded-xl text-xs font-medium transition ${autoRefresh ? "bg-green-500/20 text-green-500" : darkMode ? "bg-gray-800 text-gray-500" : "bg-gray-100 text-gray-400"}`}>
+              {autoRefresh ? "🔄" : "⏸"} {autoRefresh ? t.autoRefresh : t.refreshOff}
             </button>
           </div>
-        ) : (
-          <>
-            {/* Stats Bar */}
-            <div className={`flex items-center justify-between mb-4 text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              <span>{t(`共 ${filteredNews.length} 則新聞`, `${filteredNews.length} articles`)}</span>
-              {autoTranslate && (
-                <span className="flex items-center gap-1 text-green-500">
-                  <LangIcon className="w-4 h-4" />
-                  {t('自動翻譯', 'Auto Translate')}
-                </span>
-              )}
-              {keywords.length > 0 && (
-                <span className="flex items-center gap-1">
-                  <Filter className="w-4 h-4" />
-                  {t(`篩選: ${keywords.join(', ')}`, `Filter: ${keywords.join(', ')}`)}
-                </span>
-              )}
-            </div>
+        </div>
 
-            {/* News Grid */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {filteredNews.map((item, idx) => (
-                <article 
-                  key={item.id || idx}
-                  className={`group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1
-                    ${darkMode ? 'bg-slate-800/60 hover:bg-slate-700/60' : 'bg-white hover:bg-slate-50 shadow-lg'}`}
-                >
+        {/* Loading */}
+        {loading && (
+          <div className="text-center py-20">
+            <div className="text-5xl mb-4 animate-bounce">📡</div>
+            <p className={darkMode ? "text-gray-400" : "text-gray-500"}>{t.loading}</p>
+          </div>
+        )}
+
+        {/* No Results */}
+        {!loading && displayNews.length === 0 && (
+          <div className="text-center py-20">
+            <div className="text-5xl mb-4">🔍</div>
+            <p className={darkMode ? "text-gray-400" : "text-gray-500"}>{t.noResults}</p>
+          </div>
+        )}
+
+        {/* News Grid */}
+        {!loading && displayNews.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayNews.map((item, i) => {
+              const isRead = readIds.has(item.title);
+              const isSaved = savedIds.has(item.title);
+              const isSpeakingThis = speakingId === item.title;
+              return (
+                <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
                   {/* Image */}
-                  <div className="relative aspect-video overflow-hidden">
-                    <img src={getCardImage(item)} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute top-2 right-2 flex gap-1">
-                      <button onClick={e => { e.stopPropagation(); toggleSave(item.id) }}
-                        className={`p-2 rounded-full backdrop-blur-sm transition ${savedIds.has(item.id) ? 'bg-pink-500 text-white' : 'bg-black/30 text-white hover:bg-black/50'}`}>
-                        {savedIds.has(item.id) ? <BookmarkCheck className="w-4 h-4" /> : <Bookmark className="w-4 h-4" />}
-                      </button>
-                      <button onClick={e => { e.stopPropagation(); share(item) }}
-                        className="p-2 rounded-full bg-black/30 text-white hover:bg-black/50 backdrop-blur-sm">
-                        <Share2 className="w-4 h-4" />
-                      </button>
+                  {item.img && item.img_url ? (
+                    <div className="relative h-44 overflow-hidden">
+                      <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     </div>
-                    <div className="absolute bottom-2 left-2 px-2 py-1 rounded-full text-xs bg-black/50 text-white backdrop-blur-sm">
-                      {item.source}
+                  ) : (
+                    <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                      <span className="text-5xl opacity-30">📰</span>
                     </div>
+                  )}
+
+                  {/* Actions */}
+                  <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
+                    <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
+                      {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    </button>
+                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
+                    </button>
+                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      <Share2 size={14} />
+                    </button>
                   </div>
 
                   {/* Content */}
                   <div className="p-4">
-                    <h3 className="font-bold text-lg leading-tight mb-2 line-clamp-2">
-                      {getDisplayTitle(item)}
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                      {isSaved && <span className="text-xs">📌</span>}
+                    </div>
+
+                    <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                      {lang === "en" ? item.title : (item.title_zh || item.title)}
                     </h3>
-                    <p className={`text-sm line-clamp-2 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                      {getDisplayDesc(item)}
-                    </p>
-                    <div className="flex items-center justify-between mt-3">
-                      <span className={`text-xs ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
-                        <Clock className="w-3 h-3 inline mr-1" />
-                        {formatDate(item.pubDate)}
-                      </span>
-                      <div className="flex gap-2">
-                        <button onClick={() => speak(item.id, getDisplayTitle(item))}
-                          className={`p-1.5 rounded-full transition ${speakingId === item.id ? 'bg-blue-500 text-white' : darkMode ? 'hover:bg-slate-600' : 'hover:bg-slate-200'}`}>
-                          {speakingId === item.id ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                        </button>
-                        <a href={item.link} target="_blank" rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-sm text-blue-500 hover:text-blue-400">
-                          {t('閱讀', 'Read')} <ExternalLink className="w-3 h-3" />
+
+                    {item.desc && (
+                      <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                        {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                      </p>
+                    )}
+
+                    {/* Expanded */}
+                    {expandedId === item.title && (
+                      <div className="mt-3 pt-3 border-t border-gray-700/50">
+                        {item.desc && (
+                          <p className={`text-xs leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                            {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                          </p>
+                        )}
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                          {t.readMore} <ExternalLink size={12} />
                         </a>
                       </div>
-                    </div>
+                    )}
+
+                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
                   </div>
-                </article>
-              ))}
-            </div>
-          </>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Speaking indicator */}
+        {isSpeaking && (
+          <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/80 text-white text-sm backdrop-blur-sm shadow-xl">
+            <Volume2 size={16} className="animate-pulse" />
+            <span>{t.ttsOn}</span>
+            <button onClick={stopSpeak} className="ml-2 px-2 py-0.5 rounded-lg bg-white/20 hover:bg-white/30 text-xs">{t.ttsOff}</button>
+          </div>
         )}
       </main>
 
-      {/* Footer */}
-      <footer className={`mt-12 py-6 text-center text-sm ${darkMode ? 'text-slate-500 border-t border-slate-800' : 'text-slate-400 border-t border-slate-200'}`}>
-        <p>📰 News AI Hub • {t('智能新聞聚合平台', 'Smart News Aggregator')}</p>
-        <p className="mt-1">Built with Next.js + Vercel</p>
+      <footer className={`text-center py-6 text-xs ${darkMode ? "text-gray-600" : "text-gray-400"}`}>
+        NewsFlow · AI-Powered Global News
       </footer>
     </div>
-  )
+  );
 }

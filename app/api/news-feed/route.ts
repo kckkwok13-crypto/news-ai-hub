@@ -5,54 +5,50 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   world: [
     { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC World' },
     { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', source: 'NYTimes' },
+    { url: 'https://www.theguardian.com/world/rss', source: 'Guardian' },
   ],
   finance: [
     { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best', source: 'Reuters' },
+    { url: 'https://www.theguardian.com/business/rss', source: 'Guardian Business' },
   ],
   crypto: [
     { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph' },
+    { url: 'https://coindesk.com/arc/outboundfeeds/rss/', source: 'CoinDesk' },
   ],
   hk: [
     { url: 'https://news.google.com/rss/search?q=%E9%A6%99%E6%B8%AF&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: 'Google News HK' },
   ],
-}
-
-// Translate text using Google Translate API (free)
-async function translateText(text: string, targetLang: string): Promise<string> {
-  if (!text || text.trim().length === 0) return text
-  
-  try {
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 3000)
-    
-    const res = await fetch(url, { signal: controller.signal })
-    clearTimeout(timeoutId)
-    
-    if (!res.ok) return text
-    
-    const data = await res.json()
-    if (data && data[0]) {
-      return data[0].map((item: any) => item[0] || '').join('')
-    }
-    return text
-  } catch {
-    return text
-  }
+  tw: [
+    { url: 'https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3&hl=zh-TW&gl=TW&ceid=TW:zh-Hant', source: 'Google News TW' },
+  ],
+  china: [
+    { url: 'https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD&hl=zh-CN&gl=CN&ceid=CN:zh-Hans', source: 'Google News China' },
+  ],
+  business: [
+    { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
+    { url: 'https://www.theguardian.com/business/rss', source: 'Guardian Business' },
+  ],
+  technology: [
+    { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
+    { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
+  ],
 }
 
 // Extract image from RSS item
 function extractImage(itemXml: string): string {
+  // media:thumbnail
   const thumb = itemXml.match(/<media:thumbnail[^>]*url="([^"]+)"/i)
   if (thumb) return thumb[1]
   
+  // media:content
   const content = itemXml.match(/<media:content[^>]*url="([^"]+)"/i)
   if (content) return content[1]
   
+  // enclosure
   const enc = itemXml.match(/<enclosure[^>]*url="([^"]+)"/i)
   if (enc) return enc[1]
   
+  // img tag in content
   const img = itemXml.match(/<img[^>]*src="([^"]+)"/i)
   if (img) return img[1]
   
@@ -78,26 +74,47 @@ function extractText(content: string): string {
   return cleanHtml(cdata ? cdata[1] : content)
 }
 
+// Translate text using Google Translate API (free)
+async function translateText(text: string, targetLang: string): Promise<string> {
+  if (!text || text.length < 2) return text
+  
+  try {
+    const langPair = targetLang === 'zh-TW' ? 'en|zh-TW' : targetLang === 'zh-CN' ? 'en|zh-CN' : 'en|en'
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang === 'en' ? 'en' : 'zh-TW'}&dt=t&q=${encodeURIComponent(text)}`
+    
+    const res = await fetch(url, {
+      signal: AbortSignal.timeout(3000),
+    })
+    
+    if (!res.ok) return text
+    
+    const data = await res.json()
+    if (data && data[0] && data[0][0] && data[0][0][0]) {
+      return data[0][0][0]
+    }
+  } catch {
+    // Translation failed, return original
+  }
+  
+  return text
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const category = searchParams.get('category') || 'world'
-  const translate = searchParams.get('translate') === 'true'
+  const lang = searchParams.get('lang') || 'zh-TW'
   
   const sources = RSS_SOURCES[category] || RSS_SOURCES.world
   const items: any[] = []
   
   for (const source of sources) {
     try {
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 8000)
-      
       const res = await fetch(source.url, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)',
         },
-        signal: controller.signal,
+        signal: AbortSignal.timeout(10000),
       })
-      clearTimeout(timeoutId)
       
       if (!res.ok) continue
       
@@ -117,13 +134,13 @@ export async function GET(request: NextRequest) {
         const img = extractImage(itemXml)
         
         if (title && link) {
-          // Translate if requested
-          let title_zh = ''
-          let desc_zh = ''
+          // Translate title and description
+          let title_zh = title
+          let desc_zh = desc
           
-          if (translate) {
-            title_zh = await translateText(title, 'zh-TW')
-            desc_zh = await translateText(desc.slice(0, 200), 'zh-TW')
+          if (lang !== 'en' && !/[\u4e00-\u9fff]/.test(title)) {
+            title_zh = await translateText(title, lang)
+            desc_zh = desc ? await translateText(desc.slice(0, 200), lang) : ''
           }
           
           items.push({
@@ -134,9 +151,10 @@ export async function GET(request: NextRequest) {
             desc_zh,
             link,
             pubDate,
-            img: img ? 'true' : 'false',
-            img_url: img || `https://picsum.photos/seed/${category}${items.length}/400/300`,
+            img: img ? true : false,
+            img_url: img || '',
             source: source.source,
+            translated: title_zh !== title,
           })
         }
       }
