@@ -315,7 +315,7 @@ export default function NewsPage() {
               </button>
 
               {/* Saved */}
-              <button onClick={() => { setShowSaved(v => !v); setShowSaved ? fetchAiSummary() : null; }} className={`p-2 rounded-xl transition ${showSaved ? "bg-blue-500 text-white" : darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
+              <button onClick={() => setShowSaved(v => !v)} className={`p-2 rounded-xl transition ${showSaved ? "bg-blue-500 text-white" : darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
                 <Bookmark size={18} />
               </button>
 
