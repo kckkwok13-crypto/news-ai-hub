@@ -37,15 +37,19 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
 // Extract image from RSS item
 function extractImage(itemXml: string): string {
   // Guardian has multiple media:content with different widths
-  // Try to get the largest one (width=700 or 460)
-  const mediaContents = itemXml.match(/<media:content[^>]*url="([^"]+)"[^>]*width="(\d+)"/gi)
-  if (mediaContents && mediaContents.length > 0) {
-    // Find the one with largest width
+  // The attributes can be in any order: url before width OR width before url
+  // Find all media:content tags
+  const mediaTags = itemXml.match(/<media:content[^>]*>/gi) || []
+  
+  if (mediaTags.length > 0) {
     let bestUrl = ''
     let bestWidth = 0
-    for (const mc of mediaContents) {
-      const urlMatch = mc.match(/url="([^"]+)"/i)
-      const widthMatch = mc.match(/width="(\d+)"/i)
+    
+    for (const tag of mediaTags) {
+      // Extract url and width regardless of order
+      const urlMatch = tag.match(/url="([^"]+)"/i)
+      const widthMatch = tag.match(/width="(\d+)"/i)
+      
       if (urlMatch && widthMatch) {
         const width = parseInt(widthMatch[1])
         if (width > bestWidth) {
@@ -54,6 +58,7 @@ function extractImage(itemXml: string): string {
         }
       }
     }
+    
     if (bestUrl) return bestUrl
   }
   
