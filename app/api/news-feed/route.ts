@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// RSS sources
+// RSS sources by category
 const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   world: [
     { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC World' },
@@ -9,7 +9,8 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   finance: [
     { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.bloomberg.com/markets/rss', source: 'Bloomberg Markets' },
+    { url: 'https://www.investing.com/rss/news.rss', source: 'Investing.com' },
+    { url: 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml', source: 'WSJ Markets' },
   ],
   crypto: [
     { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph' },
@@ -17,6 +18,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   hk: [
     { url: 'https://news.google.com/rss/search?q=%E9%A6%99%E6%B8%AF&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: 'Google News HK' },
+  ],
+  hk_finance: [
+    { url: 'https://news.google.com/rss/search?q=%E6%B8%AF%E8%82%A1%20%E6%81%92%E7%94%9F%E6%8C%87%E6%95%B8&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: '港股新聞' },
   ],
   tw: [
     { url: 'https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3&hl=zh-TW&gl=TW&ceid=TW:zh-Hant', source: 'Google News TW' },
@@ -26,7 +30,7 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   business: [
     { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.bloomberg.com/markets/rss', source: 'Bloomberg Markets' },
+    { url: 'https://www.investing.com/rss/news.rss', source: 'Investing.com' },
   ],
   technology: [
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
@@ -37,8 +41,6 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
 // Extract image from RSS item
 function extractImage(itemXml: string): string {
   // Guardian has multiple media:content with different widths
-  // The attributes can be in any order: url before width OR width before url
-  // Find all media:content tags
   const mediaTags = itemXml.match(/<media:content[^>]*>/gi) || []
   
   if (mediaTags.length > 0) {
@@ -46,7 +48,6 @@ function extractImage(itemXml: string): string {
     let bestWidth = 0
     
     for (const tag of mediaTags) {
-      // Extract url and width regardless of order
       const urlMatch = tag.match(/url="([^"]+)"/i)
       const widthMatch = tag.match(/width="(\d+)"/i)
       
@@ -70,7 +71,7 @@ function extractImage(itemXml: string): string {
   const content = itemXml.match(/<media:content[^>]*url="([^"]+)"/i)
   if (content) return content[1]
   
-  // enclosure
+  // enclosure (used by Investing.com)
   const enc = itemXml.match(/<enclosure[^>]*url="([^"]+)"/i)
   if (enc) return enc[1]
   
@@ -105,7 +106,6 @@ async function translateText(text: string, targetLang: string): Promise<string> 
   if (!text || text.length < 2) return text
   
   try {
-    const langPair = targetLang === 'zh-TW' ? 'en|zh-TW' : targetLang === 'zh-CN' ? 'en|zh-CN' : 'en|en'
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang === 'en' ? 'en' : 'zh-TW'}&dt=t&q=${encodeURIComponent(text)}`
     
     const res = await fetch(url, {
@@ -169,12 +169,6 @@ export async function GET(request: NextRequest) {
             desc_zh = desc ? await translateText(desc.slice(0, 200), lang) : ''
           }
           
-          // Use proxy for Guardian images (they have hotlink protection)
-          let finalImgUrl = img || ''
-          if (img && source.source.toLowerCase().includes('guardian')) {
-            finalImgUrl = `/api/proxy-image?url=${encodeURIComponent(img)}`
-          }
-          
           items.push({
             id: Buffer.from(link).toString('base64').slice(0, 16),
             title,
@@ -184,7 +178,7 @@ export async function GET(request: NextRequest) {
             link,
             pubDate,
             img: img ? true : false,
-            img_url: finalImgUrl,
+            img_url: img || '',
             source: source.source,
             translated: title_zh !== title,
           })
