@@ -139,29 +139,29 @@ export async function GET(request: NextRequest) {
   const lang = searchParams.get('lang') || 'zh-TW'
   
   const sources = RSS_SOURCES[category] || RSS_SOURCES.world
-  const items: any[] = []
   
   const now = Date.now()
-  // Max age for news (24 hours for finance/crypto/hk_finance, 48 hours for others)
   const MAX_AGE_MS = (category === 'finance' || category === 'crypto' || category === 'hk_finance') 
     ? 24 * 60 * 60 * 1000 
     : 48 * 60 * 60 * 1000
 
-  for (const source of sources) {
+  // 1. Parallel fetch all sources
+  const sourcePromises = sources.map(async (source) => {
     try {
       const res = await fetch(source.url, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         },
-        next: { revalidate: 60 }, // Force refresh more often (1 min)
-        signal: AbortSignal.timeout(8000),
+        next: { revalidate: 60 },
+        signal: AbortSignal.timeout(6000), // Slightly shorter timeout for snappier feel
       })
       
-      if (!res.ok) continue
+      if (!res.ok) return []
       
       const xml = await res.text()
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
-      
+      const sourceItems: any[] = []
+
       for (const itemXml of itemMatches.slice(0, 20)) {
         const titleMatch = itemXml.match(/<title>([\s\S]*?)<\/title>/i)
         const descMatch = itemXml.match(/<description>([\s\S]*?)<\/description>/i)
@@ -179,51 +179,64 @@ export async function GET(request: NextRequest) {
           pubTimestamp = isNaN(parsedDate.getTime()) ? 0 : parsedDate.getTime()
         }
 
-        // STRICT FILTER: Skip items older than MAX_AGE or with invalid dates
         if (pubTimestamp === 0 || (now - pubTimestamp) > MAX_AGE_MS) continue
 
         const img = extractImage(itemXml)
         
         if (title && link) {
-          // Translate title and description
-          let title_zh = title
-          let desc_zh = desc
-          
-          if (lang !== 'en' && !/[\u4e00-\u9fff]/.test(title)) {
-            title_zh = await translateText(title, lang)
-            desc_zh = desc ? await translateText(desc.slice(0, 200), lang) : ''
-          }
-          
-          items.push({
+          sourceItems.push({
             id: Buffer.from(link).toString('base64').slice(0, 16),
             title,
-            title_zh,
             desc: desc.slice(0, 200),
-            desc_zh,
             link,
             pubDate: pubDateStr,
             pubTimestamp,
-            img: img ? true : false,
+            img: !!img,
             img_url: img || '',
             source: source.source,
-            translated: title_zh !== title,
           })
         }
       }
+      return sourceItems
     } catch (err) {
       console.error(`Failed to fetch ${source.url}:`, err)
+      return []
     }
-  }
+  })
+
+  const results = await Promise.all(sourcePromises)
+  const allItems = results.flat()
   
-  // 1. Sort by date descending (absolute latest first)
-  const sortedItems = items.sort((a, b) => b.pubTimestamp - a.pubTimestamp)
+  // 2. Sort by date descending and pick top items FIRST
+  const sortedItems = allItems.sort((a, b) => b.pubTimestamp - a.pubTimestamp)
+  const topItems = sortedItems.slice(0, 35) // Get a few extra for shuffling
+
+  // 3. Translate only the top items in parallel
+  const translatedItems = await Promise.all(topItems.map(async (item) => {
+    let title_zh = item.title
+    let desc_zh = item.desc
+    
+    if (lang !== 'en' && !/[\u4e00-\u9fff]/.test(item.title)) {
+      // Run translation in parallel for title and desc
+      const [tTitle, tDesc] = await Promise.all([
+        translateText(item.title, lang),
+        item.desc ? translateText(item.desc, lang) : Promise.resolve('')
+      ])
+      title_zh = tTitle
+      desc_zh = tDesc
+    }
+    
+    return {
+      ...item,
+      title_zh,
+      desc_zh,
+      translated: title_zh !== item.title
+    }
+  }))
   
-  // 2. Take only top 30 to ensure freshness
-  const topItems = sortedItems.slice(0, 30)
-  
-  // 3. Optional: slight shuffle to mix sources, but keep top 5 strictly newest
-  const newestFive = topItems.slice(0, 5)
-  const others = topItems.slice(5).sort(() => Math.random() - 0.5)
+  // 4. Final shuffling/selection
+  const newestFive = translatedItems.slice(0, 5)
+  const others = translatedItems.slice(5).sort(() => Math.random() - 0.5)
   const finalItems = [...newestFive, ...others].slice(0, 25)
   
   return NextResponse.json({
