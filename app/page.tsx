@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, Volume2, VolumeX, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp } from "lucide-react";
+import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, Volume2, VolumeX, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
 type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology" | "hk_finance";
@@ -50,6 +50,9 @@ const LABELS = {
     readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
     langChanged: "語言已切換", ttsOn: "朗讀中", ttsOff: "已停止朗讀",
     shareSuccess: "分享成功", emailRequired: "請輸入 Email 地址",
+    bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
+    sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
+    biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" }
   },
   "zh-CN": {
     title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI 分析 · 多元分类",
@@ -114,6 +117,7 @@ export default function NewsPage() {
   const [summaryLoading, setSummaryLoading] = useState(false);
   const [speakingId, setSpeakingId] = useState<string | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [showImpactId, setShowImpactId] = useState<string | null>(null);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const t = LABELS[lang];
@@ -385,36 +389,40 @@ export default function NewsPage() {
       )}
 
       <main className="max-w-7xl mx-auto px-4 py-6">
-        {/* AI Summary */}
-        {(summaryLoading || aiSummary) && (
-          <div className={`mb-6 rounded-2xl p-5 ${darkMode ? "bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-800/50" : "bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200"}`}>
-            <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
-              <span className="text-lg">🧠</span> {t.aiSummary}
-              {summaryLoading && <span className="text-xs animate-pulse">...</span>}
-            </h3>
-            {aiSummary && (
-              <div className="space-y-3">
-                {aiSummary.summary_zh && <p className="text-sm leading-relaxed">{aiSummary.summary_zh}</p>}
-                {aiSummary.summary_en && lang === "en" && <p className="text-sm leading-relaxed">{aiSummary.summary_en}</p>}
-                {aiSummary.categories?.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {aiSummary.categories.map((c: string) => (
-                      <span key={c} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-indigo-800/60 text-indigo-300" : "bg-blue-100 text-blue-700"}`}>{c}</span>
-                    ))}
-                  </div>
-                )}
-                {aiSummary.highlights?.length > 0 && (
-                  <div className="mt-2">
-                    <span className="text-xs font-medium opacity-60">{t.trend}: </span>
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {aiSummary.highlights.map((h: string, i: number) => (
-                        <span key={i} className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-yellow-900/40 text-yellow-400" : "bg-yellow-100 text-yellow-700"}`}>🔥 {h}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+        {/* Daily Digest Section - NEW */}
+        {aiSummary && (
+          <div className={`mb-8 p-6 rounded-3xl ${darkMode ? "bg-gray-900/80 border-gray-800" : "bg-white shadow-xl"} border relative overflow-hidden group`}>
+            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+              <BookOpen size={80} />
+            </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                <h2 className="text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
               </div>
-            )}
+              <p className={`text-lg md:text-xl font-medium leading-relaxed ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
+                {lang === "en" ? aiSummary.summary_en : aiSummary.summary_zh}
+              </p>
+              
+              {/* Sentiment Trends - NEW */}
+              <div className="mt-6 flex flex-wrap items-center gap-6">
+                <div className="flex-1 min-w-[200px]">
+                  <p className="text-xs font-semibold mb-2 text-gray-500 uppercase tracking-tighter">{t.sentimentTitle || "情緒追蹤"}</p>
+                  <div className="h-2 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
+                    <div style={{ width: `${aiSummary.sentiment?.positive || 0}%` }} className="h-full bg-green-500" />
+                    <div style={{ width: `${aiSummary.sentiment?.neutral || 0}%` }} className="h-full bg-gray-400" />
+                    <div style={{ width: `${aiSummary.sentiment?.negative || 0}%` }} className="h-full bg-red-500" />
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  {aiSummary.trends?.map((trend: string) => (
+                    <span key={trend} className={`px-3 py-1 rounded-full text-xs font-bold ${darkMode ? "bg-blue-900/40 text-blue-300" : "bg-blue-100 text-blue-700"}`}>
+                      # {trend}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -453,148 +461,173 @@ export default function NewsPage() {
 
         {/* News Grid */}
         {!loading && displayNews.length > 0 && (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {displayNews.slice(0, 6).map((item, i) => {
-                const isRead = readIds.has(item.title);
-                const isSaved = savedIds.has(item.title);
-                const isSpeakingThis = speakingId === item.title;
-                return (
-                  <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
-                    {/* Image */}
-                    {item.img && item.img_url ? (
-                      <div className="relative h-44 overflow-hidden">
-                        <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      </div>
-                    ) : (
-                      <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
-                        <span className="text-5xl opacity-30">📰</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayNews.map((item, i) => {
+              const isRead = readIds.has(item.title);
+              const isSaved = savedIds.has(item.title);
+              const isSpeakingThis = speakingId === item.title;
+              const details = aiSummary?.details?.find((d: any) => d.id === item.id);
+
+              return (
+                <div key={i} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
+                  {/* Image */}
+                  {item.img && item.img_url ? (
+                    <div className="relative h-44 overflow-hidden">
+                      <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    </div>
+                  ) : (
+                    <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                      <span className="text-5xl opacity-30">📰</span>
+                    </div>
+                  )}
+
+                  {/* Actions */}
+                  <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
+                    <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
+                      {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    </button>
+                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
+                    </button>
+                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      <Share2 size={14} />
+                    </button>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-wider ${darkMode ? "bg-gray-800 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                      
+                      {/* Bias Badge - NEW */}
+                      {details?.bias && (
+                        <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold border ${darkMode ? "border-purple-800 text-purple-400" : "border-purple-200 text-purple-600"}`}>
+                          ⚖️ {details.bias}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 onClick={() => toggleRead(item.title)} className={`text-base font-bold leading-snug mb-3 cursor-pointer ${darkMode ? "text-white group-hover:text-blue-400" : "text-gray-900 group-hover:text-blue-600"} transition-colors`}>
+                      {lang === "en" ? item.title : (item.title_zh || item.title)}
+                    </h3>
+
+                    {/* Contextual Impact Button - NEW */}
+                    {details?.impact && (
+                      <button 
+                        onClick={() => setShowImpactId(item.id)}
+                        className={`mb-4 w-full py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-blue-900/20 text-blue-400 hover:bg-blue-900/40" : "bg-blue-50 text-blue-600 hover:bg-blue-100"}`}
+                      >
+                        <Zap size={14} /> {t.impact || "深度解讀"}
+                      </button>
+                    )}
+
+                    {/* Impact Modal - NEW */}
+                    {showImpactId === item.id && (
+                      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
+                        <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
+                          <div className="text-blue-500 mb-4"><Zap size={32} /></div>
+                          <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
+                          <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                            {details.impact}
+                          </p>
+                          <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-500 transition">
+                            {t.impactClose || "關閉解讀"}
+                          </button>
+                        </div>
                       </div>
                     )}
 
-                    {/* Actions */}
-                    <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
-                      <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
-                        {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
-                      </button>
-                      <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                        {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
-                      </button>
-                      <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                        <Share2 size={14} />
-                      </button>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-4">
-                      <div className="flex items-center gap-1.5 mb-2">
-                        <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
-                        {isSaved && <span className="text-xs">📌</span>}
-                      </div>
-
-                      <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-                        {lang === "en" ? item.title : (item.title_zh || item.title)}
-                      </h3>
-
-                      {item.desc && (
-                        <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-                          {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
-                        </p>
-                      )}
-
-                      {/* Expanded */}
-                      {expandedId === item.title && (
-                        <div className="mt-3 pt-3 border-t border-gray-700/50">
-                          {item.desc && (
-                            <p className={`text-xs leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                              {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
-                            </p>
-                          )}
-                          <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
-                            {t.readMore} <ExternalLink size={12} />
-                          </a>
-                        </div>
-                      )}
-
-                      <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* In-Feed Ad */}
-            <div className={`my-6 rounded-xl p-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
-              <div className={`text-center py-6 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-                <p className="text-sm">📰 廣告位置 / In-Feed Ad</p>
-                <p className="text-xs mt-1">Google AdSense 原生廣告</p>
-              </div>
-            </div>
-
-            {/* Remaining News */}
-            {displayNews.length > 6 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {displayNews.slice(6).map((item, i) => {
-                  const isRead = readIds.has(item.title);
-                  const isSaved = savedIds.has(item.title);
-                  const isSpeakingThis = speakingId === item.title;
-                  return (
-                    <div key={i + 6} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
-                      {/* Same card structure as above */}
-                      {item.img && item.img_url ? (
-                        <div className="relative h-44 overflow-hidden">
-                          <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                        </div>
-                      ) : (
-                        <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
-                          <span className="text-5xl opacity-30">📰</span>
-                        </div>
-                      )}
-                      <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
-                        <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                          {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
-                        </button>
-                        <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                          {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
-                        </button>
-                        <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                          <Share2 size={14} />
-                        </button>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-center gap-1.5 mb-2">
-                          <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
-                          {isSaved && <span className="text-xs">📌</span>}
-                        </div>
-                        <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-                          {lang === "en" ? item.title : (item.title_zh || item.title)}
-                        </h3>
+                    {/* Expanded */}
+                    {expandedId === item.title && (
+                      <div className="mt-3 pt-3 border-t border-gray-700/50">
                         {item.desc && (
-                          <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                          <p className={`text-xs leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                             {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
                           </p>
                         )}
-                        <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                          {t.readMore} <ExternalLink size={12} />
+                        </a>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </>
+                    )}
+
+                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         )}
 
-        {/* Speaking indicator */}
-        {isSpeaking && (
-          <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/80 text-white text-sm backdrop-blur-sm shadow-xl">
-            <Volume2 size={16} className="animate-pulse" />
-            <span>{t.ttsOn}</span>
-            <button onClick={stopSpeak} className="ml-2 px-2 py-0.5 rounded-lg bg-white/20 hover:bg-white/30 text-xs">{t.ttsOff}</button>
+        {/* In-Feed Ad */}
+        <div className={`my-6 rounded-xl p-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
+          <div className={`text-center py-6 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+            <p className="text-sm">📰 廣告位置 / In-Feed Ad</p>
+            <p className="text-xs mt-1">Google AdSense 原生廣告</p>
+          </div>
+        </div>
+
+        {/* Remaining News */}
+        {displayNews.length > 6 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayNews.slice(6).map((item, i) => {
+              const isRead = readIds.has(item.title);
+              const isSaved = savedIds.has(item.title);
+              const isSpeakingThis = speakingId === item.title;
+              return (
+                <div key={i + 6} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
+                  {/* Same card structure as above */}
+                  {item.img && item.img_url ? (
+                    <div className="relative h-44 overflow-hidden">
+                      <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    </div>
+                  ) : (
+                    <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                      <span className="text-5xl opacity-30">📰</span>
+                    </div>
+                  )}
+                  <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
+                    <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    </button>
+                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
+                    </button>
+                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                      <Share2 size={14} />
+                    </button>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                      {isSaved && <span className="text-xs">📌</span>}
+                    </div>
+                    <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                      {lang === "en" ? item.title : (item.title_zh || item.title)}
+                    </h3>
+                    {item.desc && (
+                      <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                        {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                      </p>
+                    )}
+                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </main>
+
+      {/* Speaking indicator */}
+      {isSpeaking && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/80 text-white text-sm backdrop-blur-sm shadow-xl">
+          <Volume2 size={16} className="animate-pulse" />
+          <span>{t.ttsOn}</span>
+          <button onClick={stopSpeak} className="ml-2 px-2 py-0.5 rounded-lg bg-white/20 hover:bg-white/30 text-xs">{t.ttsOff}</button>
+        </div>
+      )}
 
       <footer className={`mt-12 py-8 text-center text-xs border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
         <div className="flex justify-center gap-6 mb-4 font-medium text-[10px] md:text-xs">
