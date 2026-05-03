@@ -198,7 +198,7 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({
     success: true,
     category,
-    items: items.slice(0, 25),
+    items: items.sort(() => Math.random() - 0.5).slice(0, 25),
     timestamp: Date.now(),
   })
 }
