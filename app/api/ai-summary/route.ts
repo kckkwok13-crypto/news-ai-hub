@@ -141,14 +141,14 @@ export async function POST(request: NextRequest) {
       sources[item.source] = (sources[item.source] || 0) + 1
     }
     
-    const allTitles = items.map(i => i.title_zh || i.title).join(' ')
+    const allTitles = items.map((i: any) => i.title_zh || i.title).join(' ')
     const words = allTitles.toLowerCase().split(/\s+/)
     const wordCount: Record<string, number> = {}
     for (const w of words) {
       if (w.length > 3) wordCount[w] = (wordCount[w] || 0) + 1
     }
     const topKeywords = Object.entries(wordCount)
-      .sort((a, b) => b[1] - a[1])
+      .sort((a: any, b: any) => b[1] - a[1])
       .slice(0, 5)
       .map(([word]) => word)
     
@@ -169,8 +169,6 @@ export async function POST(request: NextRequest) {
       neutral: Math.round(100 - (posCount / total) * 100 - (negCount / total) * 100),
     }
     
-    const isZh = lang.startsWith('zh')
-    
     return NextResponse.json({
       success: true,
       analysis: {
@@ -179,7 +177,7 @@ export async function POST(request: NextRequest) {
         categories: Object.keys(sources),
         sentiment,
         trends: topKeywords,
-        highlights: items.slice(0, 3).map(i => i.title_zh || i.title),
+        highlights: items.slice(0, 3).map((i: any) => i.title_zh || i.title),
       },
       timestamp: Date.now(),
     })

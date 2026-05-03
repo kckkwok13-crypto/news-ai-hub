@@ -58,7 +58,7 @@ const LABELS = {
     title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI 分析 · 多元分类",
     searchPlaceholder: "搜索新闻...", loading: "载入中...", noResults: "没有找到新闻",
     saved: "已收藏", removed: "已移除", copied: "已复制链接", read: "已读",
-    darkOn: "深色模式", darkOff: "浅色模式",
+    darkOn: "浅色模式", darkOff: "深色模式",
     subscribe: "Email 订阅", subscribeTitle: "每日精选摘要", subscribeDesc: "每天定时收到重点新闻摘要",
     emailPlaceholder: "你的 Email", subscribeBtn: "立即订阅",
     subscribeSuccess: "订阅成功！", subscribeError: "请输入有效 Email",
@@ -72,6 +72,9 @@ const LABELS = {
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
     langChanged: "语言已切换", ttsOn: "朗读中", ttsOff: "已停止朗读",
     shareSuccess: "分享成功", emailRequired: "请输入 Email 地址",
+    bias: "立场分析", impact: "深度解读", digestTitle: "今日 AI 深度日报",
+    sentimentTitle: "情绪追踪", impactClose: "关闭解读",
+    biasTypes: { pro_western: "亲西方", neutral: "中立", pro_china: "亲华", optimism: "市场乐观" }
   },
   "en": {
     title: "NewsFlow Global News", subtitle: "Real-time Translation · AI Analysis · Multi-category",
@@ -91,6 +94,9 @@ const LABELS = {
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
     langChanged: "Language changed", ttsOn: "Playing", ttsOff: "Stopped",
     shareSuccess: "Share success", emailRequired: "Please enter email address",
+    bias: "Bias Analysis", impact: "Contextual Impact", digestTitle: "Today's AI Daily Digest",
+    sentimentTitle: "Sentiment Trends", impactClose: "Close Analysis",
+    biasTypes: { pro_western: "Pro-Western", neutral: "Neutral", pro_china: "Pro-China", optimism: "Optimistic" }
   },
 };
 
