@@ -12,10 +12,10 @@ interface NewsItem {
   translated: boolean; translationError?: string;
 }
 
+// Language options
 const LANG_OPTIONS = [
-  { id: "zh-TW" as Lang, label: "繁體", flag: "🇭🇰" },
-  { id: "zh-CN" as Lang, label: "简体", flag: "🇨🇳" },
-  { id: "en" as Lang, label: "English", flag: "🇺🇸" },
+  { id: 'zh', flag: '🇭🇰', label: '廣東話' },
+  { id: 'en', flag: '🇺🇸', label: 'English' },
 ];
 
 const CATEGORIES: { id: Category; icon: string; color: string }[] = [
@@ -32,14 +32,14 @@ const CATEGORIES: { id: Category; icon: string; color: string }[] = [
 const LABELS = {
   "zh-TW": {
     title: "NewsFlow 全球資訊", subtitle: "即時翻譯 · AI 分析 · 多元分類",
-    searchPlaceholder: "搜尋新聞...", loading: "載入中...", noResults: "沒有找到新聞",
-    saved: "已收藏", removed: "已移除", copied: "已複製連結", read: "已讀",
+    searchPlaceholder: "搜尋新聞...", loading: "載入緊...", noResults: "冇新聞",
+    saved: "已經儲起咗", removed: "已移除", copied: "已複製連結", read: "睇下",
     darkOn: "深色模式", darkOff: "淺色模式",
     subscribe: "Email 訂閱", subscribeTitle: "每日精選摘要", subscribeDesc: "每天定時收到重點新聞摘要",
     emailPlaceholder: "你的 Email", subscribeBtn: "立即訂閱",
-    subscribeSuccess: "訂閱成功！", subscribeError: "請輸入有效 Email",
+    subscribeSuccess: "訂閱成功咗！", subscribeError: "請輸入有效 Email",
     refresh: "刷新", autoRefresh: "自動刷新", refreshOff: "關閉自動刷新",
-    aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入中...", keyAlert: "沒有 API Key，無法使用 AI 功能",
+    aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
     trend: "熱門話題", related: "相關新聞",
     categories: {
       world: "國際", finance: "財經", crypto: "加密幣", hk: "香港", tw: "台灣", china: "中國", business: "商業", technology: "科技"
