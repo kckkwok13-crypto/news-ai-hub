@@ -365,6 +365,14 @@ export default function NewsPage() {
         </div>
       </header>
 
+      {/* Ad Banner - Top */}
+      <div className={`${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-4 mb-6 mx-4`}>
+        <div className={`text-center py-8 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+          <p className="text-sm">廣告位置 / Ad Space</p>
+          <p className="text-xs mt-1">Google AdSense 將喺度顯示廣告</p>
+        </div>
+      </div>
+
       {/* Subscribe Modal */}
       {showSubscribe && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
@@ -382,7 +390,7 @@ export default function NewsPage() {
         </div>
       )}
 
-      <main className="max-w-6xl mx-auto px-4 py-6">
+      <main className="max-w-7xl mx-auto px-4 py-6">
         {/* AI Summary */}
         {(summaryLoading || aiSummary) && (
           <div className={`mb-6 rounded-2xl p-5 ${darkMode ? "bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border border-indigo-800/50" : "bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200"}`}>
@@ -451,75 +459,137 @@ export default function NewsPage() {
 
         {/* News Grid */}
         {!loading && displayNews.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {displayNews.map((item, i) => {
-              const isRead = readIds.has(item.title);
-              const isSaved = savedIds.has(item.title);
-              const isSpeakingThis = speakingId === item.title;
-              return (
-                <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
-                  {/* Image */}
-                  {item.img && item.img_url ? (
-                    <div className="relative h-44 overflow-hidden">
-                      <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    </div>
-                  ) : (
-                    <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
-                      <span className="text-5xl opacity-30">📰</span>
-                    </div>
-                  )}
-
-                  {/* Actions */}
-                  <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
-                    <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
-                      {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
-                    </button>
-                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
-                    </button>
-                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      <Share2 size={14} />
-                    </button>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-4">
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
-                      {isSaved && <span className="text-xs">📌</span>}
-                    </div>
-
-                    <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-                      {lang === "en" ? item.title : (item.title_zh || item.title)}
-                    </h3>
-
-                    {item.desc && (
-                      <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-                        {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
-                      </p>
-                    )}
-
-                    {/* Expanded */}
-                    {expandedId === item.title && (
-                      <div className="mt-3 pt-3 border-t border-gray-700/50">
-                        {item.desc && (
-                          <p className={`text-xs leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
-                          </p>
-                        )}
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
-                          {t.readMore} <ExternalLink size={12} />
-                        </a>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {displayNews.slice(0, 6).map((item, i) => {
+                const isRead = readIds.has(item.title);
+                const isSaved = savedIds.has(item.title);
+                const isSpeakingThis = speakingId === item.title;
+                return (
+                  <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
+                    {/* Image */}
+                    {item.img && item.img_url ? (
+                      <div className="relative h-44 overflow-hidden">
+                        <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      </div>
+                    ) : (
+                      <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                        <span className="text-5xl opacity-30">📰</span>
                       </div>
                     )}
 
-                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                    {/* Actions */}
+                    <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
+                      <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
+                        {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                      </button>
+                      <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                        {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
+                      </button>
+                      <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                        <Share2 size={14} />
+                      </button>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-4">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                        {isSaved && <span className="text-xs">📌</span>}
+                      </div>
+
+                      <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                        {lang === "en" ? item.title : (item.title_zh || item.title)}
+                      </h3>
+
+                      {item.desc && (
+                        <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                          {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                        </p>
+                      )}
+
+                      {/* Expanded */}
+                      {expandedId === item.title && (
+                        <div className="mt-3 pt-3 border-t border-gray-700/50">
+                          {item.desc && (
+                            <p className={`text-xs leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                              {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                            </p>
+                          )}
+                          <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                            {t.readMore} <ExternalLink size={12} />
+                          </a>
+                        </div>
+                      )}
+
+                      <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+
+            {/* In-Feed Ad */}
+            <div className={`my-6 rounded-xl p-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
+              <div className={`text-center py-6 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                <p className="text-sm">📰 廣告位置 / In-Feed Ad</p>
+                <p className="text-xs mt-1">Google AdSense 原生廣告</p>
+              </div>
+            </div>
+
+            {/* Remaining News */}
+            {displayNews.length > 6 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {displayNews.slice(6).map((item, i) => {
+                  const isRead = readIds.has(item.title);
+                  const isSaved = savedIds.has(item.title);
+                  const isSpeakingThis = speakingId === item.title;
+                  return (
+                    <div key={i + 6} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
+                      {/* Same card structure as above */}
+                      {item.img && item.img_url ? (
+                        <div className="relative h-44 overflow-hidden">
+                          <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        </div>
+                      ) : (
+                        <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                          <span className="text-5xl opacity-30">📰</span>
+                        </div>
+                      )}
+                      <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
+                        <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                          {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                        </button>
+                        <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                          {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
+                        </button>
+                        <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
+                          <Share2 size={14} />
+                        </button>
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-center gap-1.5 mb-2">
+                          <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                          {isSaved && <span className="text-xs">📌</span>}
+                        </div>
+                        <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                          {lang === "en" ? item.title : (item.title_zh || item.title)}
+                        </h3>
+                        {item.desc && (
+                          <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                            {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                          </p>
+                        )}
+                        <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </>
         )}
 
         {/* Speaking indicator */}
