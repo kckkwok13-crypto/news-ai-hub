@@ -8,23 +8,25 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera' },
     { url: 'https://rss.dw.com/rdf/rss-en-all', source: 'DW News' },
     { url: 'https://www.scmp.com/rss/91/feed', source: 'SCMP' },
-    { url: 'https://www3.nhk.or.jp/nhkworld/rd/rss/english/index.rdf', source: 'NHK World' },
   ],
   finance: [
-    { url: 'https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best', source: 'Reuters' },
+    { url: 'https://finance.yahoo.com/news/rssindex', source: 'Yahoo Finance' },
+    { url: 'http://feeds.marketwatch.com/marketwatch/topstories/', source: 'MarketWatch' },
+    { url: 'https://www.investing.com/rss/news_25.rss', source: 'Investing.com' },
     { url: 'https://asia.nikkei.com/rss/feed/nar', source: 'Nikkei Asia' },
     { url: 'https://search.cnbc.com/rs/search/view.xml?partnerId=2000&keywords=finance', source: 'CNBC' },
-    { url: 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml', source: 'WSJ Markets' },
   ],
   crypto: [
     { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph' },
-    { url: 'https://coindesk.com/arc/outboundfeeds/rss/', source: 'CoinDesk' },
+    { url: 'https://www.coindesk.com/arc/outboundfeeds/rss/', source: 'CoinDesk' },
+    { url: 'https://cryptopanic.com/news/rss/', source: 'CryptoPanic' },
   ],
   hk: [
-    { url: 'https://news.google.com/rss/search?q=%E9%A6%99%E6%B8%AF&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: 'Google News HK' },
+    { url: 'https://news.google.com/rss/search?q=%E9%A6%99%E6%B8%AF%20%E6%96%B0%E8%81%9E&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: 'Google News HK' },
+    { url: 'https://www.scmp.com/rss/2/feed', source: 'SCMP Hong Kong' },
   ],
   hk_finance: [
-    { url: 'https://news.google.com/rss/search?q=%E6%B8%AF%E8%82%A1%20%E6%81%92%E7%94%9F%E6%8C%87%E6%95%B8&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: '港股新聞' },
+    { url: 'https://news.google.com/rss/search?q=%E6%B8%AF%E8%82%A1%20%E6%81%92%E7%94%9F%E6%8C%87%E6%95%B8%20%E8%B2%A1%E7%B6%93&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: '港股即時' },
   ],
   tw: [
     { url: 'https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3&hl=zh-TW&gl=TW&ceid=TW:zh-Hant', source: 'Google News TW' },
@@ -139,15 +141,20 @@ export async function GET(request: NextRequest) {
   const sources = RSS_SOURCES[category] || RSS_SOURCES.world
   const items: any[] = []
   
+  const now = Date.now()
+  // Max age for news (24 hours for finance/crypto/hk_finance, 48 hours for others)
+  const MAX_AGE_MS = (category === 'finance' || category === 'crypto' || category === 'hk_finance') 
+    ? 24 * 60 * 60 * 1000 
+    : 48 * 60 * 60 * 1000
+
   for (const source of sources) {
     try {
       const res = await fetch(source.url, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         },
-        // Using a shorter cache time for finance
-        next: { revalidate: category === 'finance' ? 300 : 900 },
-        signal: AbortSignal.timeout(10000),
+        next: { revalidate: 60 }, // Force refresh more often (1 min)
+        signal: AbortSignal.timeout(8000),
       })
       
       if (!res.ok) continue
@@ -155,7 +162,7 @@ export async function GET(request: NextRequest) {
       const xml = await res.text()
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
       
-      for (const itemXml of itemMatches.slice(0, 15)) {
+      for (const itemXml of itemMatches.slice(0, 20)) {
         const titleMatch = itemXml.match(/<title>([\s\S]*?)<\/title>/i)
         const descMatch = itemXml.match(/<description>([\s\S]*?)<\/description>/i)
         const linkMatch = itemXml.match(/<link>([\s\S]*?)<\/link>/i)
@@ -164,7 +171,17 @@ export async function GET(request: NextRequest) {
         const title = titleMatch ? extractText(titleMatch[1]) : ''
         const desc = descMatch ? extractText(descMatch[1]) : ''
         const link = linkMatch ? extractText(linkMatch[1]) : ''
-        const pubDate = dateMatch ? extractText(dateMatch[1]) : ''
+        const pubDateStr = dateMatch ? extractText(dateMatch[1]) : ''
+        
+        let pubTimestamp = 0
+        if (pubDateStr) {
+          const parsedDate = new Date(pubDateStr)
+          pubTimestamp = isNaN(parsedDate.getTime()) ? 0 : parsedDate.getTime()
+        }
+
+        // STRICT FILTER: Skip items older than MAX_AGE or with invalid dates
+        if (pubTimestamp === 0 || (now - pubTimestamp) > MAX_AGE_MS) continue
+
         const img = extractImage(itemXml)
         
         if (title && link) {
@@ -184,8 +201,8 @@ export async function GET(request: NextRequest) {
             desc: desc.slice(0, 200),
             desc_zh,
             link,
-            pubDate,
-            pubTimestamp: pubDate ? new Date(pubDate).getTime() : 0,
+            pubDate: pubDateStr,
+            pubTimestamp,
             img: img ? true : false,
             img_url: img || '',
             source: source.source,
@@ -198,19 +215,21 @@ export async function GET(request: NextRequest) {
     }
   }
   
-  // 1. Sort by date descending (newest first)
+  // 1. Sort by date descending (absolute latest first)
   const sortedItems = items.sort((a, b) => b.pubTimestamp - a.pubTimestamp)
   
-  // 2. Take the top 40 freshest items
-  const freshestItems = sortedItems.slice(0, 40)
+  // 2. Take only top 30 to ensure freshness
+  const topItems = sortedItems.slice(0, 30)
   
-  // 3. Shuffle ONLY the freshest items to maintain diversity while ensuring speed
-  const finalItems = freshestItems.sort(() => Math.random() - 0.5).slice(0, 25)
+  // 3. Optional: slight shuffle to mix sources, but keep top 5 strictly newest
+  const newestFive = topItems.slice(0, 5)
+  const others = topItems.slice(5).sort(() => Math.random() - 0.5)
+  const finalItems = [...newestFive, ...others].slice(0, 25)
   
   return NextResponse.json({
     success: true,
     category,
     items: finalItems,
-    timestamp: Date.now(),
+    timestamp: now,
   })
 }
