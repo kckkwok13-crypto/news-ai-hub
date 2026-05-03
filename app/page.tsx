@@ -8,7 +8,7 @@ import {
   TrendingUp, TrendingDown, Minus, Search,
   ChevronDown, ChevronUp, Heart, HeartOff,
   Languages, Zap, Clock, Filter, RefreshCw,
-  Newspaper, BarChart3, Tag, ExternalLink
+  Newspaper, BarChart3, Tag, ExternalLink, Languages as LangIcon
 } from 'lucide-react'
 
 // Types
@@ -56,13 +56,13 @@ export default function NewsHub() {
   const [analysis, setAnalysis] = useState<Analysis | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [expandedId, setExpandedId] = useState<string | null>(null)
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set())
   const [keywords, setKeywords] = useState<string[]>([])
   const [newKeyword, setNewKeyword] = useState('')
-  const [readIds, setReadIds] = useState<Set<string>>(new Set())
   const [speakingId, setSpeakingId] = useState<string | null>(null)
   const [showAnalysis, setShowAnalysis] = useState(false)
+  const [autoTranslate, setAutoTranslate] = useState(true)
+  const [translating, setTranslating] = useState(false)
 
   const t = (zh: string, en: string) => lang === 'zh' ? zh : en
 
@@ -71,7 +71,7 @@ export default function NewsHub() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`/api/news-feed?category=${category}`)
+      const res = await fetch(`/api/news-feed?category=${category}&translate=${autoTranslate}`)
       const data = await res.json()
       if (data.success) {
         setNews(data.items || [])
@@ -82,7 +82,7 @@ export default function NewsHub() {
       setError('Network error')
     }
     setLoading(false)
-  }, [category])
+  }, [category, autoTranslate])
 
   // Fetch AI analysis
   const fetchAnalysis = useCallback(async () => {
@@ -162,6 +162,21 @@ export default function NewsHub() {
 
   const getCardImage = (item: NewsItem) => item.img_url || `https://picsum.photos/seed/${item.id}/400/300`
 
+  // Get display text based on language
+  const getDisplayTitle = (item: NewsItem) => {
+    if (lang === 'zh') {
+      return item.title_zh || item.title
+    }
+    return item.title
+  }
+
+  const getDisplayDesc = (item: NewsItem) => {
+    if (lang === 'zh') {
+      return item.desc_zh || item.desc
+    }
+    return item.desc
+  }
+
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white' : 'bg-gradient-to-br from-slate-50 via-white to-blue-50 text-slate-900'}`}>
       {/* Header */}
@@ -181,6 +196,12 @@ export default function NewsHub() {
                   </button>
                 ))}
               </div>
+              {/* Auto Translate Toggle */}
+              <button onClick={() => setAutoTranslate(!autoTranslate)}
+                className={`p-2 rounded-full ${autoTranslate ? 'bg-green-500 text-white' : darkMode ? 'bg-slate-700' : 'bg-slate-200'}`}
+                title={t('自動翻譯', 'Auto Translate')}>
+                <LangIcon className="w-5 h-5" />
+              </button>
               {/* Dark Mode */}
               <button onClick={() => setDarkMode(!darkMode)} 
                 className={`p-2 rounded-full ${darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-200 hover:bg-slate-300'}`}>
@@ -309,6 +330,12 @@ export default function NewsHub() {
             {/* Stats Bar */}
             <div className={`flex items-center justify-between mb-4 text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
               <span>{t(`共 ${filteredNews.length} 則新聞`, `${filteredNews.length} articles`)}</span>
+              {autoTranslate && (
+                <span className="flex items-center gap-1 text-green-500">
+                  <LangIcon className="w-4 h-4" />
+                  {t('自動翻譯', 'Auto Translate')}
+                </span>
+              )}
               {keywords.length > 0 && (
                 <span className="flex items-center gap-1">
                   <Filter className="w-4 h-4" />
@@ -346,10 +373,10 @@ export default function NewsHub() {
                   {/* Content */}
                   <div className="p-4">
                     <h3 className="font-bold text-lg leading-tight mb-2 line-clamp-2">
-                      {lang === 'zh' && item.title_zh ? item.title_zh : item.title}
+                      {getDisplayTitle(item)}
                     </h3>
                     <p className={`text-sm line-clamp-2 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                      {lang === 'zh' && item.desc_zh ? item.desc_zh : item.desc}
+                      {getDisplayDesc(item)}
                     </p>
                     <div className="flex items-center justify-between mt-3">
                       <span className={`text-xs ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
@@ -357,7 +384,7 @@ export default function NewsHub() {
                         {formatDate(item.pubDate)}
                       </span>
                       <div className="flex gap-2">
-                        <button onClick={() => speak(item.id, lang === 'zh' && item.title_zh ? item.title_zh : item.title)}
+                        <button onClick={() => speak(item.id, getDisplayTitle(item))}
                           className={`p-1.5 rounded-full transition ${speakingId === item.id ? 'bg-blue-500 text-white' : darkMode ? 'hover:bg-slate-600' : 'hover:bg-slate-200'}`}>
                           {speakingId === item.id ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                         </button>
