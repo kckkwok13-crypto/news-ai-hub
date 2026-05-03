@@ -13,8 +13,8 @@ interface NewsItem {
 }
 
 // Language options
-const LANG_OPTIONS = [
-  { id: 'zh', flag: '🇭🇰', label: '廣東話' },
+const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
+  { id: 'zh-TW', flag: '🇭🇰', label: '廣東話' },
   { id: 'en', flag: '🇺🇸', label: 'English' },
 ];
 
