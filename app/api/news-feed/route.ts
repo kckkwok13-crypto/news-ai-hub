@@ -164,6 +164,12 @@ export async function GET(request: NextRequest) {
             desc_zh = desc ? await translateText(desc.slice(0, 200), lang) : ''
           }
           
+          // Use proxy for Guardian images (they have hotlink protection)
+          let finalImgUrl = img || ''
+          if (img && source.source.toLowerCase().includes('guardian')) {
+            finalImgUrl = `/api/proxy-image?url=${encodeURIComponent(img)}`
+          }
+          
           items.push({
             id: Buffer.from(link).toString('base64').slice(0, 16),
             title,
@@ -173,7 +179,7 @@ export async function GET(request: NextRequest) {
             link,
             pubDate,
             img: img ? true : false,
-            img_url: img || '',
+            img_url: finalImgUrl,
             source: source.source,
             translated: title_zh !== title,
           })
