@@ -173,6 +173,28 @@ export default function NewsPage() {
   const [summaryLoading, setSummaryLoading] = useState(false);
   const [showImpactId, setShowImpactId] = useState<string | null>(null);
 
+  // AdSense state
+  const adsenseClient = typeof window !== 'undefined' 
+    ? (window as any).__ADSENSE_CLIENT__ || process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-4745583996243741"
+    : "ca-pub-4745583996243741";
+  const adSlotLeaderboard = "1234567890"; // Replace with your actual ad slot ID
+  const adSlotInArticle = "0987654321";  // Replace with your actual ad slot ID
+
+  // Push ad slots after mount
+  useEffect(() => {
+    const tryPushAds = () => {
+      if (typeof (window as any).adsbygoogle !== 'undefined') {
+        try {
+          (window as any).adsbygoogle.push({});
+        } catch (e) { /* ignore */ }
+      }
+    };
+    // Try multiple times as script loads async
+    const timer = setTimeout(tryPushAds, 2000);
+    const timer2 = setTimeout(tryPushAds, 5000);
+    return () => { clearTimeout(timer); clearTimeout(timer2); };
+  }, [news.length]);
+
   const t = LABELS[lang];
 
   const formatDate = (dateStr: string) => {
@@ -721,6 +743,42 @@ export default function NewsPage() {
         </div>
         <p className="text-base">NewsFlow · AI-Powered Global News © 2026</p>
       </footer>
+
+      {/* AdSense Leaderboard Banner - Header Below */}
+      <div className="w-full flex justify-center py-3">
+        <div className="w-full max-w-[728px] h-[90px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '728px', height: '90px' }}
+            data-ad-client={adsenseClient}
+            data-ad-slot={adSlotLeaderboard}
+            data-ad-format="horizontal"
+          />
+        </div>
+      </div>
+
+      {/* AdSense In-Feed Ads - Between News Cards */}
+      <div className="w-full max-w-6xl mx-auto px-4 my-6">
+        <div className="w-full h-[250px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '100%', height: '250px' }}
+            data-ad-client={adsenseClient}
+            data-ad-slot={adSlotInArticle}
+            data-ad-format="in-article"
+          />
+        </div>
+      </div>
+
+      {/* AdSense Rectangle - Sidebar / Mobile Banner */}
+      <div className="w-full flex justify-center py-3">
+        <div className="w-full max-w-[336px] h-[280px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '336px', height: '280px' }}
+            data-ad-client={adsenseClient}
+            data-ad-slot={adSlotInArticle}
+            data-ad-format="rectangle"
+          />
+        </div>
+      </div>
     </div>
   );
 }
