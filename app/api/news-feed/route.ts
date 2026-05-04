@@ -48,15 +48,23 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
   mystery: [
+    { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
     { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
-    { url: 'https://www.coasttocoastam.com/rss/', source: 'Coast to Coast AM' },
+    { url: 'https://mysteriousuniverse.org/feed/', source: 'Mysterious Universe' },
   ],
   podcast: [
-    { url: 'https://feeds.npr.org/1001/rss.xml', source: 'NPR News' },
-    { url: 'https://feeds.bbci.co.uk/podcasts/radio4/today/rss.xml', source: 'BBC Today' },
-    { url: 'https://feeds.acast.com/public/shows/bbcglobalnews', source: 'BBC Global News Podcast' },
-    { url: 'https://podcastfeeds.nbc.com/nbc-nightly-news', source: 'NBC Nightly News' },
+    // Tech Podcasts
+    { url: 'https://feeds.megaphone.fm/vergecast', source: 'The Vergecast' },
+    { url: 'https://feeds.npr.org/510289/podcast.xml', source: 'NPR Tech News' },
+    // Science/Astronomy Podcasts
+    { url: 'https://feeds.npr.org/510325/podcast.xml', source: 'NPR Science' },
+    { url: 'https://feeds.npr.org/510324/podcast.xml', source: 'NPR Planet Money' },
+    // Mystery/Paranormal (using mystery RSS that works)
+    { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
+    { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
+    // Crypto (using crypto news feeds)
+    { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph Podcast' },
+    { url: 'https://cryptopanic.com/news/rss/', source: 'CryptoPanic' },
   ],
 }
 
