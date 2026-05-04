@@ -49,8 +49,14 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   mystery: [
     { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://www.sciencealert.com/weird-science/feed', source: 'Weird Science' },
-    // Removed Space.com overlap
+    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
+    { url: 'https://www.coasttocoastam.com/rss/', source: 'Coast to Coast AM' },
+  ],
+  podcast: [
+    { url: 'https://feeds.npr.org/1001/rss.xml', source: 'NPR News' },
+    { url: 'https://feeds.bbci.co.uk/podcasts/radio4/today/rss.xml', source: 'BBC Today' },
+    { url: 'https://feeds.acast.com/public/shows/bbcglobalnews', source: 'BBC Global News Podcast' },
+    { url: 'https://podcastfeeds.nbc.com/nbc-nightly-news', source: 'NBC Nightly News' },
   ],
 }
 
@@ -160,7 +166,7 @@ export async function GET(request: NextRequest) {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         },
         next: { revalidate: 300 }, // Cache for 5 mins
-        signal: AbortSignal.timeout(5000), 
+        signal: AbortSignal.timeout(10000), 
       })
       
       if (!res.ok) return []

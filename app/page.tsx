@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, Volume2, VolumeX, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology" | "hk_finance" | "astronomy" | "mystery";
+type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology" | "hk_finance" | "astronomy" | "mystery" | "podcast";
 
 interface NewsItem {
   id: string;
@@ -32,6 +32,7 @@ const CATEGORIES: { id: Category; icon: string; color: string }[] = [
   { id: "technology", icon: "🚀", color: "bg-indigo-500" },
   { id: "astronomy", icon: "🔭", color: "bg-violet-500" },
   { id: "mystery", icon: "🔮", color: "bg-purple-600" },
+  { id: "podcast", icon: "🎙️", color: "bg-pink-500" },
 ];
 
 const LABELS = {
@@ -47,7 +48,7 @@ const LABELS = {
     aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
     trend: "熱門話題", related: "相關新聞",
     categories: {
-      world: "國際", finance: "財經", crypto: "加密幣", hk: "香港", hk_finance: "港股", tw: "台灣", china: "中國", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學"
+      world: "國際", finance: "財經", crypto: "加密幣", hk: "香港", hk_finance: "港股", tw: "台灣", china: "中國", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學", podcast: "網台"
     },
     savedNews: "收藏", allNews: "全部", source: "來源",
     readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
@@ -69,7 +70,7 @@ const LABELS = {
     aiSummary: "AI 智能摘要", noSummary: "AI 摘要载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
     trend: "热门话题", related: "相关新闻",
     categories: {
-      world: "国际", finance: "财经", crypto: "加密币", hk: "香港", hk_finance: "港股", tw: "台湾", china: "中国", business: "商业", technology: "科技", astronomy: "天文", mystery: "神秘学"
+      world: "国际", finance: "财经", crypto: "加密币", hk: "香港", hk_finance: "港股", tw: "台湾", china: "中国", business: "商业", technology: "科技", astronomy: "天文", mystery: "神秘学", podcast: "播客"
     },
     savedNews: "收藏", allNews: "全部", source: "来源",
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
@@ -91,7 +92,7 @@ const LABELS = {
     aiSummary: "AI Summary", noSummary: "AI Summary loading...", keyAlert: "No API Key, AI features unavailable",
     trend: "Trending Topics", related: "Related News",
     categories: {
-      world: "World", finance: "Finance", crypto: "Crypto", hk: "Hong Kong", hk_finance: "HK Stocks", tw: "Taiwan", china: "China", business: "Business", technology: "Tech", astronomy: "Astronomy", mystery: "Mystery"
+      world: "World", finance: "Finance", crypto: "Crypto", hk: "Hong Kong", hk_finance: "HK Stocks", tw: "Taiwan", china: "China", business: "Business", technology: "Tech", astronomy: "Astronomy", mystery: "Mystery", podcast: "Podcast"
     },
     savedNews: "Saved", allNews: "All", source: "Source",
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
