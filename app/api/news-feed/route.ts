@@ -50,7 +50,6 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   mystery: [
     { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
     { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
     { url: 'https://www.coasttocoastam.com/rss/', source: 'Coast to Coast AM' },
   ],
   podcast: [
@@ -173,12 +172,17 @@ export async function GET(request: NextRequest) {
       const res = await fetch(source.url, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+          'Accept-Language': 'en-US,en;q=0.9',
         },
-        next: { revalidate: 300 }, // Cache for 5 mins
-        signal: AbortSignal.timeout(10000), 
+        redirect: 'follow',
+        signal: AbortSignal.timeout(15000), 
       })
       
-      if (!res.ok) return []
+      if (!res.ok) {
+        console.error(`[RSS] ${source.url} returned ${res.status}`)
+        return []
+      }
       
       const xml = await res.text()
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
