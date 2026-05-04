@@ -551,6 +551,7 @@ export default function NewsPage() {
                     <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
                       {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
                     </button>
+                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-1.5 rounded-lg bg-purple-500/60 text-white hover:bg-purple-500/80 backdrop-blur-sm" title="AI 網台分析">🎧</button>
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
                       {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
                     </button>
@@ -655,6 +656,7 @@ export default function NewsPage() {
                     <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
                       {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
                     </button>
+                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-1.5 rounded-lg bg-purple-500/60 text-white hover:bg-purple-500/80 backdrop-blur-sm" title="AI 網台分析">🎧</button>
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
                       {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
                     </button>

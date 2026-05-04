@@ -48,9 +48,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
   mystery: [
-    { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
-    { url: 'https://www.coasttocoastam.com/rss/news', source: 'Coast to Coast' },
+    { url: 'https://news.google.com/rss/search?q=paranormal%20mystery%20unexplained&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal News' },
+    { url: 'https://news.google.com/rss/search?q=ancient%20mysteries%20archaeology&hl=en-US&gl=US&ceid=US:en', source: 'Ancient Mysteries' },
+    { url: 'https://news.google.com/rss/search?q=UFO%20alien%20conspiracy&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
   ],
   podcast: [
     // Tech Podcasts
