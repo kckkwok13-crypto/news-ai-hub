@@ -198,12 +198,20 @@ export default function NewsPage() {
     if (dark) setDarkMode(dark === "true");
     
     const savedLang = localStorage.getItem("newsLang") as Lang;
+    
+    // Load voices for TTS
+    if (window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.addEventListener("voiceschanged", () => {
+        console.log("🎤 Voices loaded:", window.speechSynthesis.getVoices().length);
+      });
+    }
     if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
   }, [category, lang]);
 
   const speak = useCallback((item: NewsItem) => {
     if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
+    window.speechSynthesis.cancel(); console.log("🎤 TTS started for:", item.title);
     const text = lang === "en" ? item.title : (item.title_zh || item.title);
     const utt = new SpeechSynthesisUtterance(text);
     // 改做广东话 zh-HK，如果浏览器冇支援会 fallback 到其他中文语音
