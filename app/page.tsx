@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, Volume2, VolumeX, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap } from "lucide-react";
+import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
 type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology" | "hk_finance" | "astronomy" | "mystery" | "podcast";
@@ -14,9 +14,9 @@ interface NewsItem {
   translated: boolean; translationError?: string;
 }
 
-// Language options
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
   { id: 'zh-TW', flag: '🇭🇰', label: '廣東話' },
+  { id: 'zh-CN', flag: '🇨🇳', label: '简体' },
   { id: 'en', flag: '🇺🇸', label: 'English' },
 ];
 
@@ -52,11 +52,12 @@ const LABELS = {
     },
     savedNews: "收藏", allNews: "全部", source: "來源",
     readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
-    langChanged: "語言已切換", ttsOn: "朗讀中", ttsOff: "已停止朗讀",
+    langChanged: "語言已切換",
     shareSuccess: "分享成功", emailRequired: "請輸入 Email 地址",
     bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
     sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
-    biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" }
+    biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" },
+    menu: "目錄", close: "關閉", all: "全部", analysis: "AI 分析"
   },
   "zh-CN": {
     title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI 分析 · 多元分类",
@@ -74,11 +75,12 @@ const LABELS = {
     },
     savedNews: "收藏", allNews: "全部", source: "来源",
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
-    langChanged: "语言已切换", ttsOn: "朗读中", ttsOff: "已停止朗读",
+    langChanged: "语言已切换",
     shareSuccess: "分享成功", emailRequired: "请输入 Email 地址",
     bias: "立场分析", impact: "深度解读", digestTitle: "今日 AI 深度日报",
     sentimentTitle: "情绪追踪", impactClose: "关闭解读",
-    biasTypes: { pro_western: "亲西方", neutral: "中立", pro_china: "亲华", optimism: "市场乐观" }
+    biasTypes: { pro_western: "亲西方", neutral: "中立", pro_china: "亲华", optimism: "市场乐观" },
+    menu: "目录", close: "关闭", all: "全部", analysis: "AI 分析"
   },
   "en": {
     title: "NewsFlow Global News", subtitle: "Real-time Translation · AI Analysis · Multi-category",
@@ -96,11 +98,12 @@ const LABELS = {
     },
     savedNews: "Saved", allNews: "All", source: "Source",
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
-    langChanged: "Language changed", ttsOn: "Playing", ttsOff: "Stopped",
+    langChanged: "Language changed",
     shareSuccess: "Share success", emailRequired: "Please enter email address",
     bias: "Bias Analysis", impact: "Contextual Impact", digestTitle: "Today's AI Daily Digest",
     sentimentTitle: "Sentiment Trends", impactClose: "Close Analysis",
-    biasTypes: { pro_western: "Pro-Western", neutral: "Neutral", pro_china: "Pro-China", optimism: "Optimistic" }
+    biasTypes: { pro_western: "Pro-Western", neutral: "Neutral", pro_china: "Pro-China", optimism: "Optimistic" },
+    menu: "Menu", close: "Close", all: "All", analysis: "AI Analysis"
   },
 };
 
@@ -118,7 +121,6 @@ export default function NewsPage() {
   const [aiHostData, setAiHostData] = useState<any>(null);
   const [aiHostError, setAiHostError] = useState<string>("");
 
-  // AI Host Analysis - 主持人風格深度分析
   const analyzeWithAIHost = async (item: any) => {
     setAiHostItem(item);
     setAiHostLoading(true);
@@ -165,18 +167,14 @@ export default function NewsPage() {
   const [subscribeEmail, setSubscribeEmail] = useState("");
   const [showSubscribe, setShowSubscribe] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [aiSummary, setAiSummary] = useState<any>(null);
   const [summaryLoading, setSummaryLoading] = useState(false);
-  const [speakingId, setSpeakingId] = useState<string | null>(null);
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [showImpactId, setShowImpactId] = useState<string | null>(null);
-  const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const t = LABELS[lang];
 
-  // Format date to local time
   const formatDate = (dateStr: string) => {
     try {
       const date = new Date(dateStr)
@@ -193,8 +191,6 @@ export default function NewsPage() {
     }
   }
 
-
-  // 1. Initial Load from LocalStorage for instant perception
   useEffect(() => {
     const cached = localStorage.getItem(`news_cache_${category}_${lang}`);
     if (cached) {
@@ -212,163 +208,11 @@ export default function NewsPage() {
     if (dark) setDarkMode(dark === "true");
     
     const savedLang = localStorage.getItem("newsLang") as Lang;
-    
-    // Load voices for TTS
-    if (window.speechSynthesis) {
-      window.speechSynthesis.getVoices();
-      window.speechSynthesis.addEventListener("voiceschanged", () => {
-        console.log("🎤 Voices loaded:", window.speechSynthesis.getVoices().length);
-      });
-    }
     if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
   }, [category, lang]);
 
-  // 🎙️ 双主持 TTS - 浏览器原生 Web Speech API（完全免费）
-  const speakDualHost = useCallback(async (analysis: string) => {
-    // 停止之前的播放
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
-    if (window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-    }
-    
-    const lines = analysis.split('\n').filter(line => line.trim());
-    
-    setIsSpeaking(true);
-    
-    // 获取可用声音
-    const voices = window.speechSynthesis.getVoices();
-    const langCode = lang === 'en' ? 'en-US' : lang === 'zh-CN' ? 'zh-CN' : 'zh-HK';
-    
-    // 选择声音（男声/女声）
-    const selectVoice = (isMale: boolean): SpeechSynthesisVoice | null => {
-      // 粤选粤语/普通话/英语声音
-      const preferredLangs = [langCode, langCode.split('-')[0]];
-      
-      for (const preferredLang of preferredLangs) {
-        // 男声：优先选择名字包含 male/guy/ryan/david 等
-        // 女声：优先选择名字包含 female/jenny/sonia/karen 等
-        const voice = voices.find(v => 
-          v.lang.startsWith(preferredLang) && (
-            isMale 
-              ? /male|guy|ryan|david|daniel|james|jack/i.test(v.name)
-              : /female|jenny|sonia|karen|emma|alice|sarah|kate/i.test(v.name)
-          )
-        );
-        if (voice) return voice;
-      }
-      
-      // 没找到性别匹配，就用第一个匹配语言的声音
-      for (const preferredLang of preferredLangs) {
-        const voice = voices.find(v => v.lang.startsWith(preferredLang));
-        if (voice) return voice;
-      }
-      
-      return voices[0] || null;
-    };
-    
-    let currentIndex = 0;
-    
-    const playNext = () => {
-      if (currentIndex >= lines.length) {
-        setIsSpeaking(false);
-        return;
-      }
-      
-      const line = lines[currentIndex];
-      const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
-      const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
-      
-      // 提取内容（去掉主持人名）
-      let content = line;
-      if (isMale) content = line.replace(/^(阿傑|Jack):\s*/, '');
-      if (isFemale) content = line.replace(/^(小婷|Emma):\s*/, '');
-      
-      if (!content.trim()) {
-        currentIndex++;
-        playNext();
-        return;
-      }
-      
-      // 使用浏览器原生 TTS
-      const utt = new SpeechSynthesisUtterance(content);
-      const selectedVoice = selectVoice(isMale);
-      
-      if (selectedVoice) {
-        utt.voice = selectedVoice;
-      }
-      
-      utt.lang = langCode;
-      utt.rate = 0.9; // 稍慢更清晰
-      utt.pitch = isMale ? 0.85 : 1.1; // 男声低沉，女声清脆
-      utt.volume = 1;
-      
-      utt.onend = () => {
-        currentIndex++;
-        // 加入短暂停顿，模拟对话节奏
-        setTimeout(playNext, 400);
-      };
-      
-      utt.onerror = (e) => {
-        console.error('TTS error:', e);
-        currentIndex++;
-        playNext();
-      };
-      
-      window.speechSynthesis.speak(utt);
-    };
-    
-    // 确保声音列表已加载
-    if (voices.length === 0) {
-      window.speechSynthesis.onvoiceschanged = () => {
-        playNext();
-      };
-    } else {
-      playNext();
-    }
-  }, [lang]);
-
-  const speak = useCallback((item: NewsItem) => {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel(); console.log("🎤 TTS started for:", item.title);
-    const text = lang === "en" ? item.title : (item.title_zh || item.title);
-    const utt = new SpeechSynthesisUtterance(text);
-    // 改做广东话 zh-HK，如果浏览器冇支援会 fallback 到其他中文语音
-    utt.lang = lang === "en" ? "en-US" : "zh-HK";
-    utt.rate = 0.9;
-    // 搵支援广东话嘅语音
-    const voices = window.speechSynthesis.getVoices();
-    const cantoneseVoice = voices.find(v => 
-      v.lang.includes('zh-HK') || 
-      v.lang.includes('zh-TW') || 
-      v.lang.includes('zh-CN')
-    );
-    if (cantoneseVoice) utt.voice = cantoneseVoice;
-    utt.onend = () => setSpeakingId(null);
-    utt.onerror = () => setSpeakingId(null);
-    speechRef.current = utt;
-    setSpeakingId(item.title);
-    setIsSpeaking(true);
-    window.speechSynthesis.speak(utt);
-  }, [lang]);
-
-  const stopSpeak = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
-    if (window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-    }
-    setIsSpeaking(false);
-  }, []);
-
-  // 2. Fetch News with Background Update pattern
   const fetchNews = useCallback(async (isInitial = false) => {
     if (isInitial && news.length > 0) {
-      // Background update, no spinner
     } else {
       setLoading(true);
     }
@@ -392,7 +236,6 @@ export default function NewsPage() {
     }
   }, [category, lang, news.length]);
 
-  // 3. Optimized AI Summary trigger
   const fetchAiSummary = useCallback(async () => {
     if (news.length === 0) return;
     setSummaryLoading(true);
@@ -428,6 +271,11 @@ export default function NewsPage() {
   }, [news.length, lang]);
 
   useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     if (toast) {
       const timer = setTimeout(() => setToast(""), 2500);
       return () => clearTimeout(timer);
@@ -439,6 +287,7 @@ export default function NewsPage() {
       const next = new Set(prev);
       if (next.has(title)) { next.delete(title); setToast(t.removed); }
       else { next.add(title); setToast(t.saved); }
+      localStorage.setItem("savedNews", JSON.stringify([...next]));
       return next;
     });
   };
@@ -482,59 +331,96 @@ export default function NewsPage() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-gray-950" : "bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"}`}>
-      {/* Toast */}
       {toast && (
-        <div className="fixed top-4 right-4 z-50 px-4 py-2 rounded-xl shadow-lg text-sm font-medium bg-black/80 text-white/90 backdrop-blur-sm animate-fade-in">
+        <div className="fixed top-4 right-4 z-[100] px-5 py-3 rounded-2xl shadow-2xl text-base font-medium bg-black/90 text-white/90 backdrop-blur-sm animate-fade-in">
           {toast}
         </div>
       )}
 
-      {/* Header */}
-      <header className={`sticky top-0 z-40 backdrop-blur-xl ${darkMode ? "bg-gray-900/80 border-gray-800" : "bg-white/80 border-gray-200"} border-b`}>
+      {/* Mobile Menu Overlay */}
+      {showMobileMenu && (
+        <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm" onClick={() => setShowMobileMenu(false)}>
+          <div className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-gray-900 border-l border-gray-700 p-6 overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-xl font-bold text-white">{t.menu}</h2>
+              <button onClick={() => setShowMobileMenu(false)} className="p-2 rounded-xl bg-gray-800 text-white">
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="space-y-3 mb-8">
+              <button onClick={() => { setDarkMode(v => !v); setShowMobileMenu(false); }} className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gray-800 text-white text-lg font-medium">
+                {darkMode ? <Sun size={24} /> : <Moon size={24} />} {darkMode ? t.darkOn : t.darkOff}
+              </button>
+              <button onClick={() => { setShowSaved(v => !v); setShowMobileMenu(false); }} className={`w-full flex items-center gap-4 p-4 rounded-2xl text-lg font-medium ${showSaved ? "bg-blue-600 text-white" : "bg-gray-800 text-white"}`}>
+                <Bookmark size={24} /> {t.savedNews} {savedIds.size > 0 && <span className="ml-2 px-2 py-0.5 rounded-full bg-white/20 text-sm">{savedIds.size}</span>}
+              </button>
+              <button onClick={() => { setShowSubscribe(true); setShowMobileMenu(false); }} className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-medium">
+                <Mail size={24} /> {t.subscribe}
+              </button>
+            </div>
+            
+            <div className="mb-6">
+              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">{lang === 'en' ? 'Categories' : '分類'}</h3>
+              <div className="space-y-2">
+                <button onClick={() => { setShowSaved(true); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${showSaved ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-300"}`}>
+                  <Star size={20} /> {showSaved ? t.allNews : t.savedNews}
+                </button>
+                {CATEGORIES.filter(c => c.id !== 'podcast').map(c => (
+                  <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${!showSaved && category === c.id ? `${c.color} text-white` : "bg-gray-800 text-gray-300"}`}>
+                    <span className="text-2xl">{c.icon}</span> {(t.categories as any)[c.id]}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">{lang === 'en' ? 'Language' : '語言'}</h3>
+              <div className="space-y-2">
+                {LANG_OPTIONS.map(l => (
+                  <button key={l.id} onClick={() => { setLang(l.id); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${lang === l.id ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-300"}`}>
+                    {l.flag} {l.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <header className={`sticky top-0 z-40 backdrop-blur-xl ${darkMode ? "bg-gray-900/90 border-gray-800" : "bg-white/90 border-gray-200"} border-b`}>
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between gap-4">
-            {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="text-3xl font-black tracking-tight">
+              <button onClick={() => setShowMobileMenu(true)} className={`p-2 rounded-xl md:hidden ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
+                <Menu size={24} />
+              </button>
+              <div className="text-2xl md:text-3xl font-black tracking-tight">
                 <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">NewsFlow</span>
-              </div>
-              <div className="hidden sm:block">
-                <p className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{currentTime.toLocaleTimeString(lang === "en" ? "en-US" : lang === "zh-CN" ? "zh-CN" : "zh-TW", { hour: "2-digit", minute: "2-digit" })}</p>
-                <p className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{currentTime.toLocaleDateString(lang === "en" ? "en-US" : lang === "zh-CN" ? "zh-CN" : "zh-TW", { weekday: "short", month: "short", day: "numeric" })}</p>
               </div>
             </div>
 
-            {/* Controls */}
-            <div className="flex items-center gap-2">
-              {/* Search Toggle */}
-              <button onClick={() => setShowSearch(v => !v)} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
-                <Search size={18} />
+            <div className="hidden md:flex items-center gap-3">
+              <button onClick={() => setShowSearch(v => !v)} className={`p-3 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
+                <Search size={20} />
               </button>
-
-              {/* Dark Mode */}
-              <button onClick={() => setDarkMode(v => !v)} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-yellow-400" : "hover:bg-gray-100 text-gray-600"}`}>
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              <button onClick={() => setDarkMode(v => !v)} className={`p-3 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-yellow-400" : "hover:bg-gray-100 text-gray-600"}`}>
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-
-              {/* Saved */}
-              <button onClick={() => setShowSaved(v => !v)} className={`p-2 rounded-xl transition ${showSaved ? "bg-blue-500 text-white" : darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
-                <Bookmark size={18} />
+              <button onClick={() => setShowSaved(v => !v)} className={`p-3 rounded-xl transition ${showSaved ? "bg-blue-500 text-white" : darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-600"}`}>
+                <Bookmark size={20} />
               </button>
-
-              {/* Subscribe */}
-              <button onClick={() => setShowSubscribe(true)} className={`px-3 py-1.5 rounded-xl text-xs font-medium transition ${darkMode ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90"}`}>
+              <button onClick={() => setShowSubscribe(true)} className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${darkMode ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90"}`}>
                 📬 {t.subscribe}
               </button>
-
-              {/* Language */}
               <div className="relative">
-                <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-1 px-2 py-1.5 rounded-xl text-xs font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
-                  {LANG_OPTIONS.find(l => l.id === lang)?.flag} {LANG_OPTIONS.find(l => l.id === lang)?.label} <ChevronDown size={12} />
+                <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
+                  {LANG_OPTIONS.find(l => l.id === lang)?.flag} <ChevronDown size={14} />
                 </button>
                 {showLangMenu && (
-                  <div className={`absolute right-0 mt-1 py-1 rounded-xl shadow-xl z-50 min-w-[120px] ${darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"}`}>
+                  <div className={`absolute right-0 mt-2 py-2 rounded-xl shadow-2xl z-50 min-w-[140px] ${darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"}`}>
                     {LANG_OPTIONS.map(l => (
-                      <button key={l.id} onClick={() => { setLang(l.id); setShowLangMenu(false); setToast(t.langChanged); }} className={`w-full text-left px-3 py-2 text-sm hover:bg-opacity-50 ${darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} ${lang === l.id ? (darkMode ? "text-blue-400" : "text-blue-600") : ""}`}>
+                      <button key={l.id} onClick={() => { setLang(l.id); setShowLangMenu(false); setToast(t.langChanged); }} className={`w-full text-left px-4 py-3 text-base hover:bg-opacity-50 ${darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} ${lang === l.id ? (darkMode ? "text-blue-400" : "text-blue-600") : ""}`}>
                         {l.flag} {l.label}
                       </button>
                     ))}
@@ -542,75 +428,75 @@ export default function NewsPage() {
                 )}
               </div>
             </div>
+
+            <div className="flex md:hidden items-center gap-2">
+              <button onClick={() => setShowSearch(v => !v)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
+                <Search size={20} />
+              </button>
+              <button onClick={() => setDarkMode(v => !v)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 text-yellow-400" : "bg-gray-100 text-gray-600"}`}>
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button onClick={() => setShowSubscribe(true)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-600"}`}>
+                <Mail size={20} />
+              </button>
+            </div>
           </div>
 
-          {/* Search Bar */}
           {showSearch && (
             <div className="mt-3 relative">
-              <Search className={`absolute left-3 top-1/2 -translate-y-1/2 ${darkMode ? "text-gray-500" : "text-gray-400"}`} size={16} />
-              <input value={search} onChange={e => setSearch(e.target.value)} placeholder={t.searchPlaceholder} className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-sm outline-none transition ${darkMode ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500" : "bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:border-blue-400"}`} />
+              <Search className={`absolute left-4 top-1/2 -translate-y-1/2 ${darkMode ? "text-gray-500" : "text-gray-400"}`} size={18} />
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder={t.searchPlaceholder} className={`w-full pl-11 pr-10 py-4 rounded-2xl text-base outline-none transition ${darkMode ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500" : "bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:border-blue-400"}`} />
               {search && (
-                <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2"><X size={14} className={darkMode ? "text-gray-500" : "text-gray-400"} /></button>
+                <button onClick={() => setSearch("")} className="absolute right-4 top-1/2 -translate-y-1/2"><X size={18} className={darkMode ? "text-gray-500" : "text-gray-400"} /></button>
               )}
             </div>
           )}
         </div>
       </header>
 
-      {/* Ad Banner - Top */}
-      <div className={`${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-4 mb-6 mx-4`}>
-        <div className={`text-center py-8 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-          <p className="text-sm">廣告位置 / Ad Space</p>
-          <p className="text-xs mt-1">Google AdSense 將喺度顯示廣告</p>
-        </div>
-      </div>
-
-      {/* Subscribe Modal */}
       {showSubscribe && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
-          <div className={`w-full max-w-md rounded-2xl p-6 ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold">{t.subscribeTitle}</h3>
-              <button onClick={() => setShowSubscribe(false)}><X size={20} /></button>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
+          <div className={`w-full max-w-md rounded-3xl p-8 ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold">{t.subscribeTitle}</h3>
+              <button onClick={() => setShowSubscribe(false)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-100"}`}><X size={20} /></button>
             </div>
-            <p className={`text-sm mb-4 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.subscribeDesc}</p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <input type="email" value={subscribeEmail} onChange={e => setSubscribeEmail(e.target.value)} placeholder={t.emailPlaceholder} className={`flex-1 px-4 py-2.5 rounded-xl text-sm outline-none ${darkMode ? "bg-gray-800 border border-gray-700 text-white" : "bg-gray-50 border border-gray-200"}`} />
-              <button type="submit" className="px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl text-sm font-medium hover:opacity-90">{t.subscribeBtn}</button>
+            <p className={`text-base mb-6 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.subscribeDesc}</p>
+            <form onSubmit={handleSubscribe} className="space-y-4">
+              <input type="email" value={subscribeEmail} onChange={e => setSubscribeEmail(e.target.value)} placeholder={t.emailPlaceholder} className={`w-full px-5 py-4 rounded-2xl text-base outline-none ${darkMode ? "bg-gray-800 border border-gray-700 text-white" : "bg-gray-50 border border-gray-200"}`} />
+              <button type="submit" className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl text-base font-bold hover:opacity-90">{t.subscribeBtn}</button>
             </form>
           </div>
         </div>
       )}
 
       <main className="max-w-7xl mx-auto px-4 py-6">
-        {/* Daily Digest Section - NEW */}
         {aiSummary && (
-          <div className={`mb-8 p-6 rounded-3xl ${darkMode ? "bg-gray-900/80 border-gray-800" : "bg-white shadow-xl"} border relative overflow-hidden group`}>
+          <div className={`mb-8 p-6 md:p-8 rounded-3xl ${darkMode ? "bg-gray-900/80 border-gray-800" : "bg-white shadow-xl"} border relative overflow-hidden group`}>
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
               <BookOpen size={80} />
             </div>
             <div className="relative z-10">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-                <h2 className="text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="flex h-3 w-3 rounded-full bg-red-500 animate-pulse" />
+                <h2 className="text-base md:text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
               </div>
               <p className={`text-lg md:text-xl font-medium leading-relaxed ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
                 {lang === "en" ? aiSummary.summary_en : aiSummary.summary_zh}
               </p>
               
-              {/* Sentiment Trends - NEW */}
-              <div className="mt-6 flex flex-wrap items-center gap-6">
+              <div className="mt-6 flex flex-col md:flex-row md:items-center gap-4">
                 <div className="flex-1 min-w-[200px]">
                   <p className="text-xs font-semibold mb-2 text-gray-500 uppercase tracking-tighter">{t.sentimentTitle || "情緒追蹤"}</p>
-                  <div className="h-2 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
+                  <div className="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
                     <div style={{ width: `${aiSummary.sentiment?.positive || 0}%` }} className="h-full bg-green-500" />
                     <div style={{ width: `${aiSummary.sentiment?.neutral || 0}%` }} className="h-full bg-gray-400" />
                     <div style={{ width: `${aiSummary.sentiment?.negative || 0}%` }} className="h-full bg-red-500" />
                   </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-2">
                   {aiSummary.trends?.map((trend: string) => (
-                    <span key={trend} className={`px-3 py-1 rounded-full text-xs font-bold ${darkMode ? "bg-blue-900/40 text-blue-300" : "bg-blue-100 text-blue-700"}`}>
+                    <span key={trend} className={`px-4 py-1.5 rounded-full text-sm font-bold ${darkMode ? "bg-blue-900/40 text-blue-300" : "bg-blue-100 text-blue-700"}`}>
                       # {trend}
                     </span>
                   ))}
@@ -620,137 +506,141 @@ export default function NewsPage() {
           </div>
         )}
 
-        {/* Category Tabs */}
-        <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
-          {CATEGORIES.map(c => (
-            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-2 rounded-2xl text-sm font-medium whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
-              <span>{c.icon}</span> {(t.categories as any)[c.id] || c.id}
+        {/* Desktop Categories */}
+        <div className="hidden md:flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
+          <button onClick={() => { setShowSaved(v => !v); setCategory('world'); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
+            <Star size={18} /> {showSaved ? t.allNews : t.savedNews}
+            {showSaved && savedIds.size > 0 && <span className="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs">{savedIds.size}</span>}
+          </button>
+          {CATEGORIES.filter(c => c.id !== 'podcast').map(c => (
+            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
+              <span>{c.icon}</span> {(t.categories as any)[c.id]}
             </button>
           ))}
-          <div className="ml-auto flex items-center gap-1.5">
-            <button onClick={() => fetchNews(false)} className={`p-2 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
-              <RefreshCw size={16} />
+          <div className="ml-auto flex items-center gap-2">
+            <button onClick={() => fetchNews(false)} className={`p-3 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
+              <RefreshCw size={18} />
             </button>
-            <button onClick={() => setAutoRefresh(v => !v)} className={`px-3 py-1.5 rounded-xl text-xs font-medium transition ${autoRefresh ? "bg-green-500/20 text-green-500" : darkMode ? "bg-gray-800 text-gray-500" : "bg-gray-100 text-gray-400"}`}>
+            <button onClick={() => setAutoRefresh(v => !v)} className={`px-4 py-2 rounded-xl text-sm font-medium transition ${autoRefresh ? "bg-green-500/20 text-green-500" : darkMode ? "bg-gray-800 text-gray-500" : "bg-gray-100 text-gray-400"}`}>
               {autoRefresh ? "🔄" : "⏸"} {autoRefresh ? t.autoRefresh : t.refreshOff}
             </button>
           </div>
         </div>
 
-        {/* Loading */}
+        {/* Mobile Categories - Horizontal Scroll */}
+        <div className="md:hidden flex items-center gap-2 mb-6 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
+          <button onClick={() => { setShowSaved(v => !v); setCategory('world'); }} className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap snap-start ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+            <Star size={16} /> {showSaved ? t.allNews : t.savedNews}
+            {showSaved && savedIds.size > 0 && <span className="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs">{savedIds.size}</span>}
+          </button>
+          {CATEGORIES.filter(c => c.id !== 'podcast').map(c => (
+            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all snap-start ${showSaved ? "" : category === c.id ? `${c.color} text-white` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+              <span>{c.icon}</span> {(t.categories as any)[c.id]}
+            </button>
+          ))}
+        </div>
+
         {loading && (
           <div className="text-center py-20">
-            <div className="text-5xl mb-4 animate-bounce">📡</div>
-            <p className={darkMode ? "text-gray-400" : "text-gray-500"}>{t.loading}</p>
+            <div className="text-6xl mb-4 animate-bounce">📡</div>
+            <p className={`text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.loading}</p>
           </div>
         )}
 
-        {/* No Results */}
         {!loading && displayNews.length === 0 && (
           <div className="text-center py-20">
-            <div className="text-5xl mb-4">🔍</div>
-            <p className={darkMode ? "text-gray-400" : "text-gray-500"}>{t.noResults}</p>
+            <div className="text-6xl mb-4">🔍</div>
+            <p className={`text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{showSaved ? t.noSaved : t.noResults}</p>
           </div>
         )}
 
-        {/* News Grid */}
         {!loading && displayNews.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {displayNews.map((item, i) => {
               const isRead = readIds.has(item.title);
               const isSaved = savedIds.has(item.title);
-              const isSpeakingThis = speakingId === item.title;
-              
-              // Safe access to details array
               const details = Array.isArray(aiSummary?.details) 
                 ? aiSummary.details.find((d: any) => d.id === item.id)
                 : null;
 
               return (
-                <div key={i} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
-                  {/* Image */}
+                <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {item.img && item.img_url ? (
-                    <div className="relative h-44 overflow-hidden">
+                    <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     </div>
                   ) : (
-                    <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
-                      <span className="text-5xl opacity-30">📰</span>
+                    <div className={`h-32 md:h-40 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                      <span className="text-5xl md:text-6xl opacity-30">📰</span>
                     </div>
                   )}
-
-                  {/* Actions */}
-                  <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
-                    <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm" title={lang === "en" ? "Read aloud" : "朗讀"}>
-                      {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                  
+                  {/* Always visible on mobile */}
+                  <div className="absolute top-3 right-3 flex gap-2 z-10">
+                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-2.5 rounded-xl bg-purple-500/90 text-white hover:bg-purple-500 backdrop-blur-sm shadow-lg" title={t.analysis}>
+                      <Zap size={18} />
                     </button>
-                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-1.5 rounded-lg bg-purple-500/60 text-white hover:bg-purple-500/80 backdrop-blur-sm" title="AI 網台分析">🎧</button>
-                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
+                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
+                      {isSaved ? <BookmarkCheck size={18} className="text-yellow-400" /> : <Bookmark size={18} />}
                     </button>
-                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      <Share2 size={14} />
+                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
+                      <Share2 size={18} />
                     </button>
                   </div>
-
-                  <div className="p-5">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-wider ${darkMode ? "bg-gray-800 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
-                      
-                      {/* Bias Badge - NEW */}
-                      {details?.bias && (
-                        <span className={`text-[10px] px-2 py-0.5 rounded-md font-bold border ${darkMode ? "border-purple-800 text-purple-400" : "border-purple-200 text-purple-600"}`}>
-                          ⚖️ {details.bias}
-                        </span>
-                      )}
+                  
+                  <div className="p-4 md:p-5">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className={`text-xs md:text-sm px-3 py-1 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                      {isSaved && <span className="text-sm">📌</span>}
                     </div>
-
-                    <h3 onClick={() => toggleRead(item.title)} className={`text-base font-bold leading-snug mb-3 cursor-pointer ${darkMode ? "text-white group-hover:text-blue-400" : "text-gray-900 group-hover:text-blue-600"} transition-colors`}>
+                    <h3 className={`text-base md:text-lg font-bold leading-snug mb-3 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {lang === "en" ? item.title : (item.title_zh || item.title)}
                     </h3>
-
-                    {/* Contextual Impact Button - NEW */}
-                    {details?.impact && (
-                      <button 
-                        onClick={() => setShowImpactId(item.id)}
-                        className={`mb-4 w-full py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-blue-900/20 text-blue-400 hover:bg-blue-900/40" : "bg-blue-50 text-blue-600 hover:bg-blue-100"}`}
-                      >
-                        <Zap size={14} /> {t.impact || "深度解讀"}
-                      </button>
+                    
+                    {details && (
+                      <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-sm font-bold text-blue-500">🤖 {t.analysis}</span>
+                        </div>
+                        <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                          {lang === 'en' ? details.summary_en : details.summary_zh}
+                        </p>
+                        <button onClick={e => { e.stopPropagation(); setShowImpactId(item.id); }} className={`mt-3 w-full py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-blue-900/40 text-blue-400 hover:bg-blue-900/60" : "bg-blue-100 text-blue-600 hover:bg-blue-200"}`}>
+                          <Zap size={16} /> {t.impact || "深度解讀"}
+                        </button>
+                      </div>
                     )}
 
-                    {/* Impact Modal - NEW */}
                     {showImpactId === item.id && (
-                      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
+                      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
                         <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
-                          <div className="text-blue-500 mb-4"><Zap size={32} /></div>
+                          <div className="text-blue-500 mb-4"><Zap size={40} /></div>
                           <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
                           <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {details.impact}
+                            {details?.impact}
                           </p>
-                          <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-500 transition">
+                          <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">
                             {t.impactClose || "關閉解讀"}
                           </button>
                         </div>
                       </div>
                     )}
 
-                    {/* Expanded */}
                     {expandedId === item.title && (
-                      <div className="mt-3 pt-3 border-t border-gray-700/50">
+                      <div className="mt-4 pt-4 border-t border-gray-700/50">
                         {item.desc && (
-                          <p className={`text-xs leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                          <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                             {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
                           </p>
                         )}
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
-                          {t.readMore} <ExternalLink size={12} />
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                          {t.readMore} <ExternalLink size={16} />
                         </a>
                       </div>
                     )}
 
-                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
+                    <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
                 </div>
               );
@@ -758,134 +648,64 @@ export default function NewsPage() {
           </div>
         )}
 
-        {/* In-Feed Ad */}
-        <div className={`my-6 rounded-xl p-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
-          <div className={`text-center py-6 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-            <p className="text-sm">📰 廣告位置 / In-Feed Ad</p>
-            <p className="text-xs mt-1">Google AdSense 原生廣告</p>
-          </div>
-        </div>
-
-        {/* Remaining News */}
-        {displayNews.length > 6 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {displayNews.slice(6).map((item, i) => {
-              const isRead = readIds.has(item.title);
-              const isSaved = savedIds.has(item.title);
-              const isSpeakingThis = speakingId === item.title;
-              return (
-                <div key={i + 6} onClick={() => toggleRead(item.title)} className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-600" : "hover:border-blue-300"}`}>
-                  {/* Same card structure as above */}
-                  {item.img && item.img_url ? (
-                    <div className="relative h-44 overflow-hidden">
-                      <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    </div>
-                  ) : (
-                    <div className={`h-32 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
-                      <span className="text-5xl opacity-30">📰</span>
-                    </div>
-                  )}
-                  <div className="absolute top-2 right-2 flex gap-1 z-10 opacity-0 group-hover:opacity-100 transition">
-                    <button onClick={e => { e.stopPropagation(); speak(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      {isSpeakingThis ? <VolumeX size={14} /> : <Volume2 size={14} />}
-                    </button>
-                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-1.5 rounded-lg bg-purple-500/60 text-white hover:bg-purple-500/80 backdrop-blur-sm" title="AI 網台分析">🎧</button>
-                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      {isSaved ? <BookmarkCheck size={14} className="text-yellow-400" /> : <Bookmark size={14} />}
-                    </button>
-                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm">
-                      <Share2 size={14} />
-                    </button>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-1.5 mb-2">
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${darkMode ? "bg-gray-700 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
-                      {isSaved && <span className="text-xs">📌</span>}
-                    </div>
-                    <h3 className={`text-sm font-semibold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-                      {lang === "en" ? item.title : (item.title_zh || item.title)}
-                    </h3>
-                    {item.desc && (
-                      <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-                        {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
-                      </p>
-                    )}
-                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* AI 網台分析面板 - 統一版本 */}
         {aiHostItem && (
-          <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-purple-900/95 to-purple-800/95 backdrop-blur-xl border-t border-purple-500/30 p-6 shadow-2xl">
+          <div className="fixed bottom-0 left-0 right-0 z-[100] bg-gradient-to-t from-purple-950/98 to-purple-900/95 backdrop-blur-xl border-t border-purple-500/30 p-6 shadow-2xl">
             <div className="max-w-4xl mx-auto">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                    🎧 AI 網台分析
-                    {aiHostData?.isDemo && <span className="text-xs bg-yellow-500/30 text-yellow-300 px-2 py-0.5 rounded-full">示範模式</span>}
+                  <h3 className="text-xl font-bold text-white flex items-center gap-3">
+                    🤖 {t.analysis}
+                    {aiHostData?.isDemo && <span className="text-xs bg-yellow-500/30 text-yellow-300 px-3 py-1 rounded-full">示範模式</span>}
                   </h3>
-                  <p className="text-sm text-purple-200 mt-1">
+                  <p className="text-sm text-purple-200 mt-1 line-clamp-1">
                     {aiHostItem.title_zh || aiHostItem.title}
                   </p>
                 </div>
                 <button 
-                  onClick={() => { setAiHostItem(null); setAiHostData(null); setAiHostError(""); stopSpeak(); }} 
-                  className="text-gray-300 hover:text-white p-2"
+                  onClick={() => { setAiHostItem(null); setAiHostData(null); setAiHostError(""); }} 
+                  className="text-gray-300 hover:text-white p-3 rounded-xl bg-gray-800"
                 >
-                  ✕
+                  <X size={20} />
                 </button>
               </div>
               
               {aiHostLoading ? (
-                <div className="flex flex-col items-center justify-center py-8">
-                  <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-300"></div>
-                  <span className="mt-3 text-purple-200">AI 主持人分析緊...</span>
-                  <span className="text-xs text-purple-300 mt-1">大約需要 10-20 秒</span>
+                <div className="flex flex-col items-center justify-center py-10">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-300"></div>
+                  <span className="mt-4 text-lg text-purple-200">AI 分析緊...</span>
+                  <span className="text-sm text-purple-300 mt-1">大約需要 10-20 秒</span>
                 </div>
               ) : aiHostError ? (
-                <div className="bg-red-500/20 border border-red-500/30 rounded-xl p-4">
-                  <p className="text-red-200 mb-3">❌ {aiHostError}</p>
+                <div className="bg-red-500/20 border border-red-500/30 rounded-2xl p-5">
+                  <p className="text-red-200 mb-4 text-lg">❌ {aiHostError}</p>
                   <button 
                     onClick={() => analyzeWithAIHost(aiHostItem)}
-                    className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2 transition"
+                    className="px-5 py-3 bg-purple-500 text-white rounded-xl hover:bg-purple-600 flex items-center gap-2 transition text-base font-medium"
                   >
-                    <RefreshCw size={16} /> 重試
+                    <RefreshCw size={18} /> 重試
                   </button>
                 </div>
               ) : aiHostData ? (
                 <>
-                  <div className="bg-black/30 rounded-xl p-4 mb-4 max-h-[40vh] overflow-y-auto">
-                    <div className="text-white leading-relaxed whitespace-pre-wrap">
+                  <div className="bg-black/40 rounded-2xl p-5 mb-5 max-h-[50vh] overflow-y-auto">
+                    <div className="text-white leading-relaxed whitespace-pre-wrap text-base">
                       {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
                         const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
                         const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
                         return (
-                          <p key={i} className={`mb-2 ${isMale ? 'text-blue-300' : isFemale ? 'text-pink-300' : 'text-white'}`}>
+                          <p key={i} className={`mb-3 ${isMale ? 'text-blue-300' : isFemale ? 'text-pink-300' : 'text-white'}`}>
                             {line}
                           </p>
                         );
                       })}
                     </div>
                   </div>
-                  <div className="flex gap-3">
-                    <button 
-                      onClick={() => speakDualHost(aiHostData.analysis)} 
-                      className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2 transition"
-                    >
-                      <Volume2 size={16} /> {lang === 'en' ? 'Listen (Dual Host)' : '收聽分析（雙主持）'}
-                    </button>
-                    <button 
-                      onClick={stopSpeak} 
-                      className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 flex items-center gap-2 transition"
-                    >
-                      <VolumeX size={16} /> {lang === 'en' ? 'Stop' : '停止'}
-                    </button>
-                  </div>
+                  <button 
+                    onClick={() => { setAiHostItem(null); setAiHostData(null); }} 
+                    className="w-full py-4 bg-purple-500 text-white rounded-2xl text-lg font-bold hover:bg-purple-600 transition"
+                  >
+                    {lang === 'en' ? 'Close' : '關閉'}
+                  </button>
                 </>
               ) : null}
             </div>
@@ -893,22 +713,13 @@ export default function NewsPage() {
         )}
       </main>
 
-      {/* Speaking indicator */}
-      {isSpeaking && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/80 text-white text-sm backdrop-blur-sm shadow-xl">
-          <Volume2 size={16} className="animate-pulse" />
-          <span>{t.ttsOn}</span>
-          <button onClick={stopSpeak} className="ml-2 px-2 py-0.5 rounded-lg bg-white/20 hover:bg-white/30 text-xs">{t.ttsOff}</button>
-        </div>
-      )}
-
-      <footer className={`mt-12 py-8 text-center text-xs border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
-        <div className="flex justify-center gap-6 mb-4 font-medium text-[10px] md:text-xs">
+      <footer className={`mt-12 py-10 text-center border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
+        <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm md:text-base font-medium">
           <Link href="/about" className="hover:text-blue-500 transition-colors uppercase tracking-wider">關於我們 / About</Link>
           <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
           <Link href="/contact" className="hover:text-blue-500 transition-colors uppercase tracking-wider">聯繫我們 / Contact</Link>
         </div>
-        <p>NewsFlow · AI-Powered Global News © 2026</p>
+        <p className="text-base">NewsFlow · AI-Powered Global News © 2026</p>
       </footer>
     </div>
   );
