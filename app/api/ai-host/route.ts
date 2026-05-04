@@ -49,22 +49,32 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
   `;
 
   if (!apiKey) {
-    // 無 API Key 時返回模擬對話
+    // 無 API Key 時返回模擬對話（更完整）
     const lines = lang === "en" ? [
-      `${hostNames.female}: ${title} - this is quite interesting!`,
-      `${hostNames.male}: Yes, let us look at what makes this news noteworthy.`,
-      `${hostNames.female}: What impact might this have on ordinary people?`,
-      `${hostNames.male}: The main impact is... (need API Key for full analysis)`,
+      `${hostNames.female}: Welcome to our news analysis! Today we're looking at: ${title}`,
+      `${hostNames.male}: This is a fascinating topic. Let me break it down for our listeners.`,
+      `${hostNames.female}: What makes this news particularly interesting?`,
+      `${hostNames.male}: Well, the key point here is the potential impact on everyday people.`,
+      `${hostNames.female}: So what should our listeners pay attention to?`,
+      `${hostNames.male}: I think the main takeaway is to stay informed and understand both sides.`,
+      `${hostNames.female}: Great analysis! Thanks for tuning in, everyone!`,
+      `${hostNames.male}: And remember, always verify your news sources. See you next time!`,
     ] : [
-      `${hostNames.female}: ${title}，呢單新聞幾有趣喎！`,
-      `${hostNames.male}: 係嘅，我哋一齊睇下背後有咩值得關注嘅地方。`,
-      `${hostNames.female}: 呢件事對普通人有咩影響？`,
-      `${hostNames.male}: 主要影響係...需要設定 API Key 先可以深度分析。`,
+      `${hostNames.female}: 歡迎收聽我哋嘅新聞分析！今日我哋睇下：${title}`,
+      `${hostNames.male}: 呢單新聞幾有意思，等我同大家拆解一下。',
+      `${hostNames.female}: 咁呢件事有咩特別之處？`,
+      `${hostNames.male}: 最重要嘅係，呢件事對普通人嘅日常生活可能有啲影響。',
+      `${hostNames.female}: 咁聽眾應該留意啲咩？`,
+      `${hostNames.male}: 我覺得最重要係保持資訊靈通，同埋了解唔同角度嘅觀點。',
+      `${hostNames.female}: 分析得好！多謝大家收聽！`,
+      `${hostNames.male}: 記住，要驗證新聞來源。下次見！`,
     ];
-    return lines.join("\n");
+    return { analysis: lines.join("\n"), isDemo: true };
   }
 
   try {
+    console.log('[AI Host] Calling OpenRouter API...');
+    
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -75,21 +85,30 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
       body: JSON.stringify({
         model: "google/gemini-2.0-flash-001",
         messages: [{ role: "user", content: prompt }],
+        max_tokens: 2000,
       }),
-      signal: AbortSignal.timeout(30000)
     });
 
     if (!res.ok) {
-      throw new Error(`API returned ${res.status}`);
+      const errorText = await res.text();
+      console.error('[AI Host] API error:', res.status, errorText);
+      throw new Error(`API returned ${res.status}: ${errorText}`);
     }
 
     const data = await res.json();
-    return data.choices[0]?.message?.content || null;
-  } catch (err) {
-    console.error('AI Host analysis failed:', err);
+    const content = data.choices[0]?.message?.content;
+    
+    if (!content) {
+      throw new Error('No content in API response');
+    }
+    
+    console.log('[AI Host] Analysis successful, length:', content.length);
+    return { analysis: content, isDemo: false };
+    
+  } catch (err: any) {
+    console.error('[AI Host] Analysis failed:', err.message);
+    return { error: err.message || "AI 分析失敗，請稍後再試" };
   }
-
-  return null;
 }
 
 export async function POST(request: NextRequest) {
@@ -107,22 +126,24 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    const analysis = await getDualHostAnalysis(title, desc, source, lang);
+    const result = await getDualHostAnalysis(title, desc, source, lang);
 
-    if (analysis) {
+    if (result.error) {
       return NextResponse.json({
-        success: true,
-        analysis,
-        timestamp: Date.now(),
-      });
+        success: false,
+        error: result.error,
+      }, { status: 500 });
     }
 
     return NextResponse.json({
-      success: false,
-      error: "AI analysis failed",
-    }, { status: 500 });
+      success: true,
+      analysis: result.analysis,
+      isDemo: result.isDemo || false,
+      timestamp: Date.now(),
+    });
 
   } catch (err: any) {
+    console.error('[AI Host] Request failed:', err);
     return NextResponse.json({
       success: false,
       error: err.message || "Analysis failed",

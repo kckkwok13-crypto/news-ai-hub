@@ -116,12 +116,15 @@ export default function NewsPage() {
   const [aiHostItem, setAiHostItem] = useState<any>(null);
   const [aiHostLoading, setAiHostLoading] = useState(false);
   const [aiHostData, setAiHostData] = useState<any>(null);
+  const [aiHostError, setAiHostError] = useState<string>("");
 
   // AI Host Analysis - 主持人風格深度分析
   const analyzeWithAIHost = async (item: any) => {
     setAiHostItem(item);
     setAiHostLoading(true);
-    setAiHostData("");
+    setAiHostData(null);
+    setAiHostError("");
+    
     try {
       const res = await fetch('/api/ai-host', {
         method: 'POST',
@@ -133,13 +136,23 @@ export default function NewsPage() {
           lang: lang
         })
       });
+      
       const data = await res.json();
+      
       if (data.success && data.analysis) {
-        setAiHostData({ item: item, analysis: data.analysis });
+        setAiHostData({ 
+          item: item, 
+          analysis: data.analysis,
+          isDemo: data.isDemo || false
+        });
+      } else {
+        setAiHostError(data.error || "分析失敗，請稍後再試");
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('AI Host analysis failed', err);
+      setAiHostError("網絡錯誤，請檢查連線後重試");
     }
+    
     setAiHostLoading(false);
   };
 
@@ -806,84 +819,78 @@ export default function NewsPage() {
           </div>
         )}
 
-        {/* AI 網台分析面板 */}
+        {/* AI 網台分析面板 - 統一版本 */}
         {aiHostItem && (
-          <div className={`fixed bottom-0 left-0 right-0 z-50 p-6 rounded-t-3xl shadow-2xl ${darkMode ? "bg-gray-900 border-t border-gray-700" : "bg-white border-t border-gray-200"}`}>
+          <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-purple-900/95 to-purple-800/95 backdrop-blur-xl border-t border-purple-500/30 p-6 shadow-2xl">
             <div className="max-w-4xl mx-auto">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-lg font-bold flex items-center gap-2">
-                    🎙️ AI 網台主持分析
+                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                    🎧 AI 網台分析
+                    {aiHostData?.isDemo && <span className="text-xs bg-yellow-500/30 text-yellow-300 px-2 py-0.5 rounded-full">示範模式</span>}
                   </h3>
-                  <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                  <p className="text-sm text-purple-200 mt-1">
                     {aiHostItem.title_zh || aiHostItem.title}
                   </p>
                 </div>
-                <button onClick={() => { setAiHostItem(null); setAiHostData(""); }} className="p-2 rounded-lg hover:bg-gray-700">
-                  <X size={18} />
+                <button 
+                  onClick={() => { setAiHostItem(null); setAiHostData(null); setAiHostError(""); stopSpeak(); }} 
+                  className="text-gray-300 hover:text-white p-2"
+                >
+                  ✕
                 </button>
               </div>
               
               {aiHostLoading ? (
-                <div className="flex items-center justify-center py-8">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
-                  <span className="ml-3">AI 主持人分析中...</span>
+                <div className="flex flex-col items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-300"></div>
+                  <span className="mt-3 text-purple-200">AI 主持人分析緊...</span>
+                  <span className="text-xs text-purple-300 mt-1">大約需要 10-20 秒</span>
                 </div>
-              ) : (
-                <div className={`p-4 rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-50"}`}>
-                  <p className="whitespace-pre-wrap leading-relaxed">{aiHostData?.analysis || "點擊分析按鈕開始..."}</p>
-                  {aiHostData && (
-                    <button onClick={() => {
-                      const utt = new SpeechSynthesisUtterance(aiHostData.analysis);
-                      utt.lang = lang === "en" ? "en-US" : "zh-HK";
-                      speechSynthesis.speak(utt);
-                    }} className="mt-4 px-4 py-2 rounded-lg bg-purple-500 text-white flex items-center gap-2">
-                      <Volume2 size={16} /> 收聽分析
+              ) : aiHostError ? (
+                <div className="bg-red-500/20 border border-red-500/30 rounded-xl p-4">
+                  <p className="text-red-200 mb-3">❌ {aiHostError}</p>
+                  <button 
+                    onClick={() => analyzeWithAIHost(aiHostItem)}
+                    className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2 transition"
+                  >
+                    <RefreshCw size={16} /> 重試
+                  </button>
+                </div>
+              ) : aiHostData ? (
+                <>
+                  <div className="bg-black/30 rounded-xl p-4 mb-4 max-h-[40vh] overflow-y-auto">
+                    <div className="text-white leading-relaxed whitespace-pre-wrap">
+                      {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
+                        const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
+                        const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
+                        return (
+                          <p key={i} className={`mb-2 ${isMale ? 'text-blue-300' : isFemale ? 'text-pink-300' : 'text-white'}`}>
+                            {line}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <button 
+                      onClick={() => speakDualHost(aiHostData.analysis)} 
+                      className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2 transition"
+                    >
+                      <Volume2 size={16} /> {lang === 'en' ? 'Listen (Dual Host)' : '收聽分析（雙主持）'}
                     </button>
-                  )}
-                </div>
-              )}
+                    <button 
+                      onClick={stopSpeak} 
+                      className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 flex items-center gap-2 transition"
+                    >
+                      <VolumeX size={16} /> {lang === 'en' ? 'Stop' : '停止'}
+                    </button>
+                  </div>
+                </>
+              ) : null}
             </div>
           </div>
         )}
-
-      {/* AI 网台分析面板 */}
-      {aiHostData && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-purple-900/95 to-purple-800/95 backdrop-blur-xl border-t border-purple-500/30 p-6 shadow-2xl">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                🎧 AI 網台分析
-              </h3>
-              <button onClick={() => { setAiHostData(null); stopSpeak(); }} className="text-gray-300 hover:text-white">
-                ✕
-              </button>
-            </div>
-            <div className="bg-black/30 rounded-xl p-4 mb-4 max-h-[40vh] overflow-y-auto">
-              <p className="text-sm text-purple-200 mb-2 font-semibold">{aiHostData.item?.title_zh || aiHostData.item?.title}</p>
-              <div className="text-white leading-relaxed whitespace-pre-wrap">
-                {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
-                  const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
-                  const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
-                  return (
-                    <p key={i} className={`mb-2 ${isMale ? 'text-blue-300' : isFemale ? 'text-pink-300' : 'text-white'}`}>
-                      {line}
-                    </p>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <button onClick={() => speakDualHost(aiHostData.analysis)} className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2 transition">
-                <Volume2 size={16} /> {lang === 'en' ? 'Listen (Dual Host)' : '收聽分析（雙主持）'}
-              </button>
-              <button onClick={stopSpeak} className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 flex items-center gap-2 transition">
-                <VolumeX size={16} /> {lang === 'en' ? 'Stop' : '停止'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       </main>
 
       {/* Speaking indicator */}
