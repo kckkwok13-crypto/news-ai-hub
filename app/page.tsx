@@ -135,7 +135,7 @@ export default function NewsPage() {
       });
       const data = await res.json();
       if (data.success && data.analysis) {
-        setAiHostData(data.analysis);
+        setAiHostData({ item: item, analysis: data.analysis });
       }
     } catch (err) {
       console.error('AI Host analysis failed', err);
@@ -718,10 +718,10 @@ export default function NewsPage() {
                 </div>
               ) : (
                 <div className={`p-4 rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-50"}`}>
-                  <p className="whitespace-pre-wrap leading-relaxed">{aiHostData || "點擊分析按鈕開始..."}</p>
+                  <p className="whitespace-pre-wrap leading-relaxed">{aiHostData?.analysis || "點擊分析按鈕開始..."}</p>
                   {aiHostData && (
                     <button onClick={() => {
-                      const utt = new SpeechSynthesisUtterance(aiHostData);
+                      const utt = new SpeechSynthesisUtterance(aiHostData.analysis);
                       utt.lang = lang === "en" ? "en-US" : "zh-HK";
                       speechSynthesis.speak(utt);
                     }} className="mt-4 px-4 py-2 rounded-lg bg-purple-500 text-white flex items-center gap-2">
