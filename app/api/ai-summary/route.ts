@@ -48,6 +48,11 @@ function analyzeNews(items: any[], lang: string) {
     sentiment,
     trends: topKeywords,
     highlights: items.slice(0, 3).map(i => i.title_zh || i.title),
+        details: items.slice(0, 10).map((i: any) => ({
+          id: i.id,
+          bias: detectBias(i.source),
+          impact: detectImpact(i.title, i.desc)
+        })),
   }
 }
 
@@ -178,6 +183,11 @@ export async function POST(request: NextRequest) {
         sentiment,
         trends: topKeywords,
         highlights: items.slice(0, 3).map((i: any) => i.title_zh || i.title),
+        details: items.slice(0, 10).map((i: any) => ({
+          id: i.id,
+          bias: detectBias(i.source),
+          impact: detectImpact(i.title, i.desc)
+        })),
       },
       timestamp: Date.now(),
     })
@@ -187,4 +197,29 @@ export async function POST(request: NextRequest) {
       error: err.message || 'Analysis failed',
     }, { status: 500 })
   }
+}
+// Simple bias detection based on source
+function detectBias(source: string): string {
+  const westernSources = ['BBC', 'NYTimes', 'CNN', 'Reuters', 'The Guardian', 'Al Jazeera', 'DW News']
+  const chineseSources = ['SCMP', 'Xinhua', 'Global Times', 'CCTV']
+  const neutralSources = ['Associated Press', 'AFP']
+  
+  if (westernSources.some(s => source.includes(s))) return 'pro_western'
+  if (chineseSources.some(s => source.includes(s))) return 'pro_china'
+  if (neutralSources.some(s => source.includes(s))) return 'neutral'
+  return 'neutral'
+}
+
+// Simple impact detection based on keywords
+function detectImpact(title: string, desc: string): string {
+  const economicKeywords = ['market', 'stock', 'economy', 'trade', 'finance', '股市', '經濟', '貿易']
+  const politicalKeywords = ['election', 'government', 'policy', 'law', '選舉', '政府', '政策']
+  const techKeywords = ['AI', 'tech', 'cyber', 'digital', '科技', '人工智能']
+  
+  const text = (title + ' ' + desc).toLowerCase()
+  
+  if (economicKeywords.some(k => text.includes(k))) return 'economic'
+  if (politicalKeywords.some(k => text.includes(k))) return 'political'
+  if (techKeywords.some(k => text.includes(k))) return 'tech'
+  return 'general'
 }
