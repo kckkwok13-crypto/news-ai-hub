@@ -159,6 +159,7 @@ export default function NewsPage() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showImpactId, setShowImpactId] = useState<string | null>(null);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const t = LABELS[lang];
 
@@ -209,37 +210,24 @@ export default function NewsPage() {
     if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
   }, [category, lang]);
 
-  // 🎙️ 双主持 TTS - 一男一女分角色朗读
-  const speakDualHost = useCallback((analysis: string) => {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
+  // 🎙️ 双主持 TTS - Google Cloud TTS API
+  const speakDualHost = useCallback(async (analysis: string) => {
+    // 停止之前的播放
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
     
     const lines = analysis.split('\n').filter(line => line.trim());
-    const voices = window.speechSynthesis.getVoices();
     
-    // 选择男声和女声
-    const maleVoice = voices.find(v => 
-      v.name.toLowerCase().includes('male') || 
-      v.name.includes('男') ||
-      v.name.includes('Jack') ||
-      v.name.includes('Daniel') ||
-      v.name.includes('James')
-    ) || voices.find(v => v.lang.includes('zh')) || voices[0];
-    
-    const femaleVoice = voices.find(v => 
-      v.name.toLowerCase().includes('female') || 
-      v.name.includes('女') ||
-      v.name.includes('Emma') ||
-      v.name.includes('Samantha') ||
-      v.name.includes('Victoria') ||
-      v.name.includes('Karen')
-    ) || voices.find(v => v.lang.includes('zh') && v !== maleVoice) || maleVoice;
-    
-    console.log('🎤 男声:', maleVoice?.name, '女声:', femaleVoice?.name);
+    setIsSpeaking(true);
     
     let currentIndex = 0;
     
-    const speakNext = () => {
+    const playNext = async () => {
       if (currentIndex >= lines.length) {
         setIsSpeaking(false);
         return;
@@ -254,29 +242,67 @@ export default function NewsPage() {
       if (isMale) content = line.replace(/^(阿傑|Jack):\s*/, '');
       if (isFemale) content = line.replace(/^(小婷|Emma):\s*/, '');
       
-      const utt = new SpeechSynthesisUtterance(content);
-      utt.lang = lang === "en" ? "en-US" : "zh-HK";
-      utt.rate = 0.95; // 稍慢一点更像电台
-      utt.pitch = isMale ? 0.9 : 1.1; // 男声低沉，女声清脆
-      
-      // 选择声音
-      if (isMale && maleVoice) {
-        utt.voice = maleVoice;
-      } else if (isFemale && femaleVoice) {
-        utt.voice = femaleVoice;
+      if (!content.trim()) {
+        currentIndex++;
+        playNext();
+        return;
       }
       
-      utt.onend = () => {
+      try {
+        // 调用 Google Cloud TTS API
+        const res = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: content,
+            lang: lang === 'en' ? 'en-US' : 'zh-HK',
+            voice: isMale ? 'male' : 'female'
+          })
+        });
+        
+        const data = await res.json();
+        
+        if (data.error) {
+          console.error('TTS error:', data.error);
+          // Fallback to browser TTS
+          const utt = new SpeechSynthesisUtterance(content);
+          utt.lang = lang === "en" ? "en-US" : "zh-HK";
+          utt.rate = 0.95;
+          utt.pitch = isMale ? 0.9 : 1.1;
+          utt.onend = () => {
+            currentIndex++;
+            setTimeout(playNext, 300);
+          };
+          window.speechSynthesis.speak(utt);
+          return;
+        }
+        
+        // 播放 MP3
+        const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+        audioRef.current = audio;
+        
+        audio.onended = () => {
+          currentIndex++;
+          // 加入短暂停顿，模拟对话节奏
+          setTimeout(playNext, 300);
+        };
+        
+        audio.onerror = (e) => {
+          console.error('Audio error:', e);
+          currentIndex++;
+          playNext();
+        };
+        
+        await audio.play();
+        
+      } catch (err) {
+        console.error('TTS fetch error:', err);
         currentIndex++;
-        // 加入短暂停顿，模拟对话节奏
-        setTimeout(speakNext, 300);
-      };
-      
-      window.speechSynthesis.speak(utt);
+        playNext();
+      }
     };
     
-    setIsSpeaking(true);
-    speakNext();
+    playNext();
   }, [lang]);
 
   const speak = useCallback((item: NewsItem) => {
@@ -304,8 +330,13 @@ export default function NewsPage() {
   }, [lang]);
 
   const stopSpeak = useCallback(() => {
-    window.speechSynthesis?.cancel();
-    setSpeakingId(null);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
     setIsSpeaking(false);
   }, []);
 
