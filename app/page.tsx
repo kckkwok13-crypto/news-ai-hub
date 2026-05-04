@@ -209,6 +209,76 @@ export default function NewsPage() {
     if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
   }, [category, lang]);
 
+  // 🎙️ 双主持 TTS - 一男一女分角色朗读
+  const speakDualHost = useCallback((analysis: string) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    
+    const lines = analysis.split('\n').filter(line => line.trim());
+    const voices = window.speechSynthesis.getVoices();
+    
+    // 选择男声和女声
+    const maleVoice = voices.find(v => 
+      v.name.toLowerCase().includes('male') || 
+      v.name.includes('男') ||
+      v.name.includes('Jack') ||
+      v.name.includes('Daniel') ||
+      v.name.includes('James')
+    ) || voices.find(v => v.lang.includes('zh')) || voices[0];
+    
+    const femaleVoice = voices.find(v => 
+      v.name.toLowerCase().includes('female') || 
+      v.name.includes('女') ||
+      v.name.includes('Emma') ||
+      v.name.includes('Samantha') ||
+      v.name.includes('Victoria') ||
+      v.name.includes('Karen')
+    ) || voices.find(v => v.lang.includes('zh') && v !== maleVoice) || maleVoice;
+    
+    console.log('🎤 男声:', maleVoice?.name, '女声:', femaleVoice?.name);
+    
+    let currentIndex = 0;
+    
+    const speakNext = () => {
+      if (currentIndex >= lines.length) {
+        setIsSpeaking(false);
+        return;
+      }
+      
+      const line = lines[currentIndex];
+      const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
+      const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
+      
+      // 提取内容（去掉主持人名）
+      let content = line;
+      if (isMale) content = line.replace(/^(阿傑|Jack):\s*/, '');
+      if (isFemale) content = line.replace(/^(小婷|Emma):\s*/, '');
+      
+      const utt = new SpeechSynthesisUtterance(content);
+      utt.lang = lang === "en" ? "en-US" : "zh-HK";
+      utt.rate = 0.95; // 稍慢一点更像电台
+      utt.pitch = isMale ? 0.9 : 1.1; // 男声低沉，女声清脆
+      
+      // 选择声音
+      if (isMale && maleVoice) {
+        utt.voice = maleVoice;
+      } else if (isFemale && femaleVoice) {
+        utt.voice = femaleVoice;
+      }
+      
+      utt.onend = () => {
+        currentIndex++;
+        // 加入短暂停顿，模拟对话节奏
+        setTimeout(speakNext, 300);
+      };
+      
+      window.speechSynthesis.speak(utt);
+    };
+    
+    setIsSpeaking(true);
+    speakNext();
+  }, [lang]);
+
   const speak = useCallback((item: NewsItem) => {
     if (!window.speechSynthesis) return;
     window.speechSynthesis.cancel(); console.log("🎤 TTS started for:", item.title);
@@ -742,22 +812,30 @@ export default function NewsPage() {
               <h3 className="text-xl font-bold text-white flex items-center gap-2">
                 🎧 AI 網台分析
               </h3>
-              <button onClick={() => setAiHostData(null)} className="text-gray-300 hover:text-white">
+              <button onClick={() => { setAiHostData(null); stopSpeak(); }} className="text-gray-300 hover:text-white">
                 ✕
               </button>
             </div>
-            <div className="bg-black/30 rounded-xl p-4 mb-4">
+            <div className="bg-black/30 rounded-xl p-4 mb-4 max-h-[40vh] overflow-y-auto">
               <p className="text-sm text-purple-200 mb-2 font-semibold">{aiHostData.item?.title_zh || aiHostData.item?.title}</p>
-              <p className="text-white leading-relaxed">{aiHostData.analysis}</p>
+              <div className="text-white leading-relaxed whitespace-pre-wrap">
+                {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
+                  const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
+                  const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
+                  return (
+                    <p key={i} className={`mb-2 ${isMale ? 'text-blue-300' : isFemale ? 'text-pink-300' : 'text-white'}`}>
+                      {line}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
             <div className="flex gap-3">
-              <button onClick={() => {
-                const text = aiHostData.analysis;
-                const u = new SpeechSynthesisUtterance(text);
-                u.lang = lang === 'en' ? 'en-US' : 'zh-HK';
-                speechSynthesis.speak(u);
-              }} className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2">
-                <Volume2 size={16} /> {lang === 'en' ? 'Listen' : '收聽分析'}
+              <button onClick={() => speakDualHost(aiHostData.analysis)} className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2 transition">
+                <Volume2 size={16} /> {lang === 'en' ? 'Listen (Dual Host)' : '收聽分析（雙主持）'}
+              </button>
+              <button onClick={stopSpeak} className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 flex items-center gap-2 transition">
+                <VolumeX size={16} /> {lang === 'en' ? 'Stop' : '停止'}
               </button>
             </div>
           </div>
