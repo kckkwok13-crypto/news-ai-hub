@@ -141,9 +141,8 @@ export async function GET(request: NextRequest) {
   const sources = RSS_SOURCES[category] || RSS_SOURCES.world
   
   const now = Date.now()
-  const MAX_AGE_MS = (category === 'finance' || category === 'crypto' || category === 'hk_finance') 
-    ? 24 * 60 * 60 * 1000 
-    : 48 * 60 * 60 * 1000
+  // Relaxed age check to 72 hours to prevent "empty news" due to time sync issues
+  const MAX_AGE_MS = 72 * 60 * 60 * 1000
 
   // 1. Parallel fetch all sources
   const sourcePromises = sources.map(async (source) => {
@@ -152,8 +151,8 @@ export async function GET(request: NextRequest) {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         },
-        next: { revalidate: 60 },
-        signal: AbortSignal.timeout(6000), // Slightly shorter timeout for snappier feel
+        next: { revalidate: 300 }, // Cache for 5 mins
+        signal: AbortSignal.timeout(5000), 
       })
       
       if (!res.ok) return []
@@ -162,7 +161,7 @@ export async function GET(request: NextRequest) {
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
       const sourceItems: any[] = []
 
-      for (const itemXml of itemMatches.slice(0, 20)) {
+      for (const itemXml of itemMatches.slice(0, 15)) {
         const titleMatch = itemXml.match(/<title>([\s\S]*?)<\/title>/i)
         const descMatch = itemXml.match(/<description>([\s\S]*?)<\/description>/i)
         const linkMatch = itemXml.match(/<link>([\s\S]*?)<\/link>/i)
@@ -179,7 +178,8 @@ export async function GET(request: NextRequest) {
           pubTimestamp = isNaN(parsedDate.getTime()) ? 0 : parsedDate.getTime()
         }
 
-        if (pubTimestamp === 0 || (now - pubTimestamp) > MAX_AGE_MS) continue
+        // If date is missing or too old, we still might want it if we have very few news
+        if (pubTimestamp !== 0 && (now - pubTimestamp) > MAX_AGE_MS) continue
 
         const img = extractImage(itemXml)
         
@@ -190,7 +190,7 @@ export async function GET(request: NextRequest) {
             desc: desc.slice(0, 200),
             link,
             pubDate: pubDateStr,
-            pubTimestamp,
+            pubTimestamp: pubTimestamp || now,
             img: !!img,
             img_url: img || '',
             source: source.source,
@@ -207,23 +207,28 @@ export async function GET(request: NextRequest) {
   const results = await Promise.all(sourcePromises)
   const allItems = results.flat()
   
-  // 2. Sort by date descending and pick top items FIRST
+  // 2. Sort by date descending
   const sortedItems = allItems.sort((a, b) => b.pubTimestamp - a.pubTimestamp)
-  const topItems = sortedItems.slice(0, 35) // Get a few extra for shuffling
+  // Only process top 15 items for translation to avoid timeout and rate limits
+  const itemsToTranslate = sortedItems.slice(0, 15)
+  const remainingItems = sortedItems.slice(15, 30)
 
-  // 3. Translate only the top items in parallel
-  const translatedItems = await Promise.all(topItems.map(async (item) => {
+  // 3. Translate only the top items
+  const translatedItems = await Promise.all(itemsToTranslate.map(async (item) => {
     let title_zh = item.title
     let desc_zh = item.desc
     
     if (lang !== 'en' && !/[\u4e00-\u9fff]/.test(item.title)) {
-      // Run translation in parallel for title and desc
-      const [tTitle, tDesc] = await Promise.all([
-        translateText(item.title, lang),
-        item.desc ? translateText(item.desc, lang) : Promise.resolve('')
-      ])
-      title_zh = tTitle
-      desc_zh = tDesc
+      try {
+        const [tTitle, tDesc] = await Promise.all([
+          translateText(item.title, lang),
+          item.desc ? translateText(item.desc, lang) : Promise.resolve('')
+        ])
+        title_zh = tTitle
+        desc_zh = tDesc
+      } catch (e) {
+        console.error("Translation item error", e)
+      }
     }
     
     return {
@@ -234,9 +239,19 @@ export async function GET(request: NextRequest) {
     }
   }))
   
+  // For remaining items, just provide empty zh fields
+  const finalRemaining = remainingItems.map(item => ({
+    ...item,
+    title_zh: '',
+    desc_zh: '',
+    translated: false
+  }))
+
+  const combined = [...translatedItems, ...finalRemaining]
+  
   // 4. Final shuffling/selection
-  const newestFive = translatedItems.slice(0, 5)
-  const others = translatedItems.slice(5).sort(() => Math.random() - 0.5)
+  const newestFive = combined.slice(0, 5)
+  const others = combined.slice(5).sort(() => Math.random() - 0.5)
   const finalItems = [...newestFive, ...others].slice(0, 25)
   
   return NextResponse.json({

@@ -8,6 +8,7 @@ type Lang = "zh-TW" | "zh-CN" | "en";
 type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology" | "hk_finance";
 
 interface NewsItem {
+  id: string;
   title: string; title_zh: string; desc: string; desc_zh: string; link: string;
   pubDate: string; source: string; img: boolean; img_url: string;
   translated: boolean; translationError?: string;
