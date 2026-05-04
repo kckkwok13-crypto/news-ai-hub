@@ -44,6 +44,17 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
     { url: 'https://www.wired.com/feed/rss', source: 'Wired' },
   ],
+  astronomy: [
+    { url: 'https://www.space.com/feeds/all', source: 'Space.com' },
+    { url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss', source: 'NASA' },
+    { url: 'https://www.universetoday.com/universetoday.xml', source: 'Universe Today' },
+    { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
+  ],
+  mystery: [
+    { url: 'https://www.mysteriousuniverse.org/feed/', source: 'Mysterious Universe' },
+    { url: 'https://dailygrail.com/feed/', source: 'Daily Grail' },
+    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
+  ],
 }
 
 // Extract image from RSS item
