@@ -42,7 +42,7 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.wired.com/feed/rss', source: 'Wired' },
   ],
   astronomy: [
-    { url: 'https://www.space.com/feeds/all', source: 'Space.com' },
+    // Removed Space.com overlap
     { url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss', source: 'NASA' },
     { url: 'https://www.universetoday.com/universetoday.xml', source: 'Universe Today' },
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
@@ -50,7 +50,7 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   mystery: [
     { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
     { url: 'https://www.sciencealert.com/weird-science/feed', source: 'Weird Science' },
-    { url: 'https://www.space.com/feeds/all', source: 'Space.com' },
+    // Removed Space.com overlap
   ],
 }
 

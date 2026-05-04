@@ -212,9 +212,9 @@ function detectBias(source: string): string {
 
 // Simple impact detection based on keywords
 function detectImpact(title: string, desc: string): string {
-  const economicKeywords = ['market', 'stock', 'economy', 'trade', 'finance', '股市', '經濟', '貿易']
-  const politicalKeywords = ['election', 'government', 'policy', 'law', '選舉', '政府', '政策']
-  const techKeywords = ['AI', 'tech', 'cyber', 'digital', '科技', '人工智能']
+  const economicKeywords = ['market', 'stock', 'economy', 'trade', 'finance', 'business', 'invest', 'profit', 'loss', 'bank', 'money', 'fund', 'ipo', 'crypto', 'bitcoin', 'price', 'cost', 'tax', 'salary', 'gdp', 'inflation', 'rate', '股份', '股市', '經濟', '貿易', '財經', '投資', '利潤', '銀行', '金融', '貨幣', '價格', '成本', '稅', '薪金', '通脹', '利息']
+  const politicalKeywords = ['election', 'government', 'policy', 'law', 'vote', 'president', 'minister', 'congress', 'parliament', 'senate', 'democracy', 'diplomat', 'treaty', 'sanction', 'war', 'peace', 'military', 'security', 'defense', 'rights', 'protest', '選舉', '政府', '政策', '投票', '總統', '部長', '國會', '參議院', '民主', '外交', '條約', '制裁', '戰爭', '和平', '軍事', '安全', '國防', '權利', '抗議']
+  const techKeywords = ['ai', 'tech', 'cyber', 'digital', 'software', 'hardware', 'app', 'internet', 'data', 'cloud', 'robot', 'automation', 'smartphone', 'computer', 'chip', 'semiconductor', 'nvidia', 'openai', 'google', 'apple', 'microsoft', '科技', '人工智能', '軟件', '硬件', '應用', '網絡', '數據', '雲端', '機械人', '自動化', '智能手機', '電腦', '晶片', '半導體']
   
   const text = (title + ' ' + desc).toLowerCase()
   
