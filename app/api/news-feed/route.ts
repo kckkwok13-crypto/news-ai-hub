@@ -48,9 +48,10 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
   mystery: [
-    { url: 'https://news.google.com/rss/search?q=paranormal%20mystery%20unexplained&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal News' },
-    { url: 'https://news.google.com/rss/search?q=ancient%20mysteries%20archaeology&hl=en-US&gl=US&ceid=US:en', source: 'Ancient Mysteries' },
-    { url: 'https://news.google.com/rss/search?q=UFO%20alien%20conspiracy&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
+    // 使用更可靠的 Google News 关键词搜索
+    { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
+    { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
+    { url: 'https://news.google.com/rss/search?q=mystery%20unsolved%20strange&hl=en-US&gl=US&ceid=US:en', source: 'Mysteries' },
   ],
   podcast: [
     // Tech Podcasts
