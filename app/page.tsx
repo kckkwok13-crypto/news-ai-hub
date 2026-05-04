@@ -114,14 +114,14 @@ export default function NewsPage() {
   const [search, setSearch] = useState("");
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
   const [aiHostItem, setAiHostItem] = useState<any>(null);
-  const [aiHostAnalysis, setAiHostAnalysis] = useState<string>("");
   const [aiHostLoading, setAiHostLoading] = useState(false);
+  const [aiHostData, setAiHostData] = useState<any>(null);
 
   // AI Host Analysis - 主持人風格深度分析
   const analyzeWithAIHost = async (item: any) => {
     setAiHostItem(item);
     setAiHostLoading(true);
-    setAiHostAnalysis("");
+    setAiHostData("");
     try {
       const res = await fetch('/api/ai-host', {
         method: 'POST',
@@ -135,7 +135,7 @@ export default function NewsPage() {
       });
       const data = await res.json();
       if (data.success && data.analysis) {
-        setAiHostAnalysis(data.analysis);
+        setAiHostData(data.analysis);
       }
     } catch (err) {
       console.error('AI Host analysis failed', err);
@@ -696,7 +696,7 @@ export default function NewsPage() {
                     {aiHostItem.title_zh || aiHostItem.title}
                   </p>
                 </div>
-                <button onClick={() => { setAiHostItem(null); setAiHostAnalysis(""); }} className="p-2 rounded-lg hover:bg-gray-700">
+                <button onClick={() => { setAiHostItem(null); setAiHostData(""); }} className="p-2 rounded-lg hover:bg-gray-700">
                   <X size={18} />
                 </button>
               </div>
@@ -708,10 +708,10 @@ export default function NewsPage() {
                 </div>
               ) : (
                 <div className={`p-4 rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-50"}`}>
-                  <p className="whitespace-pre-wrap leading-relaxed">{aiHostAnalysis || "點擊分析按鈕開始..."}</p>
-                  {aiHostAnalysis && (
+                  <p className="whitespace-pre-wrap leading-relaxed">{aiHostData || "點擊分析按鈕開始..."}</p>
+                  {aiHostData && (
                     <button onClick={() => {
-                      const utt = new SpeechSynthesisUtterance(aiHostAnalysis);
+                      const utt = new SpeechSynthesisUtterance(aiHostData);
                       utt.lang = lang === "en" ? "en-US" : "zh-HK";
                       speechSynthesis.speak(utt);
                     }} className="mt-4 px-4 py-2 rounded-lg bg-purple-500 text-white flex items-center gap-2">
@@ -724,6 +724,35 @@ export default function NewsPage() {
           </div>
         )}
 
+      {/* AI 网台分析面板 */}
+      {aiHostData && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-purple-900/95 to-purple-800/95 backdrop-blur-xl border-t border-purple-500/30 p-6 shadow-2xl">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                🎧 AI 網台分析
+              </h3>
+              <button onClick={() => setAiHostData(null)} className="text-gray-300 hover:text-white">
+                ✕
+              </button>
+            </div>
+            <div className="bg-black/30 rounded-xl p-4 mb-4">
+              <p className="text-sm text-purple-200 mb-2 font-semibold">{aiHostData.item?.title_zh || aiHostData.item?.title}</p>
+              <p className="text-white leading-relaxed">{aiHostData.analysis}</p>
+            </div>
+            <div className="flex gap-3">
+              <button onClick={() => {
+                const text = aiHostData.analysis;
+                const u = new SpeechSynthesisUtterance(text);
+                u.lang = lang === 'en' ? 'en-US' : 'zh-HK';
+                speechSynthesis.speak(u);
+              }} className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center gap-2">
+                <Volume2 size={16} /> {lang === 'en' ? 'Listen' : '收聽分析'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </main>
 
       {/* Speaking indicator */}
