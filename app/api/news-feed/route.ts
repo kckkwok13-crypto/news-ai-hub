@@ -4,9 +4,6 @@ import { NextRequest, NextResponse } from 'next/server'
 const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   world: [
     { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC World' },
-    { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', source: 'NYTimes' },
-    { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera' },
-    { url: 'https://rss.dw.com/rdf/rss-en-all', source: 'DW News' },
     { url: 'https://www.scmp.com/rss/91/feed', source: 'SCMP' },
   ],
   finance: [
@@ -51,9 +48,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
   mystery: [
-    { url: 'https://www.mysteriousuniverse.org/feed/', source: 'Mysterious Universe' },
-    { url: 'https://dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
+    { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
+    { url: 'https://www.sciencealert.com/weird-science/feed', source: 'Weird Science' },
+    { url: 'https://www.space.com/feeds/all', source: 'Space.com' },
   ],
 }
 
