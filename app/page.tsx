@@ -210,7 +210,7 @@ export default function NewsPage() {
     if (savedLang && ["zh-TW", "zh-CN", "en"].includes(savedLang)) setLang(savedLang);
   }, [category, lang]);
 
-  // 🎙️ 双主持 TTS - Google Cloud TTS API
+  // 🎙️ 双主持 TTS - 浏览器原生 Web Speech API（完全免费）
   const speakDualHost = useCallback(async (analysis: string) => {
     // 停止之前的播放
     if (audioRef.current) {
@@ -225,9 +225,40 @@ export default function NewsPage() {
     
     setIsSpeaking(true);
     
+    // 获取可用声音
+    const voices = window.speechSynthesis.getVoices();
+    const langCode = lang === 'en' ? 'en-US' : lang === 'zh-CN' ? 'zh-CN' : 'zh-HK';
+    
+    // 选择声音（男声/女声）
+    const selectVoice = (isMale: boolean): SpeechSynthesisVoice | null => {
+      // 粤选粤语/普通话/英语声音
+      const preferredLangs = [langCode, langCode.split('-')[0]];
+      
+      for (const preferredLang of preferredLangs) {
+        // 男声：优先选择名字包含 male/guy/ryan/david 等
+        // 女声：优先选择名字包含 female/jenny/sonia/karen 等
+        const voice = voices.find(v => 
+          v.lang.startsWith(preferredLang) && (
+            isMale 
+              ? /male|guy|ryan|david|daniel|james|jack/i.test(v.name)
+              : /female|jenny|sonia|karen|emma|alice|sarah|kate/i.test(v.name)
+          )
+        );
+        if (voice) return voice;
+      }
+      
+      // 没找到性别匹配，就用第一个匹配语言的声音
+      for (const preferredLang of preferredLangs) {
+        const voice = voices.find(v => v.lang.startsWith(preferredLang));
+        if (voice) return voice;
+      }
+      
+      return voices[0] || null;
+    };
+    
     let currentIndex = 0;
     
-    const playNext = async () => {
+    const playNext = () => {
       if (currentIndex >= lines.length) {
         setIsSpeaking(false);
         return;
@@ -248,61 +279,42 @@ export default function NewsPage() {
         return;
       }
       
-      try {
-        // 调用 Google Cloud TTS API
-        const res = await fetch('/api/tts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            text: content,
-            lang: lang === 'en' ? 'en-US' : 'zh-HK',
-            voice: isMale ? 'male' : 'female'
-          })
-        });
-        
-        const data = await res.json();
-        
-        if (data.error) {
-          console.error('TTS error:', data.error);
-          // Fallback to browser TTS
-          const utt = new SpeechSynthesisUtterance(content);
-          utt.lang = lang === "en" ? "en-US" : "zh-HK";
-          utt.rate = 0.95;
-          utt.pitch = isMale ? 0.9 : 1.1;
-          utt.onend = () => {
-            currentIndex++;
-            setTimeout(playNext, 300);
-          };
-          window.speechSynthesis.speak(utt);
-          return;
-        }
-        
-        // 播放 MP3
-        const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
-        audioRef.current = audio;
-        
-        audio.onended = () => {
-          currentIndex++;
-          // 加入短暂停顿，模拟对话节奏
-          setTimeout(playNext, 300);
-        };
-        
-        audio.onerror = (e) => {
-          console.error('Audio error:', e);
-          currentIndex++;
-          playNext();
-        };
-        
-        await audio.play();
-        
-      } catch (err) {
-        console.error('TTS fetch error:', err);
+      // 使用浏览器原生 TTS
+      const utt = new SpeechSynthesisUtterance(content);
+      const selectedVoice = selectVoice(isMale);
+      
+      if (selectedVoice) {
+        utt.voice = selectedVoice;
+      }
+      
+      utt.lang = langCode;
+      utt.rate = 0.9; // 稍慢更清晰
+      utt.pitch = isMale ? 0.85 : 1.1; // 男声低沉，女声清脆
+      utt.volume = 1;
+      
+      utt.onend = () => {
+        currentIndex++;
+        // 加入短暂停顿，模拟对话节奏
+        setTimeout(playNext, 400);
+      };
+      
+      utt.onerror = (e) => {
+        console.error('TTS error:', e);
         currentIndex++;
         playNext();
-      }
+      };
+      
+      window.speechSynthesis.speak(utt);
     };
     
-    playNext();
+    // 确保声音列表已加载
+    if (voices.length === 0) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        playNext();
+      };
+    } else {
+      playNext();
+    }
   }, [lang]);
 
   const speak = useCallback((item: NewsItem) => {
