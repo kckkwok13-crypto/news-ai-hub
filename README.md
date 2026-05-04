@@ -1,138 +1,152 @@
-# News AI Hub
+# NewsFlow - AI-Powered Global News Aggregator 🌐
 
-智能新聞聚合平台 - AI-powered News Aggregator
+[English below](#english)
 
-## 🚀 部署到 Vercel
+## 🚀 部署指南
 
-### 方法一：一鍵部署
+### 必要設置
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/news-vercel)
+#### 1️⃣ 設定 OpenRouter API Key（AI 功能）
 
-### 方法二：手動部署
+**方法一：Vercel Dashboard（推薦）**
+1. 登入 [Vercel Dashboard](https://vercel.com/dashboard)
+2. 選擇 `news-ai-hub` 項目
+3. 前往 **Settings** → **Environment Variables**
+4. 添加：
+   - **Name**: `OPENROUTER_API_KEY`
+   - **Value**: 你的 OpenRouter API Key（從 https://openrouter.ai/ 獲取）
+5. 點擊 **Save**
+6. 前往 **Deployments**，點擊 **Redeploy**
 
-#### 1. 推送到 GitHub
-
+**方法二：本地開發**
 ```bash
-# 初始化 git
-cd news-vercel
-git init
-git add .
-git commit -m "Initial commit"
-
-# 創建 GitHub repo 並推送
-gh repo create news-vercel --public --source=. --push
-# 或者手動添加 remote
-git remote add origin https://github.com/your-username/news-vercel.git
-git push -u origin main
+echo "OPENROUTER_API_KEY=你的API_KEY" > .env.local
+npm run dev
 ```
-
-#### 2. 連接 Vercel
-
-1. 去 [vercel.com](https://vercel.com) 登入（可用 GitHub 帳號）
-2. 點擊 "Add New Project"
-3. 選擇你嘅 `news-vercel` repo
-4. 直接點擊 "Deploy"
-
-#### 3. 完成！
-
-Vercel 會自動：
-- 偵測 Next.js
-- 安裝依賴
-- 構建並部署
-- 給你一個 `xxx.vercel.app` 域名
 
 ---
 
-## 🔧 本地開發
+## 🎯 功能
+
+| 功能 | 說明 |
+|------|------|
+| 🌍 多來源新聞 | 薈萃 50+ 新聞源，涵蓋國際、財經、加密幣、香港、台灣、中國、商業、科技、天文學、神秘學 |
+| 🗣️ 雙語翻譯 | 廣東話 / English 实时翻译 |
+| 🎙️ AI 網台分析 | 主持人風格深度分析、立場偵測、影響評估 |
+| 📊 情緒追蹤 | 正面/負面/中立 情緒分析 |
+| 🧭 立場分析 | 親中、親美、親歐等立場偵測 |
+| 🔍 多元化觀點 | 減少資訊繭房，提供平衡視角 |
+| 📱 黑暗模式 | 保護眼睛嘅深色主題 |
+| 🔔 自訂關鍵字追蹤 | 追蹤你感興趣嘅話題 |
+| 💾 收藏功能 | 收藏新聞離線閱讀 |
+
+---
+
+## 🛠️ 開發
 
 ```bash
 # 安裝依賴
 npm install
 
-# 啟動開發服務器
+# 本地開發
 npm run dev
 
-# 打開 http://localhost:3000
+# 構建生產版本
+npm run build
+
+# 推送更改
+git push
 ```
 
 ---
 
-## ✨ 功能
+## 🌐 新聞來源
 
-| 功能 | 說明 |
+| 分類 | 來源 |
 |------|------|
-| 🌍 多分類 | 國際、財經、加密幣、香港 |
-| 🧠 AI 分析 | 摘要、情感、趨勢 |
-| 🌐 多語言 | 中文 / English |
-| 🌙 深色模式 | 護眼主題 |
-| 🔊 語音朗讀 | TTS 支援 |
-| 🔖 收藏功能 | 儲存感興趣新聞 |
-| 🔔 關鍵字追蹤 | 篩選特定話題 |
-| 📱 響應式 | 支援手機、平板、電腦 |
+| 國際 | BBC World, NYTimes, Al Jazeera, DW, SCMP |
+| 財經 | Yahoo Finance, MarketWatch, Investing.com, Nikkei Asia, CNBC |
+| 加密幣 | CoinTelegraph, CoinDesk, CryptoPanic |
+| 香港 | Google News HK, SCMP HK |
+| 港股 | Google News HK (股票相關) |
+| 台灣 | Google News TW |
+| 中國 | Google News China |
+| 商業 | Reuters, Nikkei Asia, Investing.com |
+| 科技 | TechCrunch, The Verge, Wired |
+| 天文學 | Space.com, NASA, Universe Today |
+| 神秘學 | Unexplained Mysteries, ScienceAlert |
+| Podcast | Nature Podcast, Science Podcast, NASA, Tech Podcasts |
 
 ---
 
-## 📁 項目結構
+## 📄 许可证
 
-```
-news-vercel/
-├── app/
-│   ├── layout.tsx        # 頁面佈局
-│   ├── page.tsx          # 主頁面
-│   ├── globals.css       # 全局樣式
-│   └── api/
-│       ├── news-feed/    # 新聞 API
-│       │   └── route.ts
-│       └── ai-summary/   # AI 分析 API
-│           └── route.ts
-├── public/               # 靜態資源
-├── package.json
-├── next.config.js
-├── tailwind.config.js
-└── tsconfig.json
-```
+MIT License
 
 ---
 
-## 🎨 自訂
+<a name="english"></a>
 
-### 添加新聞來源
+## 🇭🇰 NewsFlow - AI-Powered Global News Aggregator
 
-編輯 `app/api/news-feed/route.ts`：
+## 🚀 Deployment Guide
 
-```typescript
-const RSS_SOURCES = {
-  world: [
-    { url: 'https://your-rss-feed.com/rss', source: 'Your Source' },
-    // ...
-  ],
-}
-```
+### Required Setup
 
-### 添加新分類
+#### 1️⃣ Set OpenRouter API Key (for AI features)
 
-編輯 `app/page.tsx`：
+**Method 1: Vercel Dashboard (Recommended)**
+1. Login to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Select `news-ai-hub` project
+3. Go to **Settings** → **Environment Variables**
+4. Add:
+   - **Name**: `OPENROUTER_API_KEY`
+   - **Value**: Your OpenRouter API Key (get from https://openrouter.ai/)
+5. Click **Save**
+6. Go to **Deployments** → **Redeploy**
 
-```typescript
-const CATEGORIES = [
-  { id: 'world', icon: Globe, emoji: '🌍', label: { zh: '國際', en: 'World' }, color: 'from-blue-500 to-cyan-500' },
-  // 添加更多...
-]
+**Method 2: Local Development**
+```bash
+echo "OPENROUTER_API_KEY=your_api_key" > .env.local
+npm run dev
 ```
 
 ---
 
-## 💰 商業化建議
+## 🎯 Features
 
-| 方案 | 說明 |
-|------|------|
-| 廣告 | 加入 Google AdSense |
-| 訂閱 | 付費會員功能 |
-| API | 提供 API 給開發者 |
-| 白標 | 幫企業定製版本 |
+| Feature | Description |
+|---------|-------------|
+| 🌍 Multi-source News | 50+ news sources covering World, Finance, Crypto, HK, TW, China, Business, Tech, Astronomy, Mystery |
+| 🗣️ Bilingual Translation | Cantonese / English real-time translation |
+| 🎙️ AI Host Analysis | Host style analysis, bias detection, impact assessment |
+| 📊 Emotion Tracking | Positive/Negative/Neutral sentiment analysis |
+| 🧭 Stance Analysis | Pro-China, Pro-Western, etc. detection |
+| 🔍 Diverse Perspectives | Reduce filter bubble, balanced viewpoints |
+| 📱 Dark Mode | Eye-friendly dark theme |
+| 🔔 Custom Keyword Tracking | Track topics you're interested in |
+| 💾 Bookmark | Save news for offline reading |
+
+---
+
+## 🛠️ Development
+
+```bash
+# Install dependencies
+npm install
+
+# Local development
+npm run dev
+
+# Build for production
+npm run build
+
+# Push changes
+git push
+```
 
 ---
 
 ## 📄 License
 
-MIT
+MIT License

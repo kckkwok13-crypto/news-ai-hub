@@ -93,7 +93,7 @@ async function getAIAnalysis(items: any[], lang: string) {
         "HTTP-Referer": "https://newskingdom.store",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.0-flash-lite-preview-02-05:free",
+        model: "google/gemini-2.0-flash-001",
         messages: [{ role: "user", content: prompt }],
         response_format: { type: "json_object" }
       })
