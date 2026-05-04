@@ -48,9 +48,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
   mystery: [
-    { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
-    { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://www.coasttocoastam.com/rss/', source: 'Coast to Coast AM' },
+    { url: 'https://www.scmp.com/rss/91/feed', source: 'SCMP World' },
+    { url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml', source: 'BBC Science' },
+    { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera' },
   ],
   podcast: [
     // Tech Podcasts

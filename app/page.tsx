@@ -113,6 +113,36 @@ export default function NewsPage() {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
+  const [aiHostItem, setAiHostItem] = useState<any>(null);
+  const [aiHostAnalysis, setAiHostAnalysis] = useState<string>("");
+  const [aiHostLoading, setAiHostLoading] = useState(false);
+
+  // AI Host Analysis - 主持人風格深度分析
+  const analyzeWithAIHost = async (item: any) => {
+    setAiHostItem(item);
+    setAiHostLoading(true);
+    setAiHostAnalysis("");
+    try {
+      const res = await fetch('/api/ai-host', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          title: item.title_zh || item.title, 
+          desc: item.desc_zh || item.desc,
+          source: item.source,
+          lang: lang
+        })
+      });
+      const data = await res.json();
+      if (data.success && data.analysis) {
+        setAiHostAnalysis(data.analysis);
+      }
+    } catch (err) {
+      console.error('AI Host analysis failed', err);
+    }
+    setAiHostLoading(false);
+  };
+
   const [readIds, setReadIds] = useState<Set<string>>(new Set());
   const [showSaved, setShowSaved] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -652,6 +682,48 @@ export default function NewsPage() {
             })}
           </div>
         )}
+
+        {/* AI 網台分析面板 */}
+        {aiHostItem && (
+          <div className={`fixed bottom-0 left-0 right-0 z-50 p-6 rounded-t-3xl shadow-2xl ${darkMode ? "bg-gray-900 border-t border-gray-700" : "bg-white border-t border-gray-200"}`}>
+            <div className="max-w-4xl mx-auto">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-lg font-bold flex items-center gap-2">
+                    🎙️ AI 網台主持分析
+                  </h3>
+                  <p className={`text-sm mt-1 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                    {aiHostItem.title_zh || aiHostItem.title}
+                  </p>
+                </div>
+                <button onClick={() => { setAiHostItem(null); setAiHostAnalysis(""); }} className="p-2 rounded-lg hover:bg-gray-700">
+                  <X size={18} />
+                </button>
+              </div>
+              
+              {aiHostLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+                  <span className="ml-3">AI 主持人分析中...</span>
+                </div>
+              ) : (
+                <div className={`p-4 rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-50"}`}>
+                  <p className="whitespace-pre-wrap leading-relaxed">{aiHostAnalysis || "點擊分析按鈕開始..."}</p>
+                  {aiHostAnalysis && (
+                    <button onClick={() => {
+                      const utt = new SpeechSynthesisUtterance(aiHostAnalysis);
+                      utt.lang = lang === "en" ? "en-US" : "zh-HK";
+                      speechSynthesis.speak(utt);
+                    }} className="mt-4 px-4 py-2 rounded-lg bg-purple-500 text-white flex items-center gap-2">
+                      <Volume2 size={16} /> 收聽分析
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
       </main>
 
       {/* Speaking indicator */}
