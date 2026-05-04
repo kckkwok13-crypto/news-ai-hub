@@ -132,6 +132,24 @@ export default function NewsPage() {
 
   const t = LABELS[lang];
 
+  // Format date to local time
+  const formatDate = (dateStr: string) => {
+    try {
+      const date = new Date(dateStr)
+      if (isNaN(date.getTime())) return dateStr
+      return date.toLocaleDateString(lang === "en" ? "en-US" : lang === "zh-CN" ? "zh-CN" : "zh-TW", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    } catch {
+      return dateStr
+    }
+  }
+
+
   // 1. Initial Load from LocalStorage for instant perception
   useEffect(() => {
     const cached = localStorage.getItem(`news_cache_${category}_${lang}`);
@@ -567,7 +585,7 @@ export default function NewsPage() {
                       </div>
                     )}
 
-                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
                 </div>
               );
@@ -627,7 +645,7 @@ export default function NewsPage() {
                         {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
                       </p>
                     )}
-                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{item.pubDate}</p>
+                    <p className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
                 </div>
               );

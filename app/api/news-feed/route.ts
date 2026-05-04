@@ -50,7 +50,8 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   mystery: [
     { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
     { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    { url: 'https://mysteriousuniverse.org/feed/', source: 'Mysterious Universe' },
+    { url: 'https://www.ancient-origins.net/rss.xml', source: 'Ancient Origins' },
+    { url: 'https://www.coasttocoastam.com/rss/', source: 'Coast to Coast AM' },
   ],
   podcast: [
     // Tech Podcasts
