@@ -137,10 +137,9 @@ async function translateText(text: string, targetLang: string): Promise<string> 
   if (!text || text.length < 2) return text
   
   // Map language codes to Google Translate target
-  // zh-TW -> zh-TW (Traditional Chinese)
-  // zh-CN -> zh-CN (Simplified Chinese)
-  // en -> en (English)
-  const translateTarget = targetLang === 'zh-TW' ? 'zh-TW' : targetLang === 'zh-CN' ? 'zh-CN' : 'en'
+  const translateTarget = targetLang === 'zh-TW' ? 'zh-TW' 
+    : targetLang === 'zh-CN' ? 'zh-CN' 
+    : 'en'
   
   try {
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${translateTarget}&dt=t&q=${encodeURIComponent(text)}`
@@ -149,14 +148,18 @@ async function translateText(text: string, targetLang: string): Promise<string> 
       signal: AbortSignal.timeout(5000),
     })
     
-    if (!res.ok) return text
+    if (!res.ok) {
+      console.error(`[Translate] HTTP ${res.status} for target ${translateTarget}`)
+      return text
+    }
     
     const data = await res.json()
     if (data && data[0] && data[0][0] && data[0][0][0]) {
+      console.log(`[Translate] Success: "${text.slice(0,30)}..." -> "${data[0][0][0].slice(0,30)}..."`)
       return data[0][0][0]
     }
-  } catch {
-    // Translation failed, return original
+  } catch (e) {
+    console.error(`[Translate] Error for target ${translateTarget}:`, e)
   }
   
   return text
@@ -249,14 +252,25 @@ export async function GET(request: NextRequest) {
 
   // 3. Translate only the top items
   const translatedItems = await Promise.all(itemsToTranslate.map(async (item) => {
-    let title_zh = item.title
-    let desc_zh = item.desc
-    
-    // Always translate if language is not matching the source
-    // - If lang is en and source is Chinese -> translate to English
-    // - If lang is zh-TW or zh-CN and source is English -> translate to Chinese
+    // Detect source language
     const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
-    const needsTranslation = (lang === 'en' && isChineseSource) || (lang !== 'en' && !isChineseSource)
+    
+    // Determine if translation is needed
+    let title_translated = item.title
+    let desc_translated = item.desc
+    let needsTranslation = false
+    
+    if (lang === 'en') {
+      // Target: English
+      // If source is Chinese -> translate to English
+      needsTranslation = isChineseSource
+    } else if (lang === 'zh-TW' || lang === 'zh-CN') {
+      // Target: Chinese (Traditional or Simplified)
+      // If source is English -> translate to Chinese
+      needsTranslation = !isChineseSource
+    }
+    
+    console.log(`[News] "${item.title.slice(0,30)}..." | lang=${lang} | isChinese=${isChineseSource} | needsTranslate=${needsTranslation}`)
     
     if (needsTranslation) {
       try {
@@ -264,30 +278,26 @@ export async function GET(request: NextRequest) {
           translateText(item.title, lang),
           item.desc ? translateText(item.desc, lang) : Promise.resolve('')
         ])
-        title_zh = tTitle
-        desc_zh = tDesc
+        title_translated = tTitle
+        desc_translated = tDesc
       } catch (e) {
-        console.error("Translation item error", e)
+        console.error("[Translation error]", e)
       }
-    } else if (isChineseSource && (lang === 'zh-TW' || lang === 'zh-CN')) {
-      // Source is already Chinese, just use it
-      title_zh = item.title
-      desc_zh = item.desc
     }
     
     return {
       ...item,
-      title_zh,
-      desc_zh,
-      translated: title_zh !== item.title
+      title_translated,
+      desc_translated,
+      translated: title_translated !== item.title
     }
   }))
   
-  // For remaining items, just provide empty zh fields
+  // For remaining items, just provide empty translated fields
   const finalRemaining = remainingItems.map(item => ({
     ...item,
-    title_zh: '',
-    desc_zh: '',
+    title_translated: item.title,
+    desc_translated: item.desc,
     translated: false
   }))
 

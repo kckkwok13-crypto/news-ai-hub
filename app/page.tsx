@@ -9,7 +9,7 @@ type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "busine
 
 interface NewsItem {
   id: string;
-  title: string; title_zh: string; desc: string; desc_zh: string; link: string;
+  title: string; title_translated: string; desc: string; desc_translated: string; link: string;
   pubDate: string; source: string; img: boolean; img_url: string;
   translated: boolean; translationError?: string;
 }
@@ -132,8 +132,8 @@ export default function NewsPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          title: item.title_zh || item.title, 
-          desc: item.desc_zh || item.desc,
+          title: item.title_translated || item.title, 
+          desc: item.desc_translated || item.desc,
           source: item.source,
           lang: lang
         })
@@ -321,7 +321,7 @@ export default function NewsPage() {
 
   const shareNews = (item: NewsItem) => {
     if (navigator.share) {
-      navigator.share({ title: item.title_zh || item.title, url: item.link });
+      navigator.share({ title: item.title_translated || item.title, url: item.link });
     } else {
       navigator.clipboard.writeText(item.link);
       setToast(t.copied);
@@ -339,9 +339,9 @@ export default function NewsPage() {
   const filteredNews = news.filter(n => {
     if (!search) return true;
     const q = search.toLowerCase();
-    return (n.title_zh || n.title).toLowerCase().includes(q) ||
+    return (n.title_translated || n.title).toLowerCase().includes(q) ||
            n.title.toLowerCase().includes(q) ||
-           (n.desc_zh || n.desc).toLowerCase().includes(q);
+           (n.desc_translated || n.desc).toLowerCase().includes(q);
   });
 
   const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : filteredNews;
@@ -623,7 +623,7 @@ export default function NewsPage() {
                       {isSaved && <span className="text-sm">📌</span>}
                     </div>
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-3 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-                      {(item.title_zh && item.title_zh !== item.title) ? item.title_zh : item.title}
+                      {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
                     
                     {details && (
@@ -632,7 +632,7 @@ export default function NewsPage() {
                           <span className="text-sm font-bold text-blue-500">🤖 {t.analysis}</span>
                         </div>
                         <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                          {(item.desc_zh && item.desc_zh !== item.desc) ? item.desc_zh : item.desc}
+                          {item.translated && item.desc_translated ? item.desc_translated : item.desc}
                         </p>
                         <button onClick={e => { e.stopPropagation(); setShowImpactId(item.id); }} className={`mt-3 w-full py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-blue-900/40 text-blue-400 hover:bg-blue-900/60" : "bg-blue-100 text-blue-600 hover:bg-blue-200"}`}>
                           <Zap size={16} /> {t.impact || "深度解讀"}
@@ -659,7 +659,7 @@ export default function NewsPage() {
                       <div className="mt-4 pt-4 border-t border-gray-700/50">
                         {item.desc && (
                           <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {(item.desc_zh && item.desc_zh !== item.desc) ? item.desc_zh : item.desc}
+                            {item.translated && item.desc_translated ? item.desc_translated : item.desc}
                           </p>
                         )}
                         <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
@@ -686,7 +686,7 @@ export default function NewsPage() {
                     {aiHostData?.isDemo && <span className="text-xs bg-yellow-500/30 text-yellow-300 px-3 py-1 rounded-full">示範模式</span>}
                   </h3>
                   <p className="text-sm text-purple-200 mt-1 line-clamp-1">
-                    {aiHostItem.title_zh || aiHostItem.title}
+                    {aiHostItem.title_translated || aiHostItem.title}
                   </p>
                 </div>
                 <button 
