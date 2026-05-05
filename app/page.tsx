@@ -623,7 +623,7 @@ export default function NewsPage() {
                       {isSaved && <span className="text-sm">📌</span>}
                     </div>
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-3 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
-                      {lang === "en" ? item.title : (item.title_zh || item.title)}
+                      {(item.title_zh && item.title_zh !== item.title) ? item.title_zh : item.title}
                     </h3>
                     
                     {details && (
@@ -632,7 +632,7 @@ export default function NewsPage() {
                           <span className="text-sm font-bold text-blue-500">🤖 {t.analysis}</span>
                         </div>
                         <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                          {lang === 'en' ? details.summary_en : details.summary_zh}
+                          {(item.desc_zh && item.desc_zh !== item.desc) ? item.desc_zh : item.desc}
                         </p>
                         <button onClick={e => { e.stopPropagation(); setShowImpactId(item.id); }} className={`mt-3 w-full py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-blue-900/40 text-blue-400 hover:bg-blue-900/60" : "bg-blue-100 text-blue-600 hover:bg-blue-200"}`}>
                           <Zap size={16} /> {t.impact || "深度解讀"}
@@ -659,7 +659,7 @@ export default function NewsPage() {
                       <div className="mt-4 pt-4 border-t border-gray-700/50">
                         {item.desc && (
                           <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {lang === "en" ? item.desc : (item.desc_zh || item.desc)}
+                            {(item.desc_zh && item.desc_zh !== item.desc) ? item.desc_zh : item.desc}
                           </p>
                         )}
                         <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>

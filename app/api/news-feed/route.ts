@@ -136,11 +136,17 @@ function extractText(content: string): string {
 async function translateText(text: string, targetLang: string): Promise<string> {
   if (!text || text.length < 2) return text
   
+  // Map language codes to Google Translate target
+  // zh-TW -> zh-TW (Traditional Chinese)
+  // zh-CN -> zh-CN (Simplified Chinese)
+  // en -> en (English)
+  const translateTarget = targetLang === 'zh-TW' ? 'zh-TW' : targetLang === 'zh-CN' ? 'zh-CN' : 'en'
+  
   try {
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang === 'en' ? 'en' : 'zh-TW'}&dt=t&q=${encodeURIComponent(text)}`
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${translateTarget}&dt=t&q=${encodeURIComponent(text)}`
     
     const res = await fetch(url, {
-      signal: AbortSignal.timeout(3000),
+      signal: AbortSignal.timeout(5000),
     })
     
     if (!res.ok) return text
@@ -246,7 +252,13 @@ export async function GET(request: NextRequest) {
     let title_zh = item.title
     let desc_zh = item.desc
     
-    if (lang !== 'en' && !/[\u4e00-\u9fff]/.test(item.title)) {
+    // Always translate if language is not matching the source
+    // - If lang is en and source is Chinese -> translate to English
+    // - If lang is zh-TW or zh-CN and source is English -> translate to Chinese
+    const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
+    const needsTranslation = (lang === 'en' && isChineseSource) || (lang !== 'en' && !isChineseSource)
+    
+    if (needsTranslation) {
       try {
         const [tTitle, tDesc] = await Promise.all([
           translateText(item.title, lang),
@@ -257,6 +269,10 @@ export async function GET(request: NextRequest) {
       } catch (e) {
         console.error("Translation item error", e)
       }
+    } else if (isChineseSource && (lang === 'zh-TW' || lang === 'zh-CN')) {
+      // Source is already Chinese, just use it
+      title_zh = item.title
+      desc_zh = item.desc
     }
     
     return {
