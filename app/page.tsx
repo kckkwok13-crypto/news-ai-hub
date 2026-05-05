@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "technology" | "hk_finance" | "astronomy" | "mystery" | "podcast";
+type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "business" | "technology" | "hk_finance" | "astronomy" | "mystery" | "podcast";
 
 interface NewsItem {
   id: string;
@@ -539,6 +539,9 @@ export default function NewsPage() {
               <span>{c.icon}</span> {(t.categories as any)[c.id]}
             </button>
           ))}
+          <Link href="/podcast" className="flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:opacity-90 transition-all">
+            🎙️ {(t.categories as any)['podcast']}
+          </Link>
           <div className="ml-auto flex items-center gap-2">
             <button onClick={() => fetchNews(false)} className={`p-3 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
               <RefreshCw size={18} />
@@ -560,6 +563,9 @@ export default function NewsPage() {
               <span>{c.icon}</span> {(t.categories as any)[c.id]}
             </button>
           ))}
+          <Link href="/podcast" className="flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap snap-start bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
+            🎙️ {(t.categories as any)['podcast']}
+          </Link>
         </div>
 
         {loading && (
