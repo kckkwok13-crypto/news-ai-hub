@@ -239,9 +239,14 @@ export default function NewsPage() {
       setLoading(true);
     }
     
+    // Clear cache before fetching to ensure fresh data
+    try {
+      localStorage.removeItem(`news_cache_${category}_${lang}`);
+    } catch (e) {}
+    
     setError("");
     try {
-      const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}`);
+      const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}`);
       const data = await res.json();
       if (data.success && data.items) {
         setNews(data.items);
@@ -351,6 +356,36 @@ export default function NewsPage() {
     return isRead ? "bg-gray-100 border-gray-200" : "bg-white border-gray-200";
   };
 
+  // Language change handler - clear cache and force refresh
+  const handleLangChange = (newLang: Lang) => {
+    // Clear all news caches for this category
+    ['zh-TW', 'zh-CN', 'en'].forEach(l => {
+      try {
+        localStorage.removeItem(`news_cache_${category}_${l}`);
+      } catch (e) {}
+    });
+    
+    setLang(newLang);
+    localStorage.setItem("newsLang", newLang);
+    setShowLangMenu(false);
+    setToast(t.langChanged);
+    
+    // Force refresh with new language
+    setTimeout(() => {
+      setLoading(true);
+      fetch(`/api/news-feed?category=${category}&lang=${newLang}&t=${Date.now()}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.items) {
+            setNews(data.items);
+            localStorage.setItem(`news_cache_${category}_${newLang}`, JSON.stringify(data.items));
+          }
+        })
+        .catch(err => console.error('Force refresh failed:', err))
+        .finally(() => setLoading(false));
+    }, 100);
+  };
+
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-gray-950" : "bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"}`}>
       {toast && (
@@ -442,7 +477,7 @@ export default function NewsPage() {
                 {showLangMenu && (
                   <div className={`absolute right-0 mt-2 py-2 rounded-xl shadow-2xl z-50 min-w-[140px] ${darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"}`}>
                     {LANG_OPTIONS.map(l => (
-                      <button key={l.id} onClick={() => { setLang(l.id); setShowLangMenu(false); setToast(t.langChanged); }} className={`w-full text-left px-4 py-3 text-base hover:bg-opacity-50 ${darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} ${lang === l.id ? (darkMode ? "text-blue-400" : "text-blue-600") : ""}`}>
+                      <button key={l.id} onClick={() => handleLangChange(l.id)} className={`w-full text-left px-4 py-3 text-base hover:bg-opacity-50 ${darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"} ${lang === l.id ? (darkMode ? "text-blue-400" : "text-blue-600") : ""}`}>
                         {l.flag} {l.label}
                       </button>
                     ))}
