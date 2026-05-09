@@ -36,13 +36,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
     { url: 'https://news.google.com/rss/search?q=mystery%20unsolved%20strange&hl=en-US&gl=US&ceid=US:en', source: 'Mysteries' },
   ],
-  podcast: [
     // Tech Podcasts
     { url: 'https://feeds.megaphone.fm/vergecast', source: 'The Vergecast' },
-    { url: 'https://feeds.npr.org/510289/podcast.xml', source: 'NPR Tech News' },
     // Science/Astronomy Podcasts
-    { url: 'https://feeds.npr.org/510325/podcast.xml', source: 'NPR Science' },
-    { url: 'https://feeds.npr.org/510324/podcast.xml', source: 'NPR Planet Money' },
     // Mystery/Paranormal (using mystery RSS that works)
     { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
     { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
