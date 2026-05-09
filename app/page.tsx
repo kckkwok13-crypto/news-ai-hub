@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "world" | "finance" | "crypto" | "hk" | "tw" | "china" | "business" | "business" | "technology" | "hk_finance" | "astronomy" | "mystery" | "podcast";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "podcast";
 
 interface NewsItem {
   id: string;
@@ -21,13 +21,8 @@ const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
 ];
 
 const CATEGORIES: { id: Category; icon: string; color: string }[] = [
-  { id: "world", icon: "🌍", color: "bg-blue-500" },
   { id: "finance", icon: "💰", color: "bg-green-500" },
   { id: "crypto", icon: "₿", color: "bg-orange-500" },
-  { id: "hk", icon: "🇭🇰", color: "bg-red-500" },
-  { id: "hk_finance", icon: "📈", color: "bg-emerald-500" },
-  { id: "tw", icon: "🌴", color: "bg-blue-400" },
-  { id: "china", icon: "🐉", color: "bg-yellow-500" },
   { id: "business", icon: "💼", color: "bg-purple-500" },
   { id: "technology", icon: "🚀", color: "bg-indigo-500" },
   { id: "astronomy", icon: "🔭", color: "bg-violet-500" },
@@ -110,7 +105,7 @@ const LABELS = {
 export default function NewsPage() {
   const [lang, setLang] = useState<Lang>("zh-TW");
   const [darkMode, setDarkMode] = useState(true);
-  const [category, setCategory] = useState<Category>("world");
+  const [category, setCategory] = useState<Category>("finance");
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

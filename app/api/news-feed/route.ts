@@ -2,10 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 
 // RSS sources by category
 const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
-  world: [
-    { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC World' },
-    { url: 'https://www.scmp.com/rss/91/feed', source: 'SCMP' },
-  ],
   finance: [
     { url: 'https://finance.yahoo.com/news/rssindex', source: 'Yahoo Finance' },
     { url: 'http://feeds.marketwatch.com/marketwatch/topstories/', source: 'MarketWatch' },
@@ -17,19 +13,6 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph' },
     { url: 'https://www.coindesk.com/arc/outboundfeeds/rss/', source: 'CoinDesk' },
     { url: 'https://cryptopanic.com/news/rss/', source: 'CryptoPanic' },
-  ],
-  hk: [
-    { url: 'https://news.google.com/rss/search?q=%E9%A6%99%E6%B8%AF%20%E6%96%B0%E8%81%9E&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: 'Google News HK' },
-    { url: 'https://www.scmp.com/rss/2/feed', source: 'SCMP Hong Kong' },
-  ],
-  hk_finance: [
-    { url: 'https://news.google.com/rss/search?q=%E6%B8%AF%E8%82%A1%20%E6%81%92%E7%94%9F%E6%8C%87%E6%95%B8%20%E8%B2%A1%E7%B6%93&hl=zh-HK&gl=HK&ceid=HK:zh-Hant', source: '港股即時' },
-  ],
-  tw: [
-    { url: 'https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3&hl=zh-TW&gl=TW&ceid=TW:zh-Hant', source: 'Google News TW' },
-  ],
-  china: [
-    { url: 'https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD&hl=zh-CN&gl=CN&ceid=CN:zh-Hans', source: 'Google News China' },
   ],
   business: [
     { url: 'https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best', source: 'Reuters' },
@@ -167,10 +150,10 @@ async function translateText(text: string, targetLang: string): Promise<string> 
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
-  const category = searchParams.get('category') || 'world'
+  const category = searchParams.get('category') || 'finance'
   const lang = searchParams.get('lang') || 'zh-TW'
   
-  const sources = RSS_SOURCES[category] || RSS_SOURCES.world
+  const sources = RSS_SOURCES[category] || RSS_SOURCES.finance
   
   const now = Date.now()
   // Relaxed age check to 72 hours to prevent "empty news" due to time sync issues
