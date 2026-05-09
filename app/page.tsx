@@ -40,7 +40,7 @@ const LABELS = {
     refresh: "刷新", autoRefresh: "自動刷新", refreshOff: "關閉自動刷新",
     aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
     trend: "熱門話題", related: "相關新聞",
-    categories: {
+    categories: { finance: "財經", crypto: "加密幣", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學" },
     },
     savedNews: "收藏", allNews: "全部", source: "來源",
     readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
@@ -62,7 +62,7 @@ const LABELS = {
     refresh: "刷新", autoRefresh: "自动刷新", refreshOff: "关闭自动刷新",
     aiSummary: "AI 智能摘要", noSummary: "AI 摘要载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
     trend: "热门话题", related: "相关新闻",
-    categories: {
+    categories: { finance: "財經", crypto: "加密幣", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學" },
     },
     savedNews: "收藏", allNews: "全部", source: "来源",
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
@@ -84,7 +84,7 @@ const LABELS = {
     refresh: "Refresh", autoRefresh: "Auto Refresh", refreshOff: "Turn Off Auto Refresh",
     aiSummary: "AI Summary", noSummary: "AI Summary loading...", keyAlert: "No API Key, AI features unavailable",
     trend: "Trending Topics", related: "Related News",
-    categories: {
+    categories: { finance: "財經", crypto: "加密幣", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學" },
     },
     savedNews: "Saved", allNews: "All", source: "Source",
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
