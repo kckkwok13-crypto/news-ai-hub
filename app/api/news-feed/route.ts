@@ -25,32 +25,19 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.wired.com/feed/rss', source: 'Wired' },
   ],
   astronomy: [
-    // Removed Space.com overlap
     { url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss', source: 'NASA' },
     { url: 'https://www.universetoday.com/universetoday.xml', source: 'Universe Today' },
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
   mystery: [
-    // 使用更可靠的 Google News 关键词搜索
     { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
     { url: 'https://news.google.com/rss/search?q=mystery%20unsolved%20strange&hl=en-US&gl=US&ceid=US:en', source: 'Mysteries' },
-  ],
-    // Tech Podcasts
-    { url: 'https://feeds.megaphone.fm/vergecast', source: 'The Vergecast' },
-    // Science/Astronomy Podcasts
-    // Mystery/Paranormal (using mystery RSS that works)
-    { url: 'https://www.phantomsandmonsters.com/rss.xml', source: 'Phantoms & Monsters' },
-    { url: 'https://www.dailygrail.com/feed/', source: 'Daily Grail' },
-    // Crypto (using crypto news feeds)
-    { url: 'https://cointelegraph.com/rss', source: 'CoinTelegraph Podcast' },
-    { url: 'https://cryptopanic.com/news/rss/', source: 'CryptoPanic' },
   ],
 }
 
 // Extract image from RSS item
 function extractImage(itemXml: string): string {
-  // Guardian has multiple media:content with different widths
   const mediaTags = itemXml.match(/<media:content[^>]*>/gi) || []
   
   if (mediaTags.length > 0) {
@@ -73,19 +60,15 @@ function extractImage(itemXml: string): string {
     if (bestUrl) return bestUrl
   }
   
-  // media:thumbnail
   const thumb = itemXml.match(/<media:thumbnail[^>]*url="([^"]+)"/i)
   if (thumb) return thumb[1]
   
-  // media:content (without width attribute)
   const content = itemXml.match(/<media:content[^>]*url="([^"]+)"/i)
   if (content) return content[1]
   
-  // enclosure (used by Investing.com)
   const enc = itemXml.match(/<enclosure[^>]*url="([^"]+)"/i)
   if (enc) return enc[1]
   
-  // img tag in content
   const img = itemXml.match(/<img[^>]*src="([^"]+)"/i)
   if (img) return img[1]
   
@@ -115,7 +98,6 @@ function extractText(content: string): string {
 async function translateText(text: string, targetLang: string): Promise<string> {
   if (!text || text.length < 2) return text
   
-  // Map language codes to Google Translate target
   const translateTarget = targetLang === 'zh-TW' ? 'zh-TW' 
     : targetLang === 'zh-CN' ? 'zh-CN' 
     : 'en'
@@ -134,7 +116,6 @@ async function translateText(text: string, targetLang: string): Promise<string> 
     
     const data = await res.json()
     if (data && data[0] && data[0][0] && data[0][0][0]) {
-      console.log(`[Translate] Success: "${text.slice(0,30)}..." -> "${data[0][0][0].slice(0,30)}..."`)
       return data[0][0][0]
     }
   } catch (e) {
@@ -152,10 +133,8 @@ export async function GET(request: NextRequest) {
   const sources = RSS_SOURCES[category] || RSS_SOURCES.finance
   
   const now = Date.now()
-  // Relaxed age check to 72 hours to prevent "empty news" due to time sync issues
   const MAX_AGE_MS = 72 * 60 * 60 * 1000
 
-  // 1. Parallel fetch all sources
   const sourcePromises = sources.map(async (source) => {
     try {
       const res = await fetch(source.url, {
@@ -194,7 +173,6 @@ export async function GET(request: NextRequest) {
           pubTimestamp = isNaN(parsedDate.getTime()) ? 0 : parsedDate.getTime()
         }
 
-        // If date is missing or too old, we still might want it if we have very few news
         if (pubTimestamp !== 0 && (now - pubTimestamp) > MAX_AGE_MS) continue
 
         const img = extractImage(itemXml)
@@ -223,33 +201,22 @@ export async function GET(request: NextRequest) {
   const results = await Promise.all(sourcePromises)
   const allItems = results.flat()
   
-  // 2. Sort by date descending
   const sortedItems = allItems.sort((a, b) => b.pubTimestamp - a.pubTimestamp)
-  // Only process top 15 items for translation to avoid timeout and rate limits
   const itemsToTranslate = sortedItems.slice(0, 15)
   const remainingItems = sortedItems.slice(15, 30)
 
-  // 3. Translate only the top items
   const translatedItems = await Promise.all(itemsToTranslate.map(async (item) => {
-    // Detect source language
     const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
     
-    // Determine if translation is needed
     let title_translated = item.title
     let desc_translated = item.desc
     let needsTranslation = false
     
     if (lang === 'en') {
-      // Target: English
-      // If source is Chinese -> translate to English
       needsTranslation = isChineseSource
     } else if (lang === 'zh-TW' || lang === 'zh-CN') {
-      // Target: Chinese (Traditional or Simplified)
-      // If source is English -> translate to Chinese
       needsTranslation = !isChineseSource
     }
-    
-    console.log(`[News] "${item.title.slice(0,30)}..." | lang=${lang} | isChinese=${isChineseSource} | needsTranslate=${needsTranslation}`)
     
     if (needsTranslation) {
       try {
@@ -272,7 +239,6 @@ export async function GET(request: NextRequest) {
     }
   }))
   
-  // For remaining items, just provide empty translated fields
   const finalRemaining = remainingItems.map(item => ({
     ...item,
     title_translated: item.title,
@@ -282,7 +248,6 @@ export async function GET(request: NextRequest) {
 
   const combined = [...translatedItems, ...finalRemaining]
   
-  // 4. Final shuffling/selection
   const newestFive = combined.slice(0, 5)
   const others = combined.slice(5).sort(() => Math.random() - 0.5)
   const finalItems = [...newestFive, ...others].slice(0, 25)
