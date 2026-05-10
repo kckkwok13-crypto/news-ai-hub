@@ -734,8 +734,30 @@ export default function NewsPage() {
                     )}
 
                     {expandedId === item.title && (
-                      <div className="mt-3 pt-3 border-t border-gray-700/50">
-                        {item.desc && (
+                      <div className={`mt-3 pt-3 border-t border-gray-700/50 ${isTravelGuide ? 'bg-gradient-to-br from-purple-900/20 to-indigo-900/10 p-4 rounded-xl' : ''}`}>
+                        {isTravelGuide && (
+                          <div className="mb-4">
+                            <div className="flex items-center gap-3 mb-2">
+                              <span className="text-2xl">{item.city_emoji || '🌏'}</span>
+                              <div>
+                                <div className="text-purple-300 font-bold">{item.city || item.city_zh}</div>
+                                <div className="text-gray-400 text-xs">{item.area || item.area_zh}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+                              <span>⭐ {item.rating || '4.5'}/5</span>
+                              <span>⏰ {item.best_time || item.hours || '全天'}</span>
+                              <span>📍 {item.price_range || item.price_range || ''}</span>
+                            </div>
+                            <div className="text-xs text-gray-300 leading-relaxed mb-3">
+                              {item.desc || item.description}
+                            </div>
+                            <div className="text-xs text-purple-400 font-medium">
+                              📋 {item.address || '查看地址請點擊下方連結'}
+                            </div>
+                          </div>
+                        )}
+                        {!isTravelGuide && item.desc && (
                           <p className={`text-sm leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                             {item.translated && item.desc_translated ? item.desc_translated : item.desc}
                           </p>
