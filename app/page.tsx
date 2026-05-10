@@ -31,6 +31,9 @@ interface NewsItem {
   emoji?: string;
   name?: string;
   places?: TravelPlace[];
+  city?: string;
+  city_emoji?: string;
+  area?: string;
 }
 
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
@@ -39,18 +42,18 @@ const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
   { id: 'en', flag: '🇺🇸', label: 'English' },
 ];
 
-const CATEGORIES: { id: Category; icon: string; color: string }[] = [
-  { id: "finance", icon: "💰", color: "bg-green-500" },
-  { id: "crypto", icon: "₿", color: "bg-orange-500" },
-  { id: "business", icon: "💼", color: "bg-purple-500" },
-  { id: "technology", icon: "🚀", color: "bg-indigo-500" },
-  { id: "astronomy", icon: "🔭", color: "bg-violet-500" },
-  { id: "mystery", icon: "🔮", color: "bg-purple-600" },
-  { id: "health", icon: "🏥", color: "bg-red-500" },
-  { id: "gaming", icon: "🎮", color: "bg-cyan-500" },
-  { id: "food", icon: "🍜", color: "bg-yellow-500" },
-  { id: "travel", icon: "✈️", color: "bg-teal-500" },
-  { id: "ai_art", icon: "🤖", color: "bg-pink-500" },
+const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string; label_en: string }[] = [
+  { id: "finance", icon: "💰", color: "bg-green-500", label_zh: "財經", label_en: "Finance" },
+  { id: "crypto", icon: "₿", color: "bg-orange-500", label_zh: "加密幣", label_en: "Crypto" },
+  { id: "business", icon: "💼", color: "bg-purple-500", label_zh: "商業", label_en: "Business" },
+  { id: "technology", icon: "🚀", color: "bg-indigo-500", label_zh: "科技", label_en: "Tech" },
+  { id: "astronomy", icon: "🔭", color: "bg-violet-500", label_zh: "天文", label_en: "Astronomy" },
+  { id: "mystery", icon: "🔮", color: "bg-purple-600", label_zh: "神秘學", label_en: "Mystic" },
+  { id: "health", icon: "🏥", color: "bg-red-500", label_zh: "健康", label_en: "Health" },
+  { id: "gaming", icon: "🎮", color: "bg-cyan-500", label_zh: "遊戲", label_en: "Gaming" },
+  { id: "food", icon: "🍜", color: "bg-yellow-500", label_zh: "美食", label_en: "Food" },
+  { id: "travel", icon: "✈️", color: "bg-teal-500", label_zh: "旅遊", label_en: "Travel" },
+  { id: "ai_art", icon: "🤖", color: "bg-pink-500", label_zh: "AI藝術", label_en: "AI Art" },
 
 ];
 
@@ -453,7 +456,7 @@ export default function NewsPage() {
                 </button>
                 {CATEGORIES.map(c => (
                   <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${!showSaved && category === c.id ? `${c.color} text-white` : "bg-gray-800 text-gray-300"}`}>
-                    <span className="text-2xl">{c.icon}</span> {(t.categories as any)[c.id]}
+                    <span className="text-2xl">{c.icon}</span> c.label_zh
                   </button>
                 ))}
               </div>
@@ -602,7 +605,7 @@ export default function NewsPage() {
           </button>
           {CATEGORIES.map(c => (
             <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
-              <span className="text-lg">{c.icon}</span> <span>{(t.categories as any)[c.id]}</span>
+              <span className="text-lg">{c.icon}</span> <span className="hidden md:inline">{lang === "en" ? c.label_en : c.label_zh}</span>
             </button>
           ))}
           <div className="ml-auto flex items-center gap-2">
@@ -623,7 +626,7 @@ export default function NewsPage() {
           </button>
           {CATEGORIES.map(c => (
             <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all snap-start ${showSaved ? "" : category === c.id ? `${c.color} text-white` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-              <span className="text-lg">{c.icon}</span> <span>{(t.categories as any)[c.id]}</span>
+              <span className="text-lg">{c.icon}</span> <span className="hidden md:inline">{lang === "en" ? c.label_en : c.label_zh}</span>
             </button>
           ))}
         </div>
@@ -653,12 +656,15 @@ export default function NewsPage() {
 
               return (
                 <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
-                  {isTravelGuide && item.places ? (
-                    <div className="relative h-48 overflow-hidden">
-                      <img src={item.places[0]?.image || ''} alt="" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
-                        <span className="text-5xl">{item.emoji}</span>
-                        <span className="text-2xl font-bold text-white ml-3">{item.name}</span>
+                  {isTravelGuide && item.img && item.img_url ? (
+                    <div className="relative h-40 md:h-48 overflow-hidden">
+                      <img src={item.img_url} alt="" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-3">
+                        <span className="text-3xl">{item.city_emoji || '🌏'}</span>
+                        <div className="ml-2">
+                          <span className="text-white font-bold text-sm">{item.city || ''}</span>
+                          <span className="text-gray-300 text-xs block">{item.area || ''}</span>
+                        </div>
                       </div>
                     </div>
                   ) : item.img && item.img_url ? (
@@ -690,9 +696,12 @@ export default function NewsPage() {
                       <span className={`text-xs md:text-sm px-3 py-1 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
                       {isSaved && <span className="text-sm">📌</span>}
                     </div>
-                    <h3 className={`text-base md:text-lg font-bold leading-snug mb-3 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
+                    <button onClick={e => { e.stopPropagation(); setExpandedId(expandedId === item.title ? null : item.title); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
+                      {expandedId === item.title ? "收起" : "閱讀更多"}
+                    </button>
                     
                     {details && (
                       <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
@@ -724,17 +733,17 @@ export default function NewsPage() {
                     )}
 
                     {expandedId === item.title && (
-                      <div className="mt-4 pt-4 border-t border-gray-700/50">
+                      <div className="mt-3 pt-3 border-t border-gray-700/50">
                         {item.desc && (
-                          <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                          <p className={`text-sm leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                             {item.translated && item.desc_translated ? item.desc_translated : item.desc}
                           </p>
                         )}
-                        <a href={item.link === "#" ? undefined : item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
-                          {t.readMore} <ExternalLink size={16} />
-                        </a>
                       </div>
                     )}
+                        <a href={item.link === "#" ? undefined : item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition mt-2 ${darkMode ? "bg-blue-600/80 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                          {t.readMore} <ExternalLink size={12} />
+                        </a>
 
                     <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
