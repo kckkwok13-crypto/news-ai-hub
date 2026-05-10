@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery";
 
 interface NewsItem {
   id: string;
@@ -44,7 +45,11 @@ const LABELS = {
     bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
     sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
     biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" },
-    menu: "目錄", close: "關閉", all: "全部", analysis: "AI 分析"
+    menu: "目錄", close: "關閉", all: "全部", analysis: "AI 分析",
+    savedNews: "收藏", allNews: "全部", source: "來源",
+    readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
+    langChanged: "語言已切換",
+    shareSuccess: "分享成功", emailRequired: "請輸入 Email 地址"
   },
   "zh-CN": {
     title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI 分析 · 多元分类",
@@ -406,6 +411,7 @@ export default function NewsPage() {
                 <button onClick={() => { setShowSaved(true); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${showSaved ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-300"}`}>
                   <Star size={20} /> {showSaved ? t.allNews : t.savedNews}
                 </button>
+                {CATEGORIES.map(c => (
                   <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${!showSaved && category === c.id ? `${c.color} text-white` : "bg-gray-800 text-gray-300"}`}>
                     <span className="text-2xl">{c.icon}</span> {(t.categories as any)[c.id]}
                   </button>
@@ -551,11 +557,11 @@ export default function NewsPage() {
             <Star size={18} /> {showSaved ? t.allNews : t.savedNews}
             {showSaved && savedIds.size > 0 && <span className="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs">{savedIds.size}</span>}
           </button>
+          {CATEGORIES.map(c => (
             <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
               <span>{c.icon}</span> {(t.categories as any)[c.id]}
             </button>
           ))}
-          </Link>
           <div className="ml-auto flex items-center gap-2">
             <button onClick={() => fetchNews(false)} className={`p-3 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
               <RefreshCw size={18} />
@@ -572,11 +578,11 @@ export default function NewsPage() {
             <Star size={16} /> {showSaved ? t.allNews : t.savedNews}
             {showSaved && savedIds.size > 0 && <span className="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs">{savedIds.size}</span>}
           </button>
+          {CATEGORIES.map(c => (
             <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all snap-start ${showSaved ? "" : category === c.id ? `${c.color} text-white` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
               <span>{c.icon}</span> {(t.categories as any)[c.id]}
             </button>
           ))}
-          </Link>
         </div>
 
         {loading && (
