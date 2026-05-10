@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai" | "art";
 
 interface NewsItem {
   id: string;
@@ -27,6 +27,12 @@ const CATEGORIES: { id: Category; icon: string; color: string }[] = [
   { id: "technology", icon: "🚀", color: "bg-indigo-500" },
   { id: "astronomy", icon: "🔭", color: "bg-violet-500" },
   { id: "mystery", icon: "🔮", color: "bg-purple-600" },
+  { id: "health", icon: "🏥", color: "bg-red-500" },
+  { id: "gaming", icon: "🎮", color: "bg-cyan-500" },
+  { id: "food", icon: "🍜", color: "bg-yellow-500" },
+  { id: "travel", icon: "✈️", color: "bg-teal-500" },
+  { id: "ai", icon: "🤖", color: "bg-pink-500" },
+  { id: "art", icon: "🎨", color: "bg-rose-500" },
 ];
 
 const LABELS = {
@@ -764,7 +770,10 @@ export default function NewsPage() {
           <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
           <Link href="/contact" className="hover:text-blue-500 transition-colors uppercase tracking-wider">聯繫我們 / Contact</Link>
         </div>
-        <p className="text-base">NewsFlow · AI-Powered Global News © 2026</p>
+        <p className="text-base mb-3">NewsFlow · AI-Powered Global News © 2026</p>
+        <p className="text-xs text-gray-600 dark:text-gray-500 max-w-2xl mx-auto px-4">
+          ⚠️ 版權聲明：本網站僅使用 AI 摘要新聞要點，所有新聞標題、連結及圖片版權歸各原始來源所有。我們不複製完整內容，僅供信息聚合用途。
+        </p>
       </footer>
 
       {/* AdSense Leaderboard Banner - Header Below */}

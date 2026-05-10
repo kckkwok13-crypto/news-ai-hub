@@ -29,6 +29,30 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.universetoday.com/universetoday.xml', source: 'Universe Today' },
     { url: 'https://www.sciencealert.com/space/feed', source: 'ScienceAlert Space' },
   ],
+  health: [
+    { url: 'https://www.medicalnewstoday.com/rss', source: 'Medical News Today' },
+    { url: 'https://www.webmd.com/rss/healthnews', source: 'WebMD' },
+  ],
+  gaming: [
+    { url: 'https://www.gamespot.com/feeds/mashup/', source: 'GameSpot' },
+    { url: 'https://kotaku.com/rss', source: 'Kotaku' },
+  ],
+  food: [
+    { url: 'https://www.seriouseats.com/槽点xml', source: 'Serious Eats' },
+    { url: 'https://www.food.com/rss/food-trends', source: 'Food.com' },
+  ],
+  travel: [
+    { url: 'https://www.lonelyplanet.com/news/feed', source: 'Lonely Planet' },
+    { url: 'https://www.travelweekly.com/Section.xml', source: 'Travel Weekly' },
+  ],
+  ai: [
+    { url: 'https://techcrunch.com/feed/', source: 'TechCrunch AI' },
+    { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge AI' },
+  ],
+  art: [
+    { url: 'https://www.artsy.net/rss', source: 'Artsy' },
+    { url: 'https://www.designboom.com/feed/', source: 'Designboom' },
+  ],
   mystery: [
     { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
