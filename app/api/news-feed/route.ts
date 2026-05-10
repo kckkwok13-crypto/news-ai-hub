@@ -782,28 +782,44 @@ export async function GET(request: NextRequest) {
   
   // Special handling for travel - return curated travel guides
   if (category === 'travel') {
-    // Flatten the travel guides into items for display
+    // Return comprehensive blog-style travel items
     const travelItems: any[] = []
     
     Object.entries(TRAVEL_GUIDES).forEach(([cityId, cityData]) => {
       cityData.areas.forEach((area: any) => {
         area.places.forEach((place: any) => {
+          const emoji = cityId === 'tokyo' ? '🗼' : cityId === 'paris' ? '🗼' : cityId === 'seoul' ? '🏯' : cityId === 'bangkok' ? '🏯' : '🌏'
+          const rating = place.rating || '4.5'
+          const bestTime = place.best_time || place.hours || '建議停留2-3小時'
+          
+          // Create comprehensive blog-style content
           travelItems.push({
             id: 'travel-' + cityId + '-' + place.name_zh.replace(/\s/g, '-'),
-            title: cityData.city_zh + ' · ' + area.name_zh + ' · ' + place.name_zh,
-            desc: place.description_zh,
+            title: place.name_zh,
+            title_translated: place.name_zh,
+            desc: place.description_zh + '。最佳遊覽時間：' + bestTime + '。評分：' + rating + '/5.0。',
+            desc_translated: place.description_zh + '。最佳遊覽時間：' + bestTime + '。評分：' + rating + '/5.0。',
             translated: true,
-            link: place.website || 'https://www.google.com/search?q=' + encodeURIComponent(place.name_zh),
+            link: place.website || ('https://www.google.com/search?q=' + encodeURIComponent(place.name_zh + ' ' + cityData.city_zh)),
             pubDate: new Date().toISOString(),
-            source: 'Travel Guide',
+            source: cityData.city_zh + ' · ' + area.name,
             img: true,
             img_url: place.image,
-            emoji: cityId === 'tokyo' ? '🗼' : cityId === 'paris' ? '🗼' : cityId === 'seoul' ? '🏯' : cityId === 'bangkok' ? '🏯' : '🌏',
+            emoji: emoji,
             name: place.name_zh,
-            places: place.places || [],
+            name_zh: place.name_zh,
+            name_en: place.name,
             city: cityData.city_zh,
-            city_emoji: cityId === 'tokyo' ? '🗼' : cityId === 'paris' ? '🗼' : cityId === 'seoul' ? '🏯' : cityId === 'bangkok' ? '🏯' : '🌏',
-            area: area.name_zh,
+            city_zh: cityData.city_zh,
+            city_en: cityData.city,
+            area: area.name,
+            area_zh: area.name,
+            best_time: bestTime,
+            rating: rating,
+            address: place.address || '',
+            hours: place.hours || '',
+            price_range: place.price_range || '',
+            type: place.type || 'attraction',
           })
         })
       })
