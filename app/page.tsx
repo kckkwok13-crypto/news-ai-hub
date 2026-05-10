@@ -66,7 +66,11 @@ const LABELS = {
     refresh: "刷新", autoRefresh: "自動刷新", refreshOff: "關閉自動刷新",
     aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
     trend: "熱門話題", related: "相關新聞",
-    categories: { finance: "財經", crypto: "加密幣", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學" },
+    categories: {
+      finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
+      health: "健康", game: "遊戲", food: "美食", travel: "旅遊",
+      aiart: "AI藝術", astronomy: "天文", mystery: "神秘學"
+    },
     bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
     sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
     biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" },
@@ -87,7 +91,11 @@ const LABELS = {
     refresh: "刷新", autoRefresh: "自动刷新", refreshOff: "关闭自动刷新",
     aiSummary: "AI 智能摘要", noSummary: "AI 摘要载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
     trend: "热门话题", related: "相关新闻",
-    categories: { finance: "財經", crypto: "加密幣", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學" },
+    categories: {
+      finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
+      health: "健康", game: "遊戲", food: "美食", travel: "旅遊",
+      aiart: "AI藝術", astronomy: "天文", mystery: "神秘學"
+    },
     savedNews: "收藏", allNews: "全部", source: "来源",
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
     langChanged: "语言已切换",
@@ -108,7 +116,11 @@ const LABELS = {
     refresh: "Refresh", autoRefresh: "Auto Refresh", refreshOff: "Turn Off Auto Refresh",
     aiSummary: "AI Summary", noSummary: "AI Summary loading...", keyAlert: "No API Key, AI features unavailable",
     trend: "Trending Topics", related: "Related News",
-    categories: { finance: "財經", crypto: "加密幣", business: "商業", technology: "科技", astronomy: "天文", mystery: "神秘學" },
+    categories: {
+      finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
+      health: "健康", game: "遊戲", food: "美食", travel: "旅遊",
+      aiart: "AI藝術", astronomy: "天文", mystery: "神秘學"
+    },
     savedNews: "Saved", allNews: "All", source: "Source",
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
     langChanged: "Language changed",
@@ -590,7 +602,7 @@ export default function NewsPage() {
           </button>
           {CATEGORIES.map(c => (
             <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
-              <span>{c.icon}</span> {(t.categories as any)[c.id]}
+              <span className="text-lg">{c.icon}</span> <span>{(t.categories as any)[c.id]}</span>
             </button>
           ))}
           <div className="ml-auto flex items-center gap-2">
@@ -611,7 +623,7 @@ export default function NewsPage() {
           </button>
           {CATEGORIES.map(c => (
             <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all snap-start ${showSaved ? "" : category === c.id ? `${c.color} text-white` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-              <span>{c.icon}</span> {(t.categories as any)[c.id]}
+              <span className="text-lg">{c.icon}</span> <span>{(t.categories as any)[c.id]}</span>
             </button>
           ))}
         </div>
