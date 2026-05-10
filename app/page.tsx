@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai" | "art";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art";
 
 interface TravelPlace {
   id: string;
@@ -50,8 +50,8 @@ const CATEGORIES: { id: Category; icon: string; color: string }[] = [
   { id: "gaming", icon: "🎮", color: "bg-cyan-500" },
   { id: "food", icon: "🍜", color: "bg-yellow-500" },
   { id: "travel", icon: "✈️", color: "bg-teal-500" },
-  { id: "ai", icon: "🤖", color: "bg-pink-500" },
-  { id: "art", icon: "🎨", color: "bg-rose-500" },
+  { id: "ai_art", icon: "🤖", color: "bg-pink-500" },
+
 ];
 
 const LABELS = {
@@ -730,7 +730,7 @@ export default function NewsPage() {
                             {item.translated && item.desc_translated ? item.desc_translated : item.desc}
                           </p>
                         )}
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                        <a href={item.link === "#" ? undefined : item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
                           {t.readMore} <ExternalLink size={16} />
                         </a>
                       </div>

@@ -841,7 +841,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ success: true, category: 'health', items: healthItems, timestamp: Date.now() })
   }
   
-  if (category === 'aiart') {
+  if (category === 'ai_art') {
     const aiartItems = [
       { id: 'a1', title: '🎨 AI生成藝術品拍賣價破百萬', desc: '一幅由AI系統生成既抽象藝術品喺紐約拍賣行以120萬美元成交，創下AI藝術品拍賣新紀錄。', img: true, img_url: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400', link: '#', source: 'The Verge', pubDate: new Date().toISOString(), translated: false },
       { id: 'a2', title: '🖼️ Midjourney V7 版本發布', desc: 'Midjourney推出全新V7版本，生成圖像既真實度和藝術性大幅提升，支援電影級畫質。', img: true, img_url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400', link: '#', source: 'TechCrunch', pubDate: new Date().toISOString(), translated: false },
@@ -849,7 +849,7 @@ export async function GET(request: NextRequest) {
       { id: 'a4', title: '🎭 AI主播虛擬人物登場', desc: '日本NHK推出首個AI虛擬主播，可以24小時不間斷提供新聞資訊服務。', img: true, img_url: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=400', link: '#', source: 'TechCrunch', pubDate: new Date().toISOString(), translated: false },
       { id: 'a5', title: '✏️ AI輔助設計工具普及', desc: 'Adobe推出新一代AI設計工具，大幅提升設計師工作效率，深受年輕設計師喜愛。', img: true, img_url: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=400', link: '#', source: 'The Verge', pubDate: new Date().toISOString(), translated: false },
     ]
-    return NextResponse.json({ success: true, category: 'aiart', items: aiartItems, timestamp: Date.now() })
+    return NextResponse.json({ success: true, category: 'ai_art', items: aiartItems, timestamp: Date.now() })
   }
   
   // Regular news feed for other categories
