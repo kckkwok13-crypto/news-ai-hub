@@ -682,22 +682,32 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   health: [
     { url: 'https://www.medicalnewstoday.com/rss', source: 'Medical News Today' },
     { url: 'https://health.google/news.rss', source: 'Google Health' },
+    { url: 'https://feeds.feedburner.com/WebmdHealthNews', source: 'WebMD' },
+    { url: 'https://www.healthline.com/rss', source: 'Healthline' },
   ],
   gaming: [
     { url: 'https://www.gamespot.com/feed/', source: 'GameSpot' },
     { url: 'https://kotaku.com/rss', source: 'Kotaku' },
+    { url: 'https://www.ign.com/rss.xml', source: 'IGN' },
+    { url: 'https://www.polygon.com/rss/index', source: 'Polygon' },
   ],
   food: [
     { url: 'https://www.epicurious.com/rss/ek.xml', source: 'Epicurious' },
     { url: 'https://www.seriouseats.com/rss', source: 'Serious Eats' },
+    { url: 'https://www.bonappetit.com/feed/feed.xml', source: 'Bon Appetit' },
+    { url: 'https://www.foodandwine.com/rss', source: 'Food & Wine' },
   ],
   travel: [
-    { url: 'https://www.lonelyplanet.com/news/feed', source: 'Lonely Planet' },
-    { url: 'https://www.tripadvisor.com/rss', source: 'TripAdvisor' },
+    // Travel uses static curated data - see TRAVEL_GUIDES
   ],
   ai_art: [
     { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge AI' },
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch AI' },
+    { url: 'https://www.artnome.com/feed/', source: 'Artnome AI Art' },
+  ],
+  art: [
+    { url: 'https://www.artsy.net/articles.rss', source: 'Artsy' },
+    { url: 'https://www.artforum.com/rss', source: 'Artforum' },
   ],
   astronomy: [
     { url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss', source: 'NASA' },
