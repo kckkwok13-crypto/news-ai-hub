@@ -32,8 +32,16 @@ interface NewsItem {
   name?: string;
   places?: TravelPlace[];
   city?: string;
-  city_emoji?: string;
+  city_zh?: string;
   area?: string;
+  area_zh?: string;
+  city_emoji?: string;
+  rating?: string;
+  best_time?: string;
+  price_range?: string;
+  address?: string;
+  hours?: string;
+  description?: string;
 }
 
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
