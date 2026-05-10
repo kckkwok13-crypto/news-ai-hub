@@ -68,8 +68,8 @@ const LABELS = {
     trend: "熱門話題", related: "相關新聞",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
-      health: "健康", game: "遊戲", food: "美食", travel: "旅遊",
-      aiart: "AI藝術", astronomy: "天文", mystery: "神秘學"
+      health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
+      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學"
     },
     bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
     sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
@@ -93,8 +93,8 @@ const LABELS = {
     trend: "热门话题", related: "相关新闻",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
-      health: "健康", game: "遊戲", food: "美食", travel: "旅遊",
-      aiart: "AI藝術", astronomy: "天文", mystery: "神秘學"
+      health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
+      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學"
     },
     savedNews: "收藏", allNews: "全部", source: "来源",
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
@@ -118,8 +118,8 @@ const LABELS = {
     trend: "Trending Topics", related: "Related News",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
-      health: "健康", game: "遊戲", food: "美食", travel: "旅遊",
-      aiart: "AI藝術", astronomy: "天文", mystery: "神秘學"
+      health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
+      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學"
     },
     savedNews: "Saved", allNews: "All", source: "Source",
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
