@@ -656,7 +656,7 @@ export default function NewsPage() {
 
               return (
                 <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
-                  {isTravelGuide && item.img && item.img_url ? (
+                  {isTravelGuide && item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={item.img_url} alt="" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-3">
@@ -667,7 +667,7 @@ export default function NewsPage() {
                         </div>
                       </div>
                     </div>
-                  ) : item.img && item.img_url ? (
+                  ) : item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -699,7 +699,7 @@ export default function NewsPage() {
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    <button onClick={e => { e.stopPropagation(); setExpandedId(expandedId === item.title ? null : item.title); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
+                    <button onClick={e => { setExpandedId(expandedId === item.title ? null : item.title); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
                       {expandedId === item.title ? "收起" : "閱讀更多"}
                     </button>
                     
