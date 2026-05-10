@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art" | "data_journalism";
 
 interface TravelPlace {
   id: string;
@@ -49,6 +49,7 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
   { id: "technology", icon: "🚀", color: "bg-indigo-500", label_zh: "科技", label_en: "Tech" },
   { id: "astronomy", icon: "🔭", color: "bg-violet-500", label_zh: "天文", label_en: "Astronomy" },
   { id: "mystery", icon: "🔮", color: "bg-purple-600", label_zh: "神秘學", label_en: "Mystic" },
+  { id: "data_journalism", icon: "📊", color: "bg-blue-500", label_zh: "數據新聞", label_en: "Data" },
   { id: "health", icon: "🏥", color: "bg-red-500", label_zh: "健康", label_en: "Health" },
   { id: "gaming", icon: "🎮", color: "bg-cyan-500", label_zh: "遊戲", label_en: "Gaming" },
   { id: "food", icon: "🍜", color: "bg-yellow-500", label_zh: "美食", label_en: "Food" },

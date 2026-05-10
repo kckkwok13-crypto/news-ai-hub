@@ -713,6 +713,11 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss', source: 'NASA' },
     { url: 'https://www.universetoday.com/universetoday.xml', source: 'Universe Today' },
   ],
+  data_journalism: [
+    { url: 'https://fivethirtyeight.com/rss/', source: 'FiveThirtyEight' },
+    { url: 'https://www.pewresearch.org/feed/', source: 'Pew Research' },
+    { url: 'https://hbr.org/rss/ideas', source: 'Harvard Business Review' },
+  ],
   mystery: [
     { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
