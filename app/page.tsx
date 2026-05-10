@@ -741,7 +741,7 @@ export default function NewsPage() {
                         )}
                       </div>
                     )}
-                        <a href={item.link === "#" ? undefined : item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition mt-2 ${darkMode ? "bg-blue-600/80 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                        <a href={item.link === "#" ? undefined : item.link} target="_self" rel="noopener" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition mt-2 ${darkMode ? "bg-blue-600/80 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
                           {t.readMore} <ExternalLink size={12} />
                         </a>
 
