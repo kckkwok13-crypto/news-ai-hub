@@ -64,7 +64,7 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
   { id: "travel", icon: "✈️", color: "bg-teal-500", label_zh: "旅遊", label_en: "Travel" },
   { id: "ai_art", icon: "🤖", color: "bg-pink-500", label_zh: "AI藝術", label_en: "AI Art" },
   { id: "art", icon: "🎨", color: "bg-rose-500", label_zh: "藝術", label_en: "Art" },
-  { id: "data_journalism", icon: "📊", color: "bg-cyan-600", label_zh: "數據新聞", label_en: "Data" },
+  { id: "data_journalism", icon: "📊", color: "bg-cyan-600", label_zh: "數據新聞 24h熱門", label_en: "Data 24h Trending" },
 ];
 
 const LABELS = {
@@ -82,7 +82,7 @@ const LABELS = {
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
       health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
-      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學"
+      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學", data_journalism: "數據新聞 24h熱門"
     },
     bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
     sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
@@ -107,7 +107,7 @@ const LABELS = {
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
       health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
-      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學"
+      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學", data_journalism: "數據新聞 24h熱門"
     },
     savedNews: "收藏", allNews: "全部", source: "来源",
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
@@ -132,7 +132,7 @@ const LABELS = {
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
       health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
-      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學"
+      ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學", data_journalism: "數據新聞 24h熱門"
     },
     savedNews: "Saved", allNews: "All", source: "Source",
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
@@ -709,9 +709,15 @@ export default function NewsPage() {
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    <button onClick={e => { e.stopPropagation(); setExpandedId(expandedId === item.title ? null : item.title); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
-                      {expandedId === item.title ? "收起" : "閱讀更多"}
-                    </button>
+                    {expandedId === item.title ? (
+                      <button onClick={e => { e.stopPropagation(); setExpandedId(null); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
+                        收起
+                      </button>
+                    ) : (
+                      <a href={item.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
+                        閱讀更多
+                      </a>
+                    )}
                     
                     {details && (
                       <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
