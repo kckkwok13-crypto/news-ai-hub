@@ -717,6 +717,11 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
   ],
+  data_journalism: [
+    { url: 'https://news.google.com/rss/search?q=data%20journalism%20infographic&hl=en-US&gl=US&ceid=US:en', source: 'Data Journalism' },
+    { url: 'https://news.google.com/rss/search?q=statistics%20data%20analysis%20research&hl=en-US&gl=US&ceid=US:en', source: 'Data Analysis' },
+    { url: 'https://news.google.com/rss/search?q=big%20data%20analytics%20trends&hl=en-US&gl=US&ceid=US:en', source: 'Big Data' },
+  ],
 }
 
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art" | "art" | "data_journalism";
 
 interface TravelPlace {
   id: string;
@@ -54,7 +54,8 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
   { id: "food", icon: "🍜", color: "bg-yellow-500", label_zh: "美食", label_en: "Food" },
   { id: "travel", icon: "✈️", color: "bg-teal-500", label_zh: "旅遊", label_en: "Travel" },
   { id: "ai_art", icon: "🤖", color: "bg-pink-500", label_zh: "AI藝術", label_en: "AI Art" },
-
+  { id: "art", icon: "🎨", color: "bg-rose-500", label_zh: "藝術", label_en: "Art" },
+  { id: "data_journalism", icon: "📊", color: "bg-cyan-600", label_zh: "數據新聞", label_en: "Data" },
 ];
 
 const LABELS = {
@@ -739,11 +740,11 @@ export default function NewsPage() {
                             {item.translated && item.desc_translated ? item.desc_translated : item.desc}
                           </p>
                         )}
-                      </div>
-                    )}
-                        <a href={item.link === "#" ? undefined : item.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition mt-2 ${darkMode ? "bg-blue-600/80 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
+                        <a href={item.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition mt-2 ${darkMode ? "bg-blue-600/80 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
                           {t.readMore} <ExternalLink size={12} />
                         </a>
+                      </div>
+                    )}
 
                     <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
