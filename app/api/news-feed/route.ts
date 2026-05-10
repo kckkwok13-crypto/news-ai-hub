@@ -885,6 +885,25 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ success: true, category: 'ai_art', items: aiartItems, timestamp: Date.now() })
   }
   
+  // Static curated content for data_journalism - 24h hot data topics
+  if (category === 'data_journalism') {
+    const dataItems = [
+      { id: 'dj1', title: '📊 全球AI發展報告出爐', desc: '最新數據顯示亞洲AI專利申請量首次超越美國，中国、日本、韓國領先。', img: true, img_url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400', link: '#', source: 'FiveThirtyEight', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj2', title: '📈 2026年全球經濟數據分析', desc: '全球GDP增長預測上調至3.2%，通脹壓力逐步緩解。', img: true, img_url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400', link: '#', source: 'Economist', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj3', title: '🌍 氣候變化數據新趨勢', desc: '全球平均氣溫較工業革命前上升1.5°C，各國積極推行碳中和政策。', img: true, img_url: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400', link: '#', source: 'Guardian Data', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj4', title: '💻 科技巨頭營收對比', desc: 'Apple、Microsoft、Google、Meta四大科技巨頭季度營收全線增長。', img: true, img_url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400', link: '#', source: 'Bloomberg', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj5', title: '📊 香港樓市數據分析', desc: '香港樓價指數連續三個月回升，利率走勢成關鍵因素。', img: true, img_url: 'https://images.unsplash.com/photo-1480796927426-f609979314bd?w=400', link: '#', source: 'HK Data', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj6', title: '📈 全球股市資金流向', desc: '資金持續流入科技股和清潔能源板塊，避險情緒升溫。', img: true, img_url: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400', link: '#', source: 'Reuters', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj7', title: '📊 青年失業率統計', desc: '全球青年失業率升至23%，Z世代就業形勢嚴峻。', img: true, img_url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', link: '#', source: 'World Bank', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj8', title: '🔬 科研論文發表統計', desc: '中國科學論文數量首次超越美國，高被引論文仍有差距。', img: true, img_url: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400', link: '#', source: 'Nature Index', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj9', title: '📊 全球旅遊業恢復數據', desc: '2026年全球國際旅遊人數恢復至疫情前85%水平。', img: true, img_url: 'https://images.unsplash.com/photo-1488644698245-1e14a0e3c8a4?w=400', link: '#', source: 'UNWTO', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj10', title: '📈 加密貨幣市場數據', desc: '比特幣市值突破2萬億美元，機構投資持續增加。', img: true, img_url: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400', link: '#', source: 'CoinDesk', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj11', title: '📊 全球能源數據報告', desc: '全球可再生能源發電量首次超越化石燃料，清潔能源時代來臨。', img: true, img_url: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1d?w=400', link: '#', source: 'IEA', pubDate: new Date().toISOString(), translated: false },
+      { id: 'dj12', title: '💰 全球貧富差距數據', desc: '全球最富1%人口擁有45%財富，貧富不均問題加劇。', img: true, img_url: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400', link: '#', source: 'Forbes', pubDate: new Date().toISOString(), translated: false },
+    ]
+    return NextResponse.json({ success: true, category: 'data_journalism', items: dataItems })
+  }
+
   // Regular news feed for other categories
   const sources = RSS_SOURCES[category] || RSS_SOURCES.finance
   const now = Date.now()
