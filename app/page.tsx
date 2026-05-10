@@ -709,15 +709,9 @@ export default function NewsPage() {
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    {expandedId === item.title ? (
-                      <button onClick={e => { e.stopPropagation(); setExpandedId(null); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
-                        收起
-                      </button>
-                    ) : (
-                      <a href={item.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
-                        閱讀更多
-                      </a>
-                    )}
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
+                      閱讀更多
+                    </a>
                     
                     {details && (
                       <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
@@ -748,40 +742,6 @@ export default function NewsPage() {
                       </div>
                     )}
 
-                    {expandedId === item.title && (
-                      <div className={`mt-3 pt-3 border-t border-gray-700/50 ${isTravelGuide ? 'bg-gradient-to-br from-purple-900/20 to-indigo-900/10 p-4 rounded-xl' : ''}`}>
-                        {isTravelGuide && (
-                          <div className="mb-4">
-                            <div className="flex items-center gap-3 mb-2">
-                              <span className="text-2xl">{item.city_emoji || '🌏'}</span>
-                              <div>
-                                <div className="text-purple-300 font-bold">{item.city || item.city_zh}</div>
-                                <div className="text-gray-400 text-xs">{item.area || item.area_zh}</div>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                              <span>⭐ {item.rating || '4.5'}/5</span>
-                              <span>⏰ {item.best_time || item.hours || '全天'}</span>
-                              <span>📍 {item.price_range || item.price_range || ''}</span>
-                            </div>
-                            <div className="text-xs text-gray-300 leading-relaxed mb-3 whitespace-pre-line">
-                              {item.blog_content || item.desc || item.description}
-                            </div>
-                            <div className="text-xs text-purple-400 font-medium">
-                              📋 {item.address || '查看地址請點擊下方連結'}
-                            </div>
-                          </div>
-                        )}
-                        {!isTravelGuide && item.desc && (
-                          <p className={`text-sm leading-relaxed mb-3 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {item.translated && item.desc_translated ? item.desc_translated : item.desc}
-                          </p>
-                        )}
-                        <a href={item.link} target="_blank" rel="noopener" onClick={e => e.stopPropagation()} className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-lg transition mt-2 ${darkMode ? "bg-blue-600/80 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}>
-                          {t.readMore} <ExternalLink size={12} />
-                        </a>
-                      </div>
-                    )}
 
                     <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
