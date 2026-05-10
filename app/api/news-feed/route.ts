@@ -825,6 +825,7 @@ export async function GET(request: NextRequest) {
             hours: place.hours || '',
             price_range: place.price_range || '',
             type: place.type || 'attraction',
+            blog_content: place.description_zh + '\n\n附近推薦：' + (cityData.areas ? cityData.areas.slice(0,2).map((a: any) => a.name).join(', ') : ''),
           })
         })
       })

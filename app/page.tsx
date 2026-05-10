@@ -42,6 +42,7 @@ interface NewsItem {
   address?: string;
   hours?: string;
   description?: string;
+  blog_content?: string;
 }
 
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
@@ -708,7 +709,7 @@ export default function NewsPage() {
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    <button onClick={e => { setExpandedId(expandedId === item.title ? null : item.title); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
+                    <button onClick={e => { e.stopPropagation(); setExpandedId(expandedId === item.title ? null : item.title); }} className={`text-xs px-2 py-1 rounded mb-2 ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
                       {expandedId === item.title ? "收起" : "閱讀更多"}
                     </button>
                     
@@ -757,8 +758,8 @@ export default function NewsPage() {
                               <span>⏰ {item.best_time || item.hours || '全天'}</span>
                               <span>📍 {item.price_range || item.price_range || ''}</span>
                             </div>
-                            <div className="text-xs text-gray-300 leading-relaxed mb-3">
-                              {item.desc || item.description}
+                            <div className="text-xs text-gray-300 leading-relaxed mb-3 whitespace-pre-line">
+                              {item.blog_content || item.desc || item.description}
                             </div>
                             <div className="text-xs text-purple-400 font-medium">
                               📋 {item.address || '查看地址請點擊下方連結'}
