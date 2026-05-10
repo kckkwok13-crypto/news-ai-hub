@@ -789,20 +789,21 @@ export async function GET(request: NextRequest) {
       cityData.areas.forEach((area: any) => {
         area.places.forEach((place: any) => {
           travelItems.push({
-            id: Buffer.from(place.name_zh).toString('base64').slice(0, 12),
-            title: place.name_zh,
-            title_translated: place.name,
+            id: 'travel-' + cityId + '-' + place.name_zh.replace(/\s/g, '-'),
+            title: cityData.city_zh + ' · ' + area.name_zh + ' · ' + place.name_zh,
             desc: place.description_zh,
-            desc_translated: place.description,
+            translated: true,
+            link: place.website || 'https://www.google.com/search?q=' + encodeURIComponent(place.name_zh),
+            pubDate: new Date().toISOString(),
+            source: 'Travel Guide',
+            img: true,
+            img_url: place.image,
+            emoji: cityId === 'tokyo' ? '🗼' : cityId === 'paris' ? '🗼' : cityId === 'seoul' ? '🏯' : cityId === 'bangkok' ? '🏯' : '🌏',
+            name: place.name_zh,
+            places: place.places || [],
             city: cityData.city_zh,
             city_emoji: cityId === 'tokyo' ? '🗼' : cityId === 'paris' ? '🗼' : cityId === 'seoul' ? '🏯' : cityId === 'bangkok' ? '🏯' : '🌏',
             area: area.name_zh,
-            type: place.type,
-            img: true,
-            img_url: place.image,
-            link: '#travel-' + cityId + '-' + area.name_zh.replace(/\s/g, '-').toLowerCase(),
-            pubDate: new Date().toISOString(),
-            source: cityData.city_zh + ' · ' + area.name_zh,
           })
         })
       })
