@@ -714,9 +714,23 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.universetoday.com/universetoday.xml', source: 'Universe Today' },
   ],
   data_journalism: [
-    { url: 'https://fivethirtyeight.com/rss/', source: 'FiveThirtyEight' },
-    { url: 'https://www.pewresearch.org/feed/', source: 'Pew Research' },
-    { url: 'https://hbr.org/rss/ideas', source: 'Harvard Business Review' },
+    // Trending data news - Bloomberg, FT, Economist
+    { url: 'https://feeds.bloomberg.com/markets/news.rss', source: 'Bloomberg Markets' },
+    { url: 'https://www.ft.com/rss/home', source: 'Financial Times' },
+    { url: 'https://www.economist.com/finance-and-markets/rss.xml', source: 'Economist Finance' },
+    { url: 'https://www.economist.com/business/rss.xml', source: 'Economist Business' },
+    { url: 'https://www.economist.com/science-and-technology/rss.xml', source: 'Economist Tech' },
+    // Tech/Data trends - Hacker News, TechCrunch
+    { url: 'https://news.ycombinator.com/rss', source: 'Hacker News' },
+    { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
+    // Visual data journalism
+    { url: 'https://www.reuters.com/graphics.rss', source: 'Reuters Graphics' },
+    { url: 'https://www.nytimes.com/timeswire/modules/metro/tabs/tab-content-b.xml', source: 'NYT Data' },
+    // Markets data
+    { url: 'https://markets.businessinsider.com/rss/news', source: 'Business Insider' },
+    // Trending topics - recent 24h
+    { url: 'https://news.google.com/rss/search?q=GDP+economy+data+statistics&hl=en-US&gl=US&ceid=US:en&time=P1D', source: 'Economy Data' },
+    { url: 'https://news.google.com/rss/search?q=AI+technology+trends+2024&hl=en-US&gl=US&ceid=US:en&time=P1D', source: 'Tech Trends' },
   ],
   mystery: [
     { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
