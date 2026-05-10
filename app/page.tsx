@@ -7,11 +7,30 @@ import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, R
 type Lang = "zh-TW" | "zh-CN" | "en";
 type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai" | "art";
 
+interface TravelPlace {
+  id: string;
+  name: string;
+  desc: string;
+  type: string;
+  image: string;
+}
+
+interface TravelGuide {
+  id: string;
+  name: string;
+  emoji: string;
+  places: TravelPlace[];
+}
+
 interface NewsItem {
   id: string;
   title: string; title_translated: string; desc: string; desc_translated: string; link: string;
   pubDate: string; source: string; img: boolean; img_url: string;
   translated: boolean; translationError?: string;
+  // Travel guide fields
+  emoji?: string;
+  name?: string;
+  places?: TravelPlace[];
 }
 
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
@@ -164,6 +183,7 @@ export default function NewsPage() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [aiSummary, setAiSummary] = useState<any>(null);
+  const [isTravelGuide, setIsTravelGuide] = useState(false);
   const [summaryLoading, setSummaryLoading] = useState(false);
   const [showImpactId, setShowImpactId] = useState<string | null>(null);
 
@@ -243,6 +263,7 @@ export default function NewsPage() {
       const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}`);
       const data = await res.json();
       if (data.success && data.items) {
+        setIsTravelGuide(data.isTravelGuide || false);
         setNews(data.items);
         localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
       } else {
@@ -371,6 +392,7 @@ export default function NewsPage() {
         .then(res => res.json())
         .then(data => {
           if (data.success && data.items) {
+        setIsTravelGuide(data.isTravelGuide || false);
             setNews(data.items);
             localStorage.setItem(`news_cache_${category}_${newLang}`, JSON.stringify(data.items));
           }
@@ -469,7 +491,7 @@ export default function NewsPage() {
               </Link>
               <div className="relative">
                 <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
-                  {LANG_OPTIONS.find(l => l.id === lang)?.flag} <ChevronDown size={14} />
+                  {LANG_OPTIONS.find(l => l.id === lang)?.flag}
                 </button>
                 {showLangMenu && (
                   <div className={`absolute right-0 mt-2 py-2 rounded-xl shadow-2xl z-50 min-w-[140px] ${darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"}`}>
@@ -619,7 +641,15 @@ export default function NewsPage() {
 
               return (
                 <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
-                  {item.img && item.img_url ? (
+                  {isTravelGuide && item.places ? (
+                    <div className="relative h-48 overflow-hidden">
+                      <img src={item.places[0]?.image || ''} alt="" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
+                        <span className="text-5xl">{item.emoji}</span>
+                        <span className="text-2xl font-bold text-white ml-3">{item.name}</span>
+                      </div>
+                    </div>
+                  ) : item.img && item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
