@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function GET(request: NextRequest) {
   // Vercel Cron verification
   const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  // Vercel sends "Bearer vercel" by default, or use custom CRON_SECRET if set
+  const validToken = process.env.CRON_SECRET || 'vercel'
+  if (authHeader !== `Bearer ${validToken}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
