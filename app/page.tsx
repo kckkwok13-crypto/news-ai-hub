@@ -698,8 +698,14 @@ export default function NewsPage() {
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}>
-                      閱讀更多
+                    <a 
+                      href={item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      onClick={e => e.stopPropagation()} 
+                      className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}
+                    >
+                      {t.readMore}
                     </a>
                     
                     {details && (
