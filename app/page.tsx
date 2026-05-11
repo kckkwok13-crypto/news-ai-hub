@@ -326,7 +326,7 @@ export default function NewsPage() {
   useEffect(() => {
     fetchNews(true);
     if (autoRefresh) {
-      const interval = setInterval(() => fetchNews(false), 300000);
+      const interval = setInterval(() => fetchNews(false), 120000);
       return () => clearInterval(interval);
     }
   }, [category, autoRefresh, lang]);
