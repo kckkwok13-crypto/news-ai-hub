@@ -458,15 +458,17 @@ export default function NewsPage() {
               </button>
             </div>
             
+            {/* Mobile categories */}
             <div className="mb-6">
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">{lang === 'en' ? 'Categories' : '分類'}</h3>
-              <div className="space-y-2">
-                <button onClick={() => { setShowSaved(true); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${showSaved ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-300"}`}>
-                  <Star size={20} /> {showSaved ? t.allNews : t.savedNews}
-                </button>
-                {CATEGORIES.map(c => (
-                  <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); setShowMobileMenu(false); }} className={`w-full text-left p-4 rounded-2xl text-lg font-medium flex items-center gap-3 ${!showSaved && category === c.id ? `${c.color} text-white` : "bg-gray-800 text-gray-300"}`}>
-                    <span className="text-2xl">{c.icon}</span> c.label_zh
+              <h3 className="text-lg font-bold mb-4">{lang === 'en' ? 'Categories' : '分類'}</h3>
+              <div className="grid grid-cols-3 gap-3">
+                {CATEGORIES.map(cat => (
+                  <button 
+                    key={cat.id}
+                    onClick={() => { setCategory(cat.id); setShowMobileMenu(false); }}
+                    className={`aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 p-3 transition ${category === cat.id ? cat.color + " text-white" : darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}
+                  >
+                    <span className="text-lg font-bold">{cat.label_zh}</span>
                   </button>
                 ))}
               </div>
@@ -626,19 +628,6 @@ export default function NewsPage() {
               {autoRefresh ? "🔄" : "⏸"} {autoRefresh ? t.autoRefresh : t.refreshOff}
             </button>
           </div>
-        </div>
-
-        {/* Mobile Categories - Horizontal Scroll */}
-        <div className="md:hidden flex items-center gap-2 mb-6 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
-          <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap snap-start ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-            <Star size={16} /> {showSaved ? t.allNews : t.savedNews}
-            {showSaved && savedIds.size > 0 && <span className="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs">{savedIds.size}</span>}
-          </button>
-          {CATEGORIES.map(c => (
-            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-4 py-3 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all snap-start ${showSaved ? "" : category === c.id ? `${c.color} text-white` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-              <span className="text-lg">{c.icon}</span> <span className="hidden md:inline">{lang === "en" ? c.label_en : c.label_zh}</span>
-            </button>
-          ))}
         </div>
 
         {loading && (
