@@ -33,17 +33,29 @@ interface NewsItem {
   places?: TravelPlace[];
   city?: string;
   city_zh?: string;
+  city_id?: string;
+  city_en?: string;
+  city_emoji?: string;
+  city_description?: string;
   area?: string;
   area_zh?: string;
-  city_emoji?: string;
   rating?: string;
+  review_count?: string;
   best_time?: string;
+  best_season?: string;
+  avg_temp?: string;
   price_range?: string;
+  cost_level?: string;
   address?: string;
   hours?: string;
   description?: string;
   blog_content?: string;
   type?: string;
+  duration?: string;
+  transit?: string;
+  tags?: string[];
+  tips?: string[];
+  related_places?: Array<{ name: string; name_zh: string; type: string }>;
 }
 
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
@@ -212,6 +224,12 @@ export default function NewsPage() {
   const [isTravelGuide, setIsTravelGuide] = useState(false);
   const [summaryLoading, setSummaryLoading] = useState(false);
   const [showImpactId, setShowImpactId] = useState<string | null>(null);
+  
+  // Travel filter states
+  const [travelCityFilter, setTravelCityFilter] = useState<string>('all');
+  const [travelTypeFilter, setTravelTypeFilter] = useState<string>('all');
+  const [citySummaries, setCitySummaries] = useState<any[]>([]);
+  const [placeTypes, setPlaceTypes] = useState<string[]>([]);
 
   // AdSense state
   const adsenseClient = typeof window !== 'undefined' 
@@ -284,13 +302,17 @@ export default function NewsPage() {
       localStorage.removeItem(`news_cache_${category}_${lang}`);
     } catch (e) {}
     
-    setError("");
+    setError("")
     try {
-      const res = await fetch(`/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}`);
+      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}`;
+      const res = await fetch(url);
       const data = await res.json();
       if (data.success && data.items) {
         setIsTravelGuide(data.isTravelGuide || false);
         setNews(data.items);
+        // Capture travel-specific data
+        if (data.citySummaries) setCitySummaries(data.citySummaries);
+        if (data.placeTypes) setPlaceTypes(data.placeTypes);
         localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
       } else {
         if (news.length === 0) setNews([]);
@@ -302,7 +324,7 @@ export default function NewsPage() {
     } finally {
       setLoading(false);
     }
-  }, [category, lang, news.length]);
+  }, [category, lang, news.length, travelCityFilter]);
 
   const fetchAiSummary = useCallback(async () => {
     if (news.length === 0) return;
