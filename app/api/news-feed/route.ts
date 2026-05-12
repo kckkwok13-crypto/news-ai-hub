@@ -681,8 +681,8 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   health: [
     { url: 'https://rss.msn.com/zh-hk', source: 'MSN Health' },
-    { url: 'https://feeds.bbcio.co.uk/news/health/rss.xml', source: 'BBC Health' },
-    { url: 'https://www.webmd.com/rss/all-health-news.xml', source: 'WebMD' },
+    { url: 'https://www.bbc.com/news/health/rss.xml', source: 'BBC Health' },
+    { url: 'https://www.medicinenet.com/rss/health.xml', source: 'MedicineNet' },
   ],
   gaming: [
     { url: 'https://www.gamespot.com/feed/', source: 'GameSpot' },
@@ -691,9 +691,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.polygon.com/rss/index', source: 'Polygon' },
   ],
   food: [
-    { url: 'https://rss.msn.com/zh-hk', source: 'MSN Food' },
-    { url: 'https://www.bbc.com/news/health/rss.xml', source: 'BBC Food' },
-    { url: 'https://www.thekitchn.com/rss', source: 'The Kitchn' },
+    { url: 'https://www.epicurious.com/feed/rss', source: 'Epicurious' },
+    { url: 'https://www.bbc.com/food/recipes/rss.xml', source: 'BBC Food' },
+    { url: 'https://www.seriouseats.com/feed', source: 'Serious Eats' },
   ],
   travel: [
     // Travel uses static curated data - see TRAVEL_GUIDES
