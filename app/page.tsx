@@ -664,7 +664,7 @@ export default function NewsPage() {
                 <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {isTravelGuide && item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
-                      <img src={item.img_url} alt="" className="w-full h-full object-cover" />
+                      <img src={`/api/proxy-image?url=${encodeURIComponent(item.img_url)}`} alt="" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-3">
                         <span className="text-3xl">{item.city_emoji || '🌏'}</span>
                         <div className="ml-2">
@@ -675,7 +675,7 @@ export default function NewsPage() {
                     </div>
                   ) : item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
-                      <img src={item.img_url} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <img src={`/api/proxy-image?url=${encodeURIComponent(item.img_url)}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     </div>
                   ) : (
@@ -744,6 +744,51 @@ export default function NewsPage() {
                       </div>
                     )}
 
+                    {/* Expanded Travel Card - blog style */}
+                    {isTravelGuide && expandedId === item.title && (
+                      <div className={`p-4 rounded-xl mb-3 ${darkMode ? "bg-teal-900/30 border border-teal-600/40" : "bg-teal-50 border border-teal-200"}`}>
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xl">{item.city_emoji || '✈️'}</span>
+                          <span className={`font-bold text-sm ${darkMode ? "text-teal-400" : "text-teal-600"}`}>{item.city} · {item.area}</span>
+                        </div>
+                        {item.blog_content && (
+                          <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>{item.blog_content}</p>
+                        )}
+                        <div className="grid grid-cols-2 gap-3 mb-3">
+                          {item.address && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">📍 地址</span>
+                              <span className="opacity-80">{item.address}</span>
+                            </div>
+                          )}
+                          {item.hours && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">🕐 營業時間</span>
+                              <span className="opacity-80">{item.hours}</span>
+                            </div>
+                          )}
+                          {item.price_range && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">💰 消費</span>
+                              <span className="opacity-80">{item.price_range}</span>
+                            </div>
+                          )}
+                          {item.rating && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">⭐ 評分</span>
+                              <span className="opacity-80">{item.rating}/5.0</span>
+                            </div>
+                          )}
+                        </div>
+                        {item.type && (
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className={`text-xs px-3 py-1 rounded-full ${darkMode ? "bg-teal-800 text-teal-300" : "bg-teal-100 text-teal-600"}`}>
+                              {item.type === 'attraction' ? '🗺️ 景點' : item.type === 'food' ? '🍜 美食' : item.type === 'activity' ? '🎯 活動' : '🛍️ 購物'}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    )}
 
                     <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
