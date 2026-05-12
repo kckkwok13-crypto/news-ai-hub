@@ -682,7 +682,7 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   health: [
     { url: 'https://rss.msn.com/zh-hk', source: 'MSN Health' },
     { url: 'https://www.bbc.com/news/health/rss.xml', source: 'BBC Health' },
-    { url: 'https://www.medicinenet.com/rss/health.xml', source: 'MedicineNet' },
+    { url: 'https://news.google.com/rss/search?q=health+medical+news&hl=en-US&gl=US&ceid=US:en', source: 'Google Health' },
   ],
   gaming: [
     { url: 'https://www.gamespot.com/feed/', source: 'GameSpot' },
@@ -692,8 +692,8 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   ],
   food: [
     { url: 'https://www.epicurious.com/feed/rss', source: 'Epicurious' },
-    { url: 'https://www.bbc.com/food/recipes/rss.xml', source: 'BBC Food' },
-    { url: 'https://www.seriouseats.com/feed', source: 'Serious Eats' },
+    { url: 'https://www.bonappetit.com/feed/rss', source: 'Bon Appétit' },
+    { url: 'https://www.food.com/rss', source: 'Food.com' },
   ],
   travel: [
     // Travel uses static curated data - see TRAVEL_GUIDES
