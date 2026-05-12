@@ -839,7 +839,15 @@ export async function GET(request: NextRequest) {
       timestamp: Date.now()
     })
   }
-      
+
+  const now = Date.now()
+  const MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000
+  const sources = RSS_SOURCES[category as keyof typeof RSS_SOURCES] || RSS_SOURCES.world
+
+  const sourcePromises = sources.map(async (source) => {
+    try {
+      const res = await fetch(source.url, { signal: AbortSignal.timeout(10000) })
+
       if (!res.ok) return []
       const xml = await res.text()
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
