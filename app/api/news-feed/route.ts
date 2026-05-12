@@ -680,10 +680,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.wired.com/feed/rss', source: 'Wired' },
   ],
   health: [
-    { url: 'https://www.medicalnewstoday.com/rss', source: 'Medical News Today' },
-    { url: 'https://health.google/news.rss', source: 'Google Health' },
-    { url: 'https://feeds.feedburner.com/WebmdHealthNews', source: 'WebMD' },
-    { url: 'https://www.healthline.com/rss', source: 'Healthline' },
+    { url: 'https://rss.msn.com/zh-hk', source: 'MSN Health' },
+    { url: 'https://feeds.bbcio.co.uk/news/health/rss.xml', source: 'BBC Health' },
+    { url: 'https://www.webmd.com/rss/all-health-news.xml', source: 'WebMD' },
   ],
   gaming: [
     { url: 'https://www.gamespot.com/feed/', source: 'GameSpot' },
@@ -692,10 +691,9 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://www.polygon.com/rss/index', source: 'Polygon' },
   ],
   food: [
-    { url: 'https://www.epicurious.com/rss/ek.xml', source: 'Epicurious' },
-    { url: 'https://www.seriouseats.com/rss', source: 'Serious Eats' },
-    { url: 'https://www.bonappetit.com/feed/feed.xml', source: 'Bon Appetit' },
-    { url: 'https://www.foodandwine.com/rss', source: 'Food & Wine' },
+    { url: 'https://rss.msn.com/zh-hk', source: 'MSN Food' },
+    { url: 'https://www.bbc.com/news/health/rss.xml', source: 'BBC Food' },
+    { url: 'https://www.thekitchn.com/rss', source: 'The Kitchn' },
   ],
   travel: [
     // Travel uses static curated data - see TRAVEL_GUIDES
