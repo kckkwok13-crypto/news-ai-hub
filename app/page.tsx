@@ -43,6 +43,7 @@ interface NewsItem {
   hours?: string;
   description?: string;
   blog_content?: string;
+  type?: string;
 }
 
 const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
