@@ -799,10 +799,47 @@ export default function NewsPage() {
                           {item.rating && (
                             <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
                               <span className="font-semibold block mb-0.5">⭐ 評分</span>
-                              <span className="opacity-80">{item.rating}/5.0</span>
+                              <span className="opacity-80">{item.rating}/5.0 {item.review_count && <span className="opacity-60">({item.review_count})</span>}</span>
+                            </div>
+                          )}
+                          {item.duration && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">⏱️ 建議遊覽</span>
+                              <span className="opacity-80">{item.duration}</span>
+                            </div>
+                          )}
+                          {item.transit && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">🚇 交通</span>
+                              <span className="opacity-80">{item.transit}</span>
+                            </div>
+                          )}
+                          {item.cost_level && (
+                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                              <span className="font-semibold block mb-0.5">💵 消費水平</span>
+                              <span className="opacity-80">{item.cost_level === 'free' ? '免費' : item.cost_level === 'low' ? '低 ($)' : item.cost_level === 'medium' ? '中 ($$)' : item.cost_level === 'high' ? '高 ($$$)' : '豪華 ($$$$)'}</span>
                             </div>
                           )}
                         </div>
+                        {item.tags && item.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {item.tags.map((tag: string, idx: number) => (
+                              <span key={idx} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-teal-800 text-teal-300" : "bg-teal-100 text-teal-600"}`}>
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        {item.tips && item.tips.length > 0 && (
+                          <div className={`text-xs p-3 rounded-lg mb-3 ${darkMode ? "bg-yellow-900/30 border border-yellow-700/40" : "bg-yellow-50 border border-yellow-200"}`}>
+                            <span className="font-semibold block mb-2">💡 實用提示</span>
+                            <ul className="space-y-1">
+                              {item.tips.map((tip: string, idx: number) => (
+                                <li key={idx} className="opacity-80">• {tip}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                         {item.type && (
                           <div className="flex items-center gap-2 mb-3">
                             <span className={`text-xs px-3 py-1 rounded-full ${darkMode ? "bg-teal-800 text-teal-300" : "bg-teal-100 text-teal-600"}`}>
