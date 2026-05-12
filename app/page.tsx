@@ -460,15 +460,16 @@ export default function NewsPage() {
             
             {/* Mobile categories */}
             <div className="mb-6">
-              <h3 className="text-lg font-bold mb-4">{lang === 'en' ? 'Categories' : '分類'}</h3>
-              <div className="grid grid-cols-3 gap-3">
+              <h3 className="text-lg font-bold mb-4 text-white">{lang === 'en' ? 'Categories' : '分類'}</h3>
+              <div className="grid grid-cols-3 gap-2">
                 {CATEGORIES.map(cat => (
-                  <button 
+                  <button
                     key={cat.id}
                     onClick={() => { setCategory(cat.id); setShowMobileMenu(false); }}
-                    className={`aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 p-3 transition ${category === cat.id ? cat.color + " text-white" : darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}
+                    className={`aspect-square rounded-2xl flex flex-col items-center justify-center gap-1 p-2 transition-all ${category === cat.id ? cat.color + " text-white shadow-lg" : "bg-gray-800 text-gray-300 hover:bg-gray-700"}`}
                   >
-                    <span className="text-lg font-bold">{cat.label_zh}</span>
+                    <span className="text-2xl">{cat.icon}</span>
+                    <span className="text-xs font-semibold text-center leading-tight">{cat.label_zh}</span>
                   </button>
                 ))}
               </div>
@@ -532,16 +533,22 @@ export default function NewsPage() {
               </div>
             </div>
 
-            <div className="flex md:hidden items-center gap-2">
+            <div className="flex md:hidden items-center gap-1">
               <button onClick={() => setShowSearch(v => !v)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
                 <Search size={20} />
               </button>
               <button onClick={() => setDarkMode(v => !v)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 text-yellow-400" : "bg-gray-100 text-gray-600"}`}>
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
+              <button onClick={() => setShowSaved(v => !v)} className={`p-2 rounded-xl ${showSaved ? "bg-blue-500 text-white" : darkMode ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
+                <Bookmark size={20} />
+              </button>
               <button onClick={() => setShowSubscribe(true)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-600"}`}>
                 <Mail size={20} />
               </button>
+              <Link href="/analytics" className={`p-2 rounded-xl ${darkMode ? "bg-purple-600 text-white" : "bg-purple-500 text-white"}`}>
+                <TrendingUp size={20} />
+              </Link>
             </div>
           </div>
 
