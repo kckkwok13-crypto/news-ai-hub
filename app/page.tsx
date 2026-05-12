@@ -687,7 +687,7 @@ export default function NewsPage() {
                 <div key={i} onClick={() => toggleRead(item.title)} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {isTravelGuide && item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
-                      <img src={`/api/proxy-image?url=${encodeURIComponent(item.img_url)}`} alt="" className="w-full h-full object-cover" />
+                      <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-3">
                         <span className="text-3xl">{item.city_emoji || '🌏'}</span>
                         <div className="ml-2">
@@ -698,7 +698,7 @@ export default function NewsPage() {
                     </div>
                   ) : item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
-                      <img src={`/api/proxy-image?url=${encodeURIComponent(item.img_url)}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     </div>
                   ) : (
