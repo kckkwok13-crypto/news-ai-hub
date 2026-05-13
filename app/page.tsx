@@ -980,15 +980,22 @@ export default function NewsPage() {
                     <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    <a 
-                      href={item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      onClick={e => { e.stopPropagation(); window.open(item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`, '_blank'); }} 
-                      className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}
-                    >
-                      {t.readMore}
-                    </a>
+                    {/* Read More with original link */}
+                    {item.link ? (
+                      <a 
+                        href={item.link}
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={e => e.stopPropagation()} 
+                        className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}
+                      >
+                        {(() => { try { const u = new URL(item.link); return `${u.hostname}${u.pathname.length > 15 ? '...' : ''}` } catch { return t.readMore } })()}
+                      </a>
+                    ) : (
+                      <span className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-500" : "bg-gray-200 text-gray-400"}`}>
+                        {t.readMore}
+                      </span>
+                    )}
                     
                     {details && (
                       <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
