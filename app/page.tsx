@@ -639,6 +639,21 @@ export default function NewsPage() {
           </div>
         )}
 
+        {/* Mobile Categories - Horizontal scrollable tabs */}
+        <div className="md:hidden -mx-4 px-4 pt-3">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
+            <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap snap-start transition-all flex-shrink-0 ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+              <Star size={14} /> {showSaved ? t.allNews : t.savedNews}
+              {showSaved && savedIds.size > 0 && <span className="ml-1 px-1.5 py-0.5 rounded-full bg-white/20 text-[10px]">{savedIds.size}</span>}
+            </button>
+            {CATEGORIES.map(c => (
+              <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap snap-start transition-all flex-shrink-0 ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+                <span className="text-base">{c.icon}</span> <span>{c.label_zh}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Desktop Categories */}
         <div className="hidden md:flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
           <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
