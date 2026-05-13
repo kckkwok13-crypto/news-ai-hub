@@ -616,6 +616,107 @@ export default function NewsPage() {
         </div>
       )}
 
+      {/* AI Host Loading Modal */}
+      {aiHostLoading && aiHostItem && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+          <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`}>
+            <div className="flex flex-col items-center text-center">
+              <div className="text-5xl mb-4 animate-bounce">🎙️</div>
+              <h3 className="text-xl font-bold mb-2">{lang === "en" ? "AI Analysis" : "AI 分析中"}</h3>
+              <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} mb-4`}>
+                {aiHostItem.title_translated || aiHostItem.title}
+              </p>
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse" style={{ width: "60%" }} />
+              </div>
+              <p className={`text-xs mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
+                {lang === "en" ? "Generating dual-host conversation..." : "緊係生成兩位主持對話..."}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* AI Host Dialog Modal */}
+      {(aiHostData || aiHostError) && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => { setAiHostData(null); setAiHostError(""); setAiHostItem(null); }}>
+          <div 
+            className={`max-w-2xl w-full max-h-[85vh] overflow-y-auto rounded-3xl p-6 md:p-8 shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} 
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-2xl">🎙️</div>
+                <div>
+                  <h3 className="text-lg font-bold">{lang === "en" ? "AI News Analysis" : "AI 新聞對話分析"}</h3>
+                  <p className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.analysis}</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => { setAiHostData(null); setAiHostError(""); setAiHostItem(null); }} 
+                className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-100 hover:bg-gray-200"}`}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* News Title */}
+            <div className={`p-4 rounded-xl mb-6 ${darkMode ? "bg-gray-800/50" : "bg-gray-50"}`}>
+              <p className={`text-sm font-medium ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                {aiHostItem?.title_translated || aiHostItem?.title}
+              </p>
+            </div>
+
+            {/* Error */}
+            {aiHostError && (
+              <div className="p-4 rounded-xl bg-red-500/20 border border-red-500/50 mb-6">
+                <p className="text-red-400 text-center">{aiHostError}</p>
+              </div>
+            )}
+
+            {/* Dialog Content */}
+            {aiHostData?.analysis && (
+              <div className="space-y-4">
+                {aiHostData.analysis.split('\n').filter((line: string) => line.trim()).map((line: string, i: number) => {
+                  const isMale = line.match(/^(阿傑|Jack|阿傑:|Jack:)/);
+                  const isFemale = line.match(/^(小婷|Emma|小婷:|Emma:)/);
+                  const isHost = isMale || isFemale;
+                  
+                  return (
+                    <div key={i} className={`flex items-start gap-3 ${isHost ? "" : "ml-4"}`}>
+                      {isMale && <span className="text-2xl">🎙️</span>}
+                      {isFemale && <span className="text-2xl">🎙️</span>}
+                      {!isHost && <span className="text-lg">•</span>}
+                      <div className={`flex-1 ${isHost ? "" : "italic"}`}>
+                        <p className={`${darkMode ? "text-gray-200" : "text-gray-700"} leading-relaxed`}>{line}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Demo Badge */}
+            {aiHostData?.isDemo && (
+              <div className="mt-6 p-3 rounded-xl bg-yellow-500/20 border border-yellow-500/40">
+                <p className="text-xs text-yellow-400 text-center">
+                  ⚠️ {lang === "en" ? "Demo mode - no API key configured" : "演示模式 - 尚未設定 API Key"}
+                </p>
+              </div>
+            )}
+
+            {/* Close Button */}
+            <button 
+              onClick={() => { setAiHostData(null); setAiHostError(""); setAiHostItem(null); }} 
+              className="w-full mt-6 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-2xl text-base font-bold hover:opacity-90 transition"
+            >
+              {lang === "en" ? "Close" : "關閉"}
+            </button>
+          </div>
+        </div>
+      )}
+
       <main className="max-w-7xl mx-auto px-4 py-6">
         {aiSummary && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => {}}>
@@ -789,11 +890,18 @@ export default function NewsPage() {
                     </div>
                   )}
                   
-                  {/* Always visible on mobile */}
-                  <div className="absolute top-3 right-3 flex gap-2 z-10">
-                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-2.5 rounded-xl bg-purple-500/90 text-white hover:bg-purple-500 backdrop-blur-sm shadow-lg" title={t.analysis}>
-                      <Zap size={18} />
+                  {/* AI分析 button - centered on image */}
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <button 
+                      onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} 
+                      className="px-5 py-3 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-base flex items-center gap-2 transition-all hover:scale-105"
+                    >
+                      <Zap size={20} /> {t.analysis}
                     </button>
+                  </div>
+                  
+                  {/* Top-right action buttons (bookmark, share only) */}
+                  <div className="absolute top-3 right-3 flex gap-2 z-10">
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
                       {isSaved ? <BookmarkCheck size={18} className="text-yellow-400" /> : <Bookmark size={18} />}
                     </button>
