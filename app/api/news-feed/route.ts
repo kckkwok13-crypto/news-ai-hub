@@ -1205,9 +1205,21 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
   ],
   data_journalism: [
-    { url: 'https://news.google.com/rss/search?q=data%20journalism%20infographic&hl=en-US&gl=US&ceid=US:en', source: 'Data Journalism' },
-    { url: 'https://news.google.com/rss/search?q=statistics%20data%20analysis%20research&hl=en-US&gl=US&ceid=US:en', source: 'Data Analysis' },
-    { url: 'https://news.google.com/rss/search?q=big%20data%20analytics%20trends&hl=en-US&gl=US&ceid=US:en', source: 'Big Data' },
+    // Official statistics bureaus
+    { url: 'https://www.ons.gov.uk/feeds/a0099736.rss', source: 'UK ONS' },
+    { url: 'https://www.census.gov/library/current/news.rss.xml', source: 'US Census' },
+    // Data journalism outlets
+    { url: 'https://feeds.bbci.co.uk/news/rss.xml', source: 'BBC Data' },
+    { url: 'https://www.theguardian.com/data/rss', source: 'Guardian Data' },
+    // Big data & AI statistics
+    { url: 'https://news.google.com/rss/search?q=AI%20statistics%20market%20report&hl=en-US&gl=US&ceid=US:en', source: 'AI Market Data' },
+    { url: 'https://news.google.com/rss/search?q=global%20economy%20data%20GDP%20statistics&hl=en-US&gl=US&ceid=US:en', source: 'Economy Stats' },
+    // Our World in Data & research
+    { url: 'https://ourworldindata.org/rss', source: 'Our World in Data' },
+    { url: 'https://data.gov.uk/rss/news', source: 'UK Open Data' },
+    // Tech & digital economy data
+    { url: 'https://news.google.com/rss/search?q=digital%20economy%20internet%20usage%20stats&hl=en-US&gl=US&ceid=US:en', source: 'Digital Stats' },
+    { url: 'https://news.google.com/rss/search?q=population%20demographics%20census%20data&hl=en-US&gl=US&ceid=US:en', source: 'Demographics' },
   ],
 }
 
