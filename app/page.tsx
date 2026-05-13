@@ -791,6 +791,9 @@ export default function NewsPage() {
                   
                   {/* Always visible on mobile */}
                   <div className="absolute top-3 right-3 flex gap-2 z-10">
+                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-2.5 rounded-xl bg-purple-500/90 text-white hover:bg-purple-500 backdrop-blur-sm shadow-lg" title={t.analysis}>
+                      <Zap size={18} />
+                    </button>
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
                       {isSaved ? <BookmarkCheck size={18} className="text-yellow-400" /> : <Bookmark size={18} />}
                     </button>
