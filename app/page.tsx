@@ -618,11 +618,11 @@ export default function NewsPage() {
 
       <main className="max-w-7xl mx-auto px-4 py-6">
         {aiSummary && (
-          <div className={`mb-8 p-6 md:p-8 rounded-3xl ${darkMode ? "bg-gray-900/80 border-gray-800" : "bg-white shadow-xl"} border relative overflow-hidden group`}>
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
-              <BookOpen size={80} />
-            </div>
-            <div className="relative z-10">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => {}}>
+            <div className={`max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-3xl p-8 shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-xl"} relative`}>
+              <button onClick={() => setAiSummary(null)} className={`absolute top-4 right-4 p-2 rounded-xl ${darkMode ? "bg-gray-800 hover:bg-gray-700 text-gray-400" : "bg-gray-100 hover:bg-gray-200 text-gray-500"}`}>
+                <X size={20} />
+              </button>
               <div className="flex items-center gap-2 mb-4">
                 <span className="flex h-3 w-3 rounded-full bg-red-500 animate-pulse" />
                 <h2 className="text-base md:text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
@@ -630,7 +630,6 @@ export default function NewsPage() {
               <p className={`text-lg md:text-xl font-medium leading-relaxed ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
                 {lang === "en" ? aiSummary.summary_en : aiSummary.summary_zh}
               </p>
-              
               <div className="mt-6 flex flex-col md:flex-row md:items-center gap-4">
                 <div className="flex-1 min-w-[200px]">
                   <p className="text-xs font-semibold mb-2 text-gray-500 uppercase tracking-tighter">{t.sentimentTitle || "情緒追蹤"}</p>
@@ -792,9 +791,6 @@ export default function NewsPage() {
                   
                   {/* Always visible on mobile */}
                   <div className="absolute top-3 right-3 flex gap-2 z-10">
-                    <button onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} className="p-2.5 rounded-xl bg-purple-500/90 text-white hover:bg-purple-500 backdrop-blur-sm shadow-lg" title={t.analysis}>
-                      <Zap size={18} />
-                    </button>
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
                       {isSaved ? <BookmarkCheck size={18} className="text-yellow-400" /> : <Bookmark size={18} />}
                     </button>
@@ -933,33 +929,20 @@ export default function NewsPage() {
                       </div>
                     )}
 
-                    {/* Inline AI Analysis - show when this item is being analyzed */}
-                    {aiHostItem?.title === item.title && aiHostData && (
-                      <div className={`mt-3 p-3 rounded-xl ${darkMode ? "bg-purple-900/30 border border-purple-500/40" : "bg-purple-50 border border-purple-200"}`}>
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-sm font-bold text-purple-500">🤖 {t.analysis}</span>
-                          {aiHostData.isDemo && <span className="text-[10px] bg-yellow-500/30 text-yellow-600 px-2 py-0.5 rounded-full">示範模式</span>}
-                        </div>
-                        {aiHostLoading ? (
-                          <div className="flex items-center gap-2 text-sm text-purple-400">
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-400"></div>
-                            AI 分析緊...
-                          </div>
-                        ) : (
-                          <div className="text-sm leading-relaxed whitespace-pre-wrap max-h-[30vh] overflow-y-auto">
-                            {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
-                              const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
-                              const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
-                              return (
-                                <p key={i} className={`mb-1 ${isMale ? 'text-blue-400' : isFemale ? 'text-pink-400' : darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-                                  {line}
-                                </p>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    )}
+                    {/* Card content */}
+                    <div className="mt-3 flex items-center gap-2">
+                      {item.source && (
+                        <span className={`text-[10px] md:text-xs px-2 py-0.5 rounded-full font-medium ${darkMode ? "bg-gray-700/60 text-gray-400" : "bg-gray-100 text-gray-500"}`}>
+                          {item.source}
+                        </span>
+                      )}
+                      {item.translated && (
+                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">✓ 已翻譯</span>
+                      )}
+                      {item.translationError && (
+                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400">⚠ 翻譯失敗</span>
+                      )}
+                    </div>
 
                     <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
