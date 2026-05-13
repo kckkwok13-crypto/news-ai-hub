@@ -922,7 +922,7 @@ export default function NewsPage() {
                       href={item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      onClick={e => { e.stopPropagation(); e.preventDefault(); window.open(item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`, '_blank'); }} 
+                      onClick={e => { e.stopPropagation(); window.open(item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`, '_blank'); }} 
                       className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}
                     >
                       {t.readMore}
