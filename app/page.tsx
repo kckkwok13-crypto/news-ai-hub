@@ -365,7 +365,7 @@ export default function NewsPage() {
       const interval = setInterval(() => fetchNews(false), 120000);
       return () => clearInterval(interval);
     }
-  }, [category, autoRefresh, lang]);
+  }, [category, autoRefresh, lang, dataJournalismSub]);
 
   useEffect(() => {
     if (news.length > 0) {
@@ -933,75 +933,39 @@ export default function NewsPage() {
                       </div>
                     )}
 
+                    {/* Inline AI Analysis - show when this item is being analyzed */}
+                    {aiHostItem?.title === item.title && aiHostData && (
+                      <div className={`mt-3 p-3 rounded-xl ${darkMode ? "bg-purple-900/30 border border-purple-500/40" : "bg-purple-50 border border-purple-200"}`}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-sm font-bold text-purple-500">🤖 {t.analysis}</span>
+                          {aiHostData.isDemo && <span className="text-[10px] bg-yellow-500/30 text-yellow-600 px-2 py-0.5 rounded-full">示範模式</span>}
+                        </div>
+                        {aiHostLoading ? (
+                          <div className="flex items-center gap-2 text-sm text-purple-400">
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-400"></div>
+                            AI 分析緊...
+                          </div>
+                        ) : (
+                          <div className="text-sm leading-relaxed whitespace-pre-wrap max-h-[30vh] overflow-y-auto">
+                            {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
+                              const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
+                              const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
+                              return (
+                                <p key={i} className={`mb-1 ${isMale ? 'text-blue-400' : isFemale ? 'text-pink-400' : darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                                  {line}
+                                </p>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
                 </div>
               );
             })}
-          </div>
-        )}
-
-        {aiHostItem && (
-          <div className="fixed bottom-0 left-0 right-0 z-[100] bg-gradient-to-t from-purple-950/98 to-purple-900/95 backdrop-blur-xl border-t border-purple-500/30 p-6 shadow-2xl">
-            <div className="max-w-4xl mx-auto">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                    🤖 {t.analysis}
-                    {aiHostData?.isDemo && <span className="text-xs bg-yellow-500/30 text-yellow-300 px-3 py-1 rounded-full">示範模式</span>}
-                  </h3>
-                  <p className="text-sm text-purple-200 mt-1 line-clamp-1">
-                    {aiHostItem.title_translated || aiHostItem.title}
-                  </p>
-                </div>
-                <button 
-                  onClick={() => { setAiHostItem(null); setAiHostData(null); setAiHostError(""); }} 
-                  className="text-gray-300 hover:text-white p-3 rounded-xl bg-gray-800"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-              
-              {aiHostLoading ? (
-                <div className="flex flex-col items-center justify-center py-10">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-300"></div>
-                  <span className="mt-4 text-lg text-purple-200">AI 分析緊...</span>
-                  <span className="text-sm text-purple-300 mt-1">大約需要 10-20 秒</span>
-                </div>
-              ) : aiHostError ? (
-                <div className="bg-red-500/20 border border-red-500/30 rounded-2xl p-5">
-                  <p className="text-red-200 mb-4 text-lg">❌ {aiHostError}</p>
-                  <button 
-                    onClick={() => analyzeWithAIHost(aiHostItem)}
-                    className="px-5 py-3 bg-purple-500 text-white rounded-xl hover:bg-purple-600 flex items-center gap-2 transition text-base font-medium"
-                  >
-                    <RefreshCw size={18} /> 重試
-                  </button>
-                </div>
-              ) : aiHostData ? (
-                <>
-                  <div className="bg-black/40 rounded-2xl p-5 mb-5 max-h-[50vh] overflow-y-auto">
-                    <div className="text-white leading-relaxed whitespace-pre-wrap text-base">
-                      {aiHostData.analysis?.split('\n').map((line: string, i: number) => {
-                        const isMale = line.startsWith('阿傑:') || line.startsWith('Jack:');
-                        const isFemale = line.startsWith('小婷:') || line.startsWith('Emma:');
-                        return (
-                          <p key={i} className={`mb-3 ${isMale ? 'text-blue-300' : isFemale ? 'text-pink-300' : 'text-white'}`}>
-                            {line}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <button 
-                    onClick={() => { setAiHostItem(null); setAiHostData(null); }} 
-                    className="w-full py-4 bg-purple-500 text-white rounded-2xl text-lg font-bold hover:bg-purple-600 transition"
-                  >
-                    {lang === 'en' ? 'Close' : '關閉'}
-                  </button>
-                </>
-              ) : null}
-            </div>
           </div>
         )}
       </main>
