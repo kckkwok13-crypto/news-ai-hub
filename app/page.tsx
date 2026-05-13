@@ -719,8 +719,8 @@ export default function NewsPage() {
 
       <main className="max-w-7xl mx-auto px-4 py-6">
         {aiSummary && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => {}}>
-            <div className={`max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-3xl p-8 shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-xl"} relative`}>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => setAiSummary(null)}>
+            <div className={`max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-3xl p-8 shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-xl"} relative`} onClick={e => e.stopPropagation()}>
               <button onClick={() => setAiSummary(null)} className={`absolute top-4 right-4 p-2 rounded-xl ${darkMode ? "bg-gray-800 hover:bg-gray-700 text-gray-400" : "bg-gray-100 hover:bg-gray-200 text-gray-500"}`}>
                 <X size={20} />
               </button>
