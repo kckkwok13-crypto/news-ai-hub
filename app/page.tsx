@@ -752,13 +752,6 @@ export default function NewsPage() {
                     <div style={{ width: `${aiSummary.sentiment?.negative || 0}%` }} className="h-full bg-red-500" />
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {aiSummary.trends?.map((trend: string) => (
-                    <span key={trend} className={`px-4 py-1.5 rounded-full text-sm font-bold ${darkMode ? "bg-blue-900/40 text-blue-300" : "bg-blue-100 text-blue-700"}`}>
-                      # {trend}
-                    </span>
-                  ))}
-                </div>
               </div>
 
               {/* News Details List with Links */}
@@ -902,6 +895,34 @@ export default function NewsPage() {
                 </span>
               </button>
             ))}
+          </div>
+        )}
+
+        {aiSummary && aiSummary.trends && aiSummary.trends.length > 0 && (
+          <div className="mb-4 -mx-4 px-4">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              <span className={`text-xs font-bold px-3 py-1.5 rounded-full flex-shrink-0 ${darkMode ? "bg-gray-800 text-gray-400" : "bg-gray-100 text-gray-500"}`}>
+                🔥 {lang === "en" ? "Trending" : "熱門"}
+              </span>
+              {aiSummary.trends.slice(0, 8).map((trend: string) => (
+                <button
+                  key={trend}
+                  onClick={() => {
+                    setSearch(trend);
+                    setShowSaved(false);
+                  }}
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap flex-shrink-0 transition-all ${
+                    search === trend
+                      ? "bg-blue-500 text-white"
+                      : darkMode
+                      ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  # {trend}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
