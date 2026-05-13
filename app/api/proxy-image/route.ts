@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Trusted image domains
-const TRUSTED_DOMAINS = [
-  'images.unsplash.com',
-  'source.unsplash.com',
-  'picsum.photos',
-  'via.placeholder.com',
-  'img.youtube.com',
-  'i.imgur.com',
-  'media.travelguide.com',
-]
+function isValidUrl(urlStr: string): boolean {
+  try {
+    const url = new URL(urlStr)
+    return url.protocol === 'http:' || url.protocol === 'https:'
+  } catch {
+    return false
+  }
+}
 
 function getReferrer(imageUrl: string): string {
   try {
@@ -17,15 +15,6 @@ function getReferrer(imageUrl: string): string {
     return `https://${url.hostname}/`
   } catch {
     return 'https://www.google.com/'
-  }
-}
-
-function isValidUrl(urlStr: string): boolean {
-  try {
-    const url = new URL(urlStr)
-    return url.protocol === 'http:' || url.protocol === 'https:'
-  } catch {
-    return false
   }
 }
 
@@ -37,14 +26,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Missing url parameter' }, { status: 400 })
   }
 
-  // Validate URL
   if (!isValidUrl(imageUrl)) {
     return NextResponse.json({ error: 'Invalid URL' }, { status: 400 })
   }
 
   try {
     const referrer = getReferrer(imageUrl)
-    
+
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 15000)
+
     const res = await fetch(imageUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -52,11 +43,13 @@ export async function GET(request: NextRequest) {
         'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
         'Accept-Encoding': 'identity',
       },
-      signal: AbortSignal.timeout(15000), // Increased timeout
+      signal: controller.signal
     })
 
+    clearTimeout(timeoutId)
+
     if (!res.ok) {
-      console.error(`Proxy fetch failed: ${res.status} for ${imageUrl}`)
+      console.error(`[proxy-image] Fetch failed: ${res.status} for ${imageUrl}`)
       return NextResponse.json({ error: `Failed to fetch: ${res.status}` }, { status: 502 })
     }
 
@@ -72,8 +65,11 @@ export async function GET(request: NextRequest) {
         'Access-Control-Allow-Origin': '*',
       },
     })
-  } catch (err) {
-    console.error('Proxy error:', err)
-    return NextResponse.json({ error: 'Proxy failed' }, { status: 502 })
+
+  } catch (err: any) {
+    console.error('[proxy-image] Error:', err.message)
+    return NextResponse.json({ error: 'Proxy failed: ' + err.message }, { status: 502 })
   }
 }
+
+export const runtime = 'nodejs'

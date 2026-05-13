@@ -782,7 +782,7 @@ export default function NewsPage() {
                                     detail.bias === 'pro_china' ? 'bg-red-500/20 text-red-400' :
                                     'bg-gray-500/20 text-gray-400'
                                   }`}>
-                                    {t.biasTypes?.[detail.bias] || detail.bias}
+                                    {(t.biasTypes as Record<string,string>)?.[detail.bias] || detail.bias}
                                   </span>
                                 )}
                                 {detail.impact && (
