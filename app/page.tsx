@@ -706,10 +706,22 @@ export default function NewsPage() {
               </div>
             )}
 
+            {/* 转到原文 */}
+            {aiHostItem?.link && (
+              <a
+                href={aiHostItem.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 w-full py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 transition"
+              >
+                <ExternalLink size={16} /> {lang === "en" ? "Read Original Article" : "轉到原文"}
+              </a>
+            )}
+
             {/* Close Button */}
             <button 
               onClick={() => { setAiHostData(null); setAiHostError(""); setAiHostItem(null); }} 
-              className="w-full mt-6 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-2xl text-base font-bold hover:opacity-90 transition"
+              className="w-full mt-4 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-2xl text-base font-bold hover:opacity-90 transition"
             >
               {lang === "en" ? "Close" : "關閉"}
             </button>
