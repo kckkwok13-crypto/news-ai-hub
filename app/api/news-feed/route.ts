@@ -1147,7 +1147,42 @@ const TRAVEL_GUIDES: Record<string, {
 };
 
 
-// RSS sources by category
+// Data Journalism subcategories
+const DATA_JOURNALISM_SUBCATS: Record<string, { url: string; source: string }[]> = {
+  gdp: [
+    { url: 'https://news.google.com/rss/search?q=GDP%20economy%20growth%20statistics&hl=en-US&gl=US&ceid=US:en', source: 'GDP Growth' },
+    { url: 'https://www.imf.org/en/Publications/RSS/News RSS', source: 'IMF' },
+    { url: 'https://news.google.com/rss/search?q=World%20Bank%20economic%20data&hl=en-US&gl=US&ceid=US:en', source: 'World Bank' },
+    { url: 'https://data.gov.uk/rss/news', source: 'UK Open Data' },
+    { url: 'https://www.ons.gov.uk/feeds/a0099736.rss', source: 'UK ONS' },
+  ],
+  digital: [
+    { url: 'https://news.google.com/rss/search?q=digital%20economy%20internet%20usage%20stats&hl=en-US&gl=US&ceid=US:en', source: 'Digital Economy' },
+    { url: 'https://news.google.com/rss/search?q=e-commerce%20online%20shopping%20marketplace%20data&hl=en-US&gl=US&ceid=US:en', source: 'E-Commerce' },
+    { url: 'https://news.google.com/rss/search?q=AI%20artificial%20intelligence%20market%20size%20statistics&hl=en-US&gl=US&ceid=US:en', source: 'AI Market' },
+    { url: 'https://news.google.com/rss/search?q=cybersecurity%20data%20breach%20statistics&hl=en-US&gl=US&ceid=US:en', source: 'Cybersecurity' },
+  ],
+  demographics: [
+    { url: 'https://www.census.gov/library/current/news.rss.xml', source: 'US Census' },
+    { url: 'https://news.google.com/rss/search?q=population%20demographics%20census%20data&hl=en-US&gl=US&ceid=US:en', source: 'Demographics' },
+    { url: 'https://news.google.com/rss/search?q=immigration%20migration%20population%20trends&hl=en-US&gl=US&ceid=US:en', source: 'Migration' },
+    { url: 'https://news.google.com/rss/search?q=aging%20population%20birth%20rate%20fertility&hl=en-US&gl=US&ceid=US:en', source: 'Population Trends' },
+  ],
+  ai: [
+    { url: 'https://news.google.com/rss/search?q=AI%20statistics%20market%20report&hl=en-US&gl=US&ceid=US:en', source: 'AI Stats' },
+    { url: 'https://ourworldindata.org/rss', source: 'Our World in Data' },
+    { url: 'https://news.google.com/rss/search?q=AI%20adoption%20enterprise%20implementation%20survey&hl=en-US&gl=US&ceid=US:en', source: 'AI Adoption' },
+    { url: 'https://news.google.com/rss/search?q=machine%20learning%20deep%20learning%20research%20data&hl=en-US&gl=US&ceid=US:en', source: 'ML Research' },
+  ],
+  official: [
+    { url: 'https://www.ons.gov.uk/feeds/a0099736.rss', source: 'UK ONS' },
+    { url: 'https://data.gov.uk/rss/news', source: 'UK Open Data' },
+    { url: 'https://feeds.bbci.co.uk/news/rss.xml', source: 'BBC Data' },
+    { url: 'https://www.theguardian.com/data/rss', source: 'Guardian Data' },
+  ],
+}
+
+// RSS sources
 const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   finance: [
     { url: 'https://finance.yahoo.com/news/rssindex', source: 'Yahoo Finance' },
@@ -1203,23 +1238,6 @@ const RSS_SOURCES: Record<string, {url: string, source: string}[]> = {
   mystery: [
     { url: 'https://news.google.com/rss/search?q=ghost%20paranormal%20supernatural&hl=en-US&gl=US&ceid=US:en', source: 'Paranormal' },
     { url: 'https://news.google.com/rss/search?q=UFO%20alien%20extraterrestrial&hl=en-US&gl=US&ceid=US:en', source: 'UFO News' },
-  ],
-  data_journalism: [
-    // Official statistics bureaus
-    { url: 'https://www.ons.gov.uk/feeds/a0099736.rss', source: 'UK ONS' },
-    { url: 'https://www.census.gov/library/current/news.rss.xml', source: 'US Census' },
-    // Data journalism outlets
-    { url: 'https://feeds.bbci.co.uk/news/rss.xml', source: 'BBC Data' },
-    { url: 'https://www.theguardian.com/data/rss', source: 'Guardian Data' },
-    // Big data & AI statistics
-    { url: 'https://news.google.com/rss/search?q=AI%20statistics%20market%20report&hl=en-US&gl=US&ceid=US:en', source: 'AI Market Data' },
-    { url: 'https://news.google.com/rss/search?q=global%20economy%20data%20GDP%20statistics&hl=en-US&gl=US&ceid=US:en', source: 'Economy Stats' },
-    // Our World in Data & research
-    { url: 'https://ourworldindata.org/rss', source: 'Our World in Data' },
-    { url: 'https://data.gov.uk/rss/news', source: 'UK Open Data' },
-    // Tech & digital economy data
-    { url: 'https://news.google.com/rss/search?q=digital%20economy%20internet%20usage%20stats&hl=en-US&gl=US&ceid=US:en', source: 'Digital Stats' },
-    { url: 'https://news.google.com/rss/search?q=population%20demographics%20census%20data&hl=en-US&gl=US&ceid=US:en', source: 'Demographics' },
   ],
 }
 
@@ -1393,6 +1411,74 @@ export async function GET(request: NextRequest) {
       citySummaries: citySummaries,
       placeTypes: placeTypes,
       timestamp: Date.now()
+    })
+  }
+
+  // Special handling for data_journalism - subcategory support with key stats
+  if (category === 'data_journalism') {
+    const now = Date.now()
+    const subcategory = searchParams.get('sub') || 'gdp'
+    const subSources = DATA_JOURNALISM_SUBCATS[subcategory as keyof typeof DATA_JOURNALISM_SUBCATS] || DATA_JOURNALISM_SUBCATS.gdp
+    
+    const subcategoryLabels: Record<string, { name: string; name_zh: string; emoji: string; description: string; description_zh: string }> = {
+      gdp: { name: 'GDP & Economy', name_zh: 'GDP與經濟', emoji: '📈', description: 'Economic indicators, GDP growth, trade statistics', description_zh: '經濟指標、GDP增長、貿易統計' },
+      digital: { name: 'Digital Economy', name_zh: '數碼經濟', emoji: '💻', description: 'Internet, e-commerce, AI market, cybersecurity data', description_zh: '互聯網、電子商務、AI市場、網絡安全數據' },
+      demographics: { name: 'Demographics', name_zh: '人口統計', emoji: '👥', description: 'Population, migration, birth rates, demographics', description_zh: '人口、遷移、出生率、人口統計' },
+      ai: { name: 'AI & Technology', name_zh: 'AI與科技', emoji: '🤖', description: 'AI statistics, machine learning, technology adoption', description_zh: 'AI統計、機器學習、科技應用' },
+      official: { name: 'Official Statistics', name_zh: '官方統計', emoji: '🏛️', description: 'Government statistics bureaus, official data releases', description_zh: '政府統計局、官方數據發布' },
+    }
+    
+    const subLabel = subcategoryLabels[subcategory] || subcategoryLabels.gdp
+    
+    const sourcePromises = subSources.map(async (source) => {
+      try {
+        const res = await fetch(source.url, { signal: AbortSignal.timeout(10000) })
+        if (!res.ok) return []
+        const xml = await res.text()
+        const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
+        return itemMatches.slice(0, 10).map((itemXml: string) => {
+          const titleMatch = itemXml.match(/<title>([\s\S]*?)<\/title>/i)
+          const descMatch = itemXml.match(/<description>([\s\S]*?)<\/description>/i)
+          const linkMatch = itemXml.match(/<link>([\s\S]*?)<\/link>/i)
+          const dateMatch = itemXml.match(/<pubDate>([\s\S]*?)<\/pubDate>/i)
+          const title = titleMatch ? extractText(titleMatch[1]) : ''
+          const desc = descMatch ? extractText(descMatch[1]) : ''
+          const link = linkMatch ? extractText(linkMatch[1]) : ''
+          const pubDateStr = dateMatch ? extractText(dateMatch[1]) : ''
+          let pubTimestamp = 0
+          if (pubDateStr) { const pd = new Date(pubDateStr); pubTimestamp = isNaN(pd.getTime()) ? 0 : pd.getTime() }
+          const img = extractImage(itemXml)
+          return { id: Buffer.from(link).toString('base64').slice(0, 16), title, desc: desc.slice(0, 200), link, pubDate: pubDateStr, pubTimestamp: pubTimestamp || now, img: !!img, img_url: img || '', source: source.source }
+        }).filter((item: any) => item.title && item.link)
+      } catch { return [] }
+    })
+    
+    const results = await Promise.all(sourcePromises)
+    const allItems = results.flat().sort((a: any, b: any) => b.pubTimestamp - a.pubTimestamp).slice(0, 20)
+    
+    const translatedItems = await Promise.all(allItems.slice(0, 10).map(async (item: any) => {
+      const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
+      let needsTranslation = lang !== 'en' && !isChineseSource
+      if (needsTranslation) {
+        try {
+          const [tTitle, tDesc] = await Promise.all([translateText(item.title, lang), item.desc ? translateText(item.desc, lang) : Promise.resolve('')])
+          return { ...item, title_translated: tTitle, desc_translated: tDesc, translated: true }
+        } catch { return { ...item, title_translated: item.title, desc_translated: item.desc, translated: false } }
+      }
+      return { ...item, title_translated: item.title, desc_translated: item.desc, translated: false }
+    }))
+    
+    return NextResponse.json({
+      success: true,
+      category: 'data_journalism',
+      subcategory,
+      subcategoryLabel: subLabel,
+      subcategories: Object.entries(DATA_JOURNALISM_SUBCATS).map(([id, sources]) => ({
+        id, ...subcategoryLabels[id], sourceCount: (sources as any[]).length
+      })),
+      items: [...translatedItems, ...allItems.slice(10)].slice(0, 20),
+      isDataJournalism: true,
+      timestamp: now,
     })
   }
 

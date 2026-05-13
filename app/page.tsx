@@ -230,6 +230,11 @@ export default function NewsPage() {
   const [travelTypeFilter, setTravelTypeFilter] = useState<string>('all');
   const [citySummaries, setCitySummaries] = useState<any[]>([]);
   const [placeTypes, setPlaceTypes] = useState<string[]>([]);
+  
+  // Data journalism filter states
+  const [dataJournalismSub, setDataJournalismSub] = useState<string>('gdp');
+  const [dataJournalismSubs, setDataJournalismSubs] = useState<any[]>([]);
+  const [isDataJournalism, setIsDataJournalism] = useState(false);
 
   // AdSense state
   const adsenseClient = typeof window !== 'undefined' 
@@ -304,7 +309,7 @@ export default function NewsPage() {
     
     setError("")
     try {
-      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}`;
+      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
       const res = await fetch(url);
       const data = await res.json();
       if (data.success && data.items) {
@@ -314,6 +319,14 @@ export default function NewsPage() {
         if (data.citySummaries) setCitySummaries(data.citySummaries);
         if (data.placeTypes) setPlaceTypes(data.placeTypes);
         localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
+        // Capture data journalism subcategory data
+        if (data.isDataJournalism) {
+          setIsDataJournalism(true)
+          if (data.subcategories) setDataJournalismSubs(data.subcategories)
+          if (data.subcategory) setDataJournalismSub(data.subcategory)
+        } else {
+          setIsDataJournalism(false)
+        }
       } else {
         if (news.length === 0) setNews([]);
         setError(data.error || "Failed to load news");
@@ -324,7 +337,7 @@ export default function NewsPage() {
     } finally {
       setLoading(false);
     }
-  }, [category, lang, news.length, travelCityFilter]);
+  }, [category, lang, news.length, travelCityFilter, dataJournalismSub]);
 
   const fetchAiSummary = useCallback(async () => {
     if (news.length === 0) return;
