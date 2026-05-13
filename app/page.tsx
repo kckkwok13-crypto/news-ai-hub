@@ -760,6 +760,56 @@ export default function NewsPage() {
                   ))}
                 </div>
               </div>
+
+              {/* News Details List with Links */}
+              {aiSummary.details && aiSummary.details.length > 0 && (
+                <div className="mt-6 border-t border-gray-700 pt-4">
+                  <p className="text-xs font-semibold mb-3 text-gray-400 uppercase tracking-wider">{t.bias || "立場分析"} · {t.impact || "深度解讀"}</p>
+                  <div className="space-y-3 max-h-[300px] overflow-y-auto">
+                    {aiSummary.details.map((detail: any, idx: number) => {
+                      const newsItem = displayNews.find((n: any) => n.id === detail.id) || displayNews[idx];
+                      return (
+                        <div key={idx} className={`p-3 rounded-xl ${darkMode ? "bg-gray-800/50" : "bg-gray-50"}`}>
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex-1 min-w-0">
+                              <p className={`text-sm font-medium truncate ${darkMode ? "text-gray-200" : "text-gray-700"}`}>
+                                {newsItem?.title_translated || newsItem?.title || detail.id}
+                              </p>
+                              <div className="flex items-center gap-2 mt-1">
+                                {detail.bias && (
+                                  <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+                                    detail.bias === 'pro_western' ? 'bg-blue-500/20 text-blue-400' :
+                                    detail.bias === 'pro_china' ? 'bg-red-500/20 text-red-400' :
+                                    'bg-gray-500/20 text-gray-400'
+                                  }`}>
+                                    {t.biasTypes?.[detail.bias] || detail.bias}
+                                  </span>
+                                )}
+                                {detail.impact && (
+                                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400">
+                                    {detail.impact}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            {newsItem?.link && (
+                              <a
+                                href={newsItem.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0 p-1.5 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/40 transition"
+                                onClick={e => e.stopPropagation()}
+                              >
+                                <ExternalLink size={14} />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
