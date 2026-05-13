@@ -667,6 +667,33 @@ export default function NewsPage() {
           </div>
         </div>
 
+        {/* Mobile Data Journalism Subcategory Filter */}
+        {category === 'data_journalism' && dataJournalismSubs.length > 0 && (
+          <div className="md:hidden -mx-4 px-4 pt-2 mb-3">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
+              {dataJournalismSubs.map((sub: any) => (
+                <button
+                  key={sub.id}
+                  onClick={() => setDataJournalismSub(sub.id)}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
+                    dataJournalismSub === sub.id
+                      ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
+                      : darkMode
+                      ? "bg-gray-800 text-gray-300"
+                      : "bg-white text-gray-600 border border-gray-200"
+                  }`}
+                >
+                  <span className="text-sm">{sub.emoji}</span>
+                  <span>{sub.name_zh}</span>
+                  <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${dataJournalismSub === sub.id ? "bg-white/20" : darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
+                    {sub.sourceCount}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Desktop Categories */}
         <div className="hidden md:flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
           <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
@@ -687,6 +714,34 @@ export default function NewsPage() {
             </button>
           </div>
         </div>
+
+        {/* Data Journalism Subcategory Filter Tabs */}
+        {category === 'data_journalism' && dataJournalismSubs.length > 0 && (
+          <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2 scrollbar-hide">
+            <div className={`px-3 py-1.5 rounded-xl text-xs font-semibold ${darkMode ? "bg-cyan-600 text-white" : "bg-cyan-100 text-cyan-700"}`}>
+              📊 {lang === "en" ? "Subcategories" : "子分類"}
+            </div>
+            {dataJournalismSubs.map((sub: any) => (
+              <button
+                key={sub.id}
+                onClick={() => setDataJournalismSub(sub.id)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
+                  dataJournalismSub === sub.id
+                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
+                    : darkMode
+                    ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
+                }`}
+              >
+                <span className="text-base">{sub.emoji}</span>
+                <span>{lang === "en" ? sub.name : sub.name_zh}</span>
+                <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${dataJournalismSub === sub.id ? "bg-white/20" : darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
+                  {sub.sourceCount}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {loading && (
           <div className="text-center py-20">
