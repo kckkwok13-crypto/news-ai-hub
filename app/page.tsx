@@ -601,7 +601,7 @@ export default function NewsPage() {
       </header>
 
       {showSubscribe && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
           <div className={`w-full max-w-md rounded-3xl p-8 ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold">{t.subscribeTitle}</h3>
@@ -922,7 +922,7 @@ export default function NewsPage() {
                       href={item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      onClick={e => e.stopPropagation()} 
+                      onClick={e => { e.stopPropagation(); e.preventDefault(); window.open(item.link || `https://www.google.com/search?q=${encodeURIComponent(item.title_translated || item.title)}`, '_blank'); }} 
                       className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}
                     >
                       {t.readMore}
