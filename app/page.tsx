@@ -820,6 +820,13 @@ export default function NewsPage() {
                       {t.readMore}
                     </a>
                     
+                    <button 
+                      onClick={e => { e.stopPropagation(); setShowImpactId(item.id); }} 
+                      className={`mt-3 w-full py-3 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 shadow-lg" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90 shadow-md"}`}
+                    >
+                      <Zap size={18} /> {t.impact || "深度解讀"}
+                    </button>
+                    
                     {details && (
                       <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
                         <div className="flex items-center gap-2 mb-2">
