@@ -970,10 +970,10 @@ export default function NewsPage() {
                   )}
                   
                   {/* AI分析 button - centered on image */}
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <div className={`absolute inset-0 flex items-center justify-center z-10 ${isTravelGuide ? 'top-4' : ''}`}>
                     <button 
                       onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} 
-                      className="px-5 py-3 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-base flex items-center gap-2 transition-all hover:scale-105"
+                      className={`px-5 py-3 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-base flex items-center gap-2 transition-all hover:scale-105 ${isTravelGuide ? 'mt-8' : ''}`}
                     >
                       <Zap size={20} /> {t.analysis}
                     </button>
