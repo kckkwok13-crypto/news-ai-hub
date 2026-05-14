@@ -969,13 +969,13 @@ export default function NewsPage() {
                     </div>
                   )}
                   
-                  {/* AI分析 button - centered on image */}
-                  <div className={`absolute inset-0 flex items-center justify-center z-10 ${isTravelGuide ? 'top-4' : ''}`}>
+                  {/* AI分析 button - travel cards: button scrolls down on image */}
+                  <div className={`absolute inset-0 flex flex-col items-center justify-end z-10 ${isTravelGuide ? 'pb-2' : 'items-center justify-center'}`}>
                     <button 
                       onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} 
-                      className={`px-5 py-3 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-base flex items-center gap-2 transition-all hover:scale-105 ${isTravelGuide ? 'mt-8' : ''}`}
+                      className={`px-4 py-2.5 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-sm flex items-center gap-2 transition-all hover:scale-105 ${isTravelGuide ? 'mb-20 md:mb-24' : ''}`}
                     >
-                      <Zap size={20} /> {t.analysis}
+                      <Zap size={18} /> {t.analysis}
                     </button>
                   </div>
                   
