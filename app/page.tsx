@@ -706,17 +706,13 @@ export default function NewsPage() {
               </div>
             )}
 
-            {/* 转到原文 */}
-            {aiHostItem?.link && (
-              <a
-                href={aiHostItem.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 w-full py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 transition"
-              >
-                <ExternalLink size={16} /> {lang === "en" ? "Read Original Article" : "轉到原文"}
-              </a>
-            )}
+            {/* Return to card list button */}
+            <button
+              onClick={() => { setAiHostData(null); setAiHostError(""); setAiHostItem(null); }}
+              className="mt-4 w-full py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-2 transition"
+            >
+              <ExternalLink size={16} /> {lang === "en" ? "Return to Card List" : "返回卡片列表"}
+            </button>
 
             {/* Close Button */}
             <button 
