@@ -14,25 +14,26 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
   ],
   business: [
     { url: 'https://feeds.bbciit.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://www.forbes.com/business/rss/', source: 'Forbes Business' },
-    { url: 'https://www.cnbc.com/id/100003114/rss.xml', source: 'CNBC' },
+    { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters Business' },
+    { url: 'https://www.skysports.com/rss/1233', source: 'Sky Sports Business' },
   ],
   technology: [
     { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
     { url: 'https://feeds.arstechnica.com/arstechnica/index', source: 'Ars Technica' },
-    { url: 'https://www.techcrunch.com/feed/', source: 'TechCrunch' },
+    { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
   ],
   health: [
-    { url: 'https://www.medicalnewstoday.com/rss', source: 'Medical News Today' },
-    { url: 'https://www.healthline.com/rss', source: 'Healthline' },
+    { url: 'https://www.nhs.uk/rss/news/', source: 'NHS News' },
+    { url: 'https://www.webmd.com/rss/news', source: 'WebMD' },
   ],
   gaming: [
-    { url: 'https://www.gamespot.com/feeds/mashup/', source: 'GameSpot' },
+    { url: 'https://www.gamesindustry.biz/feed', source: 'GamesIndustry.biz' },
     { url: 'https://kotaku.com/rss', source: 'Kotaku' },
+    { url: 'https://www.polygon.com/rss/index.xml', source: 'Polygon' },
   ],
   food: [
-    { url: 'https://www.foodandwine.com/rss', source: 'Food & Wine' },
     { url: 'https://www.seriouseats.com/rss', source: 'Serious Eats' },
+    { url: 'https://www.bonappetit.com/feed/rss', source: 'Bon Appétit' },
   ],
   ai_art: [
     { url: 'https://venturebeat.com/ai/feed/', source: 'VentureBeat AI' },
@@ -50,21 +51,22 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
 
 const DATA_JOURNALISM_SUBCATS: Record<string, Array<{ url: string; source: string }>> = {
   gdp: [
-    { url: 'https://www.imf.org/en/Publications/RSS/ALL/RSSFeed', source: 'IMF' },
-    { url: 'https://data.worldbank.org/rss', source: 'World Bank' },
+    { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters' },
+    { url: 'https://feeds.bbciit.co.uk/news/business/rss.xml', source: 'BBC Business' },
   ],
   digital: [
-    { url: 'https://www.weforum.org/rss', source: 'WEF' },
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
+    { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
   ],
   demographics: [
-    { url: 'https://www.un.org/rss/en/news.xml', source: 'UN News' },
+    { url: 'https://www.livescience.com/feed', source: 'Live Science' },
+    { url: 'https://www.nature.com/news.rss', source: 'Nature' },
   ],
   ai: [
     { url: 'https://venturebeat.com/ai/feed/', source: 'VentureBeat AI' },
   ],
   official: [
-    { url: 'https://www.census.gov/en/rss/updates.xml', source: 'US Census' },
+    { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters' },
   ],
 }
 
