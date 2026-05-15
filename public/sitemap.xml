@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://newsflow.ai/</loc>
+    <loc>https://newskingdom.store/</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://newsflow.ai/about</loc>
+    <loc>https://newskingdom.store/about</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newsflow.ai/contact</loc>
+    <loc>https://newskingdom.store/contact</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://newsflow.ai/privacy</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://newskingdom.store/privacy</loc>
+    <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://newsflow.ai/podcast</loc>
+    <loc>https://newskingdom.store/podcast</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://newsflow.ai/analytics</loc>
+    <loc>https://newskingdom.store/analytics</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// ============ CONSTANTS ============
 const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
   finance: [
     { url: 'https://feeds.bloomberg.com/markets/news.rss', source: 'Bloomberg' },
@@ -39,6 +38,13 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
     { url: 'https://venturebeat.com/ai/feed/', source: 'VentureBeat AI' },
     { url: 'https://www.artnews.com/feed/', source: 'ARTnews' },
     { url: 'https://hyperallergic.com/rss/', source: 'Hyperallergic' },
+  ],
+  // ✅ FIX: Added proper "art" category key with dedicated art RSS feeds
+  art: [
+    { url: 'https://www.artforum.com/rss', source: 'Artforum' },
+    { url: 'https://www.artnews.com/feed/', source: 'ARTnews' },
+    { url: 'https://hyperallergic.com/rss/', source: 'Hyperallergic' },
+    { url: 'https://www.theartnewspaper.com/rss', source: 'The Art Newspaper' },
   ],
   astronomy: [
     { url: 'https://www.space.com/feeds/hot/', source: 'Space.com' },
@@ -91,8 +97,8 @@ function extractImage(itemXml: string): string | null {
   return null
 }
 
-// Translation with timeout protection
-async function translateText(text: string, lang: string, timeoutMs = 8000): Promise<string> {
+// Improved translation with OpenRouter AI fallback and better timeout handling
+async function translateText(text: string, lang: string, timeoutMs = 10000): Promise<string> {
   if (!text || text.length < 2) return text
   
   const hasChinese = /[\u4e00-\u9fff]/.test(text)
@@ -102,6 +108,7 @@ async function translateText(text: string, lang: string, timeoutMs = 8000): Prom
     return text
   }
   
+  // Try Google Translate first (fast, reliable)
   try {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
@@ -114,14 +121,52 @@ async function translateText(text: string, lang: string, timeoutMs = 8000): Prom
     })
     clearTimeout(timeoutId)
     
-    if (!res.ok) throw new Error(`Translation API error: ${res.status}`)
-    
-    const data = await res.json()
-    return data[0]?.[0]?.[0] || text
-  } catch (e: any) {
-    console.warn('[translateText] Failed, returning original:', e.message)
-    return text
+    if (res.ok) {
+      const data = await res.json()
+      const translated = data[0]?.[0]?.[0]
+      if (translated && translated !== text) return translated
+    }
+  } catch {
+    // Google failed, try OpenRouter AI
   }
+
+  // OpenRouter AI fallback for better quality translation
+  const apiKey = process.env.OPENROUTER_API_KEY
+  if (apiKey) {
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+      
+      const targetLangLabel = lang === 'en' ? 'English' : lang === 'zh-CN' ? 'Simplified Chinese' : 'Traditional Chinese with Cantonese style'
+      const prompt = `Translate the following text to ${targetLangLabel}. Only output the translation, nothing else.\n\nText: ${text}`
+      
+      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://newskingdom.store',
+        },
+        body: JSON.stringify({
+          model: 'google/gemini-2.0-flash-001',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 500,
+        }),
+        signal: controller.signal
+      })
+      clearTimeout(timeoutId)
+      
+      if (res.ok) {
+        const data = await res.json()
+        const translated = data.choices?.[0]?.message?.content?.trim()
+        if (translated && translated !== text) return translated
+      }
+    } catch {
+      // AI translation failed
+    }
+  }
+  
+  return text
 }
 
 // Safe fetch with timeout
@@ -300,8 +345,8 @@ async function handleDataJournalismCategory(sub: string, lang: string) {
 
     if (needsTranslation) {
       const [tTitle, tDesc] = await Promise.allSettled([
-        translateText(item.title, lang, 5000),
-        translateText(item.desc, lang, 5000),
+        translateText(item.title, lang, 8000),
+        translateText(item.desc, lang, 8000),
       ])
       return {
         ...item,
@@ -379,7 +424,7 @@ async function handleNewsCategory(category: string, lang: string) {
   const itemsToTranslate = allItems.slice(0, 12)
   const remainingItems = allItems.slice(12, 27)
 
-  // Translate with timeout protection
+  // Translate with improved timeout protection and OpenRouter fallback
   const translated = await Promise.allSettled(itemsToTranslate.map(async (item) => {
     const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
     let needsTranslation = false
@@ -389,8 +434,8 @@ async function handleNewsCategory(category: string, lang: string) {
 
     if (needsTranslation) {
       const [tTitle, tDesc] = await Promise.allSettled([
-        translateText(item.title, lang, 6000),
-        translateText(item.desc, lang, 6000),
+        translateText(item.title, lang, 10000),  // Increased timeout
+        translateText(item.desc, lang, 10000),
       ])
       return {
         ...item,

@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://newsflow.ai/sitemap.xml
+Sitemap: https://newskingdom.store/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
@@ -12,3 +12,6 @@ Allow: /contact
 Allow: /privacy
 Allow: /podcast
 Allow: /analytics
+
+# Disallow API routes
+Disallow: /api/
