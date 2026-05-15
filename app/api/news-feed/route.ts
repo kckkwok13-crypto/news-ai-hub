@@ -23,7 +23,7 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
   ],
   health: [
     { url: 'https://feeds.bbci.co.uk/news/health/rss.xml', source: 'BBC Health' },
-    { url: 'https://www.webmd.com/rss/news', source: 'WebMD' },
+    { url: 'https://www.sciencedaily.com/rss/health_medicine.xml', source: 'ScienceDaily Health' },
   ],
   gaming: [
     { url: 'https://www.gamesindustry.biz/feed', source: 'GamesIndustry.biz' },
