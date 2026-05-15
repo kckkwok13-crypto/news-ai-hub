@@ -13,7 +13,7 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
     { url: 'https://cryptonews.com/feed/', source: 'Cryptonews' },
   ],
   business: [
-    { url: 'https://feeds.bbciit.co.uk/news/business/rss.xml', source: 'BBC Business' },
+    { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
     { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters Business' },
     { url: 'https://www.skysports.com/rss/1233', source: 'Sky Sports Business' },
   ],
@@ -23,7 +23,7 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
   ],
   health: [
-    { url: 'https://www.nhs.uk/rss/news/', source: 'NHS News' },
+    { url: 'https://feeds.bbci.co.uk/news/health/rss.xml', source: 'BBC Health' },
     { url: 'https://www.webmd.com/rss/news', source: 'WebMD' },
   ],
   gaming: [
@@ -38,29 +38,31 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
   ai_art: [
     { url: 'https://venturebeat.com/ai/feed/', source: 'VentureBeat AI' },
     { url: 'https://www.artnews.com/feed/', source: 'ARTnews' },
+    { url: 'https://hyperallergic.com/rss/', source: 'Hyperallergic' },
   ],
   astronomy: [
     { url: 'https://www.space.com/feeds/hot/', source: 'Space.com' },
     { url: 'https://www.nasa.gov/rss/dyn/breaking_news.rss', source: 'NASA' },
   ],
   mystery: [
-    { url: 'https://www.livescience.com/feed', source: 'Live Science' },
-    { url: 'https://www.nature.com/news.rss', source: 'Nature' },
+    { url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml', source: 'BBC Science' },
+    { url: 'https://www.sciencedaily.com/rss/top.xml', source: 'ScienceDaily' },
+    { url: 'https://www.livescience.com/feeds/hot/', source: 'Live Science' },
   ],
 }
 
 const DATA_JOURNALISM_SUBCATS: Record<string, Array<{ url: string; source: string }>> = {
   gdp: [
     { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters' },
-    { url: 'https://feeds.bbciit.co.uk/news/business/rss.xml', source: 'BBC Business' },
+    { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
   ],
   digital: [
     { url: 'https://techcrunch.com/feed/', source: 'TechCrunch' },
     { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
   ],
   demographics: [
-    { url: 'https://www.livescience.com/feed', source: 'Live Science' },
-    { url: 'https://www.nature.com/news.rss', source: 'Nature' },
+    { url: 'https://www.sciencedaily.com/rss/top.xml', source: 'ScienceDaily' },
+    { url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml', source: 'BBC Science' },
   ],
   ai: [
     { url: 'https://venturebeat.com/ai/feed/', source: 'VentureBeat AI' },
