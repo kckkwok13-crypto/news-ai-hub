@@ -464,12 +464,45 @@ export default function NewsPage() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-gray-950" : "bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"}`}>
-      {toast && (
-        <div className="fixed top-4 right-4 z-[100] px-5 py-3 rounded-2xl shadow-2xl text-base font-medium bg-black/90 text-white/90 backdrop-blur-sm animate-fade-in">
-          {toast}
+    <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-gray-900"}`}>
+      {/* Before Upgrade Banner - Top of Page */}
+      <div className="w-full bg-gradient-to-r from-red-900/80 to-orange-900/80 border-b border-red-700/50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">🔴</span>
+              <div>
+                <p className="text-white font-bold text-sm md:text-base">改版前導航欄</p>
+                <p className="text-red-200 text-xs">舊版頂部導航含分類快捷鍵</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="relative group">
+                <div className="bg-gray-900/80 rounded-xl p-3 border border-red-500/50 shadow-2xl max-w-[500px]">
+                  <div className="bg-gray-800 rounded-lg px-4 py-2 mb-2">
+                    <div className="flex items-center gap-4 text-sm">
+                      <span className="bg-red-600 text-white px-3 py-1 rounded-full font-bold">財經</span>
+                      <span className="text-gray-400">科技</span>
+                      <span className="text-gray-400">遊戲</span>
+                      <span className="text-gray-400">旅遊</span>
+                    </div>
+                  </div>
+                  <img 
+                    src="https://i.imgur.com/placeholder-nav.png" 
+                    alt="改版前導航欄截圖" 
+                    className="w-full max-w-md rounded-lg border border-gray-600"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                  <p className="text-red-300 text-xs mt-2 text-center">newskingdom.store 舊版截圖</p>
+                </div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-red-400 text-xs bg-red-900 px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                  舊版頂部導航
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
 
       {/* Mobile Menu Overlay */}
       {showMobileMenu && (
@@ -616,6 +649,103 @@ export default function NewsPage() {
         </div>
       )}
 
+      {/* AI Deep Daily - Page Top Section (replaces modal) */}
+      {aiSummary && (
+        <div className={`w-full rounded-2xl p-6 mb-6 ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-lg border border-gray-200"}`}>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="flex h-3 w-3 rounded-full bg-red-500 animate-pulse" />
+            <h2 className="text-base md:text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
+          </div>
+          <p className={`text-lg md:text-xl font-medium leading-relaxed ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
+            {lang === "en" ? aiSummary.summary_en : aiSummary.summary_zh}
+          </p>
+          <div className="mt-6 flex flex-col md:flex-row md:items-center gap-4">
+            <div className="flex-1 min-w-[200px]">
+              <p className="text-xs font-semibold mb-2 text-gray-500 uppercase tracking-tighter">{t.sentimentTitle || "情緒追蹤"}</p>
+              <div className="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
+                <div style={{ width: `${aiSummary.sentiment?.positive || 0}%` }} className="h-full bg-green-500" />
+                <div style={{ width: `${aiSummary.sentiment?.neutral || 0}%` }} className="h-full bg-gray-400" />
+                <div style={{ width: `${aiSummary.sentiment?.negative || 0}%` }} className="h-full bg-red-500" />
+              </div>
+            </div>
+          </div>
+
+          {/* News Details List with Links */}
+          {aiSummary.details && aiSummary.details.length > 0 && (
+            <div className="mt-6 border-t border-gray-700 pt-4">
+              <p className="text-xs font-semibold mb-3 text-gray-400 uppercase tracking-wider">{t.bias || "立場分析"} · {t.impact || "深度解讀"}</p>
+              <div className="space-y-3 max-h-[300px] overflow-y-auto">
+                {aiSummary.details.map((detail: any, idx: number) => {
+                  const newsItem = displayNews.find((n: any) => n.id === detail.id) || displayNews[idx];
+                  return (
+                    <div key={idx} className={`p-3 rounded-xl ${darkMode ? "bg-gray-800/50" : "bg-gray-50"}`}>
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          <p className={`text-sm font-medium leading-snug ${darkMode ? "text-gray-200" : "text-gray-700"}`}>{detail.headline}</p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${detail.bias === "pro_western" ? "bg-blue-500/20 text-blue-400" : detail.bias === "pro_china" ? "bg-red-500/20 text-red-400" : detail.bias === "optimism" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"}`}>
+                              {t.biasTypes[detail.bias as keyof typeof t.biasTypes] || detail.bias}
+                            </span>
+                            {detail.sentiment && (
+                              <span className={`text-[10px] px-2 py-0.5 rounded-full ${detail.sentiment > 0 ? "bg-green-500/20 text-green-400" : detail.sentiment < 0 ? "bg-red-500/20 text-red-400" : "bg-gray-500/20 text-gray-400"}`}>
+                                {detail.sentiment > 0 ? "📈" : detail.sentiment < 0 ? "📉" : "➖"}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex flex-col items-end gap-1">
+                          {detail.impact && (
+                            <button onClick={() => setShowImpactId(detail.id)} className="text-blue-500 hover:text-blue-400 text-xs font-semibold whitespace-nowrap">
+                              {t.impact || "深度解讀"} →
+                            </button>
+                          )}
+                          {newsItem?.link && (
+                            <a href={newsItem.link} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-400 text-xs whitespace-nowrap">
+                              {t.readMore} →
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Trending Topics */}
+          {aiSummary.trends && aiSummary.trends.length > 0 && (
+            <div className="mt-6 border-t border-gray-700 pt-4">
+              <p className="text-xs font-semibold mb-3 text-gray-400 uppercase tracking-wider">{t.trend || "熱門話題"}</p>
+              <div className="flex flex-wrap gap-2">
+                {aiSummary.trends.slice(0, 8).map((trend: string, idx: number) => (
+                  <span key={idx} className={`text-xs px-3 py-1.5 rounded-full ${darkMode ? "bg-gray-800 text-gray-300 border border-gray-700" : "bg-gray-100 text-gray-600 border border-gray-200"}`}>
+                    #{trend}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Impact Modal */}
+          {showImpactId && (() => {
+            const detail = aiSummary.details?.find((d: any) => d.id === showImpactId);
+            return detail?.impact ? (
+              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
+                <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
+                  <div className="text-blue-500 mb-4"><Zap size={40} /></div>
+                  <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
+                  <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>{detail.impact}</p>
+                  <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">
+                    {t.impactClose || "關閉解讀"}
+                  </button>
+                </div>
+              </div>
+            ) : null;
+          })()}
+        </div>
+      )}
+
       {/* AI Host Loading Modal */}
       {aiHostLoading && aiHostItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
@@ -726,83 +856,6 @@ export default function NewsPage() {
       )}
 
       <main className="max-w-7xl mx-auto px-4 py-6">
-        {aiSummary && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => setAiSummary(null)}>
-            <div className={`max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-3xl p-8 shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-xl"} relative`} onClick={e => e.stopPropagation()}>
-              <button onClick={() => setAiSummary(null)} className={`absolute top-4 right-4 p-2 rounded-xl ${darkMode ? "bg-gray-800 hover:bg-gray-700 text-gray-400" : "bg-gray-100 hover:bg-gray-200 text-gray-500"}`}>
-                <X size={20} />
-              </button>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="flex h-3 w-3 rounded-full bg-red-500 animate-pulse" />
-                <h2 className="text-base md:text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
-              </div>
-              <p className={`text-lg md:text-xl font-medium leading-relaxed ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
-                {lang === "en" ? aiSummary.summary_en : aiSummary.summary_zh}
-              </p>
-              <div className="mt-6 flex flex-col md:flex-row md:items-center gap-4">
-                <div className="flex-1 min-w-[200px]">
-                  <p className="text-xs font-semibold mb-2 text-gray-500 uppercase tracking-tighter">{t.sentimentTitle || "情緒追蹤"}</p>
-                  <div className="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
-                    <div style={{ width: `${aiSummary.sentiment?.positive || 0}%` }} className="h-full bg-green-500" />
-                    <div style={{ width: `${aiSummary.sentiment?.neutral || 0}%` }} className="h-full bg-gray-400" />
-                    <div style={{ width: `${aiSummary.sentiment?.negative || 0}%` }} className="h-full bg-red-500" />
-                  </div>
-                </div>
-              </div>
-
-              {/* News Details List with Links */}
-              {aiSummary.details && aiSummary.details.length > 0 && (
-                <div className="mt-6 border-t border-gray-700 pt-4">
-                  <p className="text-xs font-semibold mb-3 text-gray-400 uppercase tracking-wider">{t.bias || "立場分析"} · {t.impact || "深度解讀"}</p>
-                  <div className="space-y-3 max-h-[300px] overflow-y-auto">
-                    {aiSummary.details.map((detail: any, idx: number) => {
-                      const newsItem = displayNews.find((n: any) => n.id === detail.id) || displayNews[idx];
-                      return (
-                        <div key={idx} className={`p-3 rounded-xl ${darkMode ? "bg-gray-800/50" : "bg-gray-50"}`}>
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex-1 min-w-0">
-                              <p className={`text-sm font-medium truncate ${darkMode ? "text-gray-200" : "text-gray-700"}`}>
-                                {newsItem?.title_translated || newsItem?.title || detail.id}
-                              </p>
-                              <div className="flex items-center gap-2 mt-1">
-                                {detail.bias && (
-                                  <span className={`text-[10px] px-2 py-0.5 rounded-full ${
-                                    detail.bias === 'pro_western' ? 'bg-blue-500/20 text-blue-400' :
-                                    detail.bias === 'pro_china' ? 'bg-red-500/20 text-red-400' :
-                                    'bg-gray-500/20 text-gray-400'
-                                  }`}>
-                                    {(t.biasTypes as Record<string,string>)?.[detail.bias] || detail.bias}
-                                  </span>
-                                )}
-                                {detail.impact && (
-                                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400">
-                                    {detail.impact}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                            {newsItem?.link && (
-                              <a
-                                href={newsItem.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex-shrink-0 p-1.5 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/40 transition"
-                                onClick={e => e.stopPropagation()}
-                              >
-                                <ExternalLink size={14} />
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
         {/* Mobile Categories - Horizontal scrollable tabs */}
         <div className="md:hidden -mx-4 px-4 pt-3">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">

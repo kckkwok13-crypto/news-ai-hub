@@ -91,13 +91,51 @@ function simpleAnalysis(items: any[], lang: string) {
     sources[item.source || 'Unknown'] = (sources[item.source || 'Unknown'] || 0) + 1
   }
 
-  // Extract keywords
+  // Extract keywords — improved version
   const allTitles = items.map((i: any) => i.title_zh || i.title_translated || i.title || '').join(' ')
-  const words = allTitles.toLowerCase().split(/\s+/)
+
+  // Stopwords for Chinese and English
+  const stopwords = new Set([
+    // English stopwords
+    'the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can', 'had', 'her', 'was', 'one', 'our', 'out',
+    'has', 'have', 'been', 'were', 'they', 'their', 'what', 'will', 'with', 'would', 'there', 'this', 'that',
+    'from', 'into', 'more', 'some', 'could', 'than', 'them', 'then', 'these', 'when', 'where', 'which', 'your',
+    'just', 'over', 'such', 'also', 'back', 'after', 'use', 'two', 'how', 'our', 'its', 'may', 'said', 'each',
+    'she', 'who', 'do', 'his', 'him', 'his', 'we', 'be', 'by', 'of', 'is', 'in', 'to', 'it', 'on', 'at', 'as',
+    // Chinese stopwords
+    '一個', '一個', '一些', '可能', '因為', '所以', '但是', '如果', '雖然', '或者', '以及', '以及', '對於',
+    '這個', '那個', '這些', '那些', '什麼', '怎麼', '為什麼', '哪個', '哪裡', '如何', '是否', '已經',
+    '今日', '今天', '昨日', '昨天', '今日', '本週', '本週', '本月', '今年', '去年', '明年', '日前',
+    '近日', '近期', '目前', '現在', '時候', '通過', '根據', '按照', '由於', '關於', '對於',
+    '可以', '需要', '必須', '應該', '能夠', '已經', '正在', '將會', '可能', '也許',
+    '一個', '這個', '那個', '一種', '該', '其', '之', '於', '被', '把', '給', '讓', '向', '在',
+    '等', '等等', '或', '且', '並', '而', '且', '與', '和', '及', '及其', '及其',
+  ])
+
+  // Clean words: remove punctuation, hashtags, symbols, pure numbers
+  const cleanWords = allTitles
+    .toLowerCase()
+    // Split on whitespace and common Chinese punctuation
+    .split(/[\s\n\r\t,.!?;:，。！？；：、""''""'''『』（）【】《》〈〉「」\[\]【】\/\\]+/)
+    .map(w => w.replace(/^[#@$%^&*()_+\-=\[\]{}|;:'"<>,.\/\\!@#$%^&*()_+\-=\[\]{}|;:'"<>,.\/?`~]+/, '').replace(/[#@$%^&*()_+\-=\[\]{}|;:'"<>,.\/\\!@#$%^&*()_+\-=\[\]{}|;:'"<>,.\/?`~]+$/, ''))
+    .filter(w => {
+      if (w.length < 2) return false
+      // Reject pure numbers or words that are mostly numbers
+      if (/^\d+$/.test(w)) return false
+      if (/^\d+[a-zA-Z]$/.test(w)) return false
+      // Reject pure symbols (no letters, no CJK)
+      if (!/[a-zA-Z\u4e00-\u9fff]/.test(w)) return false
+      // Reject stopwords
+      if (stopwords.has(w)) return false
+      return true
+    })
+
   const wordCount: Record<string, number> = {}
-  for (const w of words) {
-    if (w.length > 3) wordCount[w] = (wordCount[w] || 0) + 1
+  for (const w of cleanWords) {
+    wordCount[w] = (wordCount[w] || 0) + 1
   }
+
+  // Get top keywords, deduplicating Chinese vs English
   const topKeywords = Object.entries(wordCount)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
