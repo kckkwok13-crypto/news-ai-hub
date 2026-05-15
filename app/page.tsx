@@ -465,45 +465,6 @@ export default function NewsPage() {
 
   return (
     <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-gray-900"}`}>
-      {/* Before Upgrade Banner - Top of Page */}
-      <div className="w-full bg-gradient-to-r from-red-900/80 to-orange-900/80 border-b border-red-700/50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">🔴</span>
-              <div>
-                <p className="text-white font-bold text-sm md:text-base">改版前導航欄</p>
-                <p className="text-red-200 text-xs">舊版頂部導航含分類快捷鍵</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="relative group">
-                <div className="bg-gray-900/80 rounded-xl p-3 border border-red-500/50 shadow-2xl max-w-[500px]">
-                  <div className="bg-gray-800 rounded-lg px-4 py-2 mb-2">
-                    <div className="flex items-center gap-4 text-sm">
-                      <span className="bg-red-600 text-white px-3 py-1 rounded-full font-bold">財經</span>
-                      <span className="text-gray-400">科技</span>
-                      <span className="text-gray-400">遊戲</span>
-                      <span className="text-gray-400">旅遊</span>
-                    </div>
-                  </div>
-                  <img 
-                    src="https://i.imgur.com/placeholder-nav.png" 
-                    alt="改版前導航欄截圖" 
-                    className="w-full max-w-md rounded-lg border border-gray-600"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
-                  <p className="text-red-300 text-xs mt-2 text-center">newskingdom.store 舊版截圖</p>
-                </div>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-red-400 text-xs bg-red-900 px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                  舊版頂部導航
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Mobile Menu Overlay */}
       {showMobileMenu && (
         <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm" onClick={() => setShowMobileMenu(false)}>
@@ -1022,11 +983,11 @@ export default function NewsPage() {
                     </div>
                   )}
                   
-                  {/* AI分析 button - travel cards: button scrolls down on image */}
-                  <div className={`absolute inset-0 flex flex-col items-center justify-end z-10 ${isTravelGuide ? 'pb-2' : 'items-center justify-center'}`}>
+                  {/* AI分析 button - fixed at bottom center of image */}
+                  <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 z-10 ${isTravelGuide ? 'mb-16 md:mb-20' : ''}`}>
                     <button 
                       onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} 
-                      className={`px-4 py-2.5 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-sm flex items-center gap-2 transition-all hover:scale-105 ${isTravelGuide ? 'mb-20 md:mb-24' : ''}`}
+                      className={`px-4 py-2.5 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-sm flex items-center gap-2 transition-all hover:scale-105`}
                     >
                       <Zap size={18} /> {t.analysis}
                     </button>
