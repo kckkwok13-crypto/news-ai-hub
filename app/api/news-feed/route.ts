@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
   finance: [
     { url: 'https://feeds.bloomberg.com/markets/news.rss', source: 'Bloomberg' },
-    { url: 'https://www.ft.com/rss/series/second-read', source: 'Financial Times' },
+    { url: 'https://feeds.marketwatch.com/marketwatch/topstories/', source: 'MarketWatch' },
     { url: 'https://www.investing.com/rss/news.rss', source: 'Investing.com' },
   ],
   crypto: [
