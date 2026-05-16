@@ -229,7 +229,9 @@ export default function NewsPage() {
   const [showImpactId, setShowImpactId] = useState<string | null>(null);
   
   // Travel filter states
+  const [travelCountryFilter, setTravelCountryFilter] = useState<string>('all');
   const [travelCityFilter, setTravelCityFilter] = useState<string>('all');
+  const [travelAreaFilter, setTravelAreaFilter] = useState<string>('all');
   const [travelTypeFilter, setTravelTypeFilter] = useState<string>('all');
   const [citySummaries, setCitySummaries] = useState<any[]>([]);
   const [countries, setCountries] = useState<any[]>([]);
@@ -447,11 +449,9 @@ export default function NewsPage() {
   // Derive available cities and areas from the news data based on selected country
   const derivedAvailableCities = travelCountryFilter !== 'all'
     ? (citySummaries || []).filter((c: any) => c.country_id === travelCountryFilter)
-    : (citySummaries || [])
     : [];
   const selectedCityData = derivedAvailableCities.find((c: any) => c.id === travelCityFilter);
-  const derivedAvailableAreas = selectedCityData?.areas || []
-    : [];
+  const derivedAvailableAreas = selectedCityData?.areas || [];
 
   const getCardBg = (isRead: boolean) => {
     if (darkMode) return isRead ? "bg-gray-900/50 border-gray-700" : "bg-gray-800/90 border-gray-700";
