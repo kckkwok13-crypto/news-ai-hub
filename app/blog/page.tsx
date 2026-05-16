@@ -9,6 +9,14 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1759491125973-6c46d3f86c13?w=1200&q=80",
     icon: "🌍"
   },
+  {
+    slug: "meiji-shrine",
+    title: "🌲 東京市中心的森林秘境：明治神宮深度半日遊攻略",
+    excerpt: "緊鄰原宿與竹下通，只要走過一條橋，就能瞬間從喧囂都市切換到原始森林。供奉明治天皇與昭憲皇太后的神道教聖地！",
+    date: "May 2026",
+    image: "https://japanjourneys.jp/wp-content/uploads/2019/08/meiji-jingu-torii-gate-1-1024x681.jpg",
+    icon: "🌲"
+  },
 ];
 
 export default function BlogPage() {
