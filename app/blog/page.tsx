@@ -2,8 +2,16 @@ import Link from "next/link";
 
 const blogPosts = [
   {
+    slug: "sensoji",
+    title: "🏮 東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
+    excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
+    date: "May 2026",
+    image: "https://live.staticflickr.com/6552/6972841610_e3c87b77f4_b.jpg",
+    icon: "🏮"
+  },
+  {
     slug: "shibuya-crossing",
-    title: "走進世界最繁忙的十字路口：東京澀谷十字路口全攻略！",
+    title: "🌍 走進世界最繁忙的十字路口：東京澀谷十字路口全攻略！",
     excerpt: "如果要選一個最能代表現代東京、甚至全日本繁華景象的地標，澀谷十字路口（Shibuya Crossing）絕對當之無愧！",
     date: "May 2026",
     image: "https://images.unsplash.com/photo-1759491125973-6c46d3f86c13?w=1200&q=80",
@@ -40,7 +48,7 @@ export default function BlogPage() {
                   />
                   <div className="absolute top-3 left-3 bg-zinc-900/80 backdrop-blur-sm rounded-full px-3 py-1 text-sm flex items-center gap-2">
                     <span>{post.icon}</span>
-                    <span>Camera</span>
+                    <span>Travel</span>
                   </div>
                 </div>
                 <div className="p-5">
