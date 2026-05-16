@@ -33,7 +33,34 @@ export default function BlogPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Travel Blog</h1>
         <div className="grid gap-6 md:grid-cols-2">
-          {blogPosts.map((post) => (
+          {/* First blog card — positioned higher to avoid floating TOC */}
+          <Link
+            key={blogPosts[0].slug}
+            href={`/blog/${blogPosts[0].slug}`}
+            className="block group md:col-span-2"
+          >
+            <div className="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all hover:scale-[1.02]">
+              <div className="relative">
+                <img
+                  src={blogPosts[0].image}
+                  alt={blogPosts[0].title}
+                  className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
+                <div className="absolute top-3 left-3 bg-zinc-900/80 backdrop-blur-sm rounded-full px-3 py-1 text-sm flex items-center gap-2">
+                  <span>{blogPosts[0].icon}</span>
+                  <span>Travel</span>
+                </div>
+              </div>
+              <div className="p-5">
+                <h2 className="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
+                  {blogPosts[0].title}
+                </h2>
+                <p className="text-zinc-400 text-sm mb-3">{blogPosts[0].excerpt}</p>
+                <p className="text-zinc-500 text-xs">{blogPosts[0].date}</p>
+              </div>
+            </div>
+          </Link>
+          {blogPosts.slice(1).map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
