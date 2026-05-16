@@ -36,6 +36,9 @@ interface NewsItem {
   city_id?: string;
   city_en?: string;
   city_emoji?: string;
+  country?: string;
+  country_zh?: string;
+  country_id?: string;
   city_description?: string;
   area?: string;
   area_zh?: string;
@@ -229,6 +232,8 @@ export default function NewsPage() {
   const [travelCityFilter, setTravelCityFilter] = useState<string>('all');
   const [travelTypeFilter, setTravelTypeFilter] = useState<string>('all');
   const [citySummaries, setCitySummaries] = useState<any[]>([]);
+  const [countries, setCountries] = useState<any[]>([]);
+  const [countrySummaries, setCountrySummaries] = useState<any[]>([]);
   const [placeTypes, setPlaceTypes] = useState<string[]>([]);
   
   // Data journalism filter states
@@ -309,7 +314,7 @@ export default function NewsPage() {
     
     setError("")
     try {
-      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
+      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCountryFilter !== 'all' ? `&country=${travelCountryFilter}` : ''}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
       const res = await fetch(url);
       const data = await res.json();
       if (data.success && data.items) {
@@ -317,6 +322,12 @@ export default function NewsPage() {
         setNews(data.items);
         // Capture travel-specific data
         if (data.citySummaries) setCitySummaries(data.citySummaries);
+        if (data.countries) setCountries(data.countries);
+        if (data.countrySummaries) setCountrySummaries(data.countrySummaries);
+        // Auto-expand first travel card when entering travel
+        if (data.isTravelGuide && data.items?.length > 0) {
+          setExpandedId(data.items[0].title);
+        }
         if (data.placeTypes) setPlaceTypes(data.placeTypes);
         localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
         // Capture data journalism subcategory data
@@ -337,7 +348,7 @@ export default function NewsPage() {
     } finally {
       setLoading(false);
     }
-  }, [category, lang, news.length, travelCityFilter, dataJournalismSub]);
+  }, [category, lang, news.length, travelCountryFilter, travelCityFilter, travelAreaFilter, dataJournalismSub]);
 
   const fetchAiSummary = useCallback(async () => {
     if (news.length === 0) return;
@@ -417,7 +428,13 @@ export default function NewsPage() {
     setShowSubscribe(false);
   };
 
-  const filteredNews = news.filter(n => {
+  const filteredNews = news.filter((n: NewsItem) => {
+    // Travel hierarchical filter: country → city → area
+    if (category === 'travel') {
+      if (travelCountryFilter !== 'all' && n.country_id !== travelCountryFilter) return false;
+      if (travelCityFilter !== 'all' && n.city_id !== travelCityFilter) return false;
+
+    }
     if (!search) return true;
     const q = search.toLowerCase();
     return (n.title_translated || n.title).toLowerCase().includes(q) ||
@@ -426,6 +443,15 @@ export default function NewsPage() {
   });
 
   const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : filteredNews;
+
+  // Derive available cities and areas from the news data based on selected country
+  const derivedAvailableCities = travelCountryFilter !== 'all'
+    ? (citySummaries || []).filter((c: any) => c.country_id === travelCountryFilter)
+    : (citySummaries || [])
+    : [];
+  const selectedCityData = derivedAvailableCities.find((c: any) => c.id === travelCityFilter);
+  const derivedAvailableAreas = selectedCityData?.areas || []
+    : [];
 
   const getCardBg = (isRead: boolean) => {
     if (darkMode) return isRead ? "bg-gray-900/50 border-gray-700" : "bg-gray-800/90 border-gray-700";
@@ -832,6 +858,147 @@ export default function NewsPage() {
           </div>
         </div>
 
+
+        {/* Travel Country/City Filter - Mobile */}
+        {category === 'travel' && isTravelGuide && (
+          <div className="md:hidden -mx-4 px-4 pt-2 mb-3">
+            {/* Country Selector */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
+              <button
+                onClick={() => { setTravelCountryFilter('all'); setTravelCityFilter('all'); }}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
+                  travelCountryFilter === 'all'
+                    ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
+                    : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600 border border-gray-200"
+                }`}
+              >
+                <span>🌏</span><span>全部國家</span>
+              </button>
+              {countrySummaries.map((country: any) => (
+                <button
+                  key={country.id}
+                  onClick={() => { setTravelCountryFilter(country.id); setTravelCityFilter('all'); }}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
+                    travelCountryFilter === country.id
+                      ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
+                      : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600 border border-gray-200"
+                  }`}
+                >
+                  <span>{country.emoji}</span><span>{country.name_zh}</span>
+                </button>
+              ))}
+            </div>
+            {/* City Selector - only show when country is selected */}
+            {travelCountryFilter !== 'all' && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory mt-2">
+                <button
+                  onClick={() => setTravelCityFilter('all')}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
+                    travelCityFilter === 'all'
+                      ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
+                      : darkMode ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-600 border border-gray-200"
+                  }`}
+                >
+                  <span>🏙️</span><span>全部城市</span>
+                </button>
+                {derivedAvailableCities.map((city: any) => (
+                  <button
+                    key={city.id}
+                    onClick={() => setTravelCityFilter(city.id)}
+                    className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
+                      travelCityFilter === city.id
+                        ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
+                        : darkMode ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-600 border border-gray-200"
+                    }`}
+                  >
+                    <span>{city.emoji}</span><span>{city.name_zh}</span>
+                    <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${travelCityFilter === city.id ? "bg-white/20" : darkMode ? "bg-gray-600" : "bg-gray-200"}`}>
+                      {city.placeCount}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Travel Country/City Filter - Desktop */}
+        {category === 'travel' && isTravelGuide && (
+          <div className="hidden md:flex flex-col gap-3 mb-6 p-4 rounded-2xl ${darkMode ? 'bg-gray-900/50 border border-gray-800' : 'bg-gray-50 border border-gray-200'}">
+            <div className="flex items-center gap-3">
+              <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>🌏 國家</span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  onClick={() => { setTravelCountryFilter('all'); setTravelCityFilter('all'); }}
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                    travelCountryFilter === 'all'
+                      ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
+                      : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
+                  }`}
+                >
+                  <span>全部</span>
+                </button>
+                {countrySummaries.map((country: any) => (
+                  <button
+                    key={country.id}
+                    onClick={() => { setTravelCountryFilter(country.id); setTravelCityFilter('all'); }}
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                      travelCountryFilter === country.id
+                        ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
+                        : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
+                    }`}
+                  >
+                    <span>{country.emoji}</span><span>{country.name_zh}</span>
+                    <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${travelCountryFilter === country.id ? "bg-white/20" : darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
+                      {country.cityCount}城
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+            {/* City Row - only show when country selected */}
+            {travelCountryFilter !== 'all' && (
+              <div className="flex items-center gap-3">
+                <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>🏙️ 城市</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    onClick={() => setTravelCityFilter('all')}
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                      travelCityFilter === 'all'
+                        ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
+                        : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
+                    }`}
+                  >
+                    <span>全部</span>
+                  </button>
+                  {derivedAvailableCities.map((city: any) => (
+                    <button
+                      key={city.id}
+                      onClick={() => setTravelCityFilter(city.id)}
+                      className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                        travelCityFilter === city.id
+                          ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
+                          : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
+                      }`}
+                    >
+                      <span>{city.emoji}</span><span>{city.name_zh}</span>
+                      <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${travelCityFilter === city.id ? "bg-white/20" : darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
+                        {city.placeCount}地
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            {/* Blog placeholder indicator */}
+            {category === 'travel' && (
+              <div className={`text-xs px-3 py-2 rounded-lg ${darkMode ? 'bg-amber-900/20 text-amber-400 border border-amber-700/30' : 'bg-amber-50 text-amber-600 border border-amber-200'}`}>
+                💡 Blog 功能：選擇城市後可查看/編輯旅遊blog文章
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Mobile Data Journalism Subcategory Filter */}
         {category === 'data_journalism' && dataJournalismSubs.length > 0 && (
           <div className="md:hidden -mx-4 px-4 pt-2 mb-3">
@@ -960,7 +1127,7 @@ export default function NewsPage() {
                 : null;
 
               return (
-                <div key={i} onClick={() => { if(item.link) window.open(item.link, '_blank'); toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
+                <div key={i} onClick={() => { toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {isTravelGuide && item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
@@ -970,12 +1137,28 @@ export default function NewsPage() {
                           <span className="text-white font-bold text-sm">{item.city || ''}</span>
                           <span className="text-gray-300 text-xs block">{item.area || ''}</span>
                         </div>
+                        <button
+                          onClick={(e) => { e.stopPropagation(); if(item.link) window.open(item.link, '_blank'); }}
+                          className="absolute top-3 right-3 p-2 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition"
+                          title="Open in Google"
+                        >
+                          <ExternalLink size={16} className="text-white" />
+                        </button>
                       </div>
                     </div>
                   ) : item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      {item.link && (
+                        <button
+                          onClick={(e) => { e.stopPropagation(); window.open(item.link, '_blank'); }}
+                          className="absolute top-3 right-3 p-2 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition opacity-0 group-hover:opacity-100"
+                          title="Open article"
+                        >
+                          <ExternalLink size={16} className="text-white" />
+                        </button>
+                      )}
                     </div>
                   ) : (
                     <div className={`h-32 md:h-40 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>

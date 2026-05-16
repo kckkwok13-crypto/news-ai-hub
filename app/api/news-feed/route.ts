@@ -13,8 +13,7 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
   ],
   business: [
     { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business' },
-    { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters Business' },
-    { url: 'https://www.skysports.com/rss/1233', source: 'Sky Sports Business' },
+    { url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114', source: 'CNBC' },
   ],
   technology: [
     { url: 'https://www.theverge.com/rss/index.xml', source: 'The Verge' },
@@ -39,7 +38,6 @@ const RSS_SOURCES: Record<string, Array<{ url: string; source: string }>> = {
     { url: 'https://www.artnews.com/feed/', source: 'ARTnews' },
     { url: 'https://hyperallergic.com/rss/', source: 'Hyperallergic' },
   ],
-  // ✅ FIX: Added proper "art" category key with dedicated art RSS feeds
   art: [
     { url: 'https://www.artforum.com/rss', source: 'Artforum' },
     { url: 'https://www.artnews.com/feed/', source: 'ARTnews' },
@@ -78,6 +76,121 @@ const DATA_JOURNALISM_SUBCATS: Record<string, Array<{ url: string; source: strin
   ],
 }
 
+// ============ TRAVEL DATA ============
+const TRAVEL_COUNTRIES: Record<string, any> = {
+  japan: {
+    id: 'japan', name: 'Japan', name_zh: '日本', emoji: '🗾',
+    description_zh: '傳統與現代完美融合嘅國度',
+    best_season: '春季 (3-5月) 同秋季 (9-11月)',
+    avg_temp: '16°C',
+    cities: [
+      {
+        id: 'tokyo', name: 'Tokyo', name_zh: '東京', emoji: '🗼',
+        description_zh: '傳統與現代完美融合嘅國際大都會',
+        areas: [
+          {
+            name: 'Shibuya & Harajuku', name_zh: '澀谷 & 原宿',
+            places: [
+              { name: 'Shibuya Crossing', name_zh: '澀谷十字路口', description_zh: '世界上最繁忙嘅行人十字路口', type: 'attraction', image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800', address: 'Shibuya, Tokyo', hours: '24小時', rating: '4.7', review_count: '52,389', best_time: '黃昏時分', duration: '30分鐘', cost_level: 'free', transit: 'JR山手線 澀谷站', tips: ['建議喺澀谷站陽台睇全景', '附近商場可以Shopping'], tags: ['地標', '夜景', '必去'] },
+              { name: 'Meiji Shrine', name_zh: '明治神宮', description_zh: '供奉明治天皇嘅神社，周圍係一片寧靜嘅森林', type: 'attraction', image: 'https://images.unsplash.com/photo-1583766395091-2eb9994ed094?w=800', address: '1-1 Yoyogikamizonocho, Shibuya', hours: '日出至日落', rating: '4.8', review_count: '41,205', best_time: '清晨', duration: '1-2小時', cost_level: 'free', transit: 'JR山手線 原宿站', tips: ['淨心之旅，建議早起', '入口處有洗手禮'], tags: ['神社', '寧靜', '文化'] },
+            ]
+          },
+          {
+            name: 'Asakusa & Ueno', name_zh: '淺草 & 上野',
+            places: [
+              { name: 'Senso-ji Temple', name_zh: '淺草寺', description_zh: '東京最古老嘅佛教寺廟，标志係雷門大燈籠', type: 'attraction', image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800', address: '2-3-1 Asakusa, Taito', hours: '6:00-17:00', rating: '4.8', review_count: '67,842', best_time: '早上', duration: '1-2小時', cost_level: 'free', transit: 'Metro 淺草站', tips: ['雷門影相要排隊', '抽籤好準!', '人形燒好食'], tags: ['寺廟', '歷史', '必去'] },
+            ]
+          }
+        ]
+      },
+      {
+        id: 'osaka', name: 'Osaka', name_zh: '大阪', emoji: '🏯',
+        description_zh: '美食之都，章魚燒同大阪燒嘅發源地',
+        areas: [
+          {
+            name: 'Namba & Dotonbori', name_zh: '難波 & 道頓堀',
+            places: [
+              { name: 'Dotonbori Canal', name_zh: '道頓堀運河', description_zh: '大阪最繁華嘅夜景區域，著名嘅蟹道樂就喺呢度', type: 'attraction', image: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800', address: 'Dotonbori, Chuo, Osaka', hours: '24小時', rating: '4.6', review_count: '45,123', best_time: '夜晚', duration: '1-2小時', cost_level: 'free', transit: 'Metro 難波站', tips: ['夜晚去影相最靚', '可以坐船遊河'], tags: ['夜景', '美食', '打卡'] },
+            ]
+          }
+        ]
+      },
+      {
+        id: 'kyoto', name: 'Kyoto', name_zh: '京都', emoji: '⛩️',
+        description_zh: '千年古都，保留住日本傳統文化嘅精髓',
+        areas: [
+          {
+            name: 'Arashiyama', name_zh: '嵐山',
+            places: [
+              { name: 'Arashiyama Bamboo Grove', name_zh: '嵐山竹林', description_zh: '壯觀嘅竹林小徑，仿佛置身另一個世界', type: 'attraction', image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800', address: 'Arashiyama, Kyoto', hours: '24小時', rating: '4.7', review_count: '38,901', best_time: '清晨', duration: '1-2小時', cost_level: 'free', transit: 'JR山手線 嵐山站', tips: ['建議清晨去避開人潮', '附近有天龍寺'], tags: ['自然', '打卡', '寧靜'] },
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  france: {
+    id: 'france', name: 'France', name_zh: '法國', emoji: '🗼',
+    description_zh: '浪漫之都，藝術與時尚嘅殿堂',
+    best_season: '春季 (4-6月) 同秋季 (9-11月)',
+    avg_temp: '12°C',
+    cities: [
+      {
+        id: 'paris', name: 'Paris', name_zh: '巴黎', emoji: '🗼',
+        description_zh: '浪漫之都，藝術與時尚嘅殿堂',
+        areas: [
+          {
+            name: 'Eiffel Tower Area', name_zh: '艾菲爾鐵塔區',
+            places: [
+              { name: 'Eiffel Tower', name_zh: '艾菲爾鐵塔', description_zh: '巴黎鐵塔，浪漫嘅象徵', type: 'attraction', image: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=800', address: 'Champ de Mars, Paris', hours: '9:30-23:45', rating: '4.7', review_count: '89,234', best_time: '日落', duration: '2-3小時', cost_level: 'high', transit: '地鐵Bir-Hakeim站', tips: ['建議黃昏去睇日落', '可以坐電梯或行樓梯'], tags: ['地標', '浪漫', '必去'] },
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  korea: {
+    id: 'korea', name: 'South Korea', name_zh: '南韓', emoji: '🏯',
+    description_zh: 'K-pop與傳統文化完美融合',
+    best_season: '春季 (3-5月) 同秋季 (9-11月)',
+    avg_temp: '12°C',
+    cities: [
+      {
+        id: 'seoul', name: 'Seoul', name_zh: '首爾', emoji: '🏯',
+        description_zh: '傳統與現代完美融合嘅韓流之都',
+        areas: [
+          {
+            name: 'Myeongdong', name_zh: '明洞',
+            places: [
+              { name: 'Myeongdong Shopping Street', name_zh: '明洞購物街', description_zh: '首爾最繁華購物區，化妝品天堂', type: 'shopping', image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800', address: 'Myeongdong', hours: '10:00-22:00', rating: '4.4', review_count: '56,789', best_time: '下午至夜晚', duration: '3-4小時', cost_level: 'medium', transit: 'Metro 明洞站', tips: ['化妝品最平', '地下商場好大', '街頭美食多'], tags: ['購物', '化妝品', '美食'] },
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  thailand: {
+    id: 'thailand', name: 'Thailand', name_zh: '泰國', emoji: '🏝️',
+    description_zh: '微笑之都，佛寺海灘與美食天堂',
+    best_season: '11月-4月（涼季）',
+    avg_temp: '28°C',
+    cities: [
+      {
+        id: 'bangkok', name: 'Bangkok', name_zh: '曼谷', emoji: '🛕',
+        description_zh: '佛教之都，融合古老寺廟與現代都市',
+        areas: [
+          {
+            name: 'Old City & Rattanakosin', name_zh: '舊城區',
+            places: [
+              { name: 'Grand Palace', name_zh: '大皇宮', description_zh: '泰國皇家宮殿，金碧輝煌嘅建築群', type: 'attraction', image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800', address: 'Na Phra Lan Rd, Grand Palace', hours: '8:30-16:30', rating: '4.6', review_count: '62,341', best_time: '上午', duration: '2-3小時', cost_level: 'medium', transit: 'Chao Phraya Express船', tips: ['衣著要莊重', '門票包含玉佛寺'], tags: ['寺廟', '歷史', '打卡'] },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
 // ============ UTILITIES ============
 function extractText(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#039;/g, "'").trim()
@@ -97,208 +210,162 @@ function extractImage(itemXml: string): string | null {
   return null
 }
 
-// Improved translation with OpenRouter AI fallback and better timeout handling
 async function translateText(text: string, lang: string, timeoutMs = 10000): Promise<string> {
   if (!text || text.length < 2) return text
-  
   const hasChinese = /[\u4e00-\u9fff]/.test(text)
   const isTargetChinese = lang === 'zh-CN' || lang === 'zh-TW'
-  
-  if ((isTargetChinese && hasChinese) || (!isTargetChinese && !hasChinese)) {
-    return text
-  }
-  
-  // Try Google Translate first (fast, reliable)
+  if ((isTargetChinese && hasChinese) || (!isTargetChinese && !hasChinese)) return text
   try {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-    
     const targetLang = lang === 'en' ? 'en' : lang === 'zh-CN' ? 'zh-CN' : 'zh-TW'
     const fromLang = hasChinese ? 'zh' : 'en'
-    
-    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`, {
-      signal: controller.signal
-    })
+    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`, { signal: controller.signal })
     clearTimeout(timeoutId)
-    
     if (res.ok) {
       const data = await res.json()
       const translated = data[0]?.[0]?.[0]
       if (translated && translated !== text) return translated
     }
-  } catch {
-    // Google failed, try OpenRouter AI
-  }
-
-  // OpenRouter AI fallback for better quality translation
+  } catch {}
   const apiKey = process.env.OPENROUTER_API_KEY
   if (apiKey) {
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-      
       const targetLangLabel = lang === 'en' ? 'English' : lang === 'zh-CN' ? 'Simplified Chinese' : 'Traditional Chinese with Cantonese style'
       const prompt = `Translate the following text to ${targetLangLabel}. Only output the translation, nothing else.\n\nText: ${text}`
-      
       const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://newskingdom.store',
-        },
-        body: JSON.stringify({
-          model: 'google/gemini-2.0-flash-001',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 500,
-        }),
+        headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'HTTP-Referer': 'https://newskingdom.store' },
+        body: JSON.stringify({ model: 'google/gemini-2.0-flash-001', messages: [{ role: 'user', content: prompt }], max_tokens: 500 }),
         signal: controller.signal
       })
       clearTimeout(timeoutId)
-      
       if (res.ok) {
         const data = await res.json()
         const translated = data.choices?.[0]?.message?.content?.trim()
         if (translated && translated !== text) return translated
       }
-    } catch {
-      // AI translation failed
-    }
+    } catch {}
   }
-  
   return text
 }
 
-// Safe fetch with timeout
 async function safeFetch(url: string, timeoutMs = 10000): Promise<string | null> {
   try {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
     const res = await fetch(url, { signal: controller.signal })
     clearTimeout(timeoutId)
-    
     if (!res.ok) return null
     return await res.text()
-  } catch {
-    return null
-  }
+  } catch { return null }
 }
 
 // ============ HANDLERS ============
-async function handleTravelCategory(lang: string, cityFilter: string) {
-  const TRAVEL_GUIDES: Record<string, any> = {
-    tokyo: {
-      city: 'Tokyo', city_zh: '東京', emoji: '🗼',
-      description_zh: '傳統與現代完美融合嘅國際大都會',
-      best_season: '春季 (3-5月) 同秋季 (9-11月)',
-      avg_temp: '16°C', tips: ['建議購買 Suica 卡方便搭地鐵', '免稅店購物需帶護照'],
-      areas: [
-        {
-          name: 'Shibuya & Harajuku', name_zh: '澀谷 & 原宿', description_zh: '青少年文化同時尚中心',
-          places: [
-            { name: 'Shibuya Crossing', name_zh: '澀谷十字路口', description_zh: '世界上最繁忙嘅行人十字路口', type: 'attraction', image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800', address: 'Shibuya, Tokyo', hours: '24小時', rating: '4.7', review_count: '52,389', best_time: '黃昏時分', duration: '30分鐘', cost_level: 'free', transit: 'JR山手線 澀谷站', tips: ['建議喺澀谷站陽台睇全景', '附近商場可以Shopping'], tags: ['地標', '夜景', '必去'] },
-            { name: 'Meiji Shrine', name_zh: '明治神宮', description_zh: '供奉明治天皇嘅神社，周圍係一片寧靜嘅森林', type: 'attraction', image: 'https://images.unsplash.com/photo-1583766395091-2eb9994ed094?w=800', address: '1-1 Yoyogikamizonocho, Shibuya', hours: '日出至日落', rating: '4.8', review_count: '41,205', best_time: '清晨', duration: '1-2小時', cost_level: 'free', transit: 'JR山手線 原宿站', tips: ['淨心之旅，建議早起', '入口處有洗手禮'], tags: ['神社', '寧靜', '文化'] },
-          ]
-        },
-        {
-          name: 'Asakusa & Ueno', name_zh: '淺草 & 上野', description_zh: '傳統東京代表寺院同市場',
-          places: [
-            { name: 'Senso-ji Temple', name_zh: '淺草寺', description_zh: '東京最古老嘅佛教寺廟，标志係雷門大燈籠', type: 'attraction', image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800', address: '2-3-1 Asakusa, Taito', hours: '6:00-17:00', rating: '4.8', review_count: '67,842', best_time: '早上', duration: '1-2小時', cost_level: 'free', transit: 'Metro 淺草站', tips: ['雷門影相要排隊', '抽籤好準!', '人形燒好食'], tags: ['寺廟', '歷史', '必去'] },
-          ]
-        }
-      ]
-    },
-    paris: {
-      city: 'Paris', city_zh: '巴黎', emoji: '🗼',
-      description_zh: '浪漫之都，藝術與時尚嘅殿堂',
-      best_season: '春季 (4-6月) 同秋季 (9-11月)',
-      avg_temp: '12°C', tips: ['地鐵係最方便嘅交通工具', '博物館建議網上預約'],
-      areas: [
-        { name: 'Eiffel Tower Area', name_zh: '艾菲爾鐵塔區', description_zh: '巴黎最標誌性嘅區域', places: [
-          { name: 'Eiffel Tower', name_zh: '艾菲爾鐵塔', description_zh: '巴黎鐵塔，浪漫嘅象徵', type: 'attraction', image: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=800', address: 'Champ de Mars, Paris', hours: '9:30-23:45', rating: '4.7', review_count: '89,234', best_time: '日落', duration: '2-3小時', cost_level: 'high', transit: '地鐵Bir-Hakeim站', tips: ['建議黃昏去睇日落', '可以坐電梯或行樓梯'], tags: ['地標', '浪漫', '必去'] },
-        ]}]
-    },
-    seoul: {
-      city: 'Seoul', city_zh: '首爾', emoji: '🏯',
-      description_zh: '傳統與現代完美融合嘅韓流之都',
-      best_season: '春季 (3-5月) 同秋季 (9-11月)',
-      avg_temp: '12°C', tips: ['T-money 卡搭地鐵好方便', 'WiFi 普遍覆蓋良好'],
-      areas: [{ name: 'Myeongdong', name_zh: '明洞', description_zh: '購物與美食天堂', places: [
-        { name: 'Myeongdong Shopping Street', name_zh: '明洞購物街', description_zh: '首爾最繁華購物區，化妝品天堂', type: 'shopping', image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800', address: 'Myeongdong', hours: '10:00-22:00', rating: '4.4', review_count: '56,789', best_time: '下午至夜晚', duration: '3-4小時', cost_level: 'medium', transit: 'Metro 明洞站', tips: ['化妝品最平', '地下商場好大', '街頭美食多'], tags: ['購物', '化妝品', '美食'] },
-      ]}]
-    }
-  }
-
-  const citySummaries = {
-    tokyo: { emoji: '🗼', name_zh: '東京', desc: '傳統與現代完美融合', places: 12 },
-    paris: { emoji: '🗼', name_zh: '巴黎', desc: '浪漫與藝術之都', places: 6 },
-    seoul: { emoji: '🏯', name_zh: '首爾', desc: 'K-pop與傳統文化', places: 4 },
-  }
-
-  const travelItems: any[] = []
+async function handleTravelCategory(lang: string, countryFilter: string, cityFilter: string) {
   const now = new Date().toISOString()
 
-  for (const [cityId, cityData] of Object.entries(TRAVEL_GUIDES)) {
-    if (cityFilter !== 'all' && cityId !== cityFilter) continue
+  // Build country summaries for the selector
+  const countrySummaries = Object.entries(TRAVEL_COUNTRIES).map(([id, data]: [string, any]) => ({
+    id,
+    name_zh: data.name_zh,
+    name: data.name,
+    emoji: data.emoji,
+    cityCount: data.cities.length,
+    placeCount: data.cities.reduce((acc: number, c: any) => acc + c.areas.reduce((a: number, ar: any) => a + ar.places.length, 0), 0),
+  }))
 
-    for (const area of cityData.areas) {
-      for (const place of area.places) {
-        const relatedPlaces = cityData.areas
-          .flatMap((a: any) => a.places)
-          .filter((p: any) => p.name !== place.name)
-          .slice(0, 3)
-          .map((p: any) => ({ name: p.name, name_zh: p.name_zh, type: p.type }))
+  // Also provide flat citySummaries for backward compatibility
+  const citySummaries = Object.values(TRAVEL_COUNTRIES).flatMap((country: any) =>
+    country.cities.map((city: any) => ({
+      id: city.id,
+      name_zh: city.name_zh,
+      name: city.name,
+      emoji: city.emoji,
+      country_id: country.id,
+      country_zh: country.name_zh,
+      areaCount: city.areas.length,
+      placeCount: city.areas.reduce((acc: number, ar: any) => acc + ar.places.length, 0),
+    }))
+  )
 
-        travelItems.push({
-          id: `travel-${cityId}-${place.name_zh.replace(/\s/g, '-')}`,
-          title: place.name_zh,
-          title_translated: place.name_zh,
-          desc: place.description_zh + '。最佳遊覽時間：' + (place.best_time || '建議停留2-3小時') + '。評分：' + (place.rating || '4.5') + '/5.0。',
-          desc_translated: place.description_zh,
-          translated: true,
-          link: 'https://www.google.com/search?q=' + encodeURIComponent(place.name_zh + ' ' + cityData.city_zh),
-          pubDate: now,
-          source: cityData.city_zh + ' · ' + area.name_zh,
-          img: true,
-          img_url: place.image,
-          emoji: cityData.emoji,
-          name: place.name_zh,
-          name_zh: place.name_zh,
-          name_en: place.name,
-          city: cityData.city_zh,
-          city_en: cityData.city,
-          city_id: cityId,
-          area: area.name_zh,
-          best_time: place.best_time || '建議停留2-3小時',
-          duration: place.duration || '2-3小時',
-          rating: place.rating || '4.5',
-          review_count: place.review_count || '10,000+',
-          address: place.address || '',
-          hours: place.hours || '',
-          price_range: place.price_range || '',
-          cost_level: place.cost_level || 'medium',
-          transit: place.transit || '',
-          type: place.type || 'attraction',
-          tags: place.tags || [],
-          tips: place.tips || [],
-          related_places: relatedPlaces,
-          blog_content: place.description_zh + '\n\n遊覽建議：\n' + (place.tips || []).map((t: string) => '• ' + t).join('\n'),
-          city_emoji: cityData.emoji,
-          city_description: cityData.description_zh,
-          best_season: cityData.best_season,
-          avg_temp: cityData.avg_temp,
-        })
+  const travelItems: any[] = []
+
+  for (const [countryId, countryData] of Object.entries(TRAVEL_COUNTRIES)) {
+    if (countryFilter !== 'all' && countryId !== countryFilter) continue
+
+    for (const city of countryData.cities) {
+      if (cityFilter !== 'all' && city.id !== cityFilter) continue
+
+      for (const area of city.areas) {
+        for (const place of area.places) {
+          const relatedPlaces = Object.values(TRAVEL_COUNTRIES)
+            .flatMap((c: any) => c.cities.flatMap((ci: any) => ci.areas.flatMap((ar: any) => ar.places)))
+            .filter((p: any) => p.name !== place.name)
+            .slice(0, 3)
+            .map((p: any) => ({ name: p.name, name_zh: p.name_zh, type: p.type }))
+
+          travelItems.push({
+            id: `travel-${countryId}-${city.id}-${place.name_zh.replace(/\s/g, '-')}`,
+            title: place.name_zh,
+            title_translated: place.name_zh,
+            desc: place.description_zh + '。最佳遊覽時間：' + (place.best_time || '建議停留2-3小時') + '。評分：' + (place.rating || '4.5') + '/5.0。',
+            desc_translated: place.description_zh,
+            translated: true,
+            link: 'https://www.google.com/search?q=' + encodeURIComponent(place.name_zh + ' ' + city.name_zh),
+            pubDate: now,
+            source: countryData.name_zh + ' · ' + city.name_zh + ' · ' + area.name_zh,
+            img: true,
+            img_url: place.image,
+            emoji: city.emoji,
+            name: place.name_zh,
+            name_zh: place.name_zh,
+            name_en: place.name,
+            city: city.name_zh,
+            city_en: city.name,
+            city_id: city.id,
+            city_emoji: city.emoji,
+            city_description: city.description_zh,
+            area: area.name_zh,
+            area_zh: area.name_zh,
+            country: countryData.name_zh,
+            country_id: countryId,
+            country_zh: countryData.name_zh,
+            best_time: place.best_time || '建議停留2-3小時',
+            duration: place.duration || '2-3小時',
+            rating: place.rating || '4.5',
+            review_count: place.review_count || '10,000+',
+            address: place.address || '',
+            hours: place.hours || '',
+            price_range: place.price_range || '',
+            cost_level: place.cost_level || 'medium',
+            transit: place.transit || '',
+            type: place.type || 'attraction',
+            tags: place.tags || [],
+            tips: place.tips || [],
+            blog_content: place.description_zh + '\n\n遊覽建議：\n' + (place.tips || []).map((t: string) => '• ' + t).join('\n'),
+            country_emoji: countryData.emoji,
+            best_season: countryData.best_season,
+            avg_temp: countryData.avg_temp,
+            related_places: relatedPlaces,
+          })
+        }
       }
     }
   }
+
+  const placeTypes = ['attraction', 'food', 'shopping', 'nightlife', 'nature']
 
   return NextResponse.json({
     success: true,
     category: 'travel',
     items: travelItems,
     isTravelGuide: true,
+    countrySummaries,
     citySummaries,
-    placeTypes: ['attraction', 'food', 'shopping', 'nightlife', 'nature'],
+    placeTypes,
     timestamp: Date.now()
   })
 }
@@ -320,7 +387,6 @@ async function handleDataJournalismCategory(sub: string, lang: string) {
     subSources.map(async (source) => {
       const xml = await safeFetch(source.url, 10000)
       if (!xml) return []
-
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
       return itemMatches.slice(0, 10).map((itemXml: string) => {
         const title = extractText(itemXml.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || '')
@@ -329,7 +395,6 @@ async function handleDataJournalismCategory(sub: string, lang: string) {
         const pubDateStr = itemXml.match(/<pubDate>([\s\S]*?)<\/pubDate>/i)?.[1] || ''
         const pubTimestamp = pubDateStr ? (isNaN(new Date(pubDateStr).getTime()) ? 0 : new Date(pubDateStr).getTime()) : 0
         const img = extractImage(itemXml)
-
         return { id: Buffer.from(link).toString('base64').slice(0, 16), title, desc, link, pubDate: pubDateStr, pubTimestamp, img: !!img, img_url: img || '', source: source.source }
       }).filter((item: any) => item.title && item.link)
     })
@@ -337,23 +402,16 @@ async function handleDataJournalismCategory(sub: string, lang: string) {
 
   const allItems = results.flatMap(r => r.status === 'fulfilled' ? r.value : []).sort((a: any, b: any) => b.pubTimestamp - a.pubTimestamp).slice(0, 20)
 
-  // Translate only first 8 items
   const toTranslate = allItems.slice(0, 8)
   const translated = await Promise.allSettled(toTranslate.map(async (item: any) => {
     const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
     const needsTranslation = lang !== 'en' && !isChineseSource
-
     if (needsTranslation) {
       const [tTitle, tDesc] = await Promise.allSettled([
         translateText(item.title, lang, 8000),
         translateText(item.desc, lang, 8000),
       ])
-      return {
-        ...item,
-        title_translated: tTitle.status === 'fulfilled' ? tTitle.value : item.title,
-        desc_translated: tDesc.status === 'fulfilled' ? tDesc.value : item.desc,
-        translated: true
-      }
+      return { ...item, title_translated: tTitle.status === 'fulfilled' ? tTitle.value : item.title, desc_translated: tDesc.status === 'fulfilled' ? tDesc.value : item.desc, translated: true }
     }
     return { ...item, title_translated: item.title, desc_translated: item.desc, translated: false }
   }))
@@ -362,24 +420,16 @@ async function handleDataJournalismCategory(sub: string, lang: string) {
   const restItems = allItems.slice(8).map(item => ({ ...item, title_translated: item.title, desc_translated: item.desc, translated: false }))
 
   return NextResponse.json({
-    success: true,
-    category: 'data_journalism',
-    subcategory: sub,
-    subcategoryLabel: subLabel,
-    subcategories: Object.entries(DATA_JOURNALISM_SUBCATS).map(([id, sources]) => ({
-      id, ...subcategoryLabels[id], sourceCount: (sources as any[]).length
-    })),
+    success: true, category: 'data_journalism', subcategory: sub, subcategoryLabel: subLabel,
+    subcategories: Object.entries(DATA_JOURNALISM_SUBCATS).map(([id, sources]) => ({ id, ...subcategoryLabels[id], sourceCount: (sources as any[]).length })),
     items: [...translatedItems, ...restItems].slice(0, 20),
-    isDataJournalism: true,
-    timestamp: now,
+    isDataJournalism: true, timestamp: now,
   })
 }
 
 async function handleNewsCategory(category: string, lang: string) {
-  const sources = RSS_SOURCES[category] || RSS_SOURCES.world || []
-  if (sources.length === 0) {
-    return NextResponse.json({ success: true, category, items: [], timestamp: Date.now() })
-  }
+  const sources = RSS_SOURCES[category] || []
+  if (sources.length === 0) return NextResponse.json({ success: true, category, items: [], timestamp: Date.now() })
 
   const MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000
   const now = Date.now()
@@ -388,33 +438,18 @@ async function handleNewsCategory(category: string, lang: string) {
     sources.map(async (source) => {
       const xml = await safeFetch(source.url, 10000)
       if (!xml) return []
-
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
       const sourceItems: any[] = []
-
       for (const itemXml of itemMatches.slice(0, 15)) {
         const title = extractText(itemXml.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || '')
         const desc = extractText(itemXml.match(/<description>([\s\S]*?)<\/description>/i)?.[1] || '').slice(0, 200)
         const link = extractText(itemXml.match(/<link>([\s\S]*?)<\/link>/i)?.[1] || '')
         const pubDateStr = itemXml.match(/<pubDate>([\s\S]*?)<\/pubDate>/i)?.[1] || ''
-        
         let pubTimestamp = 0
-        if (pubDateStr) {
-          const parsedDate = new Date(pubDateStr)
-          pubTimestamp = isNaN(parsedDate.getTime()) ? 0 : parsedDate.getTime()
-        }
-
+        if (pubDateStr) { const pd = new Date(pubDateStr); pubTimestamp = isNaN(pd.getTime()) ? 0 : pd.getTime() }
         if (pubTimestamp !== 0 && (now - pubTimestamp) > MAX_AGE_MS) continue
-
         const img = extractImage(itemXml)
-
-        if (title && link) {
-          sourceItems.push({
-            id: Buffer.from(link).toString('base64').slice(0, 16),
-            title, desc, link, pubDate: pubDateStr, pubTimestamp,
-            img: !!img, img_url: img || '', source: source.source,
-          })
-        }
+        if (title && link) sourceItems.push({ id: Buffer.from(link).toString('base64').slice(0, 16), title, desc, link, pubDate: pubDateStr, pubTimestamp, img: !!img, img_url: img || '', source: source.source })
       }
       return sourceItems
     })
@@ -424,45 +459,26 @@ async function handleNewsCategory(category: string, lang: string) {
   const itemsToTranslate = allItems.slice(0, 12)
   const remainingItems = allItems.slice(12, 27)
 
-  // Translate with improved timeout protection and OpenRouter fallback
   const translated = await Promise.allSettled(itemsToTranslate.map(async (item) => {
     const isChineseSource = /[\u4e00-\u9fff]/.test(item.title)
     let needsTranslation = false
-
     if (lang === 'en') needsTranslation = isChineseSource
     else if (lang === 'zh-TW' || lang === 'zh-CN') needsTranslation = !isChineseSource
-
     if (needsTranslation) {
-      const [tTitle, tDesc] = await Promise.allSettled([
-        translateText(item.title, lang, 10000),  // Increased timeout
-        translateText(item.desc, lang, 10000),
-      ])
-      return {
-        ...item,
-        title_translated: tTitle.status === 'fulfilled' ? tTitle.value : item.title,
-        desc_translated: tDesc.status === 'fulfilled' ? tDesc.value : item.desc,
-        translated: true
-      }
+      const [tTitle, tDesc] = await Promise.allSettled([translateText(item.title, lang, 10000), translateText(item.desc, lang, 10000)])
+      return { ...item, title_translated: tTitle.status === 'fulfilled' ? tTitle.value : item.title, desc_translated: tDesc.status === 'fulfilled' ? tDesc.value : item.desc, translated: true }
     }
     return { ...item, title_translated: item.title, desc_translated: item.desc, translated: false }
   }))
 
   const translatedItems = translated.map(t => t.status === 'fulfilled' ? t.value : null).filter(Boolean)
   const finalRemaining = remainingItems.map(item => ({ ...item, title_translated: item.title, desc_translated: item.desc, translated: false }))
-
-  // Sort: newest 5 first, then shuffle rest
   const combined = [...translatedItems, ...finalRemaining]
   const newestFive = combined.slice(0, 5)
   const others = combined.slice(5).sort(() => Math.random() - 0.5)
   const finalItems = [...newestFive, ...others].slice(0, 25)
 
-  return NextResponse.json({
-    success: true,
-    category,
-    items: finalItems,
-    sources: sources.length,
-    timestamp: now,
-  })
+  return NextResponse.json({ success: true, category, items: finalItems, sources: sources.length, timestamp: now })
 }
 
 // ============ MAIN ROUTE ============
@@ -471,25 +487,18 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const category = searchParams.get('category') || 'finance'
     const lang = searchParams.get('lang') || 'zh-TW'
+    const country = searchParams.get('country') || 'all'
     const city = searchParams.get('city') || 'all'
 
-    if (category === 'travel') {
-      return handleTravelCategory(lang, city)
-    }
-
+    if (category === 'travel') return handleTravelCategory(lang, country, city)
     if (category === 'data_journalism') {
       const sub = searchParams.get('sub') || 'gdp'
       return handleDataJournalismCategory(sub, lang)
     }
-
     return handleNewsCategory(category, lang)
-
   } catch (err: any) {
     console.error('[news-feed] Error:', err)
-    return NextResponse.json(
-      { success: false, error: err as Error || 'Failed to fetch news' },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: false, error: 'Failed to fetch news' }, { status: 500 })
   }
 }
 
