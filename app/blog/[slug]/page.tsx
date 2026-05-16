@@ -75,6 +75,44 @@ const blogData: Record<string, any> = {
       { label: "⏱️ 建議遊覽", value: "1-2小時" },
     ],
   },
+  "sensoji": {
+    title: "🏮 東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
+    date: "May 2026 · 作者：純粹旅人",
+    heroImage: "https://live.staticflickr.com/6552/6972841610_e3c87b77f4_b.jpg",
+    heroCaption: "▲ 寫著「雷門」二字的巨大紅燈籠，是無數旅客對東京的第一印象",
+    tocItems: [
+      { id: "intro", title: "介紹", emoji: "📖" },
+      { id: "kaminarimon", title: "雷門", emoji: "🏮" },
+      { id: "nakamise", title: "仲見世通", emoji: "🍡" },
+      { id: "hondo", title: "本堂", emoji: "⛩️" },
+      { id: "tips", title: "實用提示", emoji: "💡" },
+    ],
+    activeColor: "red",
+    content: [
+      { type: "p", id: "intro", text: "如果想在現代化的東京尋找一抹傳統的江戶風情，<strong>淺草寺（Sensō-ji）</strong>絕對是不可錯過的第一站。創建於公元 628 年的淺草寺，是東京都內最古老的寺廟。這裡常年香火鼎盛，無論是莊嚴的佛教建築，還是充滿下町活力的商店街，都讓人彷彿穿越時空，回到了數百年前的江戶時代。" },
+      { type: "p", text: "今天這篇Blog就為大家整理了淺草寺的經典必看亮點、傳統參拜與求籤流程，帶你玩轉這個東京最經典的地標！" },
+      { type: "h2", text: "🗺️ 淺草寺經典散策路線：從雷門走到本堂" },
+      { type: "h3", text: "1. 第一站：震撼力十足的「雷門」與巨大燈籠" },
+      { type: "p", id: "kaminarimon", text: "淺草寺的正門就是大名鼎鼎的「雷門」（正式名稱為風雷神門）。門的右側供奉著風神，左側則是雷神。而正中央懸掛著那個重達 700 公斤的巨大紅燈籠，是由松下電器（Panasonic）創辦人松下幸之助在病癒後奉納的。<strong>拍照小貼士：</strong>走到燈籠正下方抬頭看，底部雕刻了一條栩栩如生的飛龍，非常精緻！" },
+      { type: "h3", text: "2. 第二站：好吃好逛的「仲見世通」商店街" },
+      { type: "p", id: "nakamise", text: "穿過雷門，迎接你的是一條長約 250 米的「仲見世通」。這是日本最古老的商店街之一，兩旁開滿了售賣傳統手工藝品、紀念品以及各式江戶小食的店舖。在這裡，你可以品嚐到現烤的<strong>人形燒</strong>、香脆的<strong>仙貝</strong>以及色彩繽紛的<strong>吉備糰子</strong>。" },
+      { type: "image", src: "https://live.staticflickr.com/7372/9096936531_e3c87b77f4_b.jpg", alt: "仲見世通與寶藏門", caption: "▲ 宏偉的寶藏門與左側高聳的五重塔互相輝映" },
+      { type: "h3", text: "3. 第三站：本堂參拜與常香爐的神秘力量" },
+      { type: "p", id: "hondo", text: "穿過第二道大門「寶藏門」後，就會看到供奉本尊聖觀音菩薩的「本堂」（大殿）。在進入本堂前，你會經過一個煙霧繚繞的<strong>常香爐</strong>。日本信眾相信，將香爐排出的煙霧撥到自己身上，能夠驅除百病、帶來智慧與健康。來到這裡記得學著當地人，把福氣「撥」向自己喔！" },
+      { type: "highlight", title: "🔮 實用教學：淺草寺「觀音靈籤」求籤步驟", text: "淺草寺的「觀音靈籤」非常有名，據說這裡抽到「凶」的機率相對比較高，但不用擔心，這才是最真實的指引！求籤流程如下：1. 在心裡默默向觀音菩薩許願、詢問你想請教的事情。2. 投入 100 日圓硬幣到油錢箱。3. 拿起木製籤筒，誠心搖晃直到其中一根籤「御籤」從小孔掉出。4. 看清楚數字，到對應的小木櫃抽屜中拿取你的籤詩。5. 如果是吉：把喜悅帶回家；如果是凶：別擔心！將籤詩摺好，綁在寺廟專用的鐵架上，代表將厄運留在寺廟，由神明為你化解。" },
+      { type: "h2", text: "🗼 隱藏加碼：新舊交織的絕佳拍照位" },
+      { type: "p", text: "在淺草寺境內，你可以拍到一個非常奇妙的畫面 —— 古色古香的<strong>五重塔</strong>與現代科技感十足的<strong>東京晴空塔（Tokyo Skytree）</strong>同框！這種歷史與現代在空中交匯的強烈對比，是淺草獨有的浪漫景致，千萬不要錯過這個構圖。" },
+      { type: "tips", title: "💡 淺草寺 旅遊實用小貼士 (Travel Tips)", items: ["<strong>開放時間：</strong>淺草寺境內是 24 小時免費開放的。不過本堂的開門時間為每日早上 6:00（10月至3月為6:30）至傍晚 17:00。", "<strong>強烈推薦夜遊：</strong>每天日落後至晚上 23:00，雷門、寶藏門、五重塔和本堂都會亮起金黃色的燈光。此時遊客散去，散步起來非常舒服，拍起照來更有一種神祕而莊嚴的美感！", "<strong>交通方式：</strong>搭乘東京地下鐵銀座線、都營淺草線或東武晴空塔線至「淺草站」，步行約 5 分鐘即可抵達雷門。"] },
+    ],
+    infoCards: [
+      { label: "📍 地址", value: "2-3-1 Asakusa, Taito City, Tokyo" },
+      { label: "🕐 開放時間", value: "境內24小時 / 本堂 6:00-17:00" },
+      { label: "💰 費用", value: "免費" },
+      { label: "⭐ 評分", value: "4.6/5.0（89,432 評論）" },
+      { label: "🚇 交通", value: "東京Metro 淺草站 步行5分鐘" },
+      { label: "⏱️ 建議遊覽", value: "1-2小時" },
+    ],
+  },
 };
 
 export default function BlogSlugPage({ params }: { params: { slug: string } }) {
@@ -109,6 +147,7 @@ export default function BlogSlugPage({ params }: { params: { slug: string } }) {
   const colorClasses: Record<string, { active: string; default: string }> = {
     blue: { active: "bg-blue-600 text-white", default: "text-zinc-400 hover:text-white hover:bg-zinc-800" },
     green: { active: "bg-green-600 text-white", default: "text-zinc-400 hover:text-white hover:bg-zinc-800" },
+    red: { active: "bg-red-600 text-white", default: "text-zinc-400 hover:text-white hover:bg-zinc-800" },
   };
 
   if (!blog) {
