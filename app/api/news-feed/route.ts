@@ -182,7 +182,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Old City & Rattanakosin', name_zh: '舊城區',
             places: [
-              { name: 'Grand Palace', name_zh: '大皇宮', description_zh: '泰國皇家宮殿，金碧輝煌嘅建築群', type: 'attraction', image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800', address: 'Na Phra Lan Rd, Grand Palace', hours: '8:30-16:30', rating: '4.6', review_count: '62,341', best_time: '上午', duration: '2-3小時', cost_level: 'medium', transit: 'Chao Phraya Express船', tips: ['衣著要莊重', '門票包含玉佛寺'], tags: ['寺廟', '歷史', '打卡'] },
+              { name: 'Grand Palace', name_zh: '大皇宮', blog_slug: 'grand-palace', description_zh: '泰國皇家宮殿，金碧輝煌嘅建築群', type: 'attraction', image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800', address: 'Na Phra Lan Rd, Grand Palace', hours: '8:30-16:30', rating: '4.6', review_count: '62,341', best_time: '上午', duration: '2-3小時', cost_level: 'medium', transit: 'MRT Sanam Chai站', tips: ['衣著要莊重', '門票包含玉佛寺', '防騙要小心'], tags: ['寺廟', '歷史', '打卡'] },
             ]
           }
         ]
