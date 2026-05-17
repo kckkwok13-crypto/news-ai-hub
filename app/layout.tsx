@@ -25,13 +25,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
+  const adsenseId = 'ca-pub-4745583996243741';
 
   return (
     <html lang="zh-HK">
       <head>
-        {/* Monetag verification */}
-        <meta name="monetag" content="cd770bcb8f12f0032015ec4eacec2384" />
         {adsenseId && (
           <>
             <Script
