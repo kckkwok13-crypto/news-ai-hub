@@ -98,7 +98,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Asakusa & Ueno', name_zh: '淺草 & 上野',
             places: [
-              { name: 'Senso-ji Temple', name_zh: '淺草寺', description_zh: '東京最古老嘅佛教寺廟，标志係雷門大燈籠', type: 'attraction', image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800', address: '2-3-1 Asakusa, Taito', hours: '6:00-17:00', rating: '4.8', review_count: '67,842', best_time: '早上', duration: '1-2小時', cost_level: 'free', transit: 'Metro 淺草站', tips: ['雷門影相要排隊', '抽籤好準!', '人形燒好食'], tags: ['寺廟', '歷史', '必去'] },
+              { name: 'Senso-ji Temple', name_zh: '淺草寺', blog_slug: 'sensoji', description_zh: '東京最古老嘅佛教寺廟，标志係雷門大燈籠', type: 'attraction', image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800', address: '2-3-1 Asakusa, Taito', hours: '6:00-17:00', rating: '4.8', review_count: '67,842', best_time: '早上', duration: '1-2小時', cost_level: 'free', transit: 'Metro 淺草站', tips: ['雷門影相要排隊', '抽籤好準!', '人形燒好食'], tags: ['寺廟', '歷史', '必去'] },
             ]
           }
         ]

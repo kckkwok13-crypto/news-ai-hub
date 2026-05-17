@@ -1168,7 +1168,7 @@ export default function NewsPage() {
                   )}
                   
                   {/* AI分析 button - fixed at bottom center of image */}
-                  <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 z-10 ${isTravelGuide ? 'mb-16 md:mb-20' : ''}`}>
+                  <div className={`absolute bottom-12 md:bottom-14 left-1/2 -translate-x-1/2 z-10 ${isTravelGuide ? '' : ''}`}>
                     <button 
                       onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} 
                       className={`px-4 py-2.5 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-sm flex items-center gap-2 transition-all hover:scale-105`}

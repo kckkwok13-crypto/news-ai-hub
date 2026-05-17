@@ -41,7 +41,7 @@ export default function SensojiPage() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Floating Summary Card */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
         <div className="bg-zinc-900/95 backdrop-blur-sm border border-zinc-700 rounded-xl p-4 w-56 shadow-2xl">
           <h3 className="text-sm font-semibold text-zinc-400 mb-3 flex items-center gap-2">
             📋 目錄導覽
