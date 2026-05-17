@@ -85,6 +85,20 @@ export default function SistineChapelPage() {
           <p className="text-[#8d99ae]">May 2026 · 作者：純粹旅人</p>
         </header>
 
+        {/* Manga Character */}
+        <div className="flex justify-center -mt-4 mb-8">
+          <img
+            src="/blog/sistine-chapel/pure_traveler_manga.jpg"
+            alt="純粹旅人漫畫形象"
+            className="w-32 h-32 object-cover rounded-full shadow-xl shadow-[#735d78]/30 border-4 border-[#b392ac]/40"
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+          />
+        </div>
+
+        {/* Hero Image */}
+        <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
+        </header>
+
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
           <img
