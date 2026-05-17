@@ -1323,8 +1323,8 @@ export default function NewsPage() {
                         )}
                         {item.blog_content && (
                           <a 
-                            href={`/blog/${item.blog_slug || 'shibuya-crossing'}`}
-                            onClick={e => e.stopPropagation()}
+                            href={item.blog_slug ? `/blog/${item.blog_slug}` : '#'}
+                            onClick={e => { if (!item.blog_slug) e.preventDefault(); }}
                             className="mt-3 w-full py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-500 text-white"
                           >
                             📖 閱讀完整Blog →

@@ -68,10 +68,16 @@ export default function EiffelTowerPage() {
 
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link
-          href="/blog"
+          href="/"
           className="inline-flex items-center gap-2 text-amber-400 hover:text-white mb-8 transition-colors bg-zinc-800/50 px-4 py-2 rounded-full hover:bg-zinc-700/50"
         >
-          ← 返回 Blog
+          ← 返回 Newsflow
+        </Link>
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-zinc-500 hover:text-amber-400 mb-8 ml-6 transition-colors"
+        >
+          | Blog
         </Link>
         
         <header className="text-center py-12">
@@ -86,12 +92,14 @@ export default function EiffelTowerPage() {
         </header>
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
-          <div className="w-full h-80 bg-gradient-to-br from-amber-900/30 via-amber-800/20 to-yellow-900/30 flex items-center justify-center">
-            <div className="text-center">
-              <span className="text-6xl">🗼</span>
-              <p className="text-amber-300/80 mt-4 italic">📸 黃昏夕陽西下，整座艾菲爾鐵塔剛亮起金黃色燈光，襯托著粉橘色晚霞的夢幻全景</p>
-            </div>
-          </div>
+          <img
+            src="https://images.unsplash.com/photo-1511739001486-6bfe10b785f7?w=1200&q=80"
+            alt="艾菲爾鐵塔"
+            className="w-full h-80 object-cover"
+            onError={(e) => {
+              e.currentTarget.src = "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80";
+            }}
+          />
         </div>
         <p className="text-center text-zinc-500 text-sm mb-12">
           ▲ 矗立於戰神廣場、優雅迎接塞納河微風的巴黎精神象徵 —— 艾菲爾鐵塔
@@ -118,12 +126,14 @@ export default function EiffelTowerPage() {
           </p>
 
           <div className="my-8">
-            <div className="w-full h-64 bg-gradient-to-br from-amber-900/30 to-yellow-900/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-amber-500/40">
-              <div className="text-center">
-                <span className="text-4xl">🌉</span>
-                <p className="text-amber-300/80 mt-2 italic text-sm">📸 德比爾哈克姆橋對稱的鋼鐵迴廊，盡頭探出艾菲爾鐵塔半個側影的文藝風相片</p>
-              </div>
-            </div>
+            <img
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80"
+              alt="德比爾哈克姆橋"
+              className="w-full rounded-2xl"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1549144511-f0992dd4c1d7?w=1200&q=80";
+              }}
+            />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
               ▲ 電影《盜夢空間》（Inception）的取景地 —— 德比爾哈克姆橋
             </p>
@@ -218,10 +228,7 @@ export default function EiffelTowerPage() {
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
-            <script type="text/javascript">
-              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
-            </script>
-            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+            <ins className="infolinks_ad" data-pid="3445528" data-wsid="0"></ins>
           </div>
         </article>
       </div>
