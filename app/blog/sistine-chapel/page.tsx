@@ -102,7 +102,7 @@ export default function SistineChapelPage() {
             alt="西斯汀小堂穹頂壁畫"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1583053079661-1d3c7c5a5b9e?w=1200&q=80";
             }}
           />
         </div>
@@ -136,9 +136,6 @@ export default function SistineChapelPage() {
               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
               alt="梵蒂岡博物館雙螺旋樓梯"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80";
-              }}
             />
             <p className="text-center text-[#8d99ae] text-sm mt-4 mb-8">
               ▲ 通往西斯汀小堂的路上，沿途會經過梵蒂岡博物館無數大師級的雕刻與掛毯珍藏

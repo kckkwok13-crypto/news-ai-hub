@@ -178,7 +178,36 @@ export default function AboutPage() {
 
         {/* Team/Contact */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6">👤 關於開發者</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">👤 關於作者：純粹旅人</h2>
+          <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700 text-gray-300">
+            <div className="flex items-start gap-6">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-4xl shadow-lg">
+                🌍
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-white mb-2">純粹旅人 Pure Traveler</h3>
+                <p className="text-sm text-emerald-400 mb-3">旅行博主 · 攝影愛好者 · 文字工作者</p>
+                <p className="mb-4">
+                  你好！我係「純粹旅人」，一個熱愛探索世界每個角落嘅旅行者。我相信最好的旅行體驗，
+                  唔係打卡式嘅走馬觀花，而係用心感受每一個城市的溫度、每一條街道的故事。
+                </p>
+                <p className="mb-4">
+                  呢個 Blog 記錄低我遊歷東京、巴黎、羅馬、佛羅倫斯、曼谷、首爾等城市嘅所見所聞，
+                  希望可以帶你用另一個角度睇世界。✨
+                </p>
+                <div className="flex gap-4 text-sm">
+                  <span className="text-amber-400">📸 旅行攝影</span>
+                  <span className="text-blue-400">✈️ 深度遊記</span>
+                  <span className="text-purple-400">📚 文化探索</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team/Contact */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-6">📧 聯絡方式</h2>
           <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700 text-gray-300">
             <p className="mb-4">
               NewsFlow 由獨立的個人開發者創建和維護。這是一個興趣項目，致力於為用戶提供便捷的新聞閱讀體驗。

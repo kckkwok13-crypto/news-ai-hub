@@ -145,7 +145,7 @@ export default function FlorenceCathedralPage() {
               alt="米開朗基羅廣場俯瞰全景"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1543429257-3eb0b65d9c88?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#8d99ae] text-sm mt-4 mb-8">
