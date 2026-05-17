@@ -1250,13 +1250,34 @@ export default function NewsPage() {
                               }
                               // Otherwise show category-based description
                               const impactText = details?.impact || 'general'
-                              const categoryDescriptions: Record<string, string> = {
-                                economic: '📈 此新聞涉及經濟金融層面，可能影響市場走勢、投資者情緒及相關產業發展。',
-                                political: '🏛️ 此新聞涉及政治政策層面，可能影響地緣政治、國際關係及政策走向。',
-                                tech: '💻 此新聞涉及科技產業層面，可能影響技術發展、行業趨勢及創新方向。',
-                                general: '📰 此為一般綜合性新聞，涵蓋多元話題與社會動態。'
+                              const newsAnalysis = (item: any) => {
+                                // If we have AI analysis from aiHostData for this specific item, use it
+                                if (aiHostData && aiHostItem && aiHostItem.id === item.id && aiHostData.analysis) {
+                                  return aiHostData.analysis.split('\n').filter((line: string) => line.trim()).slice(0, 5).join('\n')
+                                }
+                                // Show detailed analysis based on impact type
+                                const analysisMap: Record<string, { title: string; content: string }> = {
+                                  economic: { 
+                                    title: '📈 經濟金融層面分析', 
+                                    content: '此新聞涉及經濟金融層面，可能影響市場走勢、投資者情緒及相關產業發展。\n\n建議關注：\n• 相關板塊及個股表現\n• 央行政策走向\n• 市場資金流向\n• 投資者情緒變化' 
+                                  },
+                                  political: { 
+                                    title: '🏛️ 政治政策層面分析', 
+                                    content: '此新聞涉及政治政策層面，可能影響地緣政治、國際關係及政策走向。\n\n建議關注：\n• 國際關係變化\n• 政策對市場的潛在影響\n• 地緣政治風險\n• 相關板塊的政策利好/利空' 
+                                  },
+                                  tech: { 
+                                    title: '💻 科技產業層面分析', 
+                                    content: '此新聞涉及科技產業層面，可能影響技術發展、行業趨勢及創新方向。\n\n建議關注：\n• 技術創新動態\n• 行業競爭格局\n• 人才流動趨勢\n• 技術應用場景拓展' 
+                                  },
+                                  general: { 
+                                    title: '📰 綜合資訊分析', 
+                                    content: '此為一般綜合性新聞，涵蓋多元話題與社會動態。\n\n建議關注：\n• 新聞背後的根本原因\n• 對不同群體的影響\n• 未來發展趨勢\n• 專家和市場解讀' 
+                                  }
+                                }
+                                const analysis = analysisMap[impactText] || analysisMap.general
+                                return `【${analysis.title}】\n\n${analysis.content}`
                               }
-                              return categoryDescriptions[impactText] || categoryDescriptions.general
+                              return newsAnalysis(item)
                             })()}
                           </p>
                           <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">

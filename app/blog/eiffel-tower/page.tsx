@@ -127,7 +127,7 @@ export default function EiffelTowerPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1549144511-f0992dd4c1d7?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80"
               alt="巴黎市景"
               className="w-full rounded-2xl"
               onError={(e) => {
@@ -135,7 +135,7 @@ export default function EiffelTowerPage() {
               }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
-              ▲ 電影《盜夢空間》（Inception）的取景地 —— 德比爾哈克姆橋
+              ▲ 俯瞰夜幕下的巴黎市區，萬家燈火與埃菲爾鐵塔的璀璨燈光交相輝映
             </p>
           </div>
 
