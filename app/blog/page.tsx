@@ -54,6 +54,16 @@ const blogPosts = [
     tags: ["京都", "竹林", "自然"],
     accent: "from-green-600 to-emerald-500"
   },
+  {
+    slug: "eiffel-tower",
+    title: "🗼 遇見巴黎的浪漫定義：艾菲爾鐵塔深度打卡與登塔全攻略",
+    excerpt: "全球最浪漫的時尚地標！從夏樂宮最佳拍攝位到戰神廣場野餐體驗，深度解鎖這座花都最耀眼的主角！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1511739001486-6bfe10b785f7?w=1200&q=80",
+    icon: "🗼",
+    tags: ["巴黎", "歐洲", "浪漫"],
+    accent: "from-amber-500 to-yellow-500"
+  },
 ];
 
 export default function BlogPage() {
@@ -88,9 +98,19 @@ export default function BlogPage() {
               純粹旅人 <span className="text-emerald-400">Journey</span>
             </h1>
             <p className="text-emerald-200/80 text-lg max-w-2xl mx-auto">
-              用雙腳探索日本，用相機記錄每一個難忘瞬間 🇯🇵
+              用雙腳探索世界，用相機記錄每一個難忘瞬間 🌍
             </p>
           </header>
+
+          {/* Back to Newsflow Link */}
+          <div className="text-center mb-8">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full transition-all backdrop-blur-sm border border-white/20"
+            >
+              ← 返回 Newsflow 首頁
+            </Link>
+          </div>
 
           {/* Blog Cards Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -167,17 +187,18 @@ export default function BlogPage() {
             ))}
           </div>
 
-          {/* Infolinks Ad Placeholder */}
+          {/* Infolinks Ad Script */}
           <div className="mt-12 text-center">
-            <div className="inline-block bg-white/80 backdrop-blur-sm rounded-xl px-6 py-4 text-gray-500 text-sm border border-gray-200">
-              <span className="text-green-600 font-semibold">Infolinks</span> 文字廣告區域
-            </div>
+            <script type="text/javascript">
+              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
+            </script>
+            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
           </div>
 
           {/* Footer */}
           <footer className="text-center mt-16 py-8 border-t border-green-700/30">
             <p className="text-emerald-200/60 text-sm">
-              🇯🇵 純粹旅人 · 用心感受每一個城市的溫度
+              🌍 純粹旅人 · 用心感受每一個城市的溫度
             </p>
           </footer>
         </div>

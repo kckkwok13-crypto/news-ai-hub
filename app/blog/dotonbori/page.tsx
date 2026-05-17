@@ -227,17 +227,32 @@ export default function DotonboriPage() {
             </div>
           </div>
 
+          {/* Comment Section */}
           <div className="bg-gradient-to-r from-cyan-900/30 to-blue-900/20 border border-cyan-500/30 rounded-2xl p-6 my-10">
-            <p className="text-zinc-300 text-center text-lg">
+            <h3 className="text-cyan-400 font-bold mb-4 flex items-center gap-2 text-xl">
+              💬 留言分享
+            </h3>
+            <p className="text-zinc-300 text-lg mb-4">
               👇 留言分享：你最想挑戰道頓堀的邊一款美食？定係你已經同跑跑人影過相呢？
             </p>
+            <div className="space-y-3">
+              <input
+                type="text"
+                placeholder="輸入你的留言..."
+                className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+              />
+              <button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                提交留言
+              </button>
+            </div>
           </div>
 
-          {/* Infolinks Ad Placeholder */}
+          {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
-            <div className="inline-block bg-zinc-800/60 rounded-xl px-6 py-4 text-zinc-500 text-sm border border-zinc-700/50">
-              <span className="text-cyan-500 font-semibold">Infolinks</span> 文字廣告區域
-            </div>
+            <script type="text/javascript">
+              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
+            </script>
+            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
           </div>
         </article>
       </div>
