@@ -30,6 +30,8 @@ export default function RootLayout({
   return (
     <html lang="zh-HK">
       <head>
+        {/* Monetag verification */}
+        <meta name="monetag" content="cd770bcb8f12f0032015ec4eacec2384" />
         {adsenseId && (
           <>
             <Script
