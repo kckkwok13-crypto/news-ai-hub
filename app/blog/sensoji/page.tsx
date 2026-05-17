@@ -112,12 +112,45 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
+              src="https://jinggotrip.com/wp-content/uploads/2023/10/2023.10.9-%E9%BE%9C%E5%B1%8B-%E4%BA%BA%E5%BD%A2%E7%87%92-%E4%BA%80%E5%B1%8B2.jpg"
+              alt="仲見世通商店街熱鬧景象"
+              className="w-full rounded-xl mb-4"
+            />
+            <p className="text-center text-zinc-500 text-sm mb-8">
+              ▲ 仲見世通兩旁店鋪林立、人山人海的熱鬧景象
+            </p>
+          </div>
+
+          <div className="my-8">
+            <img
               src="https://live.staticflickr.com/7372/9096936531_e3c87b77f4_b.jpg"
               alt="仲見世通與寶藏門"
               className="w-full rounded-xl mb-4"
             />
             <p className="text-center text-zinc-500 text-sm mb-8">
               ▲ 宏偉的寶藏門與左側高聳的五重塔互相輝映
+            </p>
+          </div>
+
+          <div className="my-8">
+            <img
+              src="https://resources.matcha-jp.com/resize/720x2000/2022/04/11-125431.webp"
+              alt="五重塔與東京晴空塔同框夜景"
+              className="w-full rounded-xl mb-4"
+            />
+            <p className="text-center text-zinc-500 text-sm mb-8">
+              ▲ 古色古香的五重塔與現代東京晴空塔的夢幻同框，是淺草專屬的歷史與現代交匯美景
+            </p>
+          </div>
+
+          <div className="my-8">
+            <img
+              src="https://nightscape.tokyo/_next/image/?url=https%3A%2F%2Fpub-7d430b8241bc4d38b717b9e2905120d8.r2.dev%2Fuploads%2F2023%2F01%2Fasakusa-2.jpg&w=1920&q=75"
+              alt="淺草寺夜遊点灯"
+              className="w-full rounded-xl mb-4"
+            />
+            <p className="text-center text-zinc-500 text-sm mb-8">
+              ▲ 日落後亮起金黃色燈光的雷門與五重塔，莊嚴神秘更有氛圍感
             </p>
           </div>
 
@@ -138,6 +171,28 @@ export default function SensojiPage() {
               <li>看清籤上的數字，到對應的小木櫃抽屜中拿取你的籤詩。</li>
               <li><strong>如果是吉：</strong>把喜悅帶回家；<strong>如果是凶：</strong>別擔心！將籤詩摺好，綁在寺廟專用的鐵架上，代表將厄運留在寺廟，由神明為你化解。</li>
             </ol>
+          </div>
+
+          <div className="my-8">
+            <img
+              src="https://resources.matcha-jp.com/archive_files/jp/2015/07/asakusa-kannon-sensoji-3.webp"
+              alt="淺草寺本堂內陣金箔裝飾"
+              className="w-full rounded-xl mb-4"
+            />
+            <p className="text-center text-zinc-500 text-sm mb-8">
+              ▲ 供奉聖觀音菩薩的本堂內陣，金箔天花與精緻佛具令人嘆為觀止
+            </p>
+          </div>
+
+          <div className="my-8">
+            <img
+              src="https://jinggotrip.com/wp-content/uploads/2023/10/2023.10.9-%E9%BE%9C%E5%B1%8B-%E4%BA%BA%E5%BD%A2%E7%87%92-%E4%BA%80%E5%B1%8B18.jpg"
+              alt="仲見世通人形燒現烤美食"
+              className="w-full rounded-xl mb-4"
+            />
+            <p className="text-center text-zinc-500 text-sm mb-8">
+              ▲ 仲見世通必吃的現烤人形燒，是淺草最具人氣的江戶小吃
+            </p>
           </div>
 
           <h2>🗼 隱藏加碼：新舊交織的絕佳拍照位</h2>
