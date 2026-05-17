@@ -97,10 +97,6 @@ export default function SistineChapelPage() {
 
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
-        </header>
-
-        {/* Hero Image */}
-        <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
           <img
             src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?w=1200&q=80"
             alt="西斯汀小堂穹頂壁畫"
