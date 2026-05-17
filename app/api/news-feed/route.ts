@@ -110,7 +110,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Namba & Dotonbori', name_zh: '難波 & 道頓堀',
             places: [
-              { name: 'Dotonbori Canal', name_zh: '道頓堀運河', description_zh: '大阪最繁華嘅夜景區域，著名嘅蟹道樂就喺呢度', type: 'attraction', image: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800', address: 'Dotonbori, Chuo, Osaka', hours: '24小時', rating: '4.6', review_count: '45,123', best_time: '夜晚', duration: '1-2小時', cost_level: 'free', transit: 'Metro 難波站', tips: ['夜晚去影相最靚', '可以坐船遊河'], tags: ['夜景', '美食', '打卡'] },
+              { name: 'Dotonbori Canal', name_zh: '道頓堀運河', blog_slug: 'dotonbori', description_zh: '大阪最繁華嘅夜景區域，著名嘅蟹道樂就喺呢度', type: 'attraction', image: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800', address: 'Dotonbori, Chuo, Osaka', hours: '24小時', rating: '4.6', review_count: '45,123', best_time: '夜晚', duration: '1-2小時', cost_level: 'free', transit: 'Metro 難波站', tips: ['夜晚去影相最靚', '可以坐船遊河'], tags: ['夜景', '美食', '打卡'] },
             ]
           }
         ]
@@ -142,7 +142,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Eiffel Tower Area', name_zh: '艾菲爾鐵塔區',
             places: [
-              { name: 'Eiffel Tower', name_zh: '艾菲爾鐵塔', description_zh: '巴黎鐵塔，浪漫嘅象徵', type: 'attraction', image: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=800', address: 'Champ de Mars, Paris', hours: '9:30-23:45', rating: '4.7', review_count: '89,234', best_time: '日落', duration: '2-3小時', cost_level: 'high', transit: '地鐵Bir-Hakeim站', tips: ['建議黃昏去睇日落', '可以坐電梯或行樓梯'], tags: ['地標', '浪漫', '必去'] },
+              { name: 'Eiffel Tower', name_zh: '艾菲爾鐵塔', blog_slug: 'eiffel-tower', description_zh: '巴黎鐵塔，浪漫嘅象徵', type: 'attraction', image: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=800', address: 'Champ de Mars, Paris', hours: '9:30-23:45', rating: '4.7', review_count: '89,234', best_time: '日落', duration: '2-3小時', cost_level: 'high', transit: '地鐵Bir-Hakeim站', tips: ['建議黃昏去睇日落', '可以坐電梯或行樓梯'], tags: ['地標', '浪漫', '必去'] },
             ]
           }
         ]
@@ -162,7 +162,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Myeongdong', name_zh: '明洞',
             places: [
-              { name: 'Myeongdong Shopping Street', name_zh: '明洞購物街', description_zh: '首爾最繁華購物區，化妝品天堂', type: 'shopping', image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800', address: 'Myeongdong', hours: '10:00-22:00', rating: '4.4', review_count: '56,789', best_time: '下午至夜晚', duration: '3-4小時', cost_level: 'medium', transit: 'Metro 明洞站', tips: ['化妝品最平', '地下商場好大', '街頭美食多'], tags: ['購物', '化妝品', '美食'] },
+              { name: 'Myeongdong Shopping Street', name_zh: '明洞購物街', blog_slug: 'myeongdong', description_zh: '首爾最繁華購物區，化妝品天堂', type: 'shopping', image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800', address: 'Myeongdong', hours: '10:00-22:00', rating: '4.4', review_count: '56,789', best_time: '下午至夜晚', duration: '3-4小時', cost_level: 'medium', transit: 'Metro 明洞站', tips: ['化妝品最平', '地下商場好大', '街頭美食多'], tags: ['購物', '化妝品', '美食'] },
             ]
           }
         ]

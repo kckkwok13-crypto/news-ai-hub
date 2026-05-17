@@ -203,8 +203,10 @@ export default function MeijiShrinePage() {
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
+            <ins className="infolinks_ad" data-pid="3445528" data-wsid="0"></ins>
             <script type="text/javascript">
-              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
+              var infolinks_pid = 3445528;
+              var infolinks_wsid = 0;
             </script>
             <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
           </div>

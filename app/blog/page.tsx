@@ -64,6 +64,16 @@ const blogPosts = [
     tags: ["巴黎", "歐洲", "浪漫"],
     accent: "from-amber-500 to-yellow-500"
   },
+  {
+    slug: "myeongdong",
+    title: "🛍️ 首爾潮流不夜城：明洞購物街（Myeongdong）終極狂歡攻略！",
+    excerpt: "K-Beauty、潮人服飾、街头美食、換錢攻略——全部一站式滿足你！帶你深度掃描首爾最具代表性的超級商圈！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=1200&q=80",
+    icon: "🛍️",
+    tags: ["首爾", "韓國", "購物"],
+    accent: "from-rose-500 to-pink-500"
+  },
 ];
 
 export default function BlogPage() {
