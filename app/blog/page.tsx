@@ -74,6 +74,66 @@ const blogPosts = [
     tags: ["首爾", "韓國", "購物"],
     accent: "from-rose-500 to-pink-500"
   },
+  {
+    slug: "st-peters-basilica",
+    title: "🏛️ 走進全球最大的教堂：梵蒂岡聖伯多祿大殿（St. Peter's Basilica）",
+    excerpt: "文藝復興與巴洛克藝術的巔峰之作！米開朗基羅的圓頂、貝尼尼的 Baldacchino、必看的西斯汀小堂，讓你一次看遍人類文明最璀璨的藝術瑰寶！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80",
+    icon: "🏛️",
+    tags: ["羅馬", "歐洲", "宗教"],
+    accent: "from-amber-600 to-yellow-500"
+  },
+  {
+    slug: "sistine-chapel",
+    title: "🎨 米開朗基羅的世紀畫布：西斯汀小堂（Cappella Sistina）",
+    excerpt: "抬頭仰望《創世紀》與《末日審判》—— 一場跨越五百年的藝術心靈之旅，感受文藝復興最輝煌的色彩與靈魂！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80",
+    icon: "🎨",
+    tags: ["羅馬", "歐洲", "藝術"],
+    accent: "from-purple-600 to-pink-500"
+  },
+  {
+    slug: "trevi",
+    title: "⛲ 許願池的秘密：羅馬特萊維噴泉（Trevi Fountain）",
+    excerpt: "傳說硬幣許願、品味巴洛克美學！羅馬最標誌性的噴泉，帶你揭開千年水神的震撼與浪漫！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=1200&q=80",
+    icon: "⛲",
+    tags: ["羅馬", "歐洲", "浪漫"],
+    accent: "from-blue-500 to-cyan-500"
+  },
+  {
+    slug: "grand-palace",
+    title: "👑 曼谷金碧輝煌：大皇宮（Grand Palace）深度遊",
+    excerpt: "泰國皇室的莊嚴聖地！玉佛寺、節基皇殿、皇家儀式——走進這座金光閃閃的建築群，體驗泰國最重要的文化心臟！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80",
+    icon: "👑",
+    tags: ["曼谷", "泰國", "文化"],
+    accent: "from-yellow-500 to-amber-500"
+  },
+  {
+    slug: "colosseum",
+    title: "🏟️ 羅馬鬥獸場：古羅馬最殘酷與最輝煌的競技場",
+    excerpt: "角鬥士的生死之戰、獅子與野獸的怒吼！站在這座2000年前的橢圓巨型競技場，感受古羅馬帝國的震撼與哀愁！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1552832230-c0197dd6bd77?w=1200&q=80",
+    icon: "🏟️",
+    tags: ["羅馬", "歐洲", "歷史"],
+    accent: "from-red-600 to-orange-500"
+  },
+  {
+    slug: "florence-cathedral",
+    title: "🧱 佛羅倫斯大教堂：布魯內萊斯基的永恆奇蹟",
+    excerpt: "文藝復興的搖籃！走進佛羅倫斯聖母百花大教堂，探索那個震撼世界的無木架巨型圓頂，感受徐徐而上的463級階梯與米開朗基羅的感嘆！",
+    date: "May 2026",
+    image: "https://images.unsplash.com/photo-1543429257-3eb0b65d9c88?w=1200&q=80",
+    icon: "🧱",
+    tags: ["佛羅倫斯", "歐洲", "建築"],
+    accent: "from-emerald-600 to-teal-500"
+  },
 ];
 
 export default function BlogPage() {
