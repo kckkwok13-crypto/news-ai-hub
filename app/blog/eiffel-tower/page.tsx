@@ -127,11 +127,11 @@ export default function EiffelTowerPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80"
-              alt="德比爾哈克姆橋"
+              src="https://images.unsplash.com/photo-1549144511-f0992dd4c1d7?w=1200&q=80"
+              alt="巴黎市景"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1549144511-f0992dd4c1d7?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80";
               }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">

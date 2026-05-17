@@ -718,18 +718,29 @@ export default function NewsPage() {
           {/* Impact Modal */}
           {showImpactId && (() => {
             const detail = aiSummary.details?.find((d: any) => d.id === showImpactId);
-            return detail?.impact ? (
+            return (
               <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
                 <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
                   <div className="text-blue-500 mb-4"><Zap size={40} /></div>
                   <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
-                  <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>{detail.impact}</p>
+                  <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                    {detail?.impact ? (() => {
+                      const impactText = detail.impact
+                      const categoryDescriptions: Record<string, string> = {
+                        economic: '📈 此新聞涉及經濟金融層面，可能影響市場走勢、投資者情緒及相關產業發展。',
+                        political: '🏛️ 此新聞涉及政治政策層面，可能影響地緣政治、國際關係及政策走向。',
+                        tech: '💻 此新聞涉及科技產業層面，可能影響技術發展、行業趨勢及創新方向。',
+                        general: '📰 此為一般綜合性新聞，涵蓋多元話題與社會動態。'
+                      }
+                      return categoryDescriptions[impactText] || categoryDescriptions.general
+                    })() : '📰 此為一般綜合性新聞，涵蓋多元話題與社會動態。'}
+                  </p>
                   <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">
                     {t.impactClose || "關閉解讀"}
                   </button>
                 </div>
               </div>
-            ) : null;
+            )
           })()}
         </div>
       )}
@@ -1232,7 +1243,21 @@ export default function NewsPage() {
                           <div className="text-blue-500 mb-4"><Zap size={40} /></div>
                           <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
                           <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {details?.impact}
+                            {(() => {
+                              // First check if we have AI analysis for this item from aiHostData
+                              if (aiHostData && aiHostItem && aiHostItem.id === item.id && aiHostData.analysis) {
+                                return aiHostData.analysis.split('\n').filter((line: string) => line.trim()).slice(0, 5).join('\n')
+                              }
+                              // Otherwise show category-based description
+                              const impactText = details?.impact || 'general'
+                              const categoryDescriptions: Record<string, string> = {
+                                economic: '📈 此新聞涉及經濟金融層面，可能影響市場走勢、投資者情緒及相關產業發展。',
+                                political: '🏛️ 此新聞涉及政治政策層面，可能影響地緣政治、國際關係及政策走向。',
+                                tech: '💻 此新聞涉及科技產業層面，可能影響技術發展、行業趨勢及創新方向。',
+                                general: '📰 此為一般綜合性新聞，涵蓋多元話題與社會動態。'
+                              }
+                              return categoryDescriptions[impactText] || categoryDescriptions.general
+                            })()}
                           </p>
                           <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">
                             {t.impactClose || "關閉解讀"}
