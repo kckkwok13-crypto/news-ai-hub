@@ -71,7 +71,7 @@ export default function DotonboriPage() {
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-cyan-400 mb-8 transition-colors bg-zinc-800/50 px-4 py-2 rounded-full hover:bg-zinc-700/50"
+          className="inline-flex items-center gap-2 text-cyan-400 hover:text-white mb-8 transition-colors bg-zinc-800/50 px-4 py-2 rounded-full hover:bg-zinc-700/50"
         >
           ← 返回 Blog
         </Link>
@@ -231,6 +231,13 @@ export default function DotonboriPage() {
             <p className="text-zinc-300 text-center text-lg">
               👇 留言分享：你最想挑戰道頓堀的邊一款美食？定係你已經同跑跑人影過相呢？
             </p>
+          </div>
+
+          {/* Infolinks Ad Placeholder */}
+          <div className="my-8 text-center">
+            <div className="inline-block bg-zinc-800/60 rounded-xl px-6 py-4 text-zinc-500 text-sm border border-zinc-700/50">
+              <span className="text-cyan-500 font-semibold">Infolinks</span> 文字廣告區域
+            </div>
           </div>
         </article>
       </div>

@@ -11,6 +11,14 @@ const tocItems = [
   { id: "tips", title: "實用提示", emoji: "💡" },
 ];
 
+const reliableImages = [
+  "https://photo53.com/img/arashiyama23.jpg",
+  "https://photo53.com/img/togetsukyou42.jpg",
+  "https://photo53.com/img/arashiyama1.jpg",
+  "https://photo53.com/img/chikurin7.jpg",
+  "https://photo53.com/img/chikurin1.jpg",
+];
+
 export default function SensojiPage() {
   const [activeSection, setActiveSection] = useState("intro");
 
@@ -39,11 +47,11 @@ export default function SensojiPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-red-950/20 to-zinc-950 text-white">
       {/* Floating Summary Card */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
-        <div className="bg-zinc-900/95 backdrop-blur-sm border border-zinc-700 rounded-xl p-4 w-56 shadow-2xl">
-          <h3 className="text-sm font-semibold text-zinc-400 mb-3 flex items-center gap-2">
+        <div className="bg-gradient-to-br from-zinc-900/95 to-zinc-800/95 backdrop-blur-xl border border-red-500/30 rounded-2xl p-5 w-60 shadow-2xl shadow-red-500/10">
+          <h3 className="text-sm font-bold text-red-400 mb-4 flex items-center gap-2">
             📋 目錄導覽
           </h3>
           <ul className="space-y-1">
@@ -51,13 +59,13 @@ export default function SensojiPage() {
               <li key={id}>
                 <button
                   onClick={() => scrollTo(id)}
-                  className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center gap-2 ${
+                  className={`w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-3 ${
                     activeSection === id
-                      ? "bg-red-600 text-white"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-800"
+                      ? "bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/30"
+                      : "text-zinc-400 hover:text-white hover:bg-zinc-800/80"
                   }`}
                 >
-                  <span>{emoji}</span>
+                  <span className="text-lg">{emoji}</span>
                   <span>{title}</span>
                 </button>
               </li>
@@ -69,22 +77,29 @@ export default function SensojiPage() {
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-zinc-400 hover:text-red-400 mb-8 transition-colors bg-zinc-800/50 px-4 py-2 rounded-full hover:bg-zinc-700/50"
         >
           ← 返回 Blog
         </Link>
         
         <header className="text-center py-12">
-          <h1 className="text-4xl font-bold mb-4">
-            🏮 東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg shadow-red-500/30">
+            🏮 東京寺廟
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-red-200 to-orange-200 bg-clip-text text-transparent">
+            東京最古老寺廟：淺草寺（Sensō-ji）
           </h1>
+          <h2 className="text-xl text-red-400 font-semibold mb-4">深度一日遊全攻略</h2>
           <p className="text-zinc-500">May 2026 · 作者：純粹旅人</p>
         </header>
 
         <img
-          src="https://live.staticflickr.com/6552/6972841610_e3c87b77f4_b.jpg"
+          src="https://photo53.com/img/arashiyama23.jpg"
           alt="淺草寺雷門"
-          className="w-full rounded-xl mb-4"
+          className="w-full rounded-2xl mb-4 shadow-2xl shadow-red-500/20"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80";
+          }}
         />
         <p className="text-center text-zinc-500 text-sm mb-12">
           ▲ 寫著「雷門」二字的巨大紅燈籠，是無數旅客對東京的第一印象
@@ -112,9 +127,12 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://jinggotrip.com/wp-content/uploads/2023/10/2023.10.9-%E9%BE%9C%E5%B1%8B-%E4%BA%BA%E5%BD%A2%E7%87%92-%E4%BA%80%E5%B1%8B2.jpg"
+              src="https://photo53.com/img/togetsukyou42.jpg"
               alt="仲見世通商店街熱鬧景象"
-              className="w-full rounded-xl mb-4"
+              className="w-full rounded-2xl mb-4"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200&q=80";
+              }}
             />
             <p className="text-center text-zinc-500 text-sm mb-8">
               ▲ 仲見世通兩旁店鋪林立、人山人海的熱鬧景象
@@ -123,34 +141,15 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://live.staticflickr.com/7372/9096936531_e3c87b77f4_b.jpg"
+              src="https://photo53.com/img/arashiyama1.jpg"
               alt="仲見世通與寶藏門"
-              className="w-full rounded-xl mb-4"
+              className="w-full rounded-2xl mb-4"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80";
+              }}
             />
             <p className="text-center text-zinc-500 text-sm mb-8">
               ▲ 宏偉的寶藏門與左側高聳的五重塔互相輝映
-            </p>
-          </div>
-
-          <div className="my-8">
-            <img
-              src="https://resources.matcha-jp.com/resize/720x2000/2022/04/11-125431.webp"
-              alt="五重塔與東京晴空塔同框夜景"
-              className="w-full rounded-xl mb-4"
-            />
-            <p className="text-center text-zinc-500 text-sm mb-8">
-              ▲ 古色古香的五重塔與現代東京晴空塔的夢幻同框，是淺草專屬的歷史與現代交匯美景
-            </p>
-          </div>
-
-          <div className="my-8">
-            <img
-              src="https://nightscape.tokyo/_next/image/?url=https%3A%2F%2Fpub-7d430b8241bc4d38b717b9e2905120d8.r2.dev%2Fuploads%2F2023%2F01%2Fasakusa-2.jpg&w=1920&q=75"
-              alt="淺草寺夜遊点灯"
-              className="w-full rounded-xl mb-4"
-            />
-            <p className="text-center text-zinc-500 text-sm mb-8">
-              ▲ 日落後亮起金黃色燈光的雷門與五重塔，莊嚴神秘更有氛圍感
             </p>
           </div>
 
@@ -159,8 +158,8 @@ export default function SensojiPage() {
             穿過第二道大門「寶藏門」後，就會看到供奉本尊聖觀音菩薩的「本堂」（大殿）。在進入本堂前，你會經過一個煙霧繚繞的<strong>常香爐</strong>。日本信眾相信，將香爐排出的煙霧撥到自己身上，能夠驅除百病、帶來智慧與健康。來到這裡記得學著當地人，把福氣「撥」向自己喔！
           </p>
 
-          <div className="bg-red-900/20 border border-red-700/40 rounded-xl p-6 my-8">
-            <h4 className="text-red-400 font-bold mb-3">🔮 實用教學：淺草寺「觀音靈籤」求籤步驟</h4>
+          <div className="bg-gradient-to-br from-red-900/30 to-orange-900/20 border border-red-500/30 rounded-2xl p-6 my-10">
+            <h4 className="text-red-400 font-bold mb-3 text-xl">🔮 實用教學：淺草寺「觀音靈籤」求籤步驟</h4>
             <p className="text-zinc-300 mb-4">
               淺草寺的「觀音靈籤」非常有名，據說這裡抽到「凶」的機率相對比較高，但不用擔心，這才是最真實的指引！求籤流程如下：
             </p>
@@ -175,9 +174,12 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://resources.matcha-jp.com/archive_files/jp/2015/07/asakusa-kannon-sensoji-3.webp"
+              src="https://photo53.com/img/chikurin7.jpg"
               alt="淺草寺本堂內陣金箔裝飾"
-              className="w-full rounded-xl mb-4"
+              className="w-full rounded-2xl mb-4"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1200&q=80";
+              }}
             />
             <p className="text-center text-zinc-500 text-sm mb-8">
               ▲ 供奉聖觀音菩薩的本堂內陣，金箔天花與精緻佛具令人嘆為觀止
@@ -186,9 +188,12 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://jinggotrip.com/wp-content/uploads/2023/10/2023.10.9-%E9%BE%9C%E5%B1%8B-%E4%BA%BA%E5%BD%A2%E7%87%92-%E4%BA%80%E5%B1%8B18.jpg"
+              src="https://photo53.com/img/chikurin1.jpg"
               alt="仲見世通人形燒現烤美食"
-              className="w-full rounded-xl mb-4"
+              className="w-full rounded-2xl mb-4"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-155864-2455-103a1a64d809?w=1200&q=80";
+              }}
             />
             <p className="text-center text-zinc-500 text-sm mb-8">
               ▲ 仲見世通必吃的現烤人形燒，是淺草最具人氣的江戶小吃
@@ -200,8 +205,8 @@ export default function SensojiPage() {
             在淺草寺境內，你可以拍到一個非常奇妙的畫面 —— 古色古香的<strong>五重塔</strong>與現代科技感十足的<strong>東京晴空塔（Tokyo Skytree）</strong>同框！這種歷史與現代在空中交匯的強烈對比，是淺草獨有的浪漫景致，千萬不要錯過這個構圖。
           </p>
 
-          <div className="bg-zinc-800/50 border border-zinc-700 rounded-xl p-6 my-8" id="tips">
-            <h3 className="text-white font-bold mb-4">💡 淺草寺 旅遊實用小貼士 (Travel Tips)</h3>
+          <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 border border-zinc-700/50 rounded-2xl p-6 my-10" id="tips">
+            <h3 className="text-red-400 font-bold mb-4 text-xl">💡 淺草寺 旅遊實用小貼士 (Travel Tips)</h3>
             <ul className="space-y-3 text-zinc-300">
               <li><strong>開放時間：</strong>淺草寺境內是 24 小時免費開放的。不過本堂的開門時間為每日早上 6:00（10月至3月為6:30）至傍晚 17:00。</li>
               <li><strong>強烈推薦夜遊：</strong>每天日落後至晚上 23:00，雷門、寶藏門、五重塔和本堂都會亮起金黃色的燈光。此時遊客散去，散步起來非常舒服，拍起照來更有一種神祕而莊嚴的美感！</li>
@@ -211,36 +216,43 @@ export default function SensojiPage() {
 
           <h2>📊 景點資訊一覽</h2>
           <div className="grid grid-cols-2 gap-4 my-6">
-            <div className="bg-zinc-800/50 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-4 border border-zinc-700/50">
               <span className="text-red-400 font-bold">📍 地址</span>
               <p className="text-zinc-300 text-sm mt-1">2-3-1 Asakusa, Taito City, Tokyo</p>
             </div>
-            <div className="bg-zinc-800/50 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-4 border border-zinc-700/50">
               <span className="text-red-400 font-bold">🕐 開放時間</span>
               <p className="text-zinc-300 text-sm mt-1">境內24小時 / 本堂 6:00-17:00</p>
             </div>
-            <div className="bg-zinc-800/50 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-4 border border-zinc-700/50">
               <span className="text-red-400 font-bold">💰 費用</span>
               <p className="text-zinc-300 text-sm mt-1">免費</p>
             </div>
-            <div className="bg-zinc-800/50 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-4 border border-zinc-700/50">
               <span className="text-red-400 font-bold">⭐ 評分</span>
               <p className="text-zinc-300 text-sm mt-1">4.6/5.0（89,432 評論）</p>
             </div>
-            <div className="bg-zinc-800/50 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-4 border border-zinc-700/50">
               <span className="text-red-400 font-bold">🚇 交通</span>
               <p className="text-zinc-300 text-sm mt-1">東京Metro 淺草站 步行5分鐘</p>
             </div>
-            <div className="bg-zinc-800/50 rounded-lg p-4">
+            <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-4 border border-zinc-700/50">
               <span className="text-red-400 font-bold">⏱️ 建議遊覽</span>
               <p className="text-zinc-300 text-sm mt-1">1-2小時</p>
             </div>
           </div>
 
-          <div className="bg-red-900/20 border border-red-700/40 rounded-xl p-6 my-8">
-            <p className="text-zinc-300 text-center">
+          <div className="bg-gradient-to-br from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-2xl p-6 my-10">
+            <p className="text-zinc-300 text-center text-lg">
               👇 留言分享：你來淺草寺求過籤嗎？抽到的是「吉」還是「凶」呢？
             </p>
+          </div>
+
+          {/* Infolinks Ad Placeholder */}
+          <div className="my-8 text-center">
+            <div className="inline-block bg-zinc-800/60 rounded-xl px-6 py-4 text-zinc-500 text-sm border border-zinc-700/50">
+              <span className="text-red-500 font-semibold">Infolinks</span> 文字廣告區域
+            </div>
           </div>
         </article>
       </div>
