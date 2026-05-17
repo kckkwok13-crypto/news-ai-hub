@@ -122,7 +122,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Arashiyama', name_zh: '嵐山',
             places: [
-              { name: 'Arashiyama Bamboo Grove', name_zh: '嵐山竹林', description_zh: '壯觀嘅竹林小徑，仿佛置身另一個世界', type: 'attraction', image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800', address: 'Arashiyama, Kyoto', hours: '24小時', rating: '4.7', review_count: '38,901', best_time: '清晨', duration: '1-2小時', cost_level: 'free', transit: 'JR山手線 嵐山站', tips: ['建議清晨去避開人潮', '附近有天龍寺'], tags: ['自然', '打卡', '寧靜'] },
+              { name: 'Arashiyama Bamboo Grove', name_zh: '嵐山竹林', blog_slug: 'arashiyama', description_zh: '壯觀嘅竹林小徑，仿佛置身另一個世界', type: 'attraction', image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186.w=800', address: 'Arashiyama, Kyoto', hours: '24小時', rating: '4.7', review_count: '38,901', best_time: '清晨', duration: '1-2小時', cost_level: 'free', transit: 'JR山手線 嵐山站', tips: ['建議清晨去避開人潮', '附近有天龍寺'], tags: ['自然', '打卡', '寧靜'] },
             ]
           }
         ]
@@ -203,7 +203,7 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
           {
             name: 'Ancient Rome', name_zh: '古羅馬遺址',
             places: [
-              { name: 'Colosseum', name_zh: '羅馬鬥獸場', description_zh: '古羅馬建築代表作，曾舉辦角鬥比賽', type: 'attraction', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800', address: 'Piazza del Colosseo, Rome', hours: '8:30-19:00', rating: '4.8', review_count: '98,234', best_time: '清晨或黃昏', duration: '2-3小時', cost_level: 'medium', transit: 'Metro B線 Colosseo站', tips: ['建議網上預訂門票', '買 Roma Pass 更抵', '地下層好震撼'], tags: ['古蹟', '歷史', '必去'] },
+              { name: 'Colosseum', name_zh: '羅馬鬥獸場', blog_slug: 'colosseum', description_zh: '古羅馬建築代表作，曾舉辦角鬥比賽', type: 'attraction', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5.w=800', address: 'Piazza del Colosseo, Rome', hours: '8:30-19:00', rating: '4.8', review_count: '98,234', best_time: '清晨或黃昏', duration: '2-3小時', cost_level: 'medium', transit: 'Metro B線 Colosseo站', tips: ['建議網上預訂門票', '買 Roma Pass 更抵', '地下層好震撼'], tags: ['古蹟', '歷史', '必去'] },
               { name: 'Trevi Fountain', name_zh: '特萊維噴泉', description_zh: '羅馬最大嘅巴洛克風格噴泉，許願池', type: 'attraction', image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?w=800', address: 'Piazza di Trevi, Rome', hours: '24小時', rating: '4.7', review_count: '76,543', best_time: '夜晚', duration: '30分鐘', cost_level: 'free', transit: 'Metro A線 Barberini站', tips: ['擲硬幣許願', '清晨人少啲', '小心小偷'], tags: ['打卡', '浪漫', '地標'] },
             ]
           },
