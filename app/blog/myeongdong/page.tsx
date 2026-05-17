@@ -94,11 +94,11 @@ export default function MyeongdongPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-rose-500/20">
           <img
-            src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=1200&q=80"
+            src="https://cdn.tacdn.com/media/attractions-splice-spp-674x446/07/98/66/66.jpg"
             alt="明洞購物街"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80";
+              e.currentTarget.src = "https://ik.imagekit.io/tvlk/dam/i/01k7gzsx91r8kxnymnjqc2rq8d.jpeg";
             }}
           />
         </div>
@@ -128,11 +128,11 @@ export default function MyeongdongPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+              src="https://cdn.shopify.com/s/files/1/0557/4269/3571/files/Myeongdong_food_market.jpg?v=1738732897"
               alt="明洞街頭美食"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";
+                e.currentTarget.src = "https://roamingsonaa.com/wp-content/uploads/2023/09/myeongdong-night-market-street-food-stands.jpg";
               }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">

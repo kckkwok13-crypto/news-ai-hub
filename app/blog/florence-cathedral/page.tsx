@@ -88,22 +88,19 @@ export default function FlorenceCathedralPage() {
 
         {/* Manga Character */}
         <div className="flex justify-center -mt-4 mb-8">
-          <img
-            src="/blog/florence-cathedral/pure_traveler_manga.jpg"
-            alt="純粹旅人漫畫形象"
-            className="w-32 h-32 object-cover rounded-full shadow-xl shadow-[#1b4d3e]/30 border-4 border-[#c05640]/40"
-            onError={(e) => { e.currentTarget.style.display = 'none'; }}
-          />
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-6xl shadow-xl shadow-[#1b4d3e]/30 border-4 border-[#c05640]/40">
+            🧱
+          </div>
         </div>
 
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#1b4d3e]/20">
           <img
-            src="https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?w=1200&q=80"
+            src="https://aws-tiqets-cdn.imgix.net/images/content/954532f348e247b3a8ba8397038d2a11.jpg?auto=format&fit=crop"
             alt="佛羅倫斯聖母百花大教堂全景"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=80";
+              e.currentTarget.src = "https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg";
             }}
           />
         </div>
@@ -141,15 +138,15 @@ export default function FlorenceCathedralPage() {
           {/* Michelangelo Terrace Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=80"
-              alt="米開朗基羅廣場俯瞰全景"
+              src="https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg"
+              alt="百花大教堂內部穹頂壁畫"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1543429257-3eb0b65d9c88?w=1200&q=80";
+                e.currentTarget.src = "https://i.pinimg.com/originals/03/ce/e5/03cee54bebd23fbee73cb0b73e6151e8.jpg";
               }}
             />
             <p className="text-center text-[#8d99ae] text-sm mt-4 mb-8">
-              ▲ 攝影師天堂 —— 米開朗基羅廣場（Piazzale Michelangelo）的經典暮色
+              ▲ 聖母百花大教堂的經典視角，三色大理石外牆與紅磚圓頂構成翡冷翠的天際線
             </p>
           </div>
 

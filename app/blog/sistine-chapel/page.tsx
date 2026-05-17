@@ -87,22 +87,19 @@ export default function SistineChapelPage() {
 
         {/* Manga Character */}
         <div className="flex justify-center -mt-4 mb-8">
-          <img
-            src="/blog/sistine-chapel/pure_traveler_manga.jpg"
-            alt="純粹旅人漫畫形象"
-            className="w-32 h-32 object-cover rounded-full shadow-xl shadow-[#735d78]/30 border-4 border-[#b392ac]/40"
-            onError={(e) => { e.currentTarget.style.display = 'none'; }}
-          />
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-6xl shadow-xl shadow-[#735d78]/30 border-4 border-[#b392ac]/40">
+            🎨
+          </div>
         </div>
 
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
           <img
-            src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?w=1200&q=80"
+            src="https://th-thumbnailer.cdn-si-edu.com/SGLTnXSZNsPfmsbudF-Ui6m2JCE=/fit-in/1200x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/The-Creation-of-Adam-Michelangelo-631.jpg"
             alt="西斯汀小堂穹頂壁畫"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1583053079661-1d3c7c5a5b9e?w=1200&q=80";
+              e.currentTarget.src = "https://dq7j96arldrqf.cloudfront.net/thesistinechapel/images/inside-sistine-chapel.jpg";
             }}
           />
         </div>
@@ -133,12 +130,12 @@ export default function SistineChapelPage() {
           {/* Vatican Museums Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-              alt="梵蒂岡博物館雙螺旋樓梯"
+              src="https://www.singulart.com/blog/wp-content/uploads/2020/05/sistine.jpg"
+              alt="西斯汀小堂內部壁畫全景"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-[#8d99ae] text-sm mt-4 mb-8">
-              ▲ 通往西斯汀小堂的路上，沿途會經過梵蒂岡博物館無數大師級的雕刻與掛毯珍藏
+              ▲ 西斯汀小堂內部全景，仰望穹頂感受米開朗基羅筆下的神之國度
             </p>
           </div>
 

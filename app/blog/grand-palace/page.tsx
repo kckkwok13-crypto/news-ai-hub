@@ -85,11 +85,11 @@ export default function GrandPalacePage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#d4af37]/20">
           <img
-            src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80"
             alt="大皇宮"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80";
             }}
           />
         </div>
@@ -121,11 +121,11 @@ export default function GrandPalacePage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1590073242678-70ee3fc28f8e?w=1200&q=80"
               alt="大皇宮金色舍利塔"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#7d6f55] text-sm mt-4 mb-8">

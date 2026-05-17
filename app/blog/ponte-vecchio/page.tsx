@@ -86,11 +86,11 @@ export default function PonteVecchioPage() {
         {/* Hero Image */}
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#8b4513]/20">
           <img
-            src="https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=1200&q=80"
+            src="https://images.ansharphoto.com/2020/02-Ponte-Vecchio-and-Arno-River-Florence-Italy.jpg"
             alt="佛羅倫斯老橋黃昏全景"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1543429257-3eb0b65d9c88?w=1200&q=80";
+              e.currentTarget.src = "https://florencetips.com/images/ponte-vecchio.jpg";
             }}
           />
         </div>
@@ -126,15 +126,15 @@ export default function PonteVecchioPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1543429257-3eb0b65d9c88?w=1200&q=80"
+              src="https://florencetips.com/images/ponte_vecchio_florence.jpg"
               alt="老橋珠寶店"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=1200&q=80";
+                e.currentTarget.src = "https://images.ansharphoto.com/2020/02-Ponte-Vecchio-and-Arno-River-Florence-Italy.jpg";
               }}
             />
             <p className="text-center text-[#795548] text-sm mt-4 mb-8">
-              ▲ 橋中央矗立著文藝復興時期金匠大師巴利尼（Cellini）的青銅雕像
+              ▲ 橋上兩旁的珠寶店與小木屋，是老橋最迷人的風景
             </p>
           </div>
 
