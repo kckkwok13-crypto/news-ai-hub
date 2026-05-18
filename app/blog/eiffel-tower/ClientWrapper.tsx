@@ -93,12 +93,9 @@ export default function EiffelTowerPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
           <img
-            src="https://images.unsplash.com/photo-1511739001486-6bfe10b785f7?w=1200&q=80"
+            src="https://www.toureiffel.paris/sites/default/files/styles/1200x630/public/2026-03/4k0a9297-compressed.jpg"
             alt="艾菲爾鐵塔"
             className="w-full h-80 object-cover"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
-            }}
           />
         </div>
         <p className="text-center text-zinc-500 text-sm mb-12">
@@ -127,12 +124,9 @@ export default function EiffelTowerPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80"
               alt="巴黎市景"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
-              }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
               ▲ 俯瞰夜幕下的巴黎市區，萬家燈火與埃菲爾鐵塔的璀璨燈光交相輝映
