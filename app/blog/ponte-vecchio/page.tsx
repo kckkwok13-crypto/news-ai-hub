@@ -90,7 +90,7 @@ export default function PonteVecchioPage() {
             alt="佛羅倫斯老橋黃昏全景"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://florencetips.com/images/ponte-vecchio.jpg";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1629739180299-f6b9c57d319d?w=1200&q=80";
             }}
           />
         </div>
@@ -130,7 +130,7 @@ export default function PonteVecchioPage() {
               alt="老橋珠寶店"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.ansharphoto.com/2020/02-Ponte-Vecchio-and-Arno-River-Florence-Italy.jpg";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1579964571724-771bb04efdcd?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#795548] text-sm mt-4 mb-8">

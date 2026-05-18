@@ -129,11 +129,11 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1628523197648-74f46812c7d7?w=1200&q=80"
               alt="仲見世通商店街熱鬧景象"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1628523197648-74f46812c7d7?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
@@ -143,11 +143,11 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1740820924375-33124686e892?w=1200&q=80"
               alt="仲見世通與寶藏門"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1740820924375-33124686e892?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
@@ -180,7 +180,7 @@ export default function SensojiPage() {
               alt="淺草寺本堂內陣金箔裝飾"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1583405963363-588941225fc2?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
@@ -194,7 +194,7 @@ export default function SensojiPage() {
               alt="仲見世通人形燒現烤美食"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-155864-2455-103a1a64d809?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">

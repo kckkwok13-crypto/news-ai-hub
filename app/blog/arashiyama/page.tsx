@@ -100,7 +100,7 @@ export default function ArashiyamaPage() {
             alt="嵐山竹林小徑"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1632923754832-60642c12a7ed?w=1200&q=80";
             }}
           />
         </div>
@@ -125,11 +125,11 @@ export default function ArashiyamaPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1632923754832-60642c12a7ed?w=1200&q=80"
               alt="嵐山竹林"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1632923754832-60642c12a7ed?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
@@ -153,7 +153,7 @@ export default function ArashiyamaPage() {
               alt="渡月橋"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1632923754832-60642c12a7ed?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">

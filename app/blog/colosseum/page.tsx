@@ -91,7 +91,7 @@ export default function ColosseumPage() {
             alt="羅馬鬥獸場"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=1200&q=80";
             }}
           />
         </div>
@@ -127,11 +127,11 @@ export default function ColosseumPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=1200&q=80"
               alt="羅馬鬥獸場內部"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1544985361-b420d7a77043?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1748194380521-548ee554c378?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#795548] text-sm mt-4 mb-8">

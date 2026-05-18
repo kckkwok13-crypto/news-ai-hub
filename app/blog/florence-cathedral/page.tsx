@@ -100,7 +100,7 @@ export default function FlorenceCathedralPage() {
             alt="佛羅倫斯聖母百花大教堂全景"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1775343970007-d70d54e86526?w=1200&q=80";
             }}
           />
         </div>
@@ -142,7 +142,7 @@ export default function FlorenceCathedralPage() {
               alt="百花大教堂內部穹頂壁畫"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://i.pinimg.com/originals/03/ce/e5/03cee54bebd23fbee73cb0b73e6151e8.jpg";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1590673452623-cf094b5e08f9?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#8d99ae] text-sm mt-4 mb-8">

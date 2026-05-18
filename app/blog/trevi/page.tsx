@@ -91,7 +91,7 @@ export default function TreviFountainPage() {
             alt="特萊維噴泉"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1607028693938-e63250910b2d?w=1200&q=80";
             }}
           />
         </div>
@@ -127,11 +127,11 @@ export default function TreviFountainPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1607028693938-e63250910b2d?w=1200&q=80"
               alt="特萊維噴泉夜景"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1556008255-8b1d4913a4a4?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1660864112847-f34b0ef9c27a?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#4a5568] text-sm mt-4 mb-8">

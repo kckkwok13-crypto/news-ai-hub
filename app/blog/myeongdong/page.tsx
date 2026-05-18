@@ -98,7 +98,7 @@ export default function MyeongdongPage() {
             alt="明洞購物街"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://ik.imagekit.io/tvlk/dam/i/01k7gzsx91r8kxnymnjqc2rq8d.jpeg";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200&q=80";
             }}
           />
         </div>
@@ -132,7 +132,7 @@ export default function MyeongdongPage() {
               alt="明洞街頭美食"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://roamingsonaa.com/wp-content/uploads/2023/09/myeongdong-night-market-street-food-stands.jpg";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200&q=80";
               }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">

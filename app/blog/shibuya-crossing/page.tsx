@@ -90,7 +90,7 @@ export default function ShibuyaCrossingPage() {
           alt="澀谷十字路口"
           className="w-full rounded-2xl mb-4 shadow-2xl shadow-purple-500/20"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1200&q=80";
+            e.currentTarget.src = "https://plus.unsplash.com/premium_photo-1661902398022-762e88ff3f82?w=1200&q=80";
           }}
         />
         <p className="text-center text-zinc-500 text-sm mb-12">

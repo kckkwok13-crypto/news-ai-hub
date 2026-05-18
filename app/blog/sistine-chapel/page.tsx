@@ -99,7 +99,7 @@ export default function SistineChapelPage() {
             alt="西斯汀小堂穹頂壁畫"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://dq7j96arldrqf.cloudfront.net/thesistinechapel/images/inside-sistine-chapel.jpg";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1722979830401-fd878aad76fe?w=1200&q=80";
             }}
           />
         </div>
