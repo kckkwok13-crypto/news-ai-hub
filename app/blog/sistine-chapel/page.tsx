@@ -95,7 +95,7 @@ export default function SistineChapelPage() {
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
           <img
-            src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200src="https://th-thumbnailer.cdn-si-edu.com/SGLTnXSZNsPfmsbudF-Ui6m2JCE=/fit-in/1200x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/The-Creation-of-Adam-Michelangelo-631.jpg"q=80"
+            src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80"
             alt="西斯汀小堂穹頂壁畫"
             className="w-full h-80 object-cover"
             onError={(e) => {
@@ -130,7 +130,7 @@ export default function SistineChapelPage() {
           {/* Vatican Museums Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200src="https://www.singulart.com/blog/wp-content/uploads/2020/05/sistine.jpg"q=80"
+              src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80"
               alt="西斯汀小堂內部壁畫全景"
               className="w-full rounded-2xl"
             />
