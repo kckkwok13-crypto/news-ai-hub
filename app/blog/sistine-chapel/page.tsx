@@ -95,7 +95,7 @@ export default function SistineChapelPage() {
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#735d78]/20">
           <img
-            src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80"
             alt="西斯汀小堂穹頂壁畫"
             className="w-full h-80 object-cover"
             onError={(e) => {
@@ -130,7 +130,7 @@ export default function SistineChapelPage() {
           {/* Vatican Museums Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80"
               alt="西斯汀小堂內部壁畫全景"
               className="w-full rounded-2xl"
             />

@@ -9,7 +9,7 @@ const blogPosts = [
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
     date: "May 2026",
-    image: "https://live.staticflickr.com/6552/6972841610_e3c87b77f4_b.jpg",
+    image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80",
     icon: "🏮",
     tags: ["東京", "寺廟", "文化"],
     accent: "from-red-500 to-orange-500"
@@ -29,7 +29,7 @@ const blogPosts = [
     title: "東京市中心的森林秘境：明治神宮深度半日遊攻略",
     excerpt: "緊鄰原宿與竹下通，只要走過一條橋，就能瞬間從喧囂都市切換到原始森林。供奉明治天皇與昭憲皇太后的神道教聖地！",
     date: "May 2026",
-    image: "https://japanjourneys.jp/wp-content/uploads/2019/08/meiji-jingu-torii-gate-1-1024x681.jpg",
+    image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80",
     icon: "🌲",
     tags: ["東京", "神社", "自然"],
     accent: "from-green-500 to-emerald-500"
@@ -39,7 +39,7 @@ const blogPosts = [
     title: "大阪不夜城：道頓堀運河（Dotonbori）全攻略！吃貨與霓虹夜景的天堂",
     excerpt: "17世紀開鑿的古老運河，現今已經蛻變成全日本最誇張、最迷幻的娛樂與美食重鎮。固力果跑跑人、立體巨型招牌、水上觀光船，帶你深度解鎖！",
     date: "May 2026",
-    image: "https://static.gltjp.com/glt/data/article/21000/20444/20230926_162903_bf6866e1_w1920.webp",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5545?w=1200&q=80",
     icon: "🌊",
     tags: ["大阪", "美食", "夜景"],
     accent: "from-cyan-500 to-blue-500"
@@ -49,7 +49,7 @@ const blogPosts = [
     title: "🎋 京都避世仙境：嵐山竹林小徑深度散策！尋找那一抹翠綠與心靈寧靜",
     excerpt: "穿越千年竹林、踏足渡月橋、乘搭嵐山小火車。一條通往異世界的神秘小徑，被譽為日本最想保留的聲音風景！",
     date: "May 2026",
-    image: "https://photo53.com/img/chikurin15.jpg",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80",
     icon: "🎋",
     tags: ["京都", "竹林", "自然"],
     accent: "from-green-600 to-emerald-500"

@@ -96,7 +96,7 @@ export default function FlorenceCathedralPage() {
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#1b4d3e]/20">
           <img
-            src="https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1775343970007-d70d54e86526?w=1200&q=80"
             alt="佛羅倫斯聖母百花大教堂全景"
             className="w-full h-80 object-cover"
             onError={(e) => {
@@ -138,7 +138,7 @@ export default function FlorenceCathedralPage() {
           {/* Michelangelo Terrace Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1775343970007-d70d54e86526?w=1200&q=80"
               alt="百花大教堂內部穹頂壁畫"
               className="w-full rounded-2xl"
               onError={(e) => {

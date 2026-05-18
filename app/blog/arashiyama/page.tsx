@@ -14,10 +14,10 @@ const tocItems = [
 
 const arashiyamaImages = [
   "https://photo53.com/img/chikurin15.jpg",
-  "https://photo53.com/img/chikurin7.jpg",
-  "https://photo53.com/img/chikurin1.jpg",
-  "https://photo53.com/img/togetsukyou42.jpg",
-  "https://photo53.com/img/arashiyama1.jpg",
+  "https://images.unsplash.com/photo-1632923754832-60642c12a7ed?w=1200&q=80",
+  "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80",
+  "https://images.unsplash.com/photo-1632923754832-60642c12a7ed?w=1200&q=80",
+  "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80",
 ];
 
 export default function ArashiyamaPage() {

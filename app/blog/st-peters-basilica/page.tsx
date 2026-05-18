@@ -131,7 +131,7 @@ export default function StPetersBasilicaPage() {
           {/* Interior Light Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1548585744-3e3c7f4f0f79?w=1200&q=80"
               alt="大殿內部聖光"
               className="w-full rounded-2xl"
             />

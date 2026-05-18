@@ -131,7 +131,7 @@ export default function ColosseumPage() {
               alt="羅馬鬥獸場內部"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1748194380521-548ee554c378?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#795548] text-sm mt-4 mb-8">
