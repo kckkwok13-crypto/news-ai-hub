@@ -97,7 +97,7 @@ export default function EiffelTowerPage() {
             alt="艾菲爾鐵塔"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80";q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
             }}
           />
         </div>
@@ -131,7 +131,7 @@ export default function EiffelTowerPage() {
               alt="巴黎市景"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80";q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
               }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">

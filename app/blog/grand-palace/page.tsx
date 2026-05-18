@@ -89,7 +89,7 @@ export default function GrandPalacePage() {
             alt="大皇宮"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80";q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
             }}
           />
         </div>
@@ -125,7 +125,7 @@ export default function GrandPalacePage() {
               alt="大皇宮金色舍利塔"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80";q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#7d6f55] text-sm mt-4 mb-8">
