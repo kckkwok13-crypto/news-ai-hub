@@ -2,12 +2,13 @@
 const nextConfig = {
   images: {
     remotePatterns: [
+      { hostname: 'images.unsplash.com' },
+      { hostname: 'picsum.photos' },
+      { hostname: 'i.guim.co.uk' },  // Guardian
       { hostname: 'ichef.bbci.co.uk' },
       { hostname: 'ichef-1.bbci.co.uk' },
       { hostname: 'images.cointelegraph.com' },
-      { hostname: 'i.guim.co.uk' },  // Guardian
-      { hostname: 'picsum.photos' },
-      { hostname: '**' }
+      { hostname: 'photos.smugmug.com' },
     ]
   }
 }
