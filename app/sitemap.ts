@@ -12,18 +12,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString().split("T")[0];
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: baseUrl + "/", lastmod: now, changeFrequency: "hourly", priority: 1.0 },
-    { url: baseUrl + "/about", lastmod: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: baseUrl + "/contact", lastmod: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: baseUrl + "/privacy", lastmod: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: baseUrl + "/podcast", lastmod: now, changeFrequency: "daily", priority: 0.7 },
-    { url: baseUrl + "/analytics", lastmod: now, changeFrequency: "daily", priority: 0.6 },
-    { url: baseUrl + "/blog", lastmod: now, changeFrequency: "daily", priority: 0.9 },
+    { url: baseUrl + "/", lastModified: now, changeFrequency: "hourly", priority: 1.0 },
+    { url: baseUrl + "/about", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: baseUrl + "/contact", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: baseUrl + "/privacy", lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: baseUrl + "/podcast", lastModified: now, changeFrequency: "daily", priority: 0.7 },
+    { url: baseUrl + "/analytics", lastModified: now, changeFrequency: "daily", priority: 0.6 },
+    { url: baseUrl + "/blog", lastModified: now, changeFrequency: "daily", priority: 0.9 },
   ];
 
   const blogRoutesSitemap: MetadataRoute.Sitemap = blogRoutes.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
-    lastmod: now,
+    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
