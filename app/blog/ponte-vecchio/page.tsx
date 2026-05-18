@@ -86,7 +86,7 @@ export default function PonteVecchioPage() {
         {/* Hero Image */}
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#8b4513]/20">
           <img
-            src="https://images.ansharphoto.com/2020/02-Ponte-Vecchio-and-Arno-River-Florence-Italy.jpg"
+            src="https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200src="https://images.ansharphoto.com/2020/02-Ponte-Vecchio-and-Arno-River-Florence-Italy.jpg"q=80"
             alt="佛羅倫斯老橋黃昏全景"
             className="w-full"
             onError={(e) => {
@@ -126,7 +126,7 @@ export default function PonteVecchioPage() {
 
           <div className="my-8">
             <img
-              src="https://florencetips.com/images/ponte_vecchio_florence.jpg"
+              src="https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200src="https://florencetips.com/images/ponte_vecchio_florence.jpg"q=80"
               alt="老橋珠寶店"
               className="w-full rounded-2xl"
               onError={(e) => {

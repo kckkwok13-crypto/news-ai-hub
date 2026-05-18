@@ -131,7 +131,7 @@ export default function TreviFountainPage() {
               alt="特萊維噴泉夜景"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1525874684015-58379d421a52?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1556008255-8b1d4913a4a4?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#4a5568] text-sm mt-4 mb-8">

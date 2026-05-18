@@ -94,7 +94,7 @@ export default function MyeongdongPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-rose-500/20">
           <img
-            src="https://cdn.tacdn.com/media/attractions-splice-spp-674x446/07/98/66/66.jpg"
+            src="https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200src="https://cdn.tacdn.com/media/attractions-splice-spp-674x446/07/98/66/66.jpg"q=80"
             alt="明洞購物街"
             className="w-full h-80 object-cover"
             onError={(e) => {
@@ -128,7 +128,7 @@ export default function MyeongdongPage() {
 
           <div className="my-8">
             <img
-              src="https://cdn.shopify.com/s/files/1/0557/4269/3571/files/Myeongdong_food_market.jpg?v=1738732897"
+              src="https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200src="https://cdn.shopify.com/s/files/1/0557/4269/3571/files/Myeongdong_food_market.jpg?v=1738732897"q=80"
               alt="明洞街頭美食"
               className="w-full rounded-2xl"
               onError={(e) => {

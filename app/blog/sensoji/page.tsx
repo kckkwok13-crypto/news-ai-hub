@@ -95,7 +95,7 @@ export default function SensojiPage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#b8975a]/20">
           <img
-            src="https://photo53.com/img/arashiyama23.jpg"
+            src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200src="https://photo53.com/img/arashiyama23.jpg"q=80"
             alt="淺草寺雷門"
             className="w-full"
             onError={(e) => {
@@ -129,7 +129,7 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://photo53.com/img/togetsukyou42.jpg"
+              src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1200src="https://photo53.com/img/togetsukyou42.jpg"q=80"
               alt="仲見世通商店街熱鬧景象"
               className="w-full rounded-2xl"
               onError={(e) => {
@@ -143,7 +143,7 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://photo53.com/img/arashiyama1.jpg"
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200src="https://photo53.com/img/arashiyama1.jpg"q=80"
               alt="仲見世通與寶藏門"
               className="w-full rounded-2xl"
               onError={(e) => {
@@ -176,7 +176,7 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://photo53.com/img/chikurin7.jpg"
+              src="https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200src="https://photo53.com/img/chikurin7.jpg"q=80"
               alt="淺草寺本堂內陣金箔裝飾"
               className="w-full rounded-2xl"
               onError={(e) => {
@@ -190,7 +190,7 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://photo53.com/img/chikurin1.jpg"
+              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200src="https://photo53.com/img/chikurin1.jpg"q=80"
               alt="仲見世通人形燒現烤美食"
               className="w-full rounded-2xl"
               onError={(e) => {

@@ -96,11 +96,11 @@ export default function FlorenceCathedralPage() {
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-[#1b4d3e]/20">
           <img
-            src="https://aws-tiqets-cdn.imgix.net/images/content/954532f348e247b3a8ba8397038d2a11.jpg?auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200src="https://aws-tiqets-cdn.imgix.net/images/content/954532f348e247b3a8ba8397038d2a11.jpg?auto=format&fit=crop"q=80"
             alt="佛羅倫斯聖母百花大教堂全景"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200e.currentTarget.src = "https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg";q=80";
             }}
           />
         </div>
@@ -138,7 +138,7 @@ export default function FlorenceCathedralPage() {
           {/* Michelangelo Terrace Image */}
           <div className="my-8">
             <img
-              src="https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg"
+              src="https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200src="https://cdn.britannica.com/59/179059-050-62BD6102/Cathedral-of-Santa-Maria-del-Fiore-Florence.jpg"q=80"
               alt="百花大教堂內部穹頂壁畫"
               className="w-full rounded-2xl"
               onError={(e) => {

@@ -96,11 +96,11 @@ export default function ArashiyamaPage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#4a7c59]/20">
           <img
-            src="https://photo53.com/img/chikurin15.jpg"
+            src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200src="https://photo53.com/img/chikurin15.jpg"q=80"
             alt="嵐山竹林小徑"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";q=80";
             }}
           />
         </div>
@@ -125,11 +125,11 @@ export default function ArashiyamaPage() {
 
           <div className="my-8">
             <img
-              src="https://photo53.com/img/chikurin7.jpg"
+              src="https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200src="https://photo53.com/img/chikurin7.jpg"q=80"
               alt="嵐山竹林"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80";q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
@@ -149,11 +149,11 @@ export default function ArashiyamaPage() {
 
           <div className="my-8">
             <img
-              src="https://photo53.com/img/togetsukyou42.jpg"
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200src="https://photo53.com/img/togetsukyou42.jpg"q=80"
               alt="渡月橋"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">

@@ -87,7 +87,7 @@ export default function MeijiShrinePage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#4a7c59]/20">
           <img
-            src="https://japanjourneys.jp/wp-content/uploads/2019/08/meiji-jingu-torii-gate-1-1024x681.jpg"
+            src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200src="https://japanjourneys.jp/wp-content/uploads/2019/08/meiji-jingu-torii-gate-1-1024x681.jpg"q=80"
             alt="明治神宮大鳥居"
             className="w-full"
           />
@@ -118,7 +118,7 @@ export default function MeijiShrinePage() {
 
           <div className="my-8">
             <img
-              src="https://dashboard.japantravel.com/photo/poi-8-214215/1440x960!/tokyo-meiji-jingu-shrine-214215.webp"
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200src="https://dashboard.japantravel.com/photo/poi-8-214215/1440x960!/tokyo-meiji-jingu-shrine-214215.webp"q=80"
               alt="清酒桶與葡萄酒桶牆"
               className="w-full rounded-2xl"
             />
