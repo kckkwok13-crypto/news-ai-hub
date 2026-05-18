@@ -29,7 +29,7 @@ const blogPosts = [
     title: "東京市中心的森林秘境：明治神宮深度半日遊攻略",
     excerpt: "緊鄰原宿與竹下通，只要走過一條橋，就能瞬間從喧囂都市切換到原始森林。供奉明治天皇與昭憲皇太后的神道教聖地！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1583766395091-2eb9994ed094?w=1200&q=80",
     icon: "🌲",
     tags: ["東京", "神社", "自然"],
     accent: "from-green-500 to-emerald-500"
@@ -79,7 +79,7 @@ const blogPosts = [
     title: "🏛️ 走進全球最大的教堂：梵蒂岡聖伯多祿大殿（St. Peter's Basilica）",
     excerpt: "文藝復興與巴洛克藝術的巔峰之作！米開朗基羅的圓頂、貝尼尼的 Baldacchino、必看的西斯汀小堂，讓你一次看遍人類文明最璀璨的藝術瑰寶！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1548585744-3e3c7f4f0f79?w=1200&q=80",
     icon: "🏛️",
     tags: ["羅馬", "歐洲", "宗教"],
     accent: "from-amber-600 to-yellow-500"
@@ -89,7 +89,7 @@ const blogPosts = [
     title: "🎨 米開朗基羅的世紀畫布：西斯汀小堂（Cappella Sistina）",
     excerpt: "抬頭仰望《創世紀》與《末日審判》—— 一場跨越五百年的藝術心靈之旅，感受文藝復興最輝煌的色彩與靈魂！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1559094958-6e1d90e7c8ae?w=1200&q=80",
     icon: "🎨",
     tags: ["羅馬", "歐洲", "藝術"],
     accent: "from-purple-600 to-pink-500"
@@ -99,7 +99,7 @@ const blogPosts = [
     title: "⛲ 許願池的秘密：羅馬特萊維噴泉（Trevi Fountain）",
     excerpt: "傳說硬幣許願、品味巴洛克美學！羅馬最標誌性的噴泉，帶你揭開千年水神的震撼與浪漫！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1525874684015-58379d421a52?w=1200&q=80",
     icon: "⛲",
     tags: ["羅馬", "歐洲", "浪漫"],
     accent: "from-blue-500 to-cyan-500"
@@ -139,7 +139,7 @@ const blogPosts = [
     title: "🌅 繾綣阿諾河的黃昏浪漫：佛羅倫斯老橋深度散策",
     excerpt: "橫跨1345年！走過二戰奇蹟存活的欧洲最古老石桥，揭開美第奇家族的神秘走廊與百年珠寶街的奢華故事！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200&q=80",
     icon: "🌉",
     tags: ["佛羅倫斯", "歐洲", "浪漫"],
     accent: "from-amber-600 to-orange-500"

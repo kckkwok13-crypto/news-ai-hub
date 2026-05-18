@@ -8,7 +8,7 @@ export const generateMetadata = () => {
     openGraph: {
       title: "特萊維噴泉 | 意大利羅馬",
       description: "傳說投擲硬幣便能重返羅馬，全方位遊覽特萊維噴泉的歷史、習俗與遊覽攻略。",
-      images: [{ url: "https://images.unsplash.com/photo-1531572753322-ad630aedf040?w=1200&q=80", alt: "特萊維噴泉 | 意大利羅馬" }],
+      images: [{ url: "https://images.unsplash.com/photo-1525874684015-58379d421a52?w=1200&q=80", alt: "特萊維噴泉 | 意大利羅馬" }],
     },
   };
 };

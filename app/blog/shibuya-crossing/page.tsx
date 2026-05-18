@@ -8,7 +8,7 @@ export const generateMetadata = () => {
     openGraph: {
       title: "澀谷十字路口 | 日本東京",
       description: "體驗全球最繁忙的十字路口，從八公犬到星巴克觀景台，全方位遊覽澀谷十字路口的攻略。",
-      images: [{ url: "https://images.unsplash.com/photo-1543429257-3eb0b65d9c9e?w=1200&q=80", alt: "澀谷十字路口 | 日本東京" }],
+      images: [{ url: "https://images.unsplash.com/photo-1759491125973-6c46d3f86c13?w=1200&q=80", alt: "澀谷十字路口 | 日本東京" }],
     },
   };
 };
