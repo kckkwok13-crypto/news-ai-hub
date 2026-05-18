@@ -129,7 +129,7 @@ const blogPosts = [
     title: "🧱 佛羅倫斯大教堂：布魯內萊斯基的永恆奇蹟",
     excerpt: "文藝復興的搖籃！走進佛羅倫斯聖母百花大教堂，探索那個震撼世界的無木架巨型圓頂，感受徐徐而上的463級階梯與米開朗基羅的感嘆！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1543429257-3eb0b65d9c88?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1543972650-4c15c82d2187?w=1200&q=80",
     icon: "🧱",
     tags: ["佛羅倫斯", "歐洲", "建築"],
     accent: "from-emerald-600 to-teal-500"
