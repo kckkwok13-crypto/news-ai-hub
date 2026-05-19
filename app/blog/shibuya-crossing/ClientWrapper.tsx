@@ -217,7 +217,20 @@ export default function ShibuyaCrossingPage() {
               👇 你試過在澀谷十字路口被「人流漩渦」淹沒過嗎？分享一下你的體驗！
             </p>
             <div className="space-y-3">
-              <Giscus />
+              <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
             </div>
           </div>
 

@@ -227,7 +227,20 @@ export default function MyeongdongPage() {
               👇 你去明洞最鍾意買邊個牌子的美妝？定係有邊一款街頭小食係你每次去都必食的呢？
             </p>
             <div className="space-y-3">
-              <Giscus />
+              <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
             </div>
           </div>
 

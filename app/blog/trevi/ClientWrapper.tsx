@@ -226,7 +226,20 @@ export default function TreviFountainPage() {
               👇 留言分享：如果你手裡有一枚硬幣，你最想背著特萊維噴泉許下什麼願望呢？
             </p>
             <div className="space-y-3">
-              <Giscus />
+              <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
             </div>
           </div>
         </article>

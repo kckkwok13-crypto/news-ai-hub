@@ -254,7 +254,20 @@ export default function SensojiPage() {
             <p className="text-[#3e2723] text-lg mb-4">
               👇 留言分享：你的旅程心得或問題！
             </p>
-            <Giscus />
+            <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
           </div>
 
 
