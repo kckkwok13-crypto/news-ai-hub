@@ -248,8 +248,8 @@ export default function NewsPage() {
   const adsenseClient = typeof window !== 'undefined' 
     ? (window as any).__ADSENSE_CLIENT__ || process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-4745583996243741"
     : "ca-pub-4745583996243741";
-  const adSlotLeaderboard = "YOUR_LEADERBOARD_AD_SLOT_ID"; // Replace with your actual ad slot ID
-  const adSlotInArticle = "YOUR_INARTICLE_AD_SLOT_ID";  // Replace with your actual ad slot ID
+  const adSlotLeaderboard = "ca-pub-4745583996243741"; // Replace with your actual ad slot ID
+  const adSlotInArticle = "ca-pub-4745583996243741";  // Replace with your actual ad slot ID
 
   // Push ad slots after mount
   useEffect(() => {

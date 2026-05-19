@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import Giscus from "@giscus/react";
+import BlogComments from "@/components/BlogComments";
 import { useEffect, useState } from "react";
 
 const tocItems = [
