@@ -39,7 +39,7 @@ const blogPosts = [
     title: "大阪不夜城：道頓堀運河（Dotonbori）全攻略！吃貨與霓虹夜景的天堂",
     excerpt: "17世紀開鑿的古老運河，現今已經蛻變成全日本最誇張、最迷幻的娛樂與美食重鎮。固力果跑跑人、立體巨型招牌、水上觀光船，帶你深度解鎖！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1590559899731-a382839e5545?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1565559204102-f59129a70ae2?w=1200&q=80",
     icon: "🌊",
     tags: ["大阪", "美食", "夜景"],
     accent: "from-cyan-500 to-blue-500"
@@ -59,7 +59,7 @@ const blogPosts = [
     title: "🗼 遇見巴黎的浪漫定義：艾菲爾鐵塔深度打卡與登塔全攻略",
     excerpt: "全球最浪漫的時尚地標！從夏樂宮最佳拍攝位到戰神廣場野餐體驗，深度解鎖這座花都最耀眼的主角！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1511739001486-6bfe10b785f7?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1777204539417-ed283582af35?w=1200&q=80",
     icon: "🗼",
     tags: ["巴黎", "歐洲", "浪漫"],
     accent: "from-amber-500 to-yellow-500"
@@ -79,7 +79,7 @@ const blogPosts = [
     title: "🏛️ 走進全球最大的教堂：梵蒂岡聖伯多祿大殿（St. Peter's Basilica）",
     excerpt: "文藝復興與巴洛克藝術的巔峰之作！米開朗基羅的圓頂、貝尼尼的 Baldacchino、必看的西斯汀小堂，讓你一次看遍人類文明最璀璨的藝術瑰寶！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1548585744-3e3c7f4f0f79?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1746071062145-f01c2dbdbc23?w=1200&q=80",
     icon: "🏛️",
     tags: ["羅馬", "歐洲", "宗教"],
     accent: "from-amber-600 to-yellow-500"
@@ -89,7 +89,7 @@ const blogPosts = [
     title: "🎨 米開朗基羅的世紀畫布：西斯汀小堂（Cappella Sistina）",
     excerpt: "抬頭仰望《創世紀》與《末日審判》—— 一場跨越五百年的藝術心靈之旅，感受文藝復興最輝煌的色彩與靈魂！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1559094958-6e1d90e7c8ae?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1722979830401-fd878aad76fe?w=1200&q=80",
     icon: "🎨",
     tags: ["羅馬", "歐洲", "藝術"],
     accent: "from-purple-600 to-pink-500"
@@ -119,7 +119,7 @@ const blogPosts = [
     title: "🏟️ 羅馬鬥獸場：古羅馬最殘酷與最輝煌的競技場",
     excerpt: "角鬥士的生死之戰、獅子與野獸的怒吼！站在這座2000年前的橢圓巨型競技場，感受古羅馬帝國的震撼與哀愁！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1552832230-c0197dd6bd77?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1724398915427-edc535c546fe?w=1200&q=80",
     icon: "🏟️",
     tags: ["羅馬", "歐洲", "歷史"],
     accent: "from-red-600 to-orange-500"
@@ -129,7 +129,7 @@ const blogPosts = [
     title: "🧱 佛羅倫斯大教堂：布魯內萊斯基的永恆奇蹟",
     excerpt: "文藝復興的搖籃！走進佛羅倫斯聖母百花大教堂，探索那個震撼世界的無木架巨型圓頂，感受徐徐而上的463級階梯與米開朗基羅的感嘆！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1543972650-4c15c82d2187?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=1200&q=80",
     icon: "🧱",
     tags: ["佛羅倫斯", "歐洲", "建築"],
     accent: "from-emerald-600 to-teal-500"
@@ -139,7 +139,7 @@ const blogPosts = [
     title: "🌅 繾綣阿諾河的黃昏浪漫：佛羅倫斯老橋深度散策",
     excerpt: "橫跨1345年！走過二戰奇蹟存活的欧洲最古老石桥，揭開美第奇家族的神秘走廊與百年珠寶街的奢華故事！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1543429258-49a7a091da1d?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=1200&q=80",
     icon: "🌉",
     tags: ["佛羅倫斯", "歐洲", "浪漫"],
     accent: "from-amber-600 to-orange-500"

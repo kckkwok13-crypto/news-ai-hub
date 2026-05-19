@@ -94,11 +94,11 @@ export default function MyeongdongPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-rose-500/20">
           <img
-            src="https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80"
             alt="明洞購物街"
             className="w-full h-80 object-cover"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80";
             }}
           />
         </div>
@@ -128,11 +128,11 @@ export default function MyeongdongPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80"
               alt="明洞街頭美食"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1557793244-9a83d2a7f3bc?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80";
               }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">

@@ -124,7 +124,7 @@ export default function EiffelTowerPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1547425260-76bc27fb7f26?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1755227521550-c0e4b9ea415e?w=1200&q=80"
               alt="巴黎市景"
               className="w-full rounded-2xl"
             />
