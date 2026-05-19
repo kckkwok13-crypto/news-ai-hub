@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import Giscus from "@giscus/react";
 import { useEffect, useState } from "react";
 
 const tocItems = [
@@ -224,14 +226,7 @@ export default function TreviFountainPage() {
               👇 留言分享：如果你手裡有一枚硬幣，你最想背著特萊維噴泉許下什麼願望呢？
             </p>
             <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white border border-[#b3d7ff] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#3a86c8] transition-colors"
-              />
-              <button className="bg-gradient-to-r from-[#3a86c8] to-[#5a9fd4] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
+              <Giscus />
             </div>
           </div>
         </article>

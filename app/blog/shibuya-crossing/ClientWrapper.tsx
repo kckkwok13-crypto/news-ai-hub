@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import Giscus from "@giscus/react";
 import { useEffect, useState } from "react";
 
 const tocItems = [
@@ -215,26 +217,11 @@ export default function ShibuyaCrossingPage() {
               👇 你試過在澀谷十字路口被「人流漩渦」淹沒過嗎？分享一下你的體驗！
             </p>
             <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
+              <Giscus />
             </div>
           </div>
 
-          {/* Infolinks Ad Script */}
-          <div className="my-8 text-center">
-            <ins className="infolinks_ad" data-pid="3445528" data-wsid="0"></ins>
-            <script type="text/javascript">
-              var infolinks_pid = 3445528;
-              var infolinks_wsid = 0;
-            </script>
-            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-          </div>
+
         </article>
       </div>
     </div>

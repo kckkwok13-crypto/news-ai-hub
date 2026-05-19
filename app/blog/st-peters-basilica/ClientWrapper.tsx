@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import Giscus from "@giscus/react";
 import { useEffect, useState } from "react";
 
 const tocItems = [
@@ -160,9 +162,15 @@ export default function StPetersBasilicaPage() {
             </ul>
           </div>
 
-          <p className="text-center font-bold text-[#af8b44] text-lg mt-12 mb-8">
-            👇 留言分享：你更想欣賞米開朗基羅二十多歲時雕刻的《哀悼基督》，還是想挑戰那 551 級狹窄的登頂樓梯呢？
-          </p>
+          <div className="bg-[#f1e7dd] border border-[#8b4513]/30 rounded-2xl p-6 my-10">
+            <h3 className="text-[#8b4513] font-bold mb-4 flex items-center gap-2 text-xl">
+              💬 留言分享
+            </h3>
+            <p className="text-[#3e2723] text-lg mb-4">
+              👇 留言分享：你的旅程心得或問題！
+            </p>
+            <Giscus />
+          </div>
         </article>
       </div>
     </div>
