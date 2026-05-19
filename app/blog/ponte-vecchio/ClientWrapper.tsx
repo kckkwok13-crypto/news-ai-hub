@@ -86,7 +86,7 @@ export default function PonteVecchioPage() {
         {/* Hero Image */}
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#8b4513]/20">
           <img
-            src="https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1568162647192-4f4dd46d57b8?w=1200&q=80"
             alt="佛羅倫斯老橋黃昏全景"
             className="w-full"
             onError={(e) => {
@@ -126,7 +126,7 @@ export default function PonteVecchioPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1549897526-a3b97de1b7a5?w=1200&q=80"
               alt="老橋珠寶店"
               className="w-full rounded-2xl"
               onError={(e) => {

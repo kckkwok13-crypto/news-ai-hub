@@ -129,7 +129,7 @@ const blogPosts = [
     title: "🧱 佛羅倫斯大教堂：布魯內萊斯基的永恆奇蹟",
     excerpt: "文藝復興的搖籃！走進佛羅倫斯聖母百花大教堂，探索那個震撼世界的無木架巨型圓頂，感受徐徐而上的463級階梯與米開朗基羅的感嘆！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1775343970007-d70d54e86526?w=1200&q=80",
     icon: "🧱",
     tags: ["佛羅倫斯", "歐洲", "建築"],
     accent: "from-emerald-600 to-teal-500"
@@ -139,7 +139,7 @@ const blogPosts = [
     title: "🌅 繾綣阿諾河的黃昏浪漫：佛羅倫斯老橋深度散策",
     excerpt: "橫跨1345年！走過二戰奇蹟存活的欧洲最古老石桥，揭開美第奇家族的神秘走廊與百年珠寶街的奢華故事！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1568162647192-4f4dd46d57b8?w=1200&q=80",
     icon: "🌉",
     tags: ["佛羅倫斯", "歐洲", "浪漫"],
     accent: "from-amber-600 to-orange-500"
