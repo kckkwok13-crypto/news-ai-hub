@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import BlogComments from "@/components/BlogComments";
 import { useEffect, useState } from "react";
 
 const tocItems = [
@@ -225,26 +227,24 @@ export default function MyeongdongPage() {
               👇 你去明洞最鍾意買邊個牌子的美妝？定係有邊一款街頭小食係你每次去都必食的呢？
             </p>
             <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-rose-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
+              <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
             </div>
           </div>
 
-          {/* Infolinks Ad Script */}
-          <div className="my-8 text-center">
-            <ins className="infolinks_ad" data-pid="3445528" data-wsid="0"></ins>
-            <script type="text/javascript">
-              var infolinks_pid = 3445528;
-              var infolinks_wsid = 0;
-            </script>
-            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-          </div>
+
         </article>
       </div>
     </div>

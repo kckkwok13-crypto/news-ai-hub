@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import BlogComments from "@/components/BlogComments";
 import { useEffect, useState } from "react";
 
 const tocItems = [
@@ -244,33 +246,31 @@ export default function SensojiPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-[#f4f6f9] border border-[#b8975a]/30 rounded-2xl p-6 my-10">
-            <h3 className="text-[#b8975a] font-bold mb-4 flex items-center gap-2 text-xl">
+          {/* Giscus Comments */}
+          <div className="bg-[#f1e7dd] border border-[#8b4513]/30 rounded-2xl p-6 my-10">
+            <h3 className="text-[#8b4513] font-bold mb-4 flex items-center gap-2 text-xl">
               💬 留言分享
             </h3>
-            <p className="text-[#2c3e50] text-lg mb-4">
-              👇 留言分享：你來淺草寺求過籤嗎？抽到的是「吉」還是「凶」呢？
+            <p className="text-[#3e2723] text-lg mb-4">
+              👇 留言分享：你的旅程心得或問題！
             </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white border border-[#e5d4bc] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#b8975a] transition-colors"
-              />
-              <button className="bg-gradient-to-r from-[#b8975a] to-[#d4a574] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
+            <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
           </div>
 
-          {/* Infolinks Ad Script */}
-          <div className="my-8 text-center">
-            <script type="text/javascript">
-              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
-            </script>
-            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-          </div>
+
         </article>
 
         <footer className="text-center mt-16 py-8 border-t border-[#e5d4bc]">

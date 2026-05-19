@@ -1,11 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+const ALLOWED_DOMAINS = [
+  'bloomberg.com', 'wsj.com', 'cnn.com', 'npr.org', 'fortune.com',
+  'forbes.com', 'hbr.org', 'mckinsey.com', 'deloitte.com',
+  'reuters.com', 'apnews.com', 'bbc.com', 'bbc.co.uk',
+  'theguardian.com', 'nytimes.com', 'washingtonpost.com',
+  'unsplash.com', 'pexels.com', 'shutterstock.com',
+  'github.com', 'githubusercontent.com',
+];
+
+function isAllowedDomain(imageUrl: string): boolean {
+  try {
+    const hostname = new URL(imageUrl).hostname;
+    return ALLOWED_DOMAINS.some(d => hostname.endsWith(d) || hostname === d);
+  } catch {
+    return false;
+  }
+}
+
 function isValidUrl(urlStr: string): boolean {
   try {
-    const url = new URL(urlStr)
-    return url.protocol === 'http:' || url.protocol === 'https:'
+    const url = new URL(urlStr);
+    return url.protocol === 'http:' || url.protocol === 'https:';
   } catch {
-    return false
+    return false;
   }
 }
 
@@ -28,6 +46,10 @@ export async function GET(request: NextRequest) {
 
   if (!isValidUrl(imageUrl)) {
     return NextResponse.json({ error: 'Invalid URL' }, { status: 400 })
+  }
+
+  if (!isAllowedDomain(imageUrl)) {
+    return NextResponse.json({ error: 'Domain not allowed' }, { status: 403 })
   }
 
   try {
@@ -72,4 +94,3 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export const runtime = 'nodejs'

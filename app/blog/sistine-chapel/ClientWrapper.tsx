@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import BlogComments from "@/components/BlogComments";
 import { useEffect, useState } from "react";
 
 const tocItems = [
@@ -164,9 +166,28 @@ export default function SistineChapelPage() {
             </ul>
           </div>
 
-          <p className="text-center font-bold text-[#1d2d44] text-lg mt-12 mb-8">
-            👇 留言分享：雖然現場完全不能留影，但你認為米開朗基羅用靈魂畫下的震撼，會永遠烙印在你的腦海中嗎？
-          </p>
+          <div className="bg-[#f1e7dd] border border-[#8b4513]/30 rounded-2xl p-6 my-10">
+            <h3 className="text-[#8b4513] font-bold mb-4 flex items-center gap-2 text-xl">
+              💬 留言分享
+            </h3>
+            <p className="text-[#3e2723] text-lg mb-4">
+              👇 留言分享：你的旅程心得或問題！
+            </p>
+            <Giscus
+    repo="kckkwok13-crypto/news-ai-hub"
+    repoId="1227822003"
+    category="Announcements"
+    categoryId="DIC_kwDONz6bPM4CnWN7"
+    mapping="pathname"
+    strict="0"
+    reactionsEnabled="1"
+    emitMetadata="0"
+    inputPosition="top"
+    theme="light"
+    lang="zh-TW"
+    loading="lazy"
+  />
+          </div>
         </article>
       </div>
     </div>

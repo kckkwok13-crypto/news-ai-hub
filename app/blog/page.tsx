@@ -267,13 +267,7 @@ export default function BlogPage() {
             ))}
           </div>
 
-          {/* Infolinks Ad Script */}
-          <div className="mt-12 text-center">
-            <script type="text/javascript">
-              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
-            </script>
-            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-          </div>
+
 
           {/* Footer */}
           <footer className="text-center mt-16 py-8 border-t border-green-700/30">

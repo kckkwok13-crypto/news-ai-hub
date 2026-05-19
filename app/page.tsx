@@ -245,11 +245,12 @@ export default function NewsPage() {
   const [isDataJournalism, setIsDataJournalism] = useState(false);
 
   // AdSense state
-  const adsenseClient = typeof window !== 'undefined' 
-    ? (window as any).__ADSENSE_CLIENT__ || process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-4745583996243741"
-    : "ca-pub-4745583996243741";
-  const adSlotLeaderboard = "YOUR_LEADERBOARD_AD_SLOT_ID"; // Replace with your actual ad slot ID
-  const adSlotInArticle = "YOUR_INARTICLE_AD_SLOT_ID";  // Replace with your actual ad slot ID
+  const adsenseClient = typeof window !== 'undefined'
+    ? (localStorage.getItem('adsense_client') || process.env.NEXT_PUBLIC_ADSENSE_ID || '')
+    : (process.env.NEXT_PUBLIC_ADSENSE_ID || '');
+  const adSlotLeaderboard = process.env.NEXT_PUBLIC_AD_SLOT_LEADERBOARD || "ca-pub-4745583996243741";
+  const adSlotInArticle  = process.env.NEXT_PUBLIC_AD_SLOT_IN_ARTICLE  || "ca-pub-4745583996243742";
+  const adSlotRectangle  = process.env.NEXT_PUBLIC_AD_SLOT_RECTANGLE    || "ca-pub-4745583996243743";
 
   // Push ad slots after mount
   useEffect(() => {
@@ -1445,7 +1446,7 @@ export default function NewsPage() {
           <ins className="adsbygoogle"
             style={{ display: 'block', width: '336px', height: '280px' }}
             data-ad-client={adsenseClient}
-            data-ad-slot={adSlotInArticle}
+            data-ad-slot={adSlotRectangle}
             data-ad-format="rectangle"
           />
         </div>
