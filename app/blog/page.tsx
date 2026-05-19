@@ -29,7 +29,7 @@ const blogPosts = [
     title: "東京市中心的森林秘境：明治神宮深度半日遊攻略",
     excerpt: "緊鄰原宿與竹下通，只要走過一條橋，就能瞬間從喧囂都市切換到原始森林。供奉明治天皇與昭憲皇太后的神道教聖地！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1583766395091-2eb9994ed094?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1682744210484-5f23d77b21c7?w=1200&q=80",
     icon: "🌲",
     tags: ["東京", "神社", "自然"],
     accent: "from-green-500 to-emerald-500"
@@ -59,7 +59,7 @@ const blogPosts = [
     title: "🗼 遇見巴黎的浪漫定義：艾菲爾鐵塔深度打卡與登塔全攻略",
     excerpt: "全球最浪漫的時尚地標！從夏樂宮最佳拍攝位到戰神廣場野餐體驗，深度解鎖這座花都最耀眼的主角！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1777204539417-ed283582af35?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1694190941111-90065ded19d8?w=1200&q=80",
     icon: "🗼",
     tags: ["巴黎", "歐洲", "浪漫"],
     accent: "from-amber-500 to-yellow-500"
@@ -69,7 +69,7 @@ const blogPosts = [
     title: "🛍️ 首爾潮流不夜城：明洞購物街（Myeongdong）終極狂歡攻略！",
     excerpt: "K-Beauty、潮人服飾、街头美食、換錢攻略——全部一站式滿足你！帶你深度掃描首爾最具代表性的超級商圈！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1699316788084-d4c0943a4bcf?w=1200&q=80",
     icon: "🛍️",
     tags: ["首爾", "韓國", "購物"],
     accent: "from-rose-500 to-pink-500"

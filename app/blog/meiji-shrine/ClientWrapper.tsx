@@ -87,7 +87,7 @@ export default function MeijiShrinePage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#4a7c59]/20">
           <img
-            src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1682744210484-5f23d77b21c7?w=1200&q=80"
             alt="明治神宮大鳥居"
             className="w-full"
           />
@@ -118,7 +118,7 @@ export default function MeijiShrinePage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1682744210484-5f23d77b21c7?w=1200&q=80"
               alt="清酒桶與葡萄酒桶牆"
               className="w-full rounded-2xl"
             />

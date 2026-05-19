@@ -94,12 +94,9 @@ export default function MyeongdongPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-rose-500/20">
           <img
-            src="https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1699316788084-d4c0943a4bcf?w=1200&q=80"
             alt="明洞購物街"
             className="w-full h-80 object-cover"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80";
-            }}
           />
         </div>
         <p className="text-center text-zinc-500 text-sm mb-12">
@@ -128,12 +125,9 @@ export default function MyeongdongPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80"
+              src="https://plus.unsplash.com/premium_photo-1716968594480-d3ba77a2f776?w=1200&q=80"
               alt="明洞街頭美食"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1748149803636-42fe67dca2df?w=1200&q=80";
-              }}
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
               ▲ 每到傍晚準時營業的明洞夜市，是吃貨們的宵夜天堂
