@@ -65,7 +65,7 @@ function detectImpact(title: string, desc: string): string {
 function extractHeadline(title: string, lang: string): string {
   if (!title) return ''
   // Strip common prefixes
-  const cleaned = title.replace(/^(LIVE|Alert|Breaking|Lastest|最新|快訊|突发), '').trim()
+  const cleaned = title.replace(/^((LIVE|Alert|Breaking|Lastest)[,: ]*)*/, '').trim()
   if (cleaned.length <= 60) return cleaned
   // Cut at nearest comma or em-dash, or just at 55 chars with ellipsis
   const cut = cleaned.slice(0, 55)
