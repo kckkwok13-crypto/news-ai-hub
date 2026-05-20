@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+interface Comment {
+  id: number;
+  author: string;
+  content: string;
+  createdAt: string;
+}
+
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "📖" },
   { id: "kaminarimon", title: "雷門", emoji: "🏮" },
@@ -21,6 +28,51 @@ const reliableImages = [
 
 export default function SensojiPage() {
   const [activeSection, setActiveSection] = useState("intro");
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [newComment, setNewComment] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // Fetch comments on mount
+    fetchComments();
+  }, []);
+
+  const fetchComments = async () => {
+    try {
+      const res = await fetch("/api/comments?slug=sensoji");
+      const data = await res.json();
+      if (data.comments) setComments(data.comments);
+    } catch (err) {
+      console.error("Failed to fetch comments", err);
+    }
+  };
+
+  const handleSubmitComment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newComment.trim() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          slug: "sensoji",
+          author: "Visitor",
+          content: newComment,
+        }),
+      });
+      const data = await res.json();
+      if (data.success && data.comment) {
+        setComments((prev) => [data.comment, ...prev]);
+        setNewComment("");
+      }
+    } catch (err) {
+      console.error("Failed to post comment", err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -252,16 +304,41 @@ export default function SensojiPage() {
             <p className="text-[#2c3e50] text-lg mb-4">
               👇 留言分享：你來淺草寺求過籤嗎？抽到的是「吉」還是「凶」呢？
             </p>
-            <div className="space-y-3">
-              <input
-                type="text"
+
+            {/* Existing Comments */}
+            {comments.length > 0 && (
+              <div className="space-y-4 mb-6">
+                {comments.map((comment) => (
+                  <div key={comment.id} className="bg-white rounded-xl p-4 border border-[#e5d4bc]">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold text-[#b8975a]">{comment.author}</span>
+                      <span className="text-xs text-[#94a3b8]">
+                        {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
+                      </span>
+                    </div>
+                    <p className="text-[#2c3e50]">{comment.content}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Comment Form */}
+            <form onSubmit={handleSubmitComment} className="space-y-3">
+              <textarea
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
                 placeholder="輸入你的留言..."
-                className="w-full bg-white border border-[#e5d4bc] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#b8975a] transition-colors"
+                rows={3}
+                className="w-full bg-white border border-[#e5d4bc] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#b8975a] transition-colors resize-none"
               />
-              <button className="bg-gradient-to-r from-[#b8975a] to-[#d4a574] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
+              <button
+                type="submit"
+                disabled={isSubmitting || !newComment.trim()}
+                className="bg-gradient-to-r from-[#b8975a] to-[#d4a574] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {isSubmitting ? "提交中..." : "提交留言"}
               </button>
-            </div>
+            </form>
           </div>
 
           {/* Infolinks Ad Script */}
