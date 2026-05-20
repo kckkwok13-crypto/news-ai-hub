@@ -31,6 +31,7 @@ export default function SensojiPage() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   useEffect(() => {
     // Fetch comments on mount
@@ -52,6 +53,7 @@ export default function SensojiPage() {
     if (!newComment.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
+    setSubmitStatus("idle");
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
@@ -66,8 +68,15 @@ export default function SensojiPage() {
       if (data.success && data.comment) {
         setComments((prev) => [data.comment, ...prev]);
         setNewComment("");
+        setSubmitStatus("success");
+        setTimeout(() => setSubmitStatus("idle"), 3000);
+      } else {
+        setSubmitStatus("error");
+        alert("留言失敗：" + (data.error || "未知錯誤"));
       }
     } catch (err) {
+      setSubmitStatus("error");
+      alert("提交失敗，請稍後再試");
       console.error("Failed to post comment", err);
     } finally {
       setIsSubmitting(false);
@@ -338,6 +347,12 @@ export default function SensojiPage() {
               >
                 {isSubmitting ? "提交中..." : "提交留言"}
               </button>
+              {submitStatus === "success" && (
+                <p className="text-green-600 font-medium">✅ 留言成功提交！</p>
+              )}
+              {submitStatus === "error" && (
+                <p className="text-red-600 font-medium">❌ 提交失敗，請稍後再試</p>
+              )}
             </form>
           </div>
 
