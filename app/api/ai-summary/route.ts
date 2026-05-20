@@ -49,6 +49,17 @@ ${items.slice(0, 10).map((i: any, idx: number) => `${idx + 1}. [${i.source}] ${i
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 15000)
 
+    const body: any = {
+      model: 'google/gemini-2.0-flash-001',
+      messages: [{ role: 'user', content: prompt }],
+    }
+
+    // Only add response_format for models that support it (Gemini 2.0+)
+    const modelId = 'google/gemini-2.0-flash-001'
+    if (modelId.includes('gemini-2') || modelId.includes('gemini-3')) {
+      body.response_format = { type: 'json_object' }
+    }
+
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -56,11 +67,7 @@ ${items.slice(0, 10).map((i: any, idx: number) => `${idx + 1}. [${i.source}] ${i
         'Content-Type': 'application/json',
         'HTTP-Referer': 'https://newskingdom.store',
       },
-      body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-001',
-        messages: [{ role: 'user', content: prompt }],
-        response_format: { type: 'json_object' }
-      }),
+      body: JSON.stringify(body),
       signal: controller.signal
     })
 
