@@ -1,28 +1,76 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Simple bias detection based on source keywords
-function detectBias(source: string): string {
-  const western = ['BBC', 'NYTimes', 'CNN', 'Reuters', 'Guardian', 'Al Jazeera', 'DW', 'NPR', 'CBS', 'NBC', 'ABC', 'Fox']
-  const china = ['SCMP', 'Xinhua', 'Global Times', 'CCTV', 'People', 'CRI', 'China']
-  const neutral = ['Associated Press', 'AFP', 'Bloomberg', 'FT']
+const IMPACT_DESCRIPTIONS: Record<string, { title: string; title_en: string; content_zh: string; content_en: string }> = {
+  economic: {
+    title: '📈 經濟金融層面分析',
+    title_en: '📈 Economic & Financial Impact',
+    content_zh: '此新聞涉及經濟金融層面，建議關注相關板塊及個股表現、央行政策走向、市場資金流向。',
+    content_en: 'This news relates to economic & financial matters. Watch for sector performance, central bank policy, and capital flows.',
+  },
+  political: {
+    title: '🏛️ 政治政策層面分析',
+    title_en: '🏛️ Political & Policy Impact',
+    content_zh: '此新聞涉及政治政策層面，建議關注國際關係變化、政策對市場的潛在影響、地緣政治風險。',
+    content_en: 'This news involves political & policy dimensions. Monitor international relations, policy impacts, and geopolitical risks.',
+  },
+  tech: {
+    title: '💻 科技產業層面分析',
+    title_en: '💻 Technology & Industry Impact',
+    content_zh: '此新聞涉及科技產業層面，建議關注技術創新動態、行業競爭格局、人才流動趨勢。',
+    content_en: 'This news touches on tech & industry. Track innovation trends, competitive landscape, and talent mobility.',
+  },
+  general: {
+    title: '📰 綜合資訊分析',
+    title_en: '📰 General News Analysis',
+    content_zh: '此為一般綜合性新聞，建議關注新聞背後的根本原因、對不同群體的影響、未來發展趨勢。',
+    content_en: 'General news item. Consider the underlying causes, impact on different groups, and future trends.',
+  },
+}
 
-  if (western.some(s => source.includes(s))) return 'pro_western'
-  if (china.some(s => source.includes(s))) return 'pro_china'
-  if (neutral.some(s => source.includes(s))) return 'neutral'
+const BIAS_SOURCE_MAP: Record<string, string> = {
+  'Bloomberg': 'neutral', 'Reuters': 'neutral', 'Associated Press': 'neutral', 'AFP': 'neutral',
+  'FT': 'neutral', 'MarketWatch': 'neutral', 'Investing.com': 'neutral',
+  'BBC': 'pro_western', 'NYTimes': 'pro_western', 'CNN': 'pro_western', 'Guardian': 'pro_western',
+  'Al Jazeera': 'pro_western', 'DW': 'pro_western', 'NPR': 'pro_western', 'CBS': 'pro_western',
+  'NBC': 'pro_western', 'ABC': 'pro_western', 'The Verge': 'pro_western', 'Ars Technica': 'pro_western',
+  'TechCrunch': 'pro_western', 'CNBC': 'pro_western',
+  'SCMP': 'pro_china', 'Xinhua': 'pro_china', 'Global Times': 'pro_china',
+  'CCTV': 'pro_china', 'People': 'pro_china', 'CRI': 'pro_china',
+  'CoinTelegraph': 'neutral', 'CoinDesk': 'neutral', 'Cryptonews': 'neutral',
+  'NASA': 'neutral', 'Space.com': 'neutral', 'ScienceDaily': 'neutral',
+  'VentureBeat': 'neutral', 'ScienceDaily Health': 'neutral',
+}
+
+function detectBias(source: string): string {
+  if (!source) return 'neutral'
+  for (const [key, val] of Object.entries(BIAS_SOURCE_MAP)) {
+    if (source.toLowerCase().includes(key.toLowerCase())) return val
+  }
   return 'neutral'
 }
 
-// Simple impact detection based on keywords
 function detectImpact(title: string, desc: string): string {
   const text = ((title || '') + ' ' + (desc || '')).toLowerCase()
-  const economic = ['market', 'stock', 'economy', 'trade', 'finance', 'invest', 'profit', 'loss', 'bank', 'money', 'fund', 'ipo', 'crypto', 'bitcoin', 'price', 'cost', 'tax', 'gdp', 'inflation', 'rate', '股份', '股市', '經濟', '貿易', '投資', '銀行', '金融', '貨幣', '價格', '通脹']
-  const political = ['election', 'government', 'policy', 'law', 'vote', 'president', 'minister', 'congress', 'war', 'peace', 'military', 'sanction', 'rights', '抗議', '政府', '政策', '戰爭', '軍事']
-  const tech = ['ai', 'tech', 'cyber', 'digital', 'software', 'app', 'internet', 'data', 'robot', 'automation', 'chip', 'semiconductor', 'nvidia', 'openai', 'google', 'apple', 'microsoft', '科技', '軟件', '網絡', '數據', '晶片']
+  const economic = ['market', 'stock', 'economy', 'trade', 'finance', 'invest', 'profit', 'loss', 'bank', 'money', 'fund', 'ipo', 'crypto', 'bitcoin', 'price', 'cost', 'tax', 'gdp', 'inflation', 'rate', '股份', '股市', '經濟', '貿易', '投資', '銀行', '金融', '貨幣', '價格', '通脹', 'tariff', 'sanction', 'commodity', 'oil', 'gold']
+  const political = ['election', 'government', 'policy', 'law', 'vote', 'president', 'minister', 'congress', 'war', 'peace', 'military', 'rights', 'protest', 'sanction', 'diplomat', 'nato', 'treaty', '政府', '政策', '戰爭', '軍事', '選舉', '國會']
+  const tech = ['ai', 'tech', 'cyber', 'digital', 'software', 'app', 'internet', 'data', 'robot', 'automation', 'chip', 'semiconductor', 'nvidia', 'openai', 'google', 'apple', 'microsoft', '科技', '軟件', '網絡', '數據', '晶片', 'algorithm', 'model', 'launch', 'release']
 
   if (economic.some(k => text.includes(k))) return 'economic'
   if (political.some(k => text.includes(k))) return 'political'
   if (tech.some(k => text.includes(k))) return 'tech'
   return 'general'
+}
+
+// Extract a short headline from the title — use first clause up to ~60 chars
+function extractHeadline(title: string, lang: string): string {
+  if (!title) return ''
+  // Strip common prefixes
+  const cleaned = title.replace(/^(LIVE|Alert|Breaking|Lastest|最新|快訊|突发)//, '').trim()
+  if (cleaned.length <= 60) return cleaned
+  // Cut at nearest comma or em-dash, or just at 55 chars with ellipsis
+  const cut = cleaned.slice(0, 55)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > 30 ? cut.slice(0, lastSpace) : cut) + '…'
 }
 
 async function getAIAnalysis(items: any[], lang: string) {
@@ -177,11 +225,19 @@ function simpleAnalysis(items: any[], lang: string) {
     sentiment,
     trends: topKeywords,
     highlights: items.slice(0, 3).map((i: any) => i.title_zh || i.title_translated || i.title || ''),
-    details: items.slice(0, 10).map((i: any) => ({
-      id: i.id,
-      bias: detectBias(i.source || ''),
-      impact: detectImpact(i.title || '', i.desc || '')
-    })),
+    details: items.slice(0, 10).map((i: any) => {
+      const impactKey = detectImpact(i.title || '', i.desc || '')
+      return {
+        id: i.id,
+        headline: extractHeadline(i.title_zh || i.title_translated || i.title || '', lang),
+        bias: detectBias(i.source || ''),
+        biasSource: i.source || '',
+        impact: impactKey,
+        impactDescription_zh: IMPACT_DESCRIPTIONS[impactKey]?.content_zh || IMPACT_DESCRIPTIONS.general.content_zh,
+        impactDescription_en: IMPACT_DESCRIPTIONS[impactKey]?.content_en || IMPACT_DESCRIPTIONS.general.content_en,
+        sentiment: 0,
+      }
+    }),
   }
 }
 
@@ -211,11 +267,19 @@ export async function POST(request: NextRequest) {
             negative: score < 0 ? Math.round(Math.abs(score) * 100) : 0,
             neutral: 100 - Math.round(Math.abs(score) * 100)
           },
-          details: (aiData.analysis || items.slice(0, 10).map((i: any) => ({
-            id: i.id,
-            bias: detectBias(i.source || ''),
-            impact: detectImpact(i.title || '', i.desc || '')
-          })))
+          details: (aiData.analysis || items.slice(0, 10).map((i: any) => {
+            const impactKey = detectImpact(i.title || '', i.desc || '')
+            return {
+              id: i.id,
+              headline: extractHeadline(i.title_zh || i.title_translated || i.title || '', lang),
+              bias: detectBias(i.source || ''),
+              biasSource: i.source || '',
+              impact: impactKey,
+              impactDescription_zh: IMPACT_DESCRIPTIONS[impactKey]?.content_zh || IMPACT_DESCRIPTIONS.general.content_zh,
+              impactDescription_en: IMPACT_DESCRIPTIONS[impactKey]?.content_en || IMPACT_DESCRIPTIONS.general.content_en,
+              sentiment: 0,
+            }
+          }))
         },
         timestamp: Date.now(),
       })
