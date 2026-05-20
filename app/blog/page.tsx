@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 const blogPosts = [
   {
@@ -146,142 +146,249 @@ const blogPosts = [
   },
 ];
 
+// Extract unique tags for filters
+const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
+
+// Country/Region mapping for stats
+const regionStats = blogPosts.reduce((acc, post) => {
+  const region = post.tags[0];
+  acc[region] = (acc[region] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
 export default function BlogPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<"date" | "title">("date");
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
+  // Filter and sort posts
+  const filteredPosts = useMemo(() => {
+    let posts = blogPosts.filter(post => {
+      const matchesSearch = searchQuery === "" || 
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesTags = selectedTags.length === 0 ||
+        selectedTags.some(tag => post.tags.includes(tag));
+      return matchesSearch && matchesTags;
+    });
+
+    posts.sort((a, b) => {
+      if (sortBy === "title") return a.title.localeCompare(b.title);
+      return 0;
+    });
+
+    return posts;
+  }, [searchQuery, selectedTags, sortBy]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedTags([]);
+    setSortBy("date");
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Travel-inspired background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-600/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-600/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
-        
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 p-6 md:p-12">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <header className="text-center mb-16 pt-8">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-6 shadow-lg shadow-green-500/25">
-              <span>✈️</span>
-              <span>Travel Blog</span>
-              <span>✈️</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
-              純粹旅人 <span className="text-emerald-400">Journey</span>
-            </h1>
-            <p className="text-emerald-200/80 text-lg max-w-2xl mx-auto">
-              用雙腳探索世界，用相機記錄每一個難忘瞬間 🌍
-            </p>
-          </header>
-
-          {/* Back to Newsflow Link */}
-          <div className="text-center mb-8">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full transition-all backdrop-blur-sm border border-white/20"
-            >
+    <div className="min-h-screen bg-slate-900">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-green-800 via-emerald-700 to-teal-700 text-white py-8 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-3xl">✈️</span>
+            <h1 className="text-3xl font-bold">NewsFlow Travel Blog Dashboard</h1>
+          </div>
+          <p className="text-emerald-200">用雙腳探索世界，用相機記錄每一個難忘瞬間 🌍</p>
+          <div className="mt-4">
+            <Link href="/" className="text-emerald-200 hover:text-white underline text-sm">
               ← 返回 Newsflow 首頁
             </Link>
           </div>
+        </div>
+      </header>
 
-          {/* Blog Cards Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((post, index) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className={`block group transition-all duration-500 ${
-                  index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
-                }`}
-                onMouseEnter={() => setHoveredSlug(post.slug)}
-                onMouseLeave={() => setHoveredSlug(null)}
-              >
-                <div className={`
-                  relative h-full bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden 
-                  border border-green-200/30 hover:border-transparent
-                  transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl
-                  ${hoveredSlug === post.slug ? 'shadow-2xl' : ''}
-                `}>
-                  {/* Gradient accent bar */}
-                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
-                  
-                  {/* Image container */}
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className={`
-                        w-full object-cover transition-all duration-700
-                        ${index === 0 ? 'h-64 md:h-80' : 'h-48'}
-                        group-hover:scale-110
-                      `}
-                      onError={(e) => {
-                        e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
-                      }}
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                    
-                    {/* Icon badge */}
-                    <div className={`absolute top-4 left-4 bg-gradient-to-r ${post.accent} rounded-full p-3 text-2xl shadow-lg`}>
-                      {post.icon}
-                    </div>
-                  </div>
+      <div className="max-w-7xl mx-auto p-6">
+        {/* Stats Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl p-4 text-white">
+            <div className="text-3xl font-bold">{blogPosts.length}</div>
+            <div className="text-sm text-emerald-100">總文章數</div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl p-4 text-white">
+            <div className="text-3xl font-bold">{Object.keys(regionStats).length}</div>
+            <div className="text-sm text-blue-100">目的地數量</div>
+          </div>
+          <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl p-4 text-white">
+            <div className="text-3xl font-bold">{allTags.length}</div>
+            <div className="text-sm text-purple-100">標籤種類</div>
+          </div>
+          <div className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-xl p-4 text-white">
+            <div className="text-3xl font-bold">{filteredPosts.length}</div>
+            <div className="text-sm text-orange-100">當前顯示</div>
+          </div>
+        </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    {/* Tags */}
-                    <div className="flex gap-2 mb-3 flex-wrap">
-                      {post.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <h2 className={`font-bold mb-3 text-gray-900 transition-colors group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent}`}>
-                      <span className="text-xl">{post.icon}</span> {post.title}
-                    </h2>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                    
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-500 text-xs">{post.date}</span>
-                      <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
-                        閱讀全文 →
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Decorative corner */}
-                  <div className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${post.accent} opacity-0 group-hover:opacity-15 transition-opacity rounded-tl-full`} />
-                </div>
-              </Link>
+        {/* Region Stats */}
+        <div className="bg-slate-800 rounded-xl p-4 mb-6">
+          <h3 className="text-white text-sm font-semibold mb-3">📊 目的地分布</h3>
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(regionStats).map(([region, count]) => (
+              <div key={region} className="bg-slate-700 text-slate-200 px-3 py-1 rounded-full text-sm flex items-center gap-2">
+                <span>{region}</span>
+                <span className="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full">{count}</span>
+              </div>
             ))}
           </div>
+        </div>
 
-          {/* Infolinks Ad Script */}
-          <div className="mt-12 text-center">
-            <script type="text/javascript">
-              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
-            </script>
-            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+        {/* Search and Filters */}
+        <div className="bg-slate-800 rounded-xl p-6 mb-6">
+          <div className="flex flex-col md:flex-row gap-4 mb-4">
+            {/* Search */}
+            <div className="flex-1">
+              <input
+                type="text"
+                placeholder="🔍 搜尋文章標題、內容或標籤..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-700 text-white placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            {/* Sort */}
+            <div className="flex gap-2">
+              <select 
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as "date" | "title")}
+                className="bg-slate-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="date">最近更新</option>
+                <option value="title">標題 A-Z</option>
+              </select>
+              <button
+                onClick={clearFilters}
+                className="bg-slate-600 hover:bg-slate-500 text-white px-4 py-3 rounded-lg transition-colors"
+              >
+                清除
+              </button>
+            </div>
           </div>
 
-          {/* Footer */}
-          <footer className="text-center mt-16 py-8 border-t border-green-700/30">
-            <p className="text-emerald-200/60 text-sm">
-              🌍 純粹旅人 · 用心感受每一個城市的溫度
-            </p>
-          </footer>
+          {/* Tags Filter */}
+          <div>
+            <h4 className="text-slate-400 text-sm mb-2">🏷️ 標籤篩選</h4>
+            <div className="flex flex-wrap gap-2">
+              {allTags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  className={`px-3 py-1.5 rounded-full text-sm transition-all ${
+                    selectedTags.includes(tag)
+                      ? 'bg-green-600 text-white'
+                      : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* Blog Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredPosts.map((post, index) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className={`block group transition-all duration-500 ${
+                index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
+              }`}
+              onMouseEnter={() => setHoveredSlug(post.slug)}
+              onMouseLeave={() => setHoveredSlug(null)}
+            >
+              <div className={`
+                relative h-full bg-slate-800 rounded-2xl overflow-hidden 
+                border border-slate-700 hover:border-green-500/50
+                transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/10
+                ${hoveredSlug === post.slug ? 'shadow-xl shadow-green-500/10' : ''}
+              `}>
+                {/* Gradient accent bar */}
+                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
+                
+                {/* Image container */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className={`
+                      w-full object-cover transition-all duration-700
+                      ${index === 0 ? 'h-52 md:h-64' : 'h-40'}
+                      group-hover:scale-110
+                    `}
+                    onError={(e) => {
+                      e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
+                    {post.icon}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  {/* Tags */}
+                  <div className="flex gap-2 mb-3 flex-wrap">
+                    {post.tags.map((tag) => (
+                      <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
+                    {post.title}
+                  </h2>
+                  <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500 text-xs">{post.date}</span>
+                    <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
+                      閱讀全文 →
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Empty State */}
+        {filteredPosts.length === 0 && (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-white text-xl font-semibold mb-2">找不到符合條件的文章</h3>
+            <p className="text-slate-400 mb-4">嘗試調整搜尋條件或清除篩選</p>
+            <button
+              onClick={clearFilters}
+              className="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg transition-colors"
+            >
+              清除所有篩選
+            </button>
+          </div>
+        )}
+
+        {/* Footer */}
+        <footer className="text-center mt-16 py-8 border-t border-slate-700">
+          <p className="text-slate-500 text-sm">
+            🌍 純粹旅人 · 用心感受每一個城市的溫度
+          </p>
+        </footer>
       </div>
     </div>
   );
