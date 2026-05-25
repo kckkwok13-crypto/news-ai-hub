@@ -178,7 +178,40 @@ export default function AboutPage() {
 
         {/* Team/Contact */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6">👤 關於作者：純粹旅人</h2>
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <Users className="w-6 h-6 text-blue-400" />
+            NewsFlow 編輯團隊
+          </h2>
+          <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700 text-gray-300">
+            <p className="mb-6">
+              NewsFlow 由專業編輯團隊營運，致力於為用戶提供高質量的新聞資訊服務。我們的團隊成員擁有多年媒體、資訊科技和數據分析經驗。
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="text-center p-4 rounded-xl bg-gray-700/30">
+                <div className="text-3xl mb-2">📰</div>
+                <h3 className="font-bold text-white text-sm mb-1">主編</h3>
+                <p className="text-xs text-gray-400">新聞來源審核、內容質量把關</p>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-gray-700/30">
+                <div className="text-3xl mb-2">🤖</div>
+                <h3 className="font-bold text-white text-sm mb-1">AI 內容主任</h3>
+                <p className="text-xs text-gray-400">AI 摘要流程監督、事實核查</p>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-gray-700/30">
+                <div className="text-3xl mb-2">📊</div>
+                <h3 className="font-bold text-white text-sm mb-1">數據分析師</h3>
+                <p className="text-xs text-gray-400">數據新聞、視覺化圖表</p>
+              </div>
+            </div>
+            <p className="mt-6 text-sm text-amber-400">
+              <strong>注意：</strong>NewsFlow 的新聞內容由編輯團隊負責，所有 AI 輔助生成的摘要均經過人工審核，確保資訊的準確性和可靠性。旅遊指南內容則由獨立作者提供。
+            </p>
+          </div>
+        </section>
+
+        {/* About the Author - Travel Content Only */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-white mb-6">👤 旅遊內容作者：純粹旅人</h2>
           <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700 text-gray-300">
             <div className="flex items-start gap-6">
               <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-4xl shadow-lg">
@@ -191,15 +224,14 @@ export default function AboutPage() {
                   你好！我係「純粹旅人」，一個熱愛探索世界每個角落嘅旅行者。我相信最好的旅行體驗，
                   唔係打卡式嘅走馬觀花，而係用心感受每一個城市的溫度、每一條街道的故事。
                 </p>
-                <p className="mb-4">
-                  呢個 Blog 記錄低我遊歷東京、巴黎、羅馬、佛羅倫斯、曼谷、首爾等城市嘅所見所聞，
-                  希望可以帶你用另一個角度睇世界。✨
-                </p>
                 <div className="flex gap-4 text-sm">
                   <span className="text-amber-400">📸 旅行攝影</span>
                   <span className="text-blue-400">✈️ 深度遊記</span>
                   <span className="text-purple-400">📚 文化探索</span>
                 </div>
+                <p className="mt-4 text-sm text-gray-500">
+                  <strong>聲明：</strong>純粹旅人僅負責 NewsFlow 的旅遊指南內容（blog 目錄下的旅行文章）。新聞資訊彙總服務由 NewsFlow 編輯團隊獨立營運。
+                </p>
               </div>
             </div>
           </div>

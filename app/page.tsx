@@ -1367,6 +1367,7 @@ export default function NewsPage() {
       <footer className={`mt-12 py-10 text-center border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
         <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm md:text-base font-medium">
           <Link href="/about" className="hover:text-blue-500 transition-colors uppercase tracking-wider">關於我們 / About</Link>
+          <Link href="/editorial-policy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">編輯政策 / Editorial</Link>
           <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
           <Link href="/contact" className="hover:text-blue-500 transition-colors uppercase tracking-wider">聯繫我們 / Contact</Link>
         </div>
