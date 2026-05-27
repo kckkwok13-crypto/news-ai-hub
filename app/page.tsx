@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause } from "lucide-react";
+import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause, Pen, Edit3 } from "lucide-react";
 
 type Lang = "zh-TW" | "zh-CN" | "en";
 type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art" | "art" | "data_journalism";
@@ -83,6 +83,123 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
   { id: "art", icon: "🎨", color: "bg-rose-500", label_zh: "藝術", label_en: "Art" },
   { id: "data_journalism", icon: "📊", color: "bg-cyan-600", label_zh: "數據新聞 24h熱門", label_en: "Data 24h Trending" },
 ];
+
+const EDITOR_PICKS = {
+  "zh-TW": {
+    sectionTitle: "📝 編輯精選",
+    sectionSubtitle: "深度原創分析",
+    readTime: "閱讀時間",
+    minutes: "分鐘",
+    articles: [
+      {
+        id: "ep-1",
+        title: "比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析",
+        category: "加密貨幣",
+        emoji: "₿",
+        excerpt: "比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。本文深入探討ETF獲批對機構入場、流動性結構、以太坊生態、以及個人投資者的長遠影響。",
+        readTime: 8,
+        link: "/editorial/bitcoin-etf-deep-analysis",
+        tag: "深度分析"
+      },
+      {
+        id: "ep-2",
+        title: "AI 翻譯新聞的倫理邊界：我們如何在使用技術便利與保護原創價值之間取得平衡？",
+        category: "科技評論",
+        emoji: "🤖",
+        excerpt: "當AI能夠在幾秒鐘內將一篇外語新聞翻譯成十幾種語言時，新聞的本質是否正在被稀釋？本文從編輯政策的角度出發，探討AI輔助翻譯的倫理邊界，以及如何在技術便利與新聞原創價值之間取得平衡。",
+        readTime: 6,
+        link: "/editorial/ai-translation-ethics",
+        tag: "編輯觀點"
+      },
+      {
+        id: "ep-3",
+        title: "全球央行數字貨幣競賽：CBDC時代的貨幣主权與隱私反思",
+        category: "財經深度",
+        emoji: "💰",
+        excerpt: "從中國的數字人民幣到歐洲的數字歐元，全球各國央行正在加速探索數字貨幣的可能性。這場看不見的競賽不僅關乎貨幣政策的未來，更涉及金融隱私、資金流向監控、以及國家主權的深層次議題。",
+        readTime: 10,
+        link: "/editorial/cbdc-global-race",
+        tag: "獨家評論"
+      }
+    ]
+  },
+  "zh-CN": {
+    sectionTitle: "📝 编辑精选",
+    sectionSubtitle: "深度原创分析",
+    readTime: "阅读时间",
+    minutes: "分钟",
+    articles: [
+      {
+        id: "ep-1",
+        title: "比特币ETF获批后：加密货币市场结构性改变的深度分析",
+        category: "加密货币",
+        emoji: "₿",
+        excerpt: "比特币现货ETF的批准不仅是监管的胜利，更标志着传统金融与加密市场之间那道曾经不可逾越的鸿沟正在加速消亡。本文深入探讨ETF获批对机构入场、流动性结构、以太坊生态、以及个人投资者的长远影响。",
+        readTime: 8,
+        link: "/editorial/bitcoin-etf-deep-analysis",
+        tag: "深度分析"
+      },
+      {
+        id: "ep-2",
+        title: "AI 翻译新闻的伦理边界：我们如何在使用技术便利与保护原创价值之间取得平衡？",
+        category: "科技评论",
+        emoji: "🤖",
+        excerpt: "当AI能够在几秒钟内将一篇外语新闻翻译成十几种语言时，新闻的本质是否正在被稀释？本文从编辑政策的角度出发，探讨AI辅助翻译的伦理边界，以及如何在技术便利与新闻原创价值之间取得平衡。",
+        readTime: 6,
+        link: "/editorial/ai-translation-ethics",
+        tag: "编辑观点"
+      },
+      {
+        id: "ep-3",
+        title: "全球央行数字货币竞赛：CBDC时代的货币主权与隐私反思",
+        category: "财经深度",
+        emoji: "💰",
+        excerpt: "从中国的数字人民币到欧洲的数字欧元，全球各国央行正在加速探索数字货币的可能性。这场看不见的竞赛不仅关乎货币政策的未来，更涉及金融隐私、资金流向监控、以及国家主权的深层次议题。",
+        readTime: 10,
+        link: "/editorial/cbdc-global-race",
+        tag: "独家评论"
+      }
+    ]
+  },
+  "en": {
+    sectionTitle: "📝 Editor's Pick",
+    sectionSubtitle: "Original In-depth Analysis",
+    readTime: "Read time",
+    minutes: "min",
+    articles: [
+      {
+        id: "ep-1",
+        title: "After Bitcoin ETF Approval: A Deep Dive into Structural Changes in the Crypto Market",
+        category: "Crypto",
+        emoji: "₿",
+        excerpt: "The approval of spot Bitcoin ETFs isn't just a regulatory victory — it signals the accelerating dissolution of the barrier between traditional finance and crypto markets. This article explores the long-term impact on institutional entry, liquidity structures, Ethereum's ecosystem, and individual investors.",
+        readTime: 8,
+        link: "/editorial/bitcoin-etf-deep-analysis",
+        tag: "In-depth"
+      },
+      {
+        id: "ep-2",
+        title: "The Ethical Boundaries of AI-Translated News: Finding Balance Between Tech Convenience and Original Value",
+        category: "Tech Opinion",
+        emoji: "🤖",
+        excerpt: "When AI can translate a foreign news article into a dozen languages in seconds, is the essence of journalism being diluted? This piece explores the ethical boundaries of AI-assisted translation from an editorial policy perspective.",
+        readTime: 6,
+        link: "/editorial/ai-translation-ethics",
+        tag: "Editorial"
+      },
+      {
+        id: "ep-3",
+        title: "The Global CBDC Race: Monetary Sovereignty and Privacy in the Digital Currency Era",
+        category: "Finance",
+        emoji: "💰",
+        excerpt: "From China's Digital Yuan to Europe's Digital Euro, central banks worldwide are accelerating their exploration of digital currencies. This invisible race isn't just about the future of monetary policy — it touches on financial privacy, fund flow monitoring, and national sovereignty.",
+        readTime: 10,
+        link: "/editorial/cbdc-global-race",
+        tag: "Exclusive"
+      }
+    ]
+  }
+};
 
 const LABELS = {
   "zh-TW": {
@@ -889,7 +1006,62 @@ export default function NewsPage() {
         </div>
       )}
 
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      {/* Editor's Picks - Original Editorial Content */}
+      {(() => {
+        const ep = EDITOR_PICKS[lang];
+        return (
+          <section className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-2">
+                <Edit3 size={20} className="text-amber-500" />
+                <h2 className={`text-lg font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>{ep.sectionTitle}</h2>
+              </div>
+              <span className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-amber-500/20 text-amber-400" : "bg-amber-50 text-amber-600"}`}>
+                {ep.sectionSubtitle}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {ep.articles.map((article) => (
+                <a 
+                  key={article.id}
+                  href={article.link}
+                  onClick={e => e.preventDefault()}
+                  className={`block p-5 rounded-2xl transition-all duration-200 hover:scale-[1.02] hover:shadow-xl group ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">{article.emoji}</span>
+                      <span className={`text-xs font-medium ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.category}</span>
+                    </div>
+                    <span className={`text-[10px] px-2 py-1 rounded-full font-semibold ${darkMode ? "bg-amber-500/20 text-amber-400" : "bg-amber-50 text-amber-600"}`}>{article.tag}</span>
+                  </div>
+                  <h3 className={`text-base font-bold leading-snug mb-3 group-hover:text-amber-400 transition-colors ${darkMode ? "text-gray-100" : "text-gray-800"}`}>{article.title}</h3>
+                  <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-amber-500 text-sm font-semibold group-hover:underline">{lang === "en" ? "Read More →" : "閱讀更多 →"}</span>
+                    <span className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{ep.readTime} {article.readTime} {ep.minutes}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <div className={`mt-6 p-4 rounded-xl border ${darkMode ? "bg-amber-500/10 border-amber-500/30" : "bg-amber-50 border-amber-200"}`}>
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5"><Pen size={16} className="text-amber-500" /></div>
+                <div>
+                  <p className={`text-sm font-semibold mb-1 ${darkMode ? "text-amber-400" : "text-amber-700"}`}>{lang === "en" ? "AI Content Disclosure" : "AI 內容披露"}</p>
+                  <p className={`text-xs leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                    {lang === "en" ? "NewsFlow uses AI to translate and summarize news. All editorial content labeled Editor's Pick is original analysis by our team. All news copyrights belong to respective authors." : "NewsFlow 使用 AI 翻譯和摘要新聞。所有標記為「編輯精選」的原創分析均由我們團隊撰寫。新聞版權歸各有關作者所有。"}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+            <main className="max-w-7xl mx-auto px-4 py-6">
         {/* Mobile Categories - Horizontal scrollable tabs */}
         <div className="md:hidden -mx-4 px-4 pt-3">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
