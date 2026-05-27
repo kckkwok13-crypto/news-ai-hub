@@ -73,6 +73,18 @@ function extractHeadline(title: string, lang: string): string {
   return (lastSpace > 30 ? cut.slice(0, lastSpace) : cut) + '…'
 }
 
+// Keyword-based sentiment scoring for simple mode
+function estimateSentiment(title: string, desc: string): number {
+  const text = ((title || '') + ' ' + (desc || '')).toLowerCase()
+  const positive = ['surge', 'gain', 'rise', 'grow', 'positive', 'success', 'win', 'boost', 'rally', 'bullish', '上漲', '增長', '成功', '牛市', '突破', '新高', '利好', '漲幅', '反彈']
+  const negative = ['crash', 'fall', 'drop', 'loss', 'fail', 'crisis', 'war', 'threat', 'concern', 'bearish', '下跌', '危機', '戰爭', '熊市', '暴跌', '新低', '利空', '跌幅', '跳水']
+  
+  let score = 0
+  for (const w of positive) if (text.includes(w)) score += 0.3
+  for (const w of negative) if (text.includes(w)) score -= 0.3
+  return Math.max(-1, Math.min(1, score))
+}
+
 async function getAIAnalysis(items: any[], lang: string) {
   const apiKey = process.env.OPENROUTER_API_KEY
   if (!apiKey) return null
@@ -235,7 +247,7 @@ function simpleAnalysis(items: any[], lang: string) {
         impact: impactKey,
         impactDescription_zh: IMPACT_DESCRIPTIONS[impactKey]?.content_zh || IMPACT_DESCRIPTIONS.general.content_zh,
         impactDescription_en: IMPACT_DESCRIPTIONS[impactKey]?.content_en || IMPACT_DESCRIPTIONS.general.content_en,
-        sentiment: 0,
+        sentiment: estimateSentiment(i.title_zh || i.title_translated || i.title || '', i.desc_zh || i.desc_translated || i.desc || ''),
       }
     }),
   }
@@ -277,7 +289,7 @@ export async function POST(request: NextRequest) {
               impact: impactKey,
               impactDescription_zh: IMPACT_DESCRIPTIONS[impactKey]?.content_zh || IMPACT_DESCRIPTIONS.general.content_zh,
               impactDescription_en: IMPACT_DESCRIPTIONS[impactKey]?.content_en || IMPACT_DESCRIPTIONS.general.content_en,
-              sentiment: 0,
+              sentiment: estimateSentiment(i.title_zh || i.title_translated || i.title || '', i.desc_zh || i.desc_translated || i.desc || ''),
             }
           }))
         },
