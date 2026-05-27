@@ -514,6 +514,9 @@ export default function NewsPage() {
               <button onClick={() => { setShowSubscribe(true); setShowMobileMenu(false); }} className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-medium">
                 <Mail size={24} /> {t.subscribe}
               </button>
+              <Link href="/blog" onClick={() => setShowMobileMenu(false)} className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-teal-600 to-emerald-600 text-white text-lg font-medium">
+                <BookOpen size={24} /> {lang === "en" ? "Travel Blog" : "旅遊Blog"}
+              </Link>
             </div>
             
             {/* Mobile categories */}
@@ -575,6 +578,9 @@ export default function NewsPage() {
               <Link href="/analytics" className={`px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-purple-600 hover:bg-purple-500 text-white" : "bg-purple-500 hover:bg-purple-600 text-white"}`}>
                 📊 分析
               </Link>
+              <Link href="/blog" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-teal-600 to-emerald-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                <BookOpen size={16} /> Blog
+              </Link>
               <div className="relative">
                 <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   {LANG_OPTIONS.find(l => l.id === lang)?.flag}
@@ -622,21 +628,58 @@ export default function NewsPage() {
         </div>
       </header>
 
-      {showSubscribe && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
-          <div className={`w-full max-w-md rounded-3xl p-8 ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold">{t.subscribeTitle}</h3>
-              <button onClick={() => setShowSubscribe(false)} className={`p-2 rounded-xl ${darkMode ? "bg-gray-800" : "bg-gray-100"}`}><X size={20} /></button>
+      {/* Hero Banner - NEW */}
+      <div className={`w-full overflow-hidden ${darkMode ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 via-white to-purple-50"}`}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
+            {/* Left: Text */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl md:text-3xl">🌍</span>
+                <h1 className={`text-2xl md:text-3xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>
+                  NewsFlow
+                </h1>
+                <span className={`text-xs px-2 py-1 rounded-full font-medium ${darkMode ? "bg-blue-600 text-white" : "bg-blue-100 text-blue-700"}`}>
+                  v2.0
+                </span>
+              </div>
+              <p className={`text-base md:text-lg mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                {lang === "en" ? "Real-time translation · AI analysis · Multi-category global news" : "即時翻譯 · AI 分析 · 多元分類"}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => { setShowSaved(false); setCategory("finance"); }}
+                  className="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:opacity-90 transition"
+                >
+                  💰 {lang === "en" ? "Browse News" : "開始睇新聞"}
+                </button>
+                <Link
+                  href="/blog"
+                  className="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg hover:opacity-90 transition flex items-center gap-2"
+                >
+                  📖 {lang === "en" ? "Travel Blog" : "旅遊Blog"}
+                </Link>
+              </div>
             </div>
-            <p className={`text-base mb-6 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.subscribeDesc}</p>
-            <form onSubmit={handleSubscribe} className="space-y-4">
-              <input type="email" value={subscribeEmail} onChange={e => setSubscribeEmail(e.target.value)} placeholder={t.emailPlaceholder} className={`w-full px-5 py-4 rounded-2xl text-base outline-none ${darkMode ? "bg-gray-800 border border-gray-700 text-white" : "bg-gray-50 border border-gray-200"}`} />
-              <button type="submit" className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl text-base font-bold hover:opacity-90">{t.subscribeBtn}</button>
-            </form>
+
+            {/* Right: Stats */}
+            <div className="flex gap-4 md:gap-6 flex-shrink-0">
+              <div className="text-center">
+                <div className={`text-2xl md:text-3xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>13</div>
+                <div className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{lang === "en" ? "Categories" : "分類"}</div>
+              </div>
+              <div className="text-center">
+                <div className={`text-2xl md:text-3xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>3</div>
+                <div className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{lang === "en" ? "Languages" : "語言"}</div>
+              </div>
+              <div className="text-center">
+                <div className={`text-2xl md:text-3xl font-bold text-teal-400`}>∞</div>
+                <div className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{lang === "en" ? "Daily Updates" : "每日更新"}</div>
+              </div>
+            </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* AI Deep Daily - Page Top Section (replaces modal) */}
       {aiSummary && (
@@ -1041,6 +1084,11 @@ export default function NewsPage() {
               <span className="text-lg">{c.icon}</span> <span className="hidden md:inline">{lang === "en" ? c.label_en : c.label_zh}</span>
             </button>
           ))}
+          {/* Blog link in category bar */}
+          <Link href="/blog" className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg hover:opacity-90`}>
+            <BookOpen size={18} /> <span className="hidden md:inline">{lang === "en" ? "Blog" : "旅遊Blog"}</span>
+            <span className="md:hidden"><BookOpen size={18} /></span>
+          </Link>
           <div className="ml-auto flex items-center gap-2">
             <button onClick={() => fetchNews(false)} className={`p-3 rounded-xl transition ${darkMode ? "hover:bg-gray-800 text-gray-400" : "hover:bg-gray-100 text-gray-500"}`} title={t.refresh}>
               <RefreshCw size={18} />
@@ -1362,10 +1410,30 @@ export default function NewsPage() {
             })}
           </div>
         )}
+
+        {/* Mobile Travel Blog CTA - shown when no travel news */}
+        {category === 'travel' && displayNews.length === 0 && !loading && (
+          <div className={`w-full rounded-2xl p-8 text-center ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-lg border border-gray-200"}`}>
+            <div className="text-5xl mb-4">✈️</div>
+            <h3 className={`text-xl font-bold mb-2 ${darkMode ? "text-white" : "text-gray-900"}`}>
+              {lang === "en" ? "Explore Travel Destinations" : "探索全球旅遊目的地"}
+            </h3>
+            <p className={`text-base mb-6 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+              {lang === "en" ? "Discover travel guides, city blogs, and insider tips" : "發掘旅遊指南、城市Blog及實用資訊"}
+            </p>
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold hover:opacity-90 transition"
+            >
+              📖 {lang === "en" ? "Visit Travel Blog" : "前往旅遊Blog"}
+            </Link>
+          </div>
+        )}
       </main>
 
       <footer className={`mt-12 py-10 text-center border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
         <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm md:text-base font-medium">
+          <Link href="/blog" className="hover:text-teal-400 transition-colors uppercase tracking-wider">📖 旅遊Blog / Travel</Link>
           <Link href="/about" className="hover:text-blue-500 transition-colors uppercase tracking-wider">關於我們 / About</Link>
           <Link href="/editorial-policy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">編輯政策 / Editorial</Link>
           <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
