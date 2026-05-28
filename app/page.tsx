@@ -842,11 +842,6 @@ export default function NewsPage() {
                           </div>
                         </div>
                         <div className="flex flex-col items-end gap-1">
-                          {detail.impact && (
-                            <button onClick={() => setShowImpactId(detail.id)} className="text-blue-500 hover:text-blue-400 text-xs font-semibold whitespace-nowrap">
-                              {t.impact || "深度解讀"} →
-                            </button>
-                          )}
                           {newsItem?.link && (
                             <a href={newsItem.link} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-400 text-xs whitespace-nowrap">
                               {t.readMore} →
@@ -874,25 +869,6 @@ export default function NewsPage() {
               </div>
             </div>
           )}
-
-          {/* Impact Modal */}
-          {showImpactId && (() => {
-            const detail = aiSummary.details?.find((d: any) => d.id === showImpactId);
-            return (
-              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
-                <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
-                  <div className="text-blue-500 mb-4"><Zap size={40} /></div>
-                  <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
-                  <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                    {lang === 'en' ? (detail?.impactDescription_en || detail?.impactDescription_zh || '📰 General news analysis.') : (detail?.impactDescription_zh || detail?.impactDescription_en || '📰 此為一般綜合性新聞。')}
-                  </p>
-                  <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">
-                    {t.impactClose || "關閉解讀"}
-                  </button>
-                </div>
-              </div>
-            )
-          })()}
         </div>
       )}
 
