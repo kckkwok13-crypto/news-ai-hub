@@ -292,6 +292,7 @@ export default function NewsPage() {
   const [aiHostLoading, setAiHostLoading] = useState(false);
   const [aiHostData, setAiHostData] = useState<any>(null);
   const [aiHostError, setAiHostError] = useState<string>("");
+  const [aiInlineItem, setAiInlineItem] = useState<string | null>(null);
 
   const analyzeWithAIHost = async (item: any) => {
     setAiHostItem(item);
@@ -1370,8 +1371,12 @@ export default function NewsPage() {
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
                       {isSaved ? <BookmarkCheck size={18} className="text-yellow-400" /> : <Bookmark size={18} />}
                     </button>
-                    <button onClick={e => { e.stopPropagation(); shareNews(item); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
-                      <Share2 size={18} />
+                    <button
+                          onClick={e => { e.stopPropagation(); setAiInlineItem(prev => prev === item.title ? null : item.title); if(aiInlineItem !== item.title) analyzeWithAIHost(item); }}
+                          className={`p-2.5 rounded-xl backdrop-blur-sm shadow-lg ${aiInlineItem === item.title ? "bg-green-500 text-white" : "bg-green-500/80 text-white hover:bg-green-500"}`}
+                          title={t.analysis}
+                        >
+                          <span className="text-sm">{aiInlineItem === item.title ? "✕" : "💬"}</span>
                     </button>
                   </div>
                   
@@ -1398,6 +1403,38 @@ export default function NewsPage() {
                       <span className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-500" : "bg-gray-200 text-gray-400"}`}>
                         {t.readMore}
                       </span>
+                    )}
+
+                    {/* Inline AI Discussion - 阿傑/阿婷 Style */}
+                    {aiInlineItem === item.title && aiHostData && (
+                      <div className={`mt-3 p-3 rounded-xl ${darkMode ? "bg-gray-800/80 border border-green-500/30" : "bg-gray-50 border border-green-200"}`}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-sm">💬</span>
+                          <span className={`text-xs font-medium ${darkMode ? "text-green-400" : "text-green-600"}`}>AI 深度對話</span>
+                          {aiHostLoading && <span className="text-xs animate-pulse">{lang === "en" ? "..." : "緊係生成..."}</span>}
+                        </div>
+                        {aiHostData.analysis && (
+                          <div className="space-y-2">
+                            {aiHostData.analysis.split('\n').filter((line: string) => line.trim()).slice(0, 4).map((line: string, i: number) => {
+                              const isMale = line.match(/^(阿傑|Jack|阿傑:|Jack:)/);
+                              const isFemale = line.match(/^(小婷|Emma|小婷:|Emma:)/);
+                              const isHost = isMale || isFemale;
+                              const speaker = isMale ? "阿傑" : isFemale ? "小婷" : "";
+                              const text = line.replace(/^(阿傑|Jack|小婷|Emma)[：:]\s*/, "");
+                              return (
+                                <div key={i} className={`flex items-start gap-2 ${!isHost ? "ml-4" : ""}`}>
+                                  {isHost && <span className={`text-xs font-bold w-8 ${isMale ? "text-blue-400" : "text-pink-400"}`}>{speaker}</span>}
+                                  {!isHost && <span className="text-xs text-gray-500 w-8">💭</span>}
+                                  <p className={`text-xs leading-relaxed ${darkMode ? "text-gray-300" : "text-gray-600"}`}>{text}</p>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                        {aiHostData.isDemo && (
+                          <p className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"} italic`}>AI 分析 Demo — 請配置 OPENAI_API_KEY</p>
+                        )}
+                      </div>
                     )}
 
                     {/* Expanded Travel Card - blog style */}
