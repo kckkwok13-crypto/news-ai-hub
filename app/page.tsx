@@ -1062,7 +1062,6 @@ export default function NewsPage() {
                 <a 
                   key={article.id}
                   href={article.link}
-                  onClick={e => e.preventDefault()}
                   className={`block p-5 rounded-2xl transition-all duration-200 hover:scale-[1.02] hover:shadow-xl group ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
                 >
                   <div className="flex items-center justify-between mb-3">
