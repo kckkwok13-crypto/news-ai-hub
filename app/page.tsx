@@ -344,7 +344,6 @@ export default function NewsPage() {
   const [aiSummary, setAiSummary] = useState<any>(null);
   const [isTravelGuide, setIsTravelGuide] = useState(false);
   const [summaryLoading, setSummaryLoading] = useState(false);
-  const [showImpactId, setShowImpactId] = useState<string | null>(null);
   
   // Travel filter states
   const [travelCountryFilter, setTravelCountryFilter] = useState<string>('all');
@@ -1390,16 +1389,6 @@ export default function NewsPage() {
                     </div>
                   )}
                   
-                  {/* AI分析 button - fixed at bottom center of image */}
-                  <div className={`absolute bottom-12 md:bottom-14 left-1/2 -translate-x-1/2 z-10 ${isTravelGuide ? '' : ''}`}>
-                    <button 
-                      onClick={e => { e.stopPropagation(); analyzeWithAIHost(item); }} 
-                      className={`px-4 py-2.5 rounded-2xl bg-purple-500/95 text-white hover:bg-purple-400 backdrop-blur-sm shadow-2xl font-bold text-sm flex items-center gap-2 transition-all hover:scale-105`}
-                    >
-                      <Zap size={18} /> {t.analysis}
-                    </button>
-                  </div>
-                  
                   {/* Top-right action buttons (bookmark, share only) */}
                   <div className="absolute top-3 right-3 flex gap-2 z-10">
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
@@ -1433,39 +1422,6 @@ export default function NewsPage() {
                       <span className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-500" : "bg-gray-200 text-gray-400"}`}>
                         {t.readMore}
                       </span>
-                    )}
-                    
-                    {details && (
-                      <div className={`p-3 rounded-xl mb-3 ${darkMode ? "bg-blue-900/30 border border-blue-700/50" : "bg-blue-50 border border-blue-200"}`}>
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-sm font-bold text-blue-500">🤖 {t.analysis}</span>
-                        </div>
-                        <p className={`text-xs leading-relaxed line-clamp-2 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                          {item.translated && item.desc_translated ? item.desc_translated : item.desc}
-                        </p>
-                        <button onClick={e => { e.stopPropagation(); setShowImpactId(item.id); }} className={`mt-3 w-full py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${darkMode ? "bg-blue-900/40 text-blue-400 hover:bg-blue-900/60" : "bg-blue-100 text-blue-600 hover:bg-blue-200"}`}>
-                          <Zap size={16} /> {t.impact || "深度解讀"}
-                        </button>
-                      </div>
-                    )}
-
-                    {showImpactId === item.id && (
-                      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowImpactId(null)}>
-                        <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`} onClick={e => e.stopPropagation()}>
-                          <div className="text-blue-500 mb-4"><Zap size={40} /></div>
-                          <h4 className="text-xl font-bold mb-4">{t.impact || "深度解讀"}</h4>
-                          <p className={`text-base leading-relaxed mb-8 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                            {aiHostData && aiHostItem && aiHostItem.id === item.id && aiHostData.analysis
-                              ? aiHostData.analysis.split('\n').filter((line: string) => line.trim()).slice(0, 5).join('\n')
-                              : (lang === 'en'
-                                  ? (details?.impactDescription_en || '📰 General news analysis.')
-                                  : (details?.impactDescription_zh || '📰 此為一般綜合性新聞。'))}
-                          </p>
-                          <button onClick={() => setShowImpactId(null)} className="w-full py-4 bg-blue-600 text-white rounded-2xl text-lg font-bold hover:bg-blue-500 transition">
-                            {t.impactClose || "關閉解讀"}
-                          </button>
-                        </div>
-                      </div>
                     )}
 
                     {/* Expanded Travel Card - blog style */}
