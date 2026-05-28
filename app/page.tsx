@@ -120,6 +120,36 @@ const EDITOR_PICKS = {
         readTime: 10,
         link: "/editorial/cbdc-global-race",
         tag: "獨家評論"
+      },
+      {
+        id: "ep-4",
+        title: "穩定幣大戰：USDT/USDC/USDJ誰能笑到最後？",
+        category: "加密貨幣",
+        emoji: "🪙",
+        excerpt: "當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場沒有硝煙的戰爭將如何改變我們的貨幣體系？三大玩家各自嘅優勢同隱憂，一次過拆解。",
+        readTime: 10,
+        link: "/editorial/stablecoin-war",
+        tag: "深度分析"
+      },
+      {
+        id: "ep-5",
+        title: "AI 搶工潮：呢個時代我哋點解自救？",
+        category: "科技評論",
+        emoji: "🤖",
+        excerpt: "當ChatGPT、Midjourney、Claude改變晒遊戲規則，打工仔、freelancer、創業者要點算？從翻譯員、設計師到客服，邊個最受威脅？又邊個最難被取代？",
+        readTime: 12,
+        link: "/editorial/ai-job-revolution",
+        tag: "編輯觀點"
+      },
+      {
+        id: "ep-6",
+        title: "Web3 寒冬：NFT係咪已經玩完？",
+        category: "區塊鏈",
+        emoji: "🌐",
+        excerpt: "從2021年嘅瘋狂炒賣到而家一地眼鏡碎，NFT市場究竟發生咗乜嘢？我哋可以從中學到啲乜？一個曾經相信呢個願景嘅人嘅反思。",
+        readTime: 9,
+        link: "/editorial/web3-nft-winter",
+        tag: "獨家評論"
       }
     ]
   },
@@ -158,6 +188,36 @@ const EDITOR_PICKS = {
         readTime: 10,
         link: "/editorial/cbdc-global-race",
         tag: "独家评论"
+      },
+      {
+        id: "ep-6",
+        title: "Web3 寒冬：NFT是不是已经玩完？",
+        category: "区块链",
+        emoji: "🌐",
+        excerpt: "从2021年的疯狂炒卖到现在一地眼镜碎，NFT市场究竟发生了乜嘢？我们可以从中学到啲乜？一个曾经相信呢个愿景的人嘅反思。",
+        readTime: 9,
+        link: "/editorial/web3-nft-winter",
+        tag: "独家评论"
+      },
+      {
+        id: "ep-7",
+        title: "稳定币大战：USDT/USDC/USDJ谁能笑到最后？",
+        category: "加密货币",
+        emoji: "🪙",
+        excerpt: "当传统银行、加密原生公司、科技巨头全部涌入稳定币赛道，这场没有硝烟的战争将如何改变我们的货币体系？三大玩家各自的优势同隐忧，一次过拆解。",
+        readTime: 10,
+        link: "/editorial/stablecoin-war",
+        tag: "深度分析"
+      },
+      {
+        id: "ep-8",
+        title: "AI 抢工潮：这个时代我哋点样自救？",
+        category: "科技评论",
+        emoji: "🤖",
+        excerpt: "当ChatGPT、Midjourney、Claude改变晒游戏规则，打工仔、freelancer、创业者要点算？从翻译员、设计师到客服，边个最受威胁？又边个最难被取代？",
+        readTime: 12,
+        link: "/editorial/ai-job-revolution",
+        tag: "编辑观点"
       }
     ]
   },
