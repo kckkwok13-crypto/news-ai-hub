@@ -86,10 +86,10 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
 
 const EDITOR_PICKS = {
   "zh-TW": {
-    sectionTitle: "📝 編輯精選",
-    sectionSubtitle: "深度原創分析",
-    readTime: "閱讀時間",
-    minutes: "分鐘",
+    sectionTitle: "📝 Editor's Pick",
+    sectionSubtitle: "Original Analysis",
+    readTime: "Reading time",
+    minutes: "min",
     articles: [
       {
         id: "ep-1",
@@ -263,7 +263,7 @@ const EDITOR_PICKS = {
 
 const LABELS = {
   "zh-TW": {
-    title: "NewsFlow 全球資訊", subtitle: "即時翻譯 · AI 分析 · 多元分類",
+    title: "NewsFlow 全球資訊", subtitle: "Real-time translation · AI Analysis · 多元分類",
     searchPlaceholder: "搜尋新聞...", loading: "載入緊...", noResults: "冇新聞",
     saved: "已經儲起咗", removed: "已移除", copied: "已複製連結", read: "睇下",
     darkOn: "深色模式", darkOff: "淺色模式",
@@ -271,7 +271,7 @@ const LABELS = {
     emailPlaceholder: "你的 Email", subscribeBtn: "立即訂閱",
     subscribeSuccess: "訂閱成功咗！", subscribeError: "請輸入有效 Email",
     refresh: "刷新", autoRefresh: "自動刷新", refreshOff: "關閉自動刷新",
-    aiSummary: "AI 智能摘要", noSummary: "AI 摘要載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
+    aiSummary: "AI 智能摘要", noSummary: "AI Summary載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
     trend: "熱門話題", related: "相關新聞",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
@@ -281,14 +281,14 @@ const LABELS = {
     bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
     sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
     biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" },
-    menu: "目錄", close: "關閉", all: "全部", analysis: "AI 分析",
+    menu: "目錄", close: "關閉", all: "全部", analysis: "AI Analysis",
     savedNews: "收藏", allNews: "全部", source: "來源",
     readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
     langChanged: "語言已切換",
     shareSuccess: "分享成功", emailRequired: "請輸入 Email 地址"
   },
   "zh-CN": {
-    title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI 分析 · 多元分类",
+    title: "NewsFlow 全球资讯", subtitle: "即时翻译 · AI Analysis · 多元分类",
     searchPlaceholder: "搜索新闻...", loading: "载入中...", noResults: "没有找到新闻",
     saved: "已收藏", removed: "已移除", copied: "已复制链接", read: "已读",
     darkOn: "浅色模式", darkOff: "深色模式",
@@ -296,7 +296,7 @@ const LABELS = {
     emailPlaceholder: "你的 Email", subscribeBtn: "立即订阅",
     subscribeSuccess: "订阅成功！", subscribeError: "请输入有效 Email",
     refresh: "刷新", autoRefresh: "自动刷新", refreshOff: "关闭自动刷新",
-    aiSummary: "AI 智能摘要", noSummary: "AI 摘要载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
+    aiSummary: "AI 智能摘要", noSummary: "AI Summary载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
     trend: "热门话题", related: "相关新闻",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
@@ -310,7 +310,7 @@ const LABELS = {
     bias: "立场分析", impact: "深度解读", digestTitle: "今日 AI 深度日报",
     sentimentTitle: "情绪追踪", impactClose: "关闭解读",
     biasTypes: { pro_western: "亲西方", neutral: "中立", pro_china: "亲华", optimism: "市场乐观" },
-    menu: "目录", close: "关闭", all: "全部", analysis: "AI 分析"
+    menu: "目录", close: "关闭", all: "全部", analysis: "AI Analysis"
   },
   "en": {
     title: "NewsFlow Global News", subtitle: "Real-time Translation · AI Analysis · Multi-category",
@@ -839,7 +839,7 @@ export default function NewsPage() {
                 </span>
               </div>
               <p className={`text-base md:text-lg mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                {lang === "en" ? "Real-time translation · AI analysis · Multi-category global news" : "即時翻譯 · AI 分析 · 多元分類"}
+                {lang === "en" ? "Real-time translation · AI analysis · Multi-category global news" : "Real-time translation · AI Analysis · 多元分類"}
               </p>
               <div className="flex flex-wrap gap-3">
                 <button
@@ -957,7 +957,7 @@ export default function NewsPage() {
           <div className={`max-w-md w-full p-8 rounded-3xl shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`}>
             <div className="flex flex-col items-center text-center">
               <div className="text-5xl mb-4 animate-bounce">🎙️</div>
-              <h3 className="text-xl font-bold mb-2">{lang === "en" ? "AI Analysis" : "AI 分析中"}</h3>
+              <h3 className="text-xl font-bold mb-2">{lang === "en" ? "AI Analysis" : "AI Analysis中"}</h3>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} mb-4`}>
                 {aiHostItem.title_translated || aiHostItem.title}
               </p>
@@ -965,7 +965,7 @@ export default function NewsPage() {
                 <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse" style={{ width: "60%" }} />
               </div>
               <p className={`text-xs mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
-                {lang === "en" ? "Generating dual-host conversation..." : "緊係生成兩位主持對話..."}
+                {lang === "en" ? "Generating..." : "Generating..."}
               </p>
             </div>
           </div>
@@ -1014,8 +1014,8 @@ export default function NewsPage() {
             {aiHostData?.analysis && (
               <div className="space-y-4">
                 {aiHostData.analysis.split('\n').filter((line: string) => line.trim()).map((line: string, i: number) => {
-                  const isMale = line.match(/^(阿傑|Jack|阿傑:|Jack:)/);
-                  const isFemale = line.match(/^(小婷|Emma|小婷:|Emma:)/);
+                  const isMale = line.match(/^(Jack|Analyst A|Jack:|Analyst A:)/i);
+                  const isFemale = line.match(/^(Emma|Analyst B|Emma:|Analyst B:)/i);
                   const isHost = isMale || isFemale;
                   
                   return (
@@ -1105,7 +1105,7 @@ export default function NewsPage() {
                 <div>
                   <p className={`text-sm font-semibold mb-1 ${darkMode ? "text-amber-400" : "text-amber-700"}`}>{lang === "en" ? "AI Content Disclosure" : "AI 內容披露"}</p>
                   <p className={`text-xs leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                    {lang === "en" ? "NewsFlow uses AI to translate and summarize news. All editorial content labeled Editor's Pick is original analysis by our team. All news copyrights belong to respective authors." : "NewsFlow 使用 AI 翻譯和摘要新聞。所有標記為「編輯精選」的原創分析均由我們團隊撰寫。新聞版權歸各有關作者所有。"}
+                    {lang === "en" ? "NewsFlow uses AI to translate and summarize news. All editorial content labeled Editor's Pick is original analysis by our team. All news copyrights belong to respective authors." : "NewsFlow 使用 AI 翻譯和摘要新聞。所有標記為「Editor's Pick」的原創分析均由我們團隊撰寫。新聞版權歸各有關作者所有。"}
                   </p>
                 </div>
               </div>
@@ -1482,22 +1482,22 @@ export default function NewsPage() {
                       </span>
                     )}
 
-                    {/* Inline AI Discussion - 阿傑/阿婷 Style */}
+                    {/* Inline AI Discussion - Jack/Emma Style */}
                     {aiInlineItem === item.title && aiHostData && (
                       <div className={`mt-3 p-3 rounded-xl ${darkMode ? "bg-gray-800/80 border border-green-500/30" : "bg-gray-50 border border-green-200"}`}>
                         <div className="flex items-center gap-2 mb-2">
                           <span className="text-sm">💬</span>
-                          <span className={`text-xs font-medium ${darkMode ? "text-green-400" : "text-green-600"}`}>AI 深度對話</span>
-                          {aiHostLoading && <span className="text-xs animate-pulse">{lang === "en" ? "..." : "緊係生成..."}</span>}
+                          <span className={`text-xs font-medium ${darkMode ? "text-green-400" : "text-green-600"}`}>AI Discussion</span>
+                          {aiHostLoading && <span className="text-xs animate-pulse">{lang === "en" ? "Generating..." : "Generating..."}</span>}
                         </div>
                         {aiHostData.analysis && (
                           <div className="space-y-2">
                             {aiHostData.analysis.split('\n').filter((line: string) => line.trim()).slice(0, 4).map((line: string, i: number) => {
-                              const isMale = line.match(/^(阿傑|Jack|阿傑:|Jack:)/);
-                              const isFemale = line.match(/^(小婷|Emma|小婷:|Emma:)/);
+                              const isMale = line.match(/^(Jack|Analyst A|Jack:|Analyst A:)/i);
+                              const isFemale = line.match(/^(Emma|Analyst B|Emma:|Analyst B:)/i);
                               const isHost = isMale || isFemale;
-                              const speaker = isMale ? "阿傑" : isFemale ? "小婷" : "";
-                              const text = line.replace(/^(阿傑|Jack|小婷|Emma)[：:]\s*/, "");
+                              const speaker = isMale ? "Jack" : isFemale ? "Emma" : "";
+                              const text = line.replace(/^(Jack|Emma|Analyst A|Analyst B)[：:]?\s*/i, "");
                               return (
                                 <div key={i} className={`flex items-start gap-2 ${!isHost ? "ml-4" : ""}`}>
                                   {isHost && <span className={`text-xs font-bold w-8 ${isMale ? "text-blue-400" : "text-pink-400"}`}>{speaker}</span>}
@@ -1509,7 +1509,7 @@ export default function NewsPage() {
                           </div>
                         )}
                         {aiHostData.isDemo && (
-                          <p className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"} italic`}>AI 分析 Demo — 請配置 OPENAI_API_KEY</p>
+                          <p className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"} italic`}>AI Analysis Demo — 請配置 OPENAI_API_KEY</p>
                         )}
                       </div>
                     )}
@@ -1614,10 +1614,10 @@ export default function NewsPage() {
                         </span>
                       )}
                       {item.translated && (
-                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">✓ 已翻譯</span>
+                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">✓ Translated</span>
                       )}
                       {item.translationError && (
-                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400">⚠ 翻譯失敗</span>
+                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400">⚠ Translation failed</span>
                       )}
                     </div>
 
@@ -1659,7 +1659,7 @@ export default function NewsPage() {
         </div>
         <p className="text-base mb-3">NewsFlow · AI-Powered Global News © 2026</p>
         <p className="text-xs text-gray-600 dark:text-gray-500 max-w-2xl mx-auto px-4">
-          ⚠️ 版權聲明：本網站僅使用 AI 摘要新聞要點，所有新聞標題、連結及圖片版權歸各原始來源所有。我們不複製完整內容，僅供信息聚合用途。
+          ⚠️ 版權聲明：本網站僅使用 AI Summary新聞要點，所有新聞標題、連結及圖片版權歸各原始來源所有。我們不複製完整內容，僅供信息聚合用途。
         </p>
       </footer>
 
