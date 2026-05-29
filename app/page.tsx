@@ -805,6 +805,15 @@ export default function NewsPage() {
         </div>
       </header>
 
+      {/* Travel Blog Banner */}
+      <Link href="/blog" className="block w-full">
+        <img 
+          src="/images/travel-banner.jpg" 
+          alt="NewsFlow Travel Blog" 
+          className="w-full h-auto rounded-2xl shadow-2xl hover:opacity-90 transition"
+        />
+      </Link>
+
       {/* Hero Banner - NEW */}
       <div className={`w-full overflow-hidden ${darkMode ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 via-white to-purple-50"}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
