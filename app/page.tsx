@@ -96,6 +96,7 @@ const EDITOR_PICKS = {
         title: "比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析",
         category: "加密貨幣",
         emoji: "₿",
+        image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80",
         excerpt: "比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。本文深入探討ETF獲批對機構入場、流動性結構、以太坊生態、以及個人投資者的長遠影響。",
         readTime: 8,
         link: "/editorial/bitcoin-etf-deep-analysis",
@@ -106,6 +107,7 @@ const EDITOR_PICKS = {
         title: "AI 翻譯新聞的倫理邊界：我們如何在使用技術便利與保護原創價值之間取得平衡？",
         category: "科技評論",
         emoji: "🤖",
+        image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
         excerpt: "當AI能夠在幾秒鐘內將一篇外語新聞翻譯成十幾種語言時，新聞的本質是否正在被稀釋？本文從編輯政策的角度出發，探討AI輔助翻譯的倫理邊界，以及如何在技術便利與新聞原創價值之間取得平衡。",
         readTime: 6,
         link: "/editorial/ai-translation-ethics",
@@ -113,9 +115,10 @@ const EDITOR_PICKS = {
       },
       {
         id: "ep-3",
-        title: "全球央行數字貨幣競賽：CBDC時代的貨幣主权與隱私反思",
+        title: "全球央行數字貨幣競賽：CBDC時代的貨幣主權與隱私反思",
         category: "財經深度",
         emoji: "💰",
+        image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&q=80",
         excerpt: "從中國的數字人民幣到歐洲的數字歐元，全球各國央行正在加速探索數字貨幣的可能性。這場看不見的競賽不僅關乎貨幣政策的未來，更涉及金融隱私、資金流向監控、以及國家主權的深層次議題。",
         readTime: 10,
         link: "/editorial/cbdc-global-race",
@@ -126,27 +129,30 @@ const EDITOR_PICKS = {
         title: "穩定幣大戰：USDT/USDC/USDJ誰能笑到最後？",
         category: "加密貨幣",
         emoji: "🪙",
-        excerpt: "當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場沒有硝煙的戰爭將如何改變我們的貨幣體系？三大玩家各自嘅優勢同隱憂，一次過拆解。",
+        image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&q=80",
+        excerpt: "當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場沒有硝煙的戰爭將如何改變我們的貨幣體系？三大玩家各自的優勢與隱憂，一次過拆解。",
         readTime: 10,
         link: "/editorial/stablecoin-war",
         tag: "深度分析"
       },
       {
         id: "ep-5",
-        title: "AI 搶工潮：呢個時代我哋點解自救？",
+        title: "AI 搶工潮：這個時代我們如何自救？",
         category: "科技評論",
         emoji: "🤖",
-        excerpt: "當ChatGPT、Midjourney、Claude改變晒遊戲規則，打工仔、freelancer、創業者要點算？從翻譯員、設計師到客服，邊個最受威脅？又邊個最難被取代？",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+        excerpt: "當ChatGPT、Midjourney、Claude改變了遊戲規則，打工仔、freelancer、創業者要怎麼辦？從翻譯員、設計師到客服，誰最受威脅？又誰最難被取代？",
         readTime: 12,
         link: "/editorial/ai-job-revolution",
         tag: "編輯觀點"
       },
       {
         id: "ep-6",
-        title: "Web3 寒冬：NFT係咪已經玩完？",
+        title: "Web3 寒冬：NFT是否已經完結？",
         category: "區塊鏈",
         emoji: "🌐",
-        excerpt: "從2021年嘅瘋狂炒賣到而家一地眼鏡碎，NFT市場究竟發生咗乜嘢？我哋可以從中學到啲乜？一個曾經相信呢個願景嘅人嘅反思。",
+        image: "https://images.unsplash.com/photo-1639762681485-074b7f2ba0d0?w=800&q=80",
+        excerpt: "從2021年的瘋狂炒賣到現在一地眼鏡碎，NFT市場究竟發生了什麼？我們可以從中學到什麼？一個曾經相信這個願景的人的反思。",
         readTime: 9,
         link: "/editorial/web3-nft-winter",
         tag: "獨家評論"
@@ -154,8 +160,8 @@ const EDITOR_PICKS = {
     ]
   },
   "zh-CN": {
-    sectionTitle: "📝 编辑精选",
-    sectionSubtitle: "深度原创分析",
+    sectionTitle: "📝 Editor's Pick",
+    sectionSubtitle: "Original Analysis",
     readTime: "阅读时间",
     minutes: "分钟",
     articles: [
@@ -1075,40 +1081,44 @@ export default function NewsPage() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Editorial Cover Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {ep.articles.map((article) => (
                 <a 
                   key={article.id}
                   href={article.link}
-                  className={`block p-5 rounded-2xl transition-all duration-200 hover:scale-[1.02] hover:shadow-xl group ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
+                  className={`block rounded-2xl overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:shadow-xl group ${darkMode ? "bg-gray-800 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg">{article.emoji}</span>
-                      <span className={`text-xs font-medium ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.category}</span>
+                  {article.image && (
+                    <div className="aspect-video bg-gradient-to-br from-amber-900/20 to-gray-900/40 relative overflow-hidden">
+                      <img src={article.image} alt={article.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
-                    <span className={`text-[10px] px-2 py-1 rounded-full font-semibold ${darkMode ? "bg-amber-500/20 text-amber-400" : "bg-amber-50 text-amber-600"}`}>{article.tag}</span>
-                  </div>
-                  <h3 className={`text-base font-bold leading-snug mb-3 group-hover:text-amber-400 transition-colors ${darkMode ? "text-gray-100" : "text-gray-800"}`}>{article.title}</h3>
-                  <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.excerpt}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-amber-500 text-sm font-semibold group-hover:underline">{lang === "en" ? "Read More →" : "閱讀更多 →"}</span>
-                    <span className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{ep.readTime} {article.readTime} {ep.minutes}</span>
+                  )}
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">{article.emoji}</span>
+                        <span className={`text-xs font-medium ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.category}</span>
+                      </div>
+                      <span className={`text-[10px] px-2 py-1 rounded-full font-semibold ${darkMode ? "bg-amber-500/20 text-amber-400" : "bg-amber-50 text-amber-600"}`}>{article.tag}</span>
+                    </div>
+                    <h3 className={`text-base font-bold leading-snug mb-3 group-hover:text-amber-400 transition-colors ${darkMode ? "text-gray-100" : "text-gray-800"}`}>{article.title}</h3>
+                    <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-amber-500 text-sm font-semibold group-hover:underline">{lang === "en" ? "Read More →" : "閱讀更多 →"}</span>
+                      <span className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{ep.readTime} {article.readTime} {ep.minutes}</span>
+                    </div>
                   </div>
                 </a>
               ))}
             </div>
 
-            <div className={`mt-6 p-4 rounded-xl border ${darkMode ? "bg-amber-500/10 border-amber-500/30" : "bg-amber-50 border-amber-200"}`}>
-              <div className="flex items-start gap-3">
-                <div className="mt-0.5"><Pen size={16} className="text-amber-500" /></div>
-                <div>
-                  <p className={`text-sm font-semibold mb-1 ${darkMode ? "text-amber-400" : "text-amber-700"}`}>{lang === "en" ? "AI Content Disclosure" : "AI 內容披露"}</p>
-                  <p className={`text-xs leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                    {lang === "en" ? "NewsFlow uses AI to translate and summarize news. All editorial content labeled Editor's Pick is original analysis by our team. All news copyrights belong to respective authors." : "NewsFlow 使用 AI 翻譯和摘要新聞。所有標記為「Editor's Pick」的原創分析均由我們團隊撰寫。新聞版權歸各有關作者所有。"}
-                  </p>
-                </div>
-              </div>
+            {/* View All Button */}
+            <div className="mt-6 text-center">
+              <a href="/editorial" className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${darkMode ? "bg-amber-500/20 text-amber-400 hover:bg-amber-500/30" : "bg-amber-50 text-amber-600 hover:bg-amber-100"}`}>
+                {lang === "en" ? "View All Editorial Articles →" : "查看所有Editor's Pick文章 →"}
+              </a>
             </div>
           </section>
         );
