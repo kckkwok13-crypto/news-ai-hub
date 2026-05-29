@@ -807,11 +807,20 @@ export default function NewsPage() {
 
       {/* Travel Blog Banner */}
       <Link href="/blog" className="block w-full">
-        <img 
-          src="/images/travel-banner.jpg" 
-          alt="NewsFlow Travel Blog" 
-          className="w-full h-auto rounded-2xl shadow-2xl hover:opacity-90 transition"
-        />
+        <div className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden shadow-2xl">
+          <img 
+            src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80" 
+            alt="NewsFlow Travel Blog" 
+            className="w-full h-full object-cover hover:opacity-90 transition"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6">
+            <div className="text-2xl md:text-3xl mb-1">✈️ NewsFlow Travel Blog</div>
+            <p className="text-sm md:text-base text-white/90 mb-3">用雙腳探索世界，用相機記錄每一個難忘瞬間 🌍</p>
+            <span className="inline-block w-fit px-4 py-1.5 bg-green-500 text-white text-sm font-medium rounded-full hover:bg-green-600 transition">
+              📖 閱讀最新文章
+            </span>
+          </div>
+        </div>
       </Link>
 
       {/* Hero Banner - NEW */}
