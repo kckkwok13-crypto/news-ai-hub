@@ -755,8 +755,8 @@ export default function NewsPage() {
               <Link href="/analytics" className={`px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-purple-600 hover:bg-purple-500 text-white" : "bg-purple-500 hover:bg-purple-600 text-white"}`}>
                 📊 分析
               </Link>
-              <Link href="/blog" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-teal-600 to-emerald-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
-                <BookOpen size={16} /> Blog
+              <Link href="/travel-blog" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-teal-600 to-emerald-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                <BookOpen size={16} /> 博客
               </Link>
               <div className="relative">
                 <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
