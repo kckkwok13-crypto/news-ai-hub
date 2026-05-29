@@ -3,8 +3,8 @@ export const generateMetadata = () => {
     title: "全球央行數字貨幣競賽：CBDC時代的貨幣主權與隱私反思",
     description: "從數字人民幣到數字歐元，全球各國央行正在加速探索數字貨幣的可能性。",
     openGraph: {
-      title: "全球CBDC競賽：你的錢將會點樣？",
-      description: "央行數字貨幣唔只係科技，仲關乎privacy同埋你對政府嘅信任。",
+      title: "全球CBDC競賽：貨幣主權與隱私",
+      description: "央行數字貨幣不只涉及科技，還關乎隱私及對政府的信任。",
     },
   };
 };
@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-12">
       <article className="prose prose-lg max-w-none">
-        <p className="text-sm text-gray-500">📝 獨家評論 · 10分鐘閱讀</p>
+        <p className="text-sm text-gray-500">Editor's Pick · 10 min read</p>
 
         <h1 className="text-3xl font-bold mt-4 mb-6">全球央行數字貨幣競賽：CBDC時代的貨幣主權與隱私反思</h1>
 

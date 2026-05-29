@@ -1,10 +1,10 @@
 export const generateMetadata = () => {
   return {
-    title: "新聞App嘅AI分析功能：兩個人 VS 一個AI，你信邊個？",
-    description: "客観分析係乜？以半導體超級週期新聞為例，拆解AI摘要功能嘅局限同可能性。",
+    title: "新聞App的AI分析功能：兩個人 VS 一個AI，你信哪個？",
+    description: "客觀分析是什麼？以半導體超級週期新聞為例，拆解AI摘要功能的局限與可能性。",
     openGraph: {
-      title: "AI分析功能：一個認真嘅問題",
-      description: "當新聞App多咗個AI分析按鈕，佢究竟幫到你定害咗你？",
+      title: "AI分析功能：一個認真的問題",
+      description: "當新聞App多了AI分析按鈕，它究竟幫到你還是害了你？",
     },
   };
 };
@@ -13,9 +13,9 @@ export default function Page() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-12">
       <article className="prose prose-lg max-w-none">
-        <p className="text-sm text-gray-500">💬 吹水分享 · 8分鐘閱讀</p>
+        <p className="text-sm text-gray-500">Editor's Pick · 8 min read</p>
 
-        <h1 className="text-3xl font-bold mt-4 mb-6">新聞App嘅AI分析功能：両個人 VS 一個AI，你信邊個？</h1>
+        <h1 className="text-3xl font-bold mt-4 mb-6">新聞App的AI分析功能：兩個人 VS 一個AI，你信哪個？</h1>
 
         <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
           <p className="text-blue-800 text-sm">

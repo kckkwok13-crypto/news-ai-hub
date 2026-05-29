@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Web3 寒冬：NFT係咪已經玩完？',
-  description: '從2021年嘅瘋狂炒賣到而家一地眼鏡碎，NFT市場究竟發生咗乜嘢？我哋可以從中學到啲乜？一個曾經相信呢個願景嘅人嘅反思。',
+  title: 'Web3 寒冬：NFT是否已經完結？',
+  description: '從2021年的瘋狂炒賣到現在一地眼鏡碎，NFT市場究竟發生了什麼？我們可以從中學到什麼？一個曾經相信這個願景的人的反思。',
 }
 
 export default function Web3NFTWinter() {
@@ -13,11 +13,11 @@ export default function Web3NFTWinter() {
         <div className="mb-8 pb-8 border-b border-gray-200">
           <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
             <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium">區塊鏈</span>
-            <span>閱讀時間：約 9 分鐘</span>
-            <span>2026年5月</span>
+            <span>Reading time: 9 min</span>
+            <span>May 2026</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Web3 寒冬：NFT係咪已經玩完？
+            Web3 寒冬：NFT是否已經完結？
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
             坦白講，寫呢篇文對我嚟講有啲難。因為我曾經真心相信過NFT可以改變世界。

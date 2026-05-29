@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '穩定幣大戰：USDT/USDC/USDJ誰能笑到最後？',
-  description: '當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場沒有硝煙的戰爭將如何改變我們的貨幣體系？三大玩家各自嘅優勢同隱憂，一次過拆解。',
+  description: '當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場沒有硝煙的戰爭將如何改變我們的貨幣體系？三大玩家各自的優勢與隱憂，一次過拆解。',
 }
 
 export default function StablecoinWar() {
@@ -13,8 +13,8 @@ export default function StablecoinWar() {
         <div className="mb-8 pb-8 border-b border-gray-200">
           <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
             <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">加密貨幣</span>
-            <span>閱讀時間：約 10 分鐘</span>
-            <span>2026年5月</span>
+            <span>Reading time: 10 min</span>
+            <span>May 2026</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             穩定幣大戰：USDT/USDC/USDJ誰能笑到最後？

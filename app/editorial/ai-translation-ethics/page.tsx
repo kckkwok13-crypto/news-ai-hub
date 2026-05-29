@@ -1,15 +1,15 @@
-export const generateMetadata = () => {
-  return {
-    title: 'AI 翻譯新聞的倫理邊界',
-    description: '當AI能夠在數秒內將一篇英文新聞翻譯成繁體中文，新聞的本質是否正在被稀釋？本文從編輯政策的角度出發，探討AI輔助翻譯的倫理邊界。',
-  }
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'AI 翻譯新聞的倫理邊界',
+  description: '當AI能夠在數秒內將一篇英文新聞翻譯成繁體中文，新聞的本質是否正在被稀釋？本文從編輯政策的角度出發，探討AI輔助翻譯的倫理邊界。',
 }
 
 export default function Page() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-12">
       <article className="prose prose-lg max-w-none">
-        <p className="text-sm text-gray-500">📝 編輯精選 · 7分鐘閱讀</p>
+        <p className="text-sm text-gray-500">Editor's Pick · 7 min read</p>
         
         <h1 className="text-3xl font-bold mt-4 mb-6">AI 翻譯新聞的倫理邊界：我們如何在使用技術便利與保護原創價值之間取得平衡？</h1>
         

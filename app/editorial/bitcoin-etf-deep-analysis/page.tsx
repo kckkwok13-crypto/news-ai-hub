@@ -1,15 +1,15 @@
-export const generateMetadata = () => {
-  return {
-    title: '比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析',
-    description: '比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。',
-  }
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: '比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析',
+  description: '比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。',
 }
 
 export default function Page() {
   return (
     <main className="max-w-3xl mx-auto px-4 py-12">
       <article className="prose prose-lg max-w-none">
-        <p className="text-sm text-gray-500">📝 編輯精選 · 8分鐘閱讀</p>
+        <p className="text-sm text-gray-500">Editor's Pick · 8 min read</p>
         
         <h1 className="text-3xl font-bold mt-4 mb-6">比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析</h1>
         

@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '深度原創分析 - NewsKing',
-  description: '專業編輯團隊原創分析，涵蓋科技、金融、AI、区塊鏈等領域的深度報道',
+  title: 'Original Analysis - NewsKing',
+  description: 'Professional editorial team original analysis covering technology, finance, AI, blockchain and other fields.',
 }
 
 const EDITORIAL_ARTICLES = [
@@ -31,7 +31,7 @@ const EDITORIAL_ARTICLES = [
   },
   {
     id: 'twohumans-vs-ai',
-    title: '新聞App嘅AI分析功能：兩個人 VS 一個AI，你信邊個？',
+    title: '新聞App的AI分析功能：兩個人 VS 一個AI，你信哪個？',
     category: '科技評論',
     emoji: '⚖️',
     readTime: 10,
@@ -57,13 +57,13 @@ export default function EditorialPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">📝 深度原創分析</h1>
-        <p className="text-gray-600">專業編輯團隊原創分析，涵蓋科技、金融、AI、区塊鏈等領域的深度報道</p>
+        <h1 className="text-3xl font-bold mb-2">Editor's Pick</h1>
+        <p className="text-gray-600">Professional editorial team original analysis covering technology, finance, AI, blockchain and other fields.</p>
       </div>
 
       {/* Featured Articles */}
       <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-4 text-green-600">精選文章</h2>
+        <h2 className="text-xl font-semibold mb-4 text-green-600">Featured</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {EDITORIAL_ARTICLES.filter(a => a.featured).map((article) => (
             <Link 
@@ -75,7 +75,7 @@ export default function EditorialPage() {
                 <span>{article.emoji}</span>
                 <span>{article.category}</span>
                 <span>·</span>
-                <span>{article.readTime}分鐘閱讀</span>
+                <span>{article.readTime} min read</span>
               </div>
               <h3 className="text-lg font-semibold mb-2">{article.title}</h3>
               <p className="text-gray-600 text-sm">{article.excerpt}</p>
@@ -86,7 +86,7 @@ export default function EditorialPage() {
 
       {/* All Articles */}
       <section>
-        <h2 className="text-xl font-semibold mb-4 text-gray-700">全部文章</h2>
+        <h2 className="text-xl font-semibold mb-4 text-gray-700">All Articles</h2>
         <div className="space-y-3">
           {EDITORIAL_ARTICLES.map((article) => (
             <Link 

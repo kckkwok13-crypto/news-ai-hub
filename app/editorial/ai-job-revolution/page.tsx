@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI 搶工潮：呢個時代我哋點解自救？',
-  description: '當ChatGPT、Midjourney、Claude改變晒遊戲規則，打工仔、freelancer、創業者要點算？從翻譯員、設計師到客服，邊個最受威脅？又邊個最難被取代？',
+  title: 'AI 搶工潮：這個時代我們如何自救？',
+  description: '當ChatGPT、Midjourney、Claude改變了遊戲規則，打工族、freelancer、創業者要怎麼辦？從翻譯員、設計師到客服，誰最受威脅？又誰最難被取代？',
 }
 
 export default function AIJobRevolution() {
@@ -13,11 +13,11 @@ export default function AIJobRevolution() {
         <div className="mb-8 pb-8 border-b border-gray-200">
           <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
             <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">科技評論</span>
-            <span>閱讀時間：約 12 分鐘</span>
-            <span>2026年5月</span>
+            <span>Reading time: 12 min</span>
+            <span>May 2026</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            AI 搶工潮：呢個時代我哋點解自救？
+            AI 搶工潮：這個時代我們如何自救？
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
             老實講，寫呢篇文嗰陣，我自己都有些少「生存焦慮」。如果你都係，唔好怕，你唔係我一個人。
