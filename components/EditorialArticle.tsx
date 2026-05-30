@@ -67,7 +67,7 @@ export default function EditorialArticle({ id, image, date, readTime, emoji, tra
       <section className="relative pt-16 h-[60vh] min-h-[400px] overflow-hidden">
         <div className="absolute inset-0">
           <img src={image} className="w-full h-full object-cover" alt={content.title} />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/30 to-transparent" />
         </div>
         
         <div className="relative h-full max-w-4xl mx-auto px-6 flex flex-col justify-end pb-12">
