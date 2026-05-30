@@ -156,6 +156,160 @@ const EDITOR_PICKS = {
         readTime: 9,
         link: "/editorial/web3-nft-winter",
         tag: "獨家評論"
+      },
+      {
+        id: "ep-7",
+        title: "DeFi深度指南：去中心化金融如何重塑傳統銀行業務",
+        category: "DeFi",
+        emoji: "🏦",
+        excerpt: "從借貸協議到去中心化交易所，DeFi正在顛覆我們對金融服務的認知。本指南深入探討DeFi的運作原理、風險與機遇。",
+        readTime: 12,
+        link: "/editorial/decentralized-finance-guide",
+        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=225&fit=crop",
+        tag: "Deep Dive"
+      },
+      {
+        id: "ep-8",
+        title: "AI圖像生成大戰：Midjourney、DALL-E、Stable Diffusion誰稱霸",
+        category: "AI",
+        emoji: "🎨",
+        excerpt: "AI生成藝術正以驚人速度發展，從NFT炒作到商業應用，這場創意革命將如何影響設計行業？",
+        readTime: 8,
+        link: "/editorial/ai-image-generators",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=225&fit=crop",
+        tag: "Tech"
+      },
+      {
+        id: "ep-9",
+        title: "Web3遊戲的未來：Play-to-Earn是否只是短暫熱潮？",
+        category: "Web3",
+        emoji: "🎮",
+        excerpt: "從Axie Infinity到StepN，區塊鏈遊戲經歷了大起大落。讓我們探討這種新商業模式的可持續性。",
+        readTime: 10,
+        link: "/editorial/web3-gaming-future",
+        image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=225&fit=crop",
+        tag: "Analysis"
+      },
+      {
+        id: "ep-10",
+        title: "加密貨幣熊市求生指南：如何在低潮期中保存實力",
+        category: "Crypto",
+        emoji: "₿",
+        excerpt: "當市場暴跌90%，散戶投資者如何自處？過來人分享熊市中的心理調整與策略部署。",
+        readTime: 9,
+        link: "/editorial/crypto-bear-market-survival",
+        image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=225&fit=crop",
+        tag: "Strategy"
+      },
+      {
+        id: "ep-11",
+        title: "中國科技監管風暴：平台經濟整頓的深層邏輯",
+        category: "Macro",
+        emoji: "🏛️",
+        excerpt: "從螞蟻集團IPO叫停到滴滴出行被查處，這場監管風暴的背後動機究竟是什麼？",
+        readTime: 11,
+        link: "/editorial/china-tech-crackdown",
+        image: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=400&h=225&fit=crop",
+        tag: "Analysis"
+      },
+      {
+        id: "ep-12",
+        title: "電動車大決戰：Tesla、比亞迪、傳統車廠的三國演義",
+        category: "EV",
+        emoji: "🚗",
+        excerpt: "全球電動車市場正在經歷前所未有的競爭格局轉變，誰能在這場馬拉松中最終勝出？",
+        readTime: 10,
+        link: "/editorial/ev-market-analysis",
+        image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=400&h=225&fit=crop",
+        tag: "Industry"
+      },
+      {
+        id: "ep-13",
+        title: "CBDC與隱私之爭：數字人民幣將如何影響個人自由",
+        category: "CBDC",
+        emoji: "🏛️",
+        excerpt: "各國央行數字貨幣正在加速推進，這對我們的金融隱私和經濟自由意味著什麼？",
+        readTime: 10,
+        link: "/editorial/cbdc-privacy-debate",
+        image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=225&fit=crop",
+        tag: "Deep Dive"
+      },
+      {
+        id: "ep-14",
+        title: "AI醫療革命：人工智能將如何改變你看醫生的方式",
+        category: "AI",
+        emoji: "🏥",
+        excerpt: "從疾病診斷到藥物研發，AI正在顛覆傳統醫療產業。這場革命將如何影響我們的健康未來？",
+        readTime: 9,
+        link: "/editorial/ai-healthcare-revolution",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=225&fit=crop",
+        tag: "Future"
+      },
+      {
+        id: "ep-15",
+        title: "穩定幣監管困局：Tether、USDC如何在夾縫中求存",
+        category: "Crypto",
+        emoji: "🪙",
+        excerpt: "當各國政府開始收緊穩定幣監管，最大的兩個美元穩定幣將如何應對這場風暴？",
+        readTime: 8,
+        link: "/editorial/stablecoin-regulation",
+        image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=225&fit=crop",
+        tag: "Regulation"
+      },
+      {
+        id: "ep-16",
+        title: "區塊鏈超越加密貨幣：供應鏈管理、政務應用、身份認證的新可能",
+        category: "Blockchain",
+        emoji: "⛓️",
+        excerpt: "區塊鏈技術的應用場景遠超加密貨幣，從食品安全到土地登記，其革命性潛力正在逐步展現。",
+        readTime: 11,
+        link: "/editorial/blockchain-beyond-crypto",
+        image: "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&h=225&fit=crop",
+        tag: "Deep Dive"
+      },
+      {
+        id: "ep-17",
+        title: "量子計算威脅：加密貨幣的末日是否即將到來？",
+        category: "Crypto",
+        emoji: "🔐",
+        excerpt: "量子計算機的快速發展對現有加密技術構成了潛在威脅，加密貨幣行業是否需要提前做好準備？",
+        readTime: 10,
+        link: "/editorial/quantum-computing-crypto",
+        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=225&fit=crop",
+        tag: "Security"
+      },
+      {
+        id: "ep-18",
+        title: "數字人民幣元年：e-CNY普及背後的機遇與隱憂",
+        category: "CBDC",
+        emoji: "💴",
+        excerpt: "中國數字人民幣試點範圍持續擴大，普通市民的生活將如何被這種新形態貨幣改變？",
+        readTime: 9,
+        link: "/editorial/central-bank-digital-yuan",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=225&fit=crop",
+        tag: "Feature"
+      },
+      {
+        id: "ep-19",
+        title: "AI監管競速：歐美中三地監管策略的較量與影響",
+        category: "AI",
+        emoji: "🤖",
+        excerpt: "人工智能的高速發展已超出各國監管能力範圍，從生成式AI到自動駕駛，監管如何跟上技術腳步？",
+        readTime: 10,
+        link: "/editorial/ai-regulation-race",
+        image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=400&h=225&fit=crop",
+        tag: "Policy"
+      },
+      {
+        id: "ep-20",
+        title: "Web3身份革命：去中心化身份認證如何奪回數據主權",
+        category: "Web3",
+        emoji: "🔑",
+        excerpt: "在Web3時代，你的數字身份將不再由科技巨頭掌控。去中心化身份認證正在開啟一場數據主權革命。",
+        readTime: 9,
+        link: "/editorial/web3-identity-self-sovereign",
+        image: "https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=400&h=225&fit=crop",
+        tag: "Web3"
       }
     ]
   },
@@ -1089,12 +1243,12 @@ export default function NewsPage() {
             </div>
 
             {/* Editorial Cover Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {ep.articles.map((article) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {ep.articles.slice(0, 8).map((article) => (
                 <a 
                   key={article.id}
                   href={article.link}
-                  className={`block rounded-2xl overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:shadow-xl group ${darkMode ? "bg-gray-800 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
+                  className={`block rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:shadow-lg group ${darkMode ? "bg-gray-800 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
                 >
                   {article.image && (
                     <div className="aspect-video bg-gradient-to-br from-amber-900/20 to-gray-900/40 relative overflow-hidden">
@@ -1102,19 +1256,15 @@ export default function NewsPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
                   )}
-                  <div className="p-5">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg">{article.emoji}</span>
-                        <span className={`text-xs font-medium ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.category}</span>
-                      </div>
-                      <span className={`text-[10px] px-2 py-1 rounded-full font-semibold ${darkMode ? "bg-amber-500/20 text-amber-400" : "bg-amber-50 text-amber-600"}`}>{article.tag}</span>
+                  <div className="p-3">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <span className="text-sm">{article.emoji}</span>
+                      <span className={`text-[10px] font-medium ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.category}</span>
                     </div>
-                    <h3 className={`text-base font-bold leading-snug mb-3 group-hover:text-amber-400 transition-colors ${darkMode ? "text-gray-100" : "text-gray-800"}`}>{article.title}</h3>
-                    <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{article.excerpt}</p>
+                    <h3 className={`text-xs font-bold leading-snug mb-2 line-clamp-2 group-hover:text-amber-400 transition-colors ${darkMode ? "text-gray-100" : "text-gray-800"}`}>{article.title}</h3>
                     <div className="flex items-center justify-between">
-                      <span className="text-amber-500 text-sm font-semibold group-hover:underline">{lang === "en" ? "Read More →" : "閱讀更多 →"}</span>
-                      <span className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{ep.readTime} {article.readTime} {ep.minutes}</span>
+                      <span className="text-amber-500 text-[10px] font-semibold">{article.readTime} min</span>
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${darkMode ? "bg-amber-500/20 text-amber-400" : "bg-amber-50 text-amber-600"}`}>{article.tag}</span>
                     </div>
                   </div>
                 </a>
