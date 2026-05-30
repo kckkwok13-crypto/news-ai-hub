@@ -68,7 +68,7 @@ const TRANSLATIONS = {
     noFound: "未找到相关文章",
     clear: "清除全部",
     ready: "准备好深入洞察了吗？",
-    ctaDesc: "我们的“编辑精选”系列致力于提供最高质量的原创分析。我们拒绝碎片化信息，坚持深度思考的力量。",
+    ctaDesc: "我们的“精选专栏”系列致力于提供最高质量的原创分析。我们拒绝碎片化信息，坚持深度思考的力量。",
     backHome: "返回主页",
     subscribe: "每周订阅",
     original: "原创专栏"
@@ -86,12 +86,12 @@ const EDITORIAL_ARTICLES = [
     image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000',
     translations: {
       'zh-TW': { title: '比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析', category: '加密貨幣', excerpt: '比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。' },
-      'en': { title: 'AFTER BITCOIN ETF APPROVAL', category: 'Crypto', excerpt: 'The approval of spot Bitcoin ETFs is not just a regulatory victory; it marks the accelerating dissolution of the once insurmountable gap.' },
+      'en': { title: 'After Bitcoin ETF Approval: In-depth Analysis of Structural Changes in the Crypto Market', category: 'Crypto', excerpt: 'The approval of spot Bitcoin ETFs is not just a regulatory victory; it marks the accelerating dissolution of the once insurmountable gap between traditional finance and crypto markets.' },
       'zh-CN': { title: '比特币ETF获批后：加密货币市场结构性改变的深度分析', category: '加密货币', excerpt: '比特币现货ETF的批准不仅是监管的胜利，更标志着传统金融与加密市场之间那道曾经不可逾越的鸿沟正在加速消亡。' }
     }
   },
   {
-    id: 'ai-translation',
+    id: 'ai-translation-ethics',
     emoji: '🤖',
     readTime: 9,
     date: '2026-05-25',
@@ -99,13 +99,13 @@ const EDITORIAL_ARTICLES = [
     featured: true,
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
     translations: {
-      'zh-TW': { title: 'AI 翻譯新聞的倫理邊界：平衡技術與原創', category: '科技評論', excerpt: '當AI能夠在數秒內將一篇英文新聞翻譯成繁體中文，新聞的本質是否正在被稀釋？' },
-      'en': { title: 'AI TRANSLATION ETHICS', category: 'Tech Opinion', excerpt: 'As AI translates news in seconds, is the essence of journalism being diluted? Exploring the ethical boundaries.' },
-      'zh-CN': { title: 'AI 翻译新闻的伦理边界', category: '科技评论', excerpt: '当AI能够在数秒内将一篇英文新闻翻译成简体中文，新闻的本质是否正在被稀释？' }
+      'zh-TW': { title: 'AI 翻譯新聞的倫理邊界：如何在技術便利與保護原創價值之間取得平衡？', category: '科技評論', excerpt: '當AI能夠在數秒內將一篇英文新聞翻譯成繁體中文，新聞的本質是否正在被稀釋？本文從編輯政策角度探討AI輔助翻譯的倫理邊界。' },
+      'en': { title: 'Ethical Boundaries of AI News Translation: Balancing Tech Convenience and Original Value', category: 'Tech Opinion', excerpt: 'When AI can translate English news into Traditional Chinese in seconds, is the essence of journalism being diluted? This article explores ethical boundaries.' },
+      'zh-CN': { title: 'AI 翻译 news的伦理边界：如何在技术便利与保护原创价值之间取得平衡？', category: '科技评论', excerpt: '当AI能够在数秒内将一篇英文新闻翻译成简体中文，新闻的本质是否正在被稀释？本文从编辑政策角度探讨AI辅助翻译的伦理边界。' }
     }
   },
   {
-    id: 'twohumans-ai',
+    id: 'twohumans-vs-ai',
     emoji: '⚖️',
     readTime: 11,
     date: '2026-05-20',
@@ -113,13 +113,13 @@ const EDITORIAL_ARTICLES = [
     featured: true,
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000',
     translations: {
-      'zh-TW': { title: '新聞App的AI分析功能：人與算法的博弈', category: '科技評論', excerpt: '當演算法可以瞬間總結全球新聞，「人性」與「效率」之間的取捨，究竟誰更能代表真相？' },
-      'en': { title: 'TWOHUMANS VS AI ANALYSIS', category: 'Tech Opinion', excerpt: 'When algorithms can instantly summarize global news, who represents the truth: humans or AI?' },
-      'zh-CN': { title: '新闻App的AI分析功能', category: '科技评论', excerpt: '当算法可以瞬间总结全球新闻，“人性”与“效率”之间的取舍，究竟谁更能代表真相？' }
+      'zh-TW': { title: '新聞App的AI分析功能：兩個不同背景的人 VS 一個AI，你信哪個？', category: '科技評論', excerpt: '當演算法可以瞬間總結全球新聞，「人性」與「效率」之間的取捨，究竟誰更能代表真相？' },
+      'en': { title: 'AI Analysis in News Apps: Two Humans VS One AI, Who Do You Trust?', category: 'Tech Opinion', excerpt: 'When algorithms can instantly summarize global news, which represents the truth better: humanity or efficiency?' },
+      'zh-CN': { title: '新闻App的AI分析功能：两个不同背景的人 VS 一个AI，你信哪个？', category: '科技评论', excerpt: '当算法可以瞬间总结全球新闻，“人性”与“效率”之间的取舍，究竟谁更能代表真相？' }
     }
   },
   {
-    id: 'cbdc-race',
+    id: 'cbdc',
     emoji: '🏦',
     readTime: 10,
     date: '2026-05-15',
@@ -127,15 +127,14 @@ const EDITORIAL_ARTICLES = [
     featured: true,
     image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000',
     translations: {
-      'zh-TW': { title: '全球央行數字貨幣競賽：美元霸權的進化？', category: '金融', excerpt: '各國央行正在加速布局數字貨幣。這場競賽將如何重塑全球金融秩序？' },
-      'en': { title: 'CBDC GLOBAL RACE', category: 'Finance', excerpt: 'Central banks are accelerating digital currency layout. How will this reshape global finance?' },
-      'zh-CN': { title: '全球央行数字货币竞赛', category: '金融', excerpt: '各国央行正在加速布局数字货币。这场竞赛将如何重塑全球金融秩序？' }
+      'zh-TW': { title: '全球央行數字貨幣競賽：美元霸權的終結還是進化？', category: '金融', excerpt: '從中國的數字人民幣到歐洲央行的數字歐元，各國央行正在加速布局數字貨幣。這場競賽將如何重塑全球金融秩序？' },
+      'en': { title: 'Global CBDC Race: The End or Evolution of Dollar Hegemony?', category: 'Finance', excerpt: 'From China\'s e-CNY to the ECB\'s Digital Euro, central banks are racing to deploy digital currencies. How will this reshape the financial order?' },
+      'zh-CN': { title: '全球央行数字货币竞赛：美元霸权的终结还是进化？', category: '金融', excerpt: '从中国的数字人民币到欧洲央行的数字欧元，各国央行正在加速布局数字货币。这场竞赛将如何重塑全球金融秩序？' }
     }
   }
-  // I will add the remaining articles dynamically or keep them consistent with the update script
 ];
 
-// Add the rest from slugs
+// Slugs for remaining articles
 const slugs = [
   'stablecoin-war', 'decentralized-finance-guide', 'ai-image-generators', 'web3-gaming-future', 
   'metaverse-workplace', 'quantum-computing-ai', 'space-tourism-future', 'sustainable-crypto', 
@@ -169,7 +168,7 @@ slugs.forEach((slug, idx) => {
     date: '2026-05-10',
     link: `/editorial/${slug}`,
     featured: false,
-    image: `https://images.unsplash.com/photo-${1451187580459 + idx}?w=800&q=80`,
+    image: `https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=800&q=80`,
     translations: {
       'zh-TW': { title: slug.replace(/-/g, ' ').toUpperCase(), category, excerpt: '深入探討該領域的技術變革與未來商業邏輯。' },
       'en': { title: slug.replace(/-/g, ' ').toUpperCase(), category: 'Deep Dive', excerpt: 'In-depth analysis of technological shifts and future business logic.' },
@@ -184,9 +183,7 @@ export default function EditorialPage() {
   const [activeCategory, setActiveCategory] = useState('全部')
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  useEffect(() => { setMounted(true) }, [])
 
   const t = TRANSLATIONS[lang]
 
@@ -211,28 +208,18 @@ export default function EditorialPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0b] text-gray-100 font-sans selection:bg-amber-500/30 pb-20">
-      {/* Floating Language Selector */}
       <div className="fixed top-6 right-6 z-[100] flex items-center gap-2 p-1.5 bg-black/40 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl">
         {(['zh-TW', 'en', 'zh-CN'] as Lang[]).map((l) => (
-          <button
-            key={l}
-            onClick={() => { setLang(l); setActiveCategory('全部'); }}
-            className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-300 ${lang === l ? 'bg-amber-500 text-black shadow-lg scale-105' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}
-          >
+          <button key={l} onClick={() => { setLang(l); setActiveCategory('全部'); }} className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-300 ${lang === l ? 'bg-amber-500 text-black shadow-lg scale-105' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}>
             {l === 'zh-TW' ? '繁中' : l === 'en' ? 'EN' : '简体'}
           </button>
         ))}
       </div>
 
-      {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0b]/80 to-[#0a0a0b] z-10" />
-          <img 
-            src={featuredArticle?.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000'} 
-            className="w-full h-full object-cover opacity-40 scale-105" 
-            alt="Hero background"
-          />
+          <img src={featuredArticle?.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000'} className="w-full h-full object-cover opacity-40 scale-105" alt="Hero background" />
         </div>
 
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
@@ -240,55 +227,31 @@ export default function EditorialPage() {
             <Sparkles size={14} className="animate-pulse" />
             {t.original}
           </div>
-          <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter text-white uppercase text-balance leading-none">
-            {t.title}
-          </h1>
-          <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-            {t.subtitle}
-          </p>
-          
+          <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter text-white uppercase text-balance leading-none">{t.title}</h1>
+          <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">{t.subtitle}</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <div className="relative w-full md:w-[28rem] group">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-amber-500 transition-colors" size={20} />
-              <input 
-                type="text"
-                placeholder={t.search}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-5 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-amber-500/50 focus:ring-8 focus:ring-amber-500/5 transition-all text-white placeholder-gray-600 text-lg"
-              />
+              <input type="text" placeholder={t.search} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-14 pr-6 py-5 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-amber-500/50 focus:ring-8 focus:ring-amber-500/5 transition-all text-white placeholder-gray-600 text-lg" />
             </div>
           </div>
         </div>
       </section>
 
       <main className="max-w-7xl mx-auto px-6 py-10">
-        {/* Index Classification Bar */}
         <div className="sticky top-20 z-40 mb-16 py-6 bg-[#0a0a0b]/90 backdrop-blur-xl border-y border-white/5 -mx-6 px-6">
           <div className="flex items-center gap-5 overflow-x-auto scrollbar-hide pb-2">
             <div className="flex-shrink-0 flex items-center gap-2 pr-6 border-r border-white/10 text-gray-500">
               <Filter size={18} />
               <span className="text-xs font-bold uppercase tracking-widest">{t.categories}</span>
             </div>
-            <button 
-              onClick={() => setActiveCategory('全部')}
-              className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${activeCategory === '全部' ? 'bg-amber-500 text-black shadow-[0_10px_20_rgba(245,158,11,0.2)] scale-105' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}
-            >
-              {t.all}
-            </button>
+            <button onClick={() => setActiveCategory('全部')} className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${activeCategory === '全部' ? 'bg-amber-500 text-black shadow-[0_10px_20_rgba(245,158,11,0.2)] scale-105' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}>{t.all}</button>
             {categories.map(cat => (
-              <button 
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 ${activeCategory === cat ? 'bg-amber-500 text-black shadow-[0_10px_20_rgba(245,158,11,0.2)] scale-105' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}
-              >
-                {cat}
-              </button>
+              <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 ${activeCategory === cat ? 'bg-amber-500 text-black shadow-[0_10px_20_rgba(245,158,11,0.2)] scale-105' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}>{cat}</button>
             ))}
           </div>
         </div>
 
-        {/* Featured Card */}
         {activeCategory === '全部' && searchQuery === '' && featuredArticle && (
           <div className="mb-24 group">
             <Link href={featuredArticle.link}>
@@ -301,22 +264,15 @@ export default function EditorialPage() {
                     <span className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-white/5 border border-white/5 text-gray-300 uppercase tracking-widest"><Clock size={14} /> {featuredArticle.readTime} {t.readTime}</span>
                     <span className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-white/5 border border-white/5 text-gray-300 uppercase tracking-widest"><Calendar size={14} /> {featuredArticle.date}</span>
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-black text-white mb-6 max-w-4xl leading-[1.1] tracking-tighter group-hover:text-amber-400 transition-colors text-balance">
-                    {featuredArticle.translations[lang].title}
-                  </h2>
-                  <p className="text-gray-400 md:text-xl max-w-2xl line-clamp-2 mb-8 font-light leading-relaxed">
-                    {featuredArticle.translations[lang].excerpt}
-                  </p>
-                  <div className="flex items-center gap-3 text-white text-lg font-black group-hover:gap-5 transition-all">
-                    {t.readFull} <ArrowRight size={24} className="text-amber-500" />
-                  </div>
+                  <h2 className="text-4xl md:text-6xl font-black text-white mb-6 max-w-4xl leading-[1.1] tracking-tighter group-hover:text-amber-400 transition-colors text-balance">{featuredArticle.translations[lang].title}</h2>
+                  <p className="text-gray-400 md:text-xl max-w-2xl line-clamp-2 mb-8 font-light leading-relaxed">{featuredArticle.translations[lang].excerpt}</p>
+                  <div className="flex items-center gap-3 text-white text-lg font-black group-hover:gap-5 transition-all">{t.readFull} <ArrowRight size={24} className="text-amber-500" /></div>
                 </div>
               </div>
             </Link>
           </div>
         )}
 
-        {/* Article Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredArticles.length > 0 ? (
             filteredArticles.map((article) => {
@@ -324,11 +280,7 @@ export default function EditorialPage() {
               return (
                 <article key={article.id} className="group relative flex flex-col h-full bg-[#111112] rounded-[2rem] overflow-hidden border border-white/5 hover:border-amber-500/20 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(245,158,11,0.05)] hover:-translate-y-3">
                   <Link href={article.link} className="block aspect-[16/10] overflow-hidden relative">
-                    <img 
-                      src={article.image || `https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800`} 
-                      alt={trans.title}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
+                    <img src={article.image || `https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800`} alt={trans.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                     <div className="absolute top-6 left-6 z-10">
                       <span className="px-4 py-1.5 rounded-xl bg-black/70 backdrop-blur-xl border border-white/10 text-white text-[10px] font-black tracking-widest uppercase flex items-center gap-2">
                         <Tag size={12} className="text-amber-500" />
@@ -337,22 +289,15 @@ export default function EditorialPage() {
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111112] to-transparent opacity-60" />
                   </Link>
-                  
                   <div className="p-8 flex flex-col flex-1">
                     <div className="flex items-center gap-4 text-[10px] font-bold text-gray-500 mb-6 uppercase tracking-widest">
                       <span className="flex items-center gap-1.5"><Calendar size={12} /> {article.date}</span>
                       <span className="flex items-center gap-1.5"><Clock size={12} /> {article.readTime} {lang === 'en' ? 'MIN' : '分鐘'}</span>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-5 leading-tight group-hover:text-amber-400 transition-colors line-clamp-2">
-                      {trans.title}
-                    </h3>
-                    <p className="text-gray-500 text-base leading-relaxed mb-8 line-clamp-3 font-light">
-                      {trans.excerpt}
-                    </p>
+                    <h3 className="text-2xl font-bold text-white mb-5 leading-tight group-hover:text-amber-400 transition-colors line-clamp-2">{trans.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-8 line-clamp-3 font-light">{trans.excerpt}</p>
                     <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                      <Link href={article.link} className="text-xs font-black text-white uppercase tracking-[0.2em] flex items-center gap-2 group-hover:gap-3 transition-all">
-                        {t.readMore} <ChevronRight size={18} className="text-amber-500" />
-                      </Link>
+                      <Link href={article.link} className="text-xs font-black text-white uppercase tracking-[0.2em] flex items-center gap-2 group-hover:gap-3 transition-all">{t.readMore} <ChevronRight size={18} className="text-amber-500" /></Link>
                       <span className="text-3xl filter grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500">{article.emoji}</span>
                     </div>
                   </div>
@@ -361,61 +306,33 @@ export default function EditorialPage() {
             })
           ) : (
             <div className="col-span-full py-32 text-center">
-              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/5 mb-8 border border-white/5">
-                <BookOpen size={48} className="text-gray-700" />
-              </div>
+              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/5 mb-8 border border-white/5"><BookOpen size={48} className="text-gray-700" /></div>
               <h3 className="text-3xl font-black text-white mb-4 tracking-tight">{t.noFound}</h3>
               <p className="text-gray-500 text-lg font-light">Try adjusting your filters or search query.</p>
-              <button 
-                onClick={() => { setActiveCategory('全部'); setSearchQuery(''); }}
-                className="mt-10 px-8 py-3 rounded-xl bg-white text-black font-black uppercase tracking-widest text-xs hover:bg-amber-500 transition-colors"
-              >
-                {t.clear}
-              </button>
+              <button onClick={() => { setActiveCategory('全部'); setSearchQuery(''); }} className="mt-10 px-8 py-3 rounded-xl bg-white text-black font-black uppercase tracking-widest text-xs hover:bg-amber-500 transition-colors">{t.clear}</button>
             </div>
           )}
         </div>
 
-        {/* Bottom CTA */}
         <div className="mt-40 relative rounded-[3rem] overflow-hidden p-1">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 animate-gradient-x" />
           <div className="relative bg-[#0a0a0b] rounded-[2.9rem] p-12 md:p-20 text-center border border-white/5">
             <Sparkles size={48} className="text-amber-500 mx-auto mb-10 animate-bounce" />
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">
-              {t.ready}
-            </h2>
-            <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-              {t.ctaDesc}
-            </p>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">{t.ready}</h2>
+            <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-light leading-relaxed">{t.ctaDesc}</p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <Link href="/" className="px-12 py-5 rounded-2xl bg-amber-500 text-black font-black uppercase tracking-widest text-sm hover:bg-amber-400 transition-all transform hover:scale-105 shadow-[0_20px_40px_rgba(245,158,11,0.3)]">
-                {t.backHome}
-              </Link>
-              <button className="px-12 py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all">
-                {t.subscribe}
-              </button>
+              <Link href="/" className="px-12 py-5 rounded-2xl bg-amber-500 text-black font-black uppercase tracking-widest text-sm hover:bg-amber-400 transition-all transform hover:scale-105 shadow-[0_20px_40px_rgba(245,158,11,0.3)]">{t.backHome}</Link>
+              <button className="px-12 py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all">{t.subscribe}</button>
             </div>
           </div>
         </div>
       </main>
 
       <style jsx global>{`
-        @keyframes gradient-x {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient-x {
-          background-size: 200% 200%;
-          animation: gradient-x 15s ease infinite;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
+        @keyframes gradient-x { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .animate-gradient-x { background-size: 200% 200%; animation: gradient-x 15s ease infinite; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </div>
   )
