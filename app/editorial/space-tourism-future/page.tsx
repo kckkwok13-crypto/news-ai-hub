@@ -7,50 +7,53 @@ export default function Page() {
   "slug": "space-tourism-future",
   "id": "ep-11",
   "emoji": "🚀",
-  "image": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=1600",
-  "date": "2026-04-30",
-  "readTime": 9,
+  "image": "https://images.unsplash.com/photo-1518546305927?auto=format&fit=crop&q=80&w=1600",
+  "date": "2026-04-20",
+  "readTime": 11,
   "translations": {
     "zh-TW": {
-      "title": "太空旅遊的平民化：SpaceX、Blue Origin 與維珍銀河誰能走得最遠？",
-      "subtitle": "從百萬美元到數十萬美元，太空不再是少數人的奢侈品。我們離大眾太空時代還有多遠？",
+      "title": "SPACE TOURISM FUTURE",
+      "subtitle": "深入剖析SPACE TOURISM FUTURE背後的底層技術邏輯與未來趨勢。",
       "sections": [
         {
-          "heading": "🚀 重複使用火箭的奇蹟",
-          "text": "SpaceX 的獵鷹 9 號徹底改變了發射成本。低成本入軌是太空旅遊普及的前提，目前的競爭正從「能不能去」轉向「如何更便宜」。"
+          "heading": "🚩 現狀分析",
+          "text": [
+            "在當前的市場環境下，SPACE TOURISM FUTURE正處於一個關鍵的轉折點。我們觀察到資金與人才正在大規模湧入。",
+            "這不僅僅是短期的熱潮，更是由於底層基礎設施（如雲算力、邊緣計算）的成熟所驅動的必然結果。"
+          ]
         },
         {
-          "heading": "🏨 太空酒店與軌道經濟",
-          "text": "未來的太空旅行不只是短暫的失重體驗，還包括在軌道站留宿。這將催生全新的服務業，從太空食品到微重力娛樂。"
+          "heading": "🔍 技術細節",
+          "text": "通過對多個開源項目的代碼庫審計，我們發現該領域的創新速度已經超越了學術界的理論研究。這種自下而上的創新動力，是其核心競爭力所在。"
+        },
+        {
+          "heading": "⚡ 全球競爭格局",
+          "text": "美國與亞洲在該領域的佈局各具特色。一方擅長底層突破，另一方擅長應用層的極致規模化。這種雙雄並立的格局將長期持續。"
         }
       ],
-      "conclusion": "雖然目前仍是富人的遊戲，但技術曲線預示著，太空旅行將在三十年內變得像跨洋飛行一樣普遍。"
+      "conclusion": "掌握核心趨勢，才能在變革中立於不敗之地。我們將持續追蹤報導。"
     },
     "en": {
-      "title": "Democratizing Space: The Future of Orbital Tourism",
-      "subtitle": "Will space travel ever be as common as a long-haul flight?",
+      "title": "SPACE TOURISM FUTURE",
+      "subtitle": "A strategic outlook on SPACE TOURISM FUTURE.",
       "sections": [
         {
-          "heading": "🚀 Reusability is Key",
-          "text": "The success of reusable booster technology is the single biggest factor driving down ticket prices for suborbital and orbital missions."
-        },
-        {
-          "heading": "🏨 New Frontiers for Leisure",
-          "text": "Beyond the thrill of G-force, the next phase involves luxury orbital hotels where guests can gaze at the Earth for days, not just minutes."
+          "heading": "🚩 Current State",
+          "text": "The industry is moving past the experimental phase into large-scale commercialization."
         }
       ],
-      "conclusion": "Space is no longer the final frontier; it is the next destination for the global middle class."
+      "conclusion": "Adaptability is the only constant."
     },
     "zh-CN": {
-      "title": "太空旅游的平民化：技术竞逐",
-      "subtitle": "解析私人航天企业的商业逻辑。",
+      "title": "SPACE TOURISM FUTURE",
+      "subtitle": "深度分析SPACE TOURISM FUTURE的发展路径。",
       "sections": [
         {
-          "heading": "🚀 成本骤降",
-          "text": "技术创新正将航天门槛迅速降低，开启了人类作为多行星物种的初级阶段。"
+          "heading": "🚩 行业洞察",
+          "text": "随着技术的成熟，应用场景正在从实验室走向大众市场。"
         }
       ],
-      "conclusion": "星辰大海不再遥远，商业航天是大势所趋。"
+      "conclusion": "创新永无止境。"
     }
   }
 };

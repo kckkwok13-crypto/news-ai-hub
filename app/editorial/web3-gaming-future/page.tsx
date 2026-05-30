@@ -12,45 +12,44 @@ export default function Page() {
   "readTime": 11,
   "translations": {
     "zh-TW": {
-      "title": "Web3 遊戲的未來：從「Play-to-Earn」到「Play-and-Own」",
-      "subtitle": "區塊鏈遊戲經歷了暴利炒作與崩潰後，正在回歸遊戲的本質：好玩。",
+      "title": "Web3 遊戲的未來：玩遊戲不再只是消費，而是資產所有權的覺醒",
+      "subtitle": "區塊鏈遊戲經歷了泡沫破裂後，正在尋找「好玩」與「收益」的最佳契合點。",
       "sections": [
         {
-          "heading": "📉 P2E 經濟模型的崩塌",
-          "text": "早期 Web3 遊戲如 Axie Infinity 雖然創造了財富神話，但其本質更像資金盤，一旦新用戶停止增長，代幣價值便會崩潰。"
+          "heading": "📉 從 Play-to-Earn 到 Play-and-Own",
+          "text": [
+            "早期的 Axie Infinity 證實了「打金」模式不可持續。未來的 Web3 遊戲必須首先是一款高品質的遊戲。",
+            "區塊鏈技術的價值應在於保障玩家對虛擬資產（如皮膚、領地）的真正所有權，並允許其在不同遊戲間互通。"
+          ]
         },
         {
-          "heading": "🕹️ 資產所有權的覺醒",
-          "text": "真正具有持久力的 Web3 遊戲專注於賦予玩家對虛擬資產的真正所有權。這種所有權允許資產跨遊戲使用，為玩家創造了長期的經濟價值。"
+          "heading": "🕹️ 遊戲巨頭的布局",
+          "text": "從 Ubisoft 到 Sony，傳統大廠都在謹慎測試 NFT 技術。他們試圖在不破壞遊戲平衡的前提下，引入次級市場交易。"
         }
       ],
-      "conclusion": "Web3 遊戲若想勝出，必須首先是一款好遊戲。區塊鏈應該是背後的技術層，而不是干擾樂趣的機制。"
+      "conclusion": "Web3 遊戲的終局是「隱形的區塊鏈」，讓玩家在無感中享受數位資產的增值。"
     },
     "en": {
-      "title": "The Future of Web3 Gaming: Beyond the Hype",
-      "subtitle": "Why the next generation of blockchain games will focus on ownership over earnings.",
+      "title": "Future of Web3 Gaming",
+      "subtitle": "True ownership and the evolution of play.",
       "sections": [
         {
-          "heading": "📉 The Death of P2E",
-          "text": "The initial Play-to-Earn model was unsustainable. Future games must prioritize engagement and sustainable economies over speculative token yields."
-        },
-        {
-          "heading": "🕹️ True Asset Ownership",
-          "text": "Blockchain allows gamers to truly own their digital swords, skins, and land. This shifts power from massive game studios back to the players."
+          "heading": "📉 Sustainability First",
+          "text": "Future blockchain games will focus on fun over hype, ensuring a circular economy within the virtual world."
         }
       ],
-      "conclusion": "The next GTA or Call of Duty will likely feature invisible blockchain elements for trading, not as a core marketing gimmick."
+      "conclusion": "The next GTA might just be on-chain."
     },
     "zh-CN": {
-      "title": "Web3 游戏的未来：玩游戏的本质",
-      "subtitle": "从投机回归游戏性的行业观察。",
+      "title": "Web3 游戏的未来",
+      "subtitle": "重定义玩家与开发者的关系。",
       "sections": [
         {
           "heading": "🕹️ 资产主权",
-          "text": "区块链技术让玩家真正拥有虚拟资产，不再受限于单一游戏开发商的政策。"
+          "text": "区块链技术让玩家真正拥有虚拟资产，不再受限于单一平台。"
         }
       ],
-      "conclusion": "好玩才是王道，技术应为体验服务。"
+      "conclusion": "游戏性始终是吸引用户的核心动力。"
     }
   }
 };

@@ -13,44 +13,43 @@ export default function Page() {
   "translations": {
     "zh-TW": {
       "title": "全球央行數字貨幣競賽：美元霸權的進化還是挑戰？",
-      "subtitle": "從中國的數字人民幣到歐洲央行的數字歐元，各國央行正在加速布局。這場競賽將如何重塑全球金融秩序與個人隱私？",
+      "subtitle": "數字人民幣 (e-CNY) 與潛在的數字美元，誰將主導未來的全球支付體系？",
       "sections": [
         {
-          "heading": "💰 美元霸權的數字化防禦",
-          "text": "聯準會對數字美元持謹慎態度，但全球其他國家的進度迫使美國重新考慮。數字貨幣不僅僅是支付工具，更是地緣政治的延伸。"
+          "heading": "💳 支付效率的革命",
+          "text": [
+            "CBDC 能夠實現點對點的即時結算，無需通過層層清算銀行。這將極大降低跨國貿易成本。",
+            "然而，這種效率的背後是極致的中心化。央行將掌握每一分錢的流向，這對隱私保護提出了巨大挑戰。"
+          ]
         },
         {
-          "heading": "🕵️ 隱私與監控的平衡",
-          "text": "CBDC 提供了無與倫比的支付效率，但也賦予了政府追蹤每一筆交易的能力。我們在享受便利的同時，是否正在失去最後的一點財務隱私？"
+          "heading": "🌍 地緣政治新邊界",
+          "text": "數字貨幣是軟實力的延伸。領先部署 CBDC 的國家，有望建立新的貿易清算網絡，從而繞過傳統的 SWIFT 系統。"
         }
       ],
-      "conclusion": "CBDC 的競賽已無法回頭。未來的貨幣將是高度可編程、實時且受控的，這需要我們重新定義金錢的主權。"
+      "conclusion": "CBDC 的興起預示著金融主權的重新分配，這不僅是技術賽跑，更是大國實力的較量。"
     },
     "en": {
-      "title": "Global CBDC Race: Evolution or Threat to the Dollar?",
-      "subtitle": "How central bank digital currencies are reshaping international finance and privacy.",
+      "title": "Global CBDC Race",
+      "subtitle": "Sovereignty and strategy in the digital age.",
       "sections": [
         {
-          "heading": "💰 The e-CNY vs Digital Dollar",
-          "text": "China leads the race with e-CNY, aimed at reducing reliance on US-centric settlement systems. The US is now forced to innovate its own dollar infrastructure."
-        },
-        {
-          "heading": "🕵️ Programmable Money",
-          "text": "Imagine money that expires if not spent, or can only be used for specific goods. CBDCs give governments ultimate control over social policy through currency."
+          "heading": "💳 Programmable Money",
+          "text": "The ability to code conditions into currency opens up new avenues for social and economic policy."
         }
       ],
-      "conclusion": "We are witnessing the most significant change in currency since the gold standard was abandoned. The future of money is digital, and political."
+      "conclusion": "The very nature of money is changing forever."
     },
     "zh-CN": {
       "title": "全球央行数字货币竞赛",
       "subtitle": "重塑全球金融秩序的数字浪潮。",
       "sections": [
         {
-          "heading": "💰 地缘政治延伸",
-          "text": "数字货币是国家竞争力的体现，各国央行正加速技术研发以保障货币主权。"
+          "heading": "🌍 国际影响",
+          "text": "数字货币的普及将提升国际结算效率，并对现有货币体系产生深远影响。"
         }
       ],
-      "conclusion": "货币的未来已来，金融效率与隐私保护将是核心议题。"
+      "conclusion": "金融科技正在定义国家竞争的新高地。"
     }
   }
 };

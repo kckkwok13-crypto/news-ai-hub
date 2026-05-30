@@ -12,45 +12,44 @@ export default function Page() {
   "readTime": 10,
   "translations": {
     "zh-TW": {
-      "title": "元宇宙職場：當辦公室搬進虛擬空間，我們的社交與效率會發生什麼？",
-      "subtitle": "遠程辦公 2.0 已經到來。我們是在享受更靈活的生活，還是在數字孤島中迷失？",
+      "title": "元宇宙職場：虛擬辦公室的崛起與人力資源管理的未來",
+      "subtitle": "當同事變成 3D 頭像，我們的社交連結與工作效率會發生什麼變化？",
       "sections": [
         {
-          "heading": "👓 虛擬現場感的崛起",
-          "text": "透過 VR 與 AR 技術，異地同事可以在同一個虛擬辦公室中進行白板討論。這極大改善了 Zoom 帶來的社交疏離感。"
+          "heading": "👓 沉浸式協作",
+          "text": [
+            "VR 與 AR 技術讓遠程辦公不再僅限於平面的 Zoom 會議。在虛擬辦公室中，空間感能顯著提升團隊的歸屬感。",
+            "但同時，虛擬職場也帶來了「全天候監控」的疑慮。員工的一舉一動都可能被數據化，這對私隱邊界提出了挑戰。"
+          ]
         },
         {
-          "heading": "🏢 管理與信任的重塑",
-          "text": "在元宇宙中，傳統的打卡與考勤不再適用。管理將轉向結果導向，同時數據化的行為分析也可能帶來嚴重的員工監控隱憂。"
+          "heading": "🏢 地理限制的消失",
+          "text": "元宇宙讓全球人才庫真正互通。企業可以無縫僱用全球最優秀的人才，而人才也無需為了工作而遷移至昂貴的大城市。"
         }
       ],
-      "conclusion": "元宇宙職場不應是現實的複製品，而應是突破地理限制的全新協作形態。隱私保護將是其普及的最大障礙。"
+      "conclusion": "元宇宙職場是遠程辦公的終極形態，它將徹底改寫「辦公室」的定義。"
     },
     "en": {
-      "title": "The Metaverse Workplace: Remote Work 2.0",
-      "subtitle": "Exploring how VR and AR are transforming global team collaboration.",
+      "title": "Metaverse Workplace",
+      "subtitle": "The 3D transformation of the 9-to-5.",
       "sections": [
         {
           "heading": "👓 Beyond Video Calls",
-          "text": "Virtual environments restore the spontaneous water-cooler moments lost in remote work, fostering creativity and team bonding across continents."
-        },
-        {
-          "heading": "🏢 The Surveillance Risk",
-          "text": "Digital workspaces track every eye movement and keystroke. We must establish clear boundaries to prevent virtual burnout and intrusive monitoring."
+          "text": "Virtual environments restore the spontaneous water-cooler moments lost in remote work."
         }
       ],
-      "conclusion": "A hybrid future is inevitable. The metaverse will be the bridge that makes remote work feel like real presence."
+      "conclusion": "The location of your office is now a coordinate, not a building."
     },
     "zh-CN": {
-      "title": "元宇宙职场：虚拟办公室的兴起",
-      "subtitle": "远程协作的新维度与挑战。",
+      "title": "元宇宙职场",
+      "subtitle": "虚拟协作如何提升跨国团队效率。",
       "sections": [
         {
-          "heading": "👓 交互进化",
-          "text": "沉浸式技术让全球人才可以瞬间在虚拟会议室集结，打破了物理空间的隔阂。"
+          "heading": "🏢 无边界人才",
+          "text": "沉浸式技术让全球人才可以瞬间在同一空间内完成复杂的设计讨论。"
         }
       ],
-      "conclusion": "技术提升效率，但人文关怀不可缺失。"
+      "conclusion": "灵活的工作模式将是未来企业的核心竞争力。"
     }
   }
 };
