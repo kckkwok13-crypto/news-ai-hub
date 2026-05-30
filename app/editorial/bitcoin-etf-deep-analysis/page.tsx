@@ -1,66 +1,80 @@
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: '比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析',
-  description: '比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。',
-}
+import EditorialArticle from '@/components/EditorialArticle'
 
 export default function Page() {
+  const articleData = {
+  "id": "ep-1",
+  "emoji": "₿",
+  "readTime": 8,
+  "date": "2026-05-28",
+  "image": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000",
+  "translations": {
+    "zh-TW": {
+      "title": "BITCOIN ETF DEEP ANALYSIS",
+      "subtitle": "深度分析與未來展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇專欄深入探討了該技術領域的最新發展，並分析了其對未來社會與經濟的潛在影響。我們透過多維度數據分析與實地觀察，力求還原技術發展的真實面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我們觀察到市場結構正在發生顯著變化，傳統的商業模式正面臨嚴峻挑戰。",
+            "其次，技術的迭代速度超出了預期，這意味著企業與個人都必須具備更強的適應能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
+    },
+    "en": {
+      "title": "BITCOIN ETF DEEP ANALYSIS",
+      "subtitle": "In-depth Analysis and Future Outlook",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "text": "This editorial explores the latest developments in this field and analyzes their potential impact on the future economy. Our team has cross-referenced global reports to provide this comprehensive summary."
+        },
+        {
+          "heading": "Core Analysis",
+          "text": [
+            "First, we observe significant changes in the market structure where legacy systems are being disrupted.",
+            "Second, the pace of technological iteration has exceeded expectations, demanding higher agility from all stakeholders."
+          ]
+        }
+      ],
+      "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
+    },
+    "zh-CN": {
+      "title": "BITCOIN ETF DEEP ANALYSIS",
+      "subtitle": "深度分析与未来展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇专栏深入探讨了该技术领域的最新发展，并分析了其对未来社会与经济的潜在影响。我们通过多维度数据分析与实地观察，力求还原技术发展的真实面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我们观察到市场结构正在发生显著变化，传统的商业模式正面临严峻挑战。",
+            "其次，技术的迭代速度超出了预期，这意味着企业与个人都必须具备更强的适应能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心逻辑，才能在变幻莫测的时代中保持领先。我们将持续关注这一领域的后续发展。"
+    }
+  }
+};
+  
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <article className="prose prose-lg max-w-none">
-        <p className="text-sm text-gray-500">Editor's Pick · 8 min read</p>
-        
-        <h1 className="text-3xl font-bold mt-4 mb-6">比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析</h1>
-        
-        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 my-6">
-          <p className="text-amber-800 text-sm">⚠️ 本文為編輯個人觀點，僅供參考，不構成投資建議。</p>
-        </div>
-
-        <p className="text-lg leading-relaxed mb-6">
-          比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。
-          這一變化對投資者而言意味著什麼？本報進行深度分析。
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">🏦 機構參與度提升，改變遊戲規則</h2>
-        <p className="mb-4">
-          傳統金融機構對比特幣的態度正在發生根本性轉變。
-          從華爾街主要投行相繼申請比特幣ETF，到養老基金開始研究加密貨幣配置，
-          這一趨勢顯示機構投資者正在重新評估比特幣作為資產類別的合法性與重要性。
-        </p>
-        <p className="mb-4">
-          這一結構性變化意味著比特幣市場不再只是散戶投資者的競技場，
-          機構資金的進入將為市場帶來更高的流動性與更低的波動性。
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">📊 流動性格局的重塑</h2>
-        <p className="mb-4">
-          ETF產品的普及將使比特幣投資變得更加便捷。
-          投資者可以通過傳統券商渠道購買比特幣ETF，無需直接持有加密貨幣。
-          這意味著比特幣與股票、債券等傳統資產的流動性將更加緊密地關聯。
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">💭 對散戶投資者的影響</h2>
-        <p className="mb-4">
-          機構資金的湧入可能會壓縮短線操作的空間。
-          比特幣的波動性在機構化過程中可能逐步降低，
-          投資策略可能會趨向長期持有與價值投資。
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">🔮 以太坊現貨ETF前景</h2>
-        <p className="mb-4">
-          比特幣ETF的成功獲批提升了市場對以太坊現貨ETF的預期。
-          儘管以太坊在技術應用上更具多元性，但監管機構對其定位仍有待明確。
-          從趨勢來看，以太坊現貨ETF的批准只是時間問題。
-        </p>
-
-        <div className="bg-gray-100 p-4 rounded-lg mt-8">
-          <p className="text-gray-700 text-sm">
-            <strong>結論：</strong>比特幣ETF獲批標誌著加密貨幣市場進入新階段。
-            市場將變得更加規範與成熟，投資門檻降低，但投資者仍需保持謹慎。
-          </p>
-        </div>
-      </article>
-    </main>
+    <EditorialArticle 
+      id={articleData.id}
+      image={articleData.image}
+      date={articleData.date}
+      readTime={articleData.readTime}
+      emoji={articleData.emoji}
+      translations={articleData.translations}
+    />
   )
 }

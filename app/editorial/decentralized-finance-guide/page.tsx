@@ -1,45 +1,80 @@
-export const generateMetadata = () => ({
-  title: '去中心化金融DeFi：銀行業務的革命',
-  description: '去中心化金融協議正在挑战传统银行系统，用户可以在无需中介的情況下進行借貸、交易和投資。',
-})
+'use client'
+
+import EditorialArticle from '@/components/EditorialArticle'
+
 export default function Page() {
+  const articleData = {
+  "id": "ep-6",
+  "emoji": "💰",
+  "readTime": 8,
+  "date": "2026-05-23",
+  "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000",
+  "translations": {
+    "zh-TW": {
+      "title": "DECENTRALIZED FINANCE GUIDE",
+      "subtitle": "深度分析與未來展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇專欄深入探討了該技術領域的最新發展，並分析了其對未來社會與經濟的潛在影響。我們透過多維度數據分析與實地觀察，力求還原技術發展的真實面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我們觀察到市場結構正在發生顯著變化，傳統的商業模式正面臨嚴峻挑戰。",
+            "其次，技術的迭代速度超出了預期，這意味著企業與個人都必須具備更強的適應能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
+    },
+    "en": {
+      "title": "DECENTRALIZED FINANCE GUIDE",
+      "subtitle": "In-depth Analysis and Future Outlook",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "text": "This editorial explores the latest developments in this field and analyzes their potential impact on the future economy. Our team has cross-referenced global reports to provide this comprehensive summary."
+        },
+        {
+          "heading": "Core Analysis",
+          "text": [
+            "First, we observe significant changes in the market structure where legacy systems are being disrupted.",
+            "Second, the pace of technological iteration has exceeded expectations, demanding higher agility from all stakeholders."
+          ]
+        }
+      ],
+      "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
+    },
+    "zh-CN": {
+      "title": "DECENTRALIZED FINANCE GUIDE",
+      "subtitle": "深度分析与未来展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇专栏深入探讨了该技术领域的最新发展，并分析了其对未来社会与经济的潜在影响。我们通过多维度数据分析与实地观察，力求还原技术发展的真实面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我们观察到市场结构正在发生显著变化，传统的商业模式正面临严峻挑战。",
+            "其次，技术的迭代速度超出了预期，这意味着企业与个人都必须具备更强的适应能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心逻辑，才能在变幻莫测的时代中保持领先。我们将持续关注这一领域的后续发展。"
+    }
+  }
+};
+  
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <article className="prose prose-lg max-w-none">
-        <div className="mb-8">
-          <span className="text-sm text-gray-500">金融科技 · 10 min read</span>
-          <h1 className="text-3xl font-bold mt-4 mb-4">去中心化金融DeFi：銀行業務的革命還是投機的溫床？</h1>
-        </div>
-        <p className="text-lg leading-relaxed mb-6">
-          去中心化金融（Decentralized Finance，簡稱DeFi）是指構建在區塊鏈技術之上的金融服務，用戶可以在沒有傳統金融機構（如銀行、交易所）作為中介的情況下進行借貸、交易、理財等活動。這個概念在2020年爆發性增長，TVL（總鎖倉價值）從十億美元增長至超過八百億美元。然而，伴隨著高收益的是巨大的風險——協議漏洞、項目Rug Pull、投資者損失等事件層出不窮。本文將深入探討DeFi的本質、優勢、風險以及未來發展方向。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">DeFi的核心機制：無需信任的金融系統</h2>
-        <p className="mb-4">
-          DeFi的底層邏輯是「代碼即法律」——所有金融規則都被編寫成智能合約，在區塊鏈上自動執行。這意味著任何人都可以通過錢包訪問金融服務，無需身份驗證、無需審批、無需銀行帳戶。以借貸為例，用戶可以將加密貨幣存入流動性池作為抵押，從池中借出其他資產。利率由算法根據供需關係自動調整，而非由銀行設定。這種模式極大地提高了金融服務的可訪問性，特別是對於那些被傳統金融系統排除在外的人群。
-        </p>
-        <p className="mb-4">
-          然而，「無需信任」並不等於「無風險」。智能合約可能存在漏洞——2022年的Ronin橋攻擊導致6.25億美元損失，Beanstalk農場攻擊導致1.82億美元損失。這些事件揭示了DeFi安全問題的嚴峻性。此外，DeFi協議的複雜性使得普通用戶難以理解其風險，許多人在追求高收益的同時忽視了潛在的損失可能。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">收益從何而來：高回報的真相</h2>
-        <p className="mb-4">
-          DeFi協議提供的收益率往往遠高於傳統金融——年化收益率超過100%並不罕見。這些收益主要來自以下幾個來源：交易手續費（去中心化交易所會對每筆交易收取費用，這些費用分配給流動性提供者）、借貸利率差（借款利率高於存款利率，協議從中獲利）、以及代幣激勵（協議發行自有代幣作為獎勵，吸引用戶提供流動性）。問題在於，許多高收益依賴於新用戶的不斷湧入——這本質上是龐氏結構。當增長放緩或新資金不足時，收益率就會崩潰。
-        </p>
-        <p className="mb-4">
-          流動性挖礦是另一個DeFi標誌性現象。用戶將資金存入協議換取代幣獎勵，而這些代幣往往可以在二級市場交易。協議通過這種方式快速累積流動性，但一旦激勵結束，用戶可能會撤離資金，導致流動性乾涸。因此，投資者在參與DeFi之前需要仔細評估協議的實際收益來源，而非被表面的高收益率所迷惑。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">監管視角：DeFi的合規挑戰</h2>
-        <p className="mb-4">
-          各國監管機構正在密切關注DeFi的發展。美國SEC傾向於將大多數DeFi代幣視為證券，要求其符合證券法的規定。歐盟的MiCA法規為加密資產服務提供商建立了全面框架，但對於完全去中心化的協議仍有模糊地帶。中國禁止加密貨幣交易，但DeFi協議本身並無中央實體，因此執法困難。監管的模糊性一方面保護了DeFi的發展空間，另一方面也讓投資者缺乏有效保護。
-        </p>
-        <p className="mb-4">
-          展望未來，DeFi的發展將取決於幾個關鍵因素：技術安全性的提升（可審計的智能合約、形式化驗證）、監管明確性的增加（各國政府如何定義和監管DeFi），以及傳統金融機構的參與（當傳統銀行開始接納DeFi時，會帶來合法性也會帶來控制）。最可能的結果是「合規DeFi」的出現——某些協議會選擇接受監管以獲得更廣泛的採用，而另一些則會保持完全去中心化以抵抗監管。
-        </p>
-        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 my-8">
-          <p className="text-amber-800 text-sm">
-            <strong>結論：</strong>DeFi代表了一種根本性的金融創新，它有潛力為數十億缺乏銀行服務的人提供金融服務。然而，這項技術目前仍處於早期階段，存在顯著的技術和投資風險。投資者在參與之前需要充分了解其所涉及的風險，並只投入能夠承受損失的資金。
-          </p>
-        </div>
-      </article>
-    </main>
+    <EditorialArticle 
+      id={articleData.id}
+      image={articleData.image}
+      date={articleData.date}
+      readTime={articleData.readTime}
+      emoji={articleData.emoji}
+      translations={articleData.translations}
+    />
   )
 }

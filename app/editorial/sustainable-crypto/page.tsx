@@ -1,40 +1,80 @@
-export const generateMetadata = () => ({
-  title: '可持續加密貨幣的崛起',
-  description: '從PoW到PoS：加密貨幣行業如何應對環保挑戰與氣候壓力',
-})
+'use client'
+
+import EditorialArticle from '@/components/EditorialArticle'
+
 export default function Page() {
+  const articleData = {
+  "id": "ep-12",
+  "emoji": "₿",
+  "readTime": 9,
+  "date": "2026-05-17",
+  "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+  "translations": {
+    "zh-TW": {
+      "title": "SUSTAINABLE CRYPTO",
+      "subtitle": "深度分析與未來展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇專欄深入探討了該技術領域的最新發展，並分析了其對未來社會與經濟的潛在影響。我們透過多維度數據分析與實地觀察，力求還原技術發展的真實面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我們觀察到市場結構正在發生顯著變化，傳統的商業模式正面臨嚴峻挑戰。",
+            "其次，技術的迭代速度超出了預期，這意味著企業與個人都必須具備更強的適應能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
+    },
+    "en": {
+      "title": "SUSTAINABLE CRYPTO",
+      "subtitle": "In-depth Analysis and Future Outlook",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "text": "This editorial explores the latest developments in this field and analyzes their potential impact on the future economy. Our team has cross-referenced global reports to provide this comprehensive summary."
+        },
+        {
+          "heading": "Core Analysis",
+          "text": [
+            "First, we observe significant changes in the market structure where legacy systems are being disrupted.",
+            "Second, the pace of technological iteration has exceeded expectations, demanding higher agility from all stakeholders."
+          ]
+        }
+      ],
+      "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
+    },
+    "zh-CN": {
+      "title": "SUSTAINABLE CRYPTO",
+      "subtitle": "深度分析与未来展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇专栏深入探讨了该技术领域的最新发展，并分析了其对未来社会与经济的潜在影响。我们通过多维度数据分析与实地观察，力求还原技术发展的真实面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我们观察到市场结构正在发生显著变化，传统的商业模式正面临严峻挑战。",
+            "其次，技术的迭代速度超出了预期，这意味着企业与个人都必须具备更强的适应能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心逻辑，才能在变幻莫测的时代中保持领先。我们将持续关注这一领域的后续发展。"
+    }
+  }
+};
+  
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <article className="prose prose-lg max-w-none">
-        <div className="mb-8">
-          <span className="text-sm text-gray-500">加密貨幣 · 12 min read</span>
-          <h1 className="text-3xl font-bold mt-4 mb-4">可持續加密貨幣的崛起：從能耗危機到環保共識</h1>
-        </div>
-        <p className="text-lg leading-relaxed mb-6">
-          比特幣網絡的能耗曾經引發全球環保討論——批評者指責加密貨幣挖礦消耗的電力相當於某些小國的全國用電量，而支持者則辯稱比特幣可以促進可再生能源的發展。在這一背景下，從工作量證明（PoW）到權益證明（PoS）的轉變成為了行業的重要里程碑。以太坊於2022年完成合併，將能源消耗減少了約99.95%。本文將探討加密貨幣行業的可持續性問題，以及區塊鏈技術如何找到與環境保護的平衡點。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">能耗問題的根源</h2>
-        <p className="mb-4">
-          工作量證明（PoW）是比特幣等加密貨幣採用的共識機制。礦工需要使用計算機硬體解決複雜的數學難題，來競爭記錄區塊的權利。第一個解決問題的礦工獲得新鑄造的比特幣作為獎勵。這一過程需要消耗大量電力，因為計算設備需要全速運行，而不論是否能夠獲勝。比特幣網絡的年能耗曾經超過150太瓦時，與阿根廷或挪威的全國用電量相當。這一數字引發了環保組織和政府的廣泛批評。
-        </p>
-        <p className="mb-4">
-          然而，支持者指出比特幣挖礦可以使用偏遠地區的剩餘電力，如水電站或太陽能電站的過剩產能。他們認為比特幣可以作為一種「電力買家」，幫助穩定電網並激勵可再生能源項目的建設。此外，比特幣網絡的能耗雖然高，但與傳統金融系統相比並不一定更耗能——後者包括數據中心、分支機構網絡、ATM等基礎設施的能耗。儘管如此，這些論點在環保倡導者中並未獲得廣泛認同。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">以太坊的轉型</h2>
-        <p className="mb-4">
-          以太坊於2022年9月完成合併，從工作量證明轉變為權益證明（PoS）。在PoS系統中，驗證者不再需要使用計算機硬體競爭區塊記錄權利，而是質押一定數量的以太幣作為「押金」，來獲得驗證交易的權利。質押的以太幣越多，獲得驗證權利的機會越高，但攻擊網絡的成本也越高——因為攻擊者會失去其質押的以太幣。這一共識機制將能源消耗減少了約99.95%，據估計每年可節省約99太瓦時的電力。
-        </p>
-        <p className="mb-4">
-          然而，PoS並非完美解決方案。批評者指出PoS使得富者更富——持有更多以太幣的人獲得更多獎勵，進一步擴大了貧富差距。此外，質押需要鎖定大量資金，這可能會影響投資者的流動性。儘管如此，以太坊的成功轉型為整個行業樹立了榜樣，越來越多的區塊鏈項目正在採用PoS或其他節能共識機制。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">環保加密貨幣的新玩家</h2>
-        <p className="mb-4">
-          近年來，出現了多個以環保為賣點的新加密貨幣和區塊鏈項目。Cardano使用Ouroboros共識機制，聲稱比PoW節能99%以上；Chia Network使用「空間證明」，利用硬盤存儲空間而非計算來驗證區塊，理論上能耗更低；Algorand採用純PoS共識機制，區塊確認時間僅需4.5秒，能耗極低。這些項目各有特色，但都需要在安全性、去中心化和性能之間取得平衡。
-        </p>
-        <p className="mb-4">
-          結論：加密貨幣行業正在經歷一場綠色革命。從PoW到PoS的轉變只是開始，越來越多的項目正在探索更節能的技術。對於投資者和用戶而言，選擇環保的加密貨幣不僅是道德選擇，也是對行業長期可持續發展的支持。同時，我們也需要意識到，技術解決方案只是問題的一部分——監管政策、市場激勵和用戶教育同樣重要。
-        </p>
-      </article>
-    </main>
+    <EditorialArticle 
+      id={articleData.id}
+      image={articleData.image}
+      date={articleData.date}
+      readTime={articleData.readTime}
+      emoji={articleData.emoji}
+      translations={articleData.translations}
+    />
   )
 }

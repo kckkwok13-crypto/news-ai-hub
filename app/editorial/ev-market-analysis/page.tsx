@@ -4,14 +4,14 @@ import EditorialArticle from '@/components/EditorialArticle'
 
 export default function Page() {
   const articleData = {
-  "id": "ep-9",
-  "emoji": "📝",
-  "readTime": 11,
-  "date": "2026-05-20",
-  "image": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1000",
+  "id": "ep-20",
+  "emoji": "💰",
+  "readTime": 12,
+  "date": "2026-05-9",
+  "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000",
   "translations": {
     "zh-TW": {
-      "title": "METAVERSE WORKPLACE",
+      "title": "EV MARKET ANALYSIS",
       "subtitle": "深度分析與未來展望",
       "sections": [
         {
@@ -29,7 +29,7 @@ export default function Page() {
       "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
     },
     "en": {
-      "title": "METAVERSE WORKPLACE",
+      "title": "EV MARKET ANALYSIS",
       "subtitle": "In-depth Analysis and Future Outlook",
       "sections": [
         {
@@ -47,7 +47,7 @@ export default function Page() {
       "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
     },
     "zh-CN": {
-      "title": "METAVERSE WORKPLACE",
+      "title": "EV MARKET ANALYSIS",
       "subtitle": "深度分析与未来展望",
       "sections": [
         {

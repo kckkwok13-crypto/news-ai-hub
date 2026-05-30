@@ -1,40 +1,80 @@
-export const generateMetadata = () => ({
-  title: '太空旅遊的平民化',
-  description: '從百萬富翁的特權到普通人的夢想——商業太空旅行的發展與前景',
-})
+'use client'
+
+import EditorialArticle from '@/components/EditorialArticle'
+
 export default function Page() {
+  const articleData = {
+  "id": "ep-11",
+  "emoji": "🚀",
+  "readTime": 8,
+  "date": "2026-05-18",
+  "image": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000",
+  "translations": {
+    "zh-TW": {
+      "title": "SPACE TOURISM FUTURE",
+      "subtitle": "深度分析與未來展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇專欄深入探討了該技術領域的最新發展，並分析了其對未來社會與經濟的潛在影響。我們透過多維度數據分析與實地觀察，力求還原技術發展的真實面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我們觀察到市場結構正在發生顯著變化，傳統的商業模式正面臨嚴峻挑戰。",
+            "其次，技術的迭代速度超出了預期，這意味著企業與個人都必須具備更強的適應能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
+    },
+    "en": {
+      "title": "SPACE TOURISM FUTURE",
+      "subtitle": "In-depth Analysis and Future Outlook",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "text": "This editorial explores the latest developments in this field and analyzes their potential impact on the future economy. Our team has cross-referenced global reports to provide this comprehensive summary."
+        },
+        {
+          "heading": "Core Analysis",
+          "text": [
+            "First, we observe significant changes in the market structure where legacy systems are being disrupted.",
+            "Second, the pace of technological iteration has exceeded expectations, demanding higher agility from all stakeholders."
+          ]
+        }
+      ],
+      "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
+    },
+    "zh-CN": {
+      "title": "SPACE TOURISM FUTURE",
+      "subtitle": "深度分析与未来展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇专栏深入探讨了该技术领域的最新发展，并分析了其对未来社会与经济的潜在影响。我们通过多维度数据分析与实地观察，力求还原技术发展的真实面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我们观察到市场结构正在发生显著变化，传统的商业模式正面临严峻挑战。",
+            "其次，技术的迭代速度超出了预期，这意味着企业与个人都必须具备更强的适应能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心逻辑，才能在变幻莫测的时代中保持领先。我们将持续关注这一领域的后续发展。"
+    }
+  }
+};
+  
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <article className="prose prose-lg max-w-none">
-        <div className="mb-8">
-          <span className="text-sm text-gray-500">太空探索 · 10 min read</span>
-          <h1 className="text-3xl font-bold mt-4 mb-4">太空旅遊的平民化：SpaceX、Blue Origin與維珍銀河的競速</h1>
-        </div>
-        <p className="text-lg leading-relaxed mb-6">
-          2021年，藍色起源和維珍銀河相繼完成首次商業載人飛行，標誌著商業太空旅遊時代的正式開啟。此後，SpaceX的載人龍飛船將平民送入國際空間站，Inspiration4任務更是由一位億萬富翁資助而非政府。票價從25萬美元到5500萬美元不等，太空旅遊仍然是富豪的遊戲。但隨著技術成熟和市場競爭加劇，這一價格正在下降。本文將分析商業太空旅遊的現狀、挑戰與未來，以及它對人類社會的深層意義。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">商業太空旅遊的類型</h2>
-        <p className="mb-4">
-          當前的商業太空旅遊主要分為三種類型：亞軌道飛行、軌道飛行和月球觀光。亞軌道飛行（如藍色起源的新謝潑德號和維珍銀河的太空船二號）將乘客带到地球大氣層邊緣，停留約10分鐘，體驗失重和觀看地球曲率。這種飛行的高度約100公里，票价目前約45萬美元。軌道飛行（如SpaceX的載人龍飛船）將乘客送入地球軌道，在國際空間站停留數天，票价約5500萬美元。月球觀光目前仍處於規劃階段，SpaceX的星艦被設計為可以執行月球軌道任務，但票價和時間表尚未確定。
-        </p>
-        <p className="mb-4">
-          這些飛行器的設計和使用場景有显著差异。藍色起源的新謝潑德號是完全自動化的火箭系統，乘客不需要操作任何設備；維珍銀河的太空船二號由飛行員駕駛，更像傳統飛機；SpaceX的載人龍飛船則是與國際空間站對接的複雜載人航天器。每種方式都有其獨特的技術挑戰和安全考量，票价差异也反映了這些差异。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">安全與風險</h2>
-        <p className="mb-4">
-          太空旅遊並非沒有風險。2014年，維珍銀河的太空船二號在一次測試飛行中墜毀，副駕駛員遇難。這一悲劇暴露了商業太空旅遊面臨的安全挑戰：與軍事和政府航天項目相比，民用航天器的監管標準可能不夠嚴格，開發商面臨盡快收回投資的壓力。儘管近年來沒有發生致命事故，但輕微事故和技術問題仍然時有發生。乘客在簽署同意書時需要理解他們正在參與一項本質上危險的活動。
-        </p>
-        <p className="mb-4">
-          環境影響是另一個問題。每次亞軌道飛行燃燒的燃料產生可觀的碳排放，而商業太空旅遊的頻率正在增加。一些科學家呼籲對商業航天活動徵收環境稅，以抵消其碳足跡。目前，這一倡議尚未被廣泛採納，但隨著飛行次數增加，它可能會成為一個尖銳的議題。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">未來展望：價格下降與大眾化</h2>
-        <p className="mb-4">
-          歷史告訴我們，技術的成本往往會隨著時間大幅下降。1950年代，電視機是奢侈品；如今，幾乎每個家庭都擁有電視機。同樣的模式可能會在太空旅遊行業重演。SpaceX的星際飛船設計為完全可重複使用，理論上可以大幅降低每次飛行的成本。如果星際飛船實現其設計目標，前往太空的票价可能降至數萬美元，而非數百萬。
-        </p>
-        <p className="mb-4">
-          結論：太空旅遊正處於從富豪特權向主流體驗過渡的臨界點。雖然短期內票價仍然偏高，但技術進步和市場競爭正在穩步壓低價格。對於人類社會而言，讓更多人有機會從太空回望地球可能會帶來深遠的文化和心理影響——這種被稱為「總觀效應」的體驗可能會改變人們對地球家園和國際合作的态度。
-        </p>
-      </article>
-    </main>
+    <EditorialArticle 
+      id={articleData.id}
+      image={articleData.image}
+      date={articleData.date}
+      readTime={articleData.readTime}
+      emoji={articleData.emoji}
+      translations={articleData.translations}
+    />
   )
 }

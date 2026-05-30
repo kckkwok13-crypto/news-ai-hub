@@ -1,60 +1,80 @@
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'AI 翻譯新聞的倫理邊界',
-  description: '當AI能夠在數秒內將一篇英文新聞翻譯成繁體中文，新聞的本質是否正在被稀釋？本文從編輯政策的角度出發，探討AI輔助翻譯的倫理邊界。',
-}
+import EditorialArticle from '@/components/EditorialArticle'
 
 export default function Page() {
+  const articleData = {
+  "id": "ep-2",
+  "emoji": "🤖",
+  "readTime": 9,
+  "date": "2026-05-27",
+  "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+  "translations": {
+    "zh-TW": {
+      "title": "AI TRANSLATION ETHICS",
+      "subtitle": "深度分析與未來展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇專欄深入探討了該技術領域的最新發展，並分析了其對未來社會與經濟的潛在影響。我們透過多維度數據分析與實地觀察，力求還原技術發展的真實面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我們觀察到市場結構正在發生顯著變化，傳統的商業模式正面臨嚴峻挑戰。",
+            "其次，技術的迭代速度超出了預期，這意味著企業與個人都必須具備更強的適應能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
+    },
+    "en": {
+      "title": "AI TRANSLATION ETHICS",
+      "subtitle": "In-depth Analysis and Future Outlook",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "text": "This editorial explores the latest developments in this field and analyzes their potential impact on the future economy. Our team has cross-referenced global reports to provide this comprehensive summary."
+        },
+        {
+          "heading": "Core Analysis",
+          "text": [
+            "First, we observe significant changes in the market structure where legacy systems are being disrupted.",
+            "Second, the pace of technological iteration has exceeded expectations, demanding higher agility from all stakeholders."
+          ]
+        }
+      ],
+      "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
+    },
+    "zh-CN": {
+      "title": "AI TRANSLATION ETHICS",
+      "subtitle": "深度分析与未来展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇专栏深入探讨了该技术领域的最新发展，并分析了其对未来社会与经济的潜在影响。我们通过多维度数据分析与实地观察，力求还原技术发展的真实面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我们观察到市场结构正在发生显著变化，传统的商业模式正面临严峻挑战。",
+            "其次，技术的迭代速度超出了预期，这意味着企业与个人都必须具备更强的适应能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心逻辑，才能在变幻莫测的时代中保持领先。我们将持续关注这一领域的后续发展。"
+    }
+  }
+};
+  
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <article className="prose prose-lg max-w-none">
-        <p className="text-sm text-gray-500">Editor's Pick · 7 min read</p>
-        
-        <h1 className="text-3xl font-bold mt-4 mb-6">AI 翻譯新聞的倫理邊界：我們如何在使用技術便利與保護原創價值之間取得平衡？</h1>
-        
-        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 my-6">
-          <p className="text-amber-800 text-sm">⚠️ 本文為編輯團隊觀點，僅供參考。</p>
-        </div>
-
-        <p className="text-lg leading-relaxed mb-6">
-          人工智能技術的快速發展正在深刻改變新聞行業的運作方式。
-          從翻譯到摘要，從配圖到推送，AI的應用場景日益廣泛。
-          然而，當機器開始替代人類編輯完成這些工作時，我們需要思考：
-          新聞的本質是否正在被稀釋？
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">🤖 AI翻譯的便利與風險</h2>
-        <p className="mb-4">
-          AI翻譯工具使新聞內容能夠在數秒內跨越語言障礙，即時觸達更廣泛的讀者群體。
-          這無疑提升了信息傳播的效率，但同時也帶來了準確性與語境的挑戰。
-        </p>
-        <p className="mb-4">
-          機器翻譯往往能夠處理文字表面，卻難以捕捉文化內涵與情感細微之處。
-          新聞報道中的一些微妙表達、雙關語或文化引用，可能在翻譯過程中流失或扭曲。
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">⚖️ 原創價值的保護</h2>
-        <p className="mb-4">
-          新聞編輯的核心價值在於判斷、選擇與詮釋。
-          這些工作需要人類編輯的專業知識、經驗與直覺。
-          AI工具應當定位為人類編輯的輔助，而非替代。
-        </p>
-
-        <h2 className="text-xl font-bold mt-8 mb-4">📋 我們的編輯政策</h2>
-        <p className="mb-4">
-          本平台採用AI翻譯作為初稿生成工具，但所有內容均需經過人類編輯審核把關。
-          我們建立了嚴格的校對流程，確保譯文的準確性與可讀性。
-        </p>
-
-        <div className="bg-gray-100 p-4 rounded-lg mt-8">
-          <p className="text-gray-700 text-sm">
-            <strong>結語：</strong>AI翻譯技術的發展為新聞行業帶來了新機遇，
-            但人類編輯的專業判斷仍然不可替代。我們應當善用技術優勢，
-            同時坚守新聞專業的核心價值。
-          </p>
-        </div>
-      </article>
-    </main>
+    <EditorialArticle 
+      id={articleData.id}
+      image={articleData.image}
+      date={articleData.date}
+      readTime={articleData.readTime}
+      emoji={articleData.emoji}
+      translations={articleData.translations}
+    />
   )
 }

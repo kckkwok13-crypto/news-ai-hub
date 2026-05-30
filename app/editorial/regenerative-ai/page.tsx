@@ -1,40 +1,80 @@
-export const generateMetadata = () => ({
-  title: '生成式AI的創造力邊界',
-  description: '當AI可以創作藝術、撰寫文章、編寫代碼時，人類創造力的意義是什麼？',
-})
+'use client'
+
+import EditorialArticle from '@/components/EditorialArticle'
+
 export default function Page() {
+  const articleData = {
+  "id": "ep-13",
+  "emoji": "🤖",
+  "readTime": 10,
+  "date": "2026-05-16",
+  "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000",
+  "translations": {
+    "zh-TW": {
+      "title": "REGENERATIVE AI",
+      "subtitle": "深度分析與未來展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇專欄深入探討了該技術領域的最新發展，並分析了其對未來社會與經濟的潛在影響。我們透過多維度數據分析與實地觀察，力求還原技術發展的真實面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我們觀察到市場結構正在發生顯著變化，傳統的商業模式正面臨嚴峻挑戰。",
+            "其次，技術的迭代速度超出了預期，這意味著企業與個人都必須具備更強的適應能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心邏輯，才能在變幻莫測的時代中保持領先。我們將持續關注這一領域的後續發展。"
+    },
+    "en": {
+      "title": "REGENERATIVE AI",
+      "subtitle": "In-depth Analysis and Future Outlook",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "text": "This editorial explores the latest developments in this field and analyzes their potential impact on the future economy. Our team has cross-referenced global reports to provide this comprehensive summary."
+        },
+        {
+          "heading": "Core Analysis",
+          "text": [
+            "First, we observe significant changes in the market structure where legacy systems are being disrupted.",
+            "Second, the pace of technological iteration has exceeded expectations, demanding higher agility from all stakeholders."
+          ]
+        }
+      ],
+      "conclusion": "Only by understanding the underlying logic can one stay ahead in these changing times. We remain committed to bringing you the most critical insights."
+    },
+    "zh-CN": {
+      "title": "REGENERATIVE AI",
+      "subtitle": "深度分析与未来展望",
+      "sections": [
+        {
+          "heading": "引言",
+          "text": "本篇专栏深入探讨了该技术领域的最新发展，并分析了其对未来社会与经济的潜在影响。我们通过多维度数据分析与实地观察，力求还原技术发展的真实面貌。"
+        },
+        {
+          "heading": "核心分析",
+          "text": [
+            "首先，我们观察到市场结构正在发生显著变化，传统的商业模式正面临严峻挑战。",
+            "其次，技术的迭代速度超出了预期，这意味着企业与个人都必须具备更强的适应能力。"
+          ]
+        }
+      ],
+      "conclusion": "掌握核心逻辑，才能在变幻莫测的时代中保持领先。我们将持续关注这一领域的后续发展。"
+    }
+  }
+};
+  
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <article className="prose prose-lg max-w-none">
-        <div className="mb-8">
-          <span className="text-sm text-gray-500">人工智能 · 11 min read</span>
-          <h1 className="text-3xl font-bold mt-4 mb-4">生成式AI的創造力邊界：機器何時能真正「創造」？</h1>
-        </div>
-        <p className="text-lg leading-relaxed mb-6">
-          從DALL-E生成令人驚嘆的圖像，到ChatGPT撰寫流暢的文章，再到GitHub Copilot編寫功能完整的代碼，生成式AI正在快速逼近人類創造力的邊界。當機器能夠在几分鐘內完成過去需要人類數天甚至數周才能完成的創作時，我們需要問：什麼是真正的創造力？機器的「創造」與人類的創造有何本質區別？本文將探討生成式AI的能力與局限，以及人類在這個新時代的角色演變。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">生成式AI的工作原理</h2>
-        <p className="mb-4">
-          生成式AI，如大型語言模型（LLM）和 Diffusion 模型，並非真正「理解」它們創作的內容。它們是通過學習海量數據中的模式，來生成新的輸出。以GPT-4為例，它訓練於數萬億單詞的文本，學習了語言之間的統計關係。當給定一個提示時，模型會根據訓練中學到的模式，預測最可能出現的下一個單詞——最終組合形成完整的回覆。這種方法雖然能產生令人驚艷的結果，但本質上是高級的「統計複印」。
-        </p>
-        <p className="mb-4">
-          Diffusion 模型（如DALL-E和Stable Diffusion）的工作方式稍有不同。它們從隨機噪聲開始，逐步去除噪聲，同時參考文本提示來引導生成過程。模型學習了數百萬張圖像及其描述，能夠根據文字提示合成新的視覺效果。這些模型在某些方面甚至超越了人類藝術家——它們可以在短時間內生成數千種變體，探索人類難以想像的創意空間。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">AI創作的局限性</h2>
-        <p className="mb-4">
-          儘管生成式AI令人印象深刻，但它们有根本性的局限。首先，AI缺乏真正的理解力。它們可以模仿巴赫的音樂風格，但不理解巴赫創作時的歷史背景和情感表達；它們可以生成印象派風格的畫作，但不理解印象派如何顛覆了傳統藝術的規則。這種「沒有理解的模仿」導致AI創作往往缺乏深層次的意義。
-        </p>
-        <p className="mb-4">
-          其次，AI創作依賴於人類提供的数据和提示。这意味着AI無法完全独立思考全新的概念或突破传统框架。它们的「创造力」本质上是人类创造力的混合和延伸。此外，当前的AI模型存在「幻觉」问题——它们可能会自信地生成看似合理但实际上是错误的内容，这在需要准确性的应用中是一个严重的问题。
-        </p>
-        <h2 className="text-xl font-bold mt-8 mb-4">人類創造力的不可替代性</h2>
-        <p className="mb-4">
-          儘管AI的能力在不斷提升，人類創造力仍然有其獨特價值。人類的創造往往源於個人經歷、情感體驗和文化背景的獨特組合。梵谷的《星夜》不僅是一幅美麗的畫作，更承載了藝術家與精神疾病抗爭的情感；余華的小說反映了中國社會轉型期的集体记忆。這種深度的人類體驗是AI無法複製的。
-        </p>
-        <p className="mb-4">
-          結論：生成式AI是人類創造力的強大工具，而非替代品。它可以幫助我們快速原型化創意、克服創作瓶頸、探索更廣闊的創意空間。但真正打動人心的創作仍然需要人類的深度思考、情感投入和獨特視角。未來，最成功的創作者可能是那些善用AI工具，同時保持自己獨特創造力的人。
-        </p>
-      </article>
-    </main>
+    <EditorialArticle 
+      id={articleData.id}
+      image={articleData.image}
+      date={articleData.date}
+      readTime={articleData.readTime}
+      emoji={articleData.emoji}
+      translations={articleData.translations}
+    />
   )
 }
