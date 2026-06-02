@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { X, Send, Sparkles, Bot, User, RefreshCw, Loader2 } from 'lucide-react'
+import { X, Send, Sparkles, Bot, User, RefreshCw, Loader2, AlertCircle } from 'lucide-react'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -15,14 +15,20 @@ interface AINewsChatProps {
   onClose?: () => void
 }
 
+// Get API key from environment - check both possible env var names
+const getApiKey = () => {
+  return process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY || ''
+}
+
 const TRANSLATIONS = {
   'zh-TW': {
-    title: 'AI 新聞深度對話',
-    subtitle: '由 AI 分析師為你深入解讀新聞事件背後的脈絡與影響',
+    title: '阿傑 AI 分析師',
+    subtitle: '深度解讀新聞事件背後的脈絡與影響',
     placeholder: '輸入你想問的問題...',
-    thinking: 'AI 正在思考中...',
-    welcome: '👋 你好！我是 NewsKingdom 的 AI 分析助手。你可以問我關於這則新聞的任何問題，例如：\n\n• 這則新聞的重點是什麼？\n• 對市場有什麼影響？\n• 背後的原因是什麼？\n• 未來發展趨勢如何？',
-    error: '抱歉，AI 回應失敗了。請稍後再試。',
+    thinking: '阿傑正在思考中...',
+    welcome: '👋 你好！我是阿傑，NewsKingdom 的 AI 分析師。\n\n我可以幫你：\n• 分析新聞重點同影響\n• 解答你對呢篇報導嘅疑問\n• 提供深度嘅市場見解\n\n請問你想問咩問題？',
+    error: '抱歉，阿傑暂时无法回应。请检查 API Key 是否正确配置。',
+    noKey: '⚠️ 未配置 API Key\n\n請在 Vercel 環境變數中設定 `OPENROUTER_API_KEY`\n\n路徑：Settings → Environment Variables → Production\n變數名：OPENROUTER_API_KEY\n值：你的 OpenRouter API Key',
     retry: '重試',
     close: '關閉'
   },
@@ -31,18 +37,20 @@ const TRANSLATIONS = {
     subtitle: 'AI analyst provides deep insights into news events',
     placeholder: 'Ask your question...',
     thinking: 'AI is thinking...',
-    welcome: '👋 Hello! I am the AI analyst assistant at NewsKingdom. You can ask me any questions about this news, such as:\n\n• What are the key points?\n• What impact on the market?\n• What are the underlying reasons?\n• What are the future trends?',
+    welcome: '👋 Hello! I am your AI analyst assistant at NewsKingdom. You can ask me any questions about this news, such as:\n\n• What are the key points?\n• What impact on the market?\n• What are the underlying reasons?\n• What are the future trends?',
     error: 'Sorry, AI response failed. Please try again.',
+    noKey: '⚠️ API Key not configured\n\nPlease set `OPENROUTER_API_KEY` in Vercel environment variables\n\nPath: Settings → Environment Variables → Production\nVariable: OPENROUTER_API_KEY\nValue: Your OpenRouter API Key',
     retry: 'Retry',
     close: 'Close'
   },
   'zh-CN': {
-    title: 'AI 新闻深度对话',
+    title: '阿杰 AI 分析师',
     subtitle: 'AI 分析师为你深入解读新闻事件背后的脉络与影响',
     placeholder: '输入你想问的问题...',
-    thinking: 'AI 正在思考中...',
-    welcome: '👋 你好！我是 NewsKingdom 的 AI 分析助手。你可以问我关于这则新闻的任何问题，例如：\n\n• 这则新闻的重点是什么？\n• 对市场有什么影响？\n• 背后的原因是什么？\n• 未来发展趋势如何？',
-    error: '抱歉，AI 回应失败了。请稍后再试。',
+    thinking: '阿杰正在思考中...',
+    welcome: '👋 你好！我是阿杰，NewsKingdom 的 AI 分析助手。你可以问我关于这则新闻的任何问题，例如：\n\n• 这则新闻的重点是什么？\n• 对市场有什么影响？\n• 背后的原因是什么？\n• 未来发展趋势如何？',
+    error: '抱歉，阿杰暂时无法回应。请检查 API Key 是否正确配置。',
+    noKey: '⚠️ 未配置 API Key\n\n请在 Vercel 环境变量中设定 `OPENROUTER_API_KEY`\n\n路径：Settings → Environment Variables → Production\n变量名：OPENROUTER_API_KEY\n值：你的 OpenRouter API Key',
     retry: '重试',
     close: '关闭'
   }
@@ -54,12 +62,24 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [hasApiKey, setHasApiKey] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const t = TRANSLATIONS[lang]
 
   useEffect(() => {
-    // Show welcome message on mount
-    if (messages.length === 0) {
+    // Check API key on mount
+    const apiKey = getApiKey()
+    setHasApiKey(!!apiKey)
+
+    if (!apiKey) {
+      // Show no API key message
+      setMessages([{
+        role: 'assistant',
+        content: t.noKey,
+        timestamp: new Date()
+      }])
+    } else if (messages.length === 0) {
+      // Show welcome message if API key exists
       setMessages([{
         role: 'assistant',
         content: t.welcome,
@@ -74,7 +94,8 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!input.trim() || isLoading) return
+    const apiKey = getApiKey()
+    if (!input.trim() || isLoading || !apiKey) return
 
     const userMessage = { role: 'user' as const, content: input.trim(), timestamp: new Date() }
     setMessages(prev => [...prev, userMessage])
@@ -83,34 +104,36 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
     setError(null)
 
     // Build context with news info if available
-    let contextPrompt = `You are an AI news analyst assistant. Respond in the same language as the user's question. `
+    let contextPrompt = `你是阿傑，NewsKingdom 的 AI 新聞分析師。用戶提問時，請用繁體中文/英文回覆。`
     if (newsTitle) {
-      contextPrompt += `The user is discussing this news: "${newsTitle}". `
+      contextPrompt += `\n\n相關新聞標題：${newsTitle}`
     }
     if (newsSummary) {
-      contextPrompt += `News summary: "${newsSummary}". `
+      contextPrompt += `\n\n新聞內容摘要：${newsSummary}`
     }
-    contextPrompt += `\n\nUser question: ${userMessage.content}`
+    contextPrompt += `\n\n用戶問題：${userMessage.content}`
+    contextPrompt += `\n\n請提供詳細、深入嘅分析，並用你作為阿傑嘅身份回答。`
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || ''}`,
+          'Authorization': `Bearer ${apiKey}`,
           'HTTP-Referer': 'https://www.newskingdom.store',
           'X-Title': 'NewsKingdom AI'
         },
         body: JSON.stringify({
           model: 'anthropic/claude-3-haiku',
           messages: [{ role: 'user', content: contextPrompt }],
-          max_tokens: 1000,
+          max_tokens: 1500,
           temperature: 0.7
         })
       })
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.status}`)
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(`API error ${response.status}: ${errorData.error?.message || response.statusText}`)
       }
 
       const data = await response.json()
@@ -122,10 +145,11 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
         timestamp: new Date()
       }])
     } catch (err) {
-      setError(t.error)
+      const errorMsg = err instanceof Error ? err.message : t.error
+      setError(errorMsg)
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: t.error,
+        content: `⚠️ 錯誤：${errorMsg}\n\n請確認：\n1. OPENROUTER_API_KEY 已正確設定\n2. API Key 有足夠額度\n3. 網絡連接正常`,
         timestamp: new Date()
       }])
     } finally {
@@ -157,6 +181,13 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
             </div>
           </div>
           <div className="flex items-center gap-3">
+            {/* API Key Status Indicator */}
+            {!hasApiKey && (
+              <div className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/30">
+                <AlertCircle size={14} className="text-red-400" />
+                <span className="text-xs text-red-400 font-bold">No API Key</span>
+              </div>
+            )}
             {/* Language Selector */}
             <div className="flex bg-white/5 rounded-xl p-1">
               {(['zh-TW', 'en', 'zh-CN'] as const).map((l) => (
@@ -222,13 +253,13 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={t.placeholder}
-              disabled={isLoading}
+              placeholder={!hasApiKey ? '請先設定 OPENROUTER_API_KEY...' : t.placeholder}
+              disabled={isLoading || !hasApiKey}
               className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-sm"
             />
             <button
               type="submit"
-              disabled={!input.trim() || isLoading}
+              disabled={!input.trim() || isLoading || !hasApiKey}
               className="p-2 rounded-xl bg-amber-500 text-black hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition"
             >
               <Send size={20} />
