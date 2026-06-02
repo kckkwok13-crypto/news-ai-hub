@@ -15,10 +15,6 @@ interface AINewsChatProps {
   onClose?: () => void
 }
 
-// Get API key from environment - check both possible env var names
-const getApiKey = () => {
-  return process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY || ''
-}
 
 const TRANSLATIONS = {
   'zh-TW': {
@@ -62,24 +58,12 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [hasApiKey, setHasApiKey] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const t = TRANSLATIONS[lang]
 
   useEffect(() => {
-    // Check API key on mount
-    const apiKey = getApiKey()
-    setHasApiKey(!!apiKey)
-
-    if (!apiKey) {
-      // Show no API key message
-      setMessages([{
-        role: 'assistant',
-        content: t.noKey,
-        timestamp: new Date()
-      }])
-    } else if (messages.length === 0) {
-      // Show welcome message if API key exists
+    // Show welcome message on mount
+    if (messages.length === 0) {
       setMessages([{
         role: 'assistant',
         content: t.welcome,
@@ -94,8 +78,7 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const apiKey = getApiKey()
-    if (!input.trim() || isLoading || !apiKey) return
+    if (!input.trim() || isLoading) return
 
     const userMessage = { role: 'user' as const, content: input.trim(), timestamp: new Date() }
     setMessages(prev => [...prev, userMessage])
@@ -115,19 +98,15 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
     contextPrompt += `\n\n請提供詳細、深入嘅分析，並用你作為阿傑嘅身份回答。`
 
     try {
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      // Call our API route instead of OpenRouter directly
+      const response = await fetch('/api/ai-chat', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
-          'HTTP-Referer': 'https://www.newskingdom.store',
-          'X-Title': 'NewsKingdom AI'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'anthropic/claude-3-haiku',
-          messages: [{ role: 'user', content: contextPrompt }],
-          max_tokens: 1500,
-          temperature: 0.7
+          prompt: contextPrompt,
+          model: 'anthropic/claude-3-haiku'
         })
       })
 
@@ -137,7 +116,7 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
       }
 
       const data = await response.json()
-      const assistantContent = data.choices?.[0]?.message?.content || t.error
+      const assistantContent = data.content || t.error
 
       setMessages(prev => [...prev, {
         role: 'assistant',
@@ -181,13 +160,6 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
             </div>
           </div>
           <div className="flex items-center gap-3">
-            {/* API Key Status Indicator */}
-            {!hasApiKey && (
-              <div className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/30">
-                <AlertCircle size={14} className="text-red-400" />
-                <span className="text-xs text-red-400 font-bold">No API Key</span>
-              </div>
-            )}
             {/* Language Selector */}
             <div className="flex bg-white/5 rounded-xl p-1">
               {(['zh-TW', 'en', 'zh-CN'] as const).map((l) => (
@@ -253,13 +225,13 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={!hasApiKey ? '請先設定 OPENROUTER_API_KEY...' : t.placeholder}
-              disabled={isLoading || !hasApiKey}
+              placeholder={t.placeholder}
+              disabled={isLoading}
               className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-sm"
             />
             <button
               type="submit"
-              disabled={!input.trim() || isLoading || !hasApiKey}
+              disabled={!input.trim() || isLoading}
               className="p-2 rounded-xl bg-amber-500 text-black hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition"
             >
               <Send size={20} />
