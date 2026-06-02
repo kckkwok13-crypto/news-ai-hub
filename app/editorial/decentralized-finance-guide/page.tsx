@@ -8,6 +8,7 @@ export default function Page() {
   "id": "ep-6",
   "emoji": "💱",
   "readTime": 20,
+  "date": "2026年6月",
   "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1600",
   "translations": {
     "zh-TW": {

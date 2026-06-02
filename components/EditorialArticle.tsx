@@ -19,7 +19,7 @@ interface ArticleContent {
 interface EditorialArticleProps {
   id: string
   image: string
-  date: string
+  date?: string
   readTime: number
   emoji: string
   translations: Record<Lang, ArticleContent>
