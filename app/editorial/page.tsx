@@ -139,7 +139,7 @@ const EDITORIAL_ARTICLES = [
     date: '2026-05-12',
     link: '/editorial/stablecoin-war',
     featured: true,
-    image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000',
     translations: {
       'zh-TW': { title: '穩定幣大戰：USDT/USDC/USDJ誰能笑到最後？', category: '加密貨幣', excerpt: '當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場戰爭將如何改變我們的貨幣體系？' },
       'en': { title: 'Stablecoin War: USDT, USDC, or USDJ—Who Will Prevail?', category: 'Crypto', excerpt: 'As traditional banks and tech giants enter the stablecoin arena, how will this war transform our monetary system?' },
