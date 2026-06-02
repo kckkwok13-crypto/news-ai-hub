@@ -1623,6 +1623,7 @@ export default function NewsPage() {
           <Link href="/about" className="hover:text-blue-500 transition-colors uppercase tracking-wider">關於我們 / About</Link>
           <Link href="/editorial-policy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">編輯政策 / Editorial</Link>
           <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
+          <Link href="/terms" className="hover:text-blue-500 transition-colors uppercase tracking-wider">服務條款 / Terms</Link>
           <Link href="/contact" className="hover:text-blue-500 transition-colors uppercase tracking-wider">聯繫我們 / Contact</Link>
         </div>
         <p className="text-base mb-3">NewsFlow · AI-Powered Global News © 2026</p>
