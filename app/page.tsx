@@ -140,7 +140,7 @@ const EDITOR_PICKS = {
         "title": "穩定幣大戰：誰能笑到最後？",
         "category": "加密貨幣",
         "emoji": "🪙",
-        "image": "https://images.unsplash.com/photo-1611974717482-7db00d98419c?auto=format&fit=crop&q=80&w=800",
+        "image": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=800",
         "excerpt": "當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場戰爭將如何改變我們的貨幣體系？",
         "readTime": 11,
         "link": "/editorial/stablecoin-war",
@@ -221,7 +221,7 @@ const EDITOR_PICKS = {
       { "id": "ep-2", "title": "AI 翻译新闻的伦理边界：平衡技术与原创", "category": "科技评论", "emoji": "🤖", "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800", "excerpt": "当AI能够在数秒內将一篇外语新闻翻译成简体中文，新闻的本质是否正在被稀释？我们必须深入探讨这场技术变革。", "readTime": 10, "link": "/editorial/ai-translation-ethics", "tag": "编辑观点" },
       { "id": "ep-3", "title": "新闻App的AI分析功能：人与算法的真相博弈", "category": "科技评论", "emoji": "⚖️", "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800", "excerpt": "当演算法可以瞬间总结全球新闻，“人性”与“效率”之间的取舍，究竟谁更能代表真相？", "readTime": 11, "link": "/editorial/twohumans-vs-ai-analysis", "tag": "独家评论" },
       { "id": "ep-4", "title": "全球央行数字货币竞赛：美元霸权的进化？", "category": "财经深度", "emoji": "🏦", "image": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=800", "excerpt": "从中国的数字人民币到欧洲央行的数字欧元，各国央行正在加速布局。这场竞赛将如何重塑金融秩序？", "readTime": 10, "link": "/editorial/cbdc-global-race", "tag": "深度分析" },
-      { "id": "ep-5", "title": "稳定币大战：谁能笑到最后？", "category": "加密货币", "emoji": "🪙", "image": "https://images.unsplash.com/photo-1611974717482-7db00d98419c?auto=format&fit=crop&q=80&w=800", "excerpt": "当传统银行、加密原生公司、科技巨头全部湧入稳定币赛道，这场战争将如何改变我们的货币体系？", "readTime": 11, "link": "/editorial/stablecoin-war", "tag": "热门话题" },
+      { "id": "ep-5", "title": "稳定币大战：谁能笑到最后？", "category": "加密货币", "emoji": "🪙", "image": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=800", "excerpt": "当传统银行、加密原生公司、科技巨头全部湧入稳定币赛道，这场战争将如何改变我们的货币体系？", "readTime": 11, "link": "/editorial/stablecoin-war", "tag": "热门话题" },
       { "id": "ep-6", "title": "DeFi 深度指南：金融民主化还是泡沫？", "category": "金融科技", "emoji": "💱", "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800", "excerpt": "无需许可、无须审核、24/7 运作。DeFi 正试图将华尔街搬到区块链上，但风险同样巨大。", "readTime": 13, "link": "/editorial/decentralized-finance-guide", "tag": "深度分析" },
       { "id": "ep-7", "title": "AI 图像生成器：创意产业的毁灭者？", "category": "AI应用", "emoji": "🎨", "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800", "excerpt": "当任何人都可以通过文字描述生成专业级插画，传统艺术家的价值该如何重新定义？", "readTime": 9, "link": "/editorial/ai-image-generators", "tag": "科技展望" },
       { "id": "ep-8", "title": "Web3 游戏的未来：所有权的觉醒", "category": "区块链", "emoji": "🎮", "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800", "excerpt": "区块链游戏经历了暴利炒作与崩溃后，正在回归游戏的本质：好玩。玩游戏不再只是消费。", "readTime": 11, "link": "/editorial/web3-gaming-future", "tag": "趋势分析" }
