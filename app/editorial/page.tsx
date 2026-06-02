@@ -307,7 +307,7 @@ const EDITORIAL_ARTICLES = [
     date: '2026-04-18',
     link: '/editorial/web3-nft-winter',
     featured: false,
-    image: 'https://images.unsplash.com/photo-1644363102719-33a38805625c?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
     translations: {
       'zh-TW': { title: 'Web3 寒冬：NFT係咪已經玩完？', category: '區塊鏈', excerpt: '從2021年的瘋狂炒賣到現在一地眼鏡碎，NFT市場究竟發生了什麼？' },
       'en': { title: 'Web3 Winter: Is the NFT Hype Over?', category: 'Blockchain', excerpt: 'From the 2021 craze to today\'s market slump, what really happened to the NFT market?' },
