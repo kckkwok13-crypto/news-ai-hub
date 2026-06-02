@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Calendar, Globe, Share2, Bookmark, Sparkles } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, Globe, Share2, Bookmark, Sparkles, MessageSquare } from 'lucide-react'
+import AINewsChat from './AINewsChat'
 
 type Lang = 'zh-TW' | 'en' | 'zh-CN'
 
@@ -28,6 +29,7 @@ interface EditorialArticleProps {
 export default function EditorialArticle({ id, image, date, readTime, emoji, translations }: EditorialArticleProps) {
   const [lang, setLang] = useState<Lang>('zh-TW')
   const [mounted, setMounted] = useState(false)
+  const [showAiChat, setShowAiChat] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -146,12 +148,30 @@ export default function EditorialArticle({ id, image, date, readTime, emoji, tra
               <span className="text-xs font-bold uppercase tracking-widest">Save for later</span>
             </button>
           </div>
-          
-          <Link href="/editorial" className="px-8 py-3 rounded-xl bg-white text-black font-bold uppercase tracking-widest text-xs hover:bg-amber-400 transition-all">
-            Explore More Insights
-          </Link>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setShowAiChat(true)}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-black font-bold uppercase tracking-widest text-xs hover:from-amber-400 hover:to-orange-500 transition-all shadow-lg flex items-center gap-2"
+            >
+              <MessageSquare size={16} />
+              AI 深度對話
+            </button>
+            <Link href="/editorial" className="px-8 py-3 rounded-xl bg-white text-black font-bold uppercase tracking-widest text-xs hover:bg-amber-400 transition-all">
+              Explore More Insights
+            </Link>
+          </div>
         </div>
       </main>
+
+      {/* AI Chat Modal */}
+      {showAiChat && (
+        <AINewsChat
+          newsTitle={content.title}
+          newsSummary={content.sections.map(s => s.heading ? `${s.heading}\n${s.text}` : s.text).join('\n\n')}
+          onClose={() => setShowAiChat(false)}
+        />
+      )}
     </div>
   )
 }
