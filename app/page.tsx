@@ -418,6 +418,12 @@ export default function NewsPage() {
     try {
       const date = new Date(dateStr)
       if (isNaN(date.getTime())) return dateStr
+      const now = new Date()
+      // If date is in the future, show "just now" instead
+      if (date.getTime() > now.getTime() + 24 * 60 * 60 * 1000) {
+        if (lang === 'zh-TW' || lang === 'zh-CN') return '最近'
+        return 'Just now'
+      }
       return date.toLocaleDateString(lang === "en" ? "en-US" : lang === "zh-CN" ? "zh-CN" : "zh-TW", {
         year: "numeric",
         month: "short",

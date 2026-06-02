@@ -549,15 +549,49 @@ function extractText(html: string): string {
 }
 
 function extractImage(itemXml: string): string | null {
+  // Try multiple patterns for image extraction
   const patterns = [
+    // Media content/thumbnail elements (common in modern RSS)
     /<media:content[^>]*url=["']([^"']*)["']/i,
     /<media:thumbnail[^>]*url=["']([^"']*)["']/i,
-    /<enclosure[^>]*url=["']([^"']*)["']/i,
+    // Standard enclosure (check if it's an image type)
+    /<enclosure[^>]*url=["']([^"']*)["'][^>]*type=["']([^"']*)["']/i,
+    // Image elements in description/content
     /<img[^>]*src=["']([^"']*)["']/i,
+    // Open Graph:image meta tag (sometimes in content)
+    /<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']*)["']/i,
+    // Content:encoded section with images
+    /<content:encoded[^>]*>([\s\S]*?)<\/content:encoded>/i,
   ]
-  for (const p of patterns) {
-    const m = itemXml.match(p)
-    if (m && m[1]) return m[1]
+
+  for (let i = 0; i < patterns.length; i++) {
+    const p = patterns[i]
+    if (i === 2) {
+      // Special handling for enclosure - check if it's an image
+      const match = itemXml.match(p)
+      if (match && match[1]) {
+        const type = match[2] || ''
+        if (type.startsWith('image/') || match[1].match(/\.(jpg|jpeg|png|gif|webp)/i)) {
+          return match[1]
+        }
+      }
+    } else if (i === 6) {
+      // Content:encoded - extract first image from HTML content
+      const match = itemXml.match(p)
+      if (match && match[1]) {
+        const imgMatch = match[1].match(/<img[^>]*src=["']([^"']*)["']/i)
+        if (imgMatch && imgMatch[1]) return imgMatch[1]
+      }
+    } else {
+      const m = itemXml.match(p)
+      if (m && m[1]) {
+        // Validate it's a valid image URL
+        const url = m[1]
+        if (url.startsWith('http') && (url.match(/\.(jpg|jpeg|png|gif|webp|svg)/i) || url.includes('image'))) {
+          return url
+        }
+      }
+    }
   }
   return null
 }
