@@ -7,6 +7,7 @@ const HOST_NAMES = {
 
 async function getDualHostAnalysis(title: string, desc: string, source: string, lang: string) {
   const apiKey = process.env.OPENROUTER_API_KEY
+  console.log('[AI Host] API Key status:', apiKey ? 'PRESENT (length: ' + apiKey.length + ')' : 'MISSING')
   const hostMale = HOST_NAMES.male[lang as keyof typeof HOST_NAMES.male] || HOST_NAMES.male['zh-TW']
   const hostFemale = HOST_NAMES.female[lang as keyof typeof HOST_NAMES.female] || HOST_NAMES.female['zh-TW']
 
@@ -31,7 +32,8 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
   ]
 
   if (!apiKey) {
-    return { analysis: fallbackLines.join('\n'), isDemo: true }
+    console.log('[AI Host] No API key - returning demo mode')
+    return { analysis: fallbackLines.join('\n'), isDemo: true, error: 'No API key configured' }
   }
 
   const prompt = `你是一個新聞網台的兩位主持人：${hostMale}（男，理性分析型）和 ${hostFemale}（女，親和力強，善於提問）。
@@ -69,6 +71,7 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 15000)
 
+    console.log('[AI Host] Making API request to OpenRouter...')
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -85,6 +88,7 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
     })
 
     clearTimeout(timeoutId)
+    console.log('[AI Host] API Response status:', res.status)
 
     if (!res.ok) {
       const errorText = await res.text()
@@ -93,9 +97,11 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
     }
 
     const data = await res.json()
+    console.log('[AI Host] API Response data keys:', Object.keys(data))
     const content = data.choices?.[0]?.message?.content
 
     if (!content) {
+      console.error('[AI Host] No content in API response')
       throw new Error('No content in API response')
     }
 
