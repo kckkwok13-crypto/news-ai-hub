@@ -624,7 +624,7 @@ async function translateText(text: string, lang: string, timeoutMs = 10000): Pro
       const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'HTTP-Referer': 'https://newskingdom.store' },
-        body: JSON.stringify({ model: 'google/gemini-2.0-flash', messages: [{ role: 'user', content: prompt }], max_tokens: 500 }),
+        body: JSON.stringify({ model: 'openai/gpt-4o-mini', messages: [{ role: 'user', content: prompt }], max_tokens: 500 }),
         signal: controller.signal
       })
       clearTimeout(timeoutId)
