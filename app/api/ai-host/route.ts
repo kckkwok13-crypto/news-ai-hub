@@ -80,7 +80,7 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
         'HTTP-Referer': 'https://newskingdom.store',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-001',
+        model: 'google/gemini-2.0-flash',
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 2000,
       }),
