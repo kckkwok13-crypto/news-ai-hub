@@ -110,12 +110,12 @@ ${items.slice(0, 10).map((i: any, idx: number) => `${idx + 1}. [${i.source}] ${i
     const timeoutId = setTimeout(() => controller.abort(), 15000)
 
     const body: any = {
-      model: 'google/gemini-2.0-flash-001',
+      model: 'google/gemini-2.0-flash',
       messages: [{ role: 'user', content: prompt }],
     }
 
     // Only add response_format for models that support it (Gemini 2.0+)
-    const modelId = 'google/gemini-2.0-flash-001'
+    const modelId = 'google/gemini-2.0-flash'
     if (modelId.includes('gemini-2') || modelId.includes('gemini-3')) {
       body.response_format = { type: 'json_object' }
     }
