@@ -600,7 +600,9 @@ async function translateText(text: string, lang: string, timeoutMs = 10000): Pro
   if (!text || text.length < 2) return text
   const hasChinese = /[\u4e00-\u9fff]/.test(text)
   const isTargetChinese = lang === 'zh-CN' || lang === 'zh-TW'
+  // Skip if already in target language
   if ((isTargetChinese && hasChinese) || (!isTargetChinese && !hasChinese)) return text
+
   try {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
@@ -614,30 +616,7 @@ async function translateText(text: string, lang: string, timeoutMs = 10000): Pro
       if (translated && translated !== text) return translated
     }
   } catch {}
-  const apiKey = process.env.GOOGLE_API_KEY
-  if (apiKey) {
-    try {
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-      const targetLangLabel = lang === 'en' ? 'English' : lang === 'zh-CN' ? 'Simplified Chinese' : 'Traditional Chinese with Cantonese style'
-      const prompt = `Translate to ${targetLangLabel}. Only output translation:\n\n${text}`
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 500 }
-        }),
-        signal: controller.signal
-      })
-      clearTimeout(timeoutId)
-      if (res.ok) {
-        const data = await res.json()
-        const translated = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
-        if (translated && translated !== text) return translated
-      }
-    } catch {}
-  }
+  // If translation fails, return original text (no API key needed)
   return text
 }
 
