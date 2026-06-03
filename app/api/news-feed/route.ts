@@ -614,23 +614,26 @@ async function translateText(text: string, lang: string, timeoutMs = 10000): Pro
       if (translated && translated !== text) return translated
     }
   } catch {}
-  const apiKey = process.env.OPENROUTER_API_KEY
+  const apiKey = process.env.GOOGLE_API_KEY
   if (apiKey) {
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
       const targetLangLabel = lang === 'en' ? 'English' : lang === 'zh-CN' ? 'Simplified Chinese' : 'Traditional Chinese with Cantonese style'
-      const prompt = `Translate the following text to ${targetLangLabel}. Only output the translation, nothing else.\n\nText: ${text}`
-      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      const prompt = `Translate to ${targetLangLabel}. Only output translation:\n\n${text}`
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'HTTP-Referer': 'https://newskingdom.store' },
-        body: JSON.stringify({ model: 'openai/gpt-4o-mini', messages: [{ role: 'user', content: prompt }], max_tokens: 500 }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 500 }
+        }),
         signal: controller.signal
       })
       clearTimeout(timeoutId)
       if (res.ok) {
         const data = await res.json()
-        const translated = data.choices?.[0]?.message?.content?.trim()
+        const translated = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim()
         if (translated && translated !== text) return translated
       }
     } catch {}
