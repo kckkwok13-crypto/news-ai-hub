@@ -78,7 +78,7 @@ function estimateSentiment(title: string, desc: string): number {
   const text = ((title || '') + ' ' + (desc || '')).toLowerCase()
   const positive = ['surge', 'gain', 'rise', 'grow', 'positive', 'success', 'win', 'boost', 'rally', 'bullish', '上漲', '增長', '成功', '牛市', '突破', '新高', '利好', '漲幅', '反彈']
   const negative = ['crash', 'fall', 'drop', 'loss', 'fail', 'crisis', 'war', 'threat', 'concern', 'bearish', '下跌', '危機', '戰爭', '熊市', '暴跌', '新低', '利空', '跌幅', '跳水']
-  
+
   let score = 0
   for (const w of positive) if (text.includes(w)) score += 0.3
   for (const w of negative) if (text.includes(w)) score -= 0.3
@@ -86,12 +86,12 @@ function estimateSentiment(title: string, desc: string): number {
 }
 
 async function getAIAnalysis(items: any[], lang: string) {
-  const apiKey = process.env.OPENROUTER_API_KEY
+  const apiKey = process.env.GOOGLE_API_KEY
   if (!apiKey) return null
 
-  const prompt = `Analyze these news items and provide a summary.
+  const prompt = `Analyze these news items and provide a summary in JSON format.
 
-Format output as JSON:
+Output JSON:
 {
   "digest": "2-3 sentence summary in ${lang === 'en' ? 'English' : 'Traditional Chinese with Cantonese style'}",
   "trends": ["trend1", "trend2", "trend3"],
@@ -109,25 +109,17 @@ ${items.slice(0, 10).map((i: any, idx: number) => `${idx + 1}. [${i.source}] ${i
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 15000)
 
-    const body: any = {
-      model: 'openai/gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-    }
-
-    // Only add response_format for models that support it
-    const modelId = 'openai/gpt-4o-mini'
-    if (modelId.includes('gemini-2') || modelId.includes('gemini-3')) {
-      body.response_format = { type: 'json_object' }
-    }
-
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://newskingdom.store',
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          maxOutputTokens: 1000,
+        }
+      }),
       signal: controller.signal
     })
 
@@ -140,7 +132,7 @@ ${items.slice(0, 10).map((i: any, idx: number) => `${idx + 1}. [${i.source}] ${i
     }
 
     const data = await res.json()
-    const content = data.choices?.[0]?.message?.content
+    const content = data.candidates?.[0]?.content?.parts?.[0]?.text
     if (!content) return null
 
     return JSON.parse(content)
@@ -182,17 +174,13 @@ function simpleAnalysis(items: any[], lang: string) {
   // Clean words: remove punctuation, hashtags, symbols, pure numbers
   const cleanWords = allTitles
     .toLowerCase()
-    // Split on whitespace and common Chinese punctuation
     .split(/[\s\n\r\t,.!?;:，。！？；：、""''""'''『』（）【】《》〈〉「」\[\]【】\/\\]+/)
     .map(w => w.replace(/^[#@$%^&*()_+\-=\[\]{}|;:'"<>,.\/\\!@#$%^&*()_+\-=\[\]{}|;:'"<>,.\/?`~]+/, '').replace(/[#@$%^&*()_+\-=\[\]{}|;:'"<>,.\/\\!@#$%^&*()_+\-=\[\]{}|;:'"<>,.\/?`~]+$/, ''))
     .filter(w => {
       if (w.length < 2) return false
-      // Reject pure numbers or words that are mostly numbers
       if (/^\d+$/.test(w)) return false
       if (/^\d+[a-zA-Z]$/.test(w)) return false
-      // Reject pure symbols (no letters, no CJK)
       if (!/[a-zA-Z\u4e00-\u9fff]/.test(w)) return false
-      // Reject stopwords
       if (stopwords.has(w)) return false
       return true
     })
@@ -202,13 +190,11 @@ function simpleAnalysis(items: any[], lang: string) {
     wordCount[w] = (wordCount[w] || 0) + 1
   }
 
-  // Get top keywords, deduplicating Chinese vs English
   const topKeywords = Object.entries(wordCount)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
     .map(([word]) => word)
 
-  // Simple sentiment
   const positive = ['surge', 'gain', 'rise', 'grow', 'positive', 'success', 'win', 'boost', 'rally', '上漲', '增長', '成功', '牛市']
   const negative = ['crash', 'fall', 'drop', 'loss', 'fail', 'crisis', 'war', 'threat', 'concern', '下跌', '危機', '戰爭', '熊市']
 

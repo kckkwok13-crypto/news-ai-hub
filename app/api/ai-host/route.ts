@@ -6,7 +6,7 @@ const HOST_NAMES = {
 }
 
 async function getDualHostAnalysis(title: string, desc: string, source: string, lang: string) {
-  const apiKey = process.env.OPENROUTER_API_KEY
+  const apiKey = process.env.GOOGLE_API_KEY
   console.log('[AI Host] API Key status:', apiKey ? 'PRESENT (length: ' + apiKey.length + ')' : 'MISSING')
   const hostMale = HOST_NAMES.male[lang as keyof typeof HOST_NAMES.male] || HOST_NAMES.male['zh-TW']
   const hostFemale = HOST_NAMES.female[lang as keyof typeof HOST_NAMES.female] || HOST_NAMES.female['zh-TW']
@@ -54,7 +54,7 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
    - 適當懷疑同不確定性
 
 3. 對話要自然生動，必須包含：
-   - 適當的語氣詞（如：嗯、啊、咁樣講、好似幾有意思、嘩、係喎）
+   - 適當的語氣詞（如：嗯、啊、咁樣講，好似幾有意思、嘩、係喎）
    - 主持人之間的互動和回應
    - 追問和補充
    - 適度的停頓感覺
@@ -71,18 +71,18 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 15000)
 
-    console.log('[AI Host] Making API request to OpenRouter...')
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    console.log('[AI Host] Making API request to Google Gemini...')
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://newskingdom.store',
       },
       body: JSON.stringify({
-        model: 'openai/gpt-4o-mini',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 2000,
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          maxOutputTokens: 2000,
+          temperature: 0.7,
+        }
       }),
       signal: controller.signal
     })
@@ -98,7 +98,7 @@ async function getDualHostAnalysis(title: string, desc: string, source: string, 
 
     const data = await res.json()
     console.log('[AI Host] API Response data keys:', Object.keys(data))
-    const content = data.choices?.[0]?.message?.content
+    const content = data.candidates?.[0]?.content?.parts?.[0]?.text
 
     if (!content) {
       console.error('[AI Host] No content in API response')
