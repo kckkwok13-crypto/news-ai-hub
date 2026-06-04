@@ -1,8 +1,20 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts'
+import dynamic from 'next/dynamic'
 import { TrendingUp, Users, Clock, BarChart3, Calculator, AlertCircle, Info } from 'lucide-react'
+
+// Dynamically import Recharts to avoid SSR issues
+const DynamicBarChart = dynamic(() => import('recharts').then(mod => ({ default: mod.BarChart })), { ssr: false })
+const DynamicBar = dynamic(() => import('recharts').then(mod => ({ default: mod.Bar })), { ssr: false })
+const DynamicXAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.XAxis })), { ssr: false })
+const DynamicYAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.YAxis })), { ssr: false })
+const DynamicCartesianGrid = dynamic(() => import('recharts').then(mod => ({ default: mod.CartesianGrid })), { ssr: false })
+const DynamicTooltip = dynamic(() => import('recharts').then(mod => ({ default: mod.Tooltip })), { ssr: false })
+const DynamicPieChart = dynamic(() => import('recharts').then(mod => ({ default: mod.PieChart })), { ssr: false })
+const DynamicPie = dynamic(() => import('recharts').then(mod => ({ default: mod.Pie })), { ssr: false })
+const DynamicCell = dynamic(() => import('recharts').then(mod => ({ default: mod.Cell })), { ssr: false })
+const DynamicResponsiveContainer = dynamic(() => import('recharts').then(mod => ({ default: mod.ResponsiveContainer })), { ssr: false })
 
 // Statistical functions
 function mean(arr: number[]): number {
@@ -209,19 +221,19 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
               <BarChart3 size={20} /> 每週新聞趨勢
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={weeklyData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="week" stroke="#9ca3af" fontSize={12} />
-                <YAxis stroke="#9ca3af" fontSize={12} />
-                <Tooltip
+            <DynamicResponsiveContainer width="100%" height={300}>
+              <DynamicBarChart data={weeklyData}>
+                <DynamicCartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <DynamicXAxis dataKey="week" stroke="#9ca3af" fontSize={12} />
+                <DynamicYAxis stroke="#9ca3af" fontSize={12} />
+                <DynamicTooltip
                   contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
                   labelStyle={{ color: '#fff' }}
                 />
-                <Bar dataKey="count" fill="#3b82f6" name="新聞數量" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="analyzed" fill="#8b5cf6" name="已分析" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+                <DynamicBar dataKey="count" fill="#3b82f6" name="新聞數量" radius={[4, 4, 0, 0]} />
+                <DynamicBar dataKey="analyzed" fill="#8b5cf6" name="已分析" radius={[4, 4, 0, 0]} />
+              </DynamicBarChart>
+            </DynamicResponsiveContainer>
           </div>
 
           {/* Category Distribution */}
@@ -229,9 +241,9 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
               <PieChart /> 分類分佈
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
+            <DynamicResponsiveContainer width="100%" height={300}>
+              <DynamicPieChart>
+                <DynamicPie
                   data={categoryData}
                   cx="50%"
                   cy="50%"
@@ -243,14 +255,14 @@ export default function AnalyticsPage() {
                   labelLine={false}
                 >
                   {categoryData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                    <DynamicCell key={`cell-${index}`} fill={entry.color} />
                   ))}
-                </Pie>
-                <Tooltip
+                </DynamicPie>
+                <DynamicTooltip
                   contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
                 />
-              </PieChart>
-            </ResponsiveContainer>
+              </DynamicPieChart>
+            </DynamicResponsiveContainer>
           </div>
         </div>
 
