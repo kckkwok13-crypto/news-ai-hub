@@ -10,6 +10,6 @@ const nextConfig = {
       { hostname: 'images.cointelegraph.com' },
       { hostname: 'photos.smugmug.com' },
     ]
-  }
+  },
 }
 module.exports = nextConfig
