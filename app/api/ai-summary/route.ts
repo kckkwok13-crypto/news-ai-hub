@@ -72,15 +72,19 @@ function detectTrends(items: any[]): string[] {
 function estimateOverallSentiment(items: any[]): { positive: number; negative: number; neutral: number } {
   let positive = 0, negative = 0
   for (const item of items) {
-    const score = estimateSentiment(item.title_zh || item.title_translated || item.title || '', item.desc_zh || item.desc_translated || item.desc || '')
+    const score = estimateSentiment(
+      item.title_zh || item.title_translated || item.title || '',
+      item.desc_zh || item.desc_translated || item.desc || ''
+    )
     if (score > 0) positive++
     else if (score < 0) negative++
   }
-  const neutral = items.length - positive - negative
+  const total = items.length || 1
+  const neutral = total - positive - negative
   return {
-    positive: Math.round((positive / items.length) * 100),
-    negative: Math.round((negative / items.length) * 100),
-    neutral: Math.round((neutral / items.length) * 100),
+    positive: Math.round((positive / total) * 100),
+    negative: Math.round((negative / total) * 100),
+    neutral: Math.round((neutral / total) * 100),
   }
 }
 
