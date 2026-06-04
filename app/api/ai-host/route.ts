@@ -1,42 +1,155 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { title, desc = '', source = 'Unknown', lang = 'zh-TW' } = body
 
-    // Return demo mode response without calling any API
-    const fallbackLines = lang === 'en' ? [
-      `小婷: Welcome to our news analysis! Today we're looking at: ${(title || '').slice(0, 80)}`,
-      `阿傑: This is really interesting. Let me break it down for our listeners.`,
-      `小婷: What makes this particularly significant?`,
-      `阿傑: The key point is the potential impact on everyday people like us.`,
-      `小婷: So what should our listeners pay attention to?`,
-      `阿傑: I'd say stay informed and understand both sides of the story.`,
-      `小婷: Great insights! Thanks for tuning in, everyone!`,
-      `阿傑: Remember to verify your news sources. See you next time!`,
-    ] : [
-      `小婷: 歡迎收聽我哋嘅新聞分析！今日我哋睇下：${(title || '').slice(0, 40)}`,
-      `阿傑: 呢單新聞幾有意思，等我同大家拆解一下。`,
-      `小婷: 咁呢件事有咩特別之處？`,
-      `阿傑: 最重要嘅係，呢件事對普通人嘅日常生活可能有啲影響。`,
-      `小婷: 咁聽眾應該留意啲咩？`,
-      `阿傑: 我覺得最重要係保持資訊靈通，同埋了解唔同角度嘅觀點。`,
-      `小婷: 分析得好！多謝大家收聽！`,
-      `阿傑: 記住，要驗證新聞來源。下次見！`,
-    ]
+    // Get API key from environment
+    const apiKey = process.env.GOOGLE_API_KEY
+
+    if (!apiKey) {
+      // Return keyword-based fallback if no API key
+      return NextResponse.json({
+        success: true,
+        analysis: generateKeywordBasedAnalysis(title, desc, source, lang),
+        isDemo: true,
+        timestamp: Date.now(),
+      })
+    }
+
+    // Use Gemini AI for actual analysis
+    const genAI = new GoogleGenerativeAI(apiKey)
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+
+    const prompt = lang === 'en'
+      ? `You are a news analyst in a podcast. Analyze this news item and provide insights in a friendly conversational format between Amy and Jack.\n\nNews: ${title}\nDescription: ${desc}\nSource: ${source}\n\nFormat your response as a dialogue with these two hosts, discussing the key points, impact, and what listeners should pay attention to. Keep it concise (about 5-6 exchanges).`
+      : `你係一個podcast新聞分析員。用廣東話口語分析呢條新聞，以阿傑和小婷嘅對話形式呈現。\n\n新聞標題：${title}\n新聞內容：${desc}\n來源：${source}\n\n格式係阿傑和小婷嘅輕鬆對話，討論重點、影響同聽眾要注意嘅地方。保持5-6句對話，口語化，易明。`
+
+    const result = await model.generateContent(prompt)
+    const analysis = result.response.text()
 
     return NextResponse.json({
       success: true,
-      analysis: fallbackLines.join('\n'),
-      isDemo: true,
+      analysis,
+      isDemo: false,
       timestamp: Date.now(),
     })
 
   } catch (err: any) {
     console.error('[AI Host] Request failed:', err)
-    return NextResponse.json({ success: false, error: err.message || 'Analysis failed' }, { status: 500 })
+    // Fallback to keyword-based if API fails
+    return NextResponse.json({
+      success: true,
+      analysis: generateKeywordBasedAnalysis(
+        JSON.parse(err.message || '{}')?.title || '',
+        '',
+        '',
+        'zh-TW'
+      ),
+      isDemo: true,
+      timestamp: Date.now(),
+    })
   }
+}
+
+function generateKeywordBasedAnalysis(title: string, desc: string, source: string, lang: string): string {
+  const fullText = `${title} ${desc}`.toLowerCase()
+
+  // Generate varied responses based on keywords
+  const responses = {
+    stock: lang === 'en' ? [
+      `小婷: Stocks are making headlines today with ${(title || '').slice(0, 30)}...`,
+      `阿傑: Stock movements like this often reflect broader market sentiment.`,
+      `小婷: What should investors keep in mind?`,
+      `阿傑: Diversification is key, and don't panic over short-term volatility.`,
+      `小婷: Great advice! Remember to do your own research before investing.`,
+      `阿傑: See you next time with more market insights!`,
+    ] : [
+      `小婷: 今日股市有新動向，「${(title || '').slice(0, 20)}」成為焦點...`,
+      `阿傑: 股市波動往往反映市場情緒，呢個也不例外。`,
+      `小婷: 投資者應該注意啲咩？`,
+      `阿傑: 分散投資好重要，別因為短期波動就亂咁嚟。`,
+      `小婷: 好建議！記住投資前要做好功課。`,
+      `阿傑: 下次再帶嚟更多市場分析！`,
+    ],
+    crypto: lang === 'en' ? [
+      `小婷: Crypto markets are heating up again, especially around ${(title || '').slice(0, 30)}...`,
+      `阿傑: This is interesting timing given recent regulatory developments.`,
+      `小婷: How might this affect crypto investors?`,
+      `阿傑: Volatility can mean opportunity, but always manage your risk.`,
+      `小婷: Smart tips! Thanks for the insights!`,
+      `阿傑: Don't forget to verify exchanges before trading. Stay safe out there!`,
+    ] : [
+      `小婷: 加密貨幣市場又熱起來，「${(title || '').slice(0, 20)}」備受關注...`,
+      `阿傑: 面對最近監管發展，呢個時機相當有趣。`,
+      `小婷: 咁會點影響加密投資者？`,
+      `阿傑: 波動代表機會，但係一定要控制好風險。`,
+      `小婷: 精明建議！多謝分享！`,
+      `阿傑: 交易前要verify交易所真面目，小心為上！`,
+    ],
+    tech: lang === 'en' ? [
+      `小婷: Tech news is buzzing with ${(title || '').slice(0, 30)} making waves...`,
+      `阿傑: This could have significant implications for the industry.`,
+      `小婷: What makes this development special?`,
+      `阿傑: Technology evolution often changes how we live and work.`,
+      `小婷: Fascinating! Innovation keeps moving forward!`,
+      `阿傑: Stay tuned for more tech updates!`,
+    ] : [
+      `小婷: 科技界又有大新聞，「${(title || '').slice(0, 20)}」掀起熱議...`,
+      `阿傑: 呢個發展對行業可能有好大影響。`,
+      `小婷: 咁特別之處係咩？`,
+      `阿傑: 科技演進往往改變我哋嘅生活同工作方式。`,
+      `小婷: 好有趣！創新不停向前！`,
+      `阿傑: 繼續留意我哋嘅科技資訊！`,
+    ],
+    economy: lang === 'en' ? [
+      `小婷: Economic indicators are shifting with ${(title || '').slice(0, 30)}...`,
+      `阿傑: This could affect everything from inflation to employment.`,
+      `小婷: How should ordinary people respond?`,
+      `阿傑: Stay informed about Fiscal policies and their personal impact.`,
+      `小婷: Practical advice! Knowledge is power!`,
+      `阿傑: We'll keep tracking these economic trends for you!`,
+    ] : [
+      `小婷: 經濟指標有變化，「${(title || '').slice(0, 20)}」引人關注...`,
+      `阿傑: 呢個可能影響通脹、就業等方方面面。`,
+      `小婷: 普通市民應該點回應？`,
+      `阿傑: 密切關注财经政策，評估對個人財務嘅影響。`,
+      `小婷: 實用建議！知識就係力量！`,
+      `阿傑: 我哋會繼續追蹤呢啲經濟趨勢！`,
+    ],
+    default: lang === 'en' ? [
+      `小婷: Welcome to our news analysis! Today we're looking at ${(title || '').slice(0, 40)}...`,
+      `阿傑: This is really interesting. Let me break it down.`,
+      `小婷: What makes this particularly significant?`,
+      `阿傑: The key point is how it affects everyday people.`,
+      `小婷: So what should our listeners pay attention to?`,
+      `阿傑: Stay informed and understand different perspectives.`,
+      `小婷: Great insights! Thanks for tuning in!`,
+      `阿傑: Remember to verify your news sources. See you next time!`,
+    ] : [
+      `小婷: 歡迎收聽我哋嘅新聞分析！今日我哋睇下${(title || '').slice(0, 30)}...`,
+      `阿傑: 呢單新聞幾有意思，等我同大家拆解一下。`,
+      `小婷: 咁呢件事有咩特別之處？`,
+      `阿傑: 最重要嘅係，呢件事對普通人嘅日常生活有影響。`,
+      `小婷: 咁聽眾應該留意啲咩？`,
+      `阿傑: 保持資訊靈通，了解唔同角度嘅觀點。`,
+      `小婷: 分析得好！多謝大家收聽！`,
+      `阿傑: 記住驗證新聞來源。下次見！`,
+    ]
+  }
+
+  if (fullText.includes('stock') || fullText.includes('股') || fullText.includes('market') || fullText.includes('投資')) {
+    return responses.stock.join('\n')
+  } else if (fullText.includes('crypto') || fullText.includes('比特') || fullText.includes('幣') || fullText.includes('coin') || fullText.includes('bitcoin')) {
+    return responses.crypto.join('\n')
+  } else if (fullText.includes('tech') || fullText.includes('科技') || fullText.includes('ai') || fullText.includes('gpt') || fullText.includes('人工')) {
+    return responses.tech.join('\n')
+  } else if (fullText.includes('econom') || fullText.includes('經濟') || fullText.includes('利率') || fullText.includes('通脹') || fullText.includes('inflation')) {
+    return responses.economy.join('\n')
+  }
+  return responses.default.join('\n')
 }
 
 export const runtime = 'nodejs'
