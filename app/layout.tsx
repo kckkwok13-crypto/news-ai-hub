@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   description: 'AI驅動的新聞聚合平台，支持多語言即時翻譯、多元分類，涵蓋財經、加密貨幣、科技、遊戲、美食、旅遊、藝術等領域',
   keywords: ['AI新聞', '智能新聞', '新聞聚合', '多語言新聞', '財經新聞', '科技新聞', 'AI翻譯', 'News AI Hub'],
   authors: [{ name: 'NewsFlow' }],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.svg',
+  },
   openGraph: {
     title: 'NewsFlow - AI 驅動的智能新聞平台',
     description: '即時翻譯 · AI 分析 · 多元分類',
