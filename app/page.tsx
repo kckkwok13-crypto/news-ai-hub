@@ -1671,42 +1671,8 @@ export default function NewsPage() {
           ⚠️ 版權聲明：本網站僅使用 AI Summary新聞要點，所有新聞標題、連結及圖片版權歸各原始來源所有。我們不複製完整內容，僅供信息聚合用途。
         </p>
       </footer>
-
-      {/* AdSense Leaderboard Banner - Header Below */}
-      <div className="w-full flex justify-center py-3">
-        <div className="w-full max-w-[728px] h-[90px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '728px', height: '90px' }}
-            data-ad-client={adsenseClient}
-            data-ad-slot={adSlotLeaderboard}
-            data-ad-format="horizontal"
-          />
-        </div>
-      </div>
-
-      {/* AdSense In-Feed Ads - Between News Cards */}
-      <div className="w-full max-w-6xl mx-auto px-4 my-6">
-        <div className="w-full h-[250px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '100%', height: '250px' }}
-            data-ad-client={adsenseClient}
-            data-ad-slot={adSlotInArticle}
-            data-ad-format="in-article"
-          />
-        </div>
-      </div>
-
-      {/* AdSense Rectangle - Sidebar / Mobile Banner */}
-      <div className="w-full flex justify-center py-3">
-        <div className="w-full max-w-[336px] h-[280px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '336px', height: '280px' }}
-            data-ad-client={adsenseClient}
-            data-ad-slot={adSlotRectangle}
-            data-ad-format="rectangle"
-          />
-        </div>
-      </div>
     </div>
   );
 }
+
+      
