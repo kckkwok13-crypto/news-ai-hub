@@ -1,19 +1,69 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, Mail, Send, MapPin, MessageCircle, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
+
+// Simple CAPTCHA: Generate random math question
+function generateMathQuestion() {
+  const num1 = Math.floor(Math.random() * 10) + 1
+  const num2 = Math.floor(Math.random() * 10) + 1
+  return {
+    question: `請計算：${num1} + ${num2} = ?`,
+    answer: num1 + num2
+  }
+}
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [formStartTime] = useState(Date.now())
+
+  // CAPTCHA state
+  const [captcha, setCaptcha] = useState(generateMathQuestion())
+  const [captchaAnswer, setCaptchaAnswer] = useState('')
+  const [captchaError, setCaptchaError] = useState('')
+
+  // Honeypot field state (hidden from humans)
+  const [honeypot, setHoneypot] = useState('')
+
+  const refreshCaptcha = () => {
+    setCaptcha(generateMathQuestion())
+    setCaptchaAnswer('')
+    setCaptchaError('')
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
     setError('')
-    
+    setCaptchaError('')
+
+    // 1. Time-based check: If submitted too fast (< 3 seconds), likely a bot
+    const timeTaken = (Date.now() - formStartTime) / 1000
+    if (timeTaken < 3) {
+      setError('請稍候片刻再提交。')
+      setLoading(false)
+      return
+    }
+
+    // 2. Honeypot check: If this field is filled, it's a bot
+    if (honeypot) {
+      // Silently fail - don't let bots know they were caught
+      setSubmitted(true)
+      setLoading(false)
+      return
+    }
+
+    // 3. CAPTCHA check
+    if (parseInt(captchaAnswer) !== captcha.answer) {
+      setCaptchaError('答案唔正確，請再試一次。')
+      refreshCaptcha()
+      setLoading(false)
+      return
+    }
+
     const formData = new FormData(e.currentTarget)
     const data = {
       name: formData.get('name'),
@@ -28,7 +78,7 @@ export default function ContactPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
-      
+
       // Even if API fails (e.g., no email configured), show success
       // This prevents the form from feeling broken
       setSubmitted(true)
@@ -92,8 +142,13 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-2">發送成功！</h3>
                 <p className="text-slate-400">多謝你嘅聯絡，我哋會盡快回覆你。</p>
-                <button 
-                  onClick={() => { setSubmitted(false); setError(''); }} 
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setError('');
+                    setCaptchaAnswer('')
+                    refreshCaptcha()
+                  }}
                   className="mt-6 text-blue-400 hover:underline"
                 >
                   再發送一條訊息
@@ -106,6 +161,19 @@ export default function ContactPage() {
                     {error}
                   </div>
                 )}
+
+                {/* Honeypot field - hidden from users, visible to bots */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  className="absolute opacity-0 pointer-events-none"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-slate-400">姓名 *</label>
@@ -120,8 +188,41 @@ export default function ContactPage() {
                   <label className="text-sm font-medium text-slate-400">訊息 *</label>
                   <textarea required name="message" rows={5} className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 focus:border-blue-500 focus:outline-none transition-colors" placeholder="你想同我哋講咩？"></textarea>
                 </div>
-                <button 
-                  type="submit" 
+
+                {/* CAPTCHA Section */}
+                <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1">
+                      <label className="text-sm font-medium text-slate-400 mb-2 block">
+                        🔐 安全驗證 *
+                      </label>
+                      <p className="text-white font-medium">{captcha.question}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={refreshCaptcha}
+                      className="text-slate-400 hover:text-white transition-colors text-sm"
+                      title="刷新驗證"
+                    >
+                      🔄
+                    </button>
+                  </div>
+                  <input
+                    required
+                    type="text"
+                    value={captchaAnswer}
+                    onChange={(e) => setCaptchaAnswer(e.target.value)}
+                    className="w-full mt-3 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 focus:border-blue-500 focus:outline-none transition-colors"
+                    placeholder="請輸入答案"
+                    autoComplete="off"
+                  />
+                  {captchaError && (
+                    <p className="text-red-400 text-sm mt-2">{captchaError}</p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
                   disabled={loading}
                   className="w-full py-4 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2"
                 >
