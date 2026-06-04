@@ -139,7 +139,7 @@ const blogPosts = [
     title: "🌅 繾綣阿諾河的黃昏浪漫：佛羅倫斯老橋深度散策",
     excerpt: "橫跨1345年！走過二戰奇蹟存活的欧洲最古老石桥，揭開美第奇家族的神秘走廊與百年珠寶街的奢華故事！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1467269204594-9661b13495da?w=1200&q=80",
     icon: "🌉",
     tags: ["佛羅倫斯", "歐洲", "浪漫"],
     accent: "from-amber-600 to-orange-500"
