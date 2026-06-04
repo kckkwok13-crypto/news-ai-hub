@@ -1,103 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
-
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json()
-    const items = body.items || []
-    const lang = body.lang || 'zh-TW'
-
-    if (items.length === 0) {
-      return NextResponse.json({ success: false, error: 'No items provided' }, { status: 400 })
-    }
-
-    // Get API key from environment
-    const apiKey = process.env.GOOGLE_API_KEY
-
-    // If no API key, use keyword-based analysis
-    if (!apiKey) {
-      return NextResponse.json({
-        success: true,
-        analysis: generateKeywordBasedSummary(items, lang),
-        timestamp: Date.now(),
-      })
-    }
-
-    // Use Gemini AI for actual analysis
-    const genAI = new GoogleGenerativeAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-
-    // Build news context for AI analysis
-    const newsContext = items.slice(0, 10).map((i: any, idx: number) =>
-      `${idx + 1}. [${i.source || 'Unknown'}] ${i.title_zh || i.title_translated || i.title || ''}`
-    ).join('\n')
-
-    const prompt = lang === 'en'
-      ? `Analyze these news headlines and provide a concise summary with insights:\n\n${newsContext}\n\nProvide:\n1. Brief summary of main themes\n2. 3 key trends or patterns\n3. Overall market sentiment assessment (positive/negative/neutral)\n4. Investment implications briefly`
-      : `分析呢啲新聞標題，幫我整理一份簡潔嘅摘要：\n\n${newsContext}\n\n請提供：\n1. 主要議題簡述\n2. 3個關鍵趨勢或模式\n3. 整體市場情緒評估（正面/負面/中性）\n4. 投資啟示（簡短）`
-
-    const result = await model.generateContent(prompt)
-    const aiAnalysis = result.response.text()
-
-    // Count sources
-    const sources: Record<string, number> = {}
-    for (const item of items) {
-      sources[item.source || 'Unknown'] = (sources[item.source || 'Unknown'] || 0) + 1
-    }
-
-    return NextResponse.json({
-      success: true,
-      analysis: {
-        summary_zh: aiAnalysis,
-        summary_en: aiAnalysis,
-        trends: detectTrends(items),
-        sentiment: estimateOverallSentiment(items),
-        aiGenerated: true,
-      },
-      timestamp: Date.now(),
-    })
-
-  } catch (err: any) {
-    console.error('[AI Summary] Request failed:', err)
-    return NextResponse.json({ success: false, error: err.message || 'Analysis failed' }, { status: 500 })
-  }
-}
-
-function generateKeywordBasedSummary(items: any[], lang: string): any {
-  // Count sources
-  const sources: Record<string, number> = {}
-  for (const item of items) {
-    sources[item.source || 'Unknown'] = (sources[item.source || 'Unknown'] || 0) + 1
-  }
-
-  const sourceCount = Object.keys(sources).length
-  const keywords = items.slice(0, 5).map((i: any) => {
-    const words = (i.title_zh || i.title_translated || i.title || '').split(/\s+/).slice(0, 3)
-    return words.join('')
-  }).filter(Boolean)
-
-  const summary = lang === 'en'
-    ? `Today's news includes ${items.length} articles from ${sourceCount} sources.`
-    : `今日新聞共收錄 ${items.length} 條，來自 ${sourceCount} 個來源。`
-
-  return {
-    summary_zh: summary,
-    summary_en: summary,
-    trends: keywords.slice(0, 5),
-    sentiment: { positive: 30, negative: 20, neutral: 50 },
-    details: items.slice(0, 10).map((i: any) => {
-      const impactKey = detectImpact(i.title || '', i.desc || '')
-      return {
-        id: i.id,
-        headline: extractHeadline(i.title_zh || i.title_translated || i.title || ''),
-        impact: impactKey,
-        impactDescription_zh: IMPACT_DESCRIPTIONS[impactKey]?.content_zh || IMPACT_DESCRIPTIONS.general.content_zh,
-        impactDescription_en: IMPACT_DESCRIPTIONS[impactKey]?.content_en || IMPACT_DESCRIPTIONS.general.content_en,
-        sentiment: estimateSentiment(i.title_zh || i.title_translated || i.title || '', i.desc_zh || i.desc_translated || i.desc || ''),
-      }
-    }),
-  }
-}
 
 const IMPACT_DESCRIPTIONS: Record<string, { title: string; title_en: string; content_zh: string; content_en: string }> = {
   economic: {
@@ -180,6 +81,59 @@ function estimateOverallSentiment(items: any[]): { positive: number; negative: n
     positive: Math.round((positive / items.length) * 100),
     negative: Math.round((negative / items.length) * 100),
     neutral: Math.round((neutral / items.length) * 100),
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const items = body.items || []
+    const lang = body.lang || 'zh-TW'
+
+    if (items.length === 0) {
+      return NextResponse.json({ success: false, error: 'No items provided' }, { status: 400 })
+    }
+
+    // Count sources
+    const sources: Record<string, number> = {}
+    for (const item of items) {
+      sources[item.source || 'Unknown'] = (sources[item.source || 'Unknown'] || 0) + 1
+    }
+
+    const sourceCount = Object.keys(sources).length
+    const keywords = items.slice(0, 5).map((i: any) => {
+      const words = (i.title_zh || i.title_translated || i.title || '').split(/\s+/).slice(0, 3)
+      return words.join('')
+    }).filter(Boolean)
+
+    const summary = lang === 'en'
+      ? `Today's news includes ${items.length} articles from ${sourceCount} sources.`
+      : `今日新聞共收錄 ${items.length} 條，來自 ${sourceCount} 個來源。`
+
+    return NextResponse.json({
+      success: true,
+      analysis: {
+        summary_zh: summary,
+        summary_en: summary,
+        trends: keywords.slice(0, 5),
+        sentiment: { positive: 30, negative: 20, neutral: 50 },
+        details: items.slice(0, 10).map((i: any) => {
+          const impactKey = detectImpact(i.title || '', i.desc || '')
+          return {
+            id: i.id,
+            headline: extractHeadline(i.title_zh || i.title_translated || i.title || ''),
+            impact: impactKey,
+            impactDescription_zh: IMPACT_DESCRIPTIONS[impactKey]?.content_zh || IMPACT_DESCRIPTIONS.general.content_zh,
+            impactDescription_en: IMPACT_DESCRIPTIONS[impactKey]?.content_en || IMPACT_DESCRIPTIONS.general.content_en,
+            sentiment: estimateSentiment(i.title_zh || i.title_translated || i.title || '', i.desc_zh || i.desc_translated || i.desc || ''),
+          }
+        }),
+      },
+      timestamp: Date.now(),
+    })
+
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message || 'Analysis failed' }, { status: 500 })
   }
 }
 

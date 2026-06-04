@@ -1,56 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { title, desc = '', source = 'Unknown', lang = 'zh-TW' } = body
 
-    // Get API key from environment
-    const apiKey = process.env.GOOGLE_API_KEY
-
-    if (!apiKey) {
-      // Return keyword-based fallback if no API key
-      return NextResponse.json({
-        success: true,
-        analysis: generateKeywordBasedAnalysis(title, desc, source, lang),
-        isDemo: true,
-        timestamp: Date.now(),
-      })
-    }
-
-    // Use Gemini AI for actual analysis
-    const genAI = new GoogleGenerativeAI(apiKey)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-
-    const prompt = lang === 'en'
-      ? `You are a news analyst in a podcast. Analyze this news item and provide insights in a friendly conversational format between Amy and Jack.\n\nNews: ${title}\nDescription: ${desc}\nSource: ${source}\n\nFormat your response as a dialogue with these two hosts, discussing the key points, impact, and what listeners should pay attention to. Keep it concise (about 5-6 exchanges).`
-      : `你係一個podcast新聞分析員。用廣東話口語分析呢條新聞，以阿傑和小婷嘅對話形式呈現。\n\n新聞標題：${title}\n新聞內容：${desc}\n來源：${source}\n\n格式係阿傑和小婷嘅輕鬆對話，討論重點、影響同聽眾要注意嘅地方。保持5-6句對話，口語化，易明。`
-
-    const result = await model.generateContent(prompt)
-    const analysis = result.response.text()
+    // Always use keyword-based analysis (no external API needed)
+    const analysis = generateKeywordBasedAnalysis(title, desc, source, lang)
 
     return NextResponse.json({
       success: true,
       analysis,
-      isDemo: false,
+      isDemo: true,
       timestamp: Date.now(),
     })
 
   } catch (err: any) {
     console.error('[AI Host] Request failed:', err)
-    // Fallback to keyword-based if API fails
     return NextResponse.json({
-      success: true,
-      analysis: generateKeywordBasedAnalysis(
-        JSON.parse(err.message || '{}')?.title || '',
-        '',
-        '',
-        'zh-TW'
-      ),
-      isDemo: true,
-      timestamp: Date.now(),
-    })
+      success: false,
+      error: err.message || 'Analysis failed',
+    }, { status: 500 })
   }
 }
 
@@ -108,7 +78,7 @@ function generateKeywordBasedAnalysis(title: string, desc: string, source: strin
       `小婷: Economic indicators are shifting with ${(title || '').slice(0, 30)}...`,
       `阿傑: This could affect everything from inflation to employment.`,
       `小婷: How should ordinary people respond?`,
-      `阿傑: Stay informed about Fiscal policies and their personal impact.`,
+      `阿傑: Stay informed about fiscal policies and their personal impact.`,
       `小婷: Practical advice! Knowledge is power!`,
       `阿傑: We'll keep tracking these economic trends for you!`,
     ] : [
@@ -118,6 +88,36 @@ function generateKeywordBasedAnalysis(title: string, desc: string, source: strin
       `阿傑: 密切關注财经政策，評估對個人財務嘅影響。`,
       `小婷: 實用建議！知識就係力量！`,
       `阿傑: 我哋會繼續追蹤呢啲經濟趨勢！`,
+    ],
+    health: lang === 'en' ? [
+      `小婷: Health news is trending with ${(title || '').slice(0, 30)}...`,
+      `阿傑: Medical breakthroughs can significantly impact public health.`,
+      `小婷: What should people keep in mind?`,
+      `阿傑: Always consult healthcare professionals for medical advice.`,
+      `小婷: Important reminder! Health comes first!`,
+      `阿傑: Stay healthy and informed!`,
+    ] : [
+      `小婷: 健康資訊備受關注，「${(title || '').slice(0, 20)}」成為話題...`,
+      `阿傑: 醫療突破往往影響公共健康。`,
+      `小婷: 市民應該注意啲咩？`,
+      `阿傑: 醫療問題記得搵專業人士。`,
+      `小婷: 重要提醒！健康第一！`,
+      `阿傑: 保持健康，多啲資訊！`,
+    ],
+    energy: lang === 'en' ? [
+      `小婷: Energy markets are changing with ${(title || '').slice(0, 30)}...`,
+      `阿傑: Energy policies affect everything from gas prices to renewable investments.`,
+      `小婷: What should consumers watch for?`,
+      `阿傑: Monitor global supply chains and geopolitical factors.`,
+      `小婷: Smart insights! Energy is crucial!`,
+      `阿傑: Stay updated on energy trends!`,
+    ] : [
+      `小婷: 能源市場有變化，「${(title || '').slice(0, 20)}」引人關注...`,
+      `阿傑: 能源政策影響汽油價格同可再生能源投資。`,
+      `小婷: 消費者應該留意啲咩？`,
+      `阿傑: 密切關注全球供應鏈同地緣政治因素。`,
+      `小婷: 精明分析！能源至關重要！`,
+      `阿傑: 繼續留意能源趨勢！`,
     ],
     default: lang === 'en' ? [
       `小婷: Welcome to our news analysis! Today we're looking at ${(title || '').slice(0, 40)}...`,
@@ -140,14 +140,18 @@ function generateKeywordBasedAnalysis(title: string, desc: string, source: strin
     ]
   }
 
-  if (fullText.includes('stock') || fullText.includes('股') || fullText.includes('market') || fullText.includes('投資')) {
+  if (fullText.includes('stock') || fullText.includes('股') || fullText.includes('market') || fullText.includes('投資') || fullText.includes('invest')) {
     return responses.stock.join('\n')
-  } else if (fullText.includes('crypto') || fullText.includes('比特') || fullText.includes('幣') || fullText.includes('coin') || fullText.includes('bitcoin')) {
+  } else if (fullText.includes('crypto') || fullText.includes('比特') || fullText.includes('幣') || fullText.includes('coin') || fullText.includes('bitcoin') || fullText.includes('以太') || fullText.includes('eth')) {
     return responses.crypto.join('\n')
-  } else if (fullText.includes('tech') || fullText.includes('科技') || fullText.includes('ai') || fullText.includes('gpt') || fullText.includes('人工')) {
+  } else if (fullText.includes('tech') || fullText.includes('科技') || fullText.includes('ai') || fullText.includes('gpt') || fullText.includes('人工') || fullText.includes('nvidia') || fullText.includes('google')) {
     return responses.tech.join('\n')
-  } else if (fullText.includes('econom') || fullText.includes('經濟') || fullText.includes('利率') || fullText.includes('通脹') || fullText.includes('inflation')) {
+  } else if (fullText.includes('econom') || fullText.includes('經濟') || fullText.includes('利率') || fullText.includes('通脹') || fullText.includes('inflation') || fullText.includes('gdp')) {
     return responses.economy.join('\n')
+  } else if (fullText.includes('health') || fullText.includes('健康') || fullText.includes('medical') || fullText.includes('藥') || fullText.includes('disease')) {
+    return responses.health.join('\n')
+  } else if (fullText.includes('energy') || fullText.includes('能源') || fullText.includes('oil') || fullText.includes('石油') || fullText.includes('gas') || fullText.includes('天然')) {
+    return responses.energy.join('\n')
   }
   return responses.default.join('\n')
 }
