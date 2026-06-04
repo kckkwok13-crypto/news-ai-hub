@@ -23,7 +23,8 @@ const TRANSLATIONS = {
     thinking: '阿傑正在思考中...',
     welcome: '👋 你好！我是阿傑，NewsKingdom 的 AI 分析師。\n\n我可以幫你：\n• 分析新聞重點同影響\n• 解答你對呢篇報導嘅疑問\n\n請問你想問咩問題？',
     error: '抱歉，阿傑暂时无法回应。',
-    close: '關閉'
+    close: '關閉',
+    quickTopics: '快捷問題'
   },
   'en': {
     title: 'AI News Discussion',
@@ -32,7 +33,8 @@ const TRANSLATIONS = {
     thinking: 'AI is thinking...',
     welcome: '👋 Hello! I am your AI analyst assistant at NewsKingdom. You can ask me about this news.',
     error: 'Sorry, AI response failed.',
-    close: 'Close'
+    close: 'Close',
+    quickTopics: 'Quick Topics'
   },
   'zh-CN': {
     title: '阿杰 AI 分析师',
@@ -41,8 +43,43 @@ const TRANSLATIONS = {
     thinking: '阿杰正在思考中...',
     welcome: '👋 你好！我是阿杰，NewsKingdom 的 AI 分析助手。你可以问我关于这则新闻的任何问题。',
     error: '抱歉，阿杰暂时无法回应。',
-    close: '关闭'
+    close: '关闭',
+    quickTopics: '快捷问题'
   }
+}
+
+// Quick topic suggestions
+const QUICK_TOPICS = {
+  'zh-TW': [
+    { icon: '📈', label: '市場分析', prompt: '分析一下今日市場走勢' },
+    { icon: '₿', label: '比特幣', prompt: '比特幣最新走勢如何？' },
+    { icon: '💻', label: 'AI 科技', prompt: 'AI 科技行業最新動態' },
+    { icon: '📊', label: '經濟數據', prompt: '宏觀經濟數據分析' },
+    { icon: '🏛️', label: '政策消息', prompt: '有咩重要政策消息？' },
+    { icon: '📰', label: '新聞摘要', prompt: '今日有咩重要新聞？' },
+    { icon: '💱', label: '外匯', prompt: '美元同主要貨幣走勢' },
+    { icon: '🥇', label: '黃金', prompt: '黃金價格走勢分析' }
+  ],
+  'en': [
+    { icon: '📈', label: 'Market', prompt: 'Analyze the current market trends' },
+    { icon: '₿', label: 'Bitcoin', prompt: 'What is the latest Bitcoin trend?' },
+    { icon: '💻', label: 'AI Tech', prompt: 'Latest AI technology updates' },
+    { icon: '📊', label: 'Economy', prompt: 'Macroeconomic data analysis' },
+    { icon: '🏛️', label: 'Policy', prompt: 'What important policy news?' },
+    { icon: '📰', label: 'News Summary', prompt: 'What are today\'s top news?' },
+    { icon: '💱', label: 'Forex', prompt: 'USD and major currencies trend' },
+    { icon: '🥇', label: 'Gold', prompt: 'Gold price analysis' }
+  ],
+  'zh-CN': [
+    { icon: '📈', label: '市场分析', prompt: '分析一下今日市场走势' },
+    { icon: '₿', label: '比特币', prompt: '比特币最新走势如何？' },
+    { icon: '💻', label: 'AI 科技', prompt: 'AI 科技行业最新动态' },
+    { icon: '📊', label: '经济数据', prompt: '宏观经济数据分析' },
+    { icon: '🏛️', label: '政策消息', prompt: '有什么重要政策消息？' },
+    { icon: '📰', label: '新闻摘要', prompt: '今日有什么重要新闻？' },
+    { icon: '💱', label: '外汇', prompt: '美元同主要货币走势' },
+    { icon: '🥇', label: '黄金', prompt: '黄金价格走势分析' }
+  ]
 }
 
 export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsChatProps) {
@@ -51,8 +88,10 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [showQuickTopics, setShowQuickTopics] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const t = TRANSLATIONS[lang]
+  const quickTopics = QUICK_TOPICS[lang]
 
   useEffect(() => {
     if (messages.length === 0) {
@@ -68,11 +107,13 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, promptOverride?: string) => {
     e.preventDefault()
-    if (!input.trim() || isLoading) return
+    const prompt = promptOverride || input
+    if (!prompt.trim() || isLoading) return
 
-    const userMessage = { role: 'user' as const, content: input.trim(), timestamp: new Date() }
+    setShowQuickTopics(false)
+    const userMessage = { role: 'user' as const, content: prompt.trim(), timestamp: new Date() }
     setMessages(prev => [...prev, userMessage])
     setInput('')
     setIsLoading(true)
@@ -111,9 +152,13 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
     }
   }
 
+  const handleQuickTopic = (prompt: string) => {
+    handleSubmit({ preventDefault: () => {} } as React.FormEvent, prompt)
+  }
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="w-full max-w-2xl h-[80vh] mx-4 bg-[#111113] rounded-3xl border border-white/10 shadow-2xl flex flex-col overflow-hidden">
+      <div className="w-full max-w-2xl h-[85vh] mx-4 bg-[#111113] rounded-3xl border border-white/10 shadow-2xl flex flex-col overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-[#0a0a0b]/50">
           <div className="flex items-center gap-4">
@@ -181,6 +226,61 @@ export default function AINewsChat({ newsTitle, newsSummary, onClose }: AINewsCh
             </div>
           )}
           <div ref={messagesEndRef} />
+
+          {/* Quick Topic Buttons - Show when no messages from user yet or show toggle */}
+          {messages.length <= 1 && !isLoading && (
+            <div className="mt-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs text-gray-500 font-medium">{t.quickTopics}</span>
+                <button
+                  onClick={() => setShowQuickTopics(!showQuickTopics)}
+                  className="text-xs text-amber-400 hover:text-amber-300"
+                >
+                  {showQuickTopics ? '隱藏' : '顯示'}
+                </button>
+              </div>
+              {showQuickTopics && (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  {quickTopics.map((topic, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleQuickTopic(topic.prompt)}
+                      className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-medium transition-all hover:border-amber-500/50"
+                    >
+                      <span className="text-base">{topic.icon}</span>
+                      <span>{topic.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Show quick topics toggle in other cases */}
+          {messages.length > 1 && !isLoading && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={() => setShowQuickTopics(!showQuickTopics)}
+                className="text-xs text-amber-400 hover:text-amber-300 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition"
+              >
+                {showQuickTopics ? '▲ 隱藏快捷問題' : '▼ 查看快捷問題'}
+              </button>
+              {showQuickTopics && (
+                <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
+                  {quickTopics.map((topic, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleQuickTopic(topic.prompt)}
+                      className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-medium transition-all hover:border-amber-500/50"
+                    >
+                      <span className="text-base">{topic.icon}</span>
+                      <span>{topic.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Input */}

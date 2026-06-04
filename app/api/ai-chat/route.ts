@@ -257,6 +257,37 @@ const MODEL_RESPONSES = {
     '💹 港股期貨：夜期低水約50點，預計今日A股影響港股表現。',
     '📋 財經日曆：今晚關注美國失業率數據，可能影響聯儲政策預期。',
     '💰 利率市場：聯邦基金期貨顯示年內減息預期降溫。'
+  ],
+  // New categories for quick topics
+  analysis: [
+    '📊 今日市場形勢分析：\n\n1. 美股走勢偏強，納指表現較好\n2. 港股受外圍影響，區間震盪\n3. 比特幣 ETF 資金持續流入\n4. 建議控制倉位，關注宏觀數據',
+    '💹 市場分析要點：\n\n• 央行政策影響流動性\n• 通脹數據影響加息預期\n• 資金輪動明顯\n• 關注估值合理嘅優質股',
+    '📈 綜合分析：\n\n目前市場氣氛偏向觀望，但唔少板塊仍有結構性機會。建議關注：\n1. AI 相關科技股\n2. 比特幣 ETF 概念股\n3. 業績符合預期嘅藍籌',
+    '🔍 形勢評估：\n\n全球宏觀環境複雜，但有些領域值得注意：\n• 各國央行政策分歧\n• 地緣政治風險\n• 技術創新加速\n\n建議保持多元化配置。'
+  ],
+  news_summary: [
+    '📰 今日重點新聞摘要：\n\n1. 美國CPI數據即將出爐，市場氣氛謹慎\n2. 比特幣 ETF 持續獲機構青睞\n3. AI 晶片需求依然旺盛\n4. 各國央行政策走向影響全球市場',
+    '📋 今日財經要聞：\n\n• 美股财报季進行中，多間大型科企公佈業績\n• 比特幣價格喺 ETF 資金支持下區間上移\n• 日圓持續走弱，日本央行干預風險升溫\n• 中國經濟數據顯示復甦態勢',
+    '📊 今日市場重點：\n\n1. 聯儲官員言論影響利率預期\n2. 歐元區通脹數據影響減息預期\n3. 比特幣減半周期臨近，市場關注\n4. AI 產業持續高速發展',
+    '🔴 今日重要消息：\n\n• 全球央行年會閉幕，政策指引大致明確\n• 比特幣現貨 ETF 獲批後，機構採用率提升\n• 半導體行業庫存調整接近尾聲\n• 黃金價格受到多重因素影響'
+  ],
+  investment_tips: [
+    '💡 投資策略建議：\n\n1. 分散投資：唔好將所有資金放在同一個籃子\n2. 設定止蝕：每筆交易都要有明確止蝕位\n3. 長期視角：優質資產值得耐心持有\n4. 關注現金流：選擇有穩定現金流嘅公司',
+    '📊 投資提醒：\n\n• 做好功課先好入市\n• 了解自己嘅風險承受能力\n• 唔好被情緒影響決定\n• 定期檢視投資組合',
+    '💰 投資心得：\n\n1. 機會處處，但需要有耐心\n2. 危機中往往孕育機會\n3. 分散投資降低風險\n4. 持續學習提升認知',
+    '🎯 投資原則：\n\n• 唔好預測市場，學會應對\n• 設定合理預期，穩健增長\n• 關注公司基本面\n• 保持獨立思考'
+  ],
+  sector_analysis: [
+    '📈 板塊分析：\n\n科技板塊：\n• AI 應用場景持續擴展\n• 半導體需求回暖\n• 雲端服務增長穩健\n\n建議關注大型科企同 AI 概念股。',
+    '💹 金融板塊：\n\n• 利率環境有利銀行股\n• 數字金融發展迅速\n• 保險行業復甦\n\n留意資產質量同估值。',
+    '🏥 醫藥板塊：\n\n• 創新藥審批加速\n• 人口老齡化支持長期需求\n• 醫療器械國產替代\n\n關注研發實力強嘅企業。',
+    '✈️ 旅遊休閒板塊：\n\n• 出行需求持續恢復\n• 酒店、航空受益\n• 消費升級趨勢\n\n關注恢復確定性高嘅龍頭。'
+  ],
+  risk_management: [
+    '🛡️ 風險管理建議：\n\n1. 倉位控制：每個倉位唔好超過總資金10-15%\n2. 分散配置：唔同行業、不同資產類別\n3. 設定止蝕：每筆交易都要有止蝕位\n4. 現金儲備：預留10-20%現金應對突發情況',
+    '⚠️ 風險提示：\n\n• 加密貨幣波動大，謹慎配置\n• 高估值股票注意回調風險\n• 地緣政治隨時影響市場\n• 保持流動性應對波動',
+    '💼 資產配置建議：\n\n• 股票：50-60%（分散不同板塊）\n• 債券/黃金：20-30%（穩定倉位）\n• 現金：10-20%（靈活應對）\n• 另類投資：5-10%（可選）',
+    '📋 風控檢查清單：\n\n□ 每筆交易有止蝕位\n□ 單一持倉不超15%\n□ 預留足夠現金\n□ 定期檢視組合\n□ 關注宏觀風險'
   ]
 }
 
@@ -336,6 +367,27 @@ function getResponse(prompt: string): string {
 
   if (lowerPrompt.includes('今日') || lowerPrompt.includes('今天') || lowerPrompt.includes('daily') || lowerPrompt.includes('每日')) {
     return MODEL_RESPONSES.daily[Math.floor(Math.random() * MODEL_RESPONSES.daily.length)]
+  }
+
+  // New category keyword detection for quick topics
+  if (lowerPrompt.includes('分析一下') || lowerPrompt.includes('形勢') || lowerPrompt.includes('走勢') || lowerPrompt.includes('市況')) {
+    return MODEL_RESPONSES.analysis[Math.floor(Math.random() * MODEL_RESPONSES.analysis.length)]
+  }
+
+  if (lowerPrompt.includes('有咩新聞') || lowerPrompt.includes('重要新聞') || lowerPrompt.includes('今日有咩') || lowerPrompt.includes('頭條')) {
+    return MODEL_RESPONSES.news_summary[Math.floor(Math.random() * MODEL_RESPONSES.news_summary.length)]
+  }
+
+  if (lowerPrompt.includes('策略') || lowerPrompt.includes('投資') && (lowerPrompt.includes('建議') || lowerPrompt.includes('點做好') || lowerPrompt.includes('點樣'))) {
+    return MODEL_RESPONSES.investment_tips[Math.floor(Math.random() * MODEL_RESPONSES.investment_tips.length)]
+  }
+
+  if (lowerPrompt.includes('板塊') || lowerPrompt.includes('板塊分析') || lowerPrompt.includes('邊個板塊') || lowerPrompt.includes('咩版塊')) {
+    return MODEL_RESPONSES.sector_analysis[Math.floor(Math.random() * MODEL_RESPONSES.sector_analysis.length)]
+  }
+
+  if (lowerPrompt.includes('風險') || lowerPrompt.includes('止蝕') || lowerPrompt.includes('倉位') || lowerPrompt.includes('配置')) {
+    return MODEL_RESPONSES.risk_management[Math.floor(Math.random() * MODEL_RESPONSES.risk_management.length)]
   }
 
   // Default to news tips
