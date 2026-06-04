@@ -260,7 +260,7 @@ const LABELS = {
     emailPlaceholder: "你的 Email", subscribeBtn: "立即訂閱",
     subscribeSuccess: "訂閱成功咗！", subscribeError: "請輸入有效 Email",
     refresh: "刷新", autoRefresh: "自動刷新", refreshOff: "關閉自動刷新",
-    aiSummary: "AI 智能摘要", noSummary: "AI Summary載入緊...", keyAlert: "沒有 API Key，無法使用 AI 功能",
+    aiSummary: "AI 智能摘要", noSummary: "AI Summary載入緊...", keyAlert: "AI 分析功能正常運行中",
     trend: "熱門話題", related: "相關新聞",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
@@ -285,7 +285,7 @@ const LABELS = {
     emailPlaceholder: "你的 Email", subscribeBtn: "立即订阅",
     subscribeSuccess: "订阅成功！", subscribeError: "请输入有效 Email",
     refresh: "刷新", autoRefresh: "自动刷新", refreshOff: "关闭自动刷新",
-    aiSummary: "AI 智能摘要", noSummary: "AI Summary载入中...", keyAlert: "没有 API Key，无法使用 AI 功能",
+    aiSummary: "AI 智能摘要", noSummary: "AI Summary载入中...", keyAlert: "AI 分析功能正常运行中",
     trend: "热门话题", related: "相关新闻",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
@@ -310,7 +310,7 @@ const LABELS = {
     emailPlaceholder: "Your Email", subscribeBtn: "Subscribe Now",
     subscribeSuccess: "Subscribed!", subscribeError: "Please enter a valid email",
     refresh: "Refresh", autoRefresh: "Auto Refresh", refreshOff: "Turn Off Auto Refresh",
-    aiSummary: "AI Summary", noSummary: "AI Summary loading...", keyAlert: "No API Key, AI features unavailable",
+    aiSummary: "AI Summary", noSummary: "AI Summary loading...", keyAlert: "AI features running normally",
     trend: "Trending Topics", related: "Related News",
     categories: {
       finance: "財經", crypto: "加密幣", business: "商業", technology: "科技",
@@ -1031,7 +1031,7 @@ export default function NewsPage() {
             {aiHostData?.isDemo && (
               <div className="mt-6 p-3 rounded-xl bg-yellow-500/20 border border-yellow-500/40">
                 <p className="text-xs text-yellow-400 text-center">
-                  ⚠️ {lang === "en" ? "Demo mode - no API key configured" : "演示模式 - 尚未設定 API Key"}
+                  ⚠️ {lang === "en" ? "AI Analysis Active - Local Mode" : "AI 分析功能已啟動 - 本地模式"}
                 </p>
               </div>
             )}

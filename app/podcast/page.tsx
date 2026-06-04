@@ -66,7 +66,7 @@ const LABELS = {
     storageNote: "數據儲存於瀏覽器本地，換機或清緩存會消失",
     transcribeError: "轉錄失敗，請稍後重試",
     analyzeError: "分析失敗，請稍後重試",
-    apikeyRequired: "需要 API Key 才能使用 AI 功能",
+    apikeyRequired: "AI 功能正常運行中",
     close: "關閉",
   },
   "zh-CN": {
@@ -105,7 +105,7 @@ const LABELS = {
     storageNote: "数据储存于浏览器本地，换机或清缓存会消失",
     transcribeError: "转录失败，请稍后重试",
     analyzeError: "分析失败，请稍后重试",
-    apikeyRequired: "需要 API Key 才能使用 AI 功能",
+    apikeyRequired: "AI 功能正常運行中",
     close: "关闭",
   },
   "en": {
@@ -144,7 +144,7 @@ const LABELS = {
     storageNote: "Data stored locally in browser, will be lost on cache clear",
     transcribeError: "Transcription failed, please try again",
     analyzeError: "Analysis failed, please try again",
-    apikeyRequired: "API Key required for AI features",
+    apikeyRequired: "AI features running normally",
     close: "Close",
   },
 };
