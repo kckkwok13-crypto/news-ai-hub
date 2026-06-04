@@ -1055,6 +1055,56 @@ export default function NewsPage() {
         </div>
       )}
 
+      {/* Subscribe Modal */}
+      {showSubscribe && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => setShowSubscribe(false)}>
+          <div
+            className={`max-w-md w-full rounded-3xl p-8 shadow-2xl ${darkMode ? "bg-gray-900 border border-gray-800" : "bg-white"}`}
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <Mail size={24} className="text-white" />
+                </div>
+                <div>
+                  <h3 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>{t.subscribe}</h3>
+                  <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{t.subscribeTitle}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowSubscribe(false)}
+                className={`p-2 rounded-xl ${darkMode ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-100 hover:bg-gray-200"}`}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <p className={`text-sm mb-6 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>{t.subscribeDesc}</p>
+
+            <form onSubmit={handleSubscribe} className="space-y-4">
+              <input
+                type="email"
+                value={subscribeEmail}
+                onChange={e => setSubscribeEmail(e.target.value)}
+                placeholder={t.emailPlaceholder}
+                className={`w-full px-4 py-4 rounded-xl text-base outline-none transition ${darkMode ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-purple-500" : "bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-purple-500"}`}
+              />
+              <button
+                type="submit"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-base font-bold hover:opacity-90 transition"
+              >
+                {t.subscribeBtn}
+              </button>
+            </form>
+
+            <p className={`text-xs text-center mt-4 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
+              {lang === "en" ? "We respect your privacy. Unsubscribe anytime." : "我們尊重您的隱私，隨時可取消訂閱。"}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Editor's Picks - Original Editorial Content */}
       {(() => {
         const ep = EDITOR_PICKS[lang];
