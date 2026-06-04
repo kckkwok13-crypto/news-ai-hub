@@ -4,6 +4,27 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause, Pen, Edit3 } from "lucide-react";
 
+// In-Feed Ad component - shows between news cards
+function InFeedAd({ index }: { index: number }) {
+  return (
+    <div className="w-full py-4 col-span-1 md:col-span-2 lg:col-span-3">
+      <div className="bg-gradient-to-r from-blue-900/30 via-slate-800/50 to-purple-900/30 border border-slate-700/50 rounded-xl p-4">
+        <div className="text-center text-slate-500 text-xs mb-2">Advertisement</div>
+        <div className="h-[100px] md:h-[120px] bg-slate-800/30 rounded-lg flex items-center justify-center">
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block', width: '100%', height: '120px' }}
+            data-ad-client="ca-pub-4745583996243741"
+            data-ad-slot="YOUR_INARTICLE_AD_SLOT_ID"
+            data-ad-format="fluid"
+            data-layout="in-article"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 type Lang = "zh-TW" | "zh-CN" | "en";
 type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art" | "art" | "data_journalism";
 
@@ -1370,15 +1391,15 @@ export default function NewsPage() {
 
         {!loading && displayNews.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {displayNews.map((item, i) => {
+            {displayNews.flatMap((item, i) => {
               const isRead = readIds.has(item.title);
               const isSaved = savedIds.has(item.title);
-              const details = Array.isArray(aiSummary?.details) 
+              const details = Array.isArray(aiSummary?.details)
                 ? aiSummary.details.find((d: any) => d.id === item.id)
                 : null;
 
-              return (
-                <div key={i} onClick={() => { toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
+              const newsCard = (
+                <div key={`card-${i}`} onClick={() => { toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {isTravelGuide && item.img_url ? (
                     <div className="relative h-40 md:h-48 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
@@ -1599,6 +1620,19 @@ export default function NewsPage() {
                   </div>
                 </div>
               );
+
+              // Insert In-Feed Ad every 6 items (after items 6, 12, 18, etc.)
+              const items: any[] = [];
+              const adAfterIndex = 5; // Insert ad after 6th item (0-indexed)
+              if ((i + 1) % 6 === 0 && i < displayNews.length - 1) {
+                items.push(
+                  newsCard,
+                  <InFeedAd key={`ad-${i}`} index={i / 6} />
+                );
+              } else {
+                items.push(newsCard);
+              }
+              return items;
             })}
           </div>
         )}
