@@ -558,15 +558,23 @@ export default function NewsPage() {
   useEffect(() => {
     console.log('[Initial] Component mounted, fetching news...');
     fetchNews(true);
-  }, []); // Run only on mount
+  }, []); // Run only on mount - fetchNews is memoized so this is safe
 
-  // Auto-refresh effect - depends on category, autoRefresh, lang, dataJournalismSub
+  // Category/lang change effect - refetch when these change
+  useEffect(() => {
+    // Skip on mount (handled by initial effect)
+    console.log('[Category/Lang changed], fetching news...');
+    fetchNews(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, lang, dataJournalismSub]); // fetchNews is memoized with these deps
+
+  // Auto-refresh effect
   useEffect(() => {
     if (autoRefresh) {
       const interval = setInterval(() => fetchNews(false), 30000);
       return () => clearInterval(interval);
     }
-  }, [category, autoRefresh, lang, dataJournalismSub, fetchNews]);
+  }, [autoRefresh]); // Only depend on autoRefresh
 
   useEffect(() => {
     if (news.length > 0) {
