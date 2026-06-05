@@ -554,14 +554,14 @@ export default function NewsPage() {
   }, [news, lang]);
 
   // Initial fetch on mount - use ref to ensure single execution
-  const [initialized, setInitialized] = useState(false);
+  const initializedRef = useRef(false);
   useEffect(() => {
-    if (!initialized) {
-      setInitialized(true);
+    if (!initializedRef.current) {
+      initializedRef.current = true;
       console.log('[Mount] Initial fetch triggered');
       fetchNews(true);
     }
-  }, [initialized]);
+  }, [fetchNews]);
 
   // Auto-refresh effect
   useEffect(() => {
@@ -569,7 +569,7 @@ export default function NewsPage() {
       const interval = setInterval(() => fetchNews(false), 30000);
       return () => clearInterval(interval);
     }
-  }, [autoRefresh]); // Only depend on autoRefresh
+  }, [autoRefresh, fetchNews]);
 
   useEffect(() => {
     if (news.length > 0) {
