@@ -5,16 +5,16 @@ import dynamic from 'next/dynamic'
 import { TrendingUp, Users, Clock, BarChart3, Calculator, AlertCircle, Info } from 'lucide-react'
 
 // Dynamically import Recharts to avoid SSR issues
-const DynamicBarChart = dynamic(() => import('recharts').then(mod => ({ default: mod.BarChart })), { ssr: false })
-const DynamicBar = dynamic(() => import('recharts').then(mod => ({ default: mod.Bar })), { ssr: false })
-const DynamicXAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.XAxis })), { ssr: false })
-const DynamicYAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.YAxis })), { ssr: false })
-const DynamicCartesianGrid = dynamic(() => import('recharts').then(mod => ({ default: mod.CartesianGrid })), { ssr: false })
-const DynamicTooltip = dynamic(() => import('recharts').then(mod => ({ default: mod.Tooltip })), { ssr: false })
-const DynamicPieChart = dynamic(() => import('recharts').then(mod => ({ default: mod.PieChart })), { ssr: false })
-const DynamicPie = dynamic(() => import('recharts').then(mod => ({ default: mod.Pie })), { ssr: false })
-const DynamicCell = dynamic(() => import('recharts').then(mod => ({ default: mod.Cell })), { ssr: false })
-const DynamicResponsiveContainer = dynamic(() => import('recharts').then(mod => ({ default: mod.ResponsiveContainer })), { ssr: false })
+const DynamicBarChart = dynamic(() => import('recharts').then(mod => ({ default: mod.BarChart as any })), { ssr: false })
+const DynamicBar = dynamic(() => import('recharts').then(mod => ({ default: mod.Bar as any })), { ssr: false })
+const DynamicXAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.XAxis as any })), { ssr: false })
+const DynamicYAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.YAxis as any })), { ssr: false })
+const DynamicCartesianGrid = dynamic(() => import('recharts').then(mod => ({ default: mod.CartesianGrid as any })), { ssr: false })
+const DynamicTooltip = dynamic(() => import('recharts').then(mod => ({ default: mod.Tooltip as any })), { ssr: false })
+const DynamicPieChart = dynamic(() => import('recharts').then(mod => ({ default: mod.PieChart as any })), { ssr: false })
+const DynamicPie = dynamic(() => import('recharts').then(mod => ({ default: mod.Pie as any })), { ssr: false })
+const DynamicCell = dynamic(() => import('recharts').then(mod => ({ default: mod.Cell as any })), { ssr: false })
+const DynamicResponsiveContainer = dynamic(() => import('recharts').then(mod => ({ default: mod.ResponsiveContainer as any })), { ssr: false })
 
 // Statistical functions
 function mean(arr: number[]): number {
