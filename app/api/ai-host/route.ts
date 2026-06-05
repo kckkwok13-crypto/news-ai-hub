@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,7 +6,7 @@ export async function POST(request: NextRequest) {
     const { title, desc = '', source = 'Unknown', lang = 'zh-TW' } = body
 
     // Get API key from environment
-    const apiKey = process.env.GOOGLE_API_KEY
+    const apiKey = process.env.OPENROUTER_API_KEY
 
     if (!apiKey) {
       // Return keyword-based fallback if no API key
@@ -19,17 +18,40 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // Try to use Gemini AI for actual analysis
+    // Try to use OpenRouter AI for actual analysis
     try {
-      const genAI = new GoogleGenerativeAI(apiKey)
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-
       const prompt = lang === 'en'
         ? `You are a news analyst in a podcast. Analyze this news item and provide insights in a friendly conversational format between Amy and Jack.\n\nNews: ${title}\nDescription: ${desc}\nSource: ${source}\n\nFormat your response as a dialogue with these two hosts, discussing the key points, impact, and what listeners should pay attention to. Keep it concise (about 5-6 exchanges).`
         : `你係一個podcast新聞分析員。用廣東話口語分析呢條新聞，以阿傑和小婷嘅對話形式呈現。\n\n新聞標題：${title}\n新聞內容：${desc}\n來源：${source}\n\n格式係阿傑和小婷嘅輕鬆對話，討論重點、影響同聽眾要注意嘅地方。保持5-6句對話，口語化，易明。`
 
-      const result = await model.generateContent(prompt)
-      const analysis = result.response.text()
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3-haiku',
+          messages: [
+            {
+              role: 'user',
+              content: prompt
+            }
+          ],
+          max_tokens: 500,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`OpenRouter API error: ${response.status}`)
+      }
+
+      const data = await response.json()
+      const analysis = data.choices?.[0]?.message?.content || ''
+
+      if (!analysis) {
+        throw new Error('No response from OpenRouter')
+      }
 
       return NextResponse.json({
         success: true,
@@ -38,7 +60,7 @@ export async function POST(request: NextRequest) {
         timestamp: Date.now(),
       })
     } catch (aiError) {
-      console.error('[AI Host] Gemini AI failed, using fallback:', aiError)
+      console.error('[AI Host] OpenRouter AI failed, using fallback:', aiError)
       return NextResponse.json({
         success: true,
         analysis: generateKeywordBasedAnalysis(title, desc, source, lang),
