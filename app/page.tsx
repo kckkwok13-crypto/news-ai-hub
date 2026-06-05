@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause, Pen, Edit3 } from "lucide-react";
 
@@ -554,17 +554,23 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
-  // Initial fetch on mount - separate effect to ensure it runs
+  // Initial fetch on mount - use ref to track mount state
+  const mountedRef = useRef(false);
+
   useEffect(() => {
-    console.log('[Initial] Component mounted, fetching news...');
-    fetchNews(true);
-  }, []); // Run only on mount - fetchNews is memoized so this is safe
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      console.log('[Initial] Component mounted, fetching news...');
+      fetchNews(true);
+    }
+  }, [fetchNews]);
 
   // Category/lang change effect - refetch when these change
   useEffect(() => {
-    // Skip on mount (handled by initial effect)
-    console.log('[Category/Lang changed], fetching news...');
-    fetchNews(false);
+    if (mountedRef.current) {
+      console.log('[Category/Lang changed], fetching news...');
+      fetchNews(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, lang, dataJournalismSub]); // fetchNews is memoized with these deps
 
