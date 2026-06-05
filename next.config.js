@@ -11,5 +11,8 @@ const nextConfig = {
       { hostname: 'photos.smugmug.com' },
     ]
   },
+  experimental: {
+    turbo: undefined
+  }
 }
 module.exports = nextConfig
