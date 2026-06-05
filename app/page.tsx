@@ -1105,9 +1105,11 @@ export default function NewsPage() {
         </div>
       )}
 
-      {/* Editor's Picks - Original Editorial Content */}
+      {/* Editor's Picks - Hero Card Layout */}
       {(() => {
         const ep = EDITOR_PICKS[lang];
+        const heroArticle = ep.articles[0];
+        const gridArticles = ep.articles.slice(1, 7);
         return (
           <section className="mb-8">
             <div className="flex items-center gap-3 mb-4">
@@ -1120,10 +1122,33 @@ export default function NewsPage() {
               </span>
             </div>
 
-            {/* Editorial Cover Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {ep.articles.slice(0, 8).map((article) => (
-                <a 
+            {/* Hero Card - Featured Article */}
+            <a
+              href={heroArticle.link}
+              className={`block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group mb-4 ${darkMode ? "bg-gray-800 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 shadow-lg hover:shadow-amber-100"}`}
+            >
+              <div className="relative h-48 md:h-64 lg:h-72 overflow-hidden">
+                <img src={heroArticle.image} alt={heroArticle.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-3 py-1 bg-amber-500 text-white text-xs font-bold rounded-full">{heroArticle.tag}</span>
+                    <span className="text-white/80 text-sm">{heroArticle.readTime} min read</span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">{heroArticle.title}</h3>
+                  <p className="text-white/80 text-sm md:text-base line-clamp-2 hidden md:block">{heroArticle.excerpt}</p>
+                  <div className="flex items-center gap-2 mt-3">
+                    <span className="text-2xl">{heroArticle.emoji}</span>
+                    <span className="text-white/70 text-sm">{heroArticle.category}</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            {/* Grid Layout for Remaining Articles */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {gridArticles.map((article) => (
+                <a
                   key={article.id}
                   href={article.link}
                   className={`block rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:shadow-lg group ${darkMode ? "bg-gray-800 border border-gray-700 hover:border-amber-500/50" : "bg-white border border-gray-200 hover:border-amber-400 hover:shadow-amber-100"}`}
@@ -1160,8 +1185,8 @@ export default function NewsPage() {
       })()}
 
             <main className="max-w-7xl mx-auto px-4 py-6">
-        {/* Mobile Categories - Horizontal scrollable tabs */}
-        <div className="md:hidden -mx-4 px-4 pt-3">
+        {/* Mobile Categories - Horizontal scrollable tabs - Sticky */}
+        <div className="md:hidden sticky top-[72px] z-30 -mx-4 px-4 pt-3 pb-2 backdrop-blur-xl bg-black/80">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
             <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap snap-start transition-all flex-shrink-0 ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
               <Star size={14} /> {showSaved ? t.allNews : t.savedNews}
@@ -1176,9 +1201,9 @@ export default function NewsPage() {
         </div>
 
 
-        {/* Travel Country/City Filter - Mobile */}
+        {/* Travel Country/City Filter - Mobile - Sticky */}
         {category === 'travel' && isTravelGuide && (
-          <div className="md:hidden -mx-4 px-4 pt-2 mb-3">
+          <div className="md:hidden sticky top-[116px] z-20 -mx-4 px-4 pt-2 mb-3 backdrop-blur-xl bg-black/80">
             {/* Country Selector */}
             <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
               <button
@@ -1316,9 +1341,9 @@ export default function NewsPage() {
           </div>
         )}
 
-        {/* Mobile Data Journalism Subcategory Filter */}
+        {/* Mobile Data Journalism Subcategory Filter - Sticky */}
         {category === 'data_journalism' && dataJournalismSubs.length > 0 && (
-          <div className="md:hidden -mx-4 px-4 pt-2 mb-3">
+          <div className="md:hidden sticky top-[116px] z-20 -mx-4 px-4 pt-2 mb-3 backdrop-blur-xl bg-black/80">
             <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
               {dataJournalismSubs.map((sub: any) => (
                 <button
