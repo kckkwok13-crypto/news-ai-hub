@@ -1,5 +1,5 @@
 "use client";
-// Travel Blog - NewsFlow
+// NewsFlow Travel Blog - Updated June 2026
 import Link from "next/link";
 import { useState, useMemo } from "react";
 
