@@ -553,15 +553,15 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
-  // Initial fetch on mount - use small delay to ensure hydration
+  // Initial fetch on mount - use ref to ensure single execution
+  const [initialized, setInitialized] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log('[Hydrated] Fetching news after hydration');
-      setLoading(true);
+    if (!initialized) {
+      setInitialized(true);
+      console.log('[Mount] Initial fetch triggered');
       fetchNews(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+    }
+  }, [initialized]);
 
   // Auto-refresh effect
   useEffect(() => {
@@ -681,31 +681,7 @@ export default function NewsPage() {
   };
 
   return (
-    <>
-      {/* Force client-side fetch on load */}
-      <script dangerouslySetInnerHTML={{ __html: `
-        (function() {
-          console.log('[Script] Page loaded, waiting for React...');
-          var attempts = 0;
-          var interval = setInterval(function() {
-            attempts++;
-            console.log('[Script] Attempt', attempts);
-            // Try to find and trigger the refresh
-            var refreshBtn = document.querySelector('button[title="刷新"]');
-            if (refreshBtn) {
-              console.log('[Script] Found refresh button, clicking...');
-              refreshBtn.click();
-              clearInterval(interval);
-            }
-            if (attempts > 20) {
-              console.log('[Script] Max attempts reached');
-              clearInterval(interval);
-            }
-          }, 500);
-        })();
-      `}} />
-
-      <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-gray-900"}`}>
+    <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-gray-900"}`}>
       {/* Mobile Menu Overlay */}
       {showMobileMenu && (
         <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm" onClick={() => setShowMobileMenu(false)}>
@@ -1788,8 +1764,7 @@ export default function NewsPage() {
           ⚠️ 版權聲明：本網站僅使用 AI Summary新聞要點，所有新聞標題、連結及圖片版權歸各原始來源所有。我們不複製完整內容，僅供信息聚合用途。
         </p>
       </footer>
-      </div>
-    </>
+    </div>
   );
 }
 
