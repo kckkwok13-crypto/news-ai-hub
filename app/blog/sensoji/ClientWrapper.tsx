@@ -156,16 +156,13 @@ export default function SensojiPage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#b8975a]/20">
           <img
-            src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80"
-            alt="淺草寺雷門"
+            src="/images/sensoji-hero.jpg"
+            alt="淺草寺本堂"
             className="w-full"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80";
-            }}
           />
         </div>
         <p className="text-center text-[#718096] text-sm mb-12">
-          ▲ 寫著「雷門」二字的巨大紅燈籠，是無數旅客對東京的第一印象
+          ▲ 供奉聖觀音菩薩的本堂內陣，金箔天花與精緻佛具令人歎為觀止
         </p>
 
         <article className="prose prose-lg max-w-none">
