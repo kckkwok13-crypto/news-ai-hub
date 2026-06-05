@@ -19,7 +19,7 @@ const blogPosts = [
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
     date: "June 2026",
-    image: "/images/sensoji-user-photo.jpg?v=2",
+    image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80",
     icon: "🏮",
     tags: ["東京", "寺廟", "文化"],
     accent: "from-red-500 to-orange-500"
@@ -69,7 +69,7 @@ const blogPosts = [
     title: "🗼 遇見巴黎的浪漫定義：艾菲爾鐵塔深度打卡與登塔全攻略",
     excerpt: "全球最浪漫的時尚地標！從夏樂宮最佳拍攝位到戰神廣場野餐體驗，深度解鎖這座花都最耀眼的主角！",
     date: "June 2026",
-    image: "/images/eiffel-tower-hero.jpg?v=3",
+    image: "https://images.unsplash.com/photo-1511739001486-6bfe10b785d7?w=1200&q=80",
     icon: "🗼",
     tags: ["巴黎", "歐洲", "浪漫"],
     accent: "from-amber-500 to-yellow-500"
