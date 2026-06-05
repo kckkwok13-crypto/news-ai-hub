@@ -556,23 +556,30 @@ export default function NewsPage() {
 
   // Initial fetch on mount - use ref to track mount state
   const mountedRef = useRef(false);
+  const fetchNewsRef = useRef(fetchNews);
+
+  // Update ref when fetchNews changes
+  useEffect(() => {
+    fetchNewsRef.current = fetchNews;
+  }, [fetchNews]);
 
   useEffect(() => {
+    console.log('[Initial] useEffect running, mounted:', mountedRef.current);
     if (!mountedRef.current) {
       mountedRef.current = true;
-      console.log('[Initial] Component mounted, fetching news...');
-      fetchNews(true);
+      console.log('[Initial] Fetching news on mount...');
+      fetchNewsRef.current(true);
     }
-  }, [fetchNews]);
+  }, []);
 
   // Category/lang change effect - refetch when these change
   useEffect(() => {
     if (mountedRef.current) {
       console.log('[Category/Lang changed], fetching news...');
-      fetchNews(false);
+      fetchNewsRef.current(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, lang, dataJournalismSub]); // fetchNews is memoized with these deps
+  }, [category, lang, dataJournalismSub]);
 
   // Auto-refresh effect
   useEffect(() => {
