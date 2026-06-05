@@ -156,13 +156,13 @@ export default function SensojiPage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#b8975a]/20">
           <img
-            src="/images/sensoji-hero.jpg"
-            alt="淺草寺本堂"
+            src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80"
+            alt="淺草寺雷門"
             className="w-full"
           />
         </div>
         <p className="text-center text-[#718096] text-sm mb-12">
-          ▲ 供奉聖觀音菩薩的本堂內陣，金箔天花與精緻佛具令人歎為觀止
+          ▲ 浅草寺宏偉的五重塔與寶藏門，展現江戶時代的莊嚴風貌
         </p>
 
         <article className="prose prose-lg max-w-none">

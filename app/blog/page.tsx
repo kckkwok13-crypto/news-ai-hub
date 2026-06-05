@@ -19,7 +19,7 @@ const blogPosts = [
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
     date: "May 2026",
-    image: "/images/blog-sensoji.jpg",
+    image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80",
     icon: "🏮",
     tags: ["東京", "寺廟", "文化"],
     accent: "from-red-500 to-orange-500"
