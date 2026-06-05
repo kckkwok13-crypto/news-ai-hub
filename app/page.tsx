@@ -553,14 +553,11 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
-  // Initial fetch on mount only
-  const initRef = useRef(false);
+  // Initial fetch on mount only - simplified
   useEffect(() => {
-    if (!initRef.current) {
-      initRef.current = true;
-      fetchNews(true);
-    }
-  }, [fetchNews]);
+    setLoading(true);
+    fetchNews(true);
+  }, []);
 
   // Auto-refresh effect
   useEffect(() => {
