@@ -176,7 +176,7 @@ const blogPosts = [
   },
 ];
 
-// Extract unique tags for filters
+// Extract unique tags for filters (sorted alphabetically)
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
 
 // Country/Region mapping for stats
