@@ -549,7 +549,7 @@ export default function NewsPage() {
   useEffect(() => {
     fetchNews(true);
     if (autoRefresh) {
-      const interval = setInterval(() => fetchNews(false), 120000);
+      const interval = setInterval(() => fetchNews(false), 30000); // 30 seconds for faster updates
       return () => clearInterval(interval);
     }
   }, [category, autoRefresh, lang, dataJournalismSub]);
