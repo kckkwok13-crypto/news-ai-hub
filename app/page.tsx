@@ -1475,6 +1475,7 @@ export default function NewsPage() {
           <div className="text-center py-20">
             <div className="text-6xl mb-4">🔍</div>
             <p className={`text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{showSaved ? t.noSaved : t.noResults}</p>
+            <p className={`text-sm mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>debug: news={news.length}, displayNews={displayNews.length}, showSaved={showSaved.toString()}, error={error}</p>
           </div>
         )}
 
