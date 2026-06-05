@@ -5,6 +5,16 @@ import { useState, useMemo } from "react";
 
 const blogPosts = [
   {
+    slug: "big-ben",
+    title: "🕰️ 聆聽英倫的時光心跳：倫敦大笨鐘深度打卡與泰晤士河散策攻略",
+    excerpt: "哥德復興式巨型時鐘塔！大笨鐘的3大歷史密碼、4大終極打卡機位，以及走進國會大廈的完整攻略！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&q=80",
+    icon: "🕰️",
+    tags: ["倫敦", "英國", "打卡"],
+    accent: "from-blue-500 to-cyan-500"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
