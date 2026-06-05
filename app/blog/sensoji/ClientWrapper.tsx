@@ -234,11 +234,11 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1755227521550-c0e4b9ea415e?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80"
               alt="淺草寺本堂內陣金箔裝飾"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1583405963363-588941225fc2?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
