@@ -93,7 +93,7 @@ export default function EiffelTowerPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
           <img
-            src="https://images.unsplash.com/photo-1694190941111-90065ded19d8?w=1200&q=80"
+            src="/images/eiffel-tower-hero.jpg"
             alt="艾菲爾鐵塔"
             className="w-full h-80 object-cover"
           />
