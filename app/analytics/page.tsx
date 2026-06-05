@@ -1,30 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import dynamic from 'next/dynamic'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { TrendingUp, Users, Clock, BarChart3, Calculator, AlertCircle, Info } from 'lucide-react'
 
-// Dynamically import Recharts to avoid SSR issues
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicBarChart = dynamic(() => import('recharts').then(mod => ({ default: mod.BarChart })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicBar = dynamic(() => import('recharts').then(mod => ({ default: mod.Bar })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicXAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.XAxis })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicYAxis = dynamic(() => import('recharts').then(mod => ({ default: mod.YAxis })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicCartesianGrid = dynamic(() => import('recharts').then(mod => ({ default: mod.CartesianGrid })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicTooltip = dynamic(() => import('recharts').then(mod => ({ default: mod.Tooltip })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicPieChart = dynamic(() => import('recharts').then(mod => ({ default: mod.PieChart })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicPie = dynamic(() => import('recharts').then(mod => ({ default: mod.Pie })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicCell = dynamic(() => import('recharts').then(mod => ({ default: mod.Cell })), { ssr: false })
-// @ts-expect-error - Recharts types are incompatible with next/dynamic
-const DynamicResponsiveContainer = dynamic(() => import('recharts').then(mod => ({ default: mod.ResponsiveContainer })), { ssr: false })
+// Lazy load Recharts to avoid SSR issues
+const BarChart = lazy(() => import('recharts').then(mod => ({ default: mod.BarChart })))
+const Bar = lazy(() => import('recharts').then(mod => ({ default: mod.Bar })))
+const XAxis = lazy(() => import('recharts').then(mod => ({ default: mod.XAxis })))
+const YAxis = lazy(() => import('recharts').then(mod => ({ default: mod.YAxis })))
+const CartesianGrid = lazy(() => import('recharts').then(mod => ({ default: mod.CartesianGrid })))
+const Tooltip = lazy(() => import('recharts').then(mod => ({ default: mod.Tooltip })))
+const PieChart = lazy(() => import('recharts').then(mod => ({ default: mod.PieChart })))
+const Pie = lazy(() => import('recharts').then(mod => ({ default: mod.Pie })))
+const Cell = lazy(() => import('recharts').then(mod => ({ default: mod.Cell })))
+const ResponsiveContainer = lazy(() => import('recharts').then(mod => ({ default: mod.ResponsiveContainer })))
+
+// Loading fallback component
+function ChartLoader() {
+  return <div className="h-full flex items-center justify-center text-gray-500">Loading chart...</div>
+}
 
 // Statistical functions
 function mean(arr: number[]): number {
@@ -231,19 +225,19 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
               <BarChart3 size={20} /> 每週新聞趨勢
             </h3>
-            <DynamicResponsiveContainer width="100%" height={300}>
-              <DynamicBarChart data={weeklyData}>
-                <DynamicCartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <DynamicXAxis dataKey="week" stroke="#9ca3af" fontSize={12} />
-                <DynamicYAxis stroke="#9ca3af" fontSize={12} />
-                <DynamicTooltip
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={weeklyData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <XAxis dataKey="week" stroke="#9ca3af" fontSize={12} />
+                <YAxis stroke="#9ca3af" fontSize={12} />
+                <Tooltip
                   contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
                   labelStyle={{ color: '#fff' }}
                 />
-                <DynamicBar dataKey="count" fill="#3b82f6" name="新聞數量" radius={[4, 4, 0, 0]} />
-                <DynamicBar dataKey="analyzed" fill="#8b5cf6" name="已分析" radius={[4, 4, 0, 0]} />
-              </DynamicBarChart>
-            </DynamicResponsiveContainer>
+                <Bar dataKey="count" fill="#3b82f6" name="新聞數量" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="analyzed" fill="#8b5cf6" name="已分析" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
 
           {/* Category Distribution */}
@@ -251,9 +245,9 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
               <PieChart /> 分類分佈
             </h3>
-            <DynamicResponsiveContainer width="100%" height={300}>
-              <DynamicPieChart>
-                <DynamicPie
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
                   data={categoryData}
                   cx="50%"
                   cy="50%"
@@ -265,14 +259,14 @@ export default function AnalyticsPage() {
                   labelLine={false}
                 >
                   {categoryData.map((entry, index) => (
-                    <DynamicCell key={`cell-${index}`} fill={entry.color} />
+                    <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
-                </DynamicPie>
-                <DynamicTooltip
+                </Pie>
+                <Tooltip
                   contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
                 />
-              </DynamicPieChart>
-            </DynamicResponsiveContainer>
+              </PieChart>
+            </ResponsiveContainer>
           </div>
         </div>
 
