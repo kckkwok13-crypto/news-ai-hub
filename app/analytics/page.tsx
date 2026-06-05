@@ -1,24 +1,7 @@
 'use client'
 
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { TrendingUp, Users, Clock, BarChart3, Calculator, AlertCircle, Info } from 'lucide-react'
-
-// Lazy load Recharts to avoid SSR issues
-const BarChart = lazy(() => import('recharts').then(mod => ({ default: mod.BarChart })))
-const Bar = lazy(() => import('recharts').then(mod => ({ default: mod.Bar })))
-const XAxis = lazy(() => import('recharts').then(mod => ({ default: mod.XAxis })))
-const YAxis = lazy(() => import('recharts').then(mod => ({ default: mod.YAxis })))
-const CartesianGrid = lazy(() => import('recharts').then(mod => ({ default: mod.CartesianGrid })))
-const Tooltip = lazy(() => import('recharts').then(mod => ({ default: mod.Tooltip })))
-const PieChart = lazy(() => import('recharts').then(mod => ({ default: mod.PieChart })))
-const Pie = lazy(() => import('recharts').then(mod => ({ default: mod.Pie })))
-const Cell = lazy(() => import('recharts').then(mod => ({ default: mod.Cell })))
-const ResponsiveContainer = lazy(() => import('recharts').then(mod => ({ default: mod.ResponsiveContainer })))
-
-// Loading fallback component
-function ChartLoader() {
-  return <div className="h-full flex items-center justify-center text-gray-500">Loading chart...</div>
-}
 
 // Statistical functions
 function mean(arr: number[]): number {
@@ -41,12 +24,12 @@ function confidenceInterval(arr: number[]): { lower: number; upper: number; marg
   const m = mean(arr)
   const s = stdDev(arr)
   const n = arr.length
-  const t = 1.96 // approx for 95% CI with large n
+  const t = 1.96
   const margin = t * s / Math.sqrt(n)
   return { lower: m - margin, upper: m + margin, margin }
 }
 
-// P-value (simplified - probability of seeing this result or more extreme)
+// P-value
 function pValue(observations: number[], expected: number): number {
   const n = observations.length
   if (n === 0) return 1
@@ -68,7 +51,7 @@ function normalCDF(z: number): number {
   return 0.5 * (1 + sign * y)
 }
 
-// Pearson Correlation Coefficient
+// Correlation
 function correlation(x: number[], y: number[]): number {
   if (x.length !== y.length || x.length < 2) return 0
   const n = x.length
@@ -103,7 +86,6 @@ function chiSquareTest(observed: number[], expected: number[]): { chiSquare: num
 function gammaCDF(x: number, a: number): number {
   if (x === 0) return 0
   if (a <= 0) return 0
-  // Simple approximation for gamma CDF
   let sum = 0
   for (let k = 0; k < a; k++) {
     sum += Math.pow(x, k) / factorial(k)
@@ -118,31 +100,102 @@ function factorial(n: number): number {
   return result
 }
 
+// Simple Bar Chart Component
+function SimpleBarChart({ data, maxValue }: { data: { label: string; value: number; color: string }[]; maxValue: number }) {
+  return (
+    <div className="flex items-end justify-between gap-2 h-full px-2">
+      {data.map((item, i) => (
+        <div key={i} className="flex flex-col items-center flex-1">
+          <div className="w-full flex flex-col items-center">
+            <span className="text-xs text-gray-400 mb-1">{item.value}</span>
+            <div
+              className="w-full max-w-8 rounded-t transition-all"
+              style={{
+                height: `${(item.value / maxValue) * 200}px`,
+                backgroundColor: item.color,
+                minHeight: item.value > 0 ? '4px' : '0'
+              }}
+            />
+          </div>
+          <span className="text-xs text-gray-500 mt-2 truncate max-w-full">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// Simple Donut Chart Component
+function SimpleDonutChart({ data }: { data: { name: string; value: number; color: string }[] }) {
+  const total = data.reduce((sum, item) => sum + item.value, 0)
+  let currentAngle = 0
+
+  return (
+    <div className="flex items-center gap-6">
+      <div className="relative w-32 h-32">
+        <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+          {data.map((item, i) => {
+            const percentage = (item.value / total) * 100
+            const angle = (percentage / 100) * 360
+            const startAngle = currentAngle
+            currentAngle += angle
+
+            const x1 = 50 + 40 * Math.cos((startAngle * Math.PI) / 180)
+            const y1 = 50 + 40 * Math.sin((startAngle * Math.PI) / 180)
+            const x2 = 50 + 40 * Math.cos(((startAngle + angle) * Math.PI) / 180)
+            const y2 = 50 + 40 * Math.sin(((startAngle + angle) * Math.PI) / 180)
+
+            const largeArc = angle > 180 ? 1 : 0
+
+            return (
+              <path
+                key={i}
+                d={`M 50 50 L ${x1} ${y1} A 40 40 0 ${largeArc} 1 ${x2} ${y2} Z`}
+                fill={item.color}
+                stroke="#1f2937"
+                strokeWidth="2"
+              />
+            )
+          })}
+          <circle cx="50" cy="50" r="25" fill="#1f2937" />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-lg font-bold text-white">{total}</span>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        {data.map((item, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded" style={{ backgroundColor: item.color }} />
+            <span className="text-sm text-gray-400">{item.name}</span>
+            <span className="text-sm font-medium text-white ml-auto">{(item.value / total * 100).toFixed(0)}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function AnalyticsPage() {
-  const [weeklyData, setWeeklyData] = useState<any[]>([])
-  const [categoryData, setCategoryData] = useState<any[]>([])
+  const [weeklyData, setWeeklyData] = useState<{ label: string; count: number; analyzed: number }[]>([])
+  const [categoryData, setCategoryData] = useState<{ name: string; value: number; color: string }[]>([])
   const [stats, setStats] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Simulated news data (in production, this would come from your API)
     const generateData = () => {
-      // Weekly news count (last 12 weeks)
       const weeks = []
       const now = new Date()
       for (let i = 11; i >= 0; i--) {
         const date = new Date(now)
         date.setDate(date.getDate() - i * 7)
         weeks.push({
-          week: `W${12 - i}`,
-          date: date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' }),
+          label: `W${12 - i}`,
           count: Math.floor(Math.random() * 50) + 20,
           analyzed: Math.floor(Math.random() * 30) + 10
         })
       }
       setWeeklyData(weeks)
 
-      // Category distribution
       const categories = [
         { name: '💰 財經', value: 28, color: '#10b981' },
         { name: '₿ 加密貨幣', value: 18, color: '#f59e0b' },
@@ -154,15 +207,11 @@ export default function AnalyticsPage() {
       ]
       setCategoryData(categories)
 
-      // Calculate statistics
       const counts = weeks.map(w => w.count)
       const analyzedCounts = weeks.map(w => w.analyzed)
-
       const ci = confidenceInterval(counts)
       const pVal = pValue(counts, mean(counts))
       const corr = correlation(counts, analyzedCounts)
-
-      // Chi-square test: observed vs expected (均匀分布)
       const expected = counts.map(() => mean(counts))
       const chiResult = chiSquareTest(counts, expected)
 
@@ -190,6 +239,9 @@ export default function AnalyticsPage() {
       </div>
     )
   }
+
+  const chartData = weeklyData.map(w => ({ label: w.label, value: w.count, color: '#3b82f6' }))
+  const chartMaxValue = Math.max(...chartData.map(d => d.value))
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
@@ -225,48 +277,17 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
               <BarChart3 size={20} /> 每週新聞趨勢
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={weeklyData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="week" stroke="#9ca3af" fontSize={12} />
-                <YAxis stroke="#9ca3af" fontSize={12} />
-                <Tooltip
-                  contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
-                  labelStyle={{ color: '#fff' }}
-                />
-                <Bar dataKey="count" fill="#3b82f6" name="新聞數量" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="analyzed" fill="#8b5cf6" name="已分析" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="h-64">
+              <SimpleBarChart data={chartData} maxValue={chartMaxValue} />
+            </div>
           </div>
 
           {/* Category Distribution */}
           <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <PieChart /> 分類分佈
+              <BarChart3 size={20} /> 分類分佈
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={categoryData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={100}
-                  paddingAngle={2}
-                  dataKey="value"
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                  labelLine={false}
-                >
-                  {categoryData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip
-                  contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '8px' }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            <SimpleDonutChart data={categoryData} />
           </div>
         </div>
 
