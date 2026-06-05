@@ -69,7 +69,7 @@ const blogPosts = [
     title: "🗼 遇見巴黎的浪漫定義：艾菲爾鐵塔深度打卡與登塔全攻略",
     excerpt: "全球最浪漫的時尚地標！從夏樂宮最佳拍攝位到戰神廣場野餐體驗，深度解鎖這座花都最耀眼的主角！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1511739001486-6bfe10b785d7?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
     icon: "🗼",
     tags: ["巴黎", "歐洲", "浪漫"],
     accent: "from-amber-500 to-yellow-500"
