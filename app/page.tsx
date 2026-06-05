@@ -495,6 +495,7 @@ export default function NewsPage() {
       const data = await res.json();
 
       if (data.success && data.items && data.items.length > 0) {
+        console.log('[NewsFeed] Fetched', data.items.length, 'items');
         setIsTravelGuide(data.isTravelGuide || false);
         setNews(data.items);
         // Capture travel-specific data
@@ -520,6 +521,7 @@ export default function NewsPage() {
         }
       } else {
         // No items returned, show error
+        console.log('[NewsFeed] No items or error:', { success: data.success, items: data.items, error: data.error });
         setError(data.error || "No news available");
       }
     } catch (err) {
