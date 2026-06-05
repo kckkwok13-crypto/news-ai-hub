@@ -483,6 +483,8 @@ export default function NewsPage() {
       setLoading(true);
     }
 
+    console.log('[fetchNews] Starting fetch, isInitial:', isInitial, 'current news count:', news.length);
+
     setError("")
     try {
       const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCountryFilter !== 'all' ? `&country=${travelCountryFilter}` : ''}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
@@ -552,10 +554,16 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
+  // Initial fetch on mount - separate effect to ensure it runs
   useEffect(() => {
+    console.log('[Initial] Component mounted, fetching news...');
     fetchNews(true);
+  }, []); // Run only on mount
+
+  // Auto-refresh effect - depends on category, autoRefresh, lang, dataJournalismSub
+  useEffect(() => {
     if (autoRefresh) {
-      const interval = setInterval(() => fetchNews(false), 30000); // 30 seconds for faster updates
+      const interval = setInterval(() => fetchNews(false), 30000);
       return () => clearInterval(interval);
     }
   }, [category, autoRefresh, lang, dataJournalismSub, fetchNews]);
