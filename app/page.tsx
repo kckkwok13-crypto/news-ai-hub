@@ -479,11 +479,10 @@ export default function NewsPage() {
 
   const fetchNews = useCallback(async (isInitial = false) => {
     // Always set loading for fresh fetches, only skip if we have data and it's an initial call
-    if (!isInitial || news.length === 0) {
-      setLoading(true);
-    }
+    // Note: We use setLoading first to ensure loading state is set
+    setLoading(true);
 
-    console.log('[fetchNews] Starting fetch, isInitial:', isInitial, 'current news count:', news.length);
+    console.log('[fetchNews] Starting fetch, isInitial:', isInitial);
 
     setError("")
     try {
@@ -554,30 +553,17 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
-  // Initial fetch on mount - use ref to track mount state
-  const mountedRef = useRef(false);
-  const fetchNewsRef = useRef(fetchNews);
-
-  // Update ref when fetchNews changes
+  // Initial fetch on mount - simple and direct
   useEffect(() => {
-    fetchNewsRef.current = fetchNews;
-  }, [fetchNews]);
-
-  useEffect(() => {
-    console.log('[Initial] useEffect running, mounted:', mountedRef.current);
-    if (!mountedRef.current) {
-      mountedRef.current = true;
-      console.log('[Initial] Fetching news on mount...');
-      fetchNewsRef.current(true);
-    }
-  }, []);
+    console.log('[Initial] Component mounted, fetching news...');
+    fetchNews(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run only on mount
 
   // Category/lang change effect - refetch when these change
   useEffect(() => {
-    if (mountedRef.current) {
-      console.log('[Category/Lang changed], fetching news...');
-      fetchNewsRef.current(false);
-    }
+    console.log('[Category/Lang changed], fetching news...');
+    fetchNews(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, lang, dataJournalismSub]);
 
