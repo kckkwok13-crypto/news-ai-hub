@@ -156,13 +156,13 @@ export default function SensojiPage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#b8975a]/20">
           <img
-            src="https://images.unsplash.com/photo-1628523197648-74f46812c7d7?w=1200&q=80"
-            alt="淺草寺雷門"
+            src="/images/sensoji-user-photo.jpg"
+            alt="淺草寺寶藏門夜景"
             className="w-full"
           />
         </div>
         <p className="text-center text-[#718096] text-sm mb-12">
-          ▲ 浅草寺仲見世通熱闘繁忙嘅江戶風情街道
+          ▲ 淺草寺宏偉的寶藏門夜景，展現江戶時代的莊嚴風貌
         </p>
 
         <article className="prose prose-lg max-w-none">
