@@ -478,22 +478,23 @@ export default function NewsPage() {
   }, [category, lang]);
 
   const fetchNews = useCallback(async (isInitial = false) => {
-    if (isInitial && news.length > 0) {
-    } else {
+    // Always set loading for fresh fetches, only skip if we have data and it's an initial call
+    if (!isInitial || news.length === 0) {
       setLoading(true);
     }
-    
-    // Clear cache before fetching to ensure fresh data
-    try {
-      localStorage.removeItem(`news_cache_${category}_${lang}`);
-    } catch (e) {}
-    
+
     setError("")
     try {
       const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCountryFilter !== 'all' ? `&country=${travelCountryFilter}` : ''}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
       const res = await fetch(url);
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+
       const data = await res.json();
-      if (data.success && data.items) {
+
+      if (data.success && data.items && data.items.length > 0) {
         setIsTravelGuide(data.isTravelGuide || false);
         setNews(data.items);
         // Capture travel-specific data
@@ -505,7 +506,10 @@ export default function NewsPage() {
           setExpandedId(data.items[0].title);
         }
         if (data.placeTypes) setPlaceTypes(data.placeTypes);
-        localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
+        // Store in cache for offline use
+        try {
+          localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
+        } catch (e) {}
         // Capture data journalism subcategory data
         if (data.isDataJournalism) {
           setIsDataJournalism(true)
@@ -515,16 +519,16 @@ export default function NewsPage() {
           setIsDataJournalism(false)
         }
       } else {
-        if (news.length === 0) setNews([]);
-        setError(data.error || "Failed to load news");
+        // No items returned, show error
+        setError(data.error || "No news available");
       }
     } catch (err) {
       console.error("Fetch news failed", err);
-      if (news.length === 0) setError("Network error");
+      setError("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
-  }, [category, lang, news.length, travelCountryFilter, travelCityFilter, travelAreaFilter, dataJournalismSub]);
+  }, [category, lang, travelCountryFilter, travelCityFilter, travelAreaFilter, dataJournalismSub]);
 
   const fetchAiSummary = useCallback(async () => {
     if (news.length === 0) return;
