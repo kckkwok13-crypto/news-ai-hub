@@ -553,19 +553,14 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
-  // Initial fetch on mount - simple and direct
+  // Initial fetch on mount only
+  const initRef = useRef(false);
   useEffect(() => {
-    console.log('[Initial] Component mounted, fetching news...');
-    fetchNews(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Run only on mount
-
-  // Category/lang change effect - refetch when these change
-  useEffect(() => {
-    console.log('[Category/Lang changed], fetching news...');
-    fetchNews(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, lang, dataJournalismSub]);
+    if (!initRef.current) {
+      initRef.current = true;
+      fetchNews(true);
+    }
+  }, [fetchNews]);
 
   // Auto-refresh effect
   useEffect(() => {
