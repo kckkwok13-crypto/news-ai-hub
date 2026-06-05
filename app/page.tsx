@@ -553,10 +553,14 @@ export default function NewsPage() {
     }
   }, [news, lang]);
 
-  // Initial fetch on mount only - simplified
+  // Initial fetch on mount - use small delay to ensure hydration
   useEffect(() => {
-    setLoading(true);
-    fetchNews(true);
+    const timer = setTimeout(() => {
+      console.log('[Hydrated] Fetching news after hydration');
+      setLoading(true);
+      fetchNews(true);
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   // Auto-refresh effect
