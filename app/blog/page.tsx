@@ -45,6 +45,16 @@ const blogPosts = [
     accent: "from-red-600 to-amber-500"
   },
   {
+    slug: "sagrada-familia",
+    title: "🦎 上帝的建築巨作：巴塞隆納聖家堂百年未完工的奇幻光影全攻略",
+    excerpt: "高第傾注43年心血的傳奇神作！深度解讀兩大經典立面、大殿內仿生森林、黃昏日落夢幻拍攝時刻與搶票生存指南！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1583779457094-ab6f77f7bf57?w=1200&q=80",
+    icon: "🦎",
+    tags: ["巴塞隆納", "西班牙", "高第"],
+    accent: "from-amber-500 to-orange-500"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
