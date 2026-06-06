@@ -10,9 +10,6 @@ const nextConfig = {
       { hostname: 'images.cointelegraph.com' },
       { hostname: 'photos.smugmug.com' },
     ]
-  },
-  experimental: {
-    turbo: undefined
   }
 }
 module.exports = nextConfig
