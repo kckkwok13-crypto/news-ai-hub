@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 
 interface ImageLightboxProps {
   src: string;
@@ -80,7 +80,7 @@ interface EnlargableImageProps {
 }
 
 export function EnlargableImage({ src, alt, className = "" }: EnlargableImageProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <img
@@ -98,6 +98,3 @@ export function EnlargableImage({ src, alt, className = "" }: EnlargableImagePro
     </>
   );
 }
-
-// Need to import useState
-import React from "react";
