@@ -133,7 +133,7 @@ export default function ParkGuellPage() {
 
           <div id="pillars" className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=80"
+              src="/images/park-guell-pillars.jpg"
               alt="古埃爾公園石柱長廊"
               className="w-full rounded-2xl"
             />

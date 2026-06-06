@@ -49,7 +49,7 @@ const blogPosts = [
     title: "🦎 上帝的建築巨作：巴塞隆納聖家堂百年未完工的奇幻光影全攻略",
     excerpt: "高第傾注43年心血的傳奇神作！深度解讀兩大經典立面、大殿內仿生森林、黃昏日落夢幻拍攝時刻與搶票生存指南！",
     date: "June 2026",
-    image: "/images/sagrada-familia-thumb.jpg",
+    image: "/images/sagrada-familia-hero.jpg",
     icon: "🦎",
     tags: ["巴塞隆納", "西班牙", "高第"],
     accent: "from-amber-500 to-orange-500"
