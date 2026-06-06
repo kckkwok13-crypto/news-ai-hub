@@ -35,6 +35,16 @@ const blogPosts = [
     accent: "from-pink-500 to-rose-500"
   },
   {
+    slug: "edinburgh-castle",
+    title: "🏰 矗立在火山岩上的蘇格蘭之魂：愛丁堡城堡深度打卡與避坑全攻略",
+    excerpt: "名列聯合國教科文組織世界文化遺產！解鎖「命運之石」與最古老皇冠、下午一點鐘大砲儀式、兩大私藏拍照機位！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
+    icon: "🏰",
+    tags: ["愛丁堡", "蘇格蘭", "打卡"],
+    accent: "from-red-600 to-amber-500"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
