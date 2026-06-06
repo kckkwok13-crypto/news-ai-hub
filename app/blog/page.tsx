@@ -317,61 +317,129 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-slate-900">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-green-800 via-emerald-700 to-teal-700 text-white py-8 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl">✈️</span>
-            <h1 className="text-3xl font-bold">NewsFlow Travel Blog Dashboard</h1>
+      {/* Hero Banner */}
+      <header className="relative overflow-hidden">
+        {/* Background with parallax layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900">
+          {/* Decorative travel elements */}
+          <div className="absolute inset-0 opacity-10">
+            <svg className="absolute top-10 left-10 w-32 h-32 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <svg className="absolute top-20 right-20 w-24 h-24 text-white animate-pulse" style={{animationDelay: '1s'}} fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+            </svg>
+            <svg className="absolute bottom-10 left-1/4 w-20 h-20 text-white animate-pulse" style={{animationDelay: '2s'}} fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
           </div>
-          <p className="text-emerald-200">用雙腳探索世界，用相機記錄每一個難忘瞬間 🌍</p>
-          <div className="mt-4">
-            <Link href="/" className="text-emerald-200 hover:text-white underline text-sm">
-              ← 返回 Newsflow 首頁
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-6 py-12">
+          {/* Author Badge */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
+                <img
+                  src="/images/pure-traveler-avatar.jpg"
+                  alt="純粹旅人"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Online indicator */}
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                <span className="text-white text-xs">✈️</span>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-amber-400 text-sm font-medium bg-amber-400/20 px-3 py-1 rounded-full">✈️ 純粹旅人</span>
+                <span className="text-emerald-300 text-sm">旅遊博主</span>
+              </div>
+              <h2 className="text-white text-2xl font-bold mt-1">NewsFlow Travel Blog</h2>
+              <p className="text-emerald-200 text-sm mt-1">用雙腳探索世界，用相機記錄每一個難忘瞬間 🌍</p>
+            </div>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
+              <div className="text-2xl font-bold text-white">{blogPosts.length}</div>
+              <div className="text-xs text-emerald-200">文章</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
+              <div className="text-2xl font-bold text-white">{Object.keys(regionStats).length}</div>
+              <div className="text-xs text-emerald-200">城市</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
+              <div className="text-2xl font-bold text-white">{allTags.length}</div>
+              <div className="text-xs text-emerald-200">主題</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
+              <div className="text-2xl">🗺️</div>
+              <div className="text-xs text-emerald-200">歐洲</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
+              <div className="text-2xl">🏯</div>
+              <div className="text-xs text-emerald-200">亞洲</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
+              <div className="text-2xl">🌏</div>
+              <div className="text-xs text-emerald-200">更多</div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+              <span>←</span>
+              <span>返回首頁</span>
             </Link>
+            <div className="flex items-center gap-2 text-emerald-200 text-sm">
+              <span>📍 足跡遍佈 {Object.keys(regionStats).length} 個地區</span>
+            </div>
           </div>
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto p-6">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl p-4 text-white">
-            <div className="text-3xl font-bold">{blogPosts.length}</div>
-            <div className="text-sm text-emerald-100">總文章數</div>
-          </div>
-          <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl p-4 text-white">
-            <div className="text-3xl font-bold">{Object.keys(regionStats).length}</div>
-            <div className="text-sm text-blue-100">目的地數量</div>
-          </div>
-          <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl p-4 text-white">
-            <div className="text-3xl font-bold">{allTags.length}</div>
-            <div className="text-sm text-purple-100">標籤種類</div>
-          </div>
-          <div className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-xl p-4 text-white">
-            <div className="text-3xl font-bold">{filteredPosts.length}</div>
-            <div className="text-sm text-orange-100">當前顯示</div>
-          </div>
-        </div>
-
         {/* Region Stats */}
-        <div className="bg-slate-800 rounded-xl p-4 mb-6">
-          <h3 className="text-white text-sm font-semibold mb-3">📊 目的地分布</h3>
+        <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 rounded-2xl p-5 mb-6 border border-emerald-500/20">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-white font-semibold flex items-center gap-2">
+              <span className="text-2xl">🗺️</span> 目的地分布
+            </h3>
+            <span className="text-emerald-400 text-sm">點擊標籤篩選文章</span>
+          </div>
           <div className="flex flex-wrap gap-2">
             {Object.entries(regionStats).map(([region, count]) => (
-              <div key={region} className="bg-slate-700 text-slate-200 px-3 py-1 rounded-full text-sm flex items-center gap-2">
+              <button
+                key={region}
+                onClick={() => toggleTag(region)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                  selectedTags.includes(region)
+                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'
+                }`}
+              >
                 <span>{region}</span>
-                <span className="bg-green-600 text-white text-xs px-2 py-0.5 rounded-full">{count}</span>
-              </div>
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  selectedTags.includes(region) ? 'bg-white/20' : 'bg-emerald-500/20'
+                }`}>{count}</span>
+              </button>
             ))}
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-slate-800 rounded-xl p-6 mb-6">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 rounded-2xl p-6 mb-6 border border-slate-700">
           <div className="flex flex-col md:flex-row gap-4 mb-4">
             {/* Search */}
-            <div className="flex-1">
+            <div className="flex-1 relative">
               <input
                 type="text"
                 placeholder="🔍 搜尋文章標題、內容或標籤..."
