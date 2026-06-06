@@ -25,6 +25,16 @@ const blogPosts = [
     accent: "from-blue-600 to-cyan-600"
   },
   {
+    slug: "london-eye",
+    title: "🎡 轉動在千禧年的浪漫：倫敦眼終極打卡與高空落日觀景攻略",
+    excerpt: "高達135米的全球首座巨型觀景摩天輪！解鎖消失的13號太空艙之謎、兩大私藏拍照機位、黃昏日落最佳時段攻略！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&q=80",
+    icon: "🎡",
+    tags: ["倫敦", "英國", "打卡"],
+    accent: "from-pink-500 to-rose-500"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
