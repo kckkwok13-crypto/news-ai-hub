@@ -134,12 +134,9 @@ export default function EnglishGardenMunichPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
+              src="/images/english-garden-second.jpg"
               alt="慕尼黑城市景觀"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1518176258769-f227c798150e?w=1200&q=80";
-              }}
             />
             <p className="text-center text-stone-500 text-sm mt-4 mb-8">
               ▲ 近距離捕捉艾斯巴赫河（Eisbachwelle）上滑浪好手英姿的完美瞬間
