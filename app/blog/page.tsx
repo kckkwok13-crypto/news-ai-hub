@@ -55,6 +55,16 @@ const blogPosts = [
     accent: "from-amber-500 to-orange-500"
   },
   {
+    slug: "park-guell",
+    title: "🏡 走進高第的彩色童話糖果屋：古埃爾公園深度打卡與浪漫散策攻略",
+    excerpt: "世界遺產！彩色波浪馬賽克長椅、大蜥蜴噴泉、百柱廳與石柱長廊的童話王國，附避開人潮完美拍照攻略！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1583422409516-5645e7f8cc09?w=1200&q=80",
+    icon: "🏡",
+    tags: ["巴塞隆納", "西班牙", "高第"],
+    accent: "from-teal-500 to-cyan-500"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
