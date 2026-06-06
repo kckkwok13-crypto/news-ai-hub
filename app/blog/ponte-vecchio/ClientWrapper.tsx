@@ -86,12 +86,9 @@ export default function PonteVecchioPage() {
         {/* Hero Image */}
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#8b4513]/20">
           <img
-            src="https://images.unsplash.com/photo-1568162647192-4f4dd46d57b8?w=1200&q=80"
+            src="/images/ponte-vecchio-hero.jpg"
             alt="佛羅倫斯老橋黃昏全景"
             className="w-full"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1629739180299-f6b9c57d319d?w=1200&q=80";
-            }}
           />
         </div>
         <p className="text-center text-[#795548] text-sm mb-12">
