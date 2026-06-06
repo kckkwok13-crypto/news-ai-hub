@@ -45,6 +45,16 @@ const blogPosts = [
     accent: "from-red-600 to-amber-500"
   },
   {
+    slug: "english-garden-munich",
+    title: "🌲 城市中心的自然狂歡：慕尼黑英國花園深度散策與冰川衝浪攻略",
+    excerpt: "全歐洲最大城市公園！解鎖艾斯巴赫河人工冰川衝浪、圓頂希臘神廟360度全景、正宗中國塔7000人啤酒花園！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1518176258769-f227c798150e?w=1200&q=80",
+    icon: "🌲",
+    tags: ["慕尼黑", "德國", "自然"],
+    accent: "from-emerald-600 to-teal-500"
+  },
+  {
     slug: "edinburgh-castle",
     title: "🏰 矗立在火山岩上的蘇格蘭之魂：愛丁堡城堡深度打卡與避坑全攻略",
     excerpt: "名列聯合國教科文組織世界文化遺產！解鎖「命運之石」與最古老皇冠、下午一點鐘大砲儀式、兩大私藏拍照機位！",
