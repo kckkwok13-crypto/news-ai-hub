@@ -65,6 +65,16 @@ const blogPosts = [
     accent: "from-teal-500 to-cyan-500"
   },
   {
+    slug: "royal-palace-madrid",
+    title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
+    excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80",
+    icon: "🏛️",
+    tags: ["馬德里", "西班牙", "皇室"],
+    accent: "from-amber-500 to-yellow-500"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
