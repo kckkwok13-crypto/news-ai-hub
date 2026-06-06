@@ -136,7 +136,7 @@ export default function RoyalPalaceMadridPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1543832923-44667a44c804?w=1200&q=80"
+              src="/images/royal-palace-madrid-second.jpg"
               alt="馬德里城市景觀"
               className="w-full rounded-2xl"
             />
