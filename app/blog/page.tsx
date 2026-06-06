@@ -15,6 +15,16 @@ const blogPosts = [
     accent: "from-blue-500 to-cyan-500"
   },
   {
+    slug: "tower-bridge",
+    title: "🌉 泰晤士河上的藍色童話：倫敦塔橋深度打卡與高空玻璃走廊攻略",
+    excerpt: "結合維多利亞哥德式城堡與現代懸索橋工藝的工業傑作！解鎖被誤會的歷史秘密、挑戰離地42米高空玻璃走廊、兩大私藏拍照機位！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?w=1200&q=80",
+    icon: "🌉",
+    tags: ["倫敦", "英國", "打卡"],
+    accent: "from-blue-600 to-cyan-600"
+  },
+  {
     slug: "sensoji",
     title: "東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略",
     excerpt: "創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜，帶你玩轉這個東京最經典的地標！",
