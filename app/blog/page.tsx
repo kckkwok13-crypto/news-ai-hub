@@ -35,6 +35,16 @@ const blogPosts = [
     accent: "from-pink-500 to-rose-500"
   },
   {
+    slug: "marienplatz-munich",
+    title: "🦁 走進巴伐利亞的心臟：慕尼黑瑪利亞廣場深度打卡與百年木偶鐘全攻略",
+    excerpt: "始建於1158年！解鎖新市政廳43個木偶壁鐘、聖母教堂雙洋蔥頭、306級老彼得教堂天際線，以及正宗HB皇家啤酒屋攻略！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1590618552334-4c8e2c21b4f9?w=1200&q=80",
+    icon: "🦁",
+    tags: ["慕尼黑", "德國", "巴伐利亞"],
+    accent: "from-red-600 to-amber-500"
+  },
+  {
     slug: "edinburgh-castle",
     title: "🏰 矗立在火山岩上的蘇格蘭之魂：愛丁堡城堡深度打卡與避坑全攻略",
     excerpt: "名列聯合國教科文組織世界文化遺產！解鎖「命運之石」與最古老皇冠、下午一點鐘大砲儀式、兩大私藏拍照機位！",
