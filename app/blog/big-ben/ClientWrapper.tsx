@@ -2,6 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ReadingProgress from "../../components/ReadingProgress";
+import SocialShare from "../../components/SocialShare";
+import StarRating from "../../components/StarRating";
+import FavoriteButton from "../../components/FavoriteButton";
+import RelatedPosts from "../../components/RelatedPosts";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "🕰️" },
@@ -10,6 +15,8 @@ const tocItems = [
   { id: "parliament", title: "國會大廈", emoji: "🏛️" },
   { id: "tips", title: "實用提示", emoji: "💡" },
 ];
+
+const currentTags = ["倫敦", "英國", "打卡"];
 
 export default function BigBenPage() {
   const [activeSection, setActiveSection] = useState("intro");
@@ -40,6 +47,9 @@ export default function BigBenPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/50 to-slate-950 text-white">
+      {/* Reading Progress Bar */}
+      <ReadingProgress />
+
       {/* Floating Summary Card */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
         <div className="bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl border border-blue-500/30 rounded-2xl p-5 w-60 shadow-2xl shadow-blue-500/10">
@@ -251,6 +261,33 @@ export default function BigBenPage() {
           <div className="my-8 text-center">
             <ins className="infolinks_ad" data-pid="3445528" data-wsid="0"></ins>
           </div>
+
+          {/* Star Rating */}
+          <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/20 border border-blue-500/30 rounded-2xl p-6 my-10">
+            <h3 className="text-blue-400 font-bold mb-4 flex items-center gap-2 text-xl">
+              ⭐ 給這個景點評分
+            </h3>
+            <StarRating slug="big-ben" />
+          </div>
+
+          {/* Social Share */}
+          <div className="bg-slate-800/60 rounded-2xl p-6 my-10 border border-slate-700/50">
+            <h3 className="text-white font-bold mb-4 text-xl">📤 分享給朋友</h3>
+            <SocialShare
+              title="🕰️ 聆聽英倫的時光心跳：倫敦大笨鐘深度打卡與泰晤士河散策攻略"
+            />
+          </div>
+
+          {/* Favorite Button */}
+          <div className="flex justify-center my-8">
+            <div className="bg-slate-800/60 rounded-2xl p-6 border border-slate-700/50 flex items-center gap-4">
+              <span className="text-slate-300">加入心願清單：</span>
+              <FavoriteButton slug="big-ben" className="!bg-red-500/20 !text-red-400 hover:!bg-red-500/30" />
+            </div>
+          </div>
+
+          {/* Related Posts */}
+          <RelatedPosts currentSlug="big-ben" currentTags={currentTags} />
         </article>
       </div>
     </div>

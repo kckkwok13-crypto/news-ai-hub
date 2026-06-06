@@ -2,8 +2,9 @@
 // NewsFlow Travel Blog - Updated June 2026
 import Link from "next/link";
 import { useState, useMemo } from "react";
+import FavoriteButton from "../components/FavoriteButton";
 
-const blogPosts = [
+export const blogPosts = [
   {
     slug: "big-ben",
     title: "🕰️ 聆聽英倫的時光心跳：倫敦大笨鐘深度打卡與泰晤士河散策攻略",
@@ -457,6 +458,9 @@ export default function BlogPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
                     {post.icon}
+                  </div>
+                  <div className="absolute top-3 right-3" onClick={(e) => e.preventDefault()}>
+                    <FavoriteButton slug={post.slug} />
                   </div>
                 </div>
 

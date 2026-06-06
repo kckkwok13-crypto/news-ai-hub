@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import { ThemeProvider } from './components/ThemeProvider'
+import { FavoritesProvider } from './components/FavoritesProvider'
+import { RatingsProvider } from './components/RatingsProvider'
+import ThemeToggle from './components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'NewsFlow - AI 驅動的智能新聞平台',
@@ -36,8 +40,9 @@ export default function RootLayout({
   const adsenseId = 'ca-pub-4745583996243741';
 
   return (
-    <html lang="zh-HK">
+    <html lang="zh-HK" suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="light dark" />
         {adsenseId && (
           <>
             <Script
@@ -55,7 +60,16 @@ export default function RootLayout({
         )}
         <meta name="google-adsense-account" content={adsenseId || ''} />
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider>
+          <FavoritesProvider>
+            <RatingsProvider>
+              <ThemeToggle />
+              {children}
+            </RatingsProvider>
+          </FavoritesProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
