@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { blogPosts } from "../page";
+import { blogPosts } from "../data/blogData";
 
 interface RelatedPostsProps {
   currentSlug: string;
