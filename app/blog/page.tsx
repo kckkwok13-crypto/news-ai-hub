@@ -65,6 +65,16 @@ const blogPosts = [
     accent: "from-red-600 to-amber-500"
   },
   {
+    slug: "brandenburg-gate",
+    title: "🏛️ 見證德意志的世紀風雲：柏林勃蘭登堡門深度打卡與和平祭壇攻略",
+    excerpt: "落成於1791年！解鎖勝利女神四馬戰車被拿破崙擄走的屈辱歷史、柏林圍牆分裂傷痕、國會大廈玻璃穹頂順遊攻略！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=80",
+    icon: "🏛️",
+    tags: ["柏林", "德國", "歷史"],
+    accent: "from-amber-600 to-yellow-500"
+  },
+  {
     slug: "sagrada-familia",
     title: "🦎 上帝的建築巨作：巴塞隆納聖家堂百年未完工的奇幻光影全攻略",
     excerpt: "高第傾注43年心血的傳奇神作！深度解讀兩大經典立面、大殿內仿生森林、黃昏日落夢幻拍攝時刻與搶票生存指南！",
