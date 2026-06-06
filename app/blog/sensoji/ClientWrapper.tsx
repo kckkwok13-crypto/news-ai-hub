@@ -156,7 +156,7 @@ export default function SensojiPage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#b8975a]/20">
           <img
-            src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80"
+            src="/images/sensoji-hero.jpg"
             alt="淺草寺寶藏門"
             className="w-full"
           />
