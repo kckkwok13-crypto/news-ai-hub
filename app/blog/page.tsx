@@ -39,7 +39,7 @@ const blogPosts = [
     title: "🦁 走進巴伐利亞的心臟：慕尼黑瑪利亞廣場深度打卡與百年木偶鐘全攻略",
     excerpt: "始建於1158年！解鎖新市政廳43個木偶壁鐘、聖母教堂雙洋蔥頭、306級老彼得教堂天際線，以及正宗HB皇家啤酒屋攻略！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1590618552334-4c8e2c21b4f9?w=1200&q=80",
+    image: "/images/marienplatz-munich-hero.jpg",
     icon: "🦁",
     tags: ["慕尼黑", "德國", "巴伐利亞"],
     accent: "from-red-600 to-amber-500"

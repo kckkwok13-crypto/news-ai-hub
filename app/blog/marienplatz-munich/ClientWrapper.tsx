@@ -91,12 +91,9 @@ export default function MarienplatzMunichPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
           <img
-            src="https://images.unsplash.com/photo-1590618552334-4c8e2c21b4f9?w=1200&q=80"
+            src="/images/marienplatz-munich-hero.jpg"
             alt="慕尼黑瑪利亞廣場"
             className="w-full h-80 object-cover"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1569254994521-35a4dd6972b5?w=1200&q=80";
-            }}
           />
         </div>
         <p className="text-center text-stone-500 text-sm mb-12">
