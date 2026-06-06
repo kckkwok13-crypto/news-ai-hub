@@ -8,6 +8,7 @@ interface RatingsContextType {
   rate: (slug: string, rating: number) => void;
   getAverageRating: (slug: string) => number;
   getUserRating: (slug: string) => number | null;
+  mounted: boolean;
 }
 
 const RatingsContext = createContext<RatingsContextType | undefined>(undefined);
@@ -72,12 +73,9 @@ export function RatingsProvider({ children }: { children: ReactNode }) {
     return userRatings[slug] || null;
   }, [userRatings]);
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always provide context, even before mounted
   return (
-    <RatingsContext.Provider value={{ ratings, userRatings, rate, getAverageRating, getUserRating }}>
+    <RatingsContext.Provider value={{ ratings, userRatings, rate, getAverageRating, getUserRating, mounted }}>
       {children}
     </RatingsContext.Provider>
   );

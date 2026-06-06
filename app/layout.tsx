@@ -3,7 +3,7 @@ import Script from 'next/script'
 import './globals.css'
 import { ThemeProvider } from './components/ThemeProvider'
 import { FavoritesProvider } from './components/FavoritesProvider'
-import { RatingsProvider } from './components/RatingsProvider'
+import { RatingsProvider } from './components/RatingProvider'
 import ThemeToggle from './components/ThemeToggle'
 
 export const metadata: Metadata = {

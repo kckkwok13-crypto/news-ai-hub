@@ -5,8 +5,6 @@ import { useState, useMemo } from "react";
 import FavoriteButton from "../components/FavoriteButton";
 import { blogPosts } from "../data/blogData";
 
-export { blogPosts };
-
 // Extract unique tags for filters (sorted alphabetically)
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
 

@@ -6,6 +6,7 @@ interface FavoritesContextType {
   favorites: string[];
   toggleFavorite: (slug: string) => void;
   isFavorite: (slug: string) => boolean;
+  mounted: boolean;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
@@ -36,12 +37,9 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 
   const isFavorite = useCallback((slug: string) => favorites.includes(slug), [favorites]);
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always provide context, even before mounted
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
+    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite, mounted }}>
       {children}
     </FavoritesContext.Provider>
   );
