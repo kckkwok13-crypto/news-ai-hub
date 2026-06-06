@@ -203,12 +203,9 @@ export default function RialtoBridgePage() {
           <div className="mt-10 mb-8">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1534113414509-0eec2bfb86b9?w=1400&q=80"
+                src="/images/rialto-bridge-second.jpg"
                 alt="里奧托橋全景"
                 className="w-full h-72 object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1568162647192-4f4dd46d57b8?w=1400&q=80";
-                }}
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <p className="text-white text-sm">
