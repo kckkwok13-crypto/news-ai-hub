@@ -92,7 +92,7 @@ export default function EdinburghCastlePage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-red-500/20">
           <img
-            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1200&q=80"
             alt="愛丁堡城堡"
             className="w-full h-80 object-cover"
           />
@@ -127,7 +127,7 @@ export default function EdinburghCastlePage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1516731566880-919c39d23920?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=1200&q=80"
               alt="愛丁堡城市景觀"
               className="w-full rounded-2xl"
             />
