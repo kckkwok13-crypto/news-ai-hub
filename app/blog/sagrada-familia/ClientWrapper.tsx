@@ -93,7 +93,7 @@ export default function SagradaFamiliaPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
           <img
-            src="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?w=1200&q=80"
+            src="/images/sagrada-familia-hero.jpg"
             alt="聖家堂"
             className="w-full h-80 object-cover"
           />
