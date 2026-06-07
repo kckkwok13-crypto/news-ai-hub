@@ -86,12 +86,9 @@ export default function MacauPage() {
 
         {/* Hero Image */}
         <img
-          src="https://images.unsplash.com/photo-1541599468348-e96984315921?w=1200&q=80"
+          src="/images/macau-tower-night.jpg"
           alt="澳門夜景"
           className="w-full rounded-2xl mb-6 shadow-2xl shadow-blue-500/20"
-          onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=80";
-          }}
         />
         <p className="text-center text-slate-500 text-sm mb-10">
           澳門夜色，葡式建築與霓虹燈光相映成趣
@@ -135,8 +132,8 @@ export default function MacauPage() {
 
           <div className="my-10">
             <img
-              src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=80"
-              alt="澳門新中央酒店"
+              src="/images/portuguese-square.jpg"
+              alt="葡式碎石路"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-slate-500 text-sm mt-4">
@@ -182,7 +179,7 @@ export default function MacauPage() {
 
           <div className="my-10">
             <img
-              src="https://images.unsplash.com/photo-1590735213920-9f4c5e16f1f5?w=1200&q=80"
+              src="/images/macau-ruins-stpaul.jpg"
               alt="大三巴牌坊"
               className="w-full rounded-2xl"
             />
