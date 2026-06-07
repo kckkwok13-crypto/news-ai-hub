@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const tocItems = [
+  { id: "prepare", title: "行前準備", emoji: "⚙️" },
   { id: "day1", title: "第一天", emoji: "🌅" },
   { id: "day2", title: "第二天", emoji: "🌆" },
+  { id: "tips", title: "實用Tips", emoji: "💡" },
 ];
 
 export default function MacauPage() {
-  const [activeSection, setActiveSection] = useState("day1");
+  const [activeSection, setActiveSection] = useState("prepare");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,11 +38,11 @@ export default function MacauPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-purple-950/20 to-zinc-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/30 to-slate-950 text-white">
       {/* Floating Summary Card */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
-        <div className="bg-gradient-to-br from-zinc-900/95 to-zinc-800/95 backdrop-blur-xl border border-purple-500/30 rounded-2xl p-5 w-56 shadow-2xl shadow-purple-500/10">
-          <h3 className="text-sm font-bold text-purple-400 mb-4 flex items-center gap-2">
+        <div className="bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl border border-blue-500/30 rounded-2xl p-5 w-56 shadow-2xl shadow-blue-500/10">
+          <h3 className="text-sm font-bold text-blue-400 mb-4 flex items-center gap-2">
             📋 目錄導覽
           </h3>
           <ul className="space-y-1">
@@ -50,8 +52,8 @@ export default function MacauPage() {
                   onClick={() => scrollTo(id)}
                   className={`w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-3 ${
                     activeSection === id
-                      ? "bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg shadow-purple-500/30"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-800/80"
+                      ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/30"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800/80"
                   }`}
                 >
                   <span className="text-lg">{emoji}</span>
@@ -66,234 +68,180 @@ export default function MacauPage() {
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-purple-400 hover:text-white mb-8 transition-colors bg-zinc-800/50 px-4 py-2 rounded-full hover:bg-zinc-700/50"
+          className="inline-flex items-center gap-2 text-blue-400 hover:text-white mb-8 transition-colors bg-slate-800/50 px-4 py-2 rounded-full hover:bg-slate-700/50"
         >
           ← 返回 Blog
         </Link>
 
-        <header className="text-center py-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg shadow-purple-500/30">
-            🌴 大灣區退休遊記
+        {/* Top Banner */}
+        <div className="bg-gradient-to-br from-blue-900 to-cyan-900 rounded-2xl p-8 mb-8 text-center border-b-4 border-amber-500 shadow-2xl shadow-blue-500/20">
+          <div className="inline-block bg-amber-500/20 text-amber-400 px-4 py-1 rounded-full text-xs font-bold tracking-widest mb-4">
+            銀齡慢活 ‧ 濠江拾遺
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-indigo-300 bg-clip-text text-transparent">
-            澳門2天葡韻慢活之旅
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-slate-100 leading-relaxed">
+            鏡海留影：一個退休人的澳門兩日葡韻慢活隨筆
           </h1>
-          <h2 className="text-xl text-purple-400 font-semibold mb-4">過大海 · 慢慢行 · 歎世界</h2>
-          <p className="text-zinc-500">June 2026 · 作者：純粹旅人</p>
-        </header>
+          <p className="text-slate-400 italic">二零二六年盛夏 ‧ 老派自由行深度記述</p>
+        </div>
 
+        {/* Hero Image */}
         <img
           src="https://images.unsplash.com/photo-1541599468348-e96984315921?w=1200&q=80"
-          alt="澳門大三巴夜景"
-          className="w-full rounded-2xl mb-4 shadow-2xl shadow-purple-500/20"
+          alt="澳門夜景"
+          className="w-full rounded-2xl mb-6 shadow-2xl shadow-blue-500/20"
           onError={(e) => {
             e.currentTarget.src = "https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=80";
           }}
         />
-        <p className="text-center text-zinc-500 text-sm mb-12">
-          ▲ 澳門夜色，葡式建築與霓虹燈光相映成趣
+        <p className="text-center text-slate-500 text-sm mb-10">
+          澳門夜色，葡式建築與霓虹燈光相映成趣
+        </p>
+
+        {/* Intro Quote */}
+        <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/20 border-l-4 border-blue-600 pl-6 pr-4 py-4 rounded-r-xl mb-10 italic">
+          <p className="text-slate-300 text-lg leading-relaxed">
+            「過咗辛勞半生嘅歲月，如今旅行不再追求景點打卡。提著輕便行李，坐上金巴，只為去澳門尋找那一塊斑駁嘅馬賽克碎石路、一盞溫潤嘅葡撻，同埋屬於老街坊嘅一杯早茶。」
+          </p>
+        </div>
+
+        {/* Opening Paragraph */}
+        <p className="text-lg text-slate-300 leading-loose mb-8 text-justify">
+          自從過咗無重擔嘅退休生活，最鍾意就是隨心出發。以前嚟澳門總是以為只有賭場與人潮，行色匆匆。這次我給自己規劃了一個兩日一夜嘅「葡韻慢活自由行」。不趕時間，順著歷史嘅紋理，在南歐風情與中式市井之間踱步，驚覺這座小城對於我們銀髮一族來說，真是一個養心、養胃、又好行嘅後花園。
         </p>
 
         <article className="prose prose-invert prose-lg max-w-none">
-          {/* 引言 */}
-          <p className="text-xl leading-relaxed text-gray-200 mb-8">
-            過大海！呢個係老一輩香港人對去澳門嘅稱呼。澳門雖然細細，但係幾百年中西文化交融，令呢個地方有住獨一無二嘅魅力。對我呢個退休人士來說，澳門最大嘅吸引力係——免費發財巴來回、免費酒店飲品、性價比超高嘅葡國菜！
-          </p>
-          <p className="text-gray-300 mb-8">
-            今次我用兩日一夜，由第一日行到第二日，帶你睇吓真正嘅葡韻風情！
-          </p>
-
-          {/* ===== 第一天 ===== */}
-          <h2 id="day1" className="text-3xl font-bold text-purple-400 mt-16 mb-8 flex items-center gap-4">
-            <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl">1</span>
-            第一天：港澳碼頭 · 議事亭前地 · 大三巴
+          {/* ===== 行前準備 ===== */}
+          <h2 id="prepare" className="text-2xl font-bold text-blue-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
+            ⚙️ 行前籌劃：長者嘅輕鬆出行智慧
           </h2>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">⛴️ 早上：由香港出發</h3>
-          <p className="text-gray-300 mb-6">
-            朝早九點，我響香港港澳碼頭登上高速船。呢個係我最鍾意嘅交通方式，一個鐘頭就到，舒舒服服咁睇住大海發呆。船上有免費Wi-Fi，我刷咗一陣手機就到咗。
-          </p>
-          <p className="text-gray-300 mb-8">
-            到達澳門外港碼頭，我一出關口就見到好多娛樂場嘅發財巴。我選擇咗葡京人嘅免費巴士，因為今晚就入住呢間酒店。
+          <p className="text-slate-300 leading-loose mb-6 text-justify">
+            年紀大咗，出門旅行最緊要不勞累。交通方面，現在由港珠澳大橋乘搭<strong className="text-blue-400">「金巴」直達澳門邊檢大樓</strong>十分方便，過關後直接轉乘的士或者各大酒店嘅免費接駁巴士（發財車），免去舟車勞頓。在澳門市內，氹仔那邊我全靠<strong className="text-blue-400">澳門輕軌</strong>，站點新穎、全無障礙，而且對長者有票價優惠，坐在車廂內還可以居高臨下欣賞金光大道嘅現代繁華；而行老城區時，因為多斜坡小巷，膝頭哥不宜過度操勞，最聰明嘅做法就是<strong className="text-blue-400">善用的士</strong>，收費公道，免卻爬坡之苦。
           </p>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🏛️ 上午：議事亭前地</h3>
-          <p className="text-gray-300 mb-6">
-            放低行李之後，我坐發財巴去議事亭前地。呢度係澳門最核心嘅旅遊區域！廣場地面用黑白碎石鋪成波浪形圖案，兩旁係葡式建築，充滿濃郁嘅歐陸風情。
+          <p className="text-slate-300 leading-loose mb-6 text-justify">
+            在挑選住宿時，我放棄了那些金碧輝煌但大到行路都迷路的新型賭場酒店，挑選了位於老城區中心、極具歷史情懷的<strong className="text-blue-400">澳門新中央酒店</strong>（或是位於新口岸環境清幽的<strong className="text-blue-400">萊斯酒店</strong>）。新中央酒店近年重新翻修，完美保留了上世紀二、三十年代的復古裝潢，一出門口就是著名的議事亭前地，十分適合我們隨時回房小憩、喝杯熱茶，這才是真正屬於退休人的慢活步調。
           </p>
 
-          <div className="my-8">
+          <div className="my-10">
             <img
               src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=80"
-              alt="澳門議事亭前地"
+              alt="澳門新中央酒店"
               className="w-full rounded-2xl"
             />
-            <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
-              ▲ 議事亭前地的波浪形石板路，係澳門最具標誌性嘅畫面
+            <p className="text-center text-slate-500 text-sm mt-4">
+              老城區的葡式建築與黑白碎石路，交織出一段大半個世紀前的濠江舊夢
             </p>
           </div>
 
-          <p className="text-gray-300 mb-6">
-            我響廣場影咗一陣相，然後行去仁慈堂大樓——呢間係1569年建成，係澳門最古老嘅慈善機構，鵝黃色外牆非常靚。
-          </p>
-          <p className="text-gray-300 mb-8">
-            然後轉入玫瑰聖母堂，呢間係1587年建成嘅巴洛克式教堂，入面保存好多宗教藝術品。我响門口畫咗個十字，感受吓莊嚴肅穆嘅氣氛。
+          {/* ===== 第一天 ===== */}
+          <h2 id="day1" className="text-2xl font-bold text-blue-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
+            🌅 第一天：老字號嘆早茶、葡韻漫步與金光璀璨夜生活
+          </h2>
+
+          <p className="text-slate-300 leading-loose mb-6 text-justify">
+            早晨十一點來到澳門，第一件事當然是去「嘆早茶」。老街坊极力推薦我去位於十月初五街的<strong className="text-blue-400">大龍鳳茶樓</strong>。這是一間擁有超過八十年歷史的老字號，走進去，頭頂懸掛著懷舊雀籠，四周是斑駁的字畫，退休後最享受這種不趕時間的市井氣息。老茶樓的點心真材實料：必點<strong className="text-blue-400">「鵪鶉蛋燒賣」</strong>，如今在香港已很難食到這般懷舊滋味；還有<strong className="text-blue-400">「古法糯米雞」</strong>，荷葉香氣完全滲透進糯米中，軟糯溫胃。這裡最特別的是午後會有本地粵劇名伶現場唱曲，一邊飲著普洱，一邊聽著《鳳閣恩仇未了情》，簡直是人生一大享受。
           </p>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">⛪ 午餐：手信街掃街</h3>
-          <p className="text-gray-300 mb-6">
-            由議事亭前地去大三巴，係一條出名嘅手信街。我一路行一路試食——杏仁餅、牛肉乾、豬肉乾......試食試到飽！
-          </p>
-          <p className="text-gray-300 mb-6">
-            我响咀香園買咗幾盒杏仁餅做手信，RMB 30一盒，唔算貴。仲響條街度見到好多遊客提住大包小包，大家都係為咗澳門特色美食而嚟。
-          </p>
-          <p className="text-gray-300 mb-8">
-            午餐就响手信街旁邊嘅茶餐廳解決，叫咗個豬扒包，炭烤香味，非常好味！
+          <p className="text-slate-300 leading-loose mb-6 text-justify">
+            午後，搭的士來到氹仔的<strong className="text-blue-400">龍環葡韻住宅式博物館</strong>。這裡環境清幽極了，五棟薄荷綠色的葡萄牙式住宅別墅排開，窗前是一片濕地公園。在參天古樹的樹蔭下慢步，看著對岸威尼斯人的繁華，這邊卻獨享一份安詳。隨後順著平緩的自動步行系統（對長者非常省力）踱步至<strong className="text-blue-400">官也街步行街</strong>。兩旁全是充滿香氣的手信鋪與百年老店。在街角買了一盞<strong className="text-blue-400">「安德魯餅店」</strong>現烤的西餅葡撻，酥皮層層鬆脆，內餡蛋香濃郁、燙口綿密，甜而不膩，配上一杯黑咖啡，這便是最好的休閒下午茶。
           </p>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🏛️ 下午：大三巴牌坊</h3>
-          <p className="text-gray-300 mb-6">
-            食完晏，我終於去到今次旅程我最期待嘅地方——大三巴牌坊！呢度係澳門最標誌性嘅建築，1637年建成，經歷過三次大火，僥倖保存咗正面石壁。
-          </p>
-
-          <div className="my-8">
-            <img
-              src="https://images.unsplash.com/photo-1590735213920-9f4c5e16f1f5?w=1200&q=80"
-              alt="澳門大三巴牌坊"
-              className="w-full rounded-2xl"
-            />
-            <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
-              ▲ 大三巴牌坊，澳門最具代表性嘅歷史建築
-            </p>
-          </div>
-
-          <p className="text-gray-300 mb-6">
-            我響牌坊正面影咗好耐，嗰三層浮雕真係巧奪天工——有耶穌會、有聖保祿學院、有聖母......每一個細節都值得慢慢欣賞。
-          </p>
-          <p className="text-gray-300 mb-6">
-            然後我去咗地下墓穴，存放住殉道者遺骸，免費參觀。工作人員話，下午三點係最佳拍攝時間，太陽光會照入牌坊，影出嚟特別靚。
-          </p>
-          <p className="text-gray-300 mb-8">
-            大三巴旁邊有一條粉色小巷——戀愛巷，非常適合打卡！我影咗好多相，感覺自己都後生咗幾年。
-          </p>
-
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🌙 晚上：葡京人check-in · 免費發財巴</h3>
-          <p className="text-gray-300 mb-6">
-            夜晚六點，我回葡京人check-in。呢間係2021年新開嘅酒店，設施新淨，性價比超高，一晚只係MOP 400-800。
-          </p>
-          <p className="text-gray-300 mb-6">
-            放低行李之後，我坐發財巴去路氹城睇夜景。永利皇宮嘅纜車、威尼斯人嘅天空、巴黎人嘅鐵塔......響免費發財巴上已經可以睇到靚景！
-          </p>
-          <p className="text-gray-300 mb-8">
-            我響永利皇宮門口免費搭咗纜車，俯瞰表演湖嘅音樂噴泉，雖然有啲凍，但係非常浪漫！
+          <p className="text-slate-300 leading-loose mb-8 text-justify">
+            到了晚上，退休人的「夜生活」不求燈紅酒綠，但求視覺的震撼。我坐上輕軌前往路氹金光大道，步行在金沙城與倫敦人之間的行人天橋。入夜後，<strong className="text-blue-400">澳門倫敦人的大笨鐘與威尼斯人運河</strong>璀璨亮燈，金碧輝煌得彷彿將整個歐洲搬了過來。晚餐我選在官也街附近的<strong className="text-blue-400">「波爾圖葡國餐」</strong>，點了一份味道溫和的<strong className="text-blue-400">「葡式咖哩椰汁雞」</strong>與<strong className="text-blue-400">「馬介休球」</strong>。馬介休魚肉與薯蓉揉合得恰到好處，外脆內軟，配上一口紅酒，微醺之中看著濠江夜色，感嘆生活的美好。
           </p>
 
           {/* ===== 第二天 ===== */}
-          <h2 id="day2" className="text-3xl font-bold text-purple-400 mt-16 mb-8 flex items-center gap-4">
-            <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl">2</span>
-            第二天：氹仔舊城 · 官也街 · 滿載而歸
+          <h2 id="day2" className="text-2xl font-bold text-blue-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
+            🌆 第二天：十月初五街煙火夜市、手信尋味與歸真
           </h2>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🏘️ 早上：氹仔舊城區</h3>
-          <p className="text-gray-300 mb-6">
-            朝早八點，我已經起身去氹仔舊城區。呢度係我今次旅程最驚喜嘅發現！保留大量葡式建築，彩色外牆、瓷磚陽台、碎石小路......行行下，彷彿置身葡萄牙小鎮。
+          <p className="text-slate-300 leading-loose mb-6 text-justify">
+            第二天的清晨，我選擇回到半島的老街。如果想避開大三巴那種擠擁的人潮，聰明的長者會像我一樣，清晨九點來到<strong className="text-blue-400">大三巴牌坊</strong>前。此時旅行團未到，陽光斜射在精美的石雕上，四下無人，唯有白鴿飛過。我們不盲目攀爬陡峭的炮台山，而是在下方靜靜欣賞這座十七世紀的聖保祿教堂遺址，拍張乾淨、大氣的照片，感受歷史的肅穆。
           </p>
 
-          <div className="my-8">
+          <div className="my-10">
             <img
-              src="https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?w=1200&q=80"
-              alt="澳門氹仔舊城葡式建築"
+              src="https://images.unsplash.com/photo-1590735213920-9f4c5e16f1f5?w=1200&q=80"
+              alt="大三巴牌坊"
               className="w-full rounded-2xl"
             />
-            <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
-              ▲ 氹仔舊城的葡式建築，色彩繽紛，係打卡聖地
+            <p className="text-center text-slate-500 text-sm mt-4">
+              清晨的大三巴牌坊，展現出其最本真、最具靈魂的巴洛克史詩感
             </p>
           </div>
 
-          <p className="text-gray-300 mb-6">
-            我先去咗龍環葡韻，五幢葡萄牙式別墅，鵝黃、翠綠、粉紅......顏色靚到不得了！呢度現時係住宅式博物館，門票只係MOP 5。
-          </p>
-          <p className="text-gray-300 mb-8">
-            然後行去嘉模聖母堂，氹仔唯一嘅天主教堂，鵝黃色外牆響陽光下特別耀眼。我響附近嘅氹仔花園坐咗一陣，睇住老人家晨運，感受澳門慢活嘅生活節奏。
+          <p className="text-slate-300 leading-loose mb-6 text-justify">
+            隨後，我順著草堆街漫步到<strong className="text-blue-400">康公廟前地</strong>。這裡一帶是澳門傳統的街坊腹地。每逢週末或特定節日，這裡入夜後更會有熱鬧的<strong className="text-blue-400">康公夜市</strong>（或新馬路市集），擺滿了本地街坊的炭燒豬頸肉、煎蠔餅與懷舊麥芽糖，充滿了久違的童年煙火氣。而白天的十月初五街同樣精彩，我來到了老字號<strong className="text-blue-400">「滄洲咖啡小食」</strong>，吃一碗滾燙生滾的牛肉通粉，買一個本地人譽為全澳第一的<strong className="text-blue-400">「酥皮雞蛋撻」</strong>，它的酥皮是用中式油酥的做法，層次比葡撻更分明，入口即化。
           </p>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🍜 午餐：官也街掃街</h3>
-          <p className="text-gray-300 mb-6">
-            十一點，我行去官也街。呢度係氹仔最繁華嘅小食街，一條街可以試晒所有澳門美食！
-          </p>
-
-          <div className="my-8">
-            <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-              alt="澳門葡撻"
-              className="w-full rounded-2xl"
-            />
-            <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
-              ▲ 澳門葡撻，外脆內嫩，焦糖香味令人回味無窮
+          {/* 美食推介框 */}
+          <div className="bg-gradient-to-br from-amber-900/30 to-orange-900/20 border border-amber-500/40 rounded-2xl p-6 my-10">
+            <h3 className="text-amber-400 font-bold mb-3 text-xl">🌙 退休人嘅澳門手信與玩樂發現</h3>
+            <p className="text-slate-300 mb-4 text-justify">
+              來到旅程的尾聲，不免要為家中的老友記與兒孫帶點心意。退休人不愛去人擠人的連鎖店，老街坊帶路才找得到真味道：
             </p>
+            <ul className="space-y-4 text-slate-300">
+              <li className="text-justify">
+                <strong className="text-blue-400">最記（或最香）餅家嘅手工炭燒杏仁餅：</strong>隱藏在紅窗門街的巷弄中，遠遠就能聞到木炭烘烤的香氣。師傅現場用木模壓製，裡面夾著甘香的肥肉（冰肉）與粒粒碎杏仁，吃起來帶有一股獨特的炭香味，絕非機器製造可比。
+              </li>
+              <li className="text-justify">
+                <strong className="text-blue-400">晃記餅家嘅肉切酥與老婆餅：</strong>位於氹仔官也街，這家百年老字號至今不設試食、不開分店。它的肉切酥鹹甜帶南乳香，薄脆爽口，是配普洱茶的絕品。
+              </li>
+              <li className="text-justify">
+                <strong className="text-blue-400">慢活玩樂推薦 ── 坐一趟東望洋燈塔纜車：</strong>如果還有體力，可以去二龍喉公園坐全球最短的登山纜車，只需花費幾元澳門幣，兩分鐘即可輕鬆登頂，俯瞰全澳門的市井景致，舒服又不費腳力。
+              </li>
+            </ul>
           </div>
 
-          <p className="text-gray-300 mb-6">
-            我先去安德魯餅店買咗兩個葡撻，MOP 10一個，外脆內嫩，焦糖香味令人回味無窮！然後去大利豬扒包叫咗個炭烤豬扒包，MOP 30-40，非常好味！
-          </p>
-          <p className="text-gray-300 mb-6">
-            最後去莫義記食咗個木糠布甸，呢間係1935年老字號，木糠布甸創始店，MOP 25一杯，奶味香濃，入口即溶！
-          </p>
-          <p className="text-gray-300 mb-8">
-            官也街掃街掃到我捧住個肚，行都行唔郁，真係太滿足！
+          <p className="text-slate-300 leading-loose mb-8 text-justify">
+            下午四點，提著沉甸甸的手信與滿滿的回憶，再次坐上的士前往港珠澳大橋口岸。這兩天一夜的行程，沒有賭場的喧鬧，只有葡韻的晚風與老街的茶香。慢下來，才發現澳門這卷嶺南與西洋交織的歷史長卷，原來可以讀得如此有滋有味。
           </p>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🎰 下午：路氹城最後巡禮</h3>
-          <p className="text-gray-300 mb-6">
-            午餐之後，我坐發財巴去路氹城最後巡禮。威尼斯人嘅人造天空、倫敦人嘅英式風情、巴黎人嘅縮小版鐵塔......全部都可以免費打卡！
-          </p>
-          <p className="text-gray-300 mb-6">
-            我响威尼斯人坐咗貢多拉船，MOP 150一位，一邊聽住船夫唱歌，一邊響人造運河上面飘流，彷彿真係去咗意大利！
-          </p>
-          <p className="text-gray-300 mb-8">
-            然後响巴黎人門口影咗張相，縮小版鐵塔雖然冇真嘅咁壯觀，但係夜景一樣靚！如果想省錢，其實响巴黎人花園可以免費影到鐵塔全景。
-          </p>
+          {/* ===== 實用Tips ===== */}
+          <h2 id="tips" className="text-2xl font-bold text-blue-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
+            💡 銀髮智囊 ‧ 澳門慢活自由行隨身手札
+          </h2>
 
-          <h3 className="text-xl font-bold text-purple-300 mb-4">🚄 下午：回程</h3>
-          <p className="text-gray-300 mb-6">
-            下午四點，我坐發財巴去碼頭，搭五點鐘嘅船回香港。兩日一夜嘅澳門之旅，正式完美結束。
-          </p>
-          <p className="text-gray-300 mb-8">
-            返到香港，我提住幾袋手信——杏仁餅、牛肉乾、葡國雞罐頭......全部都係澳門特色！下次，我會再去路環睇黑沙灘，或者去澳門半島睇東望洋燈塔。
-          </p>
+          <div className="bg-gradient-to-br from-blue-900 to-cyan-900 rounded-2xl p-6 my-8">
+            <ul className="space-y-4 text-slate-200">
+              <li className="text-justify">
+                <strong className="text-amber-400">住宿地點的考量：</strong>長者出行如果喜歡熱鬧和古蹟，新中央酒店或十六浦附近是首選，出門平坦好行。如果喜歡清幽海景，新口岸的萊斯酒店（羅馬宮廷風）非常安靜，適合靜心修養。
+              </li>
+              <li className="text-justify">
+                <strong className="text-amber-400">交通卡小智慧：</strong>建議一到埗就購買一張「澳門通 (Macau Pass)」或者準備好支付寶/微信支付。坐巴士或輕軌只需一刷，省去在大熱天尋找零錢的煩惱，且長者乘車更有優惠。
+              </li>
+              <li className="text-justify">
+                <strong className="text-amber-400">避開石板路滑倒：</strong>澳門許多老街（如大三巴斜巷、瘋堂斜巷）是由光滑的葡式碎石鋪成，下雨天或者清晨有晨露時容易滑倒。請務必穿著高抓地力的健步鞋，行路時步履放慢。
+              </li>
+              <li className="text-justify">
+                <strong className="text-amber-400">體力與休息規劃：</strong>老城區地形多山。建議每參觀完一個景點（例如大三巴或議事亭前地），就近找一家茶餐廳、甜品店（如義順牛奶公司）坐下吃碗雙皮奶，<strong className="text-blue-400">每走45分鐘休息15分鐘</strong>，才是最健康的慢活節奏。
+              </li>
+            </ul>
+          </div>
 
           {/* 總結 */}
-          <div className="bg-gradient-to-r from-purple-900/30 to-indigo-900/20 border border-purple-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-purple-400 font-bold mb-4 text-xl">📝 遊記總結</h3>
-            <p className="text-gray-300 mb-4">
-              兩日一夜，我由港澳碼頭行到大三巴，由氹仔舊城行到路氹城......每一個地方都有佢獨特嘅葡韻風情。
-            </p>
-            <p className="text-gray-300 mb-4">
-              最難忘嘅一定係官也街嘅葡撻——外脆內嫩，焦糖香味令人回味無窮，一試就愛上！
-            </p>
-            <p className="text-gray-300 mb-4">
-              總預算大約 HK$1,500-2,500，包含船票、住宿、餐飲、手信。如果用發財巴，省返唔少交通費！
-            </p>
-            <p className="text-gray-300">
-              澳門係一個好值得慢慢品味嘅地方，下次一定再嚟！
+          <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/20 border border-amber-500/40 rounded-2xl p-6 my-10">
+            <p className="text-slate-300 text-lg leading-relaxed text-center italic">
+              ─ 歲月漫漫，步履緩緩。願每位退下火線的老朋友，都能在濠江的晚風中找到屬於自己的悠閒。 ─
             </p>
           </div>
 
           {/* 留言區 */}
-          <div className="bg-gradient-to-r from-purple-900/30 to-indigo-900/20 border border-purple-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-purple-400 font-bold mb-4 flex items-center gap-2 text-xl">
+          <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/20 border border-blue-500/40 rounded-2xl p-6 my-10">
+            <h3 className="text-blue-400 font-bold mb-4 flex items-center gap-2 text-xl">
               💬 留言分享
             </h3>
-            <p className="text-gray-300 text-lg mb-4">
+            <p className="text-slate-300 text-lg mb-4">
               👇 你去過澳門嗎？分享一下你的體驗吧！
             </p>
             <div className="space-y-3">
               <input
                 type="text"
                 placeholder="輸入你的留言..."
-                className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500/50 transition-colors"
+                className="w-full bg-slate-800/60 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500/50 transition-colors"
               />
-              <button className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+              <button className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                 提交留言
               </button>
             </div>
