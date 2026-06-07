@@ -689,8 +689,11 @@ export default function NewsPage() {
       initializedRef.current = true;
       console.log('[Mount] Initial fetch triggered');
       fetchNews(true);
+    } else {
+      // Fetch new news when category changes
+      fetchNews(false);
     }
-  }, [fetchNews]);
+  }, [fetchNews, category]);
 
   // Auto-refresh effect
   useEffect(() => {
