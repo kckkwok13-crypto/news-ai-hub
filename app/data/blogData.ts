@@ -283,14 +283,14 @@ export const blogPosts: BlogPost[] = [
     accent: "from-orange-500 to-red-500"
   },
   {
-    slug: "gba-guangzhou-3days",
-    title: "🍜 廣州3天美食之旅：早茶文化 + 荔枝灣慢遊 + 珠江夜遊",
-    excerpt: "食在廣州！這篇遊記為你詳細介紹5間必試早茶店、荔枝灣涌的嶺南風情、沙面島的民國建築，以及珠江夜遊的最佳船期與拍攝位置。",
+    slug: "gba-guangzhou",
+    title: "🍜 廣州3天慢活遊：北京路尋古 · 上下九淘貨 · 珠江夜遊",
+    excerpt: "食在廣州！退休後的慢活之旅——陶陶居飲茶、黃沙海鮮市場、北京路千年古道、上下九步行街掃貨、小蠻腰夜景、珠江夜遊，最全面嘅廣州攻略！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1536052443615-08b1f36aa89d?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80",
     icon: "🍜",
     tags: ["大灣區", "廣州", "退休遊", "3天2夜", "美食"],
-    accent: "from-red-500 to-pink-500"
+    accent: "from-amber-500 to-orange-500"
   },
   {
     slug: "gba-macau-2days",
