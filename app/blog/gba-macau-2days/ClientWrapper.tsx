@@ -97,6 +97,16 @@ export default function MacauPage() {
           澳門夜色，葡式建築與霓虹燈光相映成趣
         </p>
 
+        {/* Ad Banner - After Hero */}
+        <div className="my-8 flex justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '728px', height: '90px' }}
+            data-ad-client="ca-pub-4745583996243741"
+            data-ad-slot="7843298765"
+            data-ad-format="auto"
+            data-full-width-responsive="true" />
+        </div>
+
         {/* Intro Quote */}
         <div className="bg-gradient-to-r from-blue-900/30 to-cyan-900/20 border-l-4 border-blue-600 pl-6 pr-4 py-4 rounded-r-xl mb-10 italic">
           <p className="text-slate-300 text-lg leading-relaxed">
@@ -151,6 +161,16 @@ export default function MacauPage() {
             到了晚上，退休人的「夜生活」不求燈紅酒綠，但求視覺的震撼。我坐上輕軌前往路氹金光大道，步行在金沙城與倫敦人之間的行人天橋。入夜後，<strong className="text-blue-400">澳門倫敦人的大笨鐘與威尼斯人運河</strong>璀璨亮燈，金碧輝煌得彷彿將整個歐洲搬了過來。晚餐我選在官也街附近的<strong className="text-blue-400">「波爾圖葡國餐」</strong>，點了一份味道溫和的<strong className="text-blue-400">「葡式咖哩椰汁雞」</strong>與<strong className="text-blue-400">「馬介休球」</strong>。馬介休魚肉與薯蓉揉合得恰到好處，外脆內軟，配上一口紅酒，微醺之中看著濠江夜色，感嘆生活的美好。
           </p>
 
+          {/* Ad Banner - Between Day 1 and Day 2 */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
+
           {/* ===== 第二天 ===== */}
           <h2 id="day2" className="text-2xl font-bold text-blue-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
             🌆 第二天：十月初五街煙火夜市、手信尋味與歸真
@@ -198,6 +218,16 @@ export default function MacauPage() {
             下午四點，提著沉甸甸的手信與滿滿的回憶，再次坐上的士前往港珠澳大橋口岸。這兩天一夜的行程，沒有賭場的喧鬧，只有葡韻的晚風與老街的茶香。慢下來，才發現澳門這卷嶺南與西洋交織的歷史長卷，原來可以讀得如此有滋有味。
           </p>
 
+          {/* Ad Banner - Before Tips */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
+
           {/* ===== 實用Tips ===== */}
           <h2 id="tips" className="text-2xl font-bold text-blue-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
             💡 銀髮智囊 ‧ 澳門慢活自由行隨身手札
@@ -225,6 +255,16 @@ export default function MacauPage() {
             <p className="text-slate-300 text-lg leading-relaxed text-center italic">
               ─ 歲月漫漫，步履緩緩。願每位退下火線的老朋友，都能在濠江的晚風中找到屬於自己的悠閒。 ─
             </p>
+          </div>
+
+          {/* Ad Banner - Before Comments */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
           </div>
 
           {/* 留言區 */}
