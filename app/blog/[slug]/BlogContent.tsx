@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Script from "next/script";
 
 const blogData: Record<string, any> = {
   "shibuya-crossing": {
@@ -140,6 +141,16 @@ export default function BlogContent({ slug }: { slug: string }) {
     return () => observer.disconnect();
   }, [blog]);
 
+  // Initialize Google AdSense
+  useEffect(() => {
+    try {
+      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+      (window as any).adsbygoogle.push({});
+    } catch (e) {
+      console.log('AdSense initialization skipped');
+    }
+  }, []);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -207,6 +218,16 @@ export default function BlogContent({ slug }: { slug: string }) {
         />
         <p className="text-center text-zinc-500 text-sm mb-12">{blog.heroCaption}</p>
 
+        {/* Ad Banner - After Hero */}
+        <div className="my-8 flex justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '728px', height: '90px' }}
+            data-ad-client="ca-pub-4745583996243741"
+            data-ad-slot="7843298765"
+            data-ad-format="auto"
+            data-full-width-responsive="true" />
+        </div>
+
         <article className="prose prose-invert prose-lg max-w-none">
           {blog.content.map((item: any, index: number) => {
             switch (item.type) {
@@ -246,6 +267,16 @@ export default function BlogContent({ slug }: { slug: string }) {
             }
           })}
 
+          {/* Ad Banner - Before Info Cards */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
+
           <h2 className="text-2xl font-bold mt-10 mb-4 text-white">📊 景點資訊一覽</h2>
           <div className="grid grid-cols-2 gap-4 my-6">
             {blog.infoCards.map((card: { label: string; value: string }, index: number) => (
@@ -255,7 +286,27 @@ export default function BlogContent({ slug }: { slug: string }) {
               </div>
             ))}
           </div>
+
+          {/* Ad Banner - After Info Cards */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
         </article>
+
+        {/* Related Posts / Back to Blog */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            ← 返回全部遊記
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -59,6 +59,16 @@ export default function BlogPage() {
     setSortBy("date");
   };
 
+  // Initialize Google AdSense
+  useEffect(() => {
+    try {
+      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+      (window as any).adsbygoogle.push({});
+    } catch (e) {
+      console.log('AdSense initialization skipped');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Hero Banner */}
@@ -301,6 +311,16 @@ export default function BlogPage() {
           </div>
         </div>
 
+        {/* Ad Banner - Between Sections */}
+        <div className="my-8 flex justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '728px', height: '90px' }}
+            data-ad-client="ca-pub-4745583996243741"
+            data-ad-slot="7843298765"
+            data-ad-format="auto"
+            data-full-width-responsive="true" />
+        </div>
+
         {/* ===== 海外遊記專欄 ===== */}
         <div className="bg-gradient-to-r from-blue-900/50 via-indigo-900/50 to-purple-900/50 rounded-2xl p-6 mb-8 border border-blue-500/30">
           <div className="flex items-center justify-between mb-6">
@@ -403,6 +423,16 @@ export default function BlogPage() {
             </button>
           </div>
         )}
+
+        {/* Ad Banner - Before Footer */}
+        <div className="my-8 flex justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '728px', height: '90px' }}
+            data-ad-client="ca-pub-4745583996243741"
+            data-ad-slot="7843298765"
+            data-ad-format="auto"
+            data-full-width-responsive="true" />
+        </div>
 
         {/* Footer */}
         <footer className="text-center mt-16 py-8 border-t border-slate-700">
