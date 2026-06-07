@@ -303,6 +303,16 @@ export const blogPosts: BlogPost[] = [
     accent: "from-purple-500 to-indigo-500"
   },
   {
+    slug: "gba-zhuhai-3days",
+    title: "🌊 珠海3天2夜銀髮慢活遊：情侶路 + 日月貝 + 御溫泉",
+    excerpt: "港珠澳大橋直達！情侶路聽海、珠海漁女打卡、日月貝歌劇院賞夕陽、御溫泉泡湯養生，三日兩夜慢活度假攻略。",
+    date: "June 2026",
+    image: "/images/zhuhai-lovers-road.jpg",
+    icon: "🌊",
+    tags: ["大灣區", "珠海", "退休遊", "3天2夜", "海邊"],
+    accent: "from-teal-500 to-cyan-500"
+  },
+  {
     slug: "gba-zhuhai-4days",
     title: "🏖️ 珠海長隆4天深度遊：海洋王國 + 橫琴蚝情 + 海泉灣溫泉",
     excerpt: "珠海慢活4天行程推薦！長隆海洋王國的隱藏玩法、橫琴生蠔海鮮大餐、以及私密海泉灣溫泉渡假攻略，適合帶老人家一齊出發。",
