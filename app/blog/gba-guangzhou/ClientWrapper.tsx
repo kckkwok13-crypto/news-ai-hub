@@ -123,7 +123,7 @@ export default function GuangzhouPage() {
 
           <div className="my-10">
             <img
-              src="/images/guangzhou-photo1.jpg"
+              src="/images/guangzhou-photo3.jpg"
               alt="白天鵝賓館園林景致"
               className="w-full rounded-2xl"
             />
@@ -164,7 +164,7 @@ export default function GuangzhouPage() {
 
           <div className="my-10">
             <img
-              src="/images/guangzhou-photo3.jpg"
+              src="/images/guangzhou-photo1.jpg"
               alt="陳家祠木雕"
               className="w-full rounded-2xl"
             />
