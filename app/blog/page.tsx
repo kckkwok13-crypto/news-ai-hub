@@ -15,6 +15,9 @@ const regionStats = blogPosts.reduce((acc, post) => {
   return acc;
 }, {} as Record<string, number>);
 
+// Great Bay Area (大灣區) retirement travel posts
+const gbaPosts = blogPosts.filter(post => post.tags.includes("大灣區") || post.tags.includes("退休遊"));
+
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -170,6 +173,83 @@ export default function BlogPage() {
                 }`}>{count}</span>
               </button>
             ))}
+          </div>
+        </div>
+
+        {/* ===== 大灣區退休遊記專欄 ===== */}
+        <div className="bg-gradient-to-r from-amber-900/50 via-orange-900/50 to-red-900/50 rounded-2xl p-6 mb-8 border border-amber-500/30">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="text-4xl">🌴</div>
+              <div>
+                <h2 className="text-white text-2xl font-bold">大灣區退休遊記</h2>
+                <p className="text-amber-200/80 text-sm mt-1">2-4天短途行程 · 交通住宿美食 · 景點夜生活</p>
+              </div>
+            </div>
+            <span className="bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+              🆕 {gbaPosts.length} 篇遊記
+            </span>
+          </div>
+
+          {/* GBA Posts Grid */}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {gbaPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="block group"
+              >
+                <div className="relative h-48 rounded-xl overflow-hidden bg-slate-800 border border-slate-700 hover:border-amber-500/50 transition-all duration-300 hover:scale-[1.02]">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl">{post.icon}</span>
+                      <span className="bg-amber-500/80 text-white text-xs px-2 py-0.5 rounded-full">
+                        {post.tags.find(t => t.includes("天")) || "2天1夜"}
+                      </span>
+                    </div>
+                    <h3 className="text-white font-semibold text-sm leading-tight line-clamp-2 group-hover:text-amber-300 transition-colors">
+                      {post.title.replace(/^[^\s]+\s/, '')}
+                    </h3>
+                  </div>
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <span className="text-white text-xl">▶</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Quick Info Cards */}
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
+              <div className="text-2xl mb-2">🚄</div>
+              <div className="text-amber-300 text-xs font-medium">交通</div>
+              <div className="text-slate-300 text-sm">高鐵直達 · 30分鐘穿梭</div>
+            </div>
+            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
+              <div className="text-2xl mb-2">🏨</div>
+              <div className="text-amber-300 text-xs font-medium">住宿</div>
+              <div className="text-slate-300 text-sm">五星酒店 · 實惠選擇</div>
+            </div>
+            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
+              <div className="text-2xl mb-2">🍜</div>
+              <div className="text-amber-300 text-xs font-medium">美食</div>
+              <div className="text-slate-300 text-sm">地道風味 · 必試推介</div>
+            </div>
+            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
+              <div className="text-2xl mb-2">🌃</div>
+              <div className="text-amber-300 text-xs font-medium">夜生活</div>
+              <div className="text-slate-300 text-sm">夜景打卡 · 酒吧夜市</div>
+            </div>
           </div>
         </div>
 

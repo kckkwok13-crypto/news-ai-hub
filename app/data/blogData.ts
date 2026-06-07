@@ -271,4 +271,85 @@ export const blogPosts: BlogPost[] = [
     tags: ["威尼斯", "意大利", "浪漫"],
     accent: "from-amber-600 to-orange-500"
   },
+  // ===== 大灣區退休遊記專欄 =====
+  {
+    slug: "gba-shenzhen-2days",
+    title: "🛍️ 深圳2天慢活遊：東門老街懷舊 + 華強北科技尋寶 + 深圳灣日落",
+    excerpt: "退休後的深圳輕旅行！從羅湖過關只需30分鐘，帶你走訪東門老街尋找老香港味道、探索華強北黑科技、最後在深圳灣公園欣賞絕美日落。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1545893835-abaa50cbe628?w=1200&q=80",
+    icon: "🏙️",
+    tags: ["大灣區", "深圳", "退休遊", "2天1夜"],
+    accent: "from-orange-500 to-red-500"
+  },
+  {
+    slug: "gba-guangzhou-3days",
+    title: "🍜 廣州3天美食之旅：早茶文化 + 荔枝灣慢遊 + 珠江夜遊",
+    excerpt: "食在廣州！這篇遊記為你詳細介紹5間必試早茶店、荔枝灣涌的嶺南風情、沙面島的民國建築，以及珠江夜遊的最佳船期與拍攝位置。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1536052443615-08b1f36aa89d?w=1200&q=80",
+    icon: "🍜",
+    tags: ["大灣區", "廣州", "退休遊", "3天2夜", "美食"],
+    accent: "from-red-500 to-pink-500"
+  },
+  {
+    slug: "gba-macau-2days",
+    title: "🎰 澳門2天奢華遊：五星酒店試住 + 葡撻尋味 + 氹仔舊城區漫步",
+    excerpt: "過大海享受葡韻風情！免費發財巴來回、免費酒店飲品、葡撻與豬扒包的完美搭配，以及氹仔舊城區的彩色葡萄牙建築打卡攻略。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1541599468348-e96984315921?w=1200&q=80",
+    icon: "🎰",
+    tags: ["大灣區", "澳門", "退休遊", "2天1夜"],
+    accent: "from-purple-500 to-indigo-500"
+  },
+  {
+    slug: "gba-zhuhai-4days",
+    title: "🏖️ 珠海長隆4天深度遊：海洋王國 + 橫琴蚝情 + 海泉灣溫泉",
+    excerpt: "珠海慢活4天行程推薦！長隆海洋王國的隱藏玩法、橫琴生蠔海鮮大餐、以及私密海泉灣溫泉渡假攻略，適合帶老人家一齊出發。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+    icon: "🏖️",
+    tags: ["大灣區", "珠海", "退休遊", "4天3夜", "海邊"],
+    accent: "from-cyan-500 to-blue-500"
+  },
+  {
+    slug: "gba-hongkong-3days",
+    title: "🏔️ 香港後花園3天遊：西貢地質公園 + 南丫島海鮮 + 赤柱殖民地風情",
+    excerpt: "香港都有世外桃源！西貢地質公園探索六角形岩柱、南丫島品嚐原生態海鮮、赤柱感受殖民地風情。最適合退休人士的香港深度遊。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=1200&q=80",
+    icon: "🏔️",
+    tags: ["大灣區", "香港", "退休遊", "3天2夜", "郊遊"],
+    accent: "from-green-500 to-teal-500"
+  },
+  {
+    slug: "gba-dongguan-2days",
+    title: "🏭 東莞2天工業風探索：可園嶺南園林 + 下壩坊文創區 + 道滘粵菜尋味",
+    excerpt: "東莞不只有工廠！可園是岭南四大名園之一，下壩坊是文藝青年聚集地，道滘粵菜更是老饕摯愛。最適合喜歡深度文化的退休人士。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1200&q=80",
+    icon: "🏛️",
+    tags: ["大灣區", "東莞", "退休遊", "2天1夜", "文化"],
+    accent: "from-amber-500 to-yellow-500"
+  },
+  {
+    slug: "gba-foshan-2days",
+    title: "🦁 佛山2天武術尋蹤：黃飛鴻故居 + 祖廟粤劇 + 西樵山祈福",
+    excerpt: "嶺南武術之鄉！走訪黃飛鴻故居、佛山祖廟看舞獅表演、品嚐盲公餅和雙皮奶，最後在西樵山祈福賞杜鵑，行程充實又有文化底蘊。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1590735213920-68192a487bc2?w=1200&q=80",
+    icon: "🦁",
+    tags: ["大灣區", "佛山", "退休遊", "2天1夜", "武術"],
+    accent: "from-red-600 to-orange-500"
+  },
+  {
+    slug: "gba-humen-2days",
+    title: "🌉 虎門2天歷史之旅：威遠砲台 + 海戰博物館 + 蓮花山夜景",
+    excerpt: "鴉片戰爭的歷史記憶！虎門威遠砲台見證民族滄桑、廣州海戰博物館了解近代史、晚上登上蓮花山俯瞰珠江兩岸璀璨夜景。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1545893835-abaa50cbe628?w=1200&q=80",
+    icon: "🌉",
+    tags: ["大灣區", "東莞", "退休遊", "2天1夜", "歷史"],
+    accent: "from-slate-600 to-gray-600"
+  },
 ];
