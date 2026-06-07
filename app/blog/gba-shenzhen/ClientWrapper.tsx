@@ -103,10 +103,10 @@ export default function ShenzhenPage() {
 
         <article className="prose prose-invert prose-lg max-w-none">
           {/* 引言 */}
-          <p id="intro" className="text-xl leading-relaxed text-zinc-300 mb-8">
+          <p id="intro" className="text-xl leading-relaxed text-gray-200 mb-8">
             退休後，我最鍾意就係揹住相機周圍走。今次試下用兩日時間，慢遊我地熟悉又陌生嘅深圳。羅湖過關，30分鐘就到，完全係「話走就走」嘅節奏。
           </p>
-          <p className="text-zinc-400 mb-8">
+          <p className="text-gray-300 mb-8">
             話說深圳呢個地方，對我哋香港人來說又近又遠。近，係因為只係一關之隔；遠，係因為好多人都只係去東門、華強北，未真正體驗過佢嘅魅力。今次，我就帶你用另一個角度睇深圳——慢活、深度、美食與日落。
           </p>
 
@@ -123,7 +123,7 @@ export default function ShenzhenPage() {
                 <div className="text-3xl">🚄</div>
                 <div>
                   <h4 className="text-lg font-bold text-white mb-2">東鐵直達（最方便）</h4>
-                  <p className="text-zinc-400 mb-2">羅湖口岸或落馬洲 → 深圳站（羅湖）</p>
+                  <p className="text-gray-300 mb-2">羅湖口岸或落馬洲 → 深圳站（羅湖）</p>
                   <ul className="text-zinc-300 space-y-1 text-sm">
                     <li>• 車程：約45分鐘</li>
                     <li>• 車費：約HK$35（使用八達通）</li>
@@ -136,7 +136,7 @@ export default function ShenzhenPage() {
                 <div className="text-3xl">🚅</div>
                 <div>
                   <h4 className="text-lg font-bold text-white mb-2">高鐵（最快速）</h4>
-                  <p className="text-zinc-400 mb-2">香港西九龍 → 深圳北站</p>
+                  <p className="text-gray-300 mb-2">香港西九龍 → 深圳北站</p>
                   <ul className="text-zinc-300 space-y-1 text-sm">
                     <li>• 車程：約14分鐘</li>
                     <li>• 車費：約HK$75（需提前購票）</li>
@@ -159,7 +159,7 @@ export default function ShenzhenPage() {
           </div>
 
           <h3 className="text-xl font-bold text-orange-300 mb-4">深圳市內交通</h3>
-          <p className="text-zinc-400 mb-4">
+          <p className="text-gray-300 mb-4">
             深圳地鐵覆蓋全面，建議購買「深圳通」卡（相當於香港八達通），可以話係「嘟一嘟」就走。另外，我強烈建議下載「滴滴出行」App，喺深圳叫的士比香港平好多，而且司機服務態度好好，就算你唔識中文，佢哋都會用電話聯絡你。
           </p>
 
@@ -179,7 +179,7 @@ export default function ShenzhenPage() {
               </div>
               <p className="text-zinc-300 text-sm mb-2">📍 羅湖區，近地鐵大劇院站</p>
               <p className="text-zinc-300 text-sm mb-2">💰 約 RMB 600/晚（含早餐）</p>
-              <p className="text-zinc-400 text-sm">✨ 景觀絕佳，可以睇到成個深圳天際線！夜晚喺房睇夜景，特別有feel。</p>
+              <p className="text-gray-300 text-sm">✨ 景觀絕佳，可以睇到成個深圳天際線！夜晚喺房睇夜景，特別有feel。</p>
             </div>
 
             <div className="bg-gradient-to-br from-zinc-800/60 to-zinc-900/60 rounded-xl p-5 border border-zinc-700/50">
@@ -192,7 +192,7 @@ export default function ShenzhenPage() {
               </div>
               <p className="text-zinc-300 text-sm mb-2">📍 南山區，歡樂谷旁</p>
               <p className="text-zinc-300 text-sm mb-2">💰 約 RMB 900/晚</p>
-              <p className="text-zinc-400 text-sm">✨ 環境優美，有園林景觀，適合想慢慢歎嘅退休人士。</p>
+              <p className="text-gray-300 text-sm">✨ 環境優美，有園林景觀，適合想慢慢歎嘅退休人士。</p>
             </div>
           </div>
 
@@ -201,7 +201,7 @@ export default function ShenzhenPage() {
             🏪 東門老街：時光倒流30年
           </h2>
 
-          <p className="text-zinc-400 mb-6">
+          <p className="text-gray-300 mb-6">
             一踏出羅湖地鐵站，我就坐地鐵去東門站。東門老街，係深圳最老牌嘅商業區，保存住好多80年代嘅痕跡。行行下，我突然有種時光倒流嘅感覺——舊式招牌、懷舊茶餐廳、仲有嗰種人山人海嘅旺氣。
           </p>
 
@@ -235,7 +235,7 @@ export default function ShenzhenPage() {
             🔌 華強北：亞洲科技心臟
           </h2>
 
-          <p className="text-zinc-400 mb-6">
+          <p className="text-gray-300 mb-6">
             下午，我轉戰華強北。呢度係亞洲最大嘅電子產品批發市場，就算你唔係嚟買野，都一定要嚟開開眼界！
           </p>
 
@@ -281,7 +281,7 @@ export default function ShenzhenPage() {
             🍜 美食推介：食在深圳
           </h2>
 
-          <p className="text-zinc-400 mb-6">
+          <p className="text-gray-300 mb-6">
             退休人士最關心嘅，除咗玩，就係食！深圳嘅美食性價比真係超高，以下係我今次試過覺得唔錯嘅地方：
           </p>
 
@@ -292,7 +292,7 @@ export default function ShenzhenPage() {
                 <div className="text-3xl">🦆</div>
                 <div>
                   <span className="text-white font-bold">肥妹燒鵝店</span>
-                  <p className="text-zinc-400 text-sm">東門老街附近 · 人均約RMB 60</p>
+                  <p className="text-gray-300 text-sm">東門老街附近 · 人均約RMB 60</p>
                   <p className="text-zinc-300 text-sm mt-1">⭐ 必點：燒鵝瀨粉、叉燒飯，環境懷舊，性價比超高！</p>
                 </div>
               </div>
@@ -300,7 +300,7 @@ export default function ShenzhenPage() {
                 <div className="text-3xl">🍗</div>
                 <div>
                   <span className="text-white font-bold">光明乳鴿</span>
-                  <p className="text-zinc-400 text-sm">東門附近 · 每隻約RMB 35</p>
+                  <p className="text-gray-300 text-sm">東門附近 · 每隻約RMB 35</p>
                   <p className="text-zinc-300 text-sm mt-1">⭐ 皮脆肉嫩，一咬落去，肉汁就爆出嚟！</p>
                 </div>
               </div>
@@ -313,7 +313,7 @@ export default function ShenzhenPage() {
               <div className="text-3xl">🐚</div>
               <div>
                 <span className="text-white font-bold">悅海酒樓</span>
-                <p className="text-zinc-400 text-sm">海岸城購物中心 · 人均約RMB 150</p>
+                <p className="text-gray-300 text-sm">海岸城購物中心 · 人均約RMB 150</p>
                 <p className="text-zinc-300 text-sm mt-1">⭐ 必點：白切雞、蝦餃、鳳爪、正宗粵菜味道。環境舒適，適合慢慢歎！</p>
               </div>
             </div>
@@ -349,7 +349,7 @@ export default function ShenzhenPage() {
             🌅 深圳灣：日落係為我而寫
           </h2>
 
-          <p className="text-zinc-400 mb-6">
+          <p className="text-gray-300 mb-6">
             傍晚五點，我特意搭地鐵去深圳灣公園，趕上日落時分。呢個13公里長嘅海濱長廊，係我今次旅程嘅最大驚喜。
           </p>
 
@@ -387,7 +387,7 @@ export default function ShenzhenPage() {
             🌃 深圳夜生活：越夜越精彩
           </h2>
 
-          <p className="text-zinc-400 mb-6">
+          <p className="text-gray-300 mb-6">
             深圳嘅夜生活比香港更精彩，而且消費平一大截！以下係我今次體驗過嘅幾個地方：
           </p>
 
@@ -429,7 +429,7 @@ export default function ShenzhenPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80"
               alt="深圳夜市"
               className="w-full rounded-2xl"
             />
@@ -476,19 +476,19 @@ export default function ShenzhenPage() {
             <h3 className="text-orange-400 font-bold mb-4 text-xl">💰 預算參考（每人）</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-zinc-700/50 rounded-lg p-3">
-                <span className="text-zinc-400 text-sm">交通費（來回）</span>
+                <span className="text-gray-300 text-sm">交通費（來回）</span>
                 <p className="text-white font-bold text-lg">約 HK$70</p>
               </div>
               <div className="bg-zinc-700/50 rounded-lg p-3">
-                <span className="text-zinc-400 text-sm">酒店（1晚）</span>
+                <span className="text-gray-300 text-sm">酒店（1晚）</span>
                 <p className="text-white font-bold text-lg">約 HK$350-700</p>
               </div>
               <div className="bg-zinc-700/50 rounded-lg p-3">
-                <span className="text-zinc-400 text-sm">餐飲（2日）</span>
+                <span className="text-gray-300 text-sm">餐飲（2日）</span>
                 <p className="text-white font-bold text-lg">約 HK$200-300</p>
               </div>
               <div className="bg-zinc-700/50 rounded-lg p-3">
-                <span className="text-zinc-400 text-sm">購物/特產</span>
+                <span className="text-gray-300 text-sm">購物/特產</span>
                 <p className="text-white font-bold text-lg">約 HK$100-200</p>
               </div>
             </div>
