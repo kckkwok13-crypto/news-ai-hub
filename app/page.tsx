@@ -1010,59 +1010,6 @@ export default function NewsPage() {
         </div>
       </Link>
 
-      {/* Hero Banner - NEW */}
-      <div className={`w-full overflow-hidden ${darkMode ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 via-white to-purple-50"}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
-            {/* Left: Text */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-2xl md:text-3xl">🌍</span>
-                <h1 className={`text-2xl md:text-3xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>
-                  NewsFlow
-                </h1>
-                <span className={`text-xs px-2 py-1 rounded-full font-medium ${darkMode ? "bg-blue-600 text-white" : "bg-blue-100 text-blue-700"}`}>
-                  v2.0
-                </span>
-              </div>
-              <p className={`text-base md:text-lg mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                {lang === "en" ? "Real-time translation · AI analysis · Multi-category global news" : "Real-time translation · AI Analysis · 多元分類"}
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <button
-                  onClick={() => { setShowSaved(false); setCategory("finance"); }}
-                  className="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg hover:opacity-90 transition"
-                >
-                  💰 {lang === "en" ? "Browse News" : "開始睇新聞"}
-                </button>
-                <Link
-                  href="/blog"
-                  className="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg hover:opacity-90 transition flex items-center gap-2"
-                >
-                  📖 {lang === "en" ? "Travel Blog" : "旅遊Blog"}
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: Stats */}
-            <div className="flex gap-4 md:gap-6 flex-shrink-0">
-              <div className="text-center">
-                <div className={`text-2xl md:text-3xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>13</div>
-                <div className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{lang === "en" ? "Categories" : "分類"}</div>
-              </div>
-              <div className="text-center">
-                <div className={`text-2xl md:text-3xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>3</div>
-                <div className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{lang === "en" ? "Languages" : "語言"}</div>
-              </div>
-              <div className="text-center">
-                <div className={`text-2xl md:text-3xl font-bold text-teal-400`}>∞</div>
-                <div className={`text-xs ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{lang === "en" ? "Daily Updates" : "每日更新"}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* AI Deep Daily - Page Top Section (replaces modal) */}
       {aiSummary && (
         <div className={`w-full rounded-2xl p-6 mb-6 ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-lg border border-gray-200"}`}>
