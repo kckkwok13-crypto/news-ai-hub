@@ -1383,7 +1383,7 @@ export default function NewsPage() {
             </a>
 
             {/* Grid Layout for Remaining Articles */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
               {gridArticles.map((article) => (
                 <a
                   key={article.id}
@@ -1705,7 +1705,7 @@ export default function NewsPage() {
         )}
 
         {!loading && displayNews.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 px-2 md:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 md:px-0">
             {displayNews.flatMap((item, i) => {
               const isRead = readIds.has(item.title);
               const isSaved = savedIds.has(item.title);
@@ -1716,7 +1716,7 @@ export default function NewsPage() {
               const newsCard = (
                 <div key={`card-${i}`} onClick={() => { toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {isTravelGuide && item.img_url ? (
-                    <div className="relative h-48 md:h-52 overflow-hidden">
+                    <div className="relative aspect-video bg-gray-900 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
                         <span className="text-4xl">{item.city_emoji || '🌏'}</span>
@@ -1734,7 +1734,7 @@ export default function NewsPage() {
                       </div>
                     </div>
                   ) : item.img_url ? (
-                    <div className="relative h-48 md:h-52 overflow-hidden">
+                    <div className="relative aspect-video bg-gray-900 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                       {item.link && (
@@ -1748,7 +1748,7 @@ export default function NewsPage() {
                       )}
                     </div>
                   ) : (
-                    <div className={`h-32 md:h-40 flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
+                    <div className={`aspect-video flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
                       <span className="text-5xl md:text-6xl opacity-30">📰</span>
                     </div>
                   )}
@@ -1767,7 +1767,7 @@ export default function NewsPage() {
                     </button>
                   </div>
 
-                  <div className="p-5 md:p-5">
+                  <div className="p-5 md:p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <span className={`text-sm md:text-sm px-4 py-1.5 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
                       {isSaved && <span className="text-lg">📌</span>}
