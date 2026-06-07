@@ -273,7 +273,7 @@ export const blogPosts: BlogPost[] = [
   },
   // ===== 大灣區退休遊記專欄 =====
   {
-    slug: "gba-shenzhen-2days",
+    slug: "gba-shenzhen",
     title: "🛍️ 深圳2天慢活遊：東門老街懷舊 + 華強北科技尋寶 + 深圳灣日落",
     excerpt: "退休後的深圳輕旅行！從羅湖過關只需30分鐘，帶你走訪東門老街尋找老香港味道、探索華強北黑科技、最後在深圳灣公園欣賞絕美日落。",
     date: "June 2026",
