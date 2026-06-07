@@ -188,7 +188,7 @@ export default function BlogPage() {
               <div className="text-4xl">🌴</div>
               <div>
                 <h2 className="text-white text-2xl font-bold">大灣區退休遊記</h2>
-                <p className="text-amber-200/80 text-sm mt-1">2-4天短途行程 · 交通住宿美食 · 景點夜生活</p>
+                <p className="text-amber-200/80 text-sm mt-1">精選2-3天短途行程 · 銀髮族慢活之旅</p>
               </div>
             </div>
             <span className="bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-medium">
