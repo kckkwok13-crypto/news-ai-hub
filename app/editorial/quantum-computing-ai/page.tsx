@@ -1,6 +1,6 @@
 'use client'
 
-import EditorialArticle from '@/components/EditorialArticle'
+import EditorialArticle from '../../../components/EditorialArticle'
 
 export default function Page() {
   const articleData = {
