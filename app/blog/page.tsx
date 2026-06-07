@@ -248,7 +248,6 @@ export default function BlogPage() {
               data-full-width-responsive="true" />
           </div>
         </div>
-        </div>
 
         {/* Search and Filters */}
         <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 rounded-2xl p-6 mb-6 border border-slate-700">
