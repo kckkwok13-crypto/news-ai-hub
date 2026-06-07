@@ -287,7 +287,7 @@ export const blogPosts: BlogPost[] = [
     title: "🍜 廣州3天慢活遊：北京路尋古 · 上下九淘貨 · 珠江夜遊",
     excerpt: "食在廣州！退休後的慢活之旅——陶陶居飲茶、黃沙海鮮市場、北京路千年古道、上下九步行街掃貨、小蠻腰夜景、珠江夜遊，最全面嘅廣州攻略！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80",
+    image: "/images/guangzhou-hero.jpg",
     icon: "🍜",
     tags: ["大灣區", "廣州", "退休遊", "3天2夜", "美食"],
     accent: "from-amber-500 to-orange-500"
