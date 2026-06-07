@@ -1,7 +1,7 @@
 "use client";
 // NewsFlow Travel Blog - Updated June 2026
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import FavoriteButton from "../components/FavoriteButton";
 import { blogPosts } from "../data/blogData";
 
