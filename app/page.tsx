@@ -90,142 +90,142 @@ const LANG_OPTIONS: { id: Lang; flag: string; label: string }[] = [
 ];
 
 const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string; label_en: string }[] = [
-  { id: "finance", icon: "💰", color: "bg-green-500", label_zh: "投資理財", label_en: "Investment" },
-  { id: "crypto", icon: "🏠", color: "bg-orange-500", label_zh: "樓市地產", label_en: "Property" },
-  { id: "business", icon: "🌍", color: "bg-purple-500", label_zh: "海外移民", label_en: "Immigration" },
-  { id: "technology", icon: "🍷", color: "bg-indigo-500", label_zh: "美酒佳餚", label_en: "Gourmet" },
-  { id: "astronomy", icon: "✈️", color: "bg-violet-500", label_zh: "旅遊探索", label_en: "Travel" },
-  { id: "mystery", icon: "🌅", color: "bg-purple-600", label_zh: "退休生活", label_en: "Retirement" },
-  { id: "health", icon: "🏛️", color: "bg-red-500", label_zh: "收藏品味", label_en: "Collectibles" },
-  { id: "gaming", icon: "🎨", color: "bg-cyan-500", label_zh: "藝術文化", label_en: "Art & Culture" },
-  { id: "food", icon: "💎", color: "bg-yellow-500", label_zh: "奢華生活", label_en: "Luxury" },
-  { id: "travel", icon: "🌴", color: "bg-teal-500", label_zh: "休閒生活", label_en: "Leisure" },
-  { id: "ai_art", icon: "📈", color: "bg-pink-500", label_zh: "經濟趨勢", label_en: "Economy" },
-  { id: "art", icon: "🎭", color: "bg-rose-500", label_zh: "生活風格", label_en: "Lifestyle" },
+  { id: "health", icon: "🏥", color: "bg-green-500", label_zh: "健康養生", label_en: "Health" },
+  { id: "astronomy", icon: "🔭", color: "bg-blue-500", label_zh: "天文探索", label_en: "Astronomy" },
+  { id: "mystery", icon: "🔮", color: "bg-purple-500", label_zh: "神秘世界", label_en: "Mystery" },
+  { id: "gaming", icon: "🎮", color: "bg-cyan-500", label_zh: "電玩遊戲", label_en: "Gaming" },
+  { id: "art", icon: "🎨", color: "bg-pink-500", label_zh: "藝術文化", label_en: "Art" },
+  { id: "finance", icon: "💰", color: "bg-yellow-500", label_zh: "財經投資", label_en: "Finance" },
+  { id: "business", icon: "💼", color: "bg-indigo-500", label_zh: "商業科技", label_en: "Business" },
+  { id: "food", icon: "🍜", color: "bg-orange-500", label_zh: "美食天地", label_en: "Food" },
+  { id: "travel", icon: "✈️", color: "bg-teal-500", label_zh: "旅遊探索", label_en: "Travel" },
+  { id: "ai_art", icon: "🤖", color: "bg-rose-500", label_zh: "AI科技", label_en: "AI Tech" },
+  { id: "crypto", icon: "₿", color: "bg-amber-500", label_zh: "加密貨幣", label_en: "Crypto" },
+  { id: "data_journalism", icon: "📊", color: "bg-violet-500", label_zh: "數據新聞", label_en: "Data" },
 ];
 
 // Category gradient presets for selected state
 const CATEGORY_GRADIENTS: Record<string, string> = {
-  finance: "from-green-500 to-emerald-600",
-  crypto: "from-orange-500 to-amber-600",
-  business: "from-purple-500 to-violet-600",
-  technology: "from-indigo-500 to-blue-600",
-  astronomy: "from-violet-500 to-purple-600",
-  mystery: "from-purple-600 to-pink-600",
-  health: "from-red-500 to-rose-600",
+  health: "from-green-500 to-emerald-600",
+  astronomy: "from-blue-500 to-indigo-600",
+  mystery: "from-purple-500 to-violet-600",
   gaming: "from-cyan-500 to-teal-600",
-  food: "from-yellow-500 to-orange-500",
+  art: "from-pink-500 to-rose-600",
+  finance: "from-yellow-500 to-amber-600",
+  business: "from-indigo-500 to-blue-600",
+  food: "from-orange-500 to-amber-600",
   travel: "from-teal-500 to-cyan-600",
-  ai_art: "from-pink-500 to-rose-600",
-  art: "from-rose-500 to-pink-600",
+  ai_art: "from-rose-500 to-pink-600",
+  crypto: "from-amber-500 to-yellow-600",
+  data_journalism: "from-violet-500 to-purple-600",
 };
 
 const getCategoryGradient = (id: string): string => CATEGORY_GRADIENTS[id] || "from-blue-500 to-purple-500";
 
-// Sample news for demo - Focus on Economics & Leisure
+// Sample news for demo - Focus on Health, Astronomy, Mystery, Gaming, Art
 const SAMPLE_NEWS: NewsItem[] = [
   {
     id: "sample-1",
-    title: "日本東京米芝蓮三星餐廳預約攻略",
-    title_translated: "Guide to Booking Tokyo Michelin 3-Star Restaurants",
-    desc: "東京擁有全球最多的米芝蓮三星餐廳，本文為你詳解如何預約日本頂級餐廳，包括omakase、壽司之神等預約技巧。",
-    desc_translated: "Tokyo has the most Michelin 3-star restaurants globally. This guide explains how to book Japan's top restaurants including omakase and the 'God of Sushi'.",
-    link: "https://example.com/tokyo-michelin",
+    title: "NASA發現新類地行星：或許有生命存在",
+    title_translated: "NASA Discovers New Earth-like Planet: Possible Life",
+    desc: "韋伯太空望遠鏡發現一顆位於宜居帶的岩石行星，大氣層含有水蒸氣及二氧化碳，可能是人類迄今最有希望發現外星生命的目標。",
+    desc_translated: "Webb telescope discovered a rocky planet in the habitable zone with water vapor and CO2 in its atmosphere - the most promising target for finding extraterrestrial life.",
+    link: "https://example.com/exoplanet",
     pubDate: new Date().toISOString(),
-    source: "美食旅遊",
+    source: "天文探索",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=800",
+    img_url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800",
     translated: true,
   },
   {
     id: "sample-2",
-    title: "2026年最受矚目嘅投資主題：東南亞房地產",
-    title_translated: "2026's Hottest Investment: Southeast Asia Property",
-    desc: "隨著東南亞經濟起飛，泰國、越南、馬來西亞房地產成為港人投資新寵。本文分析各國樓市走勢及置業注意事項。",
-    desc_translated: "As Southeast Asian economies boom, property in Thailand, Vietnam, and Malaysia becomes a new favorite for Hong Kong investors. Analysis of market trends and tips.",
-    link: "https://example.com/sea-property",
+    title: "最新研究：呢款超級食物可以延緩衰老",
+    title_translated: "Research: This Superfood Can Slow Down Aging",
+    desc: "哈佛大學研究發現，每日食用特定超級食物可以顯著延長端粒長度，延緩細胞衰老。營養師教你點樣將佢融入日常飲食。",
+    desc_translated: "Harvard research shows daily consumption of this superfood can significantly extend telomere length, slowing cellular aging. Nutritionists show how to incorporate it.",
+    link: "https://example.com/superfood-aging",
     pubDate: new Date(Date.now() - 3600000).toISOString(),
-    source: "投資理財",
+    source: "健康養生",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800",
+    img_url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800",
     translated: true,
   },
   {
     id: "sample-3",
-    title: "葡萄牙里斯本：歐洲性價比最高嘅退休天堂",
-    title_translated: "Lisbon: Europe's Most Affordable Retirement Paradise",
-    desc: "里斯本被選為全球最佳退休城市之一，生活成本比倫敦低40%，醫療質素世界排名前十，英語通行無障礙。",
-    desc_translated: "Lisbon ranked among the world's best retirement cities with 40% lower cost of living than London, world-class healthcare, and English widely spoken.",
-    link: "https://example.com/lisbon-retirement",
+    title: "埃及金字塔神秘通道：考古學家嘅最新發現",
+    title_translated: "Egypt Pyramid Secret Passage: Archaeologists' Latest Discovery",
+    desc: "考古學家喺大金字塔內發現一條從未被人類所知嘅隱藏通道，裡面可能藏有圖坦卡門法老嘅秘密寶藏。",
+    desc_translated: "Archaeologists discovered a hidden passage never known to humans inside the Great Pyramid, possibly containing the secret treasures of Pharaoh Tutankhamun.",
+    link: "https://example.com/pyramid-secret",
     pubDate: new Date(Date.now() - 7200000).toISOString(),
-    source: "海外生活",
+    source: "神秘世界",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800",
+    img_url: "https://images.unsplash.com/photo-1503177119275-0aa255b9d6c9?w=800",
     translated: true,
   },
   {
     id: "sample-4",
-    title: "瑞士日內瓦湖畔別墅：歐洲豪宅投資新熱點",
-    title_translated: "Lakeside Villas in Geneva: Europe's Luxury Property Hotspot",
-    desc: "日內瓦湖畔豪宅成為全球富豪避險首選，湖泊美景、阿爾卑斯山背景，加上瑞士政治穩定，令樓價穩步上升。",
-    desc_translated: "Geneva lakeside mansions become the top choice for global wealth protection, with lake views, Alpine backdrop, and Swiss political stability driving property prices.",
-    link: "https://example.com/geneva-villa",
+    title: "2026年最受期待嘅遊戲大作搶先睇",
+    title_translated: "Most Anticipated Games of 2026 - Preview",
+    desc: "PlayStation、Xbox、PC三大平台即將推出多款備受矚目嘅3A大作，包括神秘海域新作、星空續作，以及一款革命性嘅開放世界RPG。",
+    desc_translated: "PlayStation, Xbox, and PC are launching highly anticipated AAA titles including new Uncharted, Starfield sequel, and a revolutionary open-world RPG.",
+    link: "https://example.com/games-2026",
     pubDate: new Date(Date.now() - 10800000).toISOString(),
-    source: "豪宅投資",
+    source: "電玩遊戲",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
+    img_url: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800",
     translated: true,
   },
   {
     id: "sample-5",
-    title: "意大利托斯卡納酒莊投資：50萬歐元做莊主",
-    title_translated: "Invest in Tuscan Vineyards: Be a Winery Owner for €500K",
-    desc: "托斯卡納葡萄園不僅係品酒天堂，更係穩健投資。50萬歐元可購入小型酒莊，年回報約8-12%，仲包埋釀酒師及管理服務。",
-    desc_translated: "Tuscan vineyards are not just wine paradises but stable investments. €500K can buy a small winery with 8-12% annual returns, including winemaker and management.",
-    link: "https://example.com/tuscany-winery",
+    title: "梵高真跡首次喺亞洲展出：東京限定一個月",
+    title_translated: "Van Gogh Originals Debut in Asia: Tokyo Limited One Month",
+    desc: "東京國立美術館獲得機會展出多幅梵高真跡，包括《星空》同《向日葵》。呢次係香港、新加坡、台北都冇嘅獨家機會。",
+    desc_translated: "Tokyo National Museum secured the opportunity to display multiple Van Gogh originals including 'Starry Night' and 'Sunflowers'. Exclusive to Tokyo for one month.",
+    link: "https://example.com/van-gogh-tokyo",
     pubDate: new Date(Date.now() - 14400000).toISOString(),
-    source: "另類投資",
+    source: "藝術文化",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1506377247377-2a5b3b42bb3f?w=800",
+    img_url: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800",
     translated: true,
   },
   {
     id: "sample-6",
-    title: "台灣宜蘭：港人週末慢活秘境",
-    title_translated: "Yilan, Taiwan: HK's Weekend Relaxation Secret",
-    desc: "宜蘭係台灣本地人嘅後花園，温泉、民宿、田園風光聞名。從香港直飛只需1.5小時，係週末短逃嘅完美選擇。",
-    desc_translated: "Yilan is Taiwan locals' backyard, famous for hot springs, B&Bs, and countryside scenery. Just 1.5 hours from Hong Kong by direct flight, perfect for weekend getaways.",
-    link: "https://example.com/yilan-taiwan",
+    title: "硅谷工程師分享：點樣透過冥想提升專注力",
+    title_translated: "Silicon Valley Engineer: How Meditation Boosted My Focus",
+    desc: "一位前Google工程師放棄百萬年薪，轉而研究冥想與大腦訓練。佢嘅方法已幫助過萬人提升專注力，減少焦慮。",
+    desc_translated: "A former Google engineer gave up a million-dollar salary to study meditation and brain training. His method has helped over 10,000 people improve focus and reduce anxiety.",
+    link: "https://example.com/meditation-engineer",
     pubDate: new Date(Date.now() - 18000000).toISOString(),
-    source: "休閒旅遊",
+    source: "健康養生",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1509909756405-be0199881695?w=800",
+    img_url: "https://images.unsplash.com/photo-1506126613408-eca07ce5f3e3?w=800",
     translated: true,
   },
   {
     id: "sample-7",
-    title: "希臘愛琴海別墅：30萬歐元移民不移居",
-    title_translated: "Greek Aegean Villas: €300K for Golden Visa, Live Anywhere",
-    desc: "希臘黃金簽證最低30萬歐元，可購愛琴海畔別墅，仲可以轉售或出租。歐盟身份、子女教育、物業升值三贏。",
-    desc_translated: "Greece Golden Visa starts at €300K for Aegean seaside villas, resellable or rentable. EU citizenship, children's education, and property appreciation combined.",
-    link: "https://example.com/greece-villa",
+    title: "銀河系中心發現超大黑洞：質量為太陽100萬倍",
+    title_translated: "Milky Way Center Discovery: Supermassive Black Hole Found",
+    desc: "天文學家確認銀河系中心存在一個超大質量黑洞，其引力場影響周圍數百顆恆星嘅運行軌跡。",
+    desc_translated: "Astronomers confirmed a supermassive black hole at the Milky Way's center, its gravitational field affecting the orbits of hundreds of surrounding stars.",
+    link: "https://example.com/black-hole",
     pubDate: new Date(Date.now() - 21600000).toISOString(),
-    source: "移民置業",
+    source: "天文探索",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+    img_url: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800",
     translated: true,
   },
   {
     id: "sample-8",
-    title: "日本京都：賞櫻勝地周邊美食推薦",
-    title_translated: "Kyoto: Best Food Spots Near Cherry Blossom Viewing",
-    desc: "京都賞櫻季節必試美食：抹茶甜點、豆腐料理、鰻魚飯。呢份美食地圖幫你安排最佳賞櫻美食路線。",
-    desc_translated: "Must-try foods during Kyoto cherry blossom season: matcha sweets, tofu dishes, eel rice. This food map helps you plan the best sakura dining route.",
-    link: "https://example.com/kyoto-food",
+    title: "深海探險家發現失落的亞特蘭提斯城？",
+    title_translated: "Deep Sea Explorer Discovers Lost Atlantis?",
+    desc: "一位深海探險家喺大西洋海底發現疑似古代城市遺蹟，結構與柏拉圖描述嘅亞特蘭提斯高度吻合。",
+    desc_translated: "A deep-sea explorer discovered suspected ancient city ruins in the Atlantic Ocean with structures highly matching Plato's description of Atlantis.",
+    link: "https://example.com/atlantis-discovery",
     pubDate: new Date(Date.now() - 25200000).toISOString(),
-    source: "美食情報",
+    source: "神秘世界",
     img: true,
-    img_url: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800",
+    img_url: "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800",
     translated: true,
   },
 ];
@@ -1755,7 +1755,7 @@ export default function NewsPage() {
         )}
 
         {!loading && displayNews.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 px-2 md:px-0">
             {displayNews.flatMap((item, i) => {
               const isRead = readIds.has(item.title);
               const isSaved = savedIds.has(item.title);
@@ -1766,34 +1766,34 @@ export default function NewsPage() {
               const newsCard = (
                 <div key={`card-${i}`} onClick={() => { toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
                   {isTravelGuide && item.img_url ? (
-                    <div className="relative h-40 md:h-48 overflow-hidden">
+                    <div className="relative h-48 md:h-52 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-3">
-                        <span className="text-3xl">{item.city_emoji || '🌏'}</span>
-                        <div className="ml-2">
-                          <span className="text-white font-bold text-sm">{item.city || ''}</span>
-                          <span className="text-gray-300 text-xs block">{item.area || ''}</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
+                        <span className="text-4xl">{item.city_emoji || '🌏'}</span>
+                        <div className="ml-3">
+                          <span className="text-white font-bold text-base">{item.city || ''}</span>
+                          <span className="text-gray-300 text-sm block">{item.area || ''}</span>
                         </div>
                         <button
                           onClick={(e) => { e.stopPropagation(); if(item.link) window.open(item.link, '_blank'); }}
-                          className="absolute top-3 right-3 p-2 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition"
+                          className="absolute top-4 right-4 p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition"
                           title="Open in Google"
                         >
-                          <ExternalLink size={16} className="text-white" />
+                          <ExternalLink size={18} className="text-white" />
                         </button>
                       </div>
                     </div>
                   ) : item.img_url ? (
-                    <div className="relative h-40 md:h-48 overflow-hidden">
+                    <div className="relative h-48 md:h-52 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                       {item.link && (
                         <button
                           onClick={(e) => { e.stopPropagation(); window.open(item.link, '_blank'); }}
-                          className="absolute top-3 right-3 p-2 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition opacity-0 group-hover:opacity-100"
+                          className="absolute top-4 right-4 p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition opacity-0 group-hover:opacity-100"
                           title="Open article"
                         >
-                          <ExternalLink size={16} className="text-white" />
+                          <ExternalLink size={18} className="text-white" />
                         </button>
                       )}
                     </div>
@@ -1803,47 +1803,47 @@ export default function NewsPage() {
                     </div>
                   )}
                   
-                  {/* Top-right action buttons (bookmark, share only) */}
-                  <div className="absolute top-3 right-3 flex gap-2 z-10">
-                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-2.5 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg">
-                      {isSaved ? <BookmarkCheck size={18} className="text-yellow-400" /> : <Bookmark size={18} />}
+                  {/* Top-right action buttons (bookmark, share only) - Improved for mobile */}
+                  <div className="absolute top-4 right-4 flex gap-2 z-10">
+                    <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-3 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg min-w-[48px] min-h-[48px] flex items-center justify-center">
+                      {isSaved ? <BookmarkCheck size={20} className="text-yellow-400" /> : <Bookmark size={20} />}
                     </button>
                     <button
                           onClick={e => { e.stopPropagation(); setAiInlineItem(prev => prev === item.title ? null : item.title); if(aiInlineItem !== item.title) analyzeWithAIHost(item); }}
-                          className={`p-2.5 rounded-xl backdrop-blur-sm shadow-lg ${aiInlineItem === item.title ? "bg-green-500 text-white" : "bg-green-500/80 text-white hover:bg-green-500"}`}
+                          className={`p-3 rounded-xl backdrop-blur-sm shadow-lg min-w-[48px] min-h-[48px] flex items-center justify-center ${aiInlineItem === item.title ? "bg-green-500 text-white" : "bg-green-500/80 text-white hover:bg-green-500"}`}
                           title={t.analysis}
                         >
-                          <span className="text-sm">{aiInlineItem === item.title ? "✕" : "💬"}</span>
+                          <span className="text-lg">{aiInlineItem === item.title ? "✕" : "💬"}</span>
                     </button>
                   </div>
-                  
-                  <div className="p-4 md:p-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className={`text-xs md:text-sm px-3 py-1 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
-                      {isSaved && <span className="text-sm">📌</span>}
+
+                  <div className="p-5 md:p-5">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className={`text-sm md:text-sm px-4 py-1.5 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                      {isSaved && <span className="text-lg">📌</span>}
                     </div>
-                    <h3 className={`text-base md:text-lg font-bold leading-snug mb-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-lg md:text-lg font-bold leading-relaxed mb-4 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
-                    {/* Auto-show summary - no click needed */}
+                    {/* Auto-show summary - no click needed - More visible on mobile */}
                     {(item.desc_translated || item.desc) && (
-                      <p className={`text-sm leading-relaxed mb-4 line-clamp-3 font-medium ${darkMode ? "text-gray-300 bg-gray-700/30 p-2 rounded-lg" : "text-gray-600 bg-gray-100 p-2 rounded-lg"}`}>
+                      <p className={`text-base leading-relaxed mb-4 line-clamp-4 font-medium ${darkMode ? "text-gray-300 bg-gray-700/50 p-3 rounded-xl" : "text-gray-600 bg-gray-100 p-3 rounded-xl"}`}>
                         📋 {item.desc_translated || item.desc}
                       </p>
                     )}
-                    {/* Read More with original link */}
+                    {/* Read More with original link - Improved for mobile */}
                     {item.link ? (
-                      <a 
+                      <a
                         href={item.link}
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        onClick={e => e.stopPropagation()} 
-                        className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-400 hover:bg-gray-600" : "bg-gray-200 text-gray-500 hover:bg-gray-300"}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                        className={`text-sm px-4 py-2.5 rounded-xl mb-3 inline-block font-medium transition ${darkMode ? "bg-blue-600 text-white hover:bg-blue-500" : "bg-blue-500 text-white hover:bg-blue-400"}`}
                       >
-                        {(() => { try { const u = new URL(item.link); return `${u.hostname}${u.pathname.length > 15 ? '...' : ''}` } catch { return t.readMore } })()}
+                        📖 {(() => { try { const u = new URL(item.link); return `${u.hostname}${u.pathname.length > 15 ? '...' : ''}` } catch { return lang === "en" ? "Read More" : "閱讀全文" } })()}
                       </a>
                     ) : (
-                      <span className={`text-xs px-2 py-1 rounded mb-2 inline-block ${darkMode ? "bg-gray-700 text-gray-500" : "bg-gray-200 text-gray-400"}`}>
+                      <span className={`text-sm px-4 py-2.5 rounded-xl mb-3 inline-block ${darkMode ? "bg-gray-700 text-gray-500" : "bg-gray-200 text-gray-400"}`}>
                         {t.readMore}
                       </span>
                     )}
@@ -1972,22 +1972,18 @@ export default function NewsPage() {
                       </div>
                     )}
 
-                    {/* Card content */}
-                    <div className="mt-3 flex items-center gap-2">
-                      {item.source && (
-                        <span className={`text-[10px] md:text-xs px-2 py-0.5 rounded-full font-medium ${darkMode ? "bg-gray-700/60 text-gray-400" : "bg-gray-100 text-gray-500"}`}>
-                          {item.source}
-                        </span>
-                      )}
-                      {item.translated && (
-                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">✓ Translated</span>
-                      )}
-                      {item.translationError && (
-                        <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400">⚠ Translation failed</span>
-                      )}
+                    {/* Card footer - Mobile friendly */}
+                    <div className="mt-4 pt-3 border-t border-gray-700/50 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        {item.translated && (
+                          <span className="text-xs px-3 py-1 rounded-full bg-green-500/20 text-green-400 font-medium">✓ 已翻譯</span>
+                        )}
+                        {item.translationError && (
+                          <span className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400">⚠ 翻譯失敗</span>
+                        )}
+                      </div>
+                      <p className={`text-sm ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                     </div>
-
-                    <p className={`text-xs md:text-sm mt-3 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>{formatDate(item.pubDate)}</p>
                   </div>
                 </div>
               );
