@@ -1716,9 +1716,15 @@ export default function NewsPage() {
                       <span className={`text-xs md:text-sm px-3 py-1 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
                       {isSaved && <span className="text-sm">📌</span>}
                     </div>
-                    <h3 className={`text-base md:text-lg font-bold leading-snug mb-2 line-clamp-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-base md:text-lg font-bold leading-snug mb-3 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
+                    {/* Auto-show summary - no click needed */}
+                    {(item.desc_translated || item.desc) && (
+                      <p className={`text-sm leading-relaxed mb-4 line-clamp-3 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+                        {item.desc_translated || item.desc}
+                      </p>
+                    )}
                     {/* Read More with original link */}
                     {item.link ? (
                       <a 
