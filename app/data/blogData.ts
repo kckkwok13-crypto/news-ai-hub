@@ -297,7 +297,7 @@ export const blogPosts: BlogPost[] = [
     title: "🎰 澳門2天奢華遊：五星酒店試住 + 葡撻尋味 + 氹仔舊城區漫步",
     excerpt: "過大海享受葡韻風情！免費發財巴來回、免費酒店飲品、葡撻與豬扒包的完美搭配，以及氹仔舊城區的彩色葡萄牙建築打卡攻略。",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1541599468348-e96984315921?w=1200&q=80",
+    image: "/images/macau-skyline-twilight.jpg",
     icon: "🎰",
     tags: ["大灣區", "澳門", "退休遊", "2天1夜"],
     accent: "from-purple-500 to-indigo-500"

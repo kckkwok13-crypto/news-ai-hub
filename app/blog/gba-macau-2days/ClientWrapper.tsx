@@ -86,7 +86,7 @@ export default function MacauPage() {
 
         {/* Hero Image */}
         <img
-          src="/images/macau-tower-night.jpg"
+          src="/images/macau-skyline-twilight.jpg"
           alt="澳門夜景"
           className="w-full rounded-2xl mb-6 shadow-2xl shadow-blue-500/20"
         />
