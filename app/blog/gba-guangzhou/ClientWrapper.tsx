@@ -87,12 +87,9 @@ export default function GuangzhouPage() {
 
         {/* Hero Image */}
         <img
-          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80"
+          src="/images/guangzhou-hero.jpg"
           alt="廣州天際線"
           className="w-full rounded-2xl mb-6 shadow-2xl shadow-emerald-500/20"
-          onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&q=80";
-          }}
         />
         <p className="text-center text-stone-500 text-sm mb-10">
           珠江兩岸的璀璨夜色，小蠻腰與對岸的摩天大樓群相映成趣
@@ -126,7 +123,7 @@ export default function GuangzhouPage() {
 
           <div className="my-10">
             <img
-              src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&q=80"
+              src="/images/guangzhou-photo1.jpg"
               alt="白天鵝賓館園林景致"
               className="w-full rounded-2xl"
             />
@@ -167,7 +164,7 @@ export default function GuangzhouPage() {
 
           <div className="my-10">
             <img
-              src="https://images.unsplash.com/photo-1590735213920-9f4c5e16f1f5?w=1200&q=80"
+              src="/images/guangzhou-photo2.jpg"
               alt="陳家祠木雕"
               className="w-full rounded-2xl"
             />
@@ -214,7 +211,7 @@ export default function GuangzhouPage() {
 
           <div className="my-10">
             <img
-              src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1200&q=80"
+              src="/images/guangzhou-photo3.jpg"
               alt="嶺南水鄉"
               className="w-full rounded-2xl"
             />
