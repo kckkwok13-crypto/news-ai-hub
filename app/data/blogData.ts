@@ -323,16 +323,6 @@ export const blogPosts: BlogPost[] = [
     accent: "from-blue-500 to-cyan-500"
   },
   {
-    slug: "gba-zhuhai-4days",
-    title: "🏖️ 珠海長隆4天深度遊：海洋王國 + 橫琴蚝情 + 海泉灣溫泉",
-    excerpt: "珠海慢活4天行程推薦！長隆海洋王國的隱藏玩法、橫琴生蠔海鮮大餐、以及私密海泉灣溫泉渡假攻略，適合帶老人家一齊出發。",
-    date: "June 2026",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
-    icon: "🏖️",
-    tags: ["大灣區", "珠海", "退休遊", "4天3夜", "海邊"],
-    accent: "from-cyan-500 to-blue-500"
-  },
-  {
     slug: "gba-hongkong-3days",
     title: "🏔️ 香港後花園3天遊：西貢地質公園 + 南丫島海鮮 + 赤柱殖民地風情",
     excerpt: "香港都有世外桃源！西貢地質公園探索六角形岩柱、南丫島品嚐原生態海鮮、赤柱感受殖民地風情。最適合退休人士的香港深度遊。",

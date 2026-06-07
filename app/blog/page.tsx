@@ -233,31 +233,6 @@ export default function BlogPage() {
             ))}
           </div>
 
-          {/* Quick Info Cards */}
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
-              <div className="text-2xl mb-2">🚄</div>
-              <div className="text-amber-300 text-xs font-medium">交通</div>
-              <div className="text-slate-300 text-sm">高鐵直達 · 30分鐘穿梭</div>
-            </div>
-            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
-              <div className="text-2xl mb-2">🏨</div>
-              <div className="text-amber-300 text-xs font-medium">住宿</div>
-              <div className="text-slate-300 text-sm">五星酒店 · 實惠選擇</div>
-            </div>
-            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
-              <div className="text-2xl mb-2">🍜</div>
-              <div className="text-amber-300 text-xs font-medium">美食</div>
-              <div className="text-slate-300 text-sm">地道風味 · 必試推介</div>
-            </div>
-            <div className="bg-slate-800/50 rounded-xl p-4 text-center border border-slate-700">
-              <div className="text-2xl mb-2">🌃</div>
-              <div className="text-amber-300 text-xs font-medium">夜生活</div>
-              <div className="text-slate-300 text-sm">夜景打卡 · 酒吧夜市</div>
-            </div>
-          </div>
-        </div>
-
         {/* Ad Banner - In Feed Ad */}
         <div className="my-6 bg-slate-800/50 rounded-xl p-4 border border-slate-700">
           <div className="flex justify-center">
