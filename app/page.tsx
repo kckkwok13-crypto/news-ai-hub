@@ -105,6 +105,25 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
   { id: "data_journalism", icon: "📊", color: "bg-cyan-600", label_zh: "數據新聞 24h熱門", label_en: "Data 24h Trending" },
 ];
 
+// Category gradient presets for selected state
+const CATEGORY_GRADIENTS: Record<string, string> = {
+  finance: "from-green-500 to-emerald-600",
+  crypto: "from-orange-500 to-amber-600",
+  business: "from-purple-500 to-violet-600",
+  technology: "from-indigo-500 to-blue-600",
+  astronomy: "from-violet-500 to-purple-600",
+  mystery: "from-purple-600 to-pink-600",
+  health: "from-red-500 to-rose-600",
+  gaming: "from-cyan-500 to-teal-600",
+  food: "from-yellow-500 to-orange-500",
+  travel: "from-teal-500 to-cyan-600",
+  ai_art: "from-pink-500 to-rose-600",
+  art: "from-rose-500 to-pink-600",
+  data_journalism: "from-cyan-600 to-blue-600",
+};
+
+const getCategoryGradient = (id: string): string => CATEGORY_GRADIENTS[id] || "from-blue-500 to-purple-500";
+
 const EDITOR_PICKS = {
   "zh-TW": {
     "sectionTitle": "📝 Editor's Pick",
@@ -411,12 +430,16 @@ export default function NewsPage() {
   const [isDataJournalism, setIsDataJournalism] = useState(false);
 
   // AdSense state
-  const adsenseClient = typeof window !== 'undefined' 
+  const adsenseClient = typeof window !== 'undefined'
     ? (window as any).__ADSENSE_CLIENT__ || process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-4745583996243741"
     : "ca-pub-4745583996243741";
   const adSlotLeaderboard = process.env.NEXT_PUBLIC_AD_SLOT_LEADERBOARD || "YOUR_LEADERBOARD_AD_SLOT_ID";
   const adSlotInArticle = process.env.NEXT_PUBLIC_AD_SLOT_IN_ARTICLE || "YOUR_INARTICLE_AD_SLOT_ID";
   const adSlotRectangle = process.env.NEXT_PUBLIC_AD_SLOT_RECTANGLE || "YOUR_RECTANGLE_AD_SLOT_ID";
+
+  // Hot News Carousel state
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [carouselPaused, setCarouselPaused] = useState(false);
 
   // Push ad slots after mount
   useEffect(() => {
@@ -637,6 +660,23 @@ export default function NewsPage() {
 
   const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : filteredNews;
 
+  // Get hot news (top 5 news with images) - must be after displayNews
+  const hotNews = displayNews.filter(n => n.img_url).slice(0, 5);
+
+  // Hot News Carousel auto-rotation - must be after hotNews declaration
+  useEffect(() => {
+    if (carouselPaused || hotNews.length <= 1) return;
+    const timer = setInterval(() => {
+      setCarouselIndex(prev => (prev + 1) % hotNews.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [carouselPaused, hotNews.length]);
+
+  // Reset carousel when news changes
+  useEffect(() => {
+    setCarouselIndex(0);
+  }, [category]);
+
   // Derive available cities and areas from the news data based on selected country
   const derivedAvailableCities = travelCountryFilter !== 'all'
     ? (citySummaries || []).filter((c: any) => c.country_id === travelCountryFilter)
@@ -738,6 +778,32 @@ export default function NewsPage() {
           </div>
         </div>
       )}
+
+      {/* Live Stats Bar */}
+      <div className={`py-2 px-4 ${darkMode ? "bg-gradient-to-r from-blue-900/50 via-purple-900/50 to-pink-900/50" : "bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50"} border-b ${darkMode ? "border-gray-800" : "border-gray-200"}`}>
+        <div className="max-w-6xl mx-auto flex items-center justify-between text-xs">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className={darkMode ? "text-gray-300" : "text-gray-600"}>🟢 Live Updates</span>
+            </div>
+            <div className={`hidden md:flex items-center gap-3 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+              <span>📰 <strong className={darkMode ? "text-gray-200" : "text-gray-700"}>{displayNews.length}</strong> 新聞</span>
+              <span>🌍 <strong className={darkMode ? "text-gray-200" : "text-gray-700"}>13</strong> 分類</span>
+              <span>🗣️ <strong className={darkMode ? "text-gray-200" : "text-gray-700"}>3</strong> 語言</span>
+              <span>📊 <strong className={darkMode ? "text-gray-200" : "text-gray-700"}>∞</strong> 每日更新</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className={darkMode ? "text-gray-400" : "text-gray-500"}>
+              {new Date().toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit' })} 更新
+            </span>
+          </div>
+        </div>
+      </div>
 
       <header className={`sticky top-0 z-40 backdrop-blur-xl ${darkMode ? "bg-gray-900/90 border-gray-800" : "bg-white/90 border-gray-200"} border-b`}>
         <div className="max-w-6xl mx-auto px-4 py-3">
@@ -1122,6 +1188,104 @@ export default function NewsPage() {
         </div>
       )}
 
+      {/* Hot News Carousel - Only show when we have news with images */}
+      {hotNews.length > 0 && (
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xl">🔥</span>
+            <h2 className={`text-lg font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>
+              {lang === "en" ? "Hot News" : "熱門新聞"}
+            </h2>
+            <span className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-red-500/20 text-red-400" : "bg-red-50 text-red-600"}`}>
+              {lang === "en" ? "LIVE" : "直播"}
+            </span>
+          </div>
+
+          <div
+            className="relative rounded-2xl overflow-hidden group"
+            onMouseEnter={() => setCarouselPaused(true)}
+            onMouseLeave={() => setCarouselPaused(false)}
+          >
+            {/* Main Carousel */}
+            <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl">
+              {hotNews.map((item, idx) => (
+                <div
+                  key={item.id || idx}
+                  className={`absolute inset-0 transition-opacity duration-500 ${idx === carouselIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+                >
+                  <img
+                    src={item.img_url}
+                    alt={item.title_translated || item.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${darkMode ? "bg-white/20 text-white" : "bg-white/90 text-gray-900"}`}>
+                        {item.source}
+                      </span>
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${darkMode ? "bg-red-500 text-white" : "bg-red-500 text-white"}`}>
+                        🔥 {lang === "en" ? "Hot" : "熱門"}
+                      </span>
+                    </div>
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 line-clamp-2 group-hover:text-red-300 transition-colors">
+                      {item.title_translated || item.title}
+                    </h3>
+                    <div className="flex items-center justify-between">
+                      <p className="text-white/80 text-sm line-clamp-1 max-w-[70%]">
+                        {item.desc_translated || item.desc}
+                      </p>
+                      {item.link && (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          className={`px-4 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-white/20 hover:bg-white/30 text-white" : "bg-white/90 hover:bg-white text-gray-900"}`}
+                        >
+                          {lang === "en" ? "Read More →" : "閱讀全文 →"}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Navigation Arrows */}
+              {hotNews.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setCarouselIndex(prev => (prev - 1 + hotNews.length) % hotNews.length)}
+                    className={`absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full shadow-lg transition-all z-20 ${darkMode ? "bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm" : "bg-white/80 hover:bg-white text-gray-900"} opacity-0 group-hover:opacity-100`}
+                  >
+                    <ChevronDown className="rotate-90" size={24} />
+                  </button>
+                  <button
+                    onClick={() => setCarouselIndex(prev => (prev + 1) % hotNews.length)}
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full shadow-lg transition-all z-20 ${darkMode ? "bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm" : "bg-white/80 hover:bg-white text-gray-900"} opacity-0 group-hover:opacity-100`}
+                  >
+                    <ChevronDown className="-rotate-90" size={24} />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Dot Indicators */}
+            {hotNews.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {hotNews.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCarouselIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-all ${idx === carouselIndex ? "w-6 bg-white" : "bg-white/50 hover:bg-white/80"}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Editor's Picks - Hero Card Layout */}
       {(() => {
         const ep = EDITOR_PICKS[lang];
@@ -1210,7 +1374,7 @@ export default function NewsPage() {
               {showSaved && savedIds.size > 0 && <span className="ml-1 px-1.5 py-0.5 rounded-full bg-white/20 text-[10px]">{savedIds.size}</span>}
             </button>
             {CATEGORIES.map(c => (
-              <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap snap-start transition-all flex-shrink-0 ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
+              <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap snap-start transition-all flex-shrink-0 ${showSaved ? "" : category === c.id ? `bg-gradient-to-r ${getCategoryGradient(c.id)} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
                 <span className="text-base">{c.icon}</span> <span>{c.label_zh}</span>
               </button>
             ))}
@@ -1387,17 +1551,17 @@ export default function NewsPage() {
 
         {/* Desktop Categories */}
         <div className="hidden md:flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
-          <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg" : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
+          <button onClick={() => { setShowSaved(v => !v); setCategory('finance'); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25" : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:scale-105" : "bg-white text-gray-600 hover:bg-gray-50 hover:scale-105"}`}>
             <Star size={18} /> {showSaved ? t.allNews : t.savedNews}
             {showSaved && savedIds.size > 0 && <span className="ml-1 px-2 py-0.5 rounded-full bg-white/20 text-xs">{savedIds.size}</span>}
           </button>
           {CATEGORIES.map(c => (
-            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all ${showSaved ? "" : category === c.id ? `${c.color} text-white shadow-lg` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
+            <button key={c.id} onClick={() => { setCategory(c.id); setShowSaved(false); }} className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all hover:scale-105 ${showSaved ? "" : category === c.id ? `bg-gradient-to-r ${getCategoryGradient(c.id)} text-white shadow-lg shadow-${c.id}/25` : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"}`}>
               <span className="text-lg">{c.icon}</span> <span className="hidden md:inline">{lang === "en" ? c.label_en : c.label_zh}</span>
             </button>
           ))}
           {/* Blog link in category bar */}
-          <Link href="/blog" className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg hover:opacity-90`}>
+          <Link href="/blog" className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-base font-semibold whitespace-nowrap transition-all bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-lg hover:opacity-90 hover:scale-105`}>
             <BookOpen size={18} /> <span className="hidden md:inline">{lang === "en" ? "Blog" : "旅遊Blog"}</span>
             <span className="md:hidden"><BookOpen size={18} /></span>
           </Link>
@@ -1476,9 +1640,11 @@ export default function NewsPage() {
 
         {!loading && displayNews.length === 0 && (
           <div className="text-center py-20">
-            <div className="text-6xl mb-4">🔍</div>
+            <div className="text-6xl mb-4">{showSaved ? '📌' : '🔍'}</div>
             <p className={`text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{showSaved ? t.noSaved : t.noResults}</p>
-            <p className={`text-sm mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>debug: news={news.length}, displayNews={displayNews.length}, showSaved={showSaved.toString()}, error={error}</p>
+            {!showSaved && error && (
+              <p className={`text-sm mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>請稍後再試或嘗試切換其他分類</p>
+            )}
           </div>
         )}
 
