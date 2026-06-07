@@ -313,6 +313,16 @@ export const blogPosts: BlogPost[] = [
     accent: "from-teal-500 to-cyan-500"
   },
   {
+    slug: "gba-chimelong-3days",
+    title: "🐳 橫琴長隆3天2夜銀髮浪漫遊：鯨鯊館 + 企鵝共餐 + 海洋煙花",
+    excerpt: "老夫老妻的奇幻海洋之旅！長隆橫琴灣酒店運河遊艇、鯨鯊館深海靜謐、企鵝酒店共餐、震撼煙花匯演，三日兩夜浪漫攻略。",
+    date: "June 2026",
+    image: "/images/chimelong-hotel.jpg",
+    icon: "🐳",
+    tags: ["大灣區", "珠海", "長隆", "退休遊", "3天2夜", "海洋"],
+    accent: "from-blue-500 to-cyan-500"
+  },
+  {
     slug: "gba-zhuhai-4days",
     title: "🏖️ 珠海長隆4天深度遊：海洋王國 + 橫琴蚝情 + 海泉灣溫泉",
     excerpt: "珠海慢活4天行程推薦！長隆海洋王國的隱藏玩法、橫琴生蠔海鮮大餐、以及私密海泉灣溫泉渡假攻略，適合帶老人家一齊出發。",
