@@ -5,6 +5,7 @@ export function generateStaticParams() {
     { slug: 'shibuya-crossing' },
     { slug: 'meiji-shrine' },
     { slug: 'sensoji' },
+    { slug: 'gba-macau-2days' },
   ];
 }
 
