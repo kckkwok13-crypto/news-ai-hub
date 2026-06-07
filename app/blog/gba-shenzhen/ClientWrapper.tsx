@@ -149,12 +149,12 @@ export default function ShenzhenPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-              alt="深圳地鐵站"
+              src="https://images.unsplash.com/photo-1596958183872-8e63e73b7e7e?w=1200&q=80"
+              alt="高鐵列車"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-zinc-500 text-sm mt-4 mb-8">
-              ▲ 深圳地鐵網絡完善，一卡在手就可以走遍全城
+              ▲ 高鐵直達，14分鐘穿梭深港兩地
             </p>
           </div>
 
