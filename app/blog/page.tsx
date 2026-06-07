@@ -209,6 +209,10 @@ export default function BlogPage() {
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement!.style.background = 'linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%)';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute inset-0 p-4 flex flex-col justify-end">
