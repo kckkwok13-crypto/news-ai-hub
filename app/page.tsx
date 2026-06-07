@@ -1803,8 +1803,8 @@ export default function NewsPage() {
                     </h3>
                     {/* Auto-show summary - no click needed */}
                     {(item.desc_translated || item.desc) && (
-                      <p className={`text-sm leading-relaxed mb-4 line-clamp-3 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-                        {item.desc_translated || item.desc}
+                      <p className={`text-sm leading-relaxed mb-4 line-clamp-3 font-medium ${darkMode ? "text-gray-300 bg-gray-700/30 p-2 rounded-lg" : "text-gray-600 bg-gray-100 p-2 rounded-lg"}`}>
+                        📋 {item.desc_translated || item.desc}
                       </p>
                     )}
                     {/* Read More with original link */}
