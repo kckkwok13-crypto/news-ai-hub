@@ -124,6 +124,88 @@ const CATEGORY_GRADIENTS: Record<string, string> = {
 
 const getCategoryGradient = (id: string): string => CATEGORY_GRADIENTS[id] || "from-blue-500 to-purple-500";
 
+// Sample news for demo when RSS sources are unavailable
+const SAMPLE_NEWS: NewsItem[] = [
+  {
+    id: "sample-1",
+    title: "比特幣突破10萬美元創歷史新高",
+    title_translated: "Bitcoin Breaks $100,000 Record High",
+    desc: "比特幣價格今日首次突破10萬美元大關，創下歷史新高。分析師認為機構投資者的持續買入是主要推動因素。",
+    desc_translated: "Bitcoin surges past $100,000 for the first time, setting a new all-time high. Analysts cite institutional buying as the main driver.",
+    link: "https://example.com/bitcoin-100k",
+    pubDate: new Date().toISOString(),
+    source: "CryptoNews",
+    img: true,
+    img_url: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800",
+    translated: true,
+  },
+  {
+    id: "sample-2",
+    title: "OpenAI發布新一代AI模型GPT-5",
+    title_translated: "OpenAI Unveils Next-Gen GPT-5 Model",
+    desc: "OpenAI在今日的開發者大會上正式發布了GPT-5模型，聲稱其在各項測試中達到人類專家水平，標誌著通用人工智能的重大突破。",
+    desc_translated: "OpenAI officially launched GPT-5 at today's developer conference, claiming human-expert performance across benchmarks.",
+    link: "https://example.com/gpt5-launch",
+    pubDate: new Date(Date.now() - 3600000).toISOString(),
+    source: "TechCrunch",
+    img: true,
+    img_url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    translated: true,
+  },
+  {
+    id: "sample-3",
+    title: "日本東京獲選2034年世界博覽會主辦城市",
+    title_translated: "Tokyo Selected to Host 2034 World Expo",
+    desc: "國際展覽局宣布日本東京為2034年世界博覽會主辦城市的主辦城市。這將是東京時隔70年再次舉辦世博會。",
+    desc_translated: "The Bureau of International Expositions announces Tokyo as the host city for the 2034 World Expo, marking 70 years since its last expo.",
+    link: "https://example.com/tokyo-expo-2034",
+    pubDate: new Date(Date.now() - 7200000).toISOString(),
+    source: "Japan Today",
+    img: true,
+    img_url: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800",
+    translated: true,
+  },
+  {
+    id: "sample-4",
+    title: "全球央行宣佈聯手干預外匯市場",
+    title_translated: "Central Banks Announce Coordinated FX Intervention",
+    desc: "美聯儲、歐洲央行和日本央行聯合宣佈將協調干預外匯市場，以穩定劇烈波動的匯率。專家警告此舉可能引發貿易緊張局勢。",
+    desc_translated: "The Fed, ECB, and BOJ announce coordinated currency intervention to stabilize volatile exchange rates. Experts warn of potential trade tensions.",
+    link: "https://example.com/central-bank-intervention",
+    pubDate: new Date(Date.now() - 10800000).toISOString(),
+    source: "Reuters",
+    img: true,
+    img_url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800",
+    translated: true,
+  },
+  {
+    id: "sample-5",
+    title: "香港國際機場蝉聯全球最繁忙國際航運樞紐",
+    title_translated: "HKIA Named World's Busiest International Airport Again",
+    desc: "國際航空運輸協會最新報告顯示，香港國際機場連續第三年成為全球最繁忙的國際航運樞紐，客運量達到7200萬人次。",
+    desc_translated: "IATA report shows Hong Kong International Airport ranks as the world's busiest international aviation hub for the third consecutive year.",
+    link: "https://example.com/hkia-busiest",
+    pubDate: new Date(Date.now() - 14400000).toISOString(),
+    source: "HKET",
+    img: true,
+    img_url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800",
+    translated: true,
+  },
+  {
+    id: "sample-6",
+    title: "蘋果發佈Vision Pro 2混合實境頭戴裝置",
+    title_translated: "Apple Unveils Vision Pro 2 Mixed Reality Headset",
+    desc: "蘋果公司今日發佈了備受期待的Vision Pro 2混合實境頭戴裝置，配備更輕薄設計和更強大的M4晶片，售價由$2,999起。",
+    desc_translated: "Apple today unveiled the anticipated Vision Pro 2 mixed reality headset with lighter design and M4 chip, starting at $2,999.",
+    link: "https://example.com/vision-pro-2",
+    pubDate: new Date(Date.now() - 18000000).toISOString(),
+    source: "Apple Insider",
+    img: true,
+    img_url: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800",
+    translated: true,
+  },
+];
+
 const EDITOR_PICKS = {
   "zh-TW": {
     "sectionTitle": "📝 Editor's Pick",
@@ -658,7 +740,7 @@ export default function NewsPage() {
            (n.desc_translated || n.desc).toLowerCase().includes(q);
   });
 
-  const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : filteredNews;
+  const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : (filteredNews.length > 0 ? filteredNews : SAMPLE_NEWS);
 
   // Get hot news (top 5 news with images) - must be after displayNews
   const hotNews = displayNews.filter(n => n.img_url).slice(0, 5);
