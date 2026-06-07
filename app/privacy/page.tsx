@@ -17,8 +17,8 @@ export default function PrivacyPolicyPage() {
             <Shield className="w-10 h-10 text-blue-400" />
             隱私政策
           </h1>
-          <p className="text-gray-400">NewsFlow 隱私保護說明</p>
-          <p className="text-sm text-gray-500 mt-2">最後更新日期：2025年1月</p>
+          <p className="text-gray-400">NewsFlow Travel Blog · 純粹旅人隱私保護說明</p>
+          <p className="text-sm text-gray-500 mt-2">最後更新日期：2026年6月</p>
         </header>
 
         <section className="mb-12">
@@ -28,8 +28,8 @@ export default function PrivacyPolicyPage() {
               <div>
                 <h3 className="text-lg font-bold text-yellow-400 mb-2">重要提示</h3>
                 <p className="text-gray-300">
-                  NewsFlow 是一個 AI 驅動的新聞資訊彙總平台。我們不複製或儲存新聞文章的完整內容，
-                  所有新聞版權歸原創媒體所有。我們主要收集的是您使用本網站時自動生成的技術數據。
+                  NewsFlow Travel Blog（純粹旅人）是一個旅遊遊記分享平台。我們的原創遊記內容受版權保護，
+                  所有旅遊資訊僅供參考。我們使用 Google AdSense 展示廣告，並主要收集您使用本網站時自動生成的技術數據以優化服務體驗。
                 </p>
               </div>
             </div>

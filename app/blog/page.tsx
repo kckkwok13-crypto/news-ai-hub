@@ -258,6 +258,18 @@ export default function BlogPage() {
           </div>
         </div>
 
+        {/* Ad Banner - In Feed Ad */}
+        <div className="my-6 bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+          <div className="flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
+        </div>
+
         {/* Search and Filters */}
         <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 rounded-2xl p-6 mb-6 border border-slate-700">
           <div className="flex flex-col md:flex-row gap-4 mb-4">

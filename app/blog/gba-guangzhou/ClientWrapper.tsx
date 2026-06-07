@@ -95,6 +95,16 @@ export default function GuangzhouPage() {
           珠江兩岸的璀璨夜色，小蠻腰與對岸的摩天大樓群相映成趣
         </p>
 
+        {/* Ad Banner - After Hero */}
+        <div className="my-8 flex justify-center">
+          <ins className="adsbygoogle"
+            style={{ display: 'block', width: '728px', height: '90px' }}
+            data-ad-client="ca-pub-4745583996243741"
+            data-ad-slot="7843298765"
+            data-ad-format="auto"
+            data-full-width-responsive="true" />
+        </div>
+
         {/* Intro Quote */}
         <div className="bg-gradient-to-r from-amber-900/30 to-amber-800/20 border-l-4 border-emerald-600 pl-6 pr-4 py-4 rounded-r-xl mb-10 italic">
           <p className="text-stone-300 text-lg leading-relaxed">
@@ -152,6 +162,16 @@ export default function GuangzhouPage() {
           <p className="text-stone-300 leading-loose mb-8 text-justify">
             入夜後，廣州嘅「夜生活」對我們而言，不是酒吧迪波，而是迷人嘅珠江微風。我選擇了<strong className="text-emerald-400">珠江夜遊</strong>，在天字碼頭登上古色古香嘅遊船。船緩緩駛向海心沙，兩岸嘅摩天大樓與流光溢彩嘅<strong className="text-emerald-400">廣州塔（小蠻腰）</strong>在夜空中交相輝映。坐在甲板上，吹著溫涼嘅江風，看著這座古老商埠現代奢華嘅一面，不可謂不震撼。
           </p>
+
+          {/* Ad Banner - Between Day 1 and Day 2 */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
 
           {/* ===== 第二天 ===== */}
           <h2 id="day2" className="text-2xl font-bold text-emerald-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
@@ -224,6 +244,16 @@ export default function GuangzhouPage() {
             臨行前，在古鎮嘅老店裡吃了一碗現點現沖嘅<strong className="text-emerald-400">沙灣薑撞奶</strong>。看著店家熟練地將滾燙嘅鮮牛初乳從高處沖入盛有老薑汁嘅瓷碗中，靜置三分鐘，神奇地凝結成如豆腐花般細嫩嘅甜品。勺子放上去不沉，入口甜中帶辣，溫熱嘅薑汁順著食道流落胃部，一時間旅途嘅疲勞盡消，為這三天的羊城慢活之旅，畫上了一個圓滿、溫暖嘅句號。
           </p>
 
+          {/* Ad Banner - Before Tips */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+          </div>
+
           {/* ===== 實用Tips ===== */}
           <h2 id="tips" className="text-2xl font-bold text-emerald-400 mt-12 mb-6 flex items-center gap-3 border-b border-amber-500/50 pb-3">
             💡 銀髮族 ‧ 廣州慢活自由行手札
@@ -251,6 +281,16 @@ export default function GuangzhouPage() {
             <p className="text-stone-300 text-lg leading-relaxed text-center italic">
               ─ 歲月留痕，慢活方知時光美。願每位退下火線嘅老朋友，都能在旅途中找到自己嘅節奏。 ─
             </p>
+          </div>
+
+          {/* Ad Banner - Before Comments */}
+          <div className="my-8 flex justify-center">
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '728px', height: '90px' }}
+              data-ad-client="ca-pub-4745583996243741"
+              data-ad-slot="7843298765"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
           </div>
 
           {/* 留言區 */}

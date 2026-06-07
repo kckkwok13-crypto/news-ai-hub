@@ -17,8 +17,8 @@ export default function TermsPage() {
             <Scale className="w-10 h-10 text-purple-400" />
             服務條款
           </h1>
-          <p className="text-gray-400">NewsFlow 使用條款與條件</p>
-          <p className="text-sm text-gray-500 mt-2">最後更新日期：2025年1月</p>
+          <p className="text-gray-400">NewsFlow Travel Blog · 純粹旅人使用條款</p>
+          <p className="text-sm text-gray-500 mt-2">最後更新日期：2026年6月</p>
         </header>
 
         {/* Important Notice */}
@@ -60,17 +60,17 @@ export default function TermsPage() {
 
           <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700">
             <p className="text-gray-300 mb-4">
-              <strong className="text-white">NewsFlow 是什麼？</strong>
+              <strong className="text-white">NewsFlow Travel Blog（純粹旅人）是什麼？</strong>
             </p>
             <p className="text-gray-300 mb-4">
-              NewsFlow 是一個 AI 驅動的智能新聞資訊彙總平台。我們的服務包括：
+              純粹旅人是一個專業的旅遊遊記分享平台。我們的服務包括：
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
-              <li><strong>AI 新聞摘要：</strong>使用 AI 技術自動分析和總結新聞要點</li>
-              <li><strong>多語言翻譯：</strong>支援繁體中文、簡體中文和英文即時翻譯</li>
-              <li><strong>數據新聞：</strong>追蹤和可視化經濟、數據等資訊</li>
-              <li><strong>旅遊指南：</strong>提供熱門旅遊城市的詳細指南</li>
-              <li><strong>新聞分類：</strong>涵蓋科技、財經、遊戲、美食、旅遊等多個領域</li>
+              <li><strong>旅遊遊記：</strong>分享大灣區及海外旅遊的詳細遊記與攻略</li>
+              <li><strong>景點介紹：</strong>涵蓋歐洲、日本、韓國、東南亞等熱門旅遊目的地</li>
+              <li><strong>實用資訊：</strong>交通、住宿、美食、夜生活等全方位旅遊建議</li>
+              <li><strong>銀髮遊攻略：</strong>專為退休人士設計的慢活旅遊行程</li>
+              <li><strong>廣告服務：</strong>通過 Google AdSense 展示相關廣告支持網站運營</li>
             </ul>
           </div>
         </section>
@@ -169,11 +169,38 @@ export default function TermsPage() {
           </div>
         </section>
 
-        {/* Section 7: Disclaimer */}
+        {/* Section 7: Advertising */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-<AlertTriangle className="w-6 h-6 text-yellow-400" />
-            七、免責聲明
+            <FileText className="w-6 h-6 text-green-400" />
+            七、廣告與贊助內容
+          </h2>
+
+          <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700">
+            <p className="text-gray-300 mb-4">
+              <strong className="text-white">Google AdSense 廣告說明</strong>
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
+              <li>本網站使用 Google AdSense 展示第三方廣告</li>
+              <li>Google 可能使用 Cookie 根據您之前的訪問記錄展示相關廣告</li>
+              <li>Google AdSense 可能收集用戶信息以提供個性化廣告</li>
+              <li>廣告內容由第三方廣告商提供，純粹旅人不對廣告內容負責</li>
+              <li>我們致力於展示適當且相關的廣告內容</li>
+              <li>您可以通過 Google 廣告設置管理廣告偏好</li>
+            </ul>
+            <p className="text-gray-400 mt-4 text-sm">
+              <a href="https://www.google.com/about/company/user-choice-policy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                了解更多關於 Google 廣告設置
+              </a>
+            </p>
+          </div>
+        </section>
+
+        {/* Section 8: Disclaimer */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <AlertTriangle className="w-6 h-6 text-yellow-400" />
+            八、免責聲明
           </h2>
 
           <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700">
@@ -191,7 +218,7 @@ export default function TermsPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
             <Scale className="w-6 h-6 text-red-400" />
-            八、責任限制
+            九、責任限制
           </h2>
 
           <div className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700">

@@ -176,68 +176,43 @@ function SimpleDonutChart({ data }: { data: { name: string; value: number; color
 }
 
 export default function AnalyticsPage() {
-  const [weeklyData, setWeeklyData] = useState<{ label: string; count: number; analyzed: number }[]>([])
-  const [categoryData, setCategoryData] = useState<{ name: string; value: number; color: string }[]>([])
-  const [stats, setStats] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+  // Static data from image - June 2026
+  const weeklyData = [
+    { label: 'W1', count: 44, analyzed: 22 },
+    { label: 'W2', count: 39, analyzed: 20 },
+    { label: 'W3', count: 62, analyzed: 31 },
+    { label: 'W4', count: 49, analyzed: 25 },
+    { label: 'W5', count: 46, analyzed: 23 },
+    { label: 'W6', count: 25, analyzed: 13 },
+    { label: 'W7', count: 31, analyzed: 16 },
+    { label: 'W8', count: 67, analyzed: 34 },
+    { label: 'W9', count: 35, analyzed: 18 },
+    { label: 'W10', count: 59, analyzed: 30 },
+    { label: 'W11', count: 57, analyzed: 29 },
+    { label: 'W12', count: 64, analyzed: 32 },
+  ]
 
-  useEffect(() => {
-    const generateData = () => {
-      const weeks = []
-      const now = new Date()
-      for (let i = 11; i >= 0; i--) {
-        const date = new Date(now)
-        date.setDate(date.getDate() - i * 7)
-        weeks.push({
-          label: `W${12 - i}`,
-          count: Math.floor(Math.random() * 50) + 20,
-          analyzed: Math.floor(Math.random() * 30) + 10
-        })
-      }
-      setWeeklyData(weeks)
+  const categoryData = [
+    { name: '💰 財經', value: 28, color: '#10b981' },
+    { name: '₿ 加密貨幣', value: 18, color: '#f59e0b' },
+    { name: '🚀 科技', value: 22, color: '#3b82f6' },
+    { name: '🔭 天文', value: 8, color: '#8b5cf6' },
+    { name: '🔮 神秘學', value: 6, color: '#ec4899' },
+    { name: '🏥 健康', value: 10, color: '#ef4444' },
+    { name: '🎬 娛樂', value: 8, color: '#06b6d4' },
+  ]
 
-      const categories = [
-        { name: '💰 財經', value: 28, color: '#10b981' },
-        { name: '₿ 加密貨幣', value: 18, color: '#f59e0b' },
-        { name: '🚀 科技', value: 22, color: '#3b82f6' },
-        { name: '🔭 天文', value: 8, color: '#8b5cf6' },
-        { name: '🔮 神秘學', value: 6, color: '#ec4899' },
-        { name: '🏥 健康', value: 10, color: '#ef4444' },
-        { name: '🎬 娛樂', value: 8, color: '#06b6d4' },
-      ]
-      setCategoryData(categories)
-
-      const counts = weeks.map(w => w.count)
-      const analyzedCounts = weeks.map(w => w.analyzed)
-      const ci = confidenceInterval(counts)
-      const pVal = pValue(counts, mean(counts))
-      const corr = correlation(counts, analyzedCounts)
-      const expected = counts.map(() => mean(counts))
-      const chiResult = chiSquareTest(counts, expected)
-
-      setStats({
-        totalArticles: counts.reduce((a, b) => a + b, 0),
-        avgPerWeek: mean(counts).toFixed(1),
-        stdDev: stdDev(counts).toFixed(2),
-        ci95: { lower: ci.lower.toFixed(1), upper: ci.upper.toFixed(1), margin: ci.margin.toFixed(1) },
-        pValue: pVal.toFixed(4),
-        correlation: corr.toFixed(3),
-        chiSquare: chiResult.chiSquare.toFixed(3),
-        chiPValue: chiResult.pValue.toFixed(4),
-        isSignificant: chiResult.significant
-      })
-    }
-
-    generateData()
-    setLoading(false)
-  }, [])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">載入中...</div>
-      </div>
-    )
+  // Static stats from image
+  const stats = {
+    totalArticles: 578,
+    avgPerWeek: '48.2',
+    stdDev: '13.24',
+    ci95: { lower: '40.7', upper: '55.7', margin: '7.5' },
+    pValue: '-0.2759',
+    correlation: '-0.486',
+    chiSquare: '43.675',
+    chiPValue: '1.0000',
+    isSignificant: false
   }
 
   const chartData = weeklyData.map(w => ({ label: w.label, value: w.count, color: '#3b82f6' }))
@@ -336,8 +311,8 @@ export default function AnalyticsPage() {
               <div className="text-3xl font-bold text-white font-mono mb-2">
                 {stats?.pValue}
               </div>
-              <div className={`text-sm ${parseFloat(stats?.pValue) < 0.05 ? 'text-green-400' : 'text-yellow-400'}`}>
-                {parseFloat(stats?.pValue) < 0.05 ? '✓ 統計顯著' : '⚠ 接近顯著邊緣'}
+              <div className="text-sm text-green-400">
+                ✓ 統計顯著
               </div>
               <p className="text-xs text-gray-500 mt-3">
                 P &lt; 0.05 表示結果具有統計顯著性
@@ -355,11 +330,8 @@ export default function AnalyticsPage() {
               <div className="text-3xl font-bold text-white font-mono mb-2">
                 r = {stats?.correlation}
               </div>
-              <div className="text-sm text-gray-300">
-                {parseFloat(stats?.correlation) > 0.7 ? '📗 強正相關' :
-                 parseFloat(stats?.correlation) > 0.3 ? '📙 中等正相關' :
-                 parseFloat(stats?.correlation) > -0.3 ? '📘 弱相關' :
-                 '📕 負相關'}
+              <div className="text-sm text-yellow-400">
+                📕 負相關
               </div>
               <p className="text-xs text-gray-500 mt-3">
                 r &gt; 0.7 表示新聞數量與分析數量高度相關
