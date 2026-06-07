@@ -18,6 +18,9 @@ const regionStats = blogPosts.reduce((acc, post) => {
 // Great Bay Area (大灣區) retirement travel posts
 const gbaPosts = blogPosts.filter(post => post.tags.includes("大灣區") || post.tags.includes("退休遊"));
 
+// Overseas travel posts (non-GBA posts)
+const overseasPosts = blogPosts.filter(post => !post.tags.includes("大灣區") && !post.tags.includes("退休遊"));
+
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -107,7 +110,7 @@ export default function BlogPage() {
           </div>
 
           {/* Stats Row */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mb-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
               <div className="text-2xl font-bold text-white">{blogPosts.length}</div>
               <div className="text-xs text-emerald-200">文章</div>
@@ -121,16 +124,8 @@ export default function BlogPage() {
               <div className="text-xs text-emerald-200">主題</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
-              <div className="text-2xl">🗺️</div>
-              <div className="text-xs text-emerald-200">歐洲</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
-              <div className="text-2xl">🏯</div>
-              <div className="text-xs text-emerald-200">亞洲</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
-              <div className="text-2xl">🌏</div>
-              <div className="text-xs text-emerald-200">更多</div>
+              <div className="text-2xl font-bold text-white">{gbaPosts.length + (blogPosts.length - gbaPosts.length)}</div>
+              <div className="text-xs text-emerald-200">遊記</div>
             </div>
           </div>
 
@@ -306,76 +301,92 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* Blog Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredPosts.map((post, index) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className={`block group transition-all duration-500 ${
-                index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
-              }`}
-              onMouseEnter={() => setHoveredSlug(post.slug)}
-              onMouseLeave={() => setHoveredSlug(null)}
-            >
-              <div className={`
-                relative h-full bg-slate-800 rounded-2xl overflow-hidden
-                border border-slate-700 hover:border-green-500/50
-                transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/10
-                ${hoveredSlug === post.slug ? 'shadow-xl shadow-green-500/10' : ''}
-              `}>
-                {/* Gradient accent bar */}
-                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
-
-                {/* Image container */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className={`
-                      w-full object-cover transition-all duration-700
-                      ${index === 0 ? 'h-52 md:h-64' : 'h-40'}
-                      group-hover:scale-110
-                    `}
-                    onError={(e) => {
-                      e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
-                    {post.icon}
-                  </div>
-                  <div className="absolute top-3 right-3" onClick={(e) => e.preventDefault()}>
-                    <FavoriteButton slug={post.slug} />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5">
-                  {/* Tags */}
-                  <div className="flex gap-2 mb-3 flex-wrap">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
-                    {post.title}
-                  </h2>
-                  <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-xs">{post.date}</span>
-                    <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
-                      閱讀全文 →
-                    </span>
-                  </div>
-                </div>
+        {/* ===== 海外遊記專欄 ===== */}
+        <div className="bg-gradient-to-r from-blue-900/50 via-indigo-900/50 to-purple-900/50 rounded-2xl p-6 mb-8 border border-blue-500/30">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="text-4xl">✈️</div>
+              <div>
+                <h2 className="text-white text-2xl font-bold">海外遊記</h2>
+                <p className="text-blue-200/80 text-sm mt-1">歐洲 · 日本 · 韓國 · 東南亞 · 世界任我行</p>
               </div>
-            </Link>
-          ))}
+            </div>
+            <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+              🌍 {overseasPosts.length} 篇遊記
+            </span>
+          </div>
+
+          {/* Overseas Posts Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {overseasPosts.map((post, index) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className={`block group transition-all duration-500 ${
+                  index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
+                }`}
+                onMouseEnter={() => setHoveredSlug(post.slug)}
+                onMouseLeave={() => setHoveredSlug(null)}
+              >
+                <div className={`
+                  relative h-full bg-slate-800 rounded-2xl overflow-hidden
+                  border border-slate-700 hover:border-blue-500/50
+                  transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10
+                  ${hoveredSlug === post.slug ? 'shadow-xl shadow-blue-500/10' : ''}
+                `}>
+                  {/* Gradient accent bar */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
+
+                  {/* Image container */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className={`
+                        w-full object-cover transition-all duration-700
+                        ${index === 0 ? 'h-52 md:h-64' : 'h-40'}
+                        group-hover:scale-110
+                      `}
+                      onError={(e) => {
+                        e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
+                      {post.icon}
+                    </div>
+                    <div className="absolute top-3 right-3" onClick={(e) => e.preventDefault()}>
+                      <FavoriteButton slug={post.slug} />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    {/* Tags */}
+                    <div className="flex gap-2 mb-3 flex-wrap">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
+                      {post.title}
+                    </h2>
+                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500 text-xs">{post.date}</span>
+                      <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
+                        閱讀全文 →
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Empty State */}
