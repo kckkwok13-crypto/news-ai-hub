@@ -334,13 +334,13 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "gba-dongguan-2days",
-    title: "🏭 東莞2天工業風探索：可園嶺南園林 + 下壩坊文創區 + 道滘粵菜尋味",
-    excerpt: "東莞不只有工廠！可園是岭南四大名園之一，下壩坊是文藝青年聚集地，道滘粵菜更是老饕摯愛。最適合喜歡深度文化的退休人士。",
+    title: "🏛️ 東莞2天1夜銀髮族深度慢活之旅：可園嶺南詩意 + 南社古村 + 光明路夜市",
+    excerpt: "退下火線後親自前來，才驚覺這裏藏著極美嘅嶺南園林、百年古村與溫潤嘅水鄉煙火。可園荷風、南社榕蔭、光明路湯粉，兩天一夜細細品味莞邑慢活滋味。",
     date: "June 2026",
-    image: "/images/gba-dongguan-keyuan.jpg",
+    image: "/images/dongguan-keyuan.jpg",
     icon: "🏛️",
-    tags: ["大灣區", "東莞", "退休遊", "2天1夜", "文化"],
-    accent: "from-amber-500 to-yellow-500"
+    tags: ["大灣區", "東莞", "退休遊", "2天1夜", "慢活", "銀髮"],
+    accent: "from-emerald-500 to-teal-500"
   },
   {
     slug: "gba-foshan-2days",
