@@ -91,7 +91,7 @@ export default function HongKongPage() {
           className="w-full rounded-2xl mb-6 shadow-xl shadow-amber-500/10"
         />
         <p className="text-center text-gray-400 text-sm mb-10">
-          天星小輪與維港夜景，是無論來過香港多少次都必定要攜友重溫的靈魂畫面
+          香港山顶维港夜景，俯瞰維多利亞港的璀璨都會風光
         </p>
 
         {/* Intro Quote */}
@@ -137,11 +137,11 @@ export default function HongKongPage() {
           <div className="my-10">
             <img
               src="/images/starferry-harbour.jpg"
-              alt="香港山顶维港夜景"
+              alt="天星小輪與維港夜景"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-gray-400 text-sm mt-4">
-              香港山顶维港夜景，俯瞰維多利亞港的璀璨都會風光
+              天星小輪與維港夜景，是無論來過香港多少次都必定要攜友重溫的靈魂畫面
             </p>
           </div>
 
