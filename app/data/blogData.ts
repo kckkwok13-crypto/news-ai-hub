@@ -324,13 +324,13 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "gba-hongkong-3days",
-    title: "🏔️ 香港後花園3天遊：西貢地質公園 + 南丫島海鮮 + 赤柱殖民地風情",
-    excerpt: "香港都有世外桃源！西貢地質公園探索六角形岩柱、南丫島品嚐原生態海鮮、赤柱感受殖民地風情。最適合退休人士的香港深度遊。",
+    title: "🎇 香港3天2夜親友同遊：物超所值、有情懷、有鑊氣的東方之珠暢遊攻略",
+    excerpt: "帶親戚老友玩轉香港！北角海逸酒店、叮叮車、天星小輪、太平山、廟街夜市、黃大仙、旺角、西九文化區、大館，親友同遊三天兩夜完全攻略。",
     date: "June 2026",
-    image: "/images/gba-hongkong-saikung.jpg",
-    icon: "🏔️",
-    tags: ["大灣區", "香港", "退休遊", "3天2夜", "郊遊"],
-    accent: "from-green-500 to-teal-500"
+    image: "/images/hongkong-harbour.jpg",
+    icon: "🎇",
+    tags: ["大灣區", "香港", "親友遊", "3天2夜", "維港", "美食"],
+    accent: "from-amber-500 to-yellow-500"
   },
   {
     slug: "gba-dongguan-2days",
