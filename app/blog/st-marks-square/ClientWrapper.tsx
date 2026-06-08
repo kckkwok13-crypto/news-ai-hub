@@ -175,12 +175,9 @@ export default function StMarksSquarePage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=1200&q=80"
+              src="/images/stmark-basilica-domes.jpg"
               alt="聖馬可大教堂外觀"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=80";
-              }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
               ▲ 聖馬可大教堂的金色穹頂在亞德里亞海的陽光下熠熠生輝
