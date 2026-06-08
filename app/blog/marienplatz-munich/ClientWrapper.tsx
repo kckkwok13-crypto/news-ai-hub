@@ -141,12 +141,9 @@ export default function MarienplatzMunichPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1569254994521-35a4dd6972b5?w=1200&q=80"
-              alt="慕尼黑城市景觀"
+              src="/images/munich-tower-view.jpg"
+              alt="慕尼黑聖彼得教堂塔樓全景"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1590618552334-4c8e2c21b4f9?w=1200&q=80";
-              }}
             />
             <p className="text-center text-stone-500 text-sm mt-4 mb-8">
               ▲ 攝影師天堂 —— 挑戰聖彼得教堂 306 級木樓梯換來的上帝視角全景
