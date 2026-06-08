@@ -136,8 +136,8 @@ export default function HongKongPage() {
 
           <div className="my-10">
             <img
-              src="/images/hongkong-harbour.jpg"
-              alt="香港維多利亞港夜景"
+              src="/images/starferry-harbour.jpg"
+              alt="天星小輪與維港夜景"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-gray-400 text-sm mt-4">
