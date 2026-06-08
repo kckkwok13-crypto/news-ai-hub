@@ -234,26 +234,20 @@ export default function SensojiPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80"
+              src="/images/asakusa-hondo.jpg"
               alt="淺草寺本堂內陣金箔裝飾"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80";
-              }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
-              ▲ 供奉聖觀音菩薩的本堂內陣，金箔天花與精緻佛具令人嘆為觀止
+              ▲ 供奉聖觀音菩薩的本堂內陣，金箔天花與精緻佛具令人歎為觀止
             </p>
           </div>
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80"
+              src="/images/asakusa-ningyoyaki.jpg"
               alt="仲見世通人形燒現烤美食"
               className="w-full rounded-2xl"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=80";
-              }}
             />
             <p className="text-center text-[#718096] text-sm mt-4 mb-8">
               ▲ 仲見世通必吃的現烤人形燒，是淺草最具人氣的江戶小吃
