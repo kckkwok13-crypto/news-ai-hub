@@ -336,6 +336,66 @@ const EDITOR_PICKS = {
         "link": "/editorial/web3-gaming-future",
         "tag": "趨勢分析",
         "featured": false
+      },
+      {
+        "id": "ep-9",
+        "title": "以太坊升級後：Layer 2 生態爆發元年",
+        "category": "區塊鏈",
+        "emoji": "🔷",
+        "image": "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "以太坊完成升級後，Layer 2 解決方案迎來爆發式增長。Arbitrum、Optimism、zkSync 百花齊放，費用降低 100 倍，用戶體驗全面提升。",
+        "readTime": 11,
+        "link": "/editorial/ethereum-layer2-explosion",
+        "tag": "技術分析",
+        "featured": false
+      },
+      {
+        "id": "ep-10",
+        "title": "輝達的AI晶片帝國：黃仁勳的下一個十年",
+        "category": "科技評論",
+        "emoji": "🔋",
+        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "輝達市值突破萬億美元，GPU 需求遠超供應。黃仁勳如何構建 AI 晶片帝國？這場算力戰爭將如何重塑全球科技格局？",
+        "readTime": 12,
+        "link": "/editorial/nvidia-ai-chip-empire",
+        "tag": "商業洞察",
+        "featured": false
+      },
+      {
+        "id": "ep-11",
+        "title": "香港加密貨幣政策：亞洲 Web3 中心之爭",
+        "category": "加密貨幣",
+        "emoji": "🏙️",
+        "image": "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "香港開放散戶加密交易，致力打造亞洲 Web3 中心。新加坡、迪拜、東京，谁能在這場監管競賽中脫穎而出？",
+        "readTime": 10,
+        "link": "/editorial/hongkong-crypto-policy",
+        "tag": "政策解讀",
+        "featured": false
+      },
+      {
+        "id": "ep-12",
+        "title": "AI Agent 時代：從聊天機器人到智能助理",
+        "category": "AI應用",
+        "emoji": "🤖",
+        "image": "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "ChatGPT 開啟 AI 新時代，但真正的變革是 AI Agent。它們能自主規劃、執行任務、調用工具。你的下一位同事可能是 AI。",
+        "readTime": 13,
+        "link": "/editorial/ai-agent-era",
+        "tag": "深度分析",
+        "featured": true
+      },
+      {
+        "id": "ep-13",
+        "title": "ESG 投資浪潮：永續金融的新常態",
+        "category": "財經深度",
+        "emoji": "🌱",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "環境、社會與公司治理成為投資新標準。貝萊德、先鋒等巨頭押注永續金融，碳中和目標如何影響資本市場走向？",
+        "readTime": 11,
+        "link": "/editorial/esg-investment-wave",
+        "tag": "投資策略",
+        "featured": false
       }
     ]
   },
@@ -444,6 +504,66 @@ const EDITOR_PICKS = {
         "link": "/editorial/web3-gaming-future",
         "tag": "Trend",
         "featured": false
+      },
+      {
+        "id": "ep-9",
+        "title": "Ethereum Layer 2 Explosion",
+        "category": "Blockchain",
+        "emoji": "🔷",
+        "image": "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "Post-Merge Ethereum sees Layer 2 solutions explode. Arbitrum, Optimism, zkSync competing for dominance.",
+        "readTime": 11,
+        "link": "/editorial/ethereum-layer2-explosion",
+        "tag": "Tech Analysis",
+        "featured": false
+      },
+      {
+        "id": "ep-10",
+        "title": "NVIDIA's AI Chip Empire",
+        "category": "Tech",
+        "emoji": "🔋",
+        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "NVIDIA crosses $1 trillion market cap. Jensen Huang's vision for AI computing dominance.",
+        "readTime": 12,
+        "link": "/editorial/nvidia-ai-chip-empire",
+        "tag": "Business Insight",
+        "featured": false
+      },
+      {
+        "id": "ep-11",
+        "title": "Hong Kong Crypto Policy",
+        "category": "Crypto",
+        "emoji": "🏙️",
+        "image": "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "Hong Kong opens retail crypto trading, competing for Asia's Web3 hub status with Singapore and Dubai.",
+        "readTime": 10,
+        "link": "/editorial/hongkong-crypto-policy",
+        "tag": "Policy",
+        "featured": false
+      },
+      {
+        "id": "ep-12",
+        "title": "AI Agent Era",
+        "category": "AI",
+        "emoji": "🤖",
+        "image": "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "Beyond chatbots - AI Agents that can plan, execute tasks, and use tools autonomously.",
+        "readTime": 13,
+        "link": "/editorial/ai-agent-era",
+        "tag": "Deep Dive",
+        "featured": true
+      },
+      {
+        "id": "ep-13",
+        "title": "ESG Investment Wave",
+        "category": "Finance",
+        "emoji": "🌱",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "Environmental, Social, Governance becoming the new investment standard. How green finance reshapes markets.",
+        "readTime": 11,
+        "link": "/editorial/esg-investment-wave",
+        "tag": "Investment",
+        "featured": false
       }
     ]
   },
@@ -551,6 +671,66 @@ const EDITOR_PICKS = {
         "readTime": 11,
         "link": "/editorial/web3-gaming-future",
         "tag": "趋势分析",
+        "featured": false
+      },
+      {
+        "id": "ep-9",
+        "title": "以太坊升级后：Layer 2 生态爆发元年",
+        "category": "区块链",
+        "emoji": "🔷",
+        "image": "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "以太坊完成升级后，Layer 2 解决方案迎来爆发式增长。Arbitrum、Optimism、zkSync 百花齐放，费用降低 100 倍，用户体验全面提升。",
+        "readTime": 11,
+        "link": "/editorial/ethereum-layer2-explosion",
+        "tag": "技术分析",
+        "featured": false
+      },
+      {
+        "id": "ep-10",
+        "title": "英伟达的AI芯片帝国：黄仁勋的下一个十年",
+        "category": "科技评论",
+        "emoji": "🔋",
+        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "英伟达市值突破万亿美元，GPU 需求远超供应。黄仁勋如何构建 AI 芯片帝国？这场算力战争将如何重塑全球科技格局？",
+        "readTime": 12,
+        "link": "/editorial/nvidia-ai-chip-empire",
+        "tag": "商业洞察",
+        "featured": false
+      },
+      {
+        "id": "ep-11",
+        "title": "香港加密货币政策：亚洲 Web3 中心之争",
+        "category": "加密货币",
+        "emoji": "🏙️",
+        "image": "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "香港开放散户加密交易，致力于打造亚洲 Web3 中心。新加坡、迪拜、东京，谁在这场监管竞赛中脱颖而出？",
+        "readTime": 10,
+        "link": "/editorial/hongkong-crypto-policy",
+        "tag": "政策解读",
+        "featured": false
+      },
+      {
+        "id": "ep-12",
+        "title": "AI Agent 时代：从聊天机器人到智能助理",
+        "category": "AI应用",
+        "emoji": "🤖",
+        "image": "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "ChatGPT 开启 AI 新时代，但真正的变革是 AI Agent。它们能自主规划、执行任务、调用工具。你的下一位同事可能是 AI。",
+        "readTime": 13,
+        "link": "/editorial/ai-agent-era",
+        "tag": "深度分析",
+        "featured": true
+      },
+      {
+        "id": "ep-13",
+        "title": "ESG 投资浪潮：永续金融的新常态",
+        "category": "财经深度",
+        "emoji": "🌱",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=800",
+        "excerpt": "环境、社会与公司治理成为投资新标准。贝莱德、先锋等巨头押注永续金融，碳中和目标如何影响资本市场走向？",
+        "readTime": 11,
+        "link": "/editorial/esg-investment-wave",
+        "tag": "投资策略",
         "featured": false
       }
     ]
@@ -1448,7 +1628,7 @@ export default function NewsPage() {
       {(() => {
         const ep = EDITOR_PICKS[lang];
         const heroArticle = ep.articles[0];
-        const gridArticles = ep.articles.slice(1, 7);
+        const gridArticles = ep.articles.slice(1, 13);
 
         // Handle save editorial article
         const handleSaveEditorial = (e: React.MouseEvent, articleId: string) => {
