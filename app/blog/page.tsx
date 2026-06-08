@@ -1,24 +1,24 @@
 "use client";
-// NewsFlow Travel Blog - Updated June 2026
+
 import Link from "next/link";
 import { useState, useMemo, useEffect } from "react";
 import FavoriteButton from "../components/FavoriteButton";
 import { blogPosts } from "../data/blogData";
 
-// Extract unique tags for filters (sorted alphabetically)
+// Extract unique tags for filters
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
 
-// Country/Region mapping for stats
+// Region mapping for stats
 const regionStats = blogPosts.reduce((acc, post) => {
   const region = post.tags[0];
   acc[region] = (acc[region] || 0) + 1;
   return acc;
 }, {} as Record<string, number>);
 
-// Great Bay Area (大灣區) retirement travel posts
+// GBA retirement travel posts
 const gbaPosts = blogPosts.filter(post => post.tags.includes("大灣區") || post.tags.includes("退休遊"));
 
-// Overseas travel posts (non-GBA posts)
+// Overseas travel posts
 const overseasPosts = blogPosts.filter(post => !post.tags.includes("大灣區") && !post.tags.includes("退休遊"));
 
 export default function BlogPage() {
@@ -27,7 +27,6 @@ export default function BlogPage() {
   const [sortBy, setSortBy] = useState<"date" | "title">("date");
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
-  // Filter and sort posts
   const filteredPosts = useMemo(() => {
     let posts = blogPosts.filter(post => {
       const matchesSearch = searchQuery === "" ||
@@ -38,19 +37,12 @@ export default function BlogPage() {
         selectedTags.some(tag => post.tags.includes(tag));
       return matchesSearch && matchesTags;
     });
-
-    posts.sort((a, b) => {
-      if (sortBy === "title") return a.title.localeCompare(b.title);
-      return 0;
-    });
-
+    if (sortBy === "title") posts.sort((a, b) => a.title.localeCompare(b.title));
     return posts;
   }, [searchQuery, selectedTags, sortBy]);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
-    );
+    setSelectedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
   };
 
   const clearFilters = () => {
@@ -59,52 +51,26 @@ export default function BlogPage() {
     setSortBy("date");
   };
 
-  // Initialize Google AdSense
   useEffect(() => {
     try {
       (window as any).adsbygoogle = (window as any).adsbygoogle || [];
       (window as any).adsbygoogle.push({});
-    } catch (e) {
-      console.log('AdSense initialization skipped');
-    }
+    } catch (e) { console.log('AdSense skipped'); }
   }, []);
 
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Hero Banner */}
       <header className="relative overflow-hidden">
-        {/* Background with parallax layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900">
-          {/* Decorative travel elements */}
-          <div className="absolute inset-0 opacity-10">
-            <svg className="absolute top-10 left-10 w-32 h-32 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-            <svg className="absolute top-20 right-20 w-24 h-24 text-white animate-pulse" style={{animationDelay: '1s'}} fill="currentColor" viewBox="0 0 24 24">
-              <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-            </svg>
-            <svg className="absolute bottom-10 left-1/4 w-20 h-20 text-white animate-pulse" style={{animationDelay: '2s'}} fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-          </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
 
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
-        </div>
-
-        {/* Content */}
         <div className="relative max-w-7xl mx-auto px-6 py-12">
-          {/* Author Badge */}
           <div className="flex items-center gap-4 mb-6">
             <div className="relative">
               <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
-                <img
-                  src="/images/pure-traveler-avatar.jpg"
-                  alt="純粹旅人"
-                  className="w-full h-full object-cover"
-                />
+                <img src="/images/pure-traveler-avatar.jpg" alt="純粹旅人" className="w-full h-full object-cover" />
               </div>
-              {/* Online indicator */}
               <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
                 <span className="text-white text-xs">✈️</span>
               </div>
@@ -119,7 +85,6 @@ export default function BlogPage() {
             </div>
           </div>
 
-          {/* Stats Row */}
           <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mb-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
               <div className="text-2xl font-bold text-white">{blogPosts.length}</div>
@@ -134,20 +99,17 @@ export default function BlogPage() {
               <div className="text-xs text-emerald-200">主題</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/20">
-              <div className="text-2xl font-bold text-white">{gbaPosts.length + (blogPosts.length - gbaPosts.length)}</div>
+              <div className="text-2xl font-bold text-white">{blogPosts.length}</div>
               <div className="text-xs text-emerald-200">遊記</div>
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
               <span>←</span>
               <span>返回首頁</span>
             </Link>
-            <div className="flex items-center gap-2 text-emerald-200 text-sm">
-              <span>📍 足跡遍佈 {Object.keys(regionStats).length} 個地區</span>
-            </div>
+            <span className="text-emerald-200 text-sm">📍 足跡遍佈 {Object.keys(regionStats).length} 個地區</span>
           </div>
         </div>
       </header>
@@ -185,7 +147,7 @@ export default function BlogPage() {
         <div className="bg-gradient-to-r from-amber-900/50 via-orange-900/50 to-red-900/50 rounded-2xl p-6 mb-8 border border-amber-500/30">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="text-4xl">🌴</div>
+              <span className="text-4xl">🌴</span>
               <div>
                 <h2 className="text-white text-2xl font-bold">大灣區退休遊記</h2>
                 <p className="text-amber-200/80 text-sm mt-1">精選2-3天短途行程 · 銀髮族慢活之旅</p>
@@ -196,14 +158,9 @@ export default function BlogPage() {
             </span>
           </div>
 
-          {/* GBA Posts Grid */}
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {gbaPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="block group"
-              >
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
                 <div className="relative h-48 rounded-xl overflow-hidden bg-slate-800 border border-slate-700 hover:border-amber-500/50 transition-all duration-300 hover:scale-[1.02]">
                   <img
                     src={post.image}
@@ -226,7 +183,6 @@ export default function BlogPage() {
                       {post.title.replace(/^[^\s]+\s/, '')}
                     </h3>
                   </div>
-                  {/* Play button overlay */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                       <span className="text-white text-xl">▶</span>
@@ -238,22 +194,9 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* Ad Banner - In Feed Ad */}
-        <div className="my-6 bg-slate-800/50 rounded-xl p-4 border border-slate-700">
-          <div className="flex justify-center">
-            <ins className="adsbygoogle"
-              style={{ display: 'block', width: '728px', height: '90px' }}
-              data-ad-client="ca-pub-4745583996243741"
-              data-ad-slot="7843298765"
-              data-ad-format="auto"
-              data-full-width-responsive="true" />
-          </div>
-        </div>
-
         {/* Search and Filters */}
         <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 rounded-2xl p-6 mb-6 border border-slate-700">
           <div className="flex flex-col md:flex-row gap-4 mb-4">
-            {/* Search */}
             <div className="flex-1 relative">
               <input
                 type="text"
@@ -263,7 +206,6 @@ export default function BlogPage() {
                 className="w-full bg-slate-700 text-white placeholder-slate-400 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
-            {/* Sort */}
             <div className="flex gap-2">
               <select
                 value={sortBy}
@@ -273,16 +215,12 @@ export default function BlogPage() {
                 <option value="date">最近更新</option>
                 <option value="title">標題 A-Z</option>
               </select>
-              <button
-                onClick={clearFilters}
-                className="bg-slate-600 hover:bg-slate-500 text-white px-4 py-3 rounded-lg transition-colors"
-              >
+              <button onClick={clearFilters} className="bg-slate-600 hover:bg-slate-500 text-white px-4 py-3 rounded-lg transition-colors">
                 清除
               </button>
             </div>
           </div>
 
-          {/* Tags Filter */}
           <div>
             <h4 className="text-slate-400 text-sm mb-2">🏷️ 標籤篩選</h4>
             <div className="flex flex-wrap gap-2">
@@ -291,9 +229,7 @@ export default function BlogPage() {
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   className={`px-3 py-1.5 rounded-full text-sm transition-all ${
-                    selectedTags.includes(tag)
-                      ? 'bg-green-600 text-white'
-                      : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                    selectedTags.includes(tag) ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                   }`}
                 >
                   {tag}
@@ -303,21 +239,11 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* Ad Banner - Between Sections */}
-        <div className="my-8 flex justify-center">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '728px', height: '90px' }}
-            data-ad-client="ca-pub-4745583996243741"
-            data-ad-slot="7843298765"
-            data-ad-format="auto"
-            data-full-width-responsive="true" />
-        </div>
-
         {/* ===== 海外遊記專欄 ===== */}
         <div className="bg-gradient-to-r from-blue-900/50 via-indigo-900/50 to-purple-900/50 rounded-2xl p-6 mb-8 border border-blue-500/30">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="text-4xl">✈️</div>
+              <span className="text-4xl">✈️</span>
               <div>
                 <h2 className="text-white text-2xl font-bold">海外遊記</h2>
                 <p className="text-blue-200/80 text-sm mt-1">歐洲 · 日本 · 韓國 · 東南亞 · 世界任我行</p>
@@ -328,37 +254,23 @@ export default function BlogPage() {
             </span>
           </div>
 
-          {/* Overseas Posts Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {overseasPosts.map((post, index) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className={`block group transition-all duration-500 ${
-                  index === 0 ? 'md:col-span-2 lg:col-span-2' : ''
-                }`}
+                className={`block group transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
                 onMouseEnter={() => setHoveredSlug(post.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
               >
-                <div className={`
-                  relative h-full bg-slate-800 rounded-2xl overflow-hidden
-                  border border-slate-700 hover:border-blue-500/50
-                  transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10
-                  ${hoveredSlug === post.slug ? 'shadow-xl shadow-blue-500/10' : ''}
-                `}>
-                  {/* Gradient accent bar */}
+                <div className={`relative h-full bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 ${hoveredSlug === post.slug ? 'shadow-xl shadow-blue-500/10' : ''}`}>
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
 
-                  {/* Image container */}
                   <div className="relative overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
-                      className={`
-                        w-full object-cover transition-all duration-700
-                        ${index === 0 ? 'h-52 md:h-64' : 'h-40'}
-                        group-hover:scale-110
-                      `}
+                      className={`w-full object-cover transition-all duration-700 ${index === 0 ? 'h-52 md:h-64' : 'h-40'} group-hover:scale-110`}
                       onError={(e) => {
                         e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
                       }}
@@ -372,22 +284,16 @@ export default function BlogPage() {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-5">
-                    {/* Tags */}
                     <div className="flex gap-2 mb-3 flex-wrap">
                       {post.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">
-                          {tag}
-                        </span>
+                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">{tag}</span>
                       ))}
                     </div>
-
                     <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
                       {post.title}
                     </h2>
                     <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 text-xs">{post.date}</span>
                       <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
@@ -407,30 +313,15 @@ export default function BlogPage() {
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-white text-xl font-semibold mb-2">找不到符合條件的文章</h3>
             <p className="text-slate-400 mb-4">嘗試調整搜尋條件或清除篩選</p>
-            <button
-              onClick={clearFilters}
-              className="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg transition-colors"
-            >
+            <button onClick={clearFilters} className="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg transition-colors">
               清除所有篩選
             </button>
           </div>
         )}
 
-        {/* Ad Banner - Before Footer */}
-        <div className="my-8 flex justify-center">
-          <ins className="adsbygoogle"
-            style={{ display: 'block', width: '728px', height: '90px' }}
-            data-ad-client="ca-pub-4745583996243741"
-            data-ad-slot="7843298765"
-            data-ad-format="auto"
-            data-full-width-responsive="true" />
-        </div>
-
         {/* Footer */}
         <footer className="text-center mt-16 py-8 border-t border-slate-700">
-          <p className="text-slate-500 text-sm">
-            🌍 純粹旅人 · 用心感受每一個城市的溫度
-          </p>
+          <p className="text-slate-500 text-sm">🌍 純粹旅人 · 用心感受每一個城市的溫度</p>
         </footer>
       </div>
     </div>
