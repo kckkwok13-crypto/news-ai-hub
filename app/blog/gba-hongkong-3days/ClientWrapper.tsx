@@ -164,9 +164,9 @@ export default function HongKongPage() {
 
           <div className="my-10">
             <img
-              src="/images/hongkong-harbour.jpg"
+              src="/images/westkowloon-sunset.jpg"
               alt="西九文化區日落"
-              className="w-full rounded-2xl grayscale"
+              className="w-full rounded-2xl"
             />
             <p className="text-center text-gray-400 text-sm mt-4">
               西九文化區的遼闊草坪，是近年香港最受歡迎、最能飽覽維港日落的新興文青好去處
