@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://newskingdom.store/sitemap.xml
+Sitemap: https://www.newskingdom.store/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
@@ -10,8 +10,10 @@ Crawl-delay: 1
 Allow: /about
 Allow: /contact
 Allow: /privacy
+Allow: /blog
 Allow: /podcast
 Allow: /analytics
 
 # Disallow API routes
 Disallow: /api/
+Disallow: /_next/

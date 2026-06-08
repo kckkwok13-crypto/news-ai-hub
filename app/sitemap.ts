@@ -1,14 +1,8 @@
 import { MetadataRoute } from "next";
-
-const blogRoutes = [
-  "arashiyama", "colosseum", "dotonbori", "eiffel-tower",
-  "florence-cathedral", "grand-palace", "meiji-shrine", "myeongdong",
-  "ponte-vecchio", "sensoji", "shibuya-crossing", "sistine-chapel",
-  "st-peters-basilica", "trevi",
-];
+import { blogPosts } from "./data/blogData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://newskingdom.store";
+  const baseUrl = "https://www.newskingdom.store";
   const now = new Date().toISOString().split("T")[0];
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -22,11 +16,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl + "/blog", lastModified: now, changeFrequency: "daily", priority: 0.9 },
   ];
 
-  const blogRoutesSitemap: MetadataRoute.Sitemap = blogRoutes.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
+  // Dynamically generate blog post URLs from blogData
+  const blogRoutesSitemap: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    // GBA posts get slightly lower priority
+    priority: post.tags.includes("大灣區") || post.tags.includes("退休遊") ? 0.7 : 0.8,
   }));
 
   return [...staticRoutes, ...blogRoutesSitemap];
