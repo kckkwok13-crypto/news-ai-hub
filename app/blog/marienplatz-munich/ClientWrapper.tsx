@@ -141,7 +141,7 @@ export default function MarienplatzMunichPage() {
 
           <div className="my-8">
             <img
-              src="/images/marienplatz-munich-hero.jpg"
+              src="/images/munich-stpeter-tower.jpg"
               alt="慕尼黑聖彼得教堂塔樓全景"
               className="w-full rounded-2xl"
             />
