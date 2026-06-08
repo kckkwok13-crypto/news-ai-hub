@@ -354,12 +354,12 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "gba-humen-2days",
-    title: "🌉 虎門2天歷史之旅：威遠砲台 + 海戰博物館 + 蓮花山夜景",
-    excerpt: "鴉片戰爭的歷史記憶！虎門威遠砲台見證民族滄桑、廣州海戰博物館了解近代史、晚上登上蓮花山俯瞰珠江兩岸璀璨夜景。",
+    title: "🎒 虎門2天1夜一人獨闖慢活之旅：銷煙池 + 萬達廣場 + 光明路夜市",
+    excerpt: "退休後反而迷上了獨行。帶上一個背包，一張高鐵票，來到伶仃洋畔的虎門。兩天一夜，看銷煙歷史，逛繁華商圈，品味一個人嘅絕對自由。",
     date: "June 2026",
     image: "/images/gba-humen-fort.jpg",
-    icon: "🌉",
-    tags: ["大灣區", "東莞", "退休遊", "2天1夜", "歷史"],
-    accent: "from-slate-600 to-gray-600"
+    icon: "🎒",
+    tags: ["大灣區", "東莞", "虎門", "一人遊", "2天1夜", "慢活", "歷史"],
+    accent: "from-teal-500 to-cyan-500"
   },
 ];
