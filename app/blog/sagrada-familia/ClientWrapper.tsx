@@ -155,7 +155,7 @@ export default function SagradaFamiliaPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?w=1200&q=80"
+              src="/images/sagrada-familia-interior.jpg"
               alt="聖家堂內部"
               className="w-full rounded-2xl"
             />
