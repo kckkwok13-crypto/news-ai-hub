@@ -236,6 +236,7 @@ export default function BlogPage() {
               </Link>
             ))}
           </div>
+        </div>
 
         {/* Ad Banner - In Feed Ad */}
         <div className="my-6 bg-slate-800/50 rounded-xl p-4 border border-slate-700">
