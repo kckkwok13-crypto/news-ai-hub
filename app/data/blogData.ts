@@ -344,13 +344,13 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "gba-foshan-2days",
-    title: "🦁 佛山2天武術尋蹤：黃飛鴻故居 + 祖廟粤劇 + 西樵山祈福",
-    excerpt: "嶺南武術之鄉！走訪黃飛鴻故居、佛山祖廟看舞獅表演、品嚐盲公餅和雙皮奶，最後在西樵山祈福賞杜鵑，行程充實又有文化底蘊。",
+    title: "🥢 佛山2天1夜老友同遊功夫與順德美食慢活隨筆：祖廟醒獅 + 嶺南天地 + 逢簡水鄉",
+    excerpt: "退休後最開心嘅事，莫過於約埋大半生相識嘅幾位知心老友。一班老友同行，步伐依舊悠閒，佛山兩天一夜，一路開懷大笑，一路尋味嶺南。",
     date: "June 2026",
-    image: "/images/gba-foshan-zumiao.jpg",
-    icon: "🦁",
-    tags: ["大灣區", "佛山", "退休遊", "2天1夜", "武術"],
-    accent: "from-red-600 to-orange-500"
+    image: "/images/foshan-zumiao.jpg",
+    icon: "🥢",
+    tags: ["大灣區", "佛山", "退休遊", "2天1夜", "老友記", "功夫", "順德美食"],
+    accent: "from-red-600 to-amber-500"
   },
   {
     slug: "gba-humen-2days",
