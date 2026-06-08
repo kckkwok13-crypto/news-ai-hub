@@ -392,9 +392,7 @@ const LABELS = {
       health: "健康", gaming: "遊戲", food: "美食", travel: "旅遊",
       ai: "AI藝術", art: "藝術", astronomy: "天文", mystery: "神秘學", data_journalism: "數據新聞 24h熱門"
     },
-    bias: "立場分析", impact: "深度解讀", digestTitle: "今日 AI 深度日報",
-    sentimentTitle: "情緒追蹤", impactClose: "關閉解讀",
-    biasTypes: { pro_western: "親西方", neutral: "中立", pro_china: "親華", optimism: "市場樂觀" },
+    impactClose: "關閉解讀",
     menu: "目錄", close: "關閉", all: "全部", analysis: "AI Analysis",
     savedNews: "收藏", allNews: "全部", source: "來源",
     readMore: "閱讀更多", noSaved: "還沒有收藏的新聞", clearSaved: "清除全部",
@@ -421,9 +419,7 @@ const LABELS = {
     readMore: "阅读更多", noSaved: "还没有收藏的新闻", clearSaved: "清除全部",
     langChanged: "语言已切换",
     shareSuccess: "分享成功", emailRequired: "请输入 Email 地址",
-    bias: "立场分析", impact: "深度解读", digestTitle: "今日 AI 深度日报",
-    sentimentTitle: "情绪追踪", impactClose: "关闭解读",
-    biasTypes: { pro_western: "亲西方", neutral: "中立", pro_china: "亲华", optimism: "市场乐观" },
+    impactClose: "关闭解读",
     menu: "目录", close: "关闭", all: "全部", analysis: "AI Analysis"
   },
   "en": {
@@ -446,9 +442,7 @@ const LABELS = {
     readMore: "Read More", noSaved: "No saved news yet", clearSaved: "Clear All",
     langChanged: "Language changed",
     shareSuccess: "Share success", emailRequired: "Please enter email address",
-    bias: "Bias Analysis", impact: "Contextual Impact", digestTitle: "Today's AI Daily Digest",
-    sentimentTitle: "Sentiment Trends", impactClose: "Close Analysis",
-    biasTypes: { pro_western: "Pro-Western", neutral: "Neutral", pro_china: "Pro-China", optimism: "Optimistic" },
+    impactClose: "Close Analysis",
     menu: "Menu", close: "Close", all: "All", analysis: "AI Analysis"
   },
 };
@@ -1010,81 +1004,7 @@ export default function NewsPage() {
         </div>
       </Link>
 
-      {/* AI Deep Daily - Page Top Section (replaces modal) */}
-      {aiSummary && (
-        <div className={`w-full rounded-2xl p-6 mb-6 ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-lg border border-gray-200"}`}>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="flex h-3 w-3 rounded-full bg-red-500 animate-pulse" />
-            <h2 className="text-base md:text-sm font-bold uppercase tracking-widest text-blue-500">{t.digestTitle || "今日 AI 深度日報"}</h2>
-          </div>
-          <p className={`text-lg md:text-xl font-medium leading-relaxed ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
-            {lang === "en" ? aiSummary.summary_en : aiSummary.summary_zh}
-          </p>
-          <div className="mt-6 flex flex-col md:flex-row md:items-center gap-4">
-            <div className="flex-1 min-w-[200px]">
-              <p className="text-xs font-semibold mb-2 text-gray-500 uppercase tracking-tighter">{t.sentimentTitle || "情緒追蹤"}</p>
-              <div className="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex">
-                <div style={{ width: `${aiSummary.sentiment?.positive || 0}%` }} className="h-full bg-green-500" />
-                <div style={{ width: `${aiSummary.sentiment?.neutral || 0}%` }} className="h-full bg-gray-400" />
-                <div style={{ width: `${aiSummary.sentiment?.negative || 0}%` }} className="h-full bg-red-500" />
-              </div>
-            </div>
-          </div>
-
-          {/* News Details List with Links */}
-          {aiSummary.details && aiSummary.details.length > 0 && (
-            <div className="mt-6 border-t border-gray-700 pt-4">
-              <p className="text-xs font-semibold mb-3 text-gray-400 uppercase tracking-wider">{t.bias || "立場分析"} · {t.impact || "深度解讀"}</p>
-              <div className="space-y-3 max-h-[300px] overflow-y-auto">
-                {aiSummary.details.map((detail: any, idx: number) => {
-                  const newsItem = displayNews.find((n: any) => n.id === detail.id) || displayNews[idx];
-                  return (
-                    <div key={idx} className={`p-3 rounded-xl ${darkMode ? "bg-gray-800/50" : "bg-gray-50"}`}>
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex-1 min-w-0">
-                          <p className={`text-sm font-medium leading-snug ${darkMode ? "text-gray-200" : "text-gray-700"}`}>{detail.headline}</p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${detail.bias === "pro_western" ? "bg-blue-500/20 text-blue-400" : detail.bias === "pro_china" ? "bg-red-500/20 text-red-400" : detail.bias === "optimism" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"}`}>
-                              {t.biasTypes[detail.bias as keyof typeof t.biasTypes] || detail.bias}
-                            </span>
-                            {detail.sentiment && (
-                              <span className={`text-[10px] px-2 py-0.5 rounded-full ${detail.sentiment > 0 ? "bg-green-500/20 text-green-400" : detail.sentiment < 0 ? "bg-red-500/20 text-red-400" : "bg-gray-500/20 text-gray-400"}`}>
-                                {detail.sentiment > 0 ? "📈" : detail.sentiment < 0 ? "📉" : "➖"}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        <div className="flex flex-col items-end gap-1">
-                          {newsItem?.link && (
-                            <a href={newsItem.link} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-400 text-xs whitespace-nowrap">
-                              {t.readMore} →
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* Trending Topics */}
-          {aiSummary.trends && aiSummary.trends.length > 0 && (
-            <div className="mt-6 border-t border-gray-700 pt-4">
-              <p className="text-xs font-semibold mb-3 text-gray-400 uppercase tracking-wider">{t.trend || "熱門話題"}</p>
-              <div className="flex flex-wrap gap-2">
-                {aiSummary.trends.slice(0, 8).map((trend: string, idx: number) => (
-                  <span key={idx} className={`text-xs px-3 py-1.5 rounded-full ${darkMode ? "bg-gray-800 text-gray-300 border border-gray-700" : "bg-gray-100 text-gray-600 border border-gray-200"}`}>
-                    #{trend}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
+      
       {/* AI Host Loading Modal */}
       {aiHostLoading && aiHostItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
