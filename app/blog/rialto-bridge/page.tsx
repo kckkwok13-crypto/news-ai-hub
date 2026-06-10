@@ -7,7 +7,7 @@ export const generateMetadata = () => {
     openGraph: {
       title: "繾綣大運河的黃昏餘暉：威尼斯里奧托橋深度攻略",
       description: "深度打卡與唯美日落攻略",
-      images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Ponte_di_Rialto%2C_Venezia.jpg/1280px-Ponte_di_Rialto%2C_Venezia.jpg"],
+      images: ["https://upload.wikimedia.org/wikipedia/commons/0/0b/Rialto_2025_4.jpg"],
     },
   };
 };
