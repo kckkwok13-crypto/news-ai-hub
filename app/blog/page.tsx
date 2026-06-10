@@ -16,10 +16,13 @@ const regionStats = blogPosts.reduce((acc, post) => {
 }, {} as Record<string, number>);
 
 // GBA retirement travel posts
-const gbaPosts = blogPosts.filter(post => post.tags.includes("大灣區") || post.tags.includes("退休遊"));
+const gbaPosts = blogPosts.filter(post => post.category === 'gba');
 
-// Overseas travel posts
-const overseasPosts = blogPosts.filter(post => !post.tags.includes("大灣區") && !post.tags.includes("退休遊"));
+// Local travel posts (Europe)
+const localPosts = blogPosts.filter(post => post.category === 'local');
+
+// World travel posts (Japan, Korea, Thailand)
+const worldPosts = blogPosts.filter(post => post.category === 'world');
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -143,6 +146,142 @@ export default function BlogPage() {
           </div>
         </div>
 
+        {/* ===== 地方遊記專欄 ===== */}
+        <div className="bg-gradient-to-r from-blue-900/50 via-indigo-900/50 to-purple-900/50 rounded-2xl p-6 mb-8 border border-blue-500/30">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <span className="text-4xl">🏰</span>
+              <div>
+                <h2 className="text-white text-2xl font-bold">地方遊記</h2>
+                <p className="text-blue-200/80 text-sm mt-1">歐洲深度漫遊 · 歷史文化探索</p>
+              </div>
+            </div>
+            <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+              🏰 {localPosts.length} 篇遊記
+            </span>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {localPosts.map((post, index) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className={`block group transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                onMouseEnter={() => setHoveredSlug(post.slug)}
+                onMouseLeave={() => setHoveredSlug(null)}
+              >
+                <div className={`relative h-full bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 ${hoveredSlug === post.slug ? 'shadow-xl shadow-blue-500/10' : ''}`}>
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
+
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className={`w-full object-cover transition-all duration-700 ${index === 0 ? 'h-52 md:h-64' : 'h-40'} group-hover:scale-110`}
+                      onError={(e) => {
+                        e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
+                      {post.icon}
+                    </div>
+                    <div className="absolute top-3 right-3" onClick={(e) => e.preventDefault()}>
+                      <FavoriteButton slug={post.slug} />
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="flex gap-2 mb-3 flex-wrap">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">{tag}</span>
+                      ))}
+                    </div>
+                    <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
+                      {post.title}
+                    </h2>
+                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500 text-xs">{post.date}</span>
+                      <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
+                        閱讀全文 →
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ===== 世界任我行專欄 ===== */}
+        <div className="bg-gradient-to-r from-emerald-900/50 via-teal-900/50 to-cyan-900/50 rounded-2xl p-6 mb-8 border border-emerald-500/30">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <span className="text-4xl">🌍</span>
+              <div>
+                <h2 className="text-white text-2xl font-bold">世界任我行</h2>
+                <p className="text-emerald-200/80 text-sm mt-1">純粹旅人世界自由行 · 亞洲深度探索</p>
+              </div>
+            </div>
+            <span className="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+              ✈️ {worldPosts.length} 篇遊記
+            </span>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {worldPosts.map((post, index) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className={`block group transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                onMouseEnter={() => setHoveredSlug(post.slug)}
+                onMouseLeave={() => setHoveredSlug(null)}
+              >
+                <div className={`relative h-full bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-emerald-500/10 ${hoveredSlug === post.slug ? 'shadow-xl shadow-emerald-500/10' : ''}`}>
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
+
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className={`w-full object-cover transition-all duration-700 ${index === 0 ? 'h-52 md:h-64' : 'h-40'} group-hover:scale-110`}
+                      onError={(e) => {
+                        e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
+                      {post.icon}
+                    </div>
+                    <div className="absolute top-3 right-3" onClick={(e) => e.preventDefault()}>
+                      <FavoriteButton slug={post.slug} />
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="flex gap-2 mb-3 flex-wrap">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">{tag}</span>
+                      ))}
+                    </div>
+                    <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
+                      {post.title}
+                    </h2>
+                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500 text-xs">{post.date}</span>
+                      <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
+                        閱讀全文 →
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* ===== 大灣區退休遊記專欄 ===== */}
         <div className="bg-gradient-to-r from-amber-900/50 via-orange-900/50 to-red-900/50 rounded-2xl p-6 mb-8 border border-amber-500/30">
           <div className="flex items-center justify-between mb-6">
@@ -236,74 +375,6 @@ export default function BlogPage() {
                 </button>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* ===== 海外遊記專欄 ===== */}
-        <div className="bg-gradient-to-r from-blue-900/50 via-indigo-900/50 to-purple-900/50 rounded-2xl p-6 mb-8 border border-blue-500/30">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <span className="text-4xl">✈️</span>
-              <div>
-                <h2 className="text-white text-2xl font-bold">海外遊記</h2>
-                <p className="text-blue-200/80 text-sm mt-1">歐洲 · 日本 · 韓國 · 東南亞 · 世界任我行</p>
-              </div>
-            </div>
-            <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
-              🌍 {overseasPosts.length} 篇遊記
-            </span>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {overseasPosts.map((post, index) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className={`block group transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
-                onMouseEnter={() => setHoveredSlug(post.slug)}
-                onMouseLeave={() => setHoveredSlug(null)}
-              >
-                <div className={`relative h-full bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 ${hoveredSlug === post.slug ? 'shadow-xl shadow-blue-500/10' : ''}`}>
-                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${post.accent} opacity-80 group-hover:opacity-100 transition-opacity`} />
-
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className={`w-full object-cover transition-all duration-700 ${index === 0 ? 'h-52 md:h-64' : 'h-40'} group-hover:scale-110`}
-                      onError={(e) => {
-                        e.currentTarget.src = `https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-full p-2 text-xl shadow-lg`}>
-                      {post.icon}
-                    </div>
-                    <div className="absolute top-3 right-3" onClick={(e) => e.preventDefault()}>
-                      <FavoriteButton slug={post.slug} />
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <div className="flex gap-2 mb-3 flex-wrap">
-                      {post.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2 py-1 rounded-full bg-slate-700 text-slate-300">{tag}</span>
-                      ))}
-                    </div>
-                    <h2 className={`font-bold mb-2 text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:${post.accent} transition-all`}>
-                      {post.title}
-                    </h2>
-                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500 text-xs">{post.date}</span>
-                      <span className={`text-sm font-semibold bg-gradient-to-r ${post.accent} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity`}>
-                        閱讀全文 →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
 

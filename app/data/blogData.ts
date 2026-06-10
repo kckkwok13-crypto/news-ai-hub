@@ -8,6 +8,7 @@ export interface BlogPost {
   icon: string;
   tags: string[];
   accent: string;
+  category?: 'local' | 'world' | 'gba'; // 分类: local=地方游記, world=世界任我行, gba=大灣區
 }
 
 export const blogPosts: BlogPost[] = [
@@ -19,7 +20,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&q=80",
     icon: "🕰️",
     tags: ["倫敦", "英國", "打卡"],
-    accent: "from-blue-500 to-cyan-500"
+    accent: "from-blue-500 to-cyan-500",
+    category: "local"
   },
   {
     slug: "tower-bridge",
@@ -29,7 +31,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?w=1200&q=80",
     icon: "🌉",
     tags: ["倫敦", "英國", "打卡"],
-    accent: "from-blue-600 to-cyan-600"
+    accent: "from-blue-600 to-cyan-600",
+    category: "local"
   },
   {
     slug: "london-eye",
@@ -39,7 +42,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&q=80",
     icon: "🎡",
     tags: ["倫敦", "英國", "打卡"],
-    accent: "from-pink-500 to-rose-500"
+    accent: "from-pink-500 to-rose-500",
+    category: "local"
   },
   {
     slug: "marienplatz-munich",
@@ -49,7 +53,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/marienplatz-munich-hero.jpg",
     icon: "🦁",
     tags: ["慕尼黑", "德國", "巴伐利亞"],
-    accent: "from-red-600 to-amber-500"
+    accent: "from-red-600 to-amber-500",
+    category: "local"
   },
   {
     slug: "english-garden-munich",
@@ -59,7 +64,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1518176258769-f227c798150e?w=1200&q=80",
     icon: "🌲",
     tags: ["慕尼黑", "德國", "自然"],
-    accent: "from-emerald-600 to-teal-500"
+    accent: "from-emerald-600 to-teal-500",
+    category: "local"
   },
   {
     slug: "edinburgh-castle",
@@ -69,7 +75,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://cdn.britannica.com/24/94424-050-6302BA2E/Edinburgh-Castle-Scotland.jpg",
     icon: "🏰",
     tags: ["愛丁堡", "蘇格蘭", "打卡"],
-    accent: "from-red-600 to-amber-500"
+    accent: "from-red-600 to-amber-500",
+    category: "local"
   },
   {
     slug: "brandenburg-gate",
@@ -79,7 +86,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=80",
     icon: "🏛️",
     tags: ["柏林", "德國", "歷史"],
-    accent: "from-amber-600 to-yellow-500"
+    accent: "from-amber-600 to-yellow-500",
+    category: "local"
   },
   {
     slug: "sagrada-familia",
@@ -89,7 +97,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/sagrada-familia-hero.jpg",
     icon: "🦎",
     tags: ["巴塞隆納", "西班牙", "高第"],
-    accent: "from-amber-500 to-orange-500"
+    accent: "from-amber-500 to-orange-500",
+    category: "local"
   },
   {
     slug: "park-guell",
@@ -99,7 +108,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/park-guell-hero.jpg",
     icon: "🏡",
     tags: ["巴塞隆納", "西班牙", "高第"],
-    accent: "from-teal-500 to-cyan-500"
+    accent: "from-teal-500 to-cyan-500",
+    category: "local"
   },
   {
     slug: "royal-palace-madrid",
@@ -109,7 +119,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80",
     icon: "🏛️",
     tags: ["馬德里", "西班牙", "皇室"],
-    accent: "from-amber-500 to-yellow-500"
+    accent: "from-amber-500 to-yellow-500",
+    category: "local"
   },
   {
     slug: "sensoji",
@@ -119,7 +130,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/sensoji-thumb.jpg",
     icon: "🏮",
     tags: ["東京", "寺廟", "文化"],
-    accent: "from-red-500 to-orange-500"
+    accent: "from-red-500 to-orange-500",
+    category: "world"
   },
   {
     slug: "shibuya-crossing",
@@ -129,7 +141,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1759491125973-6c46d3f86c13?w=1200&q=80",
     icon: "🌍",
     tags: ["東京", "城市", "打卡"],
-    accent: "from-purple-500 to-pink-500"
+    accent: "from-purple-500 to-pink-500",
+    category: "world"
   },
   {
     slug: "meiji-shrine",
@@ -139,7 +152,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1682744210484-5f23d77b21c7?w=1200&q=80",
     icon: "🌲",
     tags: ["東京", "神社", "自然"],
-    accent: "from-green-500 to-emerald-500"
+    accent: "from-green-500 to-emerald-500",
+    category: "world"
   },
   {
     slug: "dotonbori",
@@ -149,7 +163,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1565559204102-f59129a70ae2?w=1200&q=80",
     icon: "🌊",
     tags: ["大阪", "美食", "夜景"],
-    accent: "from-cyan-500 to-blue-500"
+    accent: "from-cyan-500 to-blue-500",
+    category: "world"
   },
   {
     slug: "arashiyama",
@@ -159,7 +174,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80",
     icon: "🎋",
     tags: ["京都", "竹林", "自然"],
-    accent: "from-green-600 to-emerald-500"
+    accent: "from-green-600 to-emerald-500",
+    category: "world"
   },
   {
     slug: "eiffel-tower",
@@ -169,7 +185,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
     icon: "🗼",
     tags: ["巴黎", "歐洲", "浪漫"],
-    accent: "from-amber-500 to-yellow-500"
+    accent: "from-amber-500 to-yellow-500",
+    category: "local"
   },
   {
     slug: "myeongdong",
@@ -179,7 +196,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1699316788084-d4c0943a4bcf?w=1200&q=80",
     icon: "🛍️",
     tags: ["首爾", "韓國", "購物"],
-    accent: "from-rose-500 to-pink-500"
+    accent: "from-rose-500 to-pink-500",
+    category: "world"
   },
   {
     slug: "st-peters-basilica",
@@ -189,7 +207,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1746071062145-f01c2dbdbc23?w=1200&q=80",
     icon: "🏛️",
     tags: ["羅馬", "歐洲", "宗教"],
-    accent: "from-amber-600 to-yellow-500"
+    accent: "from-amber-600 to-yellow-500",
+    category: "local"
   },
   {
     slug: "sistine-chapel",
@@ -199,7 +218,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1722979830401-fd878aad76fe?w=1200&q=80",
     icon: "🎨",
     tags: ["羅馬", "歐洲", "藝術"],
-    accent: "from-purple-600 to-pink-500"
+    accent: "from-purple-600 to-pink-500",
+    category: "local"
   },
   {
     slug: "trevi",
@@ -209,7 +229,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1525874684015-58379d421a52?w=1200&q=80",
     icon: "⛲",
     tags: ["羅馬", "歐洲", "浪漫"],
-    accent: "from-blue-500 to-cyan-500"
+    accent: "from-blue-500 to-cyan-500",
+    category: "local"
   },
   {
     slug: "grand-palace",
@@ -219,7 +240,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80",
     icon: "👑",
     tags: ["曼谷", "泰國", "文化"],
-    accent: "from-yellow-500 to-amber-500"
+    accent: "from-yellow-500 to-amber-500",
+    category: "world"
   },
   {
     slug: "colosseum",
@@ -229,7 +251,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1724398915427-edc535c546fe?w=1200&q=80",
     icon: "🏟️",
     tags: ["羅馬", "歐洲", "歷史"],
-    accent: "from-red-600 to-orange-500"
+    accent: "from-red-600 to-orange-500",
+    category: "local"
   },
   {
     slug: "florence-cathedral",
@@ -239,7 +262,8 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1775343970007-d70d54e86526?w=1200&q=80",
     icon: "🧱",
     tags: ["佛羅倫斯", "歐洲", "建築"],
-    accent: "from-emerald-600 to-teal-500"
+    accent: "from-emerald-600 to-teal-500",
+    category: "local"
   },
   {
     slug: "ponte-vecchio",
@@ -249,7 +273,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/ponte-vecchio-hero.jpg",
     icon: "🌉",
     tags: ["佛羅倫斯", "歐洲", "浪漫"],
-    accent: "from-amber-600 to-orange-500"
+    accent: "from-amber-600 to-orange-500",
+    category: "local"
   },
   {
     slug: "st-marks-square",
@@ -259,7 +284,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/st-marks-square-hero.jpg",
     icon: "🎭",
     tags: ["威尼斯", "意大利", "浪漫"],
-    accent: "from-blue-600 to-indigo-600"
+    accent: "from-blue-600 to-indigo-600",
+    category: "local"
   },
   {
     slug: "rialto-bridge",
@@ -269,7 +295,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/rialto-bridge-hero.jpg",
     icon: "🌉",
     tags: ["威尼斯", "意大利", "浪漫"],
-    accent: "from-amber-600 to-orange-500"
+    accent: "from-amber-600 to-orange-500",
+    category: "local"
   },
   // ===== 大灣區退休遊記專欄 =====
   {
@@ -280,7 +307,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/gba-shenzhen-dongmen.jpg",
     icon: "🏙️",
     tags: ["大灣區", "深圳", "退休遊", "2天1夜"],
-    accent: "from-orange-500 to-red-500"
+    accent: "from-orange-500 to-red-500",
+    category: "gba"
   },
   {
     slug: "gba-guangzhou",
@@ -290,7 +318,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/guangzhou-hero.jpg",
     icon: "🍜",
     tags: ["大灣區", "廣州", "退休遊", "3天2夜", "美食"],
-    accent: "from-amber-500 to-orange-500"
+    accent: "from-amber-500 to-orange-500",
+    category: "gba"
   },
   {
     slug: "gba-macau-2days",
@@ -300,7 +329,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/macau-skyline-twilight.jpg",
     icon: "🎰",
     tags: ["大灣區", "澳門", "退休遊", "2天1夜"],
-    accent: "from-purple-500 to-indigo-500"
+    accent: "from-purple-500 to-indigo-500",
+    category: "gba"
   },
   {
     slug: "gba-zhuhai-3days",
@@ -310,7 +340,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/zhuhai-lovers-road.jpg",
     icon: "🌊",
     tags: ["大灣區", "珠海", "退休遊", "3天2夜", "海邊"],
-    accent: "from-teal-500 to-cyan-500"
+    accent: "from-teal-500 to-cyan-500",
+    category: "gba"
   },
   {
     slug: "gba-chimelong-3days",
@@ -320,7 +351,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/chimelong-hotel.jpg",
     icon: "🐳",
     tags: ["大灣區", "珠海", "長隆", "退休遊", "3天2夜", "海洋"],
-    accent: "from-blue-500 to-cyan-500"
+    accent: "from-blue-500 to-cyan-500",
+    category: "gba"
   },
   {
     slug: "gba-hongkong-3days",
@@ -330,7 +362,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/hongkong-harbour.jpg",
     icon: "🎇",
     tags: ["大灣區", "香港", "親友遊", "3天2夜", "維港", "美食"],
-    accent: "from-amber-500 to-yellow-500"
+    accent: "from-amber-500 to-yellow-500",
+    category: "gba"
   },
   {
     slug: "gba-dongguan-2days",
@@ -340,7 +373,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/dongguan-keyuan.jpg",
     icon: "🏛️",
     tags: ["大灣區", "東莞", "退休遊", "2天1夜", "慢活", "銀髮"],
-    accent: "from-emerald-500 to-teal-500"
+    accent: "from-emerald-500 to-teal-500",
+    category: "gba"
   },
   {
     slug: "gba-foshan-2days",
@@ -350,7 +384,8 @@ export const blogPosts: BlogPost[] = [
     image: "/images/foshan-zumiao.jpg",
     icon: "🥢",
     tags: ["大灣區", "佛山", "退休遊", "2天1夜", "老友記", "功夫", "順德美食"],
-    accent: "from-red-600 to-amber-500"
+    accent: "from-red-600 to-amber-500",
+    category: "gba"
   },
   {
     slug: "gba-humen-2days",
@@ -360,6 +395,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/gba-humen-fort.jpg",
     icon: "🎒",
     tags: ["大灣區", "東莞", "虎門", "一人遊", "2天1夜", "慢活", "歷史"],
-    accent: "from-teal-500 to-cyan-500"
+    accent: "from-teal-500 to-cyan-500",
+    category: "gba"
   },
 ];
