@@ -75,11 +75,11 @@ export default function RialtoBridgePage() {
       <div className="relative h-96 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
         <div className="absolute inset-0 bg-black/30" />
         <img
-          src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1600&q=80"
+          src="https://media.istockphoto.com/id/905217772/photo/bright-charming-landscape-with-rialto-bridge-at-sunset-in-venice-italy-europe.jpg"
           alt="里奧托橋黃昏日落"
           className="w-full h-full object-cover"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1600&q=80";
+            e.currentTarget.src = "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1600&q=80";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />

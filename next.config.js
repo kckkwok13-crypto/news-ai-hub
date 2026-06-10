@@ -14,6 +14,7 @@ const nextConfig = {
       { hostname: 'photos.smugmug.com' },
       { hostname: 'upload.wikimedia.org' },
       { hostname: 'cdn.britannica.com' },
+      { hostname: 'media.istockphoto.com' },
     ]
   }
 }

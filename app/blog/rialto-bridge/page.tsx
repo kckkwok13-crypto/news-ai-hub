@@ -7,7 +7,7 @@ export const generateMetadata = () => {
     openGraph: {
       title: "繾綣大運河的黃昏餘暉：威尼斯里奧托橋深度攻略",
       description: "深度打卡與唯美日落攻略",
-      images: ["https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200&q=80"],
+      images: ["https://media.istockphoto.com/id/905217772/photo/bright-charming-landscape-with-rialto-bridge-at-sunset-in-venice-italy-europe.jpg"],
     },
   };
 };
