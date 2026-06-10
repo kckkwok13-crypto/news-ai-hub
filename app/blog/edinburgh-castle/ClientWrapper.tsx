@@ -92,7 +92,7 @@ export default function EdinburghCastlePage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-red-500/20">
           <img
-            src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1200&q=80"
+            src="https://cdn.britannica.com/24/94424-050-6302BA2E/Edinburgh-Castle-Scotland.jpg"
             alt="愛丁堡城堡"
             className="w-full h-80 object-cover"
           />

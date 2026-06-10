@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     title: "🏰 矗立在火山岩上的蘇格蘭之魂：愛丁堡城堡深度打卡與避坑全攻略",
     excerpt: "名列聯合國教科文組織世界文化遺產！解鎖「命運之石」與最古老皇冠、下午一點鐘大砲儀式、兩大私藏拍照機位！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1200&q=80",
+    image: "https://cdn.britannica.com/24/94424-050-6302BA2E/Edinburgh-Castle-Scotland.jpg",
     icon: "🏰",
     tags: ["愛丁堡", "蘇格蘭", "打卡"],
     accent: "from-red-600 to-amber-500"
