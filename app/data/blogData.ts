@@ -134,6 +134,17 @@ export const blogPosts: BlogPost[] = [
     category: "world"
   },
   {
+    slug: "kansai-trip",
+    title: "🗾 關西和風漫步：京阪神六日慢活家庭遊",
+    excerpt: "大阪、京都、神戶6天5夜家庭慢活之旅，帶家人走訪嵐山竹林、金閣寺、神戶港夜景與大阪城，品嚐神戶牛與地道美食。",
+    date: "June 2026",
+    image: "/images/kansai-kansai-hero.jpg",
+    icon: "🗾",
+    tags: ["關西", "大阪", "京都", "神戶", "家庭遊", "日本"],
+    accent: "from-emerald-600 to-teal-500",
+    category: "world"
+  },
+  {
     slug: "shibuya-crossing",
     title: "走進世界最繁忙的十字路口：東京澀谷十字路口全攻略！",
     excerpt: "如果要選一個最能代表現代東京、甚至全日本繁華景象的地標，澀谷十字路口（Shibuya Crossing）絕對當之無愧！",
