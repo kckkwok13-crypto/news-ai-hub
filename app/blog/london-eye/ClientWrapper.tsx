@@ -93,8 +93,8 @@ export default function LondonEyePage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-pink-500/20">
           <img
-            src="https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1200&q=80"
-            alt="倫敦眼夜景"
+            src="https://upload.wikimedia.org/wikipedia/commons/d/d6/London-Eye-2009.JPG"
+            alt="倫敦眼"
             className="w-full h-80 object-cover"
           />
         </div>

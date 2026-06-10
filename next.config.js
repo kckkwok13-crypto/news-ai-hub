@@ -12,6 +12,7 @@ const nextConfig = {
       { hostname: 'ichef-1.bbci.co.uk' },
       { hostname: 'images.cointelegraph.com' },
       { hostname: 'photos.smugmug.com' },
+      { hostname: 'upload.wikimedia.org' },
     ]
   }
 }
