@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
     title: "🏛️ 歐洲最美的客廳：威尼斯聖馬可廣場深度一日遊攻略",
     excerpt: "漫步聖馬可廣場，探索金色大教堂、總督宮與聖馬可鐘樓的千年風華。藍調時刻的威尼斯，浪漫指數爆表！",
     date: "May 2026",
-    image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=80",
+    image: "/images/st-marks-square-hero.jpg",
     icon: "🎭",
     tags: ["威尼斯", "意大利", "浪漫"],
     accent: "from-blue-600 to-indigo-600"

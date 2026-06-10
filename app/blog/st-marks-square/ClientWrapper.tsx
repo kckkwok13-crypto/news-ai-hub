@@ -146,11 +146,11 @@ export default function StMarksSquarePage() {
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#8b0000]/20">
           <img
-            src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=80"
+            src="/images/st-marks-square-hero.jpg"
             alt="威尼斯聖馬可廣場"
             className="w-full"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1534113414509-0eec2bfb493f?w=1200&q=80";
+              e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/6/61/Venezia_Basilica_di_San_Marco_Fassade_2.jpg";
             }}
           />
         </div>
