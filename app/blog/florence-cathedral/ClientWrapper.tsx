@@ -138,11 +138,11 @@ export default function FlorenceCathedralPage() {
           {/* Michelangelo Terrace Image */}
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1775343970007-d70d54e86526?w=1200&q=80"
-              alt="百花大教堂內部穹頂壁畫"
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Cattedrale_di_Santa_Maria_del_Fiore_%E2%80%93_Il_Duomo_di_Firenze.jpg"
+              alt="聖母百花大教堂"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1590673452623-cf094b5e08f9?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1543429257-3eb0b65d9c9e?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#8d99ae] text-sm mt-4 mb-8">
