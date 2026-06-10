@@ -75,7 +75,7 @@ export default function RialtoBridgePage() {
       <div className="relative h-96 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
         <div className="absolute inset-0 bg-black/30" />
         <img
-          src="https://media.istockphoto.com/id/905217772/photo/bright-charming-landscape-with-rialto-bridge-at-sunset-in-venice-italy-europe.jpg"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Ponte_di_Rialto%2C_Venezia.jpg/1280px-Ponte_di_Rialto%2C_Venezia.jpg"
           alt="里奧托橋黃昏日落"
           className="w-full h-full object-cover"
           onError={(e) => {
