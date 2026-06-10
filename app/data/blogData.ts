@@ -266,7 +266,7 @@ export const blogPosts: BlogPost[] = [
     title: "🌉 繾綣大運河的黃昏餘暉：威尼斯里奧托橋深度打卡攻略",
     excerpt: "橫跨1591年的白色大理石單拱石橋，打敗米開朗基羅的建築奇蹟。深度解鎖里奧托橋的建築傳奇與唯美日落打卡位！",
     date: "June 2026",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Rialto_2025_4.jpg",
+    image: "/images/rialto-bridge-hero.jpg",
     icon: "🌉",
     tags: ["威尼斯", "意大利", "浪漫"],
     accent: "from-amber-600 to-orange-500"
