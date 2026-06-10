@@ -123,11 +123,11 @@ export default function PonteVecchioPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1549897526-a3b97de1b7a5?w=1200&q=80"
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
               alt="老橋珠寶店"
               className="w-full rounded-2xl"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1713341085351-163f3d537f98?w=1200&q=80";
+                e.currentTarget.src = "https://images.unsplash.com/photo-1549897526-a3b97de1b7a5?w=1200&q=80";
               }}
             />
             <p className="text-center text-[#795548] text-sm mt-4 mb-8">
