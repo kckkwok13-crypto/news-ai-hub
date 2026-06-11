@@ -61,7 +61,51 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'google-site-verification': 'your-verification-code-here', // Replace with actual verification code
+  },
 }
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'NewsFlow',
+  url: 'https://www.newskingdom.store',
+  description: 'AI驅動的新聞聚合平台，支持多語言即時翻譯。純粹旅人原創深度遊記，涵蓋大灣區退休遊、日本、歐洲等旅遊攻略。',
+  publisher: {
+    '@type': 'Organization',
+    name: '純粹旅人',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.newskingdom.store/icon.svg',
+    },
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://www.newskingdom.store/search?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'NewsFlow',
+  url: 'https://www.newskingdom.store',
+  logo: 'https://www.newskingdom.store/icon.svg',
+  sameAs: [
+    'https://twitter.com/puretraveler',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: 'contact@newskingdom.store',
+    availableLanguage: ['Chinese', 'English', 'Traditional Chinese'],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -74,6 +118,14 @@ export default function RootLayout({
     <html lang="zh-HK" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         {adsenseId && (
           <>
             <Script
