@@ -1,4 +1,6 @@
-"use client";
+"use client"
+
+import Comments from "@/components/Comments";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -314,6 +316,10 @@ export default function GuangzhouPage() {
           </div>
         </article>
       </div>
-    </div>
+    
+
+        {/* Comments Section */}
+        <Comments slug="gba-guangzhou" />
+</div>
   );
 }

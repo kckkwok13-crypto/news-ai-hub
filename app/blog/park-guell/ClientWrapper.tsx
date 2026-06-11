@@ -1,4 +1,6 @@
-"use client";
+"use client"
+
+import Comments from "@/components/Comments";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -222,6 +224,10 @@ export default function ParkGuellPage() {
           </div>
         </article>
       </div>
-    </div>
+    
+
+        {/* Comments Section */}
+        <Comments slug="park-guell" />
+</div>
   );
 }

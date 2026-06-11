@@ -1,4 +1,6 @@
-"use client";
+"use client"
+
+import Comments from "@/components/Comments";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -290,6 +292,10 @@ export default function BigBenPage() {
           <RelatedPosts currentSlug="big-ben" currentTags={currentTags} />
         </article>
       </div>
-    </div>
+    
+
+        {/* Comments Section */}
+        <Comments slug="big-ben" />
+</div>
   );
 }

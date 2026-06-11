@@ -1,4 +1,6 @@
-"use client";
+"use client"
+
+import Comments from "@/components/Comments";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -326,6 +328,10 @@ export default function StMarksSquarePage() {
           <p className="text-[#8b0000] font-bold">👇 留言分享：你更想在晴天和愛人坐著貢多拉吹海風，還是渴望遇上一場大潮、在聖馬可廣場拍下一張浪漫的「天空之鏡」呢？</p>
         </footer>
       </div>
-    </div>
+    
+
+        {/* Comments Section */}
+        <Comments slug="st-marks-square" />
+</div>
   );
 }

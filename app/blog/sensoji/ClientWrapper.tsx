@@ -1,4 +1,6 @@
-"use client";
+"use client"
+
+import Comments from "@/components/Comments";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -360,6 +362,10 @@ export default function SensojiPage() {
           <p className="text-[#b8975a] font-bold">👇 留言分享：如果去巴黎，你最想和誰一起在鐵塔下看一場整點的鑽石閃爍騷呢？</p>
         </footer>
       </div>
-    </div>
+    
+
+        {/* Comments Section */}
+        <Comments slug="sensoji" />
+</div>
   );
 }
