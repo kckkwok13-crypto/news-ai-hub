@@ -2132,11 +2132,11 @@ export default function NewsPage() {
                   </div>
 
                   <div className="p-5 md:p-6">
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center gap-3 mb-4 pt-2">
                       <span className={`text-sm md:text-sm px-4 py-1.5 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
                       {isSaved && <span className="text-lg">📌</span>}
                     </div>
-                    <h3 className={`text-lg md:text-lg font-bold leading-relaxed mb-4 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-lg md:text-lg font-bold leading-relaxed mb-4 mt-0 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
                     {/* Auto-show summary - no click needed - More visible on mobile */}

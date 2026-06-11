@@ -759,7 +759,7 @@ async function handleDataJournalismCategory(sub: string, lang: string) {
       const itemMatches = xml.match(/<item[^>]*>([\s\S]*?)<\/item>/gi) || []
       return itemMatches.slice(0, 10).map((itemXml: string) => {
         const title = extractText(itemXml.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || '')
-        const desc = extractText(itemXml.match(/<description>([\s\S]*?)<\/description>/i)?.[1] || '').slice(0, 200)
+        const desc = extractText(itemXml.match(/<description>([\s\S]*?)<\/description>/i)?.[1] || '').slice(0, 500)
         const link = extractText(itemXml.match(/<link>([\s\S]*?)<\/link>/i)?.[1] || '')
         const pubDateStr = itemXml.match(/<pubDate>([\s\S]*?)<\/pubDate>/i)?.[1] || ''
         const pubTimestamp = pubDateStr ? (isNaN(new Date(pubDateStr).getTime()) ? 0 : new Date(pubDateStr).getTime()) : 0
@@ -811,7 +811,7 @@ async function handleNewsCategory(category: string, lang: string) {
       const sourceItems: any[] = []
       for (const itemXml of itemMatches.slice(0, 15)) {
         const title = extractText(itemXml.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || '')
-        const desc = extractText(itemXml.match(/<description>([\s\S]*?)<\/description>/i)?.[1] || '').slice(0, 200)
+        const desc = extractText(itemXml.match(/<description>([\s\S]*?)<\/description>/i)?.[1] || '').slice(0, 500)
         const link = extractText(itemXml.match(/<link>([\s\S]*?)<\/link>/i)?.[1] || '')
         const pubDateStr = itemXml.match(/<pubDate>([\s\S]*?)<\/pubDate>/i)?.[1] || ''
         let pubTimestamp = 0
