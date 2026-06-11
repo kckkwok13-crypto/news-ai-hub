@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPO_OWNER = 'kckkwok13-crypto';
-const REPO_NAME = 'news-ai-hub';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://kcfwxfhxmoiupiuaqlnh.supabase.co';
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjZnd4Zmh4bW9pdXBpdWFxbG5oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExOTE2NTYsImV4cCI6MjA5Njc2NzY1Nn0.oF_RlnxnMEujdhj0EXdAp5CbKR5t5Sybgo194zXKJb0';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -10,11 +9,11 @@ export async function GET(request: NextRequest) {
 
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?labels=blog-comment&state=open`,
+      `${SUPABASE_URL}/rest/v1/comments?slug=eq.${encodeURIComponent(slug)}&select=*&order=created_at.desc`,
       {
         headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.v3+json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         },
       }
     );
@@ -23,21 +22,11 @@ export async function GET(request: NextRequest) {
       throw new Error('Failed to fetch comments');
     }
 
-    const issues = await response.json();
-    const filteredComments = issues.filter((issue: any) => 
-      issue.title.startsWith(`[${slug}]`)
-    );
-
-    const comments = filteredComments.map((issue: any) => ({
-      id: issue.id,
-      author: issue.user?.login || 'Anonymous',
-      content: issue.body || '',
-      createdAt: issue.created_at,
-    }));
-
+    const comments = await response.json();
     return NextResponse.json({ comments });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch comments' }, { status: 500 });
+    console.error('Error fetching comments:', error);
+    return NextResponse.json({ error: 'Failed to fetch comments', comments: [] }, { status: 500 });
   }
 }
 
@@ -51,18 +40,19 @@ export async function POST(request: NextRequest) {
 
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`,
+      `${SUPABASE_URL}/rest/v1/comments`,
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.v3+json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
           'Content-Type': 'application/json',
+          'Prefer': 'return=representation',
         },
         body: JSON.stringify({
-          title: `[${slug}] Comment from ${author}`,
-          body: content,
-          labels: ['blog-comment'],
+          slug,
+          author,
+          content,
         }),
       }
     );
@@ -71,17 +61,10 @@ export async function POST(request: NextRequest) {
       throw new Error('Failed to post comment');
     }
 
-    const issue = await response.json();
-    return NextResponse.json({ 
-      success: true, 
-      comment: {
-        id: issue.id,
-        author: author,
-        content: content,
-        createdAt: issue.created_at,
-      }
-    });
+    const newComment = await response.json();
+    return NextResponse.json({ success: true, comment: newComment[0] });
   } catch (error) {
+    console.error('Error posting comment:', error);
     return NextResponse.json({ error: 'Failed to post comment' }, { status: 500 });
   }
 }

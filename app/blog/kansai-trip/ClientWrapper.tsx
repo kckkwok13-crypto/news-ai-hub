@@ -24,7 +24,8 @@ const tocItems = [
 export default function KansaiTripPage() {
   const [activeSection, setActiveSection] = useState("intro");
   const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
+  const [authorName, setAuthorName] = useState("");
+  const [commentContent, setCommentContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [readProgress, setReadProgress] = useState(0);
@@ -56,7 +57,7 @@ export default function KansaiTripPage() {
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newComment.trim() || isSubmitting) return;
+    if (!commentContent.trim() || !authorName.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
     setSubmitStatus("idle");
@@ -66,14 +67,14 @@ export default function KansaiTripPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           slug: "kansai-trip",
-          author: "家人旅人",
-          content: newComment,
+          author: authorName.trim(),
+          content: commentContent,
         }),
       });
       const data = await res.json();
       if (data.success) {
         setComments([data.comment, ...comments]);
-        setNewComment("");
+        setCommentContent("");
         setSubmitStatus("success");
       } else {
         setSubmitStatus("error");
@@ -643,16 +644,32 @@ export default function KansaiTripPage() {
           </h3>
 
           <form onSubmit={handleSubmitComment} className="mb-8">
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <input
+                type="text"
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
+                placeholder="你的名字"
+                className="bg-slate-900/50 text-white rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 border border-slate-700/50"
+                required
+              />
+              <input
+                type="email"
+                placeholder="電郵（選填，不會公開）"
+                className="bg-slate-900/50 text-white rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 border border-slate-700/50"
+              />
+            </div>
             <textarea
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
+              value={commentContent}
+              onChange={(e) => setCommentContent(e.target.value)}
               placeholder="分享你的關西遊記，或問我關於行程的問題..."
               className="w-full bg-slate-900/50 text-white rounded-xl p-4 mb-4 min-h-[140px] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 border border-slate-700/50 resize-none"
+              required
             />
             <div className="flex items-center gap-4">
               <button
                 type="submit"
-                disabled={isSubmitting || !newComment.trim()}
+                disabled={isSubmitting || !commentContent.trim() || !authorName.trim()}
                 className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-600 disabled:to-slate-600 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-emerald-500/20"
               >
                 {isSubmitting ? "發布中..." : "發布留言"}
@@ -680,7 +697,7 @@ export default function KansaiTripPage() {
                       <span className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-sm">👤</span>
                       {comment.author}
                     </span>
-                    <span className="text-slate-500/50 text-sm">{comment.createdAt}</span>
+                    <span className="text-slate-500/50 text-sm">{new Date(comment.created_at).toLocaleString('zh-HK')}</span>
                   </div>
                   <p className="text-slate-300/90">{comment.content}</p>
                 </div>
