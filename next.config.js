@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       { hostname: 'images.unsplash.com' },
       { hostname: 'picsum.photos' },
-      { hostname: 'i.guim.co.uk' },  // Guardian
+      { hostname: 'i.guim.co.uk' },
       { hostname: 'ichef.bbci.co.uk' },
       { hostname: 'ichef-1.bbci.co.uk' },
       { hostname: 'images.cointelegraph.com' },
