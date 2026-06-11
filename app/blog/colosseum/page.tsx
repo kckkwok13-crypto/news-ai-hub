@@ -1,5 +1,8 @@
 import ClientWrapper from "./ClientWrapper";
 
+import Comments from "@/components/Comments";
+
+
 export const generateMetadata = () => {
   return {
     title: "羅馬競技場 | 意大利羅馬",

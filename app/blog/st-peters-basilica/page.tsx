@@ -1,5 +1,8 @@
 import ClientWrapper from "./ClientWrapper";
 
+import Comments from "@/components/Comments";
+
+
 export const generateMetadata = () => {
   return {
     title: "聖彼得大教堂 | 梵蒂岡",

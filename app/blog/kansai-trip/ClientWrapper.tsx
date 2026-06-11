@@ -5,13 +5,6 @@ import Comments from "@/components/Comments";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  createdAt: string;
-}
-
 const tocItems = [
   { id: "intro", title: "行程概覽", emoji: "🗾" },
   { id: "day1", title: "第一天", emoji: "📍" },
@@ -25,16 +18,7 @@ const tocItems = [
 
 export default function KansaiTripPage() {
   const [activeSection, setActiveSection] = useState("intro");
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [authorName, setAuthorName] = useState("");
-  const [commentContent, setCommentContent] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [readProgress, setReadProgress] = useState(0);
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
 
   // Reading progress bar
   useEffect(() => {
@@ -46,47 +30,6 @@ export default function KansaiTripPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const fetchComments = async () => {
-    try {
-      const res = await fetch("/api/comments?slug=kansai-trip");
-      const data = await res.json();
-      if (data.comments) setComments(data.comments);
-    } catch (err) {
-      console.error("Failed to fetch comments", err);
-    }
-  };
-
-  const handleSubmitComment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!commentContent.trim() || !authorName.trim() || isSubmitting) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: "kansai-trip",
-          author: authorName.trim(),
-          content: commentContent,
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setComments([data.comment, ...comments]);
-        setCommentContent("");
-        setSubmitStatus("success");
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (err) {
-      console.error("Failed to submit comment", err);
-      setSubmitStatus("error");
-    }
-    setIsSubmitting(false);
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -637,76 +580,6 @@ export default function KansaiTripPage() {
             <div className="text-white font-semibold text-sm">4.9/5</div>
           </div>
         </div>
-
-        {/* Comments Section - Improved */}
-        <section className="bg-gradient-to-br from-slate-800/50 to-slate-800/20 rounded-3xl p-8 mb-12 border border-slate-700/50">
-          <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="text-2xl">💬</span>
-            留言分享
-          </h3>
-
-          <form onSubmit={handleSubmitComment} className="mb-8">
-            <div className="grid md:grid-cols-2 gap-4 mb-4">
-              <input
-                type="text"
-                value={authorName}
-                onChange={(e) => setAuthorName(e.target.value)}
-                placeholder="你的名字"
-                className="bg-slate-900/50 text-white rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 border border-slate-700/50"
-                required
-              />
-              <input
-                type="email"
-                placeholder="電郵（選填，不會公開）"
-                className="bg-slate-900/50 text-white rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 border border-slate-700/50"
-              />
-            </div>
-            <textarea
-              value={commentContent}
-              onChange={(e) => setCommentContent(e.target.value)}
-              placeholder="分享你的關西遊記，或問我關於行程的問題..."
-              className="w-full bg-slate-900/50 text-white rounded-xl p-4 mb-4 min-h-[140px] focus:outline-none focus:ring-2 focus:ring-emerald-500/50 border border-slate-700/50 resize-none"
-              required
-            />
-            <div className="flex items-center gap-4">
-              <button
-                type="submit"
-                disabled={isSubmitting || !commentContent.trim() || !authorName.trim()}
-                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-600 disabled:to-slate-600 text-white px-6 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-emerald-500/20"
-              >
-                {isSubmitting ? "發布中..." : "發布留言"}
-              </button>
-              {submitStatus === "success" && (
-                <span className="text-green-400 font-medium">✅ 留言已發布！</span>
-              )}
-              {submitStatus === "error" && (
-                <span className="text-red-400 font-medium">❌ 發布失敗，請重試</span>
-              )}
-            </div>
-          </form>
-
-          <div className="space-y-4">
-            {comments.length === 0 ? (
-              <div className="text-center py-12 text-slate-500">
-                <div className="text-4xl mb-3">💭</div>
-                <p>暫時未有留言，成為第一個分享你的遊記吧！</p>
-              </div>
-            ) : (
-              comments.map((comment) => (
-                <div key={comment.id} className="bg-slate-900/50 rounded-xl p-5 border border-slate-700/30">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-emerald-400 font-semibold flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-sm">👤</span>
-                      {comment.author}
-                    </span>
-                    <span className="text-slate-500/50 text-sm">{new Date(comment.created_at).toLocaleString('zh-HK')}</span>
-                  </div>
-                  <p className="text-slate-300/90">{comment.content}</p>
-                </div>
-              ))
-            )}
-          </div>
-        </section>
 
         {/* Footer CTA */}
         <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 text-center mb-12 shadow-xl shadow-emerald-500/10">

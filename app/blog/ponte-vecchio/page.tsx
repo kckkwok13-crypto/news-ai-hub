@@ -1,5 +1,8 @@
 import ClientWrapper from "./ClientWrapper";
 
+import Comments from "@/components/Comments";
+
+
 export const generateMetadata = () => {
   return {
     title: "韋爾納札橋 | 意大利佛羅倫斯",

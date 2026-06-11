@@ -1,5 +1,8 @@
 import ClientWrapper from "./ClientWrapper";
 
+import Comments from "@/components/Comments";
+
+
 export const generateMetadata = () => {
   return {
     title: "大皇宮 | 泰國曼谷",

@@ -274,26 +274,7 @@ export default function StMarksSquarePage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-[#f4f6f9] border border-[#8b0000]/30 rounded-2xl p-6 my-10">
-            <h3 className="text-[#8b0000] font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-[#2c3e50] text-lg mb-4">
-              👇 留言分享：你更想在晴天和愛人坐著貢多拉吹海風，還是渴望遇上一場大潮、在聖馬可廣場拍下一張浪漫的「天空之鏡」呢？
-            </p>
-
-            {comments.length > 0 && (
-              <div className="space-y-4 mb-6">
-                {comments.map((comment) => (
-                  <div key={comment.id} className="bg-white rounded-xl p-4 border border-[#e5d4bc]">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-[#8b0000]">{comment.author}</span>
-                      <span className="text-xs text-[#94a3b8]">
-                        {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
-                      </span>
-                    </div>
-                    <p className="text-[#2c3e50]">{comment.content}</p>
+                              <p className="text-[#2c3e50]">{comment.content}</p>
                   </div>
                 ))}
               </div>

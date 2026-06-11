@@ -298,27 +298,7 @@ export default function SensojiPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-[#f4f6f9] border border-[#b8975a]/30 rounded-2xl p-6 my-10">
-            <h3 className="text-[#b8975a] font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-[#2c3e50] text-lg mb-4">
-              👇 留言分享：你來淺草寺求過籤嗎？抽到的是「吉」還是「凶」呢？
-            </p>
-
-            {/* Existing Comments */}
-            {comments.length > 0 && (
-              <div className="space-y-4 mb-6">
-                {comments.map((comment) => (
-                  <div key={comment.id} className="bg-white rounded-xl p-4 border border-[#e5d4bc]">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-[#b8975a]">{comment.author}</span>
-                      <span className="text-xs text-[#94a3b8]">
-                        {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
-                      </span>
-                    </div>
-                    <p className="text-[#2c3e50]">{comment.content}</p>
+                              <p className="text-[#2c3e50]">{comment.content}</p>
                   </div>
                 ))}
               </div>

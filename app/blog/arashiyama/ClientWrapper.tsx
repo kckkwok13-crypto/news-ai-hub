@@ -207,25 +207,7 @@ export default function ArashiyamaPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-[#f4f6f9] border border-[#4a7c59]/30 rounded-2xl p-6 my-10">
-            <h3 className="text-[#4a7c59] font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-[#2c3e50] text-lg mb-4">
-              👇 留言分享：你喜歡清晨幽靜的綠色竹林，還是秋天滿山轟烈的大紅楓葉呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white border border-[#e5d4bc] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#4a7c59] transition-colors"
-              />
-              <button className="bg-gradient-to-r from-[#4a7c59] to-[#6b9b7a] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
+                    </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

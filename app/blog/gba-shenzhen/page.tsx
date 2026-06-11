@@ -1,5 +1,8 @@
 import ClientWrapper from "./ClientWrapper";
 
+import Comments from "@/components/Comments";
+
+
 export const generateMetadata = () => {
   return {
     title: "深圳2天慢活遊：東門老街懷舊 + 華強北科技尋寶 + 深圳灣日落",
