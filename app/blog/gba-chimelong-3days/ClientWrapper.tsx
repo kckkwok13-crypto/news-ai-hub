@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
@@ -15,27 +14,6 @@ const tocItems = [
 
 export default function ChimelongPage() {
   const [activeSection, setActiveSection] = useState("prepare");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -332,7 +310,7 @@ export default function ChimelongPage() {
     
 
         {/* Comments Section */}
-        <Comments slug="gba-chimelong-3days" />
-</div>
+      <Comments slug="gba-chimelong-3days" />
+    </div>
   );
 }

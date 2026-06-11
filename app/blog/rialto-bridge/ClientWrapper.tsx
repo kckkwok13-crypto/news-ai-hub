@@ -1,16 +1,8 @@
-"use client"
-
-import Comments from "@/components/Comments";
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  createdAt: string;
-}
+import { useState } from "react";
+import Comments from "@/components/Comments";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "🌅" },
@@ -21,55 +13,6 @@ const tocItems = [
 
 export default function RialtoBridgePage() {
   const [activeSection, setActiveSection] = useState("intro");
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
-
-  const fetchComments = async () => {
-    try {
-      const res = await fetch("/api/comments?slug=rialto-bridge");
-      const data = await res.json();
-      if (data.comments) setComments(data.comments);
-    } catch (err) {
-      console.error("Failed to fetch comments", err);
-    }
-  };
-
-  const handleSubmitComment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newComment.trim() || isSubmitting) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: "rialto-bridge",
-          author: "匿名旅人",
-          content: newComment,
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setComments([data.comment, ...comments]);
-        setNewComment("");
-        setSubmitStatus("success");
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (err) {
-      console.error("Failed to submit comment", err);
-      setSubmitStatus("error");
-    }
-    setIsSubmitting(false);
-  };
 
   return (
     <div className="min-h-screen bg-slate-900">
@@ -359,53 +302,6 @@ export default function RialtoBridgePage() {
           </p>
         </div>
 
-        {/* Comments Section */}
-        <section className="bg-slate-800 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-white mb-6">💬 留言</h3>
-
-          {/* Comment Form */}
-          <form onSubmit={handleSubmitComment} className="mb-8">
-            <textarea
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="分享你的里奧托橋遊記..."
-              className="w-full bg-slate-700 text-white rounded-xl p-4 mb-4 min-h-[120px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <div className="flex items-center gap-4">
-              <button
-                type="submit"
-                disabled={isSubmitting || !newComment.trim()}
-                className="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-              >
-                {isSubmitting ? "發布中..." : "發布留言"}
-              </button>
-              {submitStatus === "success" && (
-                <span className="text-green-400">✅ 留言已發布！</span>
-              )}
-              {submitStatus === "error" && (
-                <span className="text-red-400">❌ 發布失敗，請重試</span>
-              )}
-            </div>
-          </form>
-
-          {/* Comments List */}
-          <div className="space-y-4">
-            {comments.length === 0 ? (
-              <p className="text-slate-400 text-center py-8">暫時未有留言，開始分享你的遊記吧！</p>
-            ) : (
-              comments.map((comment) => (
-                <div key={comment.id} className="bg-slate-700 rounded-xl p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-blue-400 font-semibold">{comment.author}</span>
-                    <span className="text-slate-500 text-sm">{comment.createdAt}</span>
-                  </div>
-                  <p className="text-slate-300">{comment.content}</p>
-                </div>
-              ))
-            )}
-          </div>
-        </section>
-
         {/* Back Link */}
         <div className="mt-12 text-center">
           <Link href="/blog" className="text-blue-400 hover:text-blue-300 hover:underline">
@@ -413,10 +309,9 @@ export default function RialtoBridgePage() {
           </Link>
         </div>
       </div>
-    
 
-        {/* Comments Section */}
-        <Comments slug="rialto-bridge" />
-</div>
+      {/* Comments Section */}
+      <Comments slug="rialto-bridge" />
+    </div>
   );
 }

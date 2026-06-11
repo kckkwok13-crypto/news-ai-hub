@@ -1,9 +1,8 @@
-"use client"
-
-import Comments from "@/components/Comments";
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Comments from "@/components/Comments";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "📖" },
@@ -15,26 +14,6 @@ const tocItems = [
 
 export default function MeijiShrinePage() {
   const [activeSection, setActiveSection] = useState("intro");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -75,7 +54,7 @@ export default function MeijiShrinePage() {
         >
           ← 返回 Blog
         </Link>
-        
+
         <header className="text-center py-12 border-b border-[#e5d4bc]">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#4a7c59] to-[#6b9b7a] text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#4a7c59]/30">
             🌲 東京神社
@@ -107,7 +86,7 @@ export default function MeijiShrinePage() {
           </p>
 
           <h2 id="torii" className="text-[#1a2a3a] border-b-2 border-[#4a7c59] pb-2 mt-10 mb-4">隱藏在參道上的 3 個歷史秘密</h2>
-          
+
           <h3 className="text-[#2c3e50] text-xl font-semibold mt-8">1. 全日本最大的木造鳥居 —— 來自台灣的緣分</h3>
           <p className="text-[#2c3e50] text-justify">
             進入神宮後，最引人注目的就是位於南參道與北參道交會處的「大鳥居」。這座鳥居高 12 米、寬 17 米，是全日本最大的木造明神鳥居。值得一提的是，這座巨大的鳥居所使用的木材，是源自台灣阿里山高達 1200 年樹齡的巨型檜木，來到這裏不妨抬頭感受它的莊嚴與歷史厚重感。
@@ -183,23 +162,17 @@ export default function MeijiShrinePage() {
             </div>
           </div>
 
-                    </div>
-
-          {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
-            <ins className="infolinks_ad" data-pid="3445528" data-wsid="0"></ins>
             <script type="text/javascript">
-              var infolinks_pid = 3445528;
-              var infolinks_wsid = 0;
+              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
             </script>
             <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
           </div>
         </article>
       </div>
-    
 
-        {/* Comments Section */}
-        <Comments slug="meiji-shrine" />
-</div>
+      {/* Comments Section */}
+      <Comments slug="meiji-shrine" />
+    </div>
   );
 }

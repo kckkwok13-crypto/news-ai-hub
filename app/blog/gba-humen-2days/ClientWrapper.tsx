@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
@@ -13,27 +12,6 @@ const tocItems = [
 
 export default function HumenPage() {
   const [activeSection, setActiveSection] = useState("day1");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -249,7 +227,7 @@ export default function HumenPage() {
     
 
         {/* Comments Section */}
-        <Comments slug="gba-humen-2days" />
-</div>
+      <Comments slug="gba-humen-2days" />
+    </div>
   );
 }

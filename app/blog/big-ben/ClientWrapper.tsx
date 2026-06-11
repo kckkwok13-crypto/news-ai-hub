@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
@@ -22,27 +21,6 @@ const currentTags = ["倫敦", "英國", "打卡"];
 
 export default function BigBenPage() {
   const [activeSection, setActiveSection] = useState("intro");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -295,7 +273,7 @@ export default function BigBenPage() {
     
 
         {/* Comments Section */}
-        <Comments slug="big-ben" />
-</div>
+      <Comments slug="big-ben" />
+    </div>
   );
 }

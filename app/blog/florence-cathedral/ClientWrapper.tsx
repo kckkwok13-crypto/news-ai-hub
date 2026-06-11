@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
@@ -16,27 +15,6 @@ const tocItems = [
 
 export default function FlorenceCathedralPage() {
   const [activeSection, setActiveSection] = useState("architecture");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -185,7 +163,7 @@ export default function FlorenceCathedralPage() {
     
 
         {/* Comments Section */}
-        <Comments slug="florence-cathedral" />
-</div>
+      <Comments slug="florence-cathedral" />
+    </div>
   );
 }

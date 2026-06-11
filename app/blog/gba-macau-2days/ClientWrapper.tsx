@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
@@ -14,27 +13,6 @@ const tocItems = [
 
 export default function MacauPage() {
   const [activeSection, setActiveSection] = useState("prepare");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -290,7 +268,7 @@ export default function MacauPage() {
     
 
         {/* Comments Section */}
-        <Comments slug="gba-macau-2days" />
-</div>
+      <Comments slug="gba-macau-2days" />
+    </div>
   );
 }

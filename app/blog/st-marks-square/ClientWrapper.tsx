@@ -1,16 +1,8 @@
-"use client"
-
-import Comments from "@/components/Comments";
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  createdAt: string;
-}
+import { useState } from "react";
+import Comments from "@/components/Comments";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "📖" },
@@ -21,79 +13,6 @@ const tocItems = [
 
 export default function StMarksSquarePage() {
   const [activeSection, setActiveSection] = useState("intro");
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
-
-  const fetchComments = async () => {
-    try {
-      const res = await fetch("/api/comments?slug=st-marks-square");
-      const data = await res.json();
-      if (data.comments) setComments(data.comments);
-    } catch (err) {
-      console.error("Failed to fetch comments", err);
-    }
-  };
-
-  const handleSubmitComment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newComment.trim() || isSubmitting) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: "st-marks-square",
-          author: "Visitor",
-          content: newComment,
-        }),
-      });
-      const data = await res.json();
-      if (data.success && data.comment) {
-        setComments((prev) => [data.comment, ...prev]);
-        setNewComment("");
-        setSubmitStatus("success");
-        setTimeout(() => setSubmitStatus("idle"), 3000);
-      } else {
-        setSubmitStatus("error");
-        alert("留言失敗：" + (data.error || "未知錯誤"));
-      }
-    } catch (err) {
-      setSubmitStatus("error");
-      alert("提交失敗，請稍後再試");
-      console.error("Failed to post comment", err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -274,34 +193,11 @@ export default function StMarksSquarePage() {
             </div>
           </div>
 
-                              <p className="text-[#2c3e50]">{comment.content}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmitComment} className="space-y-3">
-              <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="輸入你的留言..."
-                rows={3}
-                className="w-full bg-white border border-[#e5d4bc] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#8b0000] transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting || !newComment.trim()}
-                className="bg-gradient-to-r from-[#8b0000] to-[#b22222] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
-              >
-                {isSubmitting ? "提交中..." : "提交留言"}
-              </button>
-              {submitStatus === "success" && (
-                <p className="text-green-600 font-medium">✅ 留言成功提交！</p>
-              )}
-              {submitStatus === "error" && (
-                <p className="text-red-600 font-medium">❌ 提交失敗，請稍後再試</p>
-              )}
-            </form>
+          <div className="my-8 text-center">
+            <script type="text/javascript">
+              {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
+            </script>
+            <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
           </div>
         </article>
 
@@ -309,10 +205,9 @@ export default function StMarksSquarePage() {
           <p className="text-[#8b0000] font-bold">👇 留言分享：你更想在晴天和愛人坐著貢多拉吹海風，還是渴望遇上一場大潮、在聖馬可廣場拍下一張浪漫的「天空之鏡」呢？</p>
         </footer>
       </div>
-    
 
-        {/* Comments Section */}
-        <Comments slug="st-marks-square" />
-</div>
+      {/* Comments Section */}
+      <Comments slug="st-marks-square" />
+    </div>
   );
 }

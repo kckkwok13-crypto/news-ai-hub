@@ -1,9 +1,8 @@
-"use client"
-
-import Comments from "@/components/Comments";
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Comments from "@/components/Comments";
 
 const tocItems = [
   { id: "history", title: "歷史核心", emoji: "⚔️" },
@@ -11,64 +10,8 @@ const tocItems = [
   { id: "tips", title: "實用提示", emoji: "💡" },
 ];
 
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  createdAt: string;
-}
-
 export default function BrandenburgGatePage() {
   const [activeSection, setActiveSection] = useState("history");
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
-
-  const fetchComments = async () => {
-    try {
-      const res = await fetch("/api/comments?slug=brandenburg-gate");
-      const data = await res.json();
-      if (data.comments) setComments(data.comments);
-    } catch (err) {
-      console.error("Failed to fetch comments", err);
-    }
-  };
-
-  const handleSubmitComment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newComment.trim() || isSubmitting) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: "brandenburg-gate",
-          author: "匿名旅人",
-          content: newComment,
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setComments([data.comment, ...comments]);
-        setNewComment("");
-        setSubmitStatus("success");
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (err) {
-      console.error("Failed to submit comment", err);
-      setSubmitStatus("error");
-    }
-    setIsSubmitting(false);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-stone-50 to-amber-50">
@@ -332,66 +275,18 @@ export default function BrandenburgGatePage() {
               👇 留言分享：你更想在清晨幽靜的晨霧中漫步巴黎廣場，還是渴望在暮色下聽一場大門背後關於冷戰與統一的世紀風雲故事呢？
             </p>
           </div>
-
-          {/* Comments Section */}
-          <section className="bg-gradient-to-br from-slate-100 to-amber-50 rounded-2xl p-8 border border-amber-200 mb-12">
-            <h3 className="text-2xl font-bold text-slate-800 mb-6">💬 留言</h3>
-
-            {/* Comment Form */}
-            <form onSubmit={handleSubmitComment} className="mb-8">
-              <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="分享你的勃蘭登堡門遊記..."
-                className="w-full bg-white text-slate-800 rounded-xl p-4 mb-4 min-h-[120px] focus:outline-none focus:ring-2 focus:ring-amber-500 border border-amber-200"
-              />
-              <div className="flex items-center gap-4">
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !newComment.trim()}
-                  className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 disabled:from-slate-400 disabled:to-slate-500 text-white px-6 py-3 rounded-xl font-semibold transition-all"
-                >
-                  {isSubmitting ? "發布中..." : "發布留言"}
-                </button>
-                {submitStatus === "success" && (
-                  <span className="text-green-600">✅ 留言已發布！</span>
-                )}
-                {submitStatus === "error" && (
-                  <span className="text-red-600">❌ 發布失敗，請重試</span>
-                )}
-              </div>
-            </form>
-
-            {/* Comments List */}
-            <div className="space-y-4">
-              {comments.length === 0 ? (
-                <p className="text-stone-500 text-center py-8">暫時未有留言，開始分享你的遊記吧！</p>
-              ) : (
-                comments.map((comment) => (
-                  <div key={comment.id} className="bg-white rounded-xl p-5 border border-amber-100">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-amber-600 font-semibold">{comment.author}</span>
-                      <span className="text-stone-400 text-sm">{comment.createdAt}</span>
-                    </div>
-                    <p className="text-stone-600">{comment.content}</p>
-                  </div>
-                ))
-              )}
-            </div>
-          </section>
-
-          {/* Back Link */}
-          <div className="text-center">
-            <Link href="/blog" className="text-amber-600 hover:text-amber-800 hover:underline">
-              ← 返回 Blog 列表
-            </Link>
-          </div>
         </article>
-      </div>
-    
 
-        {/* Comments Section */}
-        <Comments slug="brandenburg-gate" />
-</div>
+        {/* Back Link */}
+        <div className="text-center">
+          <Link href="/blog" className="text-amber-600 hover:text-amber-800 hover:underline">
+            ← 返回 Blog 列表
+          </Link>
+        </div>
+      </div>
+
+      {/* Comments Section */}
+      <Comments slug="brandenburg-gate" />
+    </div>
   );
 }

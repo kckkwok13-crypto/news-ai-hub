@@ -1,9 +1,8 @@
-"use client"
-
-import Comments from "@/components/Comments";
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Comments from "@/components/Comments";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "🎋" },
@@ -24,26 +23,6 @@ const arashiyamaImages = [
 
 export default function ArashiyamaPage() {
   const [activeSection, setActiveSection] = useState("intro");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -84,7 +63,7 @@ export default function ArashiyamaPage() {
         >
           ← 返回 Blog
         </Link>
-        
+
         <header className="text-center py-12 border-b border-[#e5d4bc]">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#4a7c59] to-[#6b9b7a] text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#4a7c59]/30">
             🎋 京都大自然
@@ -119,7 +98,7 @@ export default function ArashiyamaPage() {
           </p>
 
           <h2 id="bamboo" className="text-[#1a2a3a] border-b-2 border-[#4a7c59] pb-2 mt-10 mb-4">🍃 嵐山散策：不可錯過的 3 大核心景點</h2>
-          
+
           <h3 className="text-[#2c3e50] text-xl font-semibold mt-8">1. 嵯峨野竹林小徑 —— 走進大自然的綠色屏障</h3>
           <p className="text-[#2c3e50] text-justify">
             這條小徑長約 400 米，從天龍寺北側一直延伸到大河內山莊附近。道路兩旁長滿了挺拔筆直的野宮竹，它們高聳得幾乎遮天蔽日，把外界的光線過濾成溫和的淡綠色。<strong>心靈體驗：</strong>來到這裡不妨閉上眼睛，細心聆聽竹葉摩擦的聲音與竹竿撞擊的沉穩聲響，這裡可是被評為日本百大最想保留的聲音風景之一呢。
@@ -207,9 +186,6 @@ export default function ArashiyamaPage() {
             </div>
           </div>
 
-                    </div>
-
-          {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
             <script type="text/javascript">
               {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
@@ -218,10 +194,9 @@ export default function ArashiyamaPage() {
           </div>
         </article>
       </div>
-    
 
-        {/* Comments Section */}
-        <Comments slug="arashiyama" />
-</div>
+      {/* Comments Section */}
+      <Comments slug="arashiyama" />
+    </div>
   );
 }

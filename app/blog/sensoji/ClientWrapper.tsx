@@ -1,16 +1,8 @@
-"use client"
-
-import Comments from "@/components/Comments";
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  createdAt: string;
-}
+import { useState } from "react";
+import Comments from "@/components/Comments";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "📖" },
@@ -30,80 +22,6 @@ const reliableImages = [
 
 export default function SensojiPage() {
   const [activeSection, setActiveSection] = useState("intro");
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
-  useEffect(() => {
-    // Fetch comments on mount
-    fetchComments();
-  }, []);
-
-  const fetchComments = async () => {
-    try {
-      const res = await fetch("/api/comments?slug=sensoji");
-      const data = await res.json();
-      if (data.comments) setComments(data.comments);
-    } catch (err) {
-      console.error("Failed to fetch comments", err);
-    }
-  };
-
-  const handleSubmitComment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newComment.trim() || isSubmitting) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: "sensoji",
-          author: "Visitor",
-          content: newComment,
-        }),
-      });
-      const data = await res.json();
-      if (data.success && data.comment) {
-        setComments((prev) => [data.comment, ...prev]);
-        setNewComment("");
-        setSubmitStatus("success");
-        setTimeout(() => setSubmitStatus("idle"), 3000);
-      } else {
-        setSubmitStatus("error");
-        alert("留言失敗：" + (data.error || "未知錯誤"));
-      }
-    } catch (err) {
-      setSubmitStatus("error");
-      alert("提交失敗，請稍後再試");
-      console.error("Failed to post comment", err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -144,7 +62,7 @@ export default function SensojiPage() {
         >
           ← 返回 Blog
         </Link>
-        
+
         <header className="text-center py-12 border-b border-[#e5d4bc]">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#b8975a] to-[#d4a574] text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#b8975a]/30">
             🏮 東京寺廟
@@ -176,7 +94,7 @@ export default function SensojiPage() {
           </p>
 
           <h2 id="kaminarimon" className="text-[#1a2a3a] border-b-2 border-[#b8975a] pb-2 mt-10 mb-4">🗺️ 淺草寺經典散策路線：從雷門走到本堂</h2>
-          
+
           <h3 className="text-[#2c3e50] text-xl font-semibold mt-8">1. 第一站：震撼力十足的「雷門」與巨大燈籠</h3>
           <p className="text-[#2c3e50] text-justify">
             淺草寺的正門就是大名鼎鼎的「雷門」（正式名稱為風雷神門）。門的右側供奉著風神，左側則是雷神。而正中央懸掛著那個重達 700 公斤的巨大紅燈籠，是由松下電器（Panasonic）創辦人松下幸之助在病癒後奉納的。<strong>拍照小貼士：</strong>走到燈籠正下方抬頭看，底部雕刻了一條栩栩如生的飛龍，非常精緻！
@@ -298,38 +216,6 @@ export default function SensojiPage() {
             </div>
           </div>
 
-                              <p className="text-[#2c3e50]">{comment.content}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Comment Form */}
-            <form onSubmit={handleSubmitComment} className="space-y-3">
-              <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="輸入你的留言..."
-                rows={3}
-                className="w-full bg-white border border-[#e5d4bc] rounded-xl px-4 py-3 text-[#2c3e50] placeholder-[#94a3b8] focus:outline-none focus:border-[#b8975a] transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting || !newComment.trim()}
-                className="bg-gradient-to-r from-[#b8975a] to-[#d4a574] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
-              >
-                {isSubmitting ? "提交中..." : "提交留言"}
-              </button>
-              {submitStatus === "success" && (
-                <p className="text-green-600 font-medium">✅ 留言成功提交！</p>
-              )}
-              {submitStatus === "error" && (
-                <p className="text-red-600 font-medium">❌ 提交失敗，請稍後再試</p>
-              )}
-            </form>
-          </div>
-
-          {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
             <script type="text/javascript">
               {`var infolinks_pid = 3445528; var infolinks_wsid = 0;`}
@@ -342,10 +228,9 @@ export default function SensojiPage() {
           <p className="text-[#b8975a] font-bold">👇 留言分享：如果去巴黎，你最想和誰一起在鐵塔下看一場整點的鑽石閃爍騷呢？</p>
         </footer>
       </div>
-    
 
-        {/* Comments Section */}
-        <Comments slug="sensoji" />
-</div>
+      {/* Comments Section */}
+      <Comments slug="sensoji" />
+    </div>
   );
 }
