@@ -2132,7 +2132,7 @@ export default function NewsPage() {
                   </div>
 
                   <div className="p-5 md:p-6">
-                    <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-3 mb-3">
                       <span className={`text-sm md:text-sm px-4 py-1.5 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
                       {isSaved && <span className="text-lg">📌</span>}
                     </div>
@@ -2141,9 +2141,10 @@ export default function NewsPage() {
                     </h3>
                     {/* Auto-show summary - no click needed - More visible on mobile */}
                     {(item.desc_translated || item.desc) && (
-                      <p className={`text-base leading-relaxed mb-4 line-clamp-4 font-medium ${darkMode ? "text-gray-300 bg-gray-700/50 p-3 rounded-xl" : "text-gray-600 bg-gray-100 p-3 rounded-xl"}`}>
-                        📋 {item.desc_translated || item.desc}
-                      </p>
+                      <div className={`text-base leading-relaxed mb-4 font-medium ${darkMode ? "text-gray-300 bg-gray-700/50 p-3 rounded-xl" : "text-gray-600 bg-gray-100 p-3 rounded-xl"}`}>
+                        <span className="text-xs font-semibold opacity-60 block mb-2">📋 摘要</span>
+                        {(item.desc_translated || item.desc)}
+                      </div>
                     )}
                     {/* Read More with original link - Improved for mobile */}
                     {item.link ? (
