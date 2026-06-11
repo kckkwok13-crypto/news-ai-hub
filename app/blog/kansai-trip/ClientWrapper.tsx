@@ -603,11 +603,9 @@ export default function KansaiTripPage() {
             <span>返回所有遊記</span>
           </Link>
         </div>
-      </div>
-    
-
-        {/* Comments Section */}
+      {/* Comments Section */}
         <Comments slug="kansai-trip" />
-</div>
+      </div>
+    </div>
   );
 }
