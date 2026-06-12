@@ -1301,6 +1301,18 @@ export default function NewsPage() {
               <Link href="/blog" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-teal-600 to-emerald-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
                 <BookOpen size={16} /> 博客
               </Link>
+              <Link href="/finance" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-yellow-600 to-amber-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                💰 財經
+              </Link>
+              <Link href="/health" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-green-600 to-emerald-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                ❤️ 健康
+              </Link>
+              <Link href="/food" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-orange-600 to-red-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                🍜 美食
+              </Link>
+              <Link href="/ai-tools" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                🤖 AI工具
+              </Link>
               <div className="relative">
                 <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   {LANG_OPTIONS.find(l => l.id === lang)?.flag}
@@ -1351,9 +1363,9 @@ export default function NewsPage() {
       {/* Travel Blog Banner */}
       <Link href="/blog" className="block w-full">
         <div className="relative w-full h-48 md:h-56 rounded-2xl overflow-hidden shadow-2xl">
-          <img 
-            src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80" 
-            alt="NewsFlow Travel Blog" 
+          <img
+            src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80"
+            alt="NewsFlow Travel Blog"
             className="w-full h-full object-cover hover:opacity-90 transition"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6">
@@ -1365,6 +1377,89 @@ export default function NewsPage() {
           </div>
         </div>
       </Link>
+
+      {/* New Content Showcase Section */}
+      <div className="mt-8 px-2">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
+            <span>🌟</span>
+            <span>精彩專題</span>
+          </h2>
+          <Link href="/" className="text-sm text-blue-400 hover:text-blue-300 transition">
+            查看全部 →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Finance Section */}
+          <Link href="/finance" className="group">
+            <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-yellow-600 to-amber-700">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                <span className="text-5xl mb-2">💰</span>
+                <h3 className="text-white text-lg font-bold mb-1">財經投資</h3>
+                <p className="text-white/80 text-xs">ETF · 退休規劃 · 被動收入</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                <span className="text-white/90 text-sm group-hover:text-yellow-300 transition flex items-center gap-1">
+                  開始閱讀 →
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Health Section */}
+          <Link href="/health" className="group">
+            <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-green-600 to-emerald-700">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                <span className="text-5xl mb-2">❤️</span>
+                <h3 className="text-white text-lg font-bold mb-1">健康養生</h3>
+                <p className="text-white/80 text-xs">飲食調理 · 運動建議 · 睡眠品質</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                <span className="text-white/90 text-sm group-hover:text-green-300 transition flex items-center gap-1">
+                  開始閱讀 →
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Food Section */}
+          <Link href="/food" className="group">
+            <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-orange-600 to-red-700">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                <span className="text-5xl mb-2">🍜</span>
+                <h3 className="text-white text-lg font-bold mb-1">美食天地</h3>
+                <p className="text-white/80 text-xs">香港美食 · 食譜教學 · 世界料理</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                <span className="text-white/90 text-sm group-hover:text-orange-300 transition flex items-center gap-1">
+                  開始閱讀 →
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* AI Tools Section */}
+          <Link href="/ai-tools" className="group">
+            <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-700">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                <span className="text-5xl mb-2">🤖</span>
+                <h3 className="text-white text-lg font-bold mb-1">AI工具教程</h3>
+                <p className="text-white/80 text-xs">ChatGPT · 效率工具 · 人工智能</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                <span className="text-white/90 text-sm group-hover:text-purple-300 transition flex items-center gap-1">
+                  開始閱讀 →
+                </span>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
 
       
       {/* AI Host Loading Modal */}
@@ -2342,10 +2437,11 @@ export default function NewsPage() {
       <footer className={`mt-12 py-10 text-center border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
         <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm md:text-base font-medium">
           <Link href="/blog" className="hover:text-teal-400 transition-colors uppercase tracking-wider">📖 旅遊Blog / Travel</Link>
+          <Link href="/finance" className="hover:text-yellow-400 transition-colors uppercase tracking-wider">💰 財經 / Finance</Link>
+          <Link href="/health" className="hover:text-green-400 transition-colors uppercase tracking-wider">❤️ 健康 / Health</Link>
+          <Link href="/food" className="hover:text-orange-400 transition-colors uppercase tracking-wider">🍜 美食 / Food</Link>
+          <Link href="/ai-tools" className="hover:text-purple-400 transition-colors uppercase tracking-wider">🤖 AI工具 / AI Tools</Link>
           <Link href="/about" className="hover:text-blue-500 transition-colors uppercase tracking-wider">關於我們 / About</Link>
-          <Link href="/editorial-policy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">編輯政策 / Editorial</Link>
-          <Link href="/privacy" className="hover:text-blue-500 transition-colors uppercase tracking-wider">隱私政策 / Privacy</Link>
-          <Link href="/terms" className="hover:text-blue-500 transition-colors uppercase tracking-wider">服務條款 / Terms</Link>
           <Link href="/contact" className="hover:text-blue-500 transition-colors uppercase tracking-wider">聯繫我們 / Contact</Link>
         </div>
         <p className="text-base mb-3">NewsFlow · AI-Powered Global News © 2026</p>

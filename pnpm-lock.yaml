@@ -14,6 +14,9 @@ importers:
       next:
         specifier: 14.2.0
         version: 14.2.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      pnpm-store:
+        specifier: link:/tmp/pnpm-store
+        version: link:../../tmp/pnpm-store
       react:
         specifier: 18.2.0
         version: 18.2.0
