@@ -74,35 +74,48 @@ export default function HealthArticlePage() {
 
   // 轉換Markdown-like內容為HTML
   const renderContent = (content: string) => {
-    let html = content
+    // 先處理代碼塊（金字塔圖表等）
+    let processed = content.replace(/```([\s\S]*?)```/g, (match, code) => {
+      const lines = code.trim().split('\n');
+      const formatted = lines.map(line => {
+        // 保持ASCII藝術圖表的格式
+        return line.replace(/\|/g, '<span class="text-cyan-400">│</span>')
+                   .replace(/┌|┐|└|┘|├|┤|┬|┴|┼|─/g, '<span class="text-indigo-400">$&</span>')
+                   .replace(/★/g, '<span class="text-amber-400">★</span>')
+                   .replace(/[🔵🟢🟡🟠🔴⬜🟩🟧🟥🏆]/g, '<span class="inline-block w-4 text-center">$&</span>');
+      }).join('\n');
+      return `<div class="font-mono text-sm bg-slate-900/80 rounded-xl p-4 my-6 overflow-x-auto border border-slate-700/50"><pre class="text-slate-300 whitespace-pre">${formatted}</pre></div>`;
+    });
+
+    let html = processed
       // 標題
-      .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-white mt-10 mb-4 flex items-center gap-3">$1</h2>')
+      .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-white mt-10 mb-4 flex items-center gap-3 border-b border-slate-700/50 pb-3">$1</h2>')
       .replace(/^### (.+)$/gm, '<h3 class="text-xl font-bold text-white mt-8 mb-3">$1</h3>')
       // 引用
-      .replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-emerald-500 pl-4 py-2 my-4 bg-emerald-500/10 rounded-r-lg"><p class="text-emerald-300 italic">$1</p></blockquote>')
+      .replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-emerald-500 pl-4 py-3 my-4 bg-emerald-500/10 rounded-r-lg"><p class="text-emerald-300 italic">$1</p></blockquote>')
       // 粗體
-      .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-bold bg-emerald-500/20 px-1 rounded">$1</strong>')
       // 列表
-      .replace(/^- (.+)$/gm, '<li class="flex items-start gap-2 mb-2"><span class="text-emerald-400 mt-1">•</span><span>$1</span></li>')
-      .replace(/^(\d+)\. (.+)$/gm, '<li class="flex items-start gap-2 mb-2"><span class="text-emerald-400 font-bold min-w-[24px]">$1.</span><span>$2</span></li>')
+      .replace(/^- (.+)$/gm, '<li class="flex items-start gap-3 mb-2 text-slate-300"><span class="text-emerald-400 mt-1 flex-shrink-0">•</span><span>$1</span></li>')
+      .replace(/^(\d+)\. (.+)$/gm, '<li class="flex items-start gap-3 mb-2 text-slate-300"><span class="text-emerald-400 font-bold min-w-[24px]">$1.</span><span>$2</span></li>')
       // 表格
       .replace(/\|(.+)\|/g, (match) => {
         const cells = match.split('|').filter(c => c.trim());
         if (cells.some(c => c.includes('---'))) return '';
         const isHeader = cells.every(c => c.includes('**') || c.match(/^[A-Z]/));
         if (isHeader) {
-          return `<tr class="bg-slate-800/50">${cells.map(c => `<th class="px-4 py-3 text-left text-slate-300 font-semibold border border-slate-700">${c.trim()}</th>`).join('')}</tr>`;
+          return `<tr class="bg-slate-800/50">${cells.map(c => `<th class="px-4 py-3 text-left text-slate-200 font-semibold border border-slate-700">${c.trim()}</th>`).join('')}</tr>`;
         }
-        return `<tr class="border-b border-slate-700/50 hover:bg-slate-800/30">${cells.map(c => `<td class="px-4 py-3 text-slate-400 border border-slate-700/50">${c.trim()}</td>`).join('')}</tr>`;
+        return `<tr class="border-b border-slate-700/50 hover:bg-slate-800/30 transition-colors">${cells.map(c => `<td class="px-4 py-3 text-slate-300 border border-slate-700/50">${c.trim()}</td>`).join('')}</tr>`;
       })
       // 分隔線
       .replace(/^---$/gm, '<hr class="border-slate-700 my-8" />')
       // 段落
       .replace(/\n\n/g, '</p><p class="text-slate-300 leading-relaxed mb-4">')
-      .replace(/^(?!<[h|b|p|l|t|c|>|"})(?!<[h|b|p|l|t|c|>|\"])(.+)$/gm, '<p class="text-slate-300 leading-relaxed mb-4">$1</p>');
+      .replace(/^(?!<[h|b|p|l|t|c|>|"|}|pre|div])(?!<)(.+)$/gm, '<p class="text-slate-300 leading-relaxed mb-4">$1</p>');
 
     // 包裝表格
-    html = html.replace(/(<tr[\s\S]*?<\/tr>)+/g, '<table class="w-full rounded-xl overflow-hidden mb-6">$&</table>');
+    html = html.replace(/(<tr[\s\S]*?<\/tr>)+/g, '<table class="w-full rounded-xl overflow-hidden mb-6 shadow-lg">$&</table>');
 
     // 清理空段落
     html = html.replace(/<p class="text-slate-300 leading-relaxed mb-4"><\/p>/g, '');
