@@ -32,9 +32,6 @@ const localPosts = blogPosts.filter(post => post.category === 'local');
 // World travel posts (Japan, Korea, Thailand)
 const worldPosts = blogPosts.filter(post => post.category === 'world');
 
-// AI tech tutorials posts
-const aiPosts = blogPosts.filter(post => post.category === 'ai');
-
 // Get featured post (most recent)
 const getFeaturedPost = () => blogPosts[0];
 
@@ -331,96 +328,6 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
-
-        {/* ===== AI 科技教程專欄 ===== */}
-        {aiPosts.length > 0 && (
-          <div className="mb-10">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-2xl shadow-lg">
-                  🤖
-                </div>
-                <div>
-                  <h2 className="text-white text-xl md:text-2xl font-bold">AI 科技教程</h2>
-                  <p className="text-cyan-300/60 text-sm">人工智能工具應用 · 效率提升攻略</p>
-                </div>
-              </div>
-              <span className="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-medium border border-cyan-500/30">
-                {aiPosts.length} 篇教程
-              </span>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {aiPosts.map((post, index) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className={`block group transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
-                  onMouseEnter={() => setHoveredSlug(post.slug)}
-                  onMouseLeave={() => setHoveredSlug(null)}
-                >
-                  <article className={`relative h-full bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-cyan-500/10 backdrop-blur-sm ${hoveredSlug === post.slug ? 'ring-2 ring-cyan-500/30' : ''}`}>
-                    {/* Top Accent Line */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${post.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
-
-                    {/* Image Section */}
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className={`w-full object-cover transition-all duration-700 group-hover:scale-110 ${index === 0 ? 'h-48 md:h-56' : 'h-36'}`}
-                        onError={(e) => {
-                          e.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80";
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
-
-                      {/* Icon Badge */}
-                      <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-xl p-2.5 text-xl shadow-lg backdrop-blur-sm`}>
-                        {post.icon}
-                      </div>
-
-                      {/* Reading Time */}
-                      <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white/80 text-xs px-2.5 py-1 rounded-full">
-                        ⏱️ {estimateReadingTime(post.excerpt)} min
-                      </div>
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="p-5">
-                      {/* Tags */}
-                      <div className="flex gap-1.5 mb-3 flex-wrap">
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="font-bold mb-2 text-base md:text-lg text-white group-hover:text-cyan-400 transition-colors leading-snug">
-                        {post.title}
-                      </h3>
-
-                      {/* Excerpt */}
-                      <p className="text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
-                        {post.excerpt}
-                      </p>
-
-                      {/* Footer */}
-                      <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">
-                        <span className="text-slate-500 text-xs">{post.date}</span>
-                        <span className={`text-sm font-medium bg-gradient-to-r ${post.accent} bg-clip-text text-transparent`}>
-                          閱讀 →
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* ===== 世界任我行專欄 - Improved Cards ===== */}
         <div className="mb-10">
