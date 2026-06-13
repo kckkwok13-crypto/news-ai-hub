@@ -420,4 +420,15 @@ export const blogPosts: BlogPost[] = [
     accent: "from-amber-600 to-orange-500",
     category: "local"
   },
+  {
+    slug: "keukenhof",
+    title: "🌷 狂歡大自然的調色盤：荷蘭庫肯霍夫花園700萬株鬱金香極致賞花全攻略",
+    excerpt: "全球最大規模春季花卉公園！32公頃鋪天蓋地的七彩花毯、四大王室室內展館、歷史復古大風車，帶你深度解鎖這片驚艷全球的春日彩虹夢境！",
+    date: "April 2026",
+    image: "https://i0.wp.com/tulipfestivalamsterdam.com/wp-content/uploads/2020/02/bigstock-Aerial-Drone-Shot-View-Of-Tuli-333213211-scaled.jpg?ssl=1",
+    icon: "🌷",
+    tags: ["荷蘭", "庫肯霍夫", "鬱金香", "賞花", "歐洲"],
+    accent: "from-pink-500 to-rose-500",
+    category: "local"
+  },
 ];
