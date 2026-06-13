@@ -56,6 +56,10 @@ export const financePosts: FinancePost[] = [
 
 **就係咁話，慳返HK$17萬幾！**
 
+{{CHART:key-stats}}
+
+{{CHART:etf-comparison}}
+
 ---
 
 ## 🏆 香港最Hit嘅ETF邊隻？

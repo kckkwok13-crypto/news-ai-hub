@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { healthPosts } from "../../data/healthData";
 import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, MessageCircle } from "lucide-react";
+import { ArticleChart } from "../../components/ArticleCharts";
 
 export default function HealthArticlePage() {
   const params = useParams();
@@ -249,6 +250,18 @@ export default function HealthArticlePage() {
             className="text-slate-300 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
           />
+          {/* Render Charts */}
+          {(() => {
+            const chartRegex = /\{\{CHART:(\w+)\}\}/g;
+            const chartIds: string[] = [];
+            let match;
+            while ((match = chartRegex.exec(post.content)) !== null) {
+              chartIds.push(match[1]);
+            }
+            return chartIds.map((chartId, index) => (
+              <ArticleChart key={`${chartId}-${index}`} chartId={chartId} />
+            ));
+          })()}
         </article>
 
         {/* Tags */}

@@ -23,6 +23,8 @@ export const healthPosts: HealthPost[] = [
 
 地中海飲食起源於地中海沿岸國家（希臘、意大利、西班牙等）的傳統飲食習慣，被科學研究證明可降低心血管疾病、糖尿病和癌症風險。
 
+{{CHART:mediterranean-diet}}
+
 ## 核心食物
 
 ### 🫒 每天必吃
@@ -118,6 +120,8 @@ export const healthPosts: HealthPost[] = [
 - 每晚睡少於6小時，早死風險增加12%
 - 睡眠不足會導致體重增加、記憶力下降
 - 長期睡眠問題增加心臟病、糖尿病風險
+
+{{CHART:sleep-stages}}
 
 ## 10個改善睡眠的方法
 

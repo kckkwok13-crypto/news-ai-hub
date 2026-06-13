@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { financePosts } from "../../data/financeData";
 import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, MessageCircle } from "lucide-react";
+import { ArticleChart } from "../../components/ArticleCharts";
 
 export default function FinanceArticlePage() {
   const params = useParams();
@@ -74,7 +75,20 @@ export default function FinanceArticlePage() {
 
   // 轉換Markdown-like內容為HTML
   const renderContent = (content: string) => {
-    let processed = content
+    // 首先提取圖表引用
+    const chartRegex = /\{\{CHART:(\w+)\}\}/g;
+    const chartMatches: Array<{ id: string; index: number }> = [];
+    let match;
+    let contentWithoutCharts = content;
+
+    while ((match = chartRegex.exec(content)) !== null) {
+      chartMatches.push({ id: match[1], index: match.index });
+    }
+
+    // 移除圖表標記，用佔位符替換
+    contentWithoutCharts = content.replace(/\{\{CHART:(\w+)\}\}/g, '___CHART_PLACEHOLDER___');
+
+    let processed = contentWithoutCharts
       // 特殊視覺元素（需先處理）
       // 💡 提示框
       .replace(/!\[TIP\]\((.+?)\)/g, '<div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 my-6 flex items-start gap-4"><div class="text-3xl">💡</div><div><h4 class="text-amber-400 font-bold mb-2">小提示</h4><p class="text-amber-200/80">$1</p></div></div>')
@@ -95,6 +109,10 @@ export default function FinanceArticlePage() {
       // 分割內容為段落，保留特殊格式
       .split('\n\n')
       .map(block => {
+        // 圖表佔位符
+        if (block.trim() === '___CHART_PLACEHOLDER___') {
+          return '___CHART___';
+        }
         // 標題
         if (block.startsWith('## ')) {
           return `<h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3 border-b border-slate-700/50 pb-4">${block.replace('## ', '')}</h2>`;
@@ -159,6 +177,48 @@ export default function FinanceArticlePage() {
 
     return processed;
   };
+
+  // 渲染帶有圖表的內容
+  const renderContentWithCharts = (content: string) => {
+    const chartRegex = /\{\{CHART:(\w+)\}\}/g;
+    const parts: Array<{ type: 'html' | 'chart'; content: string }> = [];
+    let lastIndex = 0;
+    let match;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = renderContent(content);
+
+    while ((match = chartRegex.exec(content)) !== null) {
+      // 添加之前的HTML內容
+      const htmlContent = tempDiv.innerHTML.substring(lastIndex, match.index);
+      if (htmlContent) {
+        parts.push({ type: 'html', content: htmlContent });
+      }
+      // 添加圖表
+      parts.push({ type: 'chart', content: match[1] });
+      lastIndex = match.index + match[0].length;
+    }
+
+    // 添加剩餘內容
+    const remainingHtml = tempDiv.innerHTML.substring(lastIndex);
+    if (remainingHtml) {
+      parts.push({ type: 'html', content: remainingHtml });
+    }
+
+    return parts;
+  };
+
+  // 獲取圖表ID列表
+  const getChartIds = (content: string): string[] => {
+    const chartRegex = /\{\{CHART:(\w+)\}\}/g;
+    const ids: string[] = [];
+    let match;
+    while ((match = chartRegex.exec(content)) !== null) {
+      ids.push(match[1]);
+    }
+    return ids;
+  };
+
+  const chartIds = getChartIds(post.content);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
@@ -249,6 +309,10 @@ export default function FinanceArticlePage() {
             className="text-slate-300 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
           />
+          {/* Render Charts */}
+          {chartIds.map((chartId, index) => (
+            <ArticleChart key={`${chartId}-${index}`} chartId={chartId} />
+          ))}
         </article>
 
         {/* Tags */}
