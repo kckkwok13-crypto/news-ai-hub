@@ -75,18 +75,8 @@ export default function FinanceArticlePage() {
 
   // 轉換Markdown-like內容為HTML
   const renderContent = (content: string) => {
-    // 首先提取圖表引用
-    const chartRegex = /\{\{CHART:(\w+)\}\}/g;
-    const chartMatches: Array<{ id: string; index: number }> = [];
-    let match;
-    let contentWithoutCharts = content;
-
-    while ((match = chartRegex.exec(content)) !== null) {
-      chartMatches.push({ id: match[1], index: match.index });
-    }
-
-    // 移除圖表標記，用佔位符替換
-    contentWithoutCharts = content.replace(/\{\{CHART:(\w+)\}\}/g, '___CHART_PLACEHOLDER___');
+    // 首先完全移除圖表標記
+    let contentWithoutCharts = content.replace(/\{\{CHART:(\w+)\}\}/g, '');
 
     let processed = contentWithoutCharts
       // 特殊視覺元素（需先處理）
@@ -109,10 +99,6 @@ export default function FinanceArticlePage() {
       // 分割內容為段落，保留特殊格式
       .split('\n\n')
       .map(block => {
-        // 圖表佔位符
-        if (block.trim() === '___CHART_PLACEHOLDER___') {
-          return '___CHART___';
-        }
         // 標題
         if (block.startsWith('## ')) {
           return `<h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3 border-b border-slate-700/50 pb-4">${block.replace('## ', '')}</h2>`;

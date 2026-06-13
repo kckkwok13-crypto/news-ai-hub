@@ -75,8 +75,10 @@ export default function HealthArticlePage() {
 
   // 轉換Markdown-like內容為HTML
   const renderContent = (content: string) => {
-    // 先處理特殊標記
-    let processed = content
+    // 首先完全移除圖表標記
+    let contentWithoutCharts = content.replace(/\{\{CHART:(\w+)\}\}/g, '');
+
+    let processed = contentWithoutCharts
       // 💡 提示框
       .replace(/!\[TIP\]\((.+?)\)/g, '<div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 my-6 flex items-start gap-4"><div class="text-3xl">💡</div><div><h4 class="text-amber-400 font-bold mb-2">小提示</h4><p class="text-amber-200/80">$1</p></div></div>')
       // ⚠️ 警告框
