@@ -112,6 +112,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "prague-castle",
+    title: "🏰 查理四世的黃金夢：布拉格城堡世界最大古堡群深度攻略",
+    excerpt: "全球規模最大的連體古堡建築群！聖維特大教堂、黃金巷、舊皇宮與慕夏彩繪玻璃窗的千年史詩。",
+    date: "June 2026",
+    image: "https://c8.alamy.com/comp/MXMW07/aerial-view-on-prague-castle-and-saint-vitus-cathedral-czech-republic-panoramic-view-from-airplane-in-sunny-day-MXMW07.jpg",
+    icon: "🏰",
+    tags: ["布拉格", "捷克", "波希米亞", "城堡"],
+    accent: "from-purple-600 to-violet-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
