@@ -83,60 +83,118 @@ export default function BlogPage() {
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-6 py-10">
-          <div className="flex items-center gap-5 mb-6">
-            <div className="relative">
-              <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
-                <img src="/images/pure-traveler-avatar.jpg" alt="純粹旅人" className="w-full h-full object-cover" />
+          {/* 博主資料卡片 */}
+          <div className="bg-gradient-to-r from-emerald-900/60 via-teal-900/60 to-cyan-900/60 backdrop-blur-xl rounded-3xl border border-emerald-500/20 p-6 mb-6 shadow-2xl shadow-emerald-500/10">
+            <div className="flex flex-col lg:flex-row gap-6">
+              {/* 左側 - 頭像和徽章 */}
+              <div className="flex flex-col items-center lg:items-start gap-4">
+                <div className="relative">
+                  <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-emerald-400/50 shadow-2xl shadow-emerald-500/30">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80"
+                      alt="純粹旅人"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-5xl">🌍</div>';
+                      }}
+                    />
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-emerald-500 rounded-full border-4 border-emerald-900 flex items-center justify-center shadow-lg">
+                    <span className="text-white text-lg">✓</span>
+                  </div>
+                </div>
+
+                {/* 徽章 */}
+                <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs border border-emerald-500/30">原創遊記</span>
+                  <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs border border-blue-500/30">深度攻略</span>
+                  <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs border border-amber-500/30">良心推薦</span>
+                </div>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-emerald-500 rounded-full border-3 border-slate-900 flex items-center justify-center shadow-lg">
-                <span className="text-white text-sm">✈️</span>
+
+              {/* 右側 - 詳細資料 */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="flex flex-col lg:flex-row lg:items-start gap-4 mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 justify-center lg:justify-start mb-1">
+                      <h1 className="text-white text-2xl md:text-3xl font-bold">純粹旅人</h1>
+                      <span className="text-2xl">✈️</span>
+                    </div>
+                    <p className="text-emerald-300/80 text-sm mb-3">旅行博主 · 深度遊記作者</p>
+
+                    {/* 個人簡介 */}
+                    <p className="text-slate-300 text-sm leading-relaxed mb-4 max-w-2xl">
+                      熱愛探索世界的旅行攝影師，足跡遍佈 30+ 個國家。用文字記錄旅程，用鏡頭捕捉感動，每篇遊記都係實地考察後嘅第一手分享。旅行唔係走馬觀花，而係用心感受每個城市嘅溫度。
+                    </p>
+
+                    {/* 專業領域 */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+                      <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                        <div className="text-2xl mb-1">📸</div>
+                        <div className="text-xs text-emerald-300">旅行攝影</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                        <div className="text-2xl mb-1">🍜</div>
+                        <div className="text-xs text-emerald-300">美食探索</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                        <div className="text-2xl mb-1">🏯</div>
+                        <div className="text-xs text-emerald-300">文化深度</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                        <div className="text-2xl mb-1">🚶</div>
+                        <div className="text-xs text-emerald-300">路線規劃</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 統計數據 */}
+                  <div className="flex gap-4 lg:flex-col lg:gap-3 justify-center lg:justify-start">
+                    <div className="bg-white/5 rounded-xl px-5 py-3 text-center border border-emerald-500/20 min-w-[80px]">
+                      <div className="text-2xl font-bold text-emerald-400">32</div>
+                      <div className="text-xs text-slate-400">國家</div>
+                    </div>
+                    <div className="bg-white/5 rounded-xl px-5 py-3 text-center border border-emerald-500/20 min-w-[80px]">
+                      <div className="text-2xl font-bold text-blue-400">{blogPosts.length}</div>
+                      <div className="text-xs text-slate-400">遊記</div>
+                    </div>
+                    <div className="bg-white/5 rounded-xl px-5 py-3 text-center border border-emerald-500/20 min-w-[80px]">
+                      <div className="text-2xl font-bold text-amber-400">128</div>
+                      <div className="text-xs text-slate-400">城市</div>
+                    </div>
+                    <div className="bg-white/5 rounded-xl px-5 py-3 text-center border border-emerald-500/20 min-w-[80px]">
+                      <div className="text-2xl font-bold text-purple-400">8+</div>
+                      <div className="text-xs text-slate-400">年經驗</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 口號 */}
+                <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-xl p-3 border border-emerald-500/20">
+                  <p className="text-slate-300 text-sm italic">「旅行唔係走馬觀花，而係用心感受每個城市嘅溫度。」</p>
+                </div>
               </div>
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="text-amber-400 text-sm font-bold bg-amber-400/10 px-4 py-1.5 rounded-full border border-amber-400/20">✈️ 純粹旅人</span>
-                <span className="text-emerald-400/80 text-sm">旅遊博主</span>
-                <span className="hidden md:inline text-slate-600">|</span>
-                <span className="text-slate-400 text-sm hidden md:inline">用雙腳探索世界</span>
-              </div>
-              <h1 className="text-white text-2xl md:text-3xl font-bold mt-2">NewsFlow Travel Blog</h1>
             </div>
           </div>
 
-          {/* Stats Cards - Better Visual */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10 hover:border-emerald-500/30 transition-all">
-              <div className="text-3xl font-bold text-white mb-1">{blogPosts.length}</div>
-              <div className="text-xs text-emerald-400/70 flex items-center justify-center gap-1">
-                <span>📝</span> 原創遊記
-              </div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10 hover:border-emerald-500/30 transition-all">
-              <div className="text-3xl font-bold text-white mb-1">{Object.keys(regionStats).length}</div>
-              <div className="text-xs text-emerald-400/70 flex items-center justify-center gap-1">
-                <span>🌍</span> 目的地
-              </div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10 hover:border-emerald-500/30 transition-all">
-              <div className="text-3xl font-bold text-white mb-1">{allTags.length}</div>
-              <div className="text-xs text-emerald-400/70 flex items-center justify-center gap-1">
-                <span>🏷️</span> 主題標籤
-              </div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10 hover:border-emerald-500/30 transition-all">
-              <div className="text-3xl font-bold text-white mb-1">∞</div>
-              <div className="text-xs text-emerald-400/70 flex items-center justify-center gap-1">
-                <span>💫</span> 持續更新
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
+          {/* 目的地統計 */}
+          <div className="flex flex-wrap items-center gap-4">
             <Link href="/" className="flex items-center gap-2 text-white hover:text-emerald-400 transition-all bg-white/5 hover:bg-emerald-500/10 px-5 py-2.5 rounded-full border border-white/10 hover:border-emerald-500/30 backdrop-blur-sm">
               <span>←</span>
               <span>返回首頁</span>
             </Link>
-            <span className="text-emerald-400/60 text-sm">📍 足跡遍佈 {Object.keys(regionStats).length} 個地區</span>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="bg-emerald-500/20 text-emerald-300 px-4 py-2 rounded-full text-sm border border-emerald-500/30">
+                📍 足跡遍佈 {Object.keys(regionStats).length} 個地區
+              </span>
+              <span className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm border border-blue-500/30">
+                📝 {blogPosts.length} 篇原創遊記
+              </span>
+              <span className="bg-amber-500/20 text-amber-300 px-4 py-2 rounded-full text-sm border border-amber-500/30">
+                🏷️ {allTags.length} 個標籤
+              </span>
+            </div>
           </div>
         </div>
       </header>
