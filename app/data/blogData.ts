@@ -134,6 +134,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "schonbrunn-palace",
+    title: "🏰 帝國的黃金夏日：維也納美泉宮1441間房的皇家大數據與深度攻略",
+    excerpt: "落成於1749年的巨型巴洛克宮殿！瑪麗亞·特蕾莎與茜茜公主的傳奇、1441房僅45間開放、百萬大廳與凱旋門的深度遊記。",
+    date: "June 2026",
+    image: "https://media.muvamo.com/wp-content/uploads/2024/12/schoenbrunn-park-58-scaled.jpg",
+    icon: "🏰",
+    tags: ["維也納", "奧地利", "哈布斯堡", "美泉宮"],
+    accent: "from-amber-600 to-red-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
