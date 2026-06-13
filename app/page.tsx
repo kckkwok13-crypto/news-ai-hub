@@ -1385,14 +1385,14 @@ export default function NewsPage() {
             <span>🌟</span>
             <span>精彩專題</span>
           </h2>
-          <Link href="/categories" className="text-sm text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1">
+          <Link href="/finance" className="text-sm text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1">
             <span>查看全部</span>
             <span>→</span>
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* Finance Section */}
-          <Link href="/category/finance" className="group">
+          <Link href="/finance" className="group">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-900/40 to-amber-900/40 border border-yellow-500/20 hover:border-yellow-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -1408,7 +1408,7 @@ export default function NewsPage() {
           </Link>
 
           {/* Health Section */}
-          <Link href="/category/health" className="group">
+          <Link href="/health" className="group">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-900/40 to-emerald-900/40 border border-green-500/20 hover:border-green-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -1424,7 +1424,7 @@ export default function NewsPage() {
           </Link>
 
           {/* Food Section */}
-          <Link href="/category/food" className="group">
+          <Link href="/food" className="group">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-900/40 to-red-900/40 border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
