@@ -1,9 +1,35 @@
 import Link from 'next/link'
-import { MapPin, Camera, Utensils, Building2, Clock, Globe, Home, Map } from 'lucide-react'
+import { MapPin, Camera, Utensils, Building2, Clock, Globe, Home, Map, User, Award, BookOpen, Heart, Star, Send, Instagram, Youtube } from 'lucide-react'
 
 export const metadata = {
   title: '旅行博客 - NewsKingdom',
   description: '探索世界各地的旅行故事、景點推薦和旅遊攻略',
+}
+
+// 博主資料
+const bloggerProfile = {
+  name: '純粹旅人',
+  title: '旅行博主 · 深度遊記作者',
+  avatar: '🌍',
+  coverBg: 'from-orange-600 via-red-600 to-blue-600',
+  bio: '熱愛探索世界的旅行攝影師，足跡遍佈 30+ 個國家。用文字記錄旅程，用鏡頭捕捉感動，每篇遊記都係實地考察後嘅第一手分享。',
+  motto: '「旅行唔係走馬觀花，而係用心感受每個城市嘅溫度。」',
+  stats: {
+    countries: 32,
+    posts: 33,
+    cities: 128,
+    years: 8,
+  },
+  expertise: [
+    { icon: '📸', title: '旅行攝影', desc: '專業風景同人文攝影技巧分享' },
+    { icon: '🍜', title: '美食探索', desc: '當地人都幫襯嘅隱世美食' },
+    { icon: '🏯', title: '文化深度', desc: '歷史古蹟背後嘅故事' },
+    { icon: '🚶', title: '路線規劃', desc: '最佳時間同路線建議' },
+  ],
+  badges: ['原創遊記', '深度攻略', '實地考察', '良心推薦'],
+  social: [
+    { platform: 'Email', icon: Send, handle: 'hello@newskingdom.store' },
+  ],
 }
 
 // 地方遊記 - 日本 + 大灣區 (橙紅色系)
@@ -66,59 +92,121 @@ const worldTravel = {
 // 顏色配置
 const colorConfig = {
   orange: {
-    outerBg: 'from-orange-950/60 to-red-950/60',
-    outerBorder: 'border-orange-600/50',
-    innerBg: 'from-orange-900/30 to-red-900/30',
-    innerBorder: 'border-orange-500/40',
     cardBorder: 'hover:border-orange-500/70',
     cardAccent: 'group-hover:from-orange-500 group-hover:to-red-500',
-    textAccent: 'text-orange-400',
     badgeBg: 'bg-orange-500/80',
     iconBg: 'from-orange-500 to-red-600',
     iconShadow: 'shadow-orange-500/30',
+    textAccent: 'text-orange-400',
+    bgGradient: 'from-orange-500/10 to-red-500/10',
+    borderColor: 'border-orange-500/30',
   },
   blue: {
-    outerBg: 'from-blue-950/60 to-indigo-950/60',
-    outerBorder: 'border-blue-600/50',
-    innerBg: 'from-blue-900/30 to-indigo-900/30',
-    innerBorder: 'border-blue-500/40',
     cardBorder: 'hover:border-blue-500/70',
     cardAccent: 'group-hover:from-blue-500 group-hover:to-indigo-500',
-    textAccent: 'text-blue-400',
     badgeBg: 'bg-blue-500/80',
     iconBg: 'from-blue-500 to-indigo-600',
     iconShadow: 'shadow-blue-500/30',
+    textAccent: 'text-blue-400',
+    bgGradient: 'from-blue-500/10 to-indigo-500/10',
+    borderColor: 'border-blue-500/30',
   },
 }
 
 export default function TravelBlogPage() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-16 px-6">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-orange-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
+      {/* ========== Hero Section with Blogger Profile ========== */}
+      <div className="relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500 rounded-full blur-[128px]"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]"></div>
         </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 text-blue-400 text-sm mb-4">
-              <MapPin className="w-4 h-4" />
-              Travel Blog
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-950"></div>
+
+        <div className="relative max-w-6xl mx-auto px-6 pt-12 pb-16">
+          {/* Blogger Profile Card */}
+          <div className="bg-gray-900/80 backdrop-blur-xl rounded-3xl border border-gray-700/50 p-8 shadow-2xl">
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Avatar Section */}
+              <div className="flex flex-col items-center lg:items-start">
+                <div className="relative">
+                  <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${bloggerProfile.coverBg} flex items-center justify-center text-6xl shadow-xl ring-4 ring-gray-700/50`}>
+                    {bloggerProfile.avatar}
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-green-500 rounded-full border-4 border-gray-900 flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                </div>
+
+                {/* Badges */}
+                <div className="flex flex-wrap gap-2 mt-4 justify-center lg:justify-start">
+                  {bloggerProfile.badges.map((badge) => (
+                    <span key={badge} className="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs border border-gray-700">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Info Section */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-4">
+                  <div>
+                    <h1 className="text-3xl font-bold text-white mb-1">{bloggerProfile.name}</h1>
+                    <p className="text-gray-400">{bloggerProfile.title}</p>
+                  </div>
+
+                  {/* Stats Row */}
+                  <div className="flex gap-6 lg:ml-auto justify-center lg:justify-end">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-orange-400">{bloggerProfile.stats.countries}</div>
+                      <div className="text-xs text-gray-500">國家</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-400">{bloggerProfile.stats.posts}</div>
+                      <div className="text-xs text-gray-500">遊記</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-400">{bloggerProfile.stats.cities}</div>
+                      <div className="text-xs text-gray-500">城市</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-purple-400">{bloggerProfile.stats.years}+</div>
+                      <div className="text-xs text-gray-500">年經驗</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <p className="text-gray-300 mb-4 leading-relaxed">
+                  {bloggerProfile.bio}
+                </p>
+
+                {/* Motto */}
+                <div className="bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-xl p-4 mb-6 border border-orange-500/20">
+                  <p className="text-gray-300 italic">"{bloggerProfile.motto}"</p>
+                </div>
+
+                {/* Expertise */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {bloggerProfile.expertise.map((item) => (
+                    <div key={item.title} className="bg-gray-800/50 rounded-xl p-3 text-center border border-gray-700/50">
+                      <div className="text-2xl mb-1">{item.icon}</div>
+                      <div className="text-sm font-medium text-white mb-1">{item.title}</div>
+                      <div className="text-xs text-gray-500">{item.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-orange-400 via-red-500 to-blue-500 bg-clip-text text-transparent">
-                ✈️ 旅行博客
-              </span>
-            </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              探索世界各地的旅行故事、景點推薦和實用攻略<br />
-              <span className="text-orange-400">33 篇深度遊記</span>，帶你體驗不一樣的旅程
-            </p>
           </div>
         </div>
       </div>
 
+      {/* ========== Blog Content ========== */}
       <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
 
         {/* ========== 地方遊記 ========== */}
@@ -320,45 +408,56 @@ export default function TravelBlogPage() {
           </div>
         </section>
 
-        {/* Features Banner */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
-            <Camera className="w-10 h-10 text-orange-400 mx-auto mb-4" />
-            <h3 className="font-bold mb-2">拍攝攻略</h3>
-            <p className="text-gray-400 text-sm">每個景點都有專業拍攝技巧同最佳時間建議</p>
-          </div>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
-            <Utensils className="w-10 h-10 text-red-400 mx-auto mb-4" />
-            <h3 className="font-bold mb-2">美食推薦</h3>
-            <p className="text-gray-400 text-sm">當地人帶路，唔使做遊客被劏</p>
-          </div>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
-            <Building2 className="w-10 h-10 text-blue-400 mx-auto mb-4" />
-            <h3 className="font-bold mb-2">交通指南</h3>
-            <p className="text-gray-400 text-sm">詳細交通指引，唔使擔心迷路</p>
-          </div>
-        </div>
-
-        {/* Author Section */}
-        <div className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-orange-900/30 to-blue-900/30 border border-orange-500/30">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-blue-500 flex items-center justify-center text-3xl shadow-lg">
-              🌍
-            </div>
-            <div className="text-center md:text-left flex-1">
-              <h3 className="text-xl font-bold mb-2">關於作者</h3>
-              <p className="text-gray-300 mb-3">
-                呢啲遊記全部由 NewsKingdom 編輯團隊實地考察後撰寫。我哋希望用第一身視角，
-                帶你感受每個地方最真實嘅一面。
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                <span className="px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 text-sm">📸 旅行攝影</span>
-                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm">✈️ 深度遊記</span>
-                <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">📚 文化探索</span>
+        {/* ========== 博主優勢 ========== */}
+        <section className="py-8">
+          <h2 className="text-2xl font-bold text-white text-center mb-8">點解選擇我哋嘅遊記？</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-orange-900/30 to-red-900/30 border border-orange-500/30 hover:border-orange-500/50 transition-all">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-orange-500/30">
+                <Camera className="w-8 h-8 text-white" />
               </div>
+              <h3 className="text-xl font-bold text-white mb-2">📸 專業拍攝</h3>
+              <p className="text-gray-400 text-sm">每個景點都有專業拍攝技巧同最佳時間建議，用心捕捉每個精彩瞬間</p>
+            </div>
+            <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border border-blue-500/30 hover:border-blue-500/50 transition-all">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+                <BookOpen className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">📚 深度攻略</h3>
+              <p className="text-gray-400 text-sm">唔係走馬觀花，而係深入探索每個地方嘅歷史、文化同埋人情味</p>
+            </div>
+            <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 hover:border-green-500/50 transition-all">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-green-500/30">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">❤️ 良心推薦</h3>
+              <p className="text-gray-400 text-sm">當地人都幫襯嘅餐廳、性價比最高嘅酒店，唔會呃你</p>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* ========== 聯絡博主 ========== */}
+        <section className="py-8">
+          <div className="bg-gradient-to-r from-orange-900/40 via-gray-900/80 to-blue-900/40 rounded-3xl p-8 border border-gray-700/50">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-white mb-2">與博主互動</h2>
+              <p className="text-gray-400">如果你有任何問題，或者想了解更多旅遊資訊，歡迎聯絡我哋</p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              {bloggerProfile.social.map((item) => (
+                <a
+                  key={item.platform}
+                  href={item.platform === 'Email' ? `mailto:${item.handle}` : item.handle}
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-gray-800 hover:bg-gray-700 border border-gray-600 hover:border-orange-500/50 transition-all text-white"
+                >
+                  <item.icon className="w-5 h-5 text-orange-400" />
+                  <span>{item.handle}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </div>
     </main>
   )
