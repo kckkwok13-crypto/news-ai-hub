@@ -11,6 +11,7 @@ const bloggerProfile = {
   name: '純粹旅人',
   title: '旅行博主 · 深度遊記作者',
   avatar: '🌍',
+  avatarImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300',
   coverBg: 'from-orange-600 via-red-600 to-blue-600',
   bio: '熱愛探索世界的旅行攝影師，足跡遍佈 30+ 個國家。用文字記錄旅程，用鏡頭捕捉感動，每篇遊記都係實地考察後嘅第一手分享。',
   motto: '「旅行唔係走馬觀花，而係用心感受每個城市嘅溫度。」',
@@ -67,24 +68,24 @@ const worldTravel = {
   color: 'blue',
   groups: [
     { name: '🏰 歐洲經典遊', subTitle: '倫敦、羅馬、巴黎：感受歷史與浪漫', count: 18, places: [
-      { name: '大笨鐘', slug: 'big-ben', desc: '倫敦標誌性鐘樓', image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=400', duration: '30分鐘' },
-      { name: '倫敦塔橋', slug: 'tower-bridge', desc: '維多利亞時期哥德式橋樑', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400', duration: '1-2小時' },
-      { name: '倫敦眼', slug: 'london-eye', desc: '俯瞰倫敦全景', image: 'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=400', duration: '30分鐘' },
-      { name: '羅馬鬥獸場', slug: 'colosseum', desc: '古羅馬建築代表作', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400', duration: '2-3小時' },
-      { name: '特萊維噴泉', slug: 'trevi', desc: '羅馬最靚嘅巴洛克噴泉', image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?w=400', duration: '30分鐘' },
-      { name: '西斯汀小堂', slug: 'sistine-chapel', desc: '米開朗基羅壁畫嘅所在地', image: 'https://images.unsplash.com/photo-1548544149-4835e62ee5b3?w=400', duration: '1-2小時' },
-      { name: '聖伯多祿大殿', slug: 'st-peters-basilica', desc: '世界上最大嘅教堂', image: 'https://images.unsplash.com/photo-1548585744-3e3c7f4f0f79?w=400', duration: '1-2小時' },
-      { name: '佛羅倫斯大教堂', slug: 'florence-cathedral', desc: '以紅磚圓頂聞名', image: 'https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?w=400', duration: '1-2小時' },
-      { name: '老橋', slug: 'ponte-vecchio', desc: '中世紀石橋，達芬奇都讚過', image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=400', duration: '30分鐘' },
-      { name: '聖馬可廣場', slug: 'st-marks-square', desc: '歐洲最美廣場', image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=400', duration: '1-2小時' },
-      { name: '里奧托橋', slug: 'rialto-bridge', desc: '威尼斯最古老嘅橋', image: 'https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=400', duration: '30分鐘' },
-      { name: '愛丁堡城堡', slug: 'edinburgh-castle', desc: '火山岩上嘅古老城堡', image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400', duration: '2-3小時' },
-      { name: '布蘭登堡門', slug: 'brandenburg-gate', desc: '柏林標誌性建築', image: 'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=400', duration: '30分鐘' },
-      { name: '瑪利亞廣場', slug: 'marienplatz-munich', desc: '慕尼黑市中心廣場', image: 'https://images.unsplash.com/photo-1590561622217-9c6c5a7e32aa?w=400', duration: '1小時' },
-      { name: '英國花園', slug: 'english-garden-munich', desc: '世界上最大城市公園之一', image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?w=400', duration: '2-3小時' },
-      { name: '聖家堂', slug: 'sagrada-familia', desc: '高迪未完成嘅遺作', image: 'https://images.unsplash.com/photo-1583779457264-4c1ec95d662c?w=400', duration: '2-3小時' },
-      { name: '古埃爾公園', slug: 'park-guell', desc: '高迪設計嘅彩色童話公園', image: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400', duration: '2-3小時' },
-      { name: '馬德里皇宮', slug: 'royal-palace-madrid', desc: '歐洲最大皇宮之一', image: 'https://images.unsplash.com/photo-1543352634-99a5d50ae78e?w=400', duration: '2-3小時' },
+      { name: '大笨鐘', slug: 'big-ben', desc: '倫敦標誌性鐘樓', image: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=400&q=80', duration: '30分鐘' },
+      { name: '倫敦塔橋', slug: 'tower-bridge', desc: '維多利亞時期哥德式橋樑', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=400&q=80', duration: '1-2小時' },
+      { name: '倫敦眼', slug: 'london-eye', desc: '俯瞰倫敦全景', image: 'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?auto=format&fit=crop&w=400&q=80', duration: '30分鐘' },
+      { name: '羅馬鬥獸場', slug: 'colosseum', desc: '古羅馬建築代表作', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=400&q=80', duration: '2-3小時' },
+      { name: '特萊維噴泉', slug: 'trevi', desc: '羅馬最靚嘅巴洛克噴泉', image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=400&q=80', duration: '30分鐘' },
+      { name: '西斯汀小堂', slug: 'sistine-chapel', desc: '米開朗基羅壁畫嘅所在地', image: 'https://images.unsplash.com/photo-1548544149-4835e62ee5b3?auto=format&fit=crop&w=400&q=80', duration: '1-2小時' },
+      { name: '聖伯多祿大殿', slug: 'st-peters-basilica', desc: '世界上最大嘅教堂', image: 'https://images.unsplash.com/photo-1548585744-3e3c7f4f0f79?auto=format&fit=crop&w=400&q=80', duration: '1-2小時' },
+      { name: '佛羅倫斯大教堂', slug: 'florence-cathedral', desc: '以紅磚圓頂聞名', image: 'https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?auto=format&fit=crop&w=400&q=80', duration: '1-2小時' },
+      { name: '老橋', slug: 'ponte-vecchio', desc: '中世紀石橋，達芬奇都讚過', image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=400&q=80', duration: '30分鐘' },
+      { name: '聖馬可廣場', slug: 'st-marks-square', desc: '歐洲最美廣場', image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=400&q=80', duration: '1-2小時' },
+      { name: '里奧托橋', slug: 'rialto-bridge', desc: '威尼斯最古老嘅橋', image: 'https://images.unsplash.com/photo-1514890547357-a9ee288728e0?auto=format&fit=crop&w=400&q=80', duration: '30分鐘' },
+      { name: '愛丁堡城堡', slug: 'edinburgh-castle', desc: '火山岩上嘅古老城堡', image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=400&q=80', duration: '2-3小時' },
+      { name: '布蘭登堡門', slug: 'brandenburg-gate', desc: '柏林標誌性建築', image: 'https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=400&q=80', duration: '30分鐘' },
+      { name: '瑪利亞廣場', slug: 'marienplatz-munich', desc: '慕尼黑市中心廣場', image: 'https://images.unsplash.com/photo-1590561622217-9c6c5a7e32aa?auto=format&fit=crop&w=400&q=80', duration: '1小時' },
+      { name: '英國花園', slug: 'english-garden-munich', desc: '世界上最大城市公園之一', image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=400&q=80', duration: '2-3小時' },
+      { name: '聖家堂', slug: 'sagrada-familia', desc: '高迪未完成嘅遺作', image: 'https://images.unsplash.com/photo-1583779457264-4c1ec95d662c?auto=format&fit=crop&w=400&q=80', duration: '2-3小時' },
+      { name: '古埃爾公園', slug: 'park-guell', desc: '高迪設計嘅彩色童話公園', image: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=400&q=80', duration: '2-3小時' },
+      { name: '馬德里皇宮', slug: 'royal-palace-madrid', desc: '歐洲最大皇宮之一', image: 'https://images.unsplash.com/photo-1543352634-99a5d50ae78e?auto=format&fit=crop&w=400&q=80', duration: '2-3小時' },
     ]},
   ]
 }
@@ -133,8 +134,16 @@ export default function TravelBlogPage() {
               {/* Avatar Section */}
               <div className="flex flex-col items-center lg:items-start">
                 <div className="relative">
-                  <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${bloggerProfile.coverBg} flex items-center justify-center text-6xl shadow-xl ring-4 ring-gray-700/50`}>
-                    {bloggerProfile.avatar}
+                  <div className="w-32 h-32 rounded-full overflow-hidden shadow-xl ring-4 ring-gray-700/50">
+                    <img
+                      src={bloggerProfile.avatarImage}
+                      alt={bloggerProfile.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br ${bloggerProfile.coverBg} flex items-center justify-center text-6xl">${bloggerProfile.avatar}</div>`;
+                      }}
+                    />
                   </div>
                   <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-green-500 rounded-full border-4 border-gray-900 flex items-center justify-center">
                     <span className="text-white text-sm">✓</span>
@@ -254,6 +263,9 @@ export default function TravelBlogPage() {
                         src={place.image}
                         alt={place.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
                       <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.orange.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
@@ -309,6 +321,9 @@ export default function TravelBlogPage() {
                         src={place.image}
                         alt={place.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
                       <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.orange.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
@@ -381,6 +396,9 @@ export default function TravelBlogPage() {
                         src={place.image}
                         alt={place.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
                       <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.blue.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
