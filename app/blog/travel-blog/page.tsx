@@ -1,10 +1,7 @@
+'use client'
+
 import Link from 'next/link'
 import { MapPin, Camera, Utensils, Building2, Clock, Globe, Home, Map, User, Award, BookOpen, Heart, Star, Send, Instagram, Youtube } from 'lucide-react'
-
-export const metadata = {
-  title: '旅行博客 - NewsKingdom',
-  description: '探索世界各地的旅行故事、景點推薦和旅遊攻略',
-}
 
 // 博主資料
 const bloggerProfile = {
