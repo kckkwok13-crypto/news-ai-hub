@@ -544,8 +544,21 @@ const TRAVEL_COUNTRIES: Record<string, any> = {
 }
 
 // ============ UTILITIES ============
+function decodeHTMLEntities(text: string): string {
+  return text
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ').replace(/&hellip;/g, '...')
+    .replace(/&mdash;/g, '\u2014').replace(/&ndash;/g, '\u2013')
+    .replace(/&lsquo;/g, '\u2018').replace(/&rsquo;/g, '\u2019')
+    .replace(/&ldquo;/g, '\u201C').replace(/&rdquo;/g, '\u201D')
+}
+
 function extractText(html: string): string {
-  return html.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#039;/g, "'").trim()
+  const withoutTags = html.replace(/<[^>]*>/g, '')
+  return decodeHTMLEntities(withoutTags).trim()
 }
 
 function extractImage(itemXml: string): string | null {
