@@ -609,27 +609,54 @@ function extractImage(itemXml: string): string | null {
   return null
 }
 
-async function translateText(text: string, lang: string, timeoutMs = 10000): Promise<string> {
+async function translateText(text: string, lang: string, timeoutMs = 12000): Promise<string> {
   if (!text || text.length < 2) return text
   const hasChinese = /[\u4e00-\u9fff]/.test(text)
   const isTargetChinese = lang === 'zh-CN' || lang === 'zh-TW'
   // Skip if already in target language
   if ((isTargetChinese && hasChinese) || (!isTargetChinese && !hasChinese)) return text
 
-  try {
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-    const targetLang = lang === 'en' ? 'en' : lang === 'zh-CN' ? 'zh-CN' : 'zh-TW'
-    const fromLang = hasChinese ? 'zh' : 'en'
-    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`, { signal: controller.signal })
-    clearTimeout(timeoutId)
-    if (res.ok) {
-      const data = await res.json()
-      const translated = data[0]?.[0]?.[0]
-      if (translated && translated !== text) return translated
+  const targetLang = lang === 'en' ? 'en' : lang === 'zh-CN' ? 'zh-CN' : 'zh-TW'
+  const fromLang = hasChinese ? 'zh' : 'en'
+  const maxRetries = 1 // Reduced to 1 retry for faster response
+  const maxTotalTime = 20000 // 20 second max total time
+
+  const startTime = Date.now()
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    // Check if we've exceeded max total time
+    if (Date.now() - startTime > maxTotalTime) break
+
+    try {
+      const controller = new AbortController()
+      const remainingTime = Math.max(3000, maxTotalTime - (Date.now() - startTime))
+      const timeoutId = setTimeout(() => controller.abort(), remainingTime)
+
+      const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
+      const res = await fetch(url, { signal: controller.signal })
+      clearTimeout(timeoutId)
+
+      if (res.ok) {
+        const data = await res.json()
+        const translated = data[0]?.[0]?.[0]
+        if (translated && translated !== text && translated.length > text.length * 0.3) {
+          return translated
+        }
+      }
+      // If response not ok or translation invalid, try again (if time permits)
+      if (attempt < maxRetries && (Date.now() - startTime) < maxTotalTime - 3000) {
+        await new Promise(resolve => setTimeout(resolve, 500))
+        continue
+      }
+    } catch {
+      // On error, try one more time if we have time
+      if (attempt < maxRetries && (Date.now() - startTime) < maxTotalTime - 3000) {
+        await new Promise(resolve => setTimeout(resolve, 800))
+        continue
+      }
     }
-  } catch {}
-  // If translation fails, return original text (no API key needed)
+  }
+  // If all retries fail, return original text
   return text
 }
 
