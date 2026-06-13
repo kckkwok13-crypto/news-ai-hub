@@ -618,6 +618,222 @@ export default function BlogContent({ slug }: { slug: string }) {
               data-ad-format="auto"
               data-full-width-responsive="true" />
           </div>
+
+          {/* Comment & Share Section */}
+          <div className="relative my-12 py-8">
+            {/* Decorative Background */}
+            <div className={`absolute inset-0 bg-gradient-to-r from-zinc-900/80 via-zinc-900/60 to-zinc-900/80 rounded-3xl border ${colors.border} -z-10`} />
+
+            {/* Decorative Corner Elements */}
+            <div className={`absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 ${colors.border} rounded-tl-xl opacity-50`} />
+            <div className={`absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 ${colors.border} rounded-tr-xl opacity-50`} />
+            <div className={`absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 ${colors.border} rounded-bl-xl opacity-50`} />
+            <div className={`absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 ${colors.border} rounded-br-xl opacity-50`} />
+
+            <div className="text-center mb-6">
+              {/* Comment Icon */}
+              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${colors.active} shadow-lg ${colors.glow} mb-4`}>
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+
+              <h2 className="text-2xl font-bold text-white mb-2">
+                留言分享 💬
+              </h2>
+              <p className="text-zinc-400 text-sm">與讀者互動，分享你的觀點</p>
+
+              <div className="flex items-center justify-center gap-4 mt-3">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-zinc-700" />
+                <div className="w-2 h-2 rounded-full bg-zinc-600" />
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-zinc-700" />
+              </div>
+            </div>
+
+            {/* Interactive Question */}
+            <div className={`bg-gradient-to-br from-zinc-800/50 to-zinc-800/30 rounded-2xl p-6 mb-6 border border-zinc-700/50`}>
+              <div className="flex items-start gap-4">
+                <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br ${colors.active} flex items-center justify-center shadow-lg`}>
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="text-zinc-300 leading-relaxed">
+                    {blog.slug === 'keukenhof' && (
+                      <>你更喜歡在彩虹花田中漫步打卡，定係坐運河花舟慢慢賞花呢？🌷</>
+                    )}
+                    {blog.slug === 'anne-frank-house' && (
+                      <>看完安妮的故事，你認為《安妮日記》對現代社會有什麼啟示？📚</>
+                    )}
+                    {blog.slug === 'shibuya-crossing' && (
+                      <>你體驗過澀谷十字路口的人潮洶湧嗎？有什麼難忘的經歷？🏙️</>
+                    )}
+                    {blog.slug === 'meiji-shrine' && (
+                      <>明治神宮的森林散步給你什麼感受？你最喜歡哪個景點？⛩️</>
+                    )}
+                    {blog.slug === 'sensoji' && (
+                      <>你有在淺草寺求過籤嗎？抽到了什麼結果？求籤過程有什麼感受？🏮</>
+                    )}
+                    {(blog.slug === 'gba-macau-2days' || !['keukenhof', 'anne-frank-house', 'shibuya-crossing', 'meiji-shrine', 'sensoji'].includes(blog.slug)) && (
+                      <>這篇文章對你的旅行計劃有幫助嗎？留言分享你的想法！✈️</>
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Comment Input Area */}
+            <div className="space-y-4">
+              {/* Name Input */}
+              <div>
+                <label className="block text-zinc-400 text-sm mb-2 font-medium">
+                  你的名稱
+                </label>
+                <input
+                  type="text"
+                  placeholder="例如：旅遊愛好者"
+                  className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-zinc-500/20 transition-all duration-300"
+                />
+              </div>
+
+              {/* Comment Textarea */}
+              <div>
+                <label className="block text-zinc-400 text-sm mb-2 font-medium">
+                  你的留言
+                </label>
+                <textarea
+                  placeholder="輸入你的留言... 分享你的旅行經驗或想法！"
+                  rows={4}
+                  className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-2 focus:ring-zinc-500/20 transition-all duration-300 resize-none"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="button"
+                className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${colors.active} text-white font-semibold shadow-lg ${colors.glow} hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                提交留言
+              </button>
+
+              {/* Social Share */}
+              <div className="flex items-center justify-center gap-4 pt-4 border-t border-zinc-800/50">
+                <span className="text-zinc-500 text-sm">分享給朋友：</span>
+                <button className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center hover:bg-zinc-700/50 hover:border-zinc-600/50 transition-all duration-300 group">
+                  <svg className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </button>
+                <button className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center hover:bg-zinc-700/50 hover:border-zinc-600/50 transition-all duration-300 group">
+                  <svg className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                  </svg>
+                </button>
+                <button className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center hover:bg-zinc-700/50 hover:border-zinc-600/50 transition-all duration-300 group">
+                  <svg className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </button>
+                <button className="w-10 h-10 rounded-full bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center hover:bg-zinc-700/50 hover:border-zinc-600/50 transition-all duration-300 group">
+                  <svg className="w-5 h-5 text-zinc-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Sample Comments Preview */}
+            <div className="mt-8 pt-6 border-t border-zinc-800/50">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                精選留言
+              </h3>
+
+              <div className="space-y-4">
+                {/* Sample Comment 1 */}
+                <div className="bg-zinc-800/30 rounded-xl p-4 border border-zinc-800/50">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm">
+                      KL
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-medium text-white">Karen Liu</span>
+                        <span className="text-xs text-zinc-500">3天前</span>
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        {blog.slug === 'keukenhof' && (
+                          <>去年四月去過庫肯霍夫，真的超級震撼！建議大家一定要預約早上第一場，人少花美，拍出來的照片完全不一樣！🌷✨</>
+                        )}
+                        {blog.slug === 'anne-frank-house' && (
+                          <>這篇文章讓我想重讀《安妮日記》。歷史不應該被遺忘，願世界永遠和平。</>
+                        )}
+                        {blog.slug === 'shibuya-crossing' && (
+                          <>SHIBUYA SKY 的日落時段門票真的超難搶！建議提前一個月預訂。</>
+                        )}
+                        {(blog.slug === 'meiji-shrine' || blog.slug === 'sensoji' || !['keukenhof', 'anne-frank-house', 'shibuya-crossing'].includes(blog.slug)) && (
+                          <>謝謝分享這麼詳細的攻略！已經加入旅行清單了，期待下次出發！</>
+                        )}
+                      </p>
+                      <div className="flex items-center gap-4 mt-2">
+                        <button className="text-zinc-500 hover:text-zinc-300 text-sm flex items-center gap-1 transition-colors">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                          </svg>
+                          8
+                        </button>
+                        <button className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">回覆</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sample Comment 2 */}
+                <div className="bg-zinc-800/30 rounded-xl p-4 border border-zinc-800/50">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
+                      MC
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-medium text-white">Mike Chen</span>
+                        <span className="text-xs text-zinc-500">5天前</span>
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        {blog.slug === 'keukenhof' && (
+                          <>運河花舟體驗非常浪漫！但建議帶件外套，四月底的傍晚還是有點涼。船上風景一流，推薦！🚢</>
+                        )}
+                        {blog.slug === 'anne-frank-house' && (
+                          <>在阿姆斯特丹親身參觀過安妮之家，那種壓抑感至今難忘。非常值得一去的地方。</>
+                        )}
+                        {blog.slug === 'shibuya-crossing' && (
+                          <>建議從星巴克二樓窗口看十字路口全景，那個角度最震撼！</>
+                        )}
+                        {(blog.slug === 'meiji-shrine' || blog.slug === 'sensoji' || !['keukenhof', 'anne-frank-house', 'shibuya-crossing'].includes(blog.slug)) && (
+                          <>內容很詳細，圖片也很漂亮！希望能有更多這樣高質量的遊記。</>
+                        )}
+                      </p>
+                      <div className="flex items-center gap-4 mt-2">
+                        <button className="text-zinc-500 hover:text-zinc-300 text-sm flex items-center gap-1 transition-colors">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                          </svg>
+                          3
+                        </button>
+                        <button className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">回覆</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
 
         {/* Enhanced Related Posts / Back to Blog */}
