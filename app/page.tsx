@@ -2537,6 +2537,70 @@ export default function NewsPage() {
         )}
       </main>
 
+      {/* 深度專題 Section - Featured Editorial Articles */}
+      <section className={`mt-12 px-4 max-w-6xl mx-auto ${darkMode ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" : "bg-gradient-to-br from-white via-gray-50 to-white"} rounded-3xl p-8 shadow-2xl border ${darkMode ? "border-gray-700" : "border-gray-200"}`}>
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent flex items-center justify-center gap-3">
+            <span className="animate-pulse">✨</span>
+            <span>深度專題分析</span>
+            <span className="animate-pulse">✨</span>
+          </h2>
+          <p className={`mt-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>專業數據 · 統計圖表 · 深度解讀</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* 投資趨勢 Article Card */}
+          <a href="/editorial/global-investment-trends-2026.html" className={`group block p-6 rounded-2xl ${darkMode ? "bg-gray-800/50 hover:bg-gray-700/50 border border-gray-600 hover:border-yellow-500/50" : "bg-white hover:bg-gray-50 border border-gray-200 hover:border-yellow-400/50"} transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
+            <div className="flex items-start gap-4">
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                📊
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs px-2 py-1 rounded-full bg-yellow-500/20 text-yellow-400 font-medium">2026最新</span>
+                  <span className="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-400">投資理財</span>
+                </div>
+                <h3 className={`font-bold text-lg mb-1 group-hover:text-yellow-400 transition-colors ${darkMode ? "text-white" : "text-gray-900"}`}>
+                  2026年全球投資趨勢深度分析
+                </h3>
+                <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} line-clamp-2`}>
+                  比特幣目標價$105,000、AI投資熱潮、穩定幣邁向$1兆美元、機構化投資新時代
+                </p>
+                <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
+                  <span>📅 2026年6月</span>
+                  <span>⏱️ 15分鐘閱讀</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          {/* 健康養生 Article Card */}
+          <a href="/editorial/health-wellness-2026.html" className={`group block p-6 rounded-2xl ${darkMode ? "bg-gray-800/50 hover:bg-gray-700/50 border border-gray-600 hover:border-green-500/50" : "bg-white hover:bg-gray-50 border border-gray-200 hover:border-green-400/50"} transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
+            <div className="flex items-start gap-4">
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                🏥
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs px-2 py-1 rounded-full bg-green-500/20 text-green-400 font-medium">2026最新</span>
+                  <span className="text-xs px-2 py-1 rounded-full bg-pink-500/20 text-pink-400">健康養生</span>
+                </div>
+                <h3 className={`font-bold text-lg mb-1 group-hover:text-green-400 transition-colors ${darkMode ? "text-white" : "text-gray-900"}`}>
+                  2026年全球健康養生趨勢分析
+                </h3>
+                <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} line-clamp-2`}>
+                  $5.02兆健康市場、女性長壽經濟學、精準健康革命、心理健康新時代
+                </p>
+                <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
+                  <span>📅 2026年6月</span>
+                  <span>⏱️ 18分鐘閱讀</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
       <footer className={`mt-12 py-10 text-center border-t ${darkMode ? "border-gray-800 text-gray-500" : "border-gray-100 text-gray-400"}`}>
         <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm md:text-base font-medium">
           <Link href="/blog" className="hover:text-teal-400 transition-colors uppercase tracking-wider">📖 旅遊Blog / Travel</Link>
