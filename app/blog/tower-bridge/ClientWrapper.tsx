@@ -181,25 +181,6 @@ export default function TowerBridgePage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-blue-900/40 to-cyan-900/30 border border-blue-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-blue-400 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-blue-100 text-lg mb-4">
-              👇 留言分享：你更想漫步在泰晤士河畔等待一場壯觀的開啟橋儀式，還是想挑戰踏上離地 42 米的高空透明玻璃走廊呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-blue-800/60 border border-blue-700/50 rounded-xl px-4 py-3 text-white placeholder-blue-300 focus:outline-none focus:border-blue-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

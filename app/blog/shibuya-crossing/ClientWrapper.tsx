@@ -186,25 +186,6 @@ export default function ShibuyaCrossingPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/20 border border-purple-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-purple-400 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-zinc-300 text-lg mb-4">
-              👇 你試過在澀谷十字路口被「人流漩渦」淹沒過嗎？分享一下你的體驗！
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

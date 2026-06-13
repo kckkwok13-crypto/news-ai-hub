@@ -186,25 +186,6 @@ export default function LondonEyePage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-pink-900/40 to-purple-900/30 border border-pink-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-pink-400 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-pink-100 text-lg mb-4">
-              👇 留言分享：你更想在粉橘色的夕陽下漫步泰晤士河畔，還是渴望和最愛的人在倫敦眼的太空艙裡看一場整點的繁華夜景呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-pink-800/60 border border-pink-700/50 rounded-xl px-4 py-3 text-white placeholder-pink-300 focus:outline-none focus:border-pink-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

@@ -169,25 +169,6 @@ export default function GrandPalacePage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-[#fdf8e6] border border-[#d4af37]/30 rounded-2xl p-6 my-10">
-            <h3 className="text-[#7a5c00] font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-[#2b251a] text-lg mb-4">
-              👇 留言分享：你行大皇宮嘅時候有冇著過泰國經典嘅「大象褲」？定係你最震撼邊一座宮殿呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white border border-[#d4af37]/30 rounded-xl px-4 py-3 text-[#2b251a] placeholder-[#9a8c73] focus:outline-none focus:border-[#d4af37] transition-colors"
-              />
-              <button className="bg-gradient-to-r from-[#d4af37] to-[#b38f00] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

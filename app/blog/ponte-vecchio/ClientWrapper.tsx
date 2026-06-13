@@ -186,25 +186,6 @@ export default function PonteVecchioPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-[#f1e7dd] border border-[#8b4513]/30 rounded-2xl p-6 my-10">
-            <h3 className="text-[#8b4513] font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-[#3e2723] text-lg mb-4">
-              👇 留言分享：你最想在阿諾河畔的夕陽下漫步老橋，還是想進去那幾百年歷史的珠寶店尋寶呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white border border-[#d7ccc8] rounded-xl px-4 py-3 text-[#3e2723] placeholder-[#bcaaa4] focus:outline-none focus:border-[#8b4513] transition-colors"
-              />
-              <button className="bg-gradient-to-r from-[#8b4513] to-[#a0522d] text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

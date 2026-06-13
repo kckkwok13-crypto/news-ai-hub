@@ -184,25 +184,6 @@ export default function RoyalPalaceMadridPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-amber-100 to-yellow-100 border border-amber-400/50 rounded-2xl p-6 my-10">
-            <h3 className="text-amber-700 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-stone-700 text-lg mb-4">
-              👇 留言分享：你更想在主樓梯上拍一張華麗的宮廷大片，還是想去那間全瓷器打造嘅「瓷器廳」開開眼界呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white/80 border border-amber-300 rounded-xl px-4 py-3 text-stone-800 placeholder-amber-500 focus:outline-none focus:border-amber-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-amber-600 to-yellow-600 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

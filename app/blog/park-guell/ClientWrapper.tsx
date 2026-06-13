@@ -176,25 +176,6 @@ export default function ParkGuellPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-teal-100 to-cyan-100 border border-teal-400/50 rounded-2xl p-6 my-10">
-            <h3 className="text-teal-700 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-teal-800 text-lg mb-4">
-              👇 留言分享：你更喜歡坐在符合人體工學的彩色波浪長椅上看海，還是想去那兩座精緻可愛嘅「糖果屋」裡探秘呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white/80 border border-teal-300 rounded-xl px-4 py-3 text-teal-800 placeholder-teal-500 focus:outline-none focus:border-teal-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

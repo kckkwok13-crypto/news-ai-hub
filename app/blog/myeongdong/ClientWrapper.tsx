@@ -196,25 +196,6 @@ export default function MyeongdongPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-rose-900/30 to-pink-900/20 border border-rose-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-rose-400 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-zinc-300 text-lg mb-4">
-              👇 你去明洞最鍾意買邊個牌子的美妝？定係有邊一款街頭小食係你每次去都必食的呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-zinc-800/60 border border-zinc-700/50 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-rose-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

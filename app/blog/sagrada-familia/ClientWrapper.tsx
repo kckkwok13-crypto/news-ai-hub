@@ -193,25 +193,6 @@ export default function SagradaFamiliaPage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-400/50 rounded-2xl p-6 my-10">
-            <h3 className="text-amber-700 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-stone-700 text-lg mb-4">
-              👇 留言分享：你更想在午後看一場震撼心靈的「溫暖晚霞光影騷」，還是渴望挑戰那段階梯狹窄嘅蝸牛螺旋登頂塔樓呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-white/80 border border-amber-300 rounded-xl px-4 py-3 text-stone-800 placeholder-amber-500 focus:outline-none focus:border-amber-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">

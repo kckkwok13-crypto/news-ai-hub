@@ -189,25 +189,6 @@ export default function EdinburghCastlePage() {
             </div>
           </div>
 
-          {/* Comment Section */}
-          <div className="bg-gradient-to-r from-stone-800/60 to-red-900/50 border border-red-500/30 rounded-2xl p-6 my-10">
-            <h3 className="text-red-400 font-bold mb-4 flex items-center gap-2 text-xl">
-              💬 留言分享
-            </h3>
-            <p className="text-red-100 text-lg mb-4">
-              👇 留言分享：你更想在下午一點鐘親眼看看震撼的大砲儀式，還是想走進神秘的地道裡去尋找傳說中無頭鼓手嘅足跡呢？
-            </p>
-            <div className="space-y-3">
-              <input
-                type="text"
-                placeholder="輸入你的留言..."
-                className="w-full bg-stone-700/60 border border-red-700/50 rounded-xl px-4 py-3 text-white placeholder-red-300 focus:outline-none focus:border-red-500/50 transition-colors"
-              />
-              <button className="bg-gradient-to-r from-red-600 to-rose-600 text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                提交留言
-              </button>
-            </div>
-          </div>
 
           {/* Infolinks Ad Script */}
           <div className="my-8 text-center">
