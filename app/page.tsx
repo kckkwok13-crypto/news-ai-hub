@@ -1404,83 +1404,153 @@ export default function NewsPage() {
         </div>
       </Link>
 
-      {/* 精彩專題 Section */}
+      {/* 精彩專題 Section - Glamorous Version */}
       <div className="mt-8 px-2">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
-            <span>🌟</span>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent flex items-center gap-3">
+            <span className="text-2xl animate-pulse">✨</span>
             <span>精彩專題</span>
+            <span className="text-2xl animate-pulse">✨</span>
           </h2>
-          <Link href="/finance" className="text-sm text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1">
+          <Link href="/finance" className="text-sm text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1 group">
             <span>查看全部</span>
-            <span>→</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* Finance Section */}
-          <Link href="/finance" className="group">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-900/40 to-amber-900/40 border border-yellow-500/20 hover:border-yellow-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-4xl">💰</span>
+
+        {/* Glamorous Featured Topics Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {/* Finance Section - Golden Glamour */}
+          <Link href="/finance" className="group relative">
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-900/60 via-amber-900/40 to-orange-900/60 border border-yellow-500/30 hover:border-yellow-400/60 transition-all duration-500 p-5 md:p-6 h-full min-h-[180px] md:min-h-[200px] flex flex-col items-center justify-center text-center">
+              {/* Animated Top Line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent animate-shimmer" />
+
+              {/* Floating Particles */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-yellow-400/50 rounded-full animate-float" />
+              <div className="absolute bottom-8 left-4 w-1.5 h-1.5 bg-amber-400/40 rounded-full animate-float-delayed" />
+
+              {/* Icon Container with Glow */}
+              <div className="relative mb-4 md:mb-5">
+                <div className="absolute inset-0 bg-yellow-400/30 rounded-2xl blur-xl group-hover:bg-yellow-400/50 transition-all duration-500" />
+                <div className="relative w-18 h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-yellow-500/30 to-amber-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-yellow-400/30">
+                  <span className="text-4xl md:text-5xl filter drop-shadow-lg">💰</span>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">財經投資</h3>
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">市場分析</p>
-              <div className="mt-3 flex items-center gap-2 text-xs text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity">
+
+              <h3 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-yellow-300 transition-colors">財經投資</h3>
+              <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">市場分析</p>
+
+              {/* Hover Reveal */}
+              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2 text-xs text-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <span>探索更多</span>
                 <span>→</span>
               </div>
             </div>
           </Link>
 
-          {/* Health Section */}
-          <Link href="/health" className="group">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-900/40 to-emerald-900/40 border border-green-500/20 hover:border-green-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-4xl">🏥</span>
+          {/* Health Section - Emerald Elegance */}
+          <Link href="/health" className="group relative">
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-900/60 via-emerald-900/40 to-teal-900/60 border border-green-500/30 hover:border-green-400/60 transition-all duration-500 p-5 md:p-6 h-full min-h-[180px] md:min-h-[200px] flex flex-col items-center justify-center text-center">
+              {/* Animated Top Line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-green-400 to-transparent animate-shimmer" />
+
+              {/* Floating Particles */}
+              <div className="absolute top-4 left-4 w-2 h-2 bg-green-400/50 rounded-full animate-float" />
+              <div className="absolute top-8 right-6 w-1.5 h-1.5 bg-emerald-400/40 rounded-full animate-float-delayed" />
+
+              {/* Icon Container with Glow */}
+              <div className="relative mb-4 md:mb-5">
+                <div className="absolute inset-0 bg-green-400/30 rounded-2xl blur-xl group-hover:bg-green-400/50 transition-all duration-500" />
+                <div className="relative w-18 h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-green-500/30 to-emerald-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-green-400/30">
+                  <span className="text-4xl md:text-5xl filter drop-shadow-lg">🏥</span>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-white mb-1 group-hover:text-green-400 transition-colors">健康養生</h3>
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">生活品質</p>
-              <div className="mt-3 flex items-center gap-2 text-xs text-green-500 opacity-0 group-hover:opacity-100 transition-opacity">
+
+              <h3 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-green-300 transition-colors">健康養生</h3>
+              <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">生活品質</p>
+
+              {/* Hover Reveal */}
+              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2 text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <span>探索更多</span>
                 <span>→</span>
               </div>
             </div>
           </Link>
 
-          {/* Food Section */}
-          <Link href="/food" className="group">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-900/40 to-red-900/40 border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-4xl">🍜</span>
+          {/* Food Section - Warm Sunset */}
+          <Link href="/food" className="group relative">
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 via-red-500 to-pink-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-900/60 via-red-900/40 to-pink-900/60 border border-orange-500/30 hover:border-orange-400/60 transition-all duration-500 p-5 md:p-6 h-full min-h-[180px] md:min-h-[200px] flex flex-col items-center justify-center text-center">
+              {/* Animated Top Line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent animate-shimmer" />
+
+              {/* Floating Particles */}
+              <div className="absolute top-6 right-4 w-2 h-2 bg-orange-400/50 rounded-full animate-float" />
+              <div className="absolute bottom-6 left-6 w-1.5 h-1.5 bg-red-400/40 rounded-full animate-float-delayed" />
+
+              {/* Icon Container with Glow */}
+              <div className="relative mb-4 md:mb-5">
+                <div className="absolute inset-0 bg-orange-400/30 rounded-2xl blur-xl group-hover:bg-orange-400/50 transition-all duration-500" />
+                <div className="relative w-18 h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-orange-500/30 to-red-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-orange-400/30">
+                  <span className="text-4xl md:text-5xl filter drop-shadow-lg">🍜</span>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-white mb-1 group-hover:text-orange-400 transition-colors">美食天地</h3>
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">舌尖享受</p>
-              <div className="mt-3 flex items-center gap-2 text-xs text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">
+
+              <h3 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-orange-300 transition-colors">美食天地</h3>
+              <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">舌尖享受</p>
+
+              {/* Hover Reveal */}
+              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2 text-xs text-orange-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <span>探索更多</span>
                 <span>→</span>
               </div>
             </div>
           </Link>
 
-          {/* AI Tools Section */}
-          <Link href="/ai-tools" className="group">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-900/40 to-purple-900/40 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 p-6 h-full min-h-[160px] flex flex-col items-center justify-center text-center">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-4xl">🤖</span>
+          {/* AI Tools Section - Futuristic Cyber */}
+          <Link href="/ai-tools" className="group relative">
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-900/60 via-purple-900/40 to-pink-900/60 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-500 p-5 md:p-6 h-full min-h-[180px] md:min-h-[200px] flex flex-col items-center justify-center text-center">
+              {/* Animated Top Line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-shimmer" />
+
+              {/* Floating Particles */}
+              <div className="absolute top-4 right-6 w-2 h-2 bg-cyan-400/50 rounded-full animate-float" />
+              <div className="absolute bottom-10 left-4 w-1.5 h-1.5 bg-purple-400/40 rounded-full animate-float-delayed" />
+
+              {/* Icon Container with Glow */}
+              <div className="relative mb-4 md:mb-5">
+                <div className="absolute inset-0 bg-cyan-400/30 rounded-2xl blur-xl group-hover:bg-cyan-400/50 transition-all duration-500" />
+                <div className="relative w-18 h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-cyan-400/30">
+                  <span className="text-4xl md:text-5xl filter drop-shadow-lg">🤖</span>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">AI 工具</h3>
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">智能助手</p>
-              <div className="mt-3 flex items-center gap-2 text-xs text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity">
+
+              <h3 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">AI 工具</h3>
+              <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">智能助手</p>
+
+              {/* Hover Reveal */}
+              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2 text-xs text-cyan-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <span>探索更多</span>
                 <span>→</span>
               </div>
             </div>
           </Link>
         </div>
+
+        {/* Decorative Bottom Gradient */}
+        <div className="mt-6 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent" />
       </div>
 
       {/* AI Host Loading Modal */}
