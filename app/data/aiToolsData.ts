@@ -715,7 +715,7 @@ Notion + AI = 超強大腦：
     tags: ["Notion", "AI工具", "知識管理", "效率", "工作流"],
     icon: "📝",
     accent: "from-gray-500 to-slate-600",
-    image: "https://images.unsplash.com/photo-1517842645767-c639b7779c83?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     category: "workflow",
     readingTime: 9
   },

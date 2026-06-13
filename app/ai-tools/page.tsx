@@ -362,11 +362,11 @@ export default function AIToolsPage() {
                 <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-gray-500/40 transition-all duration-500">
                   <div className="relative h-36 overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1517842645767-c639b7779c83?w=600&q=80"
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
                       alt="Notion AI"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1517842645767-c639b7779c83?w=600&q=80";
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
@@ -453,70 +453,6 @@ export default function AIToolsPage() {
             <h3 className="text-white text-xl font-bold mb-2">創意工具</h3>
             <p className="text-pink-300/70 text-sm mb-4">圖像、影片、音頻</p>
             <span className="text-pink-400 text-sm">{aiToolPosts.filter(p => p.category === 'image' || p.category === 'video').length} 篇文章</span>
-          </div>
-        </div>
-
-        {/* Article Grid - 顯示剩餘文章（不在精彩專題中） */}
-        <div className="mb-8">
-          <h2 className="text-white text-2xl font-bold mb-6 flex items-center gap-3">
-            <span>📚</span>
-            <span>更多教程</span>
-          </h2>
-
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {aiToolPosts
-              .filter(post =>
-                post.slug !== 'chatgpt-prompt-engineering' &&
-                post.slug !== 'midjourney-beginners' &&
-                post.slug !== 'claude-ai-guide'
-              )
-              .map((post) => (
-              <Link key={post.slug} href={`/ai-tools/${post.slug}`} className="block group">
-                <article className="relative h-full bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-purple-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/10 backdrop-blur-sm">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-60 group-hover:opacity-100 transition-opacity" />
-
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-36 object-cover group-hover:scale-110 transition-transform duration-700"
-                      onError={(e) => {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80";
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
-                    <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl p-2 text-xl shadow-lg">
-                      {post.icon}
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <div className="flex gap-1.5 mb-3 flex-wrap">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="font-bold mb-2 text-base md:text-lg text-white group-hover:text-purple-400 transition-colors leading-snug">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">
-                      <span className="text-slate-500 text-xs">{post.date}</span>
-                      <span className="text-sm font-medium text-purple-400 group-hover:text-purple-300">
-                        閱讀 →
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            ))}
           </div>
         </div>
 
