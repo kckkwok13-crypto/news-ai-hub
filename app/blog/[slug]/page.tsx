@@ -6,6 +6,7 @@ export function generateStaticParams() {
     { slug: 'meiji-shrine' },
     { slug: 'sensoji' },
     { slug: 'gba-macau-2days' },
+    { slug: 'anne-frank-house' },
   ];
 }
 

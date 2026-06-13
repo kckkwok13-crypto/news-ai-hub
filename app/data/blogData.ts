@@ -409,4 +409,15 @@ export const blogPosts: BlogPost[] = [
     accent: "from-teal-500 to-cyan-500",
     category: "gba"
   },
+  {
+    slug: "anne-frank-house",
+    title: "🏠 走進那段不能被遺忘的歷史：阿姆斯特丹安妮之家深度遊記",
+    excerpt: "走進那段不能被遺忘的歷史：阿姆斯特丹安妮之家深度遊記。探索安妮·弗蘭克的秘密側樓，感受《安妮日記》背後的真實故事。",
+    date: "June 2026",
+    image: "https://www.annefrank.org/media/filer_public_thumbnails/filer_public/dd/61/dd614ecb-14e6-4c74-b345-ff0bb16685d4/001_012_010_voorkant_carel_blazer.jpg__1536x1536_q85_subject_location-1601%2C2511_subsampling-2.jpg",
+    icon: "🏠",
+    tags: ["阿姆斯特丹", "荷蘭", "歷史", "二戰", "安妮弗蘭克"],
+    accent: "from-amber-600 to-orange-500",
+    category: "local"
+  },
 ];
