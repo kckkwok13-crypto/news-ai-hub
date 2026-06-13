@@ -609,28 +609,40 @@ function extractImage(itemXml: string): string | null {
   return null
 }
 
-async function translateText(text: string, lang: string, timeoutMs = 12000): Promise<string> {
+async function translateText(text: string, lang: string, timeoutMs = 10000): Promise<string> {
   if (!text || text.length < 2) return text
   const hasChinese = /[\u4e00-\u9fff]/.test(text)
   const isTargetChinese = lang === 'zh-CN' || lang === 'zh-TW'
   // Skip if already in target language
   if ((isTargetChinese && hasChinese) || (!isTargetChinese && !hasChinese)) return text
 
-  const targetLang = lang === 'en' ? 'en' : lang === 'zh-CN' ? 'zh-CN' : 'zh-TW'
+  // For Chinese target, translate from English to Chinese
+  const targetLang = lang === 'en' ? 'en' : 'zh-TW' // Always use zh-TW for Traditional Chinese
   const fromLang = hasChinese ? 'zh' : 'en'
-  const maxRetries = 1 // Reduced to 1 retry for faster response
-  const maxTotalTime = 20000 // 20 second max total time
 
+  // Split text into chunks if too long (Google Translate has limits)
+  const maxChunkLength = 500
+  if (text.length > maxChunkLength) {
+    const chunks = text.match(/.{1,500}(\s|$)/g) || [text]
+    const translatedChunks = await Promise.all(
+      chunks.map(chunk => translateSingleChunk(chunk, targetLang, fromLang, timeoutMs / chunks.length))
+    )
+    return translatedChunks.join('')
+  }
+
+  return translateSingleChunk(text, targetLang, fromLang, timeoutMs)
+}
+
+async function translateSingleChunk(text: string, targetLang: string, fromLang: string, timeoutMs: number): Promise<string> {
+  const maxRetries = 2
   const startTime = Date.now()
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    // Check if we've exceeded max total time
-    if (Date.now() - startTime > maxTotalTime) break
+    if (Date.now() - startTime > timeoutMs * (attempt + 1)) break
 
     try {
       const controller = new AbortController()
-      const remainingTime = Math.max(3000, maxTotalTime - (Date.now() - startTime))
-      const timeoutId = setTimeout(() => controller.abort(), remainingTime)
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
 
       const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
       const res = await fetch(url, { signal: controller.signal })
@@ -638,25 +650,21 @@ async function translateText(text: string, lang: string, timeoutMs = 12000): Pro
 
       if (res.ok) {
         const data = await res.json()
+        // Google Translate returns array like: [[translated_text, original, detected_lang], ...]
         const translated = data[0]?.[0]?.[0]
-        if (translated && translated !== text && translated.length > text.length * 0.3) {
+        if (translated && typeof translated === 'string' && translated.length > 0) {
           return translated
         }
       }
-      // If response not ok or translation invalid, try again (if time permits)
-      if (attempt < maxRetries && (Date.now() - startTime) < maxTotalTime - 3000) {
-        await new Promise(resolve => setTimeout(resolve, 500))
-        continue
-      }
+
+      // Wait before retry
+      if (attempt < maxRetries) await new Promise(r => setTimeout(r, 300))
     } catch {
-      // On error, try one more time if we have time
-      if (attempt < maxRetries && (Date.now() - startTime) < maxTotalTime - 3000) {
-        await new Promise(resolve => setTimeout(resolve, 800))
-        continue
-      }
+      if (attempt < maxRetries) await new Promise(r => setTimeout(r, 500))
     }
   }
-  // If all retries fail, return original text
+
+  // Return original if translation fails
   return text
 }
 
