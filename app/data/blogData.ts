@@ -462,7 +462,7 @@ export const blogPosts: BlogPost[] = [
     icon: "🤖",
     tags: ["AI工具", "人工智能", "教程", "效率提升", "科技"],
     accent: "from-cyan-500 to-teal-500",
-    category: "world"
+    category: "ai"
   },
   {
     slug: "keukenhof",
