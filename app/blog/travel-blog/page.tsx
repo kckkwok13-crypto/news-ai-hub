@@ -121,7 +121,7 @@ export default function TravelBlogPage() {
 
       <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
 
-        {/* ========== 地方遊記 (外層大框) ========== */}
+        {/* ========== 地方遊記 ========== */}
         <section>
           {/* Section Header */}
           <div className="flex items-center gap-4 mb-6">
@@ -137,67 +137,118 @@ export default function TravelBlogPage() {
             </div>
           </div>
 
-          {/* Outer Container */}
-          <div className={`rounded-3xl bg-gradient-to-br ${colorConfig.orange.outerBg} border ${colorConfig.orange.outerBorder} p-6`}>
-
-            {/* 日本深度遊 (內層框) */}
-            {localTravel.groups.map((group, groupIdx) => (
-              <div key={group.name} className="mb-6 last:mb-0">
-                {/* Inner Container */}
-                <div className={`rounded-2xl bg-gradient-to-br ${colorConfig.orange.innerBg} border ${colorConfig.orange.innerBorder} p-6`}>
-                  {/* Group Header */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <h3 className="text-xl font-bold text-white">{group.name}</h3>
-                    <span className={`px-3 py-1 rounded-full ${colorConfig.orange.badgeBg} text-white text-xs font-medium`}>
-                      {group.count} 篇
-                    </span>
-                  </div>
-                  <p className="text-gray-400 text-sm mb-5 -mt-1">{group.subTitle}</p>
-
-                  {/* Cards Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {group.places.map((place) => (
-                      <Link
-                        key={place.slug}
-                        href={`/blog/${place.slug}`}
-                        className={`group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 ${colorConfig.orange.cardBorder} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/10`}
-                      >
-                        {/* Image */}
-                        <div className="relative h-36 overflow-hidden">
-                          <img
-                            src={place.image}
-                            alt={place.name}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
-                          <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.orange.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
-                            <Clock className="w-3 h-3" />
-                            {place.duration}
-                          </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-3">
-                          <h4 className="font-bold text-sm mb-1 group-hover:text-orange-400 transition-colors">
-                            {place.name}
-                          </h4>
-                          <p className="text-gray-400 text-xs line-clamp-2">
-                            {place.desc}
-                          </p>
-                        </div>
-
-                        {/* Bottom Accent Line */}
-                        <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${colorConfig.orange.cardAccent} w-0 group-hover:w-full transition-all duration-300`}></div>
-                      </Link>
-                    ))}
-                  </div>
+          {/* 日本深度遊 (獨立外框) */}
+          <div className="mb-8">
+            <div className="rounded-2xl bg-gray-800/60 border border-gray-700/50 p-6 shadow-xl shadow-black/30">
+              {/* Group Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${colorConfig.orange.iconBg} flex items-center justify-center shadow-md ${colorConfig.orange.iconShadow}`}>
+                  <Map className="w-5 h-5 text-white" />
                 </div>
+                <h3 className="text-xl font-bold text-white">🗾 日本深度遊</h3>
+                <span className={`px-3 py-1 rounded-full ${colorConfig.orange.badgeBg} text-white text-xs font-medium`}>
+                  6 篇
+                </span>
               </div>
-            ))}
+              <p className="text-gray-400 text-sm mb-5 -mt-1">東京、大阪、京都：傳統與現代的完美融合</p>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {localTravel.groups[0].places.map((place) => (
+                  <Link
+                    key={place.slug}
+                    href={`/blog/${place.slug}`}
+                    className={`group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 ${colorConfig.orange.cardBorder} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/10`}
+                  >
+                    {/* Image */}
+                    <div className="relative h-36 overflow-hidden">
+                      <img
+                        src={place.image}
+                        alt={place.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                      <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.orange.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
+                        <Clock className="w-3 h-3" />
+                        {place.duration}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-3">
+                      <h4 className="font-bold text-sm mb-1 group-hover:text-orange-400 transition-colors">
+                        {place.name}
+                      </h4>
+                      <p className="text-gray-400 text-xs line-clamp-2">
+                        {place.desc}
+                      </p>
+                    </div>
+
+                    {/* Bottom Accent Line */}
+                    <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${colorConfig.orange.cardAccent} w-0 group-hover:w-full transition-all duration-300`}></div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 粵港澳大灣區 (獨立外框) */}
+          <div className="mb-8 last:mb-0">
+            <div className="rounded-2xl bg-gray-800/60 border border-gray-700/50 p-6 shadow-xl shadow-black/30">
+              {/* Group Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${colorConfig.orange.iconBg} flex items-center justify-center shadow-md ${colorConfig.orange.iconShadow}`}>
+                  <Map className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white">🌏 粵港澳大灣區</h3>
+                <span className={`px-3 py-1 rounded-full ${colorConfig.orange.badgeBg} text-white text-xs font-medium`}>
+                  9 篇
+                </span>
+              </div>
+              <p className="text-gray-400 text-sm mb-5 -mt-1">香港、澳門、深圳、廣州：大灣區一小時生活圈</p>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {localTravel.groups[1].places.map((place) => (
+                  <Link
+                    key={place.slug}
+                    href={`/blog/${place.slug}`}
+                    className={`group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 ${colorConfig.orange.cardBorder} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/10`}
+                  >
+                    {/* Image */}
+                    <div className="relative h-36 overflow-hidden">
+                      <img
+                        src={place.image}
+                        alt={place.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                      <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.orange.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
+                        <Clock className="w-3 h-3" />
+                        {place.duration}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-3">
+                      <h4 className="font-bold text-sm mb-1 group-hover:text-orange-400 transition-colors">
+                        {place.name}
+                      </h4>
+                      <p className="text-gray-400 text-xs line-clamp-2">
+                        {place.desc}
+                      </p>
+                    </div>
+
+                    {/* Bottom Accent Line */}
+                    <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${colorConfig.orange.cardAccent} w-0 group-hover:w-full transition-all duration-300`}></div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* ========== 世界任我行 (外層大框) ========== */}
+        {/* ========== 世界任我行 ========== */}
         <section>
           {/* Section Header */}
           <div className="flex items-center gap-4 mb-6">
@@ -213,63 +264,59 @@ export default function TravelBlogPage() {
             </div>
           </div>
 
-          {/* Outer Container */}
-          <div className={`rounded-3xl bg-gradient-to-br ${colorConfig.blue.outerBg} border ${colorConfig.blue.outerBorder} p-6`}>
-
-            {/* 歐洲經典遊 (內層框) */}
-            {worldTravel.groups.map((group) => (
-              <div key={group.name}>
-                {/* Inner Container */}
-                <div className={`rounded-2xl bg-gradient-to-br ${colorConfig.blue.innerBg} border ${colorConfig.blue.innerBorder} p-6`}>
-                  {/* Group Header */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <h3 className="text-xl font-bold text-white">{group.name}</h3>
-                    <span className={`px-3 py-1 rounded-full ${colorConfig.blue.badgeBg} text-white text-xs font-medium`}>
-                      {group.count} 篇
-                    </span>
-                  </div>
-                  <p className="text-gray-400 text-sm mb-5 -mt-1">{group.subTitle}</p>
-
-                  {/* Cards Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {group.places.map((place) => (
-                      <Link
-                        key={place.slug}
-                        href={`/blog/${place.slug}`}
-                        className={`group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 ${colorConfig.blue.cardBorder} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10`}
-                      >
-                        {/* Image */}
-                        <div className="relative h-36 overflow-hidden">
-                          <img
-                            src={place.image}
-                            alt={place.name}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
-                          <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.blue.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
-                            <Clock className="w-3 h-3" />
-                            {place.duration}
-                          </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-3">
-                          <h4 className="font-bold text-sm mb-1 group-hover:text-blue-400 transition-colors">
-                            {place.name}
-                          </h4>
-                          <p className="text-gray-400 text-xs line-clamp-2">
-                            {place.desc}
-                          </p>
-                        </div>
-
-                        {/* Bottom Accent Line */}
-                        <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${colorConfig.blue.cardAccent} w-0 group-hover:w-full transition-all duration-300`}></div>
-                      </Link>
-                    ))}
-                  </div>
+          {/* 歐洲經典遊 (獨立外框) */}
+          <div>
+            <div className="rounded-2xl bg-gray-800/60 border border-gray-700/50 p-6 shadow-xl shadow-black/30">
+              {/* Group Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${colorConfig.blue.iconBg} flex items-center justify-center shadow-md ${colorConfig.blue.iconShadow}`}>
+                  <Map className="w-5 h-5 text-white" />
                 </div>
+                <h3 className="text-xl font-bold text-white">🏰 歐洲經典遊</h3>
+                <span className={`px-3 py-1 rounded-full ${colorConfig.blue.badgeBg} text-white text-xs font-medium`}>
+                  18 篇
+                </span>
               </div>
-            ))}
+              <p className="text-gray-400 text-sm mb-5 -mt-1">倫敦、羅馬、巴黎：感受歷史與浪漫</p>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {worldTravel.groups[0].places.map((place) => (
+                  <Link
+                    key={place.slug}
+                    href={`/blog/${place.slug}`}
+                    className={`group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 ${colorConfig.blue.cardBorder} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10`}
+                  >
+                    {/* Image */}
+                    <div className="relative h-36 overflow-hidden">
+                      <img
+                        src={place.image}
+                        alt={place.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+                      <div className={`absolute top-2 right-2 px-2 py-1 rounded-full ${colorConfig.blue.badgeBg} backdrop-blur-sm text-xs flex items-center gap-1 text-white`}>
+                        <Clock className="w-3 h-3" />
+                        {place.duration}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-3">
+                      <h4 className="font-bold text-sm mb-1 group-hover:text-blue-400 transition-colors">
+                        {place.name}
+                      </h4>
+                      <p className="text-gray-400 text-xs line-clamp-2">
+                        {place.desc}
+                      </p>
+                    </div>
+
+                    {/* Bottom Accent Line */}
+                    <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${colorConfig.blue.cardAccent} w-0 group-hover:w-full transition-all duration-300`}></div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
