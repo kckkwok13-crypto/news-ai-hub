@@ -891,6 +891,25 @@ export default function NewsPage() {
   const [dataJournalismSubs, setDataJournalismSubs] = useState<any[]>([]);
   const [isDataJournalism, setIsDataJournalism] = useState(false);
 
+  // Pagination state - Mobile optimized
+  const [displayCount, setDisplayCount] = useState(6);
+
+  // Scroll to top state
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Scroll event listener for back-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // AdSense state
   const adsenseClient = typeof window !== 'undefined'
     ? (window as any).__ADSENSE_CLIENT__ || process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-4745583996243741"
@@ -1123,7 +1142,9 @@ export default function NewsPage() {
            (n.desc_translated || n.desc).toLowerCase().includes(q);
   });
 
-  const displayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : (filteredNews.length > 0 ? filteredNews : SAMPLE_NEWS);
+  const allDisplayNews = showSaved ? filteredNews.filter(n => savedIds.has(n.title)) : (filteredNews.length > 0 ? filteredNews : SAMPLE_NEWS);
+  const displayNews = allDisplayNews.slice(0, displayCount);
+  const hasMoreNews = allDisplayNews.length > displayCount;
 
   // Get hot news (top 5 news with images) - must be after displayNews
   const hotNews = displayNews.filter(n => n.img_url).slice(0, 5);
@@ -1140,6 +1161,11 @@ export default function NewsPage() {
   // Reset carousel when news changes
   useEffect(() => {
     setCarouselIndex(0);
+  }, [category]);
+
+  // Reset display count when category changes
+  useEffect(() => {
+    setDisplayCount(6);
   }, [category]);
 
   // Derive available cities and areas from the news data based on selected country
@@ -2406,6 +2432,18 @@ export default function NewsPage() {
               }
               return items;
             })}
+
+            {/* Load More Button - Inside grid container */}
+            {hasMoreNews && (
+              <div className="mt-8 text-center px-4">
+                <button
+                  onClick={() => setDisplayCount(prev => prev + 6)}
+                  className="w-full max-w-md mx-auto py-4 px-8 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white text-lg font-bold shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+                >
+                  Load More ({allDisplayNews.length - displayCount} remaining)
+                </button>
+              </div>
+            )}
           </div>
         )}
 
