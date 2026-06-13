@@ -427,57 +427,6 @@ export default function AIToolsPage() {
           </div>
         </div>
 
-        {/* Featured Article */}
-        {featuredPost && (
-          <div className="mb-10">
-            <Link href={`/ai-tools/${featuredPost.slug}`} className="block group">
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 hover:border-purple-500/30 transition-all duration-500">
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
-                    ⭐ 精選文章
-                  </span>
-                </div>
-
-                <div className="relative h-64 md:h-80 overflow-hidden">
-                  <img
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => {
-                      e.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                </div>
-
-                <div className="p-6 md:p-8">
-                  <div className="flex gap-2 mb-3 flex-wrap">
-                    {featuredPost.tags.slice(0, 4).map((tag) => (
-                      <span key={tag} className="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="text-slate-400 text-base md:text-lg mb-4 leading-relaxed">
-                    {featuredPost.excerpt}
-                  </p>
-                  <div className="flex items-center gap-4 text-sm">
-                    <span className="text-purple-400">📅 {featuredPost.date}</span>
-                    <span className="text-slate-500">•</span>
-                    <span className="text-slate-400">⏱️ 約 {featuredPost.readingTime} 分鐘閱讀</span>
-                    <span className="ml-auto text-purple-400 font-semibold group-hover:text-purple-300 transition-colors flex items-center gap-1">
-                      閱讀全文 →
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        )}
-
         {/* Categories */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all">
