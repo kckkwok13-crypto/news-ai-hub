@@ -123,6 +123,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "charles-bridge",
+    title: "🌉 東歐最美的黃金絲帶：布拉格查理大橋650年星象密碼與反思散策",
+    excerpt: "始建於1357年的中世紀砂岩石拱橋！516米橋身長廊、30尊巴洛克聖人雕像、1357黃金回文密碼與聖尼波木克的神秘傳說。",
+    date: "June 2026",
+    image: "https://as1.ftcdn.net/v2/jpg/02/98/53/04/1000_F_298530452_hsRg2k4VaHvy5m1DFIs6Ui4NYKtr5OEc.jpg",
+    icon: "🌉",
+    tags: ["布拉格", "捷克", "波希米亞", "查理大橋"],
+    accent: "from-blue-600 to-indigo-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
