@@ -834,8 +834,12 @@ async function handleNewsCategory(category: string, lang: string) {
     if (lang === 'en') needsTranslation = isChineseSource
     else if (lang === 'zh-TW' || lang === 'zh-CN') needsTranslation = !isChineseSource
     if (needsTranslation) {
-      const [tTitle, tDesc] = await Promise.allSettled([translateText(item.title, lang, 10000), translateText(item.desc, lang, 10000)])
-      return { ...item, title_translated: tTitle.status === 'fulfilled' ? tTitle.value : item.title, desc_translated: tDesc.status === 'fulfilled' ? tDesc.value : item.desc, translated: true }
+      try {
+        const [tTitle, tDesc] = await Promise.all([translateText(item.title, lang, 15000), translateText(item.desc, lang, 15000)])
+        return { ...item, title_translated: tTitle, desc_translated: tDesc, translated: true }
+      } catch {
+        return { ...item, title_translated: item.title, desc_translated: item.desc, translated: true }
+      }
     }
     return { ...item, title_translated: item.title, desc_translated: item.desc, translated: false }
   }))
