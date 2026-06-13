@@ -425,6 +425,11 @@ export default function AIToolsPage() {
               </div>
             </div>
           </div>
+
+          {/* 精選文章底部提示 */}
+          <div className="mt-6 text-center">
+            <p className="text-slate-500 text-sm">精選內容每日更新，探索更多 AI 工具教程 ↓</p>
+          </div>
         </div>
 
         {/* Categories */}
@@ -451,15 +456,21 @@ export default function AIToolsPage() {
           </div>
         </div>
 
-        {/* Article Grid */}
+        {/* Article Grid - 顯示剩餘文章（不在精彩專題中） */}
         <div className="mb-8">
           <h2 className="text-white text-2xl font-bold mb-6 flex items-center gap-3">
             <span>📚</span>
-            <span>全部教程</span>
+            <span>更多教程</span>
           </h2>
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {filteredPosts.map((post) => (
+            {aiToolPosts
+              .filter(post =>
+                post.slug !== 'chatgpt-prompt-engineering' &&
+                post.slug !== 'midjourney-beginners' &&
+                post.slug !== 'claude-ai-guide'
+              )
+              .map((post) => (
               <Link key={post.slug} href={`/ai-tools/${post.slug}`} className="block group">
                 <article className="relative h-full bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-purple-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/10 backdrop-blur-sm">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-60 group-hover:opacity-100 transition-opacity" />
