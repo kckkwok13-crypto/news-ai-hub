@@ -74,43 +74,90 @@ export default function FoodArticlePage() {
 
   // 轉換Markdown-like內容為HTML
   const renderContent = (content: string) => {
-    let html = content
-      // 標題
-      .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-white mt-10 mb-4 flex items-center gap-3">$1</h2>')
-      .replace(/^### (.+)$/gm, '<h3 class="text-xl font-bold text-white mt-8 mb-3">$1</h3>')
-      // 引用
-      .replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-rose-500 pl-4 py-2 my-4 bg-rose-500/10 rounded-r-lg"><p class="text-rose-300 italic">$1</p></blockquote>')
-      // 粗體
-      .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
-      // 列表
-      .replace(/^- (.+)$/gm, '<li class="flex items-start gap-2 mb-2"><span class="text-rose-400 mt-1">•</span><span>$1</span></li>')
-      .replace(/^(\d+)\. (.+)$/gm, '<li class="flex items-start gap-2 mb-2"><span class="text-rose-400 font-bold min-w-[24px]">$1.</span><span>$2</span></li>')
-      // 表格
-      .replace(/\|(.+)\|/g, (match) => {
-        const cells = match.split('|').filter(c => c.trim());
-        if (cells.some(c => c.includes('---'))) return '';
-        const isHeader = cells.every(c => c.includes('**') || c.match(/^[A-Z]/));
-        if (isHeader) {
-          return `<tr class="bg-slate-800/50">${cells.map(c => `<th class="px-4 py-3 text-left text-slate-300 font-semibold border border-slate-700">${c.trim()}</th>`).join('')}</tr>`;
+    let processed = content
+      // 特殊視覺元素（需先處理）
+      // 💡 提示框
+      .replace(/!\[TIP\]\((.+?)\)/g, '<div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 my-6 flex items-start gap-4"><div class="text-3xl">💡</div><div><h4 class="text-amber-400 font-bold mb-2">小提示</h4><p class="text-amber-200/80">$1</p></div></div>')
+      // ⚠️ 警告框
+      .replace(/!\[WARNING\]\((.+?)\)/g, '<div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5 my-6 flex items-start gap-4"><div class="text-3xl">⚠️</div><div><h4 class="text-red-400 font-bold mb-2">注意</h4><p class="text-red-200/80">$1</p></div></div>')
+      // ✅ 要點框
+      .replace(/!\[KEYPOINT\]\((.+?)\)/g, '<div class="bg-rose-500/10 border border-rose-500/30 rounded-xl p-5 my-6 flex items-start gap-4"><div class="text-3xl">✅</div><div><h4 class="text-rose-400 font-bold mb-2">重點</h4><p class="text-rose-200/80">$1</p></div></div>')
+      // 📊 數據框
+      .replace(/!\[STAT\]\((.+?)\|(.+?)\)/g, '<div class="bg-violet-500/10 border border-violet-500/30 rounded-xl p-5 my-6 text-center"><div class="text-4xl font-bold text-violet-400 mb-2">$1</div><p class="text-slate-300">$2</p></div>')
+      // 🎯 目標框
+      .replace(/!\[GOAL\]\((.+?)\|(.+?)\)/g, '<div class="bg-pink-500/10 border border-pink-500/30 rounded-xl p-5 my-6 flex items-center gap-4"><div class="text-3xl">🎯</div><div><h4 class="text-pink-400 font-bold mb-1">$1</h4><p class="text-slate-300 text-sm">$2</p></div></div>')
+      // 📷 圖片
+      .replace(/!\[IMAGE\]\((.+?)\|(.+?)\)/g, '<div class="my-8 rounded-2xl overflow-hidden"><img src="$1" alt="$2" class="w-full rounded-xl" loading="lazy" onError={(e) => { e.currentTarget.style.display="none"; }} /><p class="text-slate-400 text-sm mt-2 text-center italic">$2</p></div>')
+      // 📈 進度條
+      .replace(/!\[PROGRESS\|(.+?)\|(.+?)\|(.+?)\]/g, '<div class="my-6"><div class="flex justify-between mb-2"><span class="text-slate-300 text-sm">$1</span><span class="text-rose-400 text-sm font-bold">$2%</span></div><div class="h-3 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-rose-500 to-pink-400 rounded-full transition-all duration-500" style="width: $2%"></div></div><p class="text-slate-400 text-xs mt-1">$3</p></div>')
+      // 📋 步驟指示器
+      .replace(/!\[STEP\|(.+?)\|(.+?)\]/g, '<div class="flex items-center gap-4 my-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50"><div class="w-10 h-10 rounded-full bg-rose-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">$1</div><div class="text-slate-300">$2</div></div>')
+      // 分割內容為段落，保留特殊格式
+      .split('\n\n')
+      .map(block => {
+        // 標題
+        if (block.startsWith('## ')) {
+          return `<h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3 border-b border-slate-700/50 pb-4">${block.replace('## ', '')}</h2>`;
         }
-        return `<tr class="border-b border-slate-700/50 hover:bg-slate-800/30">${cells.map(c => `<td class="px-4 py-3 text-slate-400 border border-slate-700/50">${c.trim()}</td>`).join('')}</tr>`;
+        if (block.startsWith('### ')) {
+          return `<h3 class="text-xl font-bold text-white mt-8 mb-4">${block.replace('### ', '')}</h3>`;
+        }
+        // 引用
+        if (block.startsWith('> ')) {
+          return `<blockquote class="border-l-4 border-rose-500 pl-5 py-4 my-6 bg-rose-500/10 rounded-r-xl"><p class="text-rose-300 italic leading-relaxed">${block.replace('> ', '')}</p></blockquote>`;
+        }
+        // 無序列表
+        if (block.match(/^- /m)) {
+          const items = block.split('\n').filter(line => line.trim());
+          const listItems = items.map(line => {
+            const text = line.replace(/^- /, '');
+            return `<li class="flex items-start gap-3 mb-3 text-slate-300"><span class="text-rose-400 mt-1 flex-shrink-0">•</span><span>${text}</span></li>`;
+          }).join('');
+          return `<ul class="list-none my-4 space-y-1">${listItems}</ul>`;
+        }
+        // 有序列表
+        if (block.match(/^\d+\. /m)) {
+          const items = block.split('\n').filter(line => line.trim());
+          const listItems = items.map(line => {
+            const match = line.match(/^(\d+)\. (.+)$/);
+            if (match) {
+              return `<li class="flex items-start gap-3 mb-3 text-slate-300"><span class="text-rose-400 font-bold min-w-[28px]">${match[1]}.</span><span>${match[2]}</span></li>`;
+            }
+            return '';
+          }).join('');
+          return `<ol class="list-none my-4 space-y-1">${listItems}</ol>`;
+        }
+        // 分隔線
+        if (block === '---') {
+          return '<hr class="border-slate-700/50 my-10" />';
+        }
+        // 表格（多行）
+        if (block.includes('|')) {
+          const rows = block.split('\n').filter(row => row.trim() && !row.match(/^\|[-:\s]+\|$/));
+          if (rows.length > 1) {
+            const tableRows = rows.map((row, idx) => {
+              const cells = row.split('|').filter(c => c.trim());
+              const isHeader = idx === 0 || cells.some(c => c.includes('**'));
+              if (isHeader) {
+                return `<tr class="bg-slate-800/70">${cells.map(c => `<th class="px-5 py-4 text-left text-slate-200 font-semibold border-b border-slate-700">${c.trim()}</th>`).join('')}</tr>`;
+              }
+              return `<tr class="border-b border-slate-700/30 hover:bg-slate-800/30 transition-colors">${cells.map(c => `<td class="px-5 py-4 text-slate-300 border-b border-slate-700/20">${c.trim()}</td>`).join('')}</tr>`;
+            }).join('');
+            return `<div class="overflow-x-auto my-8 rounded-xl border border-slate-700/30"><table class="w-full">${tableRows}</table></div>`;
+          }
+        }
+        // 普通段落
+        if (block.trim()) {
+          return `<p class="text-slate-300 leading-relaxed mb-5">${block}</p>`;
+        }
+        return '';
       })
-      // 分隔線
-      .replace(/^---$/gm, '<hr class="border-slate-700 my-8" />')
-      // 代碼塊
-      .replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-900 rounded-xl p-4 my-4 overflow-x-auto"><code class="text-rose-400 text-sm">$1</code></pre>')
-      // 段落
-      .replace(/\n\n/g, '</p><p class="text-slate-300 leading-relaxed mb-4">')
-      .replace(/^(?!<[h|b|p|l|t|c|>|"})(?!<[h|b|p|l|t|c|>|\"])(.+)$/gm, '<p class="text-slate-300 leading-relaxed mb-4">$1</p>');
+      .join('');
 
-    // 包裝表格
-    html = html.replace(/(<tr[\s\S]*?<\/tr>)+/g, '<table class="w-full rounded-xl overflow-hidden mb-6">$&</table>');
+    // 處理粗體
+    processed = processed.replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold bg-rose-500/20 px-1.5 py-0.5 rounded">$1</strong>');
 
-    // 清理空段落
-    html = html.replace(/<p class="text-slate-300 leading-relaxed mb-4"><\/p>/g, '');
-    html = html.replace(/<p class="text-slate-300 leading-relaxed mb-4"><br \/>/g, '');
-
-    return html;
+    return processed;
   };
 
   return (
