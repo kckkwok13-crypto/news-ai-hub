@@ -44,10 +44,16 @@ export default function EditorialArticle({ id, image, date, readTime, emoji, tra
       {/* Navigation Header */}
       <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-[#0a0a0b]/80 backdrop-blur-xl">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/editorial" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm font-medium uppercase tracking-widest">Back to Editorial</span>
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+              <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+              <span className="text-sm font-medium uppercase tracking-widest">Back to Home</span>
+            </Link>
+            <span className="text-gray-600">|</span>
+            <Link href="/editorial" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+              <span className="text-sm font-medium uppercase tracking-widest">Editorial</span>
+            </Link>
+          </div>
           
           <div className="flex items-center gap-4">
             <div className="flex items-center bg-white/5 border border-white/10 rounded-xl p-1">

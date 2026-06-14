@@ -397,6 +397,13 @@ export default function EditorialPage() {
         ))}
       </div>
 
+      {/* Back to Home Link */}
+      <div className="fixed top-6 left-6 z-[100]">
+        <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-2xl rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all text-xs font-medium">
+          ← Back to Home
+        </Link>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0">
