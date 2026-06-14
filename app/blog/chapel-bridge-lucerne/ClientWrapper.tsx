@@ -140,7 +140,7 @@ export default function ChapelBridgeLucernePage() {
 
           <div className="my-8">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Kapellbr%C3%BCcke_Innen.jpg/1280px-Kapellbr%C3%BCcke_Innen.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Kapellbr%C3%BCcke_%26_H%C3%A4user_am_Rathausquai_in_Luzern_%282013%29.jpg/1280px-Kapellbr%C3%BCcke_%26_H%C3%A4user_am_Rathausquai_in_Luzern_%282013%29.jpg"
               alt="琉森卡貝爾橋與水塔"
               className="w-full rounded-2xl"
             />
