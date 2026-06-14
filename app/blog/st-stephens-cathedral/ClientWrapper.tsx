@@ -145,7 +145,7 @@ export default function StStephensCathedralPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=1200&q=80"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Wien_-_Stephansplatz_-_View_East_on_Stephansdom_-_S%C3%BCdturm_136%2C4_m_high.jpg/960px-Wien_-_Stephansplatz_-_View_East_on_Stephansdom_-_S%C3%BCdturm_136%2C4_m_high.jpg"
               alt="維也納城市景觀"
               className="w-full rounded-2xl"
             />
