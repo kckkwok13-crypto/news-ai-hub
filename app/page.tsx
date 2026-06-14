@@ -2035,7 +2035,8 @@ export default function NewsPage() {
         );
       })()}
 
-            <main className="max-w-7xl mx-auto px-4 py-6">
+      {/* Main Content Area */}
+      <main className="max-w-7xl mx-auto px-4 py-6">
         {/* Mobile Categories - Horizontal scrollable tabs - Sticky */}
         <div className="md:hidden sticky top-[72px] z-30 -mx-4 px-4 pt-3 pb-2 backdrop-blur-xl bg-black/80">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
@@ -2234,7 +2235,7 @@ export default function NewsPage() {
                         >
                           <ExternalLink size={18} className="text-white" />
                         </button>
-                      </div>
+                      )}
                     </div>
                   ) : (
                     <div className={`aspect-video flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
@@ -2336,16 +2337,10 @@ export default function NewsPage() {
                 </div>
               );
 
-              // Insert In-Feed Ad every 6 items (after items 6, 12, 18, etc.)
-              const items: any[] = [];
-              const adAfterIndex = 5; // Insert ad after 6th item (0-indexed)
+              // Insert In-Feed Ad every 6 items
+              const items: any[] = [newsCard];
               if ((i + 1) % 6 === 0 && i < displayNews.length - 1) {
-                items.push(
-                  newsCard,
-                  <InFeedAd key={`ad-${i}`} index={i / 6} />
-                );
-              } else {
-                items.push(newsCard);
+                items.push(<InFeedAd key={`ad-${i}`} index={i / 6} />);
               }
               return items;
             })}
