@@ -222,6 +222,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "belem-tower",
+    title: "🏰 大航海時代的蔚藍起點：里斯本貝倫塔500年星海密碼攻略",
+    excerpt: "世界文化遺產！1519年落成的曼努埃爾式江海碉堡，達伽馬、麥哲倫出海遠征的終極起航點，見證大航海時代的輝煌。",
+    date: "July 2026",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Torre_de_Bel%C3%A9m%2C_Lisbon_39.jpg/1280px-Torre_de_Bel%C3%A9m%2C_Lisbon_39.jpg",
+    icon: "🏰",
+    tags: ["里斯本", "葡萄牙", "貝倫塔", "大航海", "世界遺產"],
+    accent: "from-blue-600 to-red-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
