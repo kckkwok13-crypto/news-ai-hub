@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
     title: "🏰 俯瞰莫扎特故鄉的天際線：薩爾茨堡城堡深度遊覽全攻略",
     excerpt: "中歐最大、保存最完好的城堡！建於1077年、900年未被攻破的防禦奇蹟、金牛與皇家公寓、4大終極打卡機位！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Salzburg_-_Festung_Hohensalzburg.JPG/1280px-Salzburg_-_Festung_Hohensalzburg.JPG",
     icon: "🏰",
     tags: ["薩爾茨堡", "奧地利", "城堡", "打卡"],
     accent: "from-stone-600 to-zinc-600",

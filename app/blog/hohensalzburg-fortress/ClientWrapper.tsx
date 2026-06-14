@@ -81,7 +81,7 @@ export default function HohensalzburgFortressPage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-stone-500/20">
           <img
-            src="https://images.unsplash.com/photo-1553882809-a4f57e59501d?w=1200&q=80"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Salzburg_-_Festung_Hohensalzburg.JPG/1280px-Salzburg_-_Festung_Hohensalzburg.JPG"
             alt="薩爾茨堡城堡全景"
             className="w-full h-80 object-cover"
           />
@@ -145,7 +145,7 @@ export default function HohensalzburgFortressPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1595590424283-fd1d5dc85cc6?w=1200&q=80"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Salzburg_Festung_hohensalzburg_04.JPG/960px-Salzburg_Festung_hohensalzburg_04.JPG"
               alt="薩爾茨堡城市風光"
               className="w-full rounded-2xl"
             />
