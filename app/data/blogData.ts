@@ -233,6 +233,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "livraria-lello",
+    title: "📚 通往霍格華茲的魔幻階梯：波爾圖萊羅書店百年書香攻略",
+    excerpt: "全球第三美書店！1906年新哥德式百年書海聖地，與哈利波特的千絲萬縷，猩紅色迴旋階梯與8米彩繪玻璃天窗。",
+    date: "July 2026",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Livraria_Lello_Bookshop%2C_staircase%2C_skylight_and_bookcases%2C_Porto_%2838218323992%29.jpg/1280px-Livraria_Lello_Bookshop%2C_staircase%2C_skylight_and_bookcases%2C_Porto_%2838218323992%29.jpg",
+    icon: "📚",
+    tags: ["波爾圖", "葡萄牙", "萊羅書店", "哈利波特", "書店"],
+    accent: "from-red-600 to-blue-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
