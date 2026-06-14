@@ -132,7 +132,7 @@ export default function LionMonumentPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Lake_lucerne.JPG/1280px-Lake_lucerne.JPG"
               alt="琉森湖畔風光"
               className="w-full rounded-2xl"
             />
