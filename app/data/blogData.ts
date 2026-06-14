@@ -189,6 +189,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "lion-monument",
+    title: "🦁 世界上最悲傷的石頭：瑞士琉森獅子紀念碑深度遊覽攻略",
+    excerpt: "馬克·吐溫說，這是世界上最讓人心碎、最感人的一塊石頭。1792年瑞士雇傭兵血染巴黎的忠誠悲歌，托瓦爾森的不朽巨作。",
+    date: "June 2026",
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/01/Lion_Monument.jpg",
+    icon: "🦁",
+    tags: ["琉森", "瑞士", "獅子紀念碑", "歷史"],
+    accent: "from-gray-600 to-slate-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
