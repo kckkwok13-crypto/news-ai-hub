@@ -156,6 +156,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "hohensalzburg-fortress",
+    title: "🏰 俯瞰莫扎特故鄉的天際線：薩爾茨堡城堡深度遊覽全攻略",
+    excerpt: "中歐最大、保存最完好的城堡！建於1077年、900年未被攻破的防禦奇蹟、金牛與皇家公寓、4大終極打卡機位！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=80",
+    icon: "🏰",
+    tags: ["薩爾茨堡", "奧地利", "城堡", "打卡"],
+    accent: "from-stone-600 to-zinc-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
