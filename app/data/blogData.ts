@@ -145,6 +145,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "st-stephens-cathedral",
+    title: "⛪ 聆聽維也納的心跳：聖斯蒂芬大教堂深度遊覽與周邊散策攻略",
+    excerpt: "維也納的心臟地標！800年歷史的哥德式巨作、四大時代建築疊加、登上136米南塔俯瞰全城、4大終極打卡機位！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1200&q=80",
+    icon: "⛪",
+    tags: ["維也納", "奧地利", "建築", "打卡"],
+    accent: "from-amber-600 to-orange-500",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
