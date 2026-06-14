@@ -60,13 +60,19 @@ export default function Page() {
 };
   
   return (
-    <EditorialArticle 
+    <EditorialArticle
       id={articleData.id}
       image={articleData.image}
       date={articleData.date}
       readTime={articleData.readTime}
       emoji={articleData.emoji}
       translations={articleData.translations}
+      relatedArticles={[
+        { slug: "bitcoin-etf-deep-analysis", title: "比特幣ETF獲批：全球金融底層架構的「哥白尼式」革命", emoji: "₿", readTime: 18 },
+        { slug: "stablecoin-war", title: "穩定幣大戰：誰能笑到最後？", emoji: "🪙", readTime: 12 },
+        { slug: "decentralized-finance-guide", title: "DeFi 深度指南：金融民主化還是泡沫？", emoji: "💱", readTime: 18 },
+        { slug: "web3-gaming-future", title: "Web3 遊戲的未來：所有權的覺醒", emoji: "🎮", readTime: 14 },
+      ]}
     />
   )
 }

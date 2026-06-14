@@ -17,6 +17,13 @@ interface ArticleContent {
   conclusion?: string
 }
 
+interface RelatedArticle {
+  slug: string
+  title: string
+  emoji: string
+  readTime: number
+}
+
 interface EditorialArticleProps {
   id: string
   image: string
@@ -24,9 +31,10 @@ interface EditorialArticleProps {
   readTime: number
   emoji: string
   translations: Record<Lang, ArticleContent>
+  relatedArticles?: RelatedArticle[]
 }
 
-export default function EditorialArticle({ id, image, date, readTime, emoji, translations }: EditorialArticleProps) {
+export default function EditorialArticle({ id, image, date, readTime, emoji, translations, relatedArticles }: EditorialArticleProps) {
   const [lang, setLang] = useState<Lang>('zh-TW')
   const [mounted, setMounted] = useState(false)
   const [showAiChat, setShowAiChat] = useState(false)
@@ -138,6 +146,36 @@ export default function EditorialArticle({ id, image, date, readTime, emoji, tra
               <p className="text-gray-400 leading-relaxed font-light italic">
                 {content.conclusion}
               </p>
+            </div>
+          )}
+
+          {/* Related Articles Section - Internal Linking for SEO */}
+          {relatedArticles && relatedArticles.length > 0 && (
+            <div className="mt-20 pt-12 border-t border-white/10">
+              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
+                <span className="text-2xl">📚</span>
+                {lang === 'en' ? 'Related Articles' : lang === 'zh-CN' ? '相关阅读' : '相關閱讀'}
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedArticles.map((article, idx) => (
+                  <Link
+                    key={idx}
+                    href={`/editorial/${article.slug}`}
+                    className="group block p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-amber-500/30 transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-3xl">{article.emoji}</span>
+                      <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <Clock size={12} />
+                        <span>{article.readTime} min</span>
+                      </div>
+                    </div>
+                    <h4 className="text-base font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-2">
+                      {article.title}
+                    </h4>
+                  </Link>
+                ))}
+              </div>
             </div>
           )}
         </article>

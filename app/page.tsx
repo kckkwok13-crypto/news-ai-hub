@@ -1025,13 +1025,50 @@ export default function NewsPage() {
           setIsDataJournalism(false)
         }
       } else {
-        // No items returned, show error
-        console.log('[NewsFeed] No items or error:', { success: data.success, items: data.items, error: data.error });
-        setError(data.error || "No news available");
+        // No items returned, try to load from cache for SEO fallback
+        console.log('[NewsFeed] No items returned, checking cache for fallback');
+        const cacheKey = `news_cache_${category}_${lang}`;
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          try {
+            const cachedItems = JSON.parse(cached);
+            if (cachedItems && cachedItems.length > 0) {
+              console.log('[NewsFeed] Using', cachedItems.length, 'cached items for SEO fallback');
+              setNews(cachedItems);
+              setIsTravelGuide(false);
+              // Clear error since we have cached content
+              setError("");
+            } else {
+              setError(data.error || "No news available");
+            }
+          } catch (e) {
+            setError(data.error || "No news available");
+          }
+        } else {
+          setError(data.error || "No news available");
+        }
       }
     } catch (err) {
-      console.error("Fetch news failed", err);
-      setError("Network error. Please try again.");
+      console.error("Fetch news failed, trying cache for fallback", err);
+      // Try to load from cache on network error
+      const cacheKey = `news_cache_${category}_${lang}`;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        try {
+          const cachedItems = JSON.parse(cached);
+          if (cachedItems && cachedItems.length > 0) {
+            console.log('[NewsFeed] Using', cachedItems.length, 'cached items after network error');
+            setNews(cachedItems);
+            setError(""); // Clear error since we have cached content
+          } else {
+            setError("Network error. Please try again.");
+          }
+        } catch (e) {
+          setError("Network error. Please try again.");
+        }
+      } else {
+        setError("Network error. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -2309,11 +2346,37 @@ export default function NewsPage() {
         )}
 
         {!loading && displayNews.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-20 px-4">
             <div className="text-6xl mb-4">{showSaved ? '📌' : '🔍'}</div>
-            <p className={`text-lg ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{showSaved ? t.noSaved : t.noResults}</p>
+            <h2 className={`text-2xl font-bold mb-4 ${darkMode ? "text-white" : "text-gray-900"}`}>
+              {showSaved ? t.noSaved : (error ? "暫時無法載入新聞" : t.noResults)}
+            </h2>
+            <p className={`text-base mb-6 max-w-md mx-auto ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
+              {showSaved
+                ? "您還沒有收藏任何文章"
+                : "我們正在為您整理最新資訊，請瀏覽其他分類或稍後再回來"}
+            </p>
+            {/* SEO-friendly category suggestions */}
+            {!showSaved && (
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                <Link href="/blog" className={`px-4 py-2 rounded-full text-sm font-medium transition ${darkMode ? "bg-teal-600 hover:bg-teal-500 text-white" : "bg-teal-100 hover:bg-teal-200 text-teal-700"}`}>
+                  📖 旅遊Blog
+                </Link>
+                <Link href="/editorial" className={`px-4 py-2 rounded-full text-sm font-medium transition ${darkMode ? "bg-purple-600 hover:bg-purple-500 text-white" : "bg-purple-100 hover:bg-purple-200 text-purple-700"}`}>
+                  📝 深度分析
+                </Link>
+                <Link href="/finance" className={`px-4 py-2 rounded-full text-sm font-medium transition ${darkMode ? "bg-yellow-600 hover:bg-yellow-500 text-white" : "bg-yellow-100 hover:bg-yellow-200 text-yellow-700"}`}>
+                  💰 財經投資
+                </Link>
+                <Link href="/health" className={`px-4 py-2 rounded-full text-sm font-medium transition ${darkMode ? "bg-green-600 hover:bg-green-500 text-white" : "bg-green-100 hover:bg-green-200 text-green-700"}`}>
+                  ❤️ 健康養生
+                </Link>
+              </div>
+            )}
             {!showSaved && error && (
-              <p className={`text-sm mt-2 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>請稍後再試或嘗試切換其他分類</p>
+              <p className={`text-sm ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
+                {error} — 系統將自動嘗試恢復最新內容
+              </p>
             )}
           </div>
         )}

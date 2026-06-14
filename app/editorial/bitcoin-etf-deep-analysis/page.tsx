@@ -60,13 +60,19 @@ export default function Page() {
 };
   
   return (
-    <EditorialArticle 
+    <EditorialArticle
       id={articleData.id}
       image={articleData.image}
       date={articleData.date}
       readTime={articleData.readTime}
       emoji={articleData.emoji}
       translations={articleData.translations}
+      relatedArticles={[
+        { slug: "cbdc-global-race", title: "全球央行數字貨幣競賽：美元霸權的進化？", emoji: "🏦", readTime: 15 },
+        { slug: "stablecoin-war", title: "穩定幣大戰：誰能笑到最後？", emoji: "🪙", readTime: 12 },
+        { slug: "decentralized-finance-guide", title: "DeFi 深度指南：金融民主化還是泡沫？", emoji: "💱", readTime: 18 },
+        { slug: "sustainable-crypto", title: "加密貨幣的永續之路：環保與效益能否兼顧？", emoji: "🌱", readTime: 14 },
+      ]}
     />
   )
 }
