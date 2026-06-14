@@ -26,7 +26,7 @@ function InFeedAd({ index }: { index: number }) {
 }
 
 type Lang = "zh-TW" | "zh-CN" | "en";
-type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "travel" | "ai_art" | "art" | "data_journalism";
+type Category = "finance" | "crypto" | "business" | "technology" | "astronomy" | "mystery" | "health" | "gaming" | "food" | "ai_art" | "art" | "data_journalism";
 
 interface TravelPlace {
   id: string;
@@ -98,7 +98,6 @@ const CATEGORIES: { id: Category; icon: string; color: string; label_zh: string;
   { id: "finance", icon: "💰", color: "bg-yellow-500", label_zh: "財經投資", label_en: "Finance" },
   { id: "business", icon: "💼", color: "bg-indigo-500", label_zh: "商業科技", label_en: "Business" },
   { id: "food", icon: "🍜", color: "bg-orange-500", label_zh: "美食天地", label_en: "Food" },
-  { id: "travel", icon: "✈️", color: "bg-teal-500", label_zh: "旅遊探索", label_en: "Travel" },
   { id: "ai_art", icon: "🤖", color: "bg-rose-500", label_zh: "AI科技", label_en: "AI Tech" },
   { id: "crypto", icon: "₿", color: "bg-amber-500", label_zh: "加密貨幣", label_en: "Crypto" },
   { id: "data_journalism", icon: "📊", color: "bg-violet-500", label_zh: "數據新聞", label_en: "Data" },
@@ -114,7 +113,6 @@ const CATEGORY_GRADIENTS: Record<string, string> = {
   finance: "from-yellow-500 to-amber-600",
   business: "from-indigo-500 to-blue-600",
   food: "from-orange-500 to-amber-600",
-  travel: "from-teal-500 to-cyan-600",
   ai_art: "from-rose-500 to-pink-600",
   crypto: "from-amber-500 to-yellow-600",
   data_journalism: "from-violet-500 to-purple-600",
@@ -873,19 +871,8 @@ export default function NewsPage() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [aiSummary, setAiSummary] = useState<any>(null);
-  const [isTravelGuide, setIsTravelGuide] = useState(false);
   const [summaryLoading, setSummaryLoading] = useState(false);
-  
-  // Travel filter states
-  const [travelCountryFilter, setTravelCountryFilter] = useState<string>('all');
-  const [travelCityFilter, setTravelCityFilter] = useState<string>('all');
-  const [travelAreaFilter, setTravelAreaFilter] = useState<string>('all');
-  const [travelTypeFilter, setTravelTypeFilter] = useState<string>('all');
-  const [citySummaries, setCitySummaries] = useState<any[]>([]);
-  const [countries, setCountries] = useState<any[]>([]);
-  const [countrySummaries, setCountrySummaries] = useState<any[]>([]);
-  const [placeTypes, setPlaceTypes] = useState<string[]>([]);
-  
+
   // Data journalism filter states
   const [dataJournalismSub, setDataJournalismSub] = useState<string>('gdp');
   const [dataJournalismSubs, setDataJournalismSubs] = useState<any[]>([]);
@@ -990,7 +977,7 @@ export default function NewsPage() {
 
     setError("")
     try {
-      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'travel' && travelCountryFilter !== 'all' ? `&country=${travelCountryFilter}` : ''}${category === 'travel' && travelCityFilter !== 'all' ? `&city=${travelCityFilter}` : ''}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
+      const url = `/api/news-feed?category=${category}&lang=${lang}&t=${Date.now()}${category === 'data_journalism' ? `&sub=${dataJournalismSub}` : ''}`;
       const res = await fetch(url);
 
       if (!res.ok) {
@@ -1001,17 +988,7 @@ export default function NewsPage() {
 
       if (data.success && data.items && data.items.length > 0) {
         console.log('[NewsFeed] Fetched', data.items.length, 'items');
-        setIsTravelGuide(data.isTravelGuide || false);
         setNews(data.items);
-        // Capture travel-specific data
-        if (data.citySummaries) setCitySummaries(data.citySummaries);
-        if (data.countries) setCountries(data.countries);
-        if (data.countrySummaries) setCountrySummaries(data.countrySummaries);
-        // Auto-expand first travel card when entering travel
-        if (data.isTravelGuide && data.items?.length > 0) {
-          setExpandedId(data.items[0].title);
-        }
-        if (data.placeTypes) setPlaceTypes(data.placeTypes);
         // Store in cache for offline use
         try {
           localStorage.setItem(`news_cache_${category}_${lang}`, JSON.stringify(data.items));
@@ -1035,7 +1012,6 @@ export default function NewsPage() {
             if (cachedItems && cachedItems.length > 0) {
               console.log('[NewsFeed] Using', cachedItems.length, 'cached items for SEO fallback');
               setNews(cachedItems);
-              setIsTravelGuide(false);
               // Clear error since we have cached content
               setError("");
             } else {
@@ -1072,7 +1048,7 @@ export default function NewsPage() {
     } finally {
       setLoading(false);
     }
-  }, [category, lang, travelCountryFilter, travelCityFilter, travelAreaFilter, dataJournalismSub]);
+  }, [category, lang, dataJournalismSub]);
 
   const fetchAiSummary = useCallback(async () => {
     if (news.length === 0) return;
@@ -1166,12 +1142,7 @@ export default function NewsPage() {
   };
 
   const filteredNews = news.filter((n: NewsItem) => {
-    // Travel hierarchical filter: country → city → area
-    if (category === 'travel') {
-      if (travelCountryFilter !== 'all' && n.country_id !== travelCountryFilter) return false;
-      if (travelCityFilter !== 'all' && n.city_id !== travelCityFilter) return false;
-
-    }
+    // Search filter
     if (!search) return true;
     const q = search.toLowerCase();
     return (n.title_translated || n.title).toLowerCase().includes(q) ||
@@ -1205,13 +1176,6 @@ export default function NewsPage() {
     setDisplayCount(6);
   }, [category]);
 
-  // Derive available cities and areas from the news data based on selected country
-  const derivedAvailableCities = travelCountryFilter !== 'all'
-    ? (citySummaries || []).filter((c: any) => c.country_id === travelCountryFilter)
-    : [];
-  const selectedCityData = derivedAvailableCities.find((c: any) => c.id === travelCityFilter);
-  const derivedAvailableAreas = selectedCityData?.areas || [];
-
   const getCardBg = (isRead: boolean) => {
     if (darkMode) return isRead ? "bg-gray-900/50 border-gray-700" : "bg-gray-800/90 border-gray-700";
     return isRead ? "bg-gray-100 border-gray-200" : "bg-white border-gray-200";
@@ -1238,7 +1202,6 @@ export default function NewsPage() {
         .then(res => res.json())
         .then(data => {
           if (data.success && data.items) {
-        setIsTravelGuide(data.isTravelGuide || false);
             setNews(data.items);
             localStorage.setItem(`news_cache_${category}_${newLang}`, JSON.stringify(data.items));
           }
@@ -2088,147 +2051,6 @@ export default function NewsPage() {
           </div>
         </div>
 
-
-        {/* Travel Country/City Filter - Mobile - Sticky */}
-        {category === 'travel' && isTravelGuide && (
-          <div className="md:hidden sticky top-[116px] z-20 -mx-4 px-4 pt-2 mb-3 backdrop-blur-xl bg-black/80">
-            {/* Country Selector */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
-              <button
-                onClick={() => { setTravelCountryFilter('all'); setTravelCityFilter('all'); }}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
-                  travelCountryFilter === 'all'
-                    ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
-                    : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600 border border-gray-200"
-                }`}
-              >
-                <span>🌏</span><span>全部國家</span>
-              </button>
-              {countrySummaries.map((country: any) => (
-                <button
-                  key={country.id}
-                  onClick={() => { setTravelCountryFilter(country.id); setTravelCityFilter('all'); }}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
-                    travelCountryFilter === country.id
-                      ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
-                      : darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600 border border-gray-200"
-                  }`}
-                >
-                  <span>{country.emoji}</span><span>{country.name_zh}</span>
-                </button>
-              ))}
-            </div>
-            {/* City Selector - only show when country is selected */}
-            {travelCountryFilter !== 'all' && (
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory mt-2">
-                <button
-                  onClick={() => setTravelCityFilter('all')}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
-                    travelCityFilter === 'all'
-                      ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
-                      : darkMode ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-600 border border-gray-200"
-                  }`}
-                >
-                  <span>🏙️</span><span>全部城市</span>
-                </button>
-                {derivedAvailableCities.map((city: any) => (
-                  <button
-                    key={city.id}
-                    onClick={() => setTravelCityFilter(city.id)}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium whitespace-nowrap snap-start transition-all flex-shrink-0 ${
-                      travelCityFilter === city.id
-                        ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
-                        : darkMode ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-600 border border-gray-200"
-                    }`}
-                  >
-                    <span>{city.emoji}</span><span>{city.name_zh}</span>
-                    <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${travelCityFilter === city.id ? "bg-white/20" : darkMode ? "bg-gray-600" : "bg-gray-200"}`}>
-                      {city.placeCount}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Travel Country/City Filter - Desktop */}
-        {category === 'travel' && isTravelGuide && (
-          <div className="hidden md:flex flex-col gap-3 mb-6 p-4 rounded-2xl ${darkMode ? 'bg-gray-900/50 border border-gray-800' : 'bg-gray-50 border border-gray-200'}">
-            <div className="flex items-center gap-3">
-              <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>🌏 國家</span>
-              <div className="flex items-center gap-2 flex-wrap">
-                <button
-                  onClick={() => { setTravelCountryFilter('all'); setTravelCityFilter('all'); }}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    travelCountryFilter === 'all'
-                      ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
-                      : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
-                  }`}
-                >
-                  <span>全部</span>
-                </button>
-                {countrySummaries.map((country: any) => (
-                  <button
-                    key={country.id}
-                    onClick={() => { setTravelCountryFilter(country.id); setTravelCityFilter('all'); }}
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                      travelCountryFilter === country.id
-                        ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
-                        : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
-                    }`}
-                  >
-                    <span>{country.emoji}</span><span>{country.name_zh}</span>
-                    <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${travelCountryFilter === country.id ? "bg-white/20" : darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
-                      {country.cityCount}城
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            {/* City Row - only show when country selected */}
-            {travelCountryFilter !== 'all' && (
-              <div className="flex items-center gap-3">
-                <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>🏙️ 城市</span>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <button
-                    onClick={() => setTravelCityFilter('all')}
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                      travelCityFilter === 'all'
-                        ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
-                        : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
-                    }`}
-                  >
-                    <span>全部</span>
-                  </button>
-                  {derivedAvailableCities.map((city: any) => (
-                    <button
-                      key={city.id}
-                      onClick={() => setTravelCityFilter(city.id)}
-                      className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                        travelCityFilter === city.id
-                          ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-white shadow-lg"
-                          : darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
-                      }`}
-                    >
-                      <span>{city.emoji}</span><span>{city.name_zh}</span>
-                      <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${travelCityFilter === city.id ? "bg-white/20" : darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
-                        {city.placeCount}地
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-            {/* Blog placeholder indicator */}
-            {category === 'travel' && (
-              <div className={`text-xs px-3 py-2 rounded-lg ${darkMode ? 'bg-amber-900/20 text-amber-400 border border-amber-700/30' : 'bg-amber-50 text-amber-600 border border-amber-200'}`}>
-                💡 Blog 功能：選擇城市後可查看/編輯旅遊blog文章
-              </div>
-            )}
-          </div>
-        )}
-
         {/* Mobile Data Journalism Subcategory Filter - Sticky */}
         {category === 'data_journalism' && dataJournalismSubs.length > 0 && (
           <div className="md:hidden sticky top-[116px] z-20 -mx-4 px-4 pt-2 mb-3 backdrop-blur-xl bg-black/80">
@@ -2400,25 +2222,7 @@ export default function NewsPage() {
                     ? 'md:bg-gray-800/90 md:border-gray-700 md:shadow-xl md:hover:shadow-2xl'
                     : 'md:bg-white md:border-gray-200 md:shadow-md md:hover:shadow-xl'
                 }`}>
-                  {isTravelGuide && item.img_url ? (
-                    <div className="relative aspect-video md:aspect-video bg-gray-900 overflow-hidden">
-                      <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
-                        <span className="text-4xl">{item.city_emoji || '🌏'}</span>
-                        <div className="ml-3">
-                          <span className="text-white font-bold text-base">{item.city || ''}</span>
-                          <span className="text-gray-300 text-sm block">{item.area || ''}</span>
-                        </div>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); if(item.link) window.open(item.link, '_blank'); }}
-                          className="absolute top-4 right-4 p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition"
-                          title="Open in Google"
-                        >
-                          <ExternalLink size={18} className="text-white" />
-                        </button>
-                      </div>
-                    </div>
-                  ) : item.img_url ? (
+                  {item.img_url ? (
                     <div className="relative aspect-[16/9] md:aspect-video bg-gray-900 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -2430,7 +2234,7 @@ export default function NewsPage() {
                         >
                           <ExternalLink size={18} className="text-white" />
                         </button>
-                      )}
+                      </div>
                     </div>
                   ) : (
                     <div className={`aspect-video flex items-center justify-center ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-100 to-purple-100"}`}>
@@ -2516,98 +2320,6 @@ export default function NewsPage() {
                       </div>
                     )}
 
-                    {/* Expanded Travel Card - blog style */}
-                    {isTravelGuide && expandedId === item.title && (
-                      <div className={`p-4 rounded-xl mb-3 ${darkMode ? "bg-teal-900/30 border border-teal-600/40" : "bg-teal-50 border border-teal-200"}`}>
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xl">{item.city_emoji || '✈️'}</span>
-                          <span className={`font-bold text-sm ${darkMode ? "text-teal-400" : "text-teal-600"}`}>{item.city} · {item.area}</span>
-                        </div>
-                        {item.blog_content && (
-                          <p className={`text-sm leading-relaxed mb-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>{item.blog_content}</p>
-                        )}
-                        <div className="grid grid-cols-2 gap-3 mb-3">
-                          {item.address && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">📍 地址</span>
-                              <span className="opacity-80">{item.address}</span>
-                            </div>
-                          )}
-                          {item.hours && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">🕐 營業時間</span>
-                              <span className="opacity-80">{item.hours}</span>
-                            </div>
-                          )}
-                          {item.price_range && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">💰 消費</span>
-                              <span className="opacity-80">{item.price_range}</span>
-                            </div>
-                          )}
-                          {item.rating && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">⭐ 評分</span>
-                              <span className="opacity-80">{item.rating}/5.0 {item.review_count && <span className="opacity-60">({item.review_count})</span>}</span>
-                            </div>
-                          )}
-                          {item.duration && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">⏱️ 建議遊覽</span>
-                              <span className="opacity-80">{item.duration}</span>
-                            </div>
-                          )}
-                          {item.transit && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">🚇 交通</span>
-                              <span className="opacity-80">{item.transit}</span>
-                            </div>
-                          )}
-                          {item.cost_level && (
-                            <div className={`text-xs p-2.5 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"}`}>
-                              <span className="font-semibold block mb-0.5">💵 消費水平</span>
-                              <span className="opacity-80">{item.cost_level === 'free' ? '免費' : item.cost_level === 'low' ? '低 ($)' : item.cost_level === 'medium' ? '中 ($$)' : item.cost_level === 'high' ? '高 ($$$)' : '豪華 ($$$$)'}</span>
-                            </div>
-                          )}
-                        </div>
-                        {item.tags && item.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {item.tags.map((tag: string, idx: number) => (
-                              <span key={idx} className={`text-xs px-2 py-1 rounded-full ${darkMode ? "bg-teal-800 text-teal-300" : "bg-teal-100 text-teal-600"}`}>
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                        {item.tips && item.tips.length > 0 && (
-                          <div className={`text-xs p-3 rounded-lg mb-3 ${darkMode ? "bg-yellow-900/30 border border-yellow-700/40" : "bg-yellow-50 border border-yellow-200"}`}>
-                            <span className="font-semibold block mb-2">💡 實用提示</span>
-                            <ul className="space-y-1">
-                              {item.tips.map((tip: string, idx: number) => (
-                                <li key={idx} className="opacity-80">• {tip}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                        {item.type && (
-                          <div className="flex items-center gap-2 mb-3">
-                            <span className={`text-xs px-3 py-1 rounded-full ${darkMode ? "bg-teal-800 text-teal-300" : "bg-teal-100 text-teal-600"}`}>
-                              {item.type === 'attraction' ? '🗺️ 景點' : item.type === 'food' ? '🍜 美食' : item.type === 'activity' ? '🎯 活動' : '🛍️ 購物'}
-                            </span>
-                          </div>
-                        )}
-                        {item.blog_content && (
-                          <a 
-                            href={item.blog_slug ? `/blog/${item.blog_slug}` : '#'}
-                            onClick={e => { if (!item.blog_slug) e.preventDefault(); }}
-                            className="mt-3 w-full py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-500 text-white"
-                          >
-                            📖 閱讀完整Blog →
-                          </a>
-                        )}
-                      </div>
-                    )}
-
                     {/* Card footer - Mobile friendly */}
                     <div className="mt-4 pt-3 border-t border-gray-700/50 flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -2649,25 +2361,6 @@ export default function NewsPage() {
                 </button>
               </div>
             )}
-          </div>
-        )}
-
-        {/* Mobile Travel Blog CTA - shown when no travel news */}
-        {category === 'travel' && displayNews.length === 0 && !loading && (
-          <div className={`w-full rounded-2xl p-8 text-center ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-lg border border-gray-200"}`}>
-            <div className="text-5xl mb-4">✈️</div>
-            <h3 className={`text-xl font-bold mb-2 ${darkMode ? "text-white" : "text-gray-900"}`}>
-              {lang === "en" ? "Explore Travel Destinations" : "探索全球旅遊目的地"}
-            </h3>
-            <p className={`text-base mb-6 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-              {lang === "en" ? "Discover travel guides, city blogs, and insider tips" : "發掘旅遊指南、城市Blog及實用資訊"}
-            </p>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold hover:opacity-90 transition"
-            >
-              📖 {lang === "en" ? "Visit Travel Blog" : "前往旅遊Blog"}
-            </Link>
           </div>
         )}
       </main>
