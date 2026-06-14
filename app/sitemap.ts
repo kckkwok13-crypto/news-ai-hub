@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl + "/health", lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: baseUrl + "/food", lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: baseUrl + "/ai-tools", lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: baseUrl + "/editorial", lastModified: now, changeFrequency: "daily", priority: 0.9 },
   ];
 
   // Dynamically generate blog post URLs from blogData
@@ -66,5 +67,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutesSitemap, ...financeRoutesSitemap, ...healthRoutesSitemap, ...foodRoutesSitemap, ...aiToolsRoutesSitemap];
+  // Editorial posts - all article slugs
+  const editorialSlugs = [
+    "ai-healthcare-revolution", "ai-image-generators", "ai-job-revolution",
+    "ai-translation-ethics", "bitcoin-etf-deep-analysis", "cbdc-global-race",
+    "creator-economy-web3", "decentralized-finance-guide", "ev-market-analysis",
+    "global-investment-trends-2025", "health-wellness-2025", "metaverse-workplace",
+    "neural-interface-future", "quantum-computing-ai", "regenerative-ai",
+    "space-tourism-future", "stablecoin-war", "sustainable-crypto",
+    "tech-giants-ai-race", "twohumans-vs-ai-analysis", "web3-gaming-future",
+    "web3-nft-winter", "ethereum-layer2-explosion", "nvidia-ai-chip-empire",
+    "hongkong-crypto-policy", "ai-agent-era", "esg-investment-wave"
+  ];
+
+  const editorialRoutesSitemap: MetadataRoute.Sitemap = editorialSlugs.map((slug) => ({
+    url: `${baseUrl}/editorial/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...blogRoutesSitemap, ...financeRoutesSitemap, ...healthRoutesSitemap, ...foodRoutesSitemap, ...aiToolsRoutesSitemap, ...editorialRoutesSitemap];
 }
