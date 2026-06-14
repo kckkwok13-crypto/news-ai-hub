@@ -167,6 +167,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "lake-zurich",
+    title: "🏞️ 阿爾卑斯山下的翡翠淚珠：瑞士蘇黎世湖深度遊覽與湖畔散策攻略",
+    excerpt: "瑞士最迷人的高山湖泊！阿爾卑斯山倒影、蒸汽船遊湖、湖畔騎單車與游泳、4大終極打卡機位！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+    icon: "🏞️",
+    tags: ["蘇黎世", "瑞士", "湖泊", "打卡"],
+    accent: "from-blue-600 to-cyan-500",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
