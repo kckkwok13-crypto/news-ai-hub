@@ -81,7 +81,7 @@ export default function ChapelBridgeLucernePage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/20">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Kapellbruecke.JPG/1280px-Kapellbruecke.JPG"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/CH.LU.Luzern_Kapellbr%C3%BCcke_01_16x9-R_16384x9216.jpg/1280px-CH.LU.Luzern_Kapellbr%C3%BCcke_01_16x9-R_16384x9216.jpg"
             alt="琉森卡貝爾橋"
             className="w-full h-80 object-cover"
           />
@@ -140,7 +140,7 @@ export default function ChapelBridgeLucernePage() {
 
           <div className="my-8">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Kapellbr%C3%BCcke_%26_H%C3%A4user_am_Rathausquai_in_Luzern_%282013%29.jpg/1280px-Kapellbr%C3%BCcke_%26_H%C3%A4user_am_Rathausquai_in_Luzern_%282013%29.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/00_0237_Kapellbr%C3%BCcke_-_Wasserturm.jpg/960px-00_0237_Kapellbr%C3%BCcke_-_Wasserturm.jpg"
               alt="琉森卡貝爾橋與水塔"
               className="w-full rounded-2xl"
             />

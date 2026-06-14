@@ -182,7 +182,7 @@ export const blogPosts: BlogPost[] = [
     title: "🌉 歐洲最古老的廊橋：瑞士琉森卡貝爾橋深度遊覽攻略",
     excerpt: "建於1333年！歐洲最古老木製廊橋、120幅三角形油畫、1993年浴火重生的傳奇、4大終極打卡機位！",
     date: "June 2026",
-    image: "https://images.unsplash.com/photo-1539641503454-3b20c45e87a5?w=1200&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/CH.LU.Luzern_Kapellbr%C3%BCcke_01_16x9-R_16384x9216.jpg/1280px-CH.LU.Luzern_Kapellbr%C3%BCcke_01_16x9-R_16384x9216.jpg",
     icon: "🌉",
     tags: ["琉森", "瑞士", "廊橋", "打卡"],
     accent: "from-orange-600 to-amber-500",
