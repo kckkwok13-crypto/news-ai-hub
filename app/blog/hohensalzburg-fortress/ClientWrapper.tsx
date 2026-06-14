@@ -145,12 +145,12 @@ export default function HohensalzburgFortressPage() {
 
           <div className="my-8">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Salzburg_Festung_hohensalzburg_04.JPG/960px-Salzburg_Festung_hohensalzburg_04.JPG"
-              alt="薩爾茨堡城市風光"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Festung_Hohensalzburg_Kapelle_01.jpg/1280px-Festung_Hohensalzburg_Kapelle_01.jpg"
+              alt="薩爾茨堡城堡內部"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-stone-600 text-sm mt-4 mb-8">
-              ▲ 從城堡俯瞰薩爾茨堡舊城區，莫扎特廣場與銀色穹頂清晰可見
+              ▲ 城堡內的禮拜堂，融合哥德式與文藝復興風格的華麗裝飾
             </p>
           </div>
 

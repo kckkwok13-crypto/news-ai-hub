@@ -132,12 +132,12 @@ export default function LionMonumentPage() {
 
           <div className="my-8">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Pilatus_Lake_Lucerne.jpg/1280px-Pilatus_Lake_Lucerne.jpg"
-              alt="琉森湖畔風光"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/L%C3%B6wendenkmal_Luzern.jpg/1280px-L%C3%B6wendenkmal_Luzern.jpg"
+              alt="琉森獅子紀念碑特寫"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-gray-600 text-sm mt-4 mb-8">
-              ▲ 琉森湖畔的寧靜風光，距離獅子紀念碑僅十分鐘步行路程
+              ▲ 近距離觀看垂死獅子雕像，可見其痛苦神情與盾牌上的百合花紋章
             </p>
           </div>
 
