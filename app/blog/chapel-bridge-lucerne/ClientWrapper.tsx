@@ -81,8 +81,8 @@ export default function ChapelBridgeLucernePage() {
 
         <div className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/20">
           <img
-            src="https://images.unsplash.com/photo-1539641503454-3b20c45e87a5?w=1200&q=80"
-            alt="琉森卡貝爾橋夜景"
+            src="https://images.unsplash.com/photo-15350088864-5cbe1fb8a3b5?w=1200&q=80"
+            alt="琉森卡貝爾橋"
             className="w-full h-80 object-cover"
           />
         </div>
@@ -140,8 +140,8 @@ export default function ChapelBridgeLucernePage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=1200&q=80"
-              alt="琉森城市風光"
+              src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=1200&q=80"
+              alt="琉森卡貝爾橋與水塔"
               className="w-full rounded-2xl"
             />
             <p className="text-center text-orange-600 text-sm mt-4 mb-8">
