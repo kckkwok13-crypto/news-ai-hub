@@ -145,7 +145,7 @@ export default function HohensalzburgFortressPage() {
 
           <div className="my-8">
             <img
-              src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1609859670753-48a50af19820?w=1200&q=80"
               alt="薩爾茨堡城市風光"
               className="w-full rounded-2xl"
             />
