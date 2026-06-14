@@ -200,6 +200,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "santorini-oia",
+    title: "🌅 愛琴海燃燒的終極終章：希臘聖托里尼伊亞落日熔金攻略",
+    excerpt: "全球最美落日！探索希臘聖托里尼伊亞小鎮，藍頂教堂、白牆洞穴屋與熔金晚霞的浪漫極致慢活之旅。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200&q=80",
+    icon: "🌅",
+    tags: ["聖托里尼", "伊亞", "希臘", "日落", "愛琴海"],
+    accent: "from-blue-600 to-indigo-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
