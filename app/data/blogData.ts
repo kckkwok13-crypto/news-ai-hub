@@ -211,6 +211,17 @@ export const blogPosts: BlogPost[] = [
     category: "local"
   },
   {
+    slug: "parthenon-athens",
+    title: "🏛️ 黃金比例的永恆凝視：雅典衛城帕特農神廟2500年建築幾何攻略",
+    excerpt: "2500年人類美學巔峰！探索帕特農神廟的黃金分割建築奇蹟、光學視差修正結構與古希臘文明瑰寶。",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80",
+    icon: "🏛️",
+    tags: ["帕特農", "雅典", "希臘", "衛城", "古蹟"],
+    accent: "from-sky-600 to-blue-600",
+    category: "local"
+  },
+  {
     slug: "royal-palace-madrid",
     title: "🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略",
     excerpt: "西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略，旅遊達人必收藏！",
