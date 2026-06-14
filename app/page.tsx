@@ -2319,7 +2319,7 @@ export default function NewsPage() {
         )}
 
         {!loading && displayNews.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 md:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-6 lg:gap-8 px-0 md:px-2 lg:px-0">
             {displayNews.flatMap((item, i) => {
               const isRead = readIds.has(item.title);
               const isSaved = savedIds.has(item.title);
@@ -2328,9 +2328,17 @@ export default function NewsPage() {
                 : null;
 
               const newsCard = (
-                <div key={`card-${i}`} onClick={() => { toggleRead(item.title); }} className={`group relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${getCardBg(isRead)} border ${darkMode ? "hover:border-blue-500/50" : "hover:border-blue-300"}`}>
+                <div key={`card-${i}`} onClick={() => { toggleRead(item.title); }} className={`group relative overflow-hidden transition-all duration-300 md:rounded-3xl md:border ${darkMode ? "md:hover:border-blue-500/50" : "md:hover:border-blue-300"} ${
+                  // Mobile: flat design with dividers
+                  i > 0 ? 'border-b border-gray-200 dark:border-gray-800' : ''
+                } ${
+                  // Mobile: no shadow/bg, Desktop: card styling
+                  darkMode
+                    ? 'md:bg-gray-800/90 md:border-gray-700 md:shadow-xl md:hover:shadow-2xl'
+                    : 'md:bg-white md:border-gray-200 md:shadow-md md:hover:shadow-xl'
+                }`}>
                   {isTravelGuide && item.img_url ? (
-                    <div className="relative aspect-video bg-gray-900 overflow-hidden">
+                    <div className="relative aspect-video md:aspect-video bg-gray-900 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
                         <span className="text-4xl">{item.city_emoji || '🌏'}</span>
@@ -2348,7 +2356,7 @@ export default function NewsPage() {
                       </div>
                     </div>
                   ) : item.img_url ? (
-                    <div className="relative aspect-video bg-gray-900 overflow-hidden">
+                    <div className="relative aspect-[16/9] md:aspect-video bg-gray-900 overflow-hidden">
                       <img src={`${item.img_url}`} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                       {item.link && (
@@ -2366,7 +2374,7 @@ export default function NewsPage() {
                       <span className="text-5xl md:text-6xl opacity-30">📰</span>
                     </div>
                   )}
-                  
+
                   {/* Top-right action buttons (bookmark, share only) - Improved for mobile */}
                   <div className="absolute top-4 right-4 flex gap-2 z-10">
                     <button onClick={e => { e.stopPropagation(); toggleSaved(item.title); }} className="p-3 rounded-xl bg-black/60 text-white hover:bg-black/80 backdrop-blur-sm shadow-lg min-w-[48px] min-h-[48px] flex items-center justify-center">
@@ -2381,17 +2389,17 @@ export default function NewsPage() {
                     </button>
                   </div>
 
-                  <div className="p-5 md:p-6">
-                    <div className="flex items-center gap-3 mb-4 pt-2">
-                      <span className={`text-sm md:text-sm px-4 py-1.5 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
+                  <div className="p-4 md:p-6">
+                    <div className="flex items-center gap-3 mb-3 md:mb-4 pt-0 md:pt-2">
+                      <span className={`text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full ${darkMode ? "bg-gray-700/80 text-gray-400" : "bg-gray-100 text-gray-500"}`}>{item.source}</span>
                       {isSaved && <span className="text-lg">📌</span>}
                     </div>
-                    <h3 className={`text-lg md:text-lg font-bold leading-relaxed mb-4 mt-0 ${darkMode ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-base md:text-lg font-bold leading-relaxed mb-3 md:mb-4 mt-0 ${darkMode ? "text-white" : "text-gray-900"}`}>
                       {item.translated && item.title_translated ? item.title_translated : item.title}
                     </h3>
                     {/* Auto-show summary - no click needed - More visible on mobile */}
                     {(item.desc_translated || item.desc) && (
-                      <div className={`text-base leading-relaxed mb-4 font-medium ${darkMode ? "text-gray-300 bg-gray-700/50 p-3 rounded-xl" : "text-gray-600 bg-gray-100 p-3 rounded-xl"}`}>
+                      <div className={`text-sm md:text-base leading-relaxed mb-3 md:mb-4 font-medium ${darkMode ? "text-gray-300 bg-gray-700/50 p-3 rounded-xl" : "text-gray-600 bg-gray-100 p-3 rounded-xl"}`}>
                         <span className="text-xs font-semibold opacity-60 block mb-2">📋 摘要</span>
                         {(item.desc_translated || item.desc)}
                       </div>
