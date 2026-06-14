@@ -2,12 +2,14 @@
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReadingProgress from "../../components/ReadingProgress";
 import SocialShare from "../../components/SocialShare";
 import StarRating from "../../components/StarRating";
 import FavoriteButton from "../../components/FavoriteButton";
 import RelatedPosts from "../../components/RelatedPosts";
+import TravelLanguageSelector from "../../components/TravelLanguageSelector";
+import { getTranslation, TravelLanguage } from "../../data/travelTranslations";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "🌉" },
@@ -21,13 +23,25 @@ const currentTags = ["琉森", "瑞士", "廊橋", "打卡"];
 
 export default function ChapelBridgeLucernePage() {
   const [activeSection, setActiveSection] = useState("intro");
+  const [lang, setLang] = useState<TravelLanguage>("zh-TW");
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const saved = localStorage.getItem("travel_blog_lang") as TravelLanguage;
+    if (saved) setLang(saved);
+    const handler = (e: any) => setLang(e.detail);
+    window.addEventListener("travel-lang-change", handler);
+    return () => window.removeEventListener("travel-lang-change", handler);
+  }, []);
+
+  const t = getTranslation(lang);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-950 via-amber-950/50 to-yellow-950/30 text-white">
       <ReadingProgress />
+      <TravelLanguageSelector />
 
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
         <div className="bg-gradient-to-br from-orange-900/95 to-amber-900/95 backdrop-blur-xl border border-orange-500/30 rounded-2xl p-5 w-60 shadow-2xl shadow-orange-500/10">

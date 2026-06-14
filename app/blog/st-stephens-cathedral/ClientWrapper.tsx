@@ -8,6 +8,8 @@ import SocialShare from "../../components/SocialShare";
 import StarRating from "../../components/StarRating";
 import FavoriteButton from "../../components/FavoriteButton";
 import RelatedPosts from "../../components/RelatedPosts";
+import TravelLanguageSelector from "../../components/TravelLanguageSelector";
+import { getTranslation, TravelLanguage } from "../../data/travelTranslations";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "⛪" },
@@ -21,14 +23,26 @@ const currentTags = ["維也納", "奧地利", "建築", "打卡"];
 
 export default function StStephensCathedralPage() {
   const [activeSection, setActiveSection] = useState("intro");
+  const [lang, setLang] = useState<TravelLanguage>("zh-TW");
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    const saved = localStorage.getItem("travel_blog_lang") as TravelLanguage;
+    if (saved) setLang(saved);
+    const handler = (e: any) => setLang(e.detail);
+    window.addEventListener("travel-lang-change", handler);
+    return () => window.removeEventListener("travel-lang-change", handler);
+  }, []);
+
+  const t = getTranslation(lang);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-950 via-orange-950/50 to-red-950/30 text-white">
       {/* Reading Progress Bar */}
       <ReadingProgress />
+      <TravelLanguageSelector />
 
       {/* Floating Summary Card */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">

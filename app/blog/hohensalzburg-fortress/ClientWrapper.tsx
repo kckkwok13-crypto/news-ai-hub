@@ -2,12 +2,14 @@
 import Comments from "@/components/Comments";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReadingProgress from "../../components/ReadingProgress";
 import SocialShare from "../../components/SocialShare";
 import StarRating from "../../components/StarRating";
 import FavoriteButton from "../../components/FavoriteButton";
 import RelatedPosts from "../../components/RelatedPosts";
+import TravelLanguageSelector from "../../components/TravelLanguageSelector";
+import { getTranslation, TravelLanguage } from "../../data/travelTranslations";
 
 const tocItems = [
   { id: "intro", title: "介紹", emoji: "🏰" },
@@ -21,13 +23,25 @@ const currentTags = ["薩爾茨堡", "奧地利", "城堡", "打卡"];
 
 export default function HohensalzburgFortressPage() {
   const [activeSection, setActiveSection] = useState("intro");
+  const [lang, setLang] = useState<TravelLanguage>("zh-TW");
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const saved = localStorage.getItem("travel_blog_lang") as TravelLanguage;
+    if (saved) setLang(saved);
+    const handler = (e: any) => setLang(e.detail);
+    window.addEventListener("travel-lang-change", handler);
+    return () => window.removeEventListener("travel-lang-change", handler);
+  }, []);
+
+  const t = getTranslation(lang);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-stone-900 via-zinc-900/50 to-slate-900/30 text-white">
       <ReadingProgress />
+      <TravelLanguageSelector />
 
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
         <div className="bg-gradient-to-br from-stone-800/95 to-zinc-800/95 backdrop-blur-xl border border-stone-600/30 rounded-2xl p-5 w-60 shadow-2xl shadow-stone-500/10">
@@ -145,12 +159,13 @@ export default function HohensalzburgFortressPage() {
 
           <div className="my-8">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Festung_Hohensalzburg_Kapelle_01.jpg/1280px-Festung_Hohensalzburg_Kapelle_01.jpg"
-              alt="薩爾茨堡城堡內部"
+              src="/images/travel/hohensalzburg-courtyard.jpg"
+              alt="薩爾茨堡城堡內院"
               className="w-full rounded-2xl"
+              loading="lazy"
             />
             <p className="text-center text-stone-600 text-sm mt-4 mb-8">
-              ▲ 城堡內的禮拜堂，融合哥德式與文藝復興風格的華麗裝飾
+              ▲ 城堡內院與聖喬治禮拜堂，融合哥德式與文藝復興風格的華麗裝飾
             </p>
           </div>
 
