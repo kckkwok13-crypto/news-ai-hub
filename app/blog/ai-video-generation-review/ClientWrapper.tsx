@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 type TravelLanguage = "yue" | "zh-TW" | "zh-CN" | "en";
