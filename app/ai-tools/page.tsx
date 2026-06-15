@@ -700,7 +700,7 @@ export default function AIToolsPage() {
                     <span className="text-3xl">🤖</span>
                   </div>
                   <span className="text-white font-semibold">查看全部教程</span>
-                  <span className="text-purple-400 text-sm">共 {aiToolPosts.length} 篇文章 →</span>
+                  <span className="text-purple-400 text-sm">共 {aiToolPosts.length} 篇文章（滾動查看更多）→</span>
                 </div>
               </div>
             </div>
