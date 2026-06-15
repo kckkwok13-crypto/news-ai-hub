@@ -32,7 +32,10 @@ function getAllRoutes() {
     'myeongdong', 'gba-guangzhou', 'gba-shenzhen', 'gba-hongkong-3days', 'gba-macau-2days',
     'gba-zhuhai-3days', 'gba-dongguan-2days', 'gba-foshan-2days', 'gba-chimelong-3days', 'gba-humen-2days',
     'ai-tools-tutorial', 'chatgpt-deep-review', 'midjourney-complete-guide', 'claude-business-review',
-    'ai-code-tools-comparison', 'ai-video-generation-review', 'ai-audio-voice-tools'
+    'ai-code-tools-comparison', 'ai-video-generation-review', 'ai-audio-voice-tools',
+    'gemini-pro-review', 'perplexity-ai-vs-chatgpt', 'ai-writing-tools', 'ai-image-editing',
+    'midjourney-v6-features', 'stable-diffusion-3', 'chatgpt-enterprise-guide', 'ai-productivity-tools',
+    'llm-comparison-2024', 'ai-search-engine-review'
   ];
 
   blogPosts.forEach(slug => {
