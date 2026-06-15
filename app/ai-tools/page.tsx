@@ -413,6 +413,286 @@ export default function AIToolsPage() {
                 </div>
               </Link>
 
+              {/* Gemini Pro */}
+              <Link href="/ai-tools/gemini-pro-review" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-blue-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80"
+                      alt="Gemini Pro"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl p-2 text-xl shadow-lg">🚀</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+                      Google Gemini Pro 深度評測
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">100萬Token上下文、跨模態理解</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-14</span>
+                      <span className="text-blue-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Perplexity AI */}
+              <Link href="/ai-tools/perplexity-ai-vs-chatgpt" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-green-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&q=80"
+                      alt="Perplexity AI"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-2 text-xl shadow-lg">🔍</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-green-400 transition-colors line-clamp-2">
+                      Perplexity AI vs ChatGPT
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">AI搜尋引擎終極對決</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-13</span>
+                      <span className="text-green-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* AI Writing Tools */}
+              <Link href="/ai-tools/ai-writing-tools-2024" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-purple-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80"
+                      alt="AI Writing Tools"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl p-2 text-xl shadow-lg">✍️</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-purple-400 transition-colors line-clamp-2">
+                      2024年度AI寫作工具全面比較
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">10款頂尖AI寫作助手詳細評測</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-12</span>
+                      <span className="text-purple-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* AI Image Editing */}
+              <Link href="/ai-tools/ai-image-editing-tools" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-pink-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1547089556-8213c3b3e07c?w=600&q=80"
+                      alt="AI Image Editing"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1547089556-8213c3b3e07c?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl p-2 text-xl shadow-lg">🎨</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-pink-400 transition-colors line-clamp-2">
+                      AI圖像編輯工具終極指南
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">從修圖到生成，一站式AI視覺解決方案</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-11</span>
+                      <span className="text-pink-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Midjourney v6 */}
+              <Link href="/ai-tools/midjourney-v6-features" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1673259777773-a06eff440e1e?w=600&q=80"
+                      alt="Midjourney v6"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1673259777773-a06eff440e1e?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-2 text-xl shadow-lg">🎨</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-indigo-400 transition-colors line-clamp-2">
+                      Midjourney v6 完整指南
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">逼真度提升300%，文字生成功能上線</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-10</span>
+                      <span className="text-indigo-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Stable Diffusion 3 */}
+              <Link href="/ai-tools/stable-diffusion-3" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80"
+                      alt="Stable Diffusion 3"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl p-2 text-xl shadow-lg">🔓</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2">
+                      Stable Diffusion 3 完全評測
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">開源AI繪圖新標杆，FID分數0.82</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-09</span>
+                      <span className="text-emerald-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* ChatGPT Enterprise */}
+              <Link href="/ai-tools/chatgpt-enterprise-guide" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-green-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80"
+                      alt="ChatGPT Enterprise"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-2 text-xl shadow-lg">🏢</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-green-400 transition-colors line-clamp-2">
+                      ChatGPT Enterprise 企業版指南
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">無限GPT-4訪問，80%財富500強使用</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-08</span>
+                      <span className="text-green-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* AI Productivity Tools Guide */}
+              <Link href="/ai-tools/ai-productivity-tools-guide" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-yellow-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80"
+                      alt="AI Productivity"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl p-2 text-xl shadow-lg">⚡</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-yellow-400 transition-colors line-clamp-2">
+                      2024年度最佳AI生產力工具
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">提升效率300%的秘密武器</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-07</span>
+                      <span className="text-yellow-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* LLM Comparison */}
+              <Link href="/ai-tools/llm-comparison-2024" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-red-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80"
+                      alt="LLM Comparison"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl p-2 text-xl shadow-lg">🏆</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-red-400 transition-colors line-clamp-2">
+                      2024年度LLM大模型終極比較
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">GPT-4 vs Claude 3 vs Gemini vs Llama 3</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-06</span>
+                      <span className="text-red-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* AI Search Engine */}
+              <Link href="/ai-tools/ai-search-engine-review" className="group w-72 flex-shrink-0">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-cyan-500/40 transition-all duration-500">
+                  <div className="relative h-36 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80"
+                      alt="AI Search"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl p-2 text-xl shadow-lg">🔎</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white text-sm mb-2 group-hover:text-cyan-400 transition-colors line-clamp-2">
+                      AI搜尋引擎大比拼
+                    </h3>
+                    <p className="text-gray-400 text-xs line-clamp-2 mb-3">AI時代的資訊獲取方式革命</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">2026-06-05</span>
+                      <span className="text-cyan-400">閱讀 →</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
               {/* 查看全部按鈕 */}
               <div className="w-72 flex-shrink-0">
                 <div className="h-full min-h-[200px] rounded-2xl border-2 border-dashed border-slate-700 hover:border-purple-500/50 transition-all duration-500 flex flex-col items-center justify-center gap-3">
@@ -420,7 +700,7 @@ export default function AIToolsPage() {
                     <span className="text-3xl">🤖</span>
                   </div>
                   <span className="text-white font-semibold">查看全部教程</span>
-                  <span className="text-purple-400 text-sm">共 6 篇文章 →</span>
+                  <span className="text-purple-400 text-sm">共 {aiToolPosts.length} 篇文章 →</span>
                 </div>
               </div>
             </div>
