@@ -247,7 +247,7 @@ export default function BlogPage() {
                 onMouseEnter={() => setHoveredSlug(post.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
               >
-                <article className={`relative h-full bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-blue-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10 backdrop-blur-sm ${hoveredSlug === post.slug ? 'ring-2 ring-blue-500/30' : ''}`}>
+                <article className={`relative h-full bg-slate-800/40 md:bg-slate-800/50 rounded-xl md:rounded-2xl overflow-hidden border border-slate-700/40 md:border-slate-700/50 hover:border-blue-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10 ${hoveredSlug === post.slug ? 'ring-2 ring-blue-500/30' : ''}`}>
                   {/* Top Accent Line */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${post.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
 
@@ -335,7 +335,7 @@ export default function BlogPage() {
                 onMouseEnter={() => setHoveredSlug(post.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
               >
-                <article className={`relative h-full bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-emerald-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-emerald-500/10 backdrop-blur-sm ${hoveredSlug === post.slug ? 'ring-2 ring-emerald-500/30' : ''}`}>
+                <article className={`relative h-full bg-slate-800/40 md:bg-slate-800/50 rounded-xl md:rounded-2xl overflow-hidden border border-slate-700/40 md:border-slate-700/50 hover:border-emerald-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-emerald-500/10 ${hoveredSlug === post.slug ? 'ring-2 ring-emerald-500/30' : ''}`}>
                   {/* Top Accent Line */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${post.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
 
@@ -417,7 +417,7 @@ export default function BlogPage() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {gbaPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                <article className="relative h-52 rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-amber-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/10 backdrop-blur-sm">
+                <article className="relative h-48 md:h-52 rounded-xl md:rounded-2xl overflow-hidden bg-slate-800/40 md:bg-slate-800/50 border border-slate-700/40 md:border-slate-700/50 hover:border-amber-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/10">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -456,7 +456,7 @@ export default function BlogPage() {
         </div>
 
         {/* Search and Filters - Improved */}
-        <div className="bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-2xl p-6 mb-8 border border-slate-700/50 backdrop-blur-sm">
+        <div className="bg-gradient-to-r from-slate-800/40 md:from-slate-800/50 to-slate-800/20 md:to-slate-800/30 rounded-xl md:rounded-2xl p-4 md:p-6 mb-8 border border-slate-700/40 md:border-slate-700/50">
           <div className="flex flex-col md:flex-row gap-4 mb-5">
             <div className="flex-1 relative">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
