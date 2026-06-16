@@ -1070,7 +1070,7 @@ AI圖像編輯工具正在徹底改變視覺內容創作方式。
     tags: ["AI繪圖", "圖像編輯", "Midjourney", "Stable Diffusion", "Adobe Firefly"],
     icon: "🎨",
     accent: "from-pink-500 to-rose-600",
-    image: "https://images.unsplash.com/photo-1547089556-8213c3b3e07c?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=800&q=80",
     category: "image",
     readingTime: 10
   },
@@ -1115,7 +1115,7 @@ Midjourney v6 是目前最強大的 AI 圖像生成工具之一。
     tags: ["Midjourney", "v6", "AI繪圖", "文字生成", "提示詞"],
     icon: "🎨",
     accent: "from-indigo-500 to-purple-600",
-    image: "https://images.unsplash.com/photo-1673259777773-a06eff440e1e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
     category: "image",
     readingTime: 12
   },
@@ -1162,7 +1162,7 @@ SD3 是開源 AI 繪圖的重大突破，為開發者提供強大工具。
     tags: ["Stable Diffusion", "開源", "SD3", "AI繪圖", "免費"],
     icon: "🔓",
     accent: "from-emerald-500 to-teal-600",
-    image: "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1644088379091-d574269d422f?w=800&q=80",
     category: "image",
     readingTime: 11
   },
