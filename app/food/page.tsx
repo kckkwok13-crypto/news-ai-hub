@@ -60,7 +60,7 @@ export default function FoodPage() {
               <div className="text-xs text-orange-400/70">📝 美食文章</div>
             </div>
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-              <div className="text-3xl font-bold text-white mb-1">6</div>
+              <div className="text-3xl font-bold text-white mb-1">10</div>
               <div className="text-xs text-orange-400/70">🍳 美食主題</div>
             </div>
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
