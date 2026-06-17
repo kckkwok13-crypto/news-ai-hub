@@ -3,9 +3,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     remotePatterns: [
       { hostname: 'images.unsplash.com' },
@@ -19,6 +16,6 @@ const nextConfig = {
       { hostname: 'cdn.britannica.com' },
       { hostname: 'media.istockphoto.com' },
     ]
-  }
+  },
 }
 module.exports = nextConfig
