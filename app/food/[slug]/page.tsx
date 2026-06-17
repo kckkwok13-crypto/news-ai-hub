@@ -79,6 +79,8 @@ export default function FoodArticlePage() {
     let contentWithoutCharts = content.replace(/\{\{CHART:(\w+)\}\}/g, '');
 
     let processed = contentWithoutCharts
+      // 標準Markdown圖片（需先處理）
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<div class="my-8 rounded-2xl overflow-hidden"><img src="$2" alt="$1" class="w-full rounded-xl" loading="lazy" /></div>')
       // 特殊視覺元素（需先處理）
       // 💡 提示框
       .replace(/!\[TIP\]\((.+?)\)/g, '<div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 my-6 flex items-start gap-4"><div class="text-3xl">💡</div><div><h4 class="text-amber-400 font-bold mb-2">小提示</h4><p class="text-amber-200/80">$1</p></div></div>')
