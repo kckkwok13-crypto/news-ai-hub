@@ -502,11 +502,11 @@ export default function AIToolsPage() {
                 <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-pink-500/40 transition-all duration-500">
                   <div className="relative h-36 overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1547089556-8213c3b3e07c?w=600&q=80"
+                      src="https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=600&q=80"
                       alt="AI Image Editing"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1547089556-8213c3b3e07c?w=600&q=80";
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600&q=80";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
@@ -530,11 +530,11 @@ export default function AIToolsPage() {
                 <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-indigo-500/40 transition-all duration-500">
                   <div className="relative h-36 overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1673259777773-a06eff440e1e?w=600&q=80"
+                      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80"
                       alt="Midjourney v6"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1673259777773-a06eff440e1e?w=600&q=80";
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1620325867502-221cfb442a4a?w=600&q=80";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
@@ -558,11 +558,11 @@ export default function AIToolsPage() {
                 <div className="relative rounded-2xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/40 transition-all duration-500">
                   <div className="relative h-36 overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80"
+                      src="https://images.unsplash.com/photo-1644088379091-d574269d422f?w=600&q=80"
                       alt="Stable Diffusion 3"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80";
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
