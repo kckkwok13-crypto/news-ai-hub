@@ -40,7 +40,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 一盅兩件視覺指南
 
-````
+[CODE_BLOCK]
          🍵 一盅
     ┌─────────────────┐
     │    普洱/鐵觀音   │
@@ -51,7 +51,7 @@ export const foodPosts: FoodPost[] = [
     ┌─────┐ ┌─────┐
     │ 蝦餃 │ │ 燒賣 │
     └─────┘ └─────┘
-````
+[CODE_BLOCK]
 
 ---
 
@@ -62,7 +62,7 @@ export const foodPosts: FoodPost[] = [
 > 「1919年開到依家，見證晒成個香港史！」
 
 **店鋪資料卡：**
-```
+[CODE_BLOCK]
 ┌─────────────────────────────────┐
 │  📍 中環威靈頓街146-148號       │
 │  ⏰ 早上6點至晚上11點            │
@@ -70,7 +70,7 @@ export const foodPosts: FoodPost[] = [
 │  🔥 必點：蓮蓉包、叉燒包         │
 │  ⭐ 評分：★★★★☆               │
 └─────────────────────────────────┘
-```
+[CODE_BLOCK]
 
 **小編 Tips**：晏就去就冇啲好野啦，要早起身！
 
@@ -81,7 +81,7 @@ export const foodPosts: FoodPost[] = [
 > 「全球最平嘅米芝蓮星星！」
 
 **店鋪資料卡：**
-```
+[CODE_BLOCK]
 ┌─────────────────────────────────┐
 │  📍 深水埗福華街115號地下        │
 │  ⏰ 早上10點至晚上10點           │
@@ -89,7 +89,7 @@ export const foodPosts: FoodPost[] = [
 │  🔥 必點：酥皮叉燒包 ⭐         │
 │  ⭐ 評分：★★★★★               │
 └─────────────────────────────────┘
-```
+[CODE_BLOCK]
 
 **特色**：酥皮叉燒包係招牌！外層酥到卜卜脆！
 
@@ -103,7 +103,7 @@ export const foodPosts: FoodPost[] = [
 
 **完美蝦餃嘅視覺標準：**
 
-```
+[CODE_BLOCK]
     蝦餃解剖圖 🍴
 
        ╭──╮
@@ -116,26 +116,26 @@ export const foodPosts: FoodPost[] = [
   ✅ 餡要爽口彈牙
   ✅ 褶要靚（13褶先係正宗！）
   ✅ 一口咬落去，聽到「嚓」一聲
-```
+[CODE_BLOCK]
 
 ### 🥟 燒賣 - 平民美食之王
 
 **香港人食燒賣嘅方式：**
 
-```
+[CODE_BLOCK]
 步驟：  1.夾起    2.沾醬    3.傾偈途中
        ┌──┐    ┌──┐    ┌──┐
        │🍡│ → │🍡│ → │🍡│ → 😋
        └──┘    └──┘    └──┘
               ↓
            芥末醬油
-```
+[CODE_BLOCK]
 
 ### 🐷 叉燒包 - 笑口棗嘅好意頭
 
 **叉燒包成長史：**
 
-```
+[CODE_BLOCK]
     笑口大揭秘！😄
 
     生包 → 蒸包 → 笑口包
@@ -145,7 +145,7 @@ export const foodPosts: FoodPost[] = [
 
     蒸嘅時候，包底會爆開
     睇落似笑口，故名「笑口棗」
-```
+[CODE_BLOCK]
 
 ---
 
@@ -156,7 +156,7 @@ export const foodPosts: FoodPost[] = [
 俾人斟茶，想表示謝謝？
 👉 伸出食指和中指，喺枱面輕輕敲兩下！
 
-```
+[CODE_BLOCK]
     扣手禮示意圖 👇
 
         你
@@ -168,7 +168,7 @@ export const foodPosts: FoodPost[] = [
         │
         ↓
      多謝晒！🙏
-```
+[CODE_BLOCK]
 
 > 呢個習俗係咁嚟嘅：相傳乾隆皇帝微服出巡，幫臣子斟茶，臣子唔知點謝，於是用手指代表跪低叩頭！
 
@@ -178,7 +178,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 價錢視覺對比
 
-```
+[CODE_BLOCK]
 💰 香港點心消費水平 💰
 
 💚 平民之選 HK$40-60
@@ -196,7 +196,7 @@ export const foodPosts: FoodPost[] = [
 ❤️ 高級享受 HK$120+
 ████████████████████████████████████████████ 120%+
    星級酒店
-```
+[CODE_BLOCK]
 
 ---
 
@@ -204,7 +204,7 @@ export const foodPosts: FoodPost[] = [
 
 **必影角度：**
 
-```
+[CODE_BLOCK]
     打卡角度示意 📷
 
     ① 蝦餃疊羅漢    ② 姨記手推車
@@ -219,7 +219,7 @@ export const foodPosts: FoodPost[] = [
       ├─┼─┤            │ ☁☁ │
       │🟢│⬜│            ╰───╯
       └─┴─┘
-```
+[CODE_BLOCK]
 
 **caption推薦**：
 - 「早茶就係香港人嘅浪漫 🌅」
@@ -232,7 +232,7 @@ export const foodPosts: FoodPost[] = [
 
 ### ✅ 你可以做嘅 VS ❌ 唔好做
 
-```
+[CODE_BLOCK]
 ┌────────────────────────────────────────────────┐
 │              飲茶do's & don'ts                 │
 ├────────────────────┬───────────────────────────┤
@@ -244,7 +244,7 @@ export const foodPosts: FoodPost[] = [
 │ 自己拎筷子         │                          │
 │ 揭開蒸籠           │                          │
 └────────────────────┴───────────────────────────┘
-```
+[CODE_BLOCK]
 
 ---
 
@@ -252,11 +252,11 @@ export const foodPosts: FoodPost[] = [
 
 **點心公式**：點心 = 一份堅持 + 一份傳統 + 一份人情味
 
-```
+[CODE_BLOCK]
     🍵 + 🥟 + 👵 = ❤️ 香港心 🍵
 
     茶香  + 點心  + 人情  =  完美早晨
-```
+[CODE_BLOCK]
 
 **你今日就可以**：
 1. 📱 搵間附近嘅茶樓
@@ -294,18 +294,18 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 早餐影響圖
 
-```
+[CODE_BLOCK]
     早餐攝取 vs 身體表現 📈
 
     專注力  ████████████████░░░░  85%
     記憶力  ██████████████░░░░░  75%
     BMI     ████████░░░░░░░░░░░  40%  ← 較低！
     活力    █████████████████░░░  90%
-```
+[CODE_BLOCK]
 
 ### ⏱️ 時間分配圖
 
-```
+[CODE_BLOCK]
     早餐黃金5分鐘 ⏰
 
     ┌────────────────────────────────────┐
@@ -315,7 +315,7 @@ export const foodPosts: FoodPost[] = [
     └────────────────────────────────────┘
 
     目標：2分鐘內完成早餐！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -323,7 +323,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 1️⃣ Overnight Oats（隔夜燕麥）
 
-```
+[CODE_BLOCK]
     隔夜燕麥製作圖 📦
 
     前一晚（1分鐘）：
@@ -335,18 +335,18 @@ export const foodPosts: FoodPost[] = [
          雪櫃冷藏过夜 ❄️
               ↓
     早上直接食！🍽️ 0分鐘
-```
+[CODE_BLOCK]
 
 **營養金字塔：**
 
-```
+[CODE_BLOCK]
          🍓
         🍌🍓
        🥛🥛🥛
       🥣🥣🥣🥣
     ━━━━━━━━━━
     燕麥 + 奶 + 水果 + 蜂蜜
-```
+[CODE_BLOCK]
 
 ---
 
@@ -354,7 +354,7 @@ export const foodPosts: FoodPost[] = [
 
 **視覺食譜：**
 
-```
+[CODE_BLOCK]
     牛油果吐司步驟 👨‍🍳
 
     Step 1: 牛油果 🥑
@@ -376,7 +376,7 @@ export const foodPosts: FoodPost[] = [
            ═══════════
 
     ⏱️ 時間：5分鐘
-```
+[CODE_BLOCK]
 
 ---
 
@@ -384,7 +384,7 @@ export const foodPosts: FoodPost[] = [
 
 **色彩金字塔：**
 
-```
+[CODE_BLOCK]
     水果乳酪碗視覺 🍓🫐🥭
 
            🍓
@@ -396,13 +396,13 @@ export const foodPosts: FoodPost[] = [
     🟣 藍莓：抗氧化
     🍓 草莓：維他命C
     🥭 芒果：維他命A
-```
+[CODE_BLOCK]
 
 ---
 
 ### 4️⃣ 花生醬香蕉卷
 
-```
+[CODE_BLOCK]
     捲餅大作戰 🌯
 
     ════════════════════  全麥卷餅
@@ -411,13 +411,13 @@ export const foodPosts: FoodPost[] = [
     ════════════════════
 
     ✨ 撒肉桂粉 → 捲起 → 完成！
-```
+[CODE_BLOCK]
 
 ---
 
 ### 5️⃣ Smoothie（奶昔）
 
-```
+[CODE_BLOCK]
     奶昔配方 🔄
 
          🥛牛奶
@@ -433,13 +433,13 @@ export const foodPosts: FoodPost[] = [
          │ 🟣🍌🥛 │
          │  奶昔   │
          ╰─────────╯
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📊 早餐時間效率圖
 
-```
+[CODE_BLOCK]
     10款早餐所需時間 ⏱️
 
     🥣 隔夜燕麥     ▓░░░░░░░░░  1分鐘  ⭐⭐
@@ -452,13 +452,13 @@ export const foodPosts: FoodPost[] = [
     🥪 吞拿魚三文治  ▓▓░░░░░░░░  4分鐘  ⭐⭐
     🧊 奇亞籽布丁    ▓░░░░░░░░░  1分鐘  ⭐
     🧁 微波蛋糕     ▓▓░░░░░░░░  5分鐘  ⭐⭐⭐
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🥗 營養均衡圖
 
-```
+[CODE_BLOCK]
     完美早餐比例 🍽️
 
          水果 20%
@@ -471,13 +471,13 @@ export const foodPosts: FoodPost[] = [
     ════════════════════
     蛋白質 + 碳水 + 水果
     = 完美早餐公式 ✅
-```
+[CODE_BLOCK]
 
 ---
 
 ## 💡 一週早餐計劃
 
-```
+[CODE_BLOCK]
     一週早餐建議 📅
 
     週一 🌅  隔夜燕麥 + 藍莓
@@ -487,7 +487,7 @@ export const foodPosts: FoodPost[] = [
     週五 🌅  Smoothie + 吞拿魚三文治
     週六 🌅  雞蛋奄列 + 吐司
     週日 🌅  休息日！睡到自然醒 😴
-```
+[CODE_BLOCK]
 
 ---
 
@@ -495,11 +495,11 @@ export const foodPosts: FoodPost[] = [
 
 **早餐公式**：
 
-```
+[CODE_BLOCK]
     ⏱️ 快速 + 🥗 營養 + 😋 美味
          ↓
     💪 元氣滿滿的一天！
-```
+[CODE_BLOCK]
 
 **記住**：
 - ✅ 提前準備
@@ -528,7 +528,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 咖啡種類金字塔
 
-```
+[CODE_BLOCK]
             ☕ Mocha
            ╱    ╲
           ☕     ☕
@@ -539,7 +539,7 @@ export const foodPosts: FoodPost[] = [
     ═══════════════════════════
 
     由濃到淡：由下而上 ☝️
-```
+[CODE_BLOCK]
 
 ---
 
@@ -547,7 +547,7 @@ export const foodPosts: FoodPost[] = [
 
 **1️⃣ Espresso（意式濃縮）**
 
-```
+[CODE_BLOCK]
     ☕ Espresso
     ════════════
 
@@ -560,11 +560,11 @@ export const foodPosts: FoodPost[] = [
     ████████████████ 100%
 
     ⏱️ 萃取：25-30秒
-```
+[CODE_BLOCK]
 
 **2️⃣ Americano（美式）**
 
-```
+[CODE_BLOCK]
     ☕ Americano
     ════════════
 
@@ -575,11 +575,11 @@ export const foodPosts: FoodPost[] = [
     █████████████████  熱水 70%
 
     口感：較淡、清爽
-```
+[CODE_BLOCK]
 
 **3️⃣ Cappuccino（卡布奇諾）**
 
-```
+[CODE_BLOCK]
     ☕ Cappuccino
     ══════════════
 
@@ -592,11 +592,11 @@ export const foodPosts: FoodPost[] = [
        └─────────┘
 
     特色：拉花藝術 🎨
-```
+[CODE_BLOCK]
 
 **4️⃣ Latte（拿鐵）**
 
-```
+[CODE_BLOCK]
     ☕ Latte
     ════════
 
@@ -609,7 +609,7 @@ export const foodPosts: FoodPost[] = [
        └─────────┘
 
     奶味較重、入門首選 🥛
-```
+[CODE_BLOCK]
 
 ---
 
@@ -617,7 +617,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🌏 產地特色圖
 
-```
+[CODE_BLOCK]
     世界咖啡產地分佈 🌍
 
     巴西
@@ -635,11 +635,11 @@ export const foodPosts: FoodPost[] = [
     印尼
     🌳 泥土、木質味
     ██████ 15%
-```
+[CODE_BLOCK]
 
 ### 🔥 烘焙程度光譜
 
-```
+[CODE_BLOCK]
     烘焙程度：由淺到深 ⬛
 
     ⬜─────────⬛─────────⬛⬛⬛
@@ -652,7 +652,7 @@ export const foodPosts: FoodPost[] = [
     ▓░░░░░░░░░  淺烘 10%
     ▓▓▓▓▓░░░░░  中烘 50%
     ▓▓▓▓▓▓▓▓▓▓  深烘 90%
-```
+[CODE_BLOCK]
 
 ---
 
@@ -660,7 +660,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📍 香港咖啡地圖
 
-```
+[CODE_BLOCK]
     香港 ☕ 咖啡地圖
 
          深圳
@@ -676,7 +676,7 @@ export const foodPosts: FoodPost[] = [
     │  🏛️ 旺角   │  ← Knockbox
     │  🏛️ 灣仔   │  ← Urban Coffee
     └─────────────┘
-```
+[CODE_BLOCK]
 
 ### 🏆 精選咖啡店
 
@@ -693,7 +693,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 手冲咖啡步驟
 
-```
+[CODE_BLOCK]
     手冲咖啡流程 🔄
 
     Step 1️⃣        Step 2️⃣        Step 3️⃣
@@ -705,11 +705,11 @@ export const foodPosts: FoodPost[] = [
        🔄              ⏳            💧
 
     總時間：2-3分鐘 ⏱️
-```
+[CODE_BLOCK]
 
 ### 🌡️ 水溫指南
 
-```
+[CODE_BLOCK]
     水溫與咖啡類型 🌡️
 
     40-60°C  ░░░░░░░░░░░░░░░░  冷萃
@@ -717,13 +717,13 @@ export const foodPosts: FoodPost[] = [
     85-90°C  ████████████░░░░  白咖啡
     92-96°C  █████████████████  手冲
     100°C    ████████████████  深烘豆
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🎯 香港茶餐廳咖啡
 
-```
+[CODE_BLOCK]
     茶餐廳 ☕ 文化
 
     蘭芳園 🏆
@@ -734,7 +734,7 @@ export const foodPosts: FoodPost[] = [
     └──────────────────────┘
 
     特色：滑、濃、香 ☕❤️
-```
+[CODE_BLOCK]
 
 ---
 
@@ -742,12 +742,12 @@ export const foodPosts: FoodPost[] = [
 
 **咖啡公式**：
 
-```
+[CODE_BLOCK]
     ☕ = 豆子 🫘 + 水 💧 + 技巧 🎯
 
     精品咖啡：新鮮豆 + 適溫水 + 用心冲
     茶餐廳：靚茶膽 + 煉奶 = 港式靈魂
-```
+[CODE_BLOCK]
 
 **記住**：
 - ✅ 了解種類
@@ -776,7 +776,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 碳排放數據視覺化
 
-```
+[CODE_BLOCK]
     食品碳足跡比較 🌍
 
     🍖 牛肉        ████████████████████████████ 27kg CO₂/kg
@@ -788,11 +788,11 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════════════
     💡 數據來源：聯合國糧食及農業組織
-```
+[CODE_BLOCK]
 
 ### 📈 全球暖化與飲食
 
-```
+[CODE_BLOCK]
     全球溫室氣體排放來源 🏭
 
     食品生產 25%  ████████████████░░░░░░░░
@@ -803,7 +803,7 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════════════
     ⚠️ 食品生產佔全球排放量嘅 1/4！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -811,7 +811,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 原則視覺圖
 
-```
+[CODE_BLOCK]
     🌱 環保飲食金字塔 🌱
 
               🥗 减少加工
@@ -823,11 +823,11 @@ export const foodPosts: FoodPost[] = [
     │  │  │  │   │  │
 
     基礎：植物性食物為主 🥬🥕🍆
-```
+[CODE_BLOCK]
 
 ### 1️⃣ 多吃植物性食物
 
-```
+[CODE_BLOCK]
     每週餐單規劃 📅
 
     週一 🌱 全素日
@@ -840,11 +840,11 @@ export const foodPosts: FoodPost[] = [
 
     ══════════════════════
     💡 目標：每週2-3天無肉！
-```
+[CODE_BLOCK]
 
 ### 2️⃣ 選擇本地食材
 
-```
+[CODE_BLOCK]
     食物里程比較 🚗
 
     🇨🇳 本地蔬菜
@@ -854,11 +854,11 @@ export const foodPosts: FoodPost[] = [
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  5000公里
 
     💡 本地食材 = 減少91%碳排放！
-```
+[CODE_BLOCK]
 
 ### 3️⃣ 減少加工食品
 
-```
+[CODE_BLOCK]
     加工程度光譜 🔄
 
     新鮮食材          過度加工
@@ -868,11 +868,11 @@ export const foodPosts: FoodPost[] = [
     ▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░  加工程度
     │
     選擇：盡量靠左 ✅
-```
+[CODE_BLOCK]
 
 ### 4️⃣ 減少食物浪費
 
-```
+[CODE_BLOCK]
     食物浪費金字塔 🗑️
 
               避免浪費
@@ -884,11 +884,11 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════
     💡 全球每年浪費 1/3 食物！
-```
+[CODE_BLOCK]
 
 ### 5️⃣ 選擇可持續海鮮
 
-```
+[CODE_BLOCK]
     海鮮可持續指南 🐟
 
     ✅ 好選擇           ❌ 避免
@@ -899,7 +899,7 @@ export const foodPosts: FoodPost[] = [
     🐠 本地魚          🦑 過度捕撈
 
     💡 選擇 MSC 認証海鮮 ✅
-```
+[CODE_BLOCK]
 
 ---
 
@@ -907,7 +907,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 購物清單視覺化
 
-```
+[CODE_BLOCK]
     🛒 環保購物清單
 
     ☐ 帶環保袋        →  ♻️ 拒絕膠袋
@@ -916,11 +916,11 @@ export const foodPosts: FoodPost[] = [
     ☐ 本地食材        →  🚗 減少運輸
     ☐ 素食蛋白        →  🐄 減少肉類
     ☐ 可持續海鮮      →  🐟 保護海洋
-```
+[CODE_BLOCK]
 
 ### 儲存指南
 
-```
+[CODE_BLOCK]
     雪櫃收納指南 ❄️
 
     ┌─────────────────────────┐
@@ -931,13 +931,13 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────┘
 
     💡 先進先出 (FIFO) 原則！
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📊 環保 vs 非環保對比
 
-```
+[CODE_BLOCK]
     生活方式對比 📊
 
     傳統飲食          環保飲食
@@ -949,13 +949,13 @@ export const foodPosts: FoodPost[] = [
     ✈️ 進口食材        🏡 本地食材
 
     💡 環保飲食可減少 73% 碳足跡！
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🎯 一週環保飲食計劃
 
-```
+[CODE_BLOCK]
     📅 一週環保餐單
 
     🌿 Day 1: 番茄燴豆 + 糙米
@@ -968,7 +968,7 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════
     💡 目標：每週減少50%肉類攝取
-```
+[CODE_BLOCK]
 
 ---
 
@@ -976,14 +976,14 @@ export const foodPosts: FoodPost[] = [
 
 **環保飲食公式**：
 
-```
+[CODE_BLOCK]
     🌱 環保 = 🥬 植物為主
             + 🏡 本地食材
             + ♻️ 减少浪費
             + 🐟 永續海鮮
 
     = ❤️ 健康 + 🌍 愛地球
-```
+[CODE_BLOCK]
 
 **記住**：
 - ✅ 多吃蔬菜
@@ -1012,7 +1012,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 發酵程度金字塔
 
-```
+[CODE_BLOCK]
     茶葉發酵光譜 📊
 
     不發酵           全發酵
@@ -1029,7 +1029,7 @@ export const foodPosts: FoodPost[] = [
     🟢              🍂🍂🍂🍂
     烏龍             普洱
     ▓▓▓▓▓▓▓▓░░░░░░░  50%
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1037,7 +1037,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 1️⃣ 綠茶（不發酵）
 
-```
+[CODE_BLOCK]
     🍃 綠茶家族
 
     ┌─────────────────────────────────┐
@@ -1055,11 +1055,11 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     ✨ 功效：抗氧化、提神、減肥
-```
+[CODE_BLOCK]
 
 ### 2️⃣ 白茶（輕發酵）
 
-```
+[CODE_BLOCK]
     ⚪ 白茶家族
 
     ┌─────────────────────────────────┐
@@ -1077,11 +1077,11 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     ✨ 功效：清熱、降火、養顏
-```
+[CODE_BLOCK]
 
 ### 3️⃣ 烏龍茶（半發酵）
 
-```
+[CODE_BLOCK]
     🟢 烏龍茶家族
 
     ┌─────────────────────────────────┐
@@ -1099,11 +1099,11 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     ✨ 功效：分解脂肪、護齒、抗衰老
-```
+[CODE_BLOCK]
 
 ### 4️⃣ 紅茶（全發酵）
 
-```
+[CODE_BLOCK]
     🍂 紅茶家族
 
     ┌─────────────────────────────────┐
@@ -1121,11 +1121,11 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     ✨ 功效：暖胃、舒壓、改善循環
-```
+[CODE_BLOCK]
 
 ### 5️⃣ 黑茶（後發酵）
 
-```
+[CODE_BLOCK]
     🍂 黑茶家族
 
     ┌─────────────────────────────────┐
@@ -1143,7 +1143,7 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     ✨ 功效：降血脂、助消化、減肥
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1151,7 +1151,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 水溫與時間圖
 
-```
+[CODE_BLOCK]
     🍵 冲泡参数一览
 
     溫度 🌡️              時間 ⏱️
@@ -1170,11 +1170,11 @@ export const foodPosts: FoodPost[] = [
 
     普洱   100°C         10-30秒
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     ▓░░░░░░░░░░
-```
+[CODE_BLOCK]
 
 ### 🫖 冲泡流程圖
 
-```
+[CODE_BLOCK]
     功夫茶冲泡六步曲 🍵
 
     1️⃣ 溫杯         2️⃣ 投茶         3️⃣ 洗茶
@@ -1188,7 +1188,7 @@ export const foodPosts: FoodPost[] = [
     │💧☕💧│        │ 🫖→🍵 │        │ 😌🍵│
     │💧☕💧│        └─────┘        └─────┘
     └─────┘
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1196,7 +1196,7 @@ export const foodPosts: FoodPost[] = [
 
 ### ☕ 茶餐廳奶茶圖鑒
 
-```
+[CODE_BLOCK]
     🏆 港式奶茶圖鑑
 
     絲襪奶茶
@@ -1220,11 +1220,11 @@ export const foodPosts: FoodPost[] = [
     │  ────────────────────────      │
     │  ✨ 甜而不膩、更滑               │
     └─────────────────────────────────┘
-```
+[CODE_BLOCK]
 
 ### 📊 奶茶口味光譜
 
-```
+[CODE_BLOCK]
     奶茶口味偏好 📊
 
     滑    ████████████████░░░░░░  80%
@@ -1233,13 +1233,13 @@ export const foodPosts: FoodPost[] = [
     濃    ████████████████░░░░░░  75%
 
     💡 完美奶茶 = 滑 + 香 + 甜 + 濃
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🎯 茶的功效圖解
 
-```
+[CODE_BLOCK]
     🍃 茶的功效雷達圖
 
               抗氧化
@@ -1256,7 +1256,7 @@ export const foodPosts: FoodPost[] = [
     烏龍：減肥高手 💪
     紅茶：暖胃專家 🤗
     普洱：消化助手 💚
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1264,7 +1264,7 @@ export const foodPosts: FoodPost[] = [
 
 **茶的功效速查表**：
 
-```
+[CODE_BLOCK]
     茶類功效一目了然 📊
 
     │ 茶類  │ 最佳水溫 │ 冲泡時間 │ 主要功效        │
@@ -1274,17 +1274,17 @@ export const foodPosts: FoodPost[] = [
     │ 烏龍  │ 95-100°C │ 30秒-1分 │ 分解脂肪        │
     │ 紅茶  │ 95°C     │ 3-5分鐘  │ 暖胃、舒壓      │
     │ 普洱  │ 100°C    │ 10-30秒  │ 降血脂、助消化  │
-```
+[CODE_BLOCK]
 
 **記住**：
 
-```
+[CODE_BLOCK]
     🍵 = 一杯好茶 + 一份寧静 + 一份修養
 
     泡茶係一種藝術
     品茶係一種生活
     懂茶係一種修養
-```
+[CODE_BLOCK]
 
 一杯好茶，一份寧静！🍵❤️
     `,
@@ -1307,7 +1307,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 異國料理愛好圖
 
-```
+[CODE_BLOCK]
     全球美食愛好統計 🌎
 
     🇮🇹 意大利菜    ████████████████████  85%
@@ -1317,7 +1317,7 @@ export const foodPosts: FoodPost[] = [
     🇲🇽 墨西哥菜    ████████████░░░░░░░░   50%
 
     💡 香港人最愛：日、泰、意！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1325,7 +1325,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🍝 Carbonara 視覺食譜
 
-```
+[CODE_BLOCK]
     🍝 意式培根蛋麵
 
     ════════════════════════════════
@@ -1342,11 +1342,11 @@ export const foodPosts: FoodPost[] = [
 
     ⏱️ 總時間：20分鐘
     📊 難度：⭐⭐⭐
-```
+[CODE_BLOCK]
 
 ### 步驟圖解
 
-```
+[CODE_BLOCK]
     Carbonara 製作流程 👨‍🍳
 
     Step 1️⃣        Step 2️⃣        Step 3️⃣
@@ -1360,7 +1360,7 @@ export const foodPosts: FoodPost[] = [
        ▓▓▓▓▓▓         ▓▓▓▓▓▓          ▓
 
     ⚠️ 唔好加cream！正宗就係咁！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1368,7 +1368,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🍛 咖喱飯視覺配方
 
-```
+[CODE_BLOCK]
     🍛 日式咖喱飯
 
     ════════════════════════════════
@@ -1387,11 +1387,11 @@ export const foodPosts: FoodPost[] = [
 
     ⏱️ 總時間：45分鐘
     📊 難度：⭐⭐
-```
+[CODE_BLOCK]
 
 ### 步驟圖解
 
-```
+[CODE_BLOCK]
     咖喱飯製作流程 👨‍🍳
 
     1️⃣ 切切切
@@ -1413,7 +1413,7 @@ export const foodPosts: FoodPost[] = [
 
     5️⃣ 完成！
     🍚 + 🍛 = 😋
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1421,7 +1421,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🌶️ 青咖喱視覺配方
 
-```
+[CODE_BLOCK]
     🌶️ 青咖喱雞
 
     ════════════════════════════════
@@ -1439,11 +1439,11 @@ export const foodPosts: FoodPost[] = [
 
     ⏱️ 總時間：30分鐘
     📊 難度：⭐⭐⭐
-```
+[CODE_BLOCK]
 
 ### 東南亞香料圖
 
-```
+[CODE_BLOCK]
     🌏 東南亞香料王國
 
     🇹🇭 泰國
@@ -1455,7 +1455,7 @@ export const foodPosts: FoodPost[] = [
 
     🇻🇳 越南
     🌿 香草 | 🐟 魚露 | 🍋 青檸
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1463,7 +1463,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🍛 印度咖喱視覺配方
 
-```
+[CODE_BLOCK]
     🍛 印度咖喱雞
 
     ════════════════════════════════
@@ -1479,11 +1479,11 @@ export const foodPosts: FoodPost[] = [
 
     ⏱️ 總時間：40分鐘
     📊 難度：⭐⭐⭐
-```
+[CODE_BLOCK]
 
 ### 印度香料金字塔
 
-```
+[CODE_BLOCK]
     🏆 印度香料之王 🏆
 
               瑪�拉
@@ -1493,7 +1493,7 @@ export const foodPosts: FoodPost[] = [
     薑黃   辣椒  丁香  肉桂
 
     ✨ 印度咖喱嘅靈魂係香料嘅平衡！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1501,7 +1501,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🌯 卷餅視覺配方
 
-```
+[CODE_BLOCK]
     🌯 墨西哥卷餅
 
     ════════════════════════════════
@@ -1526,11 +1526,11 @@ export const foodPosts: FoodPost[] = [
 
     ⏱️ 總時間：15分鐘
     📊 難度：⭐
-```
+[CODE_BLOCK]
 
 ### 卷餅口味光譜
 
-```
+[CODE_BLOCK]
     🌶️ 墨西哥辣度
 
     無辣     中辣      特辣
@@ -1543,13 +1543,13 @@ export const foodPosts: FoodPost[] = [
     💀 辣椒膏         100萬+
 
     ⚠️ 小心辣死！😱
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🌍 世界美食文化圖
 
-```
+[CODE_BLOCK]
     🍽️ 各國餐桌文化
 
     🇮🇹 意大利
@@ -1572,13 +1572,13 @@ export const foodPosts: FoodPost[] = [
     🥄 叉+勺食
     🌶️ 辣係靈魂
     🧆 配小碟分食
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🎯 世界料理難度排行榜
 
-```
+[CODE_BLOCK]
     📊 DIY 難度排行榜
 
     ⭐    墨西哥卷餅      15分鐘
@@ -1587,7 +1587,7 @@ export const foodPosts: FoodPost[] = [
     ⭐⭐⭐  泰式青咖喱      30分鐘
     ⭐⭐⭐⭐ 意大利Carbonara  20分鐘
     ⭐⭐⭐⭐⭐ 意大利薄餅      60分鐘
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1595,7 +1595,7 @@ export const foodPosts: FoodPost[] = [
 
 **世界美食公式**：
 
-```
+[CODE_BLOCK]
     🌍 世界料理 = 🇮🇹 意大利
                       🇯🇵 日本
                       🇹🇭 泰國
@@ -1607,7 +1607,7 @@ export const foodPosts: FoodPost[] = [
               + ❤️ 用心
 
               = 🍽️ 全球美食！
-```
+[CODE_BLOCK]
 
 **記住**：
 - ✅ 準備食材
@@ -1636,7 +1636,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 香港飲湯統計
 
-```
+[CODE_BLOCK]
     🍲 香港人飲湯習慣調查
 
     93%  ████████████████████████████████░░
@@ -1649,13 +1649,13 @@ export const foodPosts: FoodPost[] = [
     每週煲湯2-3次
 
     💬 老人家話：「飯前一口湯，勝過良藥方」
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🔥 咩係「老火湯」？
 
-```
+[CODE_BLOCK]
     老火湯定義 📖
 
     ╔═══════════════════════════════╗
@@ -1670,7 +1670,7 @@ export const foodPosts: FoodPost[] = [
     ╚═══════════════════════════════╝
 
     ⏱️ 時間係老火湯嘅靈魂！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1678,7 +1678,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 五大靓湯一覽
 
-```
+[CODE_BLOCK]
     🍲 老火湯功效圖
 
     蓮藕章魚湯 ────▶ 補血、強筋骨
@@ -1695,11 +1695,11 @@ export const foodPosts: FoodPost[] = [
 
     花旗參湯   ────▶ 補氣、養陰、清熱
     ════════════════════════════▶ ⚡
-```
+[CODE_BLOCK]
 
 ### 1️⃣ 蓮藕章魚湯
 
-```
+[CODE_BLOCK]
     🥣 蓮藕章魚湯
 
     ════════════════════════════════
@@ -1723,11 +1723,11 @@ export const foodPosts: FoodPost[] = [
     ⏱️ 煲湯時間：3小時 🔥🔥🔥
     📊 難度：⭐⭐
     🎯 功效：補血、強筋骨 💪
-```
+[CODE_BLOCK]
 
 ### 2️⃣ 霸王花湯
 
-```
+[CODE_BLOCK]
     🌸 霸王花湯
 
     ════════════════════════════════
@@ -1751,11 +1751,11 @@ export const foodPosts: FoodPost[] = [
     ⏱️ 煲湯時間：2.5小時 🔥🔥
     📊 難度：⭐
     🎯 功效：潤肺、止咳、清熱 🌿
-```
+[CODE_BLOCK]
 
 ### 3️⃣ 粉葛湯
 
-```
+[CODE_BLOCK]
     🏔️ 粉葛湯（祛濕之王）
 
     ════════════════════════════════
@@ -1779,13 +1779,13 @@ export const foodPosts: FoodPost[] = [
     🎯 功效：祛濕、清熱、解酒 🌧️
 
     💡 香港人話：「濕氣重？飲粉葛湯！」
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📊 煲湯時間大比拼
 
-```
+[CODE_BLOCK]
     ⏱️ 五大靓湯時間對比
 
     霸王花湯    ▓▓▓▓▓░░░░░░░░░░  2.5小時
@@ -1796,13 +1796,13 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════
     💡 最佳煲湯時段：晚上收工後開始
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🍳 煲湯器材選擇
 
-```
+[CODE_BLOCK]
     🍲 煲湯器材對比
 
     ┌─────────────────────────────────────┐
@@ -1822,7 +1822,7 @@ export const foodPosts: FoodPost[] = [
     │  缺點：散熱快、唔夠傳統味道          │
     │  ██████████████████████░░░░░░░░ 70% │
     └─────────────────────────────────────┘
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1830,7 +1830,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 五大步驟圖
 
-```
+[CODE_BLOCK]
     🍲 完美老火湯步驟
 
     ┌─────────────────────────────────────┐
@@ -1861,13 +1861,13 @@ export const foodPosts: FoodPost[] = [
     │  醬油：千祈唔好落 ❌                 │
     │  糖：一般唔落 ❌                      │
     └─────────────────────────────────────┘
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🚫 煲湯禁忌
 
-```
+[CODE_BLOCK]
     ⚠️ 煲湯禁忌警示 ⚠️
 
     ╔═══════════════════════════════════╗
@@ -1886,13 +1886,13 @@ export const foodPosts: FoodPost[] = [
     ║  老火湯普林含量高 ⚠️                 ║
     ║                                       ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🛒 邊度買湯料？
 
-```
+[CODE_BLOCK]
     🛒 香港湯料好去處地圖
 
          香港島
@@ -1906,13 +1906,13 @@ export const foodPosts: FoodPost[] = [
     │  各區街市  │  ← 新鮮、價錢平民 🏆
     │  南北行    │     蓮藕、霸王花
     └────────────┘
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📸 打卡呃like攻略
 
-```
+[CODE_BLOCK]
     📷 打卡角度示意圖
 
     ① 瓦煲揭蓋冒煙    ② 材料滿滿嘅湯碗
@@ -1926,13 +1926,13 @@ export const foodPosts: FoodPost[] = [
        │  🍲🍲🍲🍲  │      │    🥖     │
        │  金黃色    │      │  🦑    🦑 │
        ╰───────────╯      ╰───────────╯
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🎯 飲湯時間表
 
-```
+[CODE_BLOCK]
     📅 每日飲湯建議
 
     🌅 早上      清淡湯品（霸王花）
@@ -1949,7 +1949,7 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════
     💡 飲湯順序：清湯 → 湯料 → 白飯
-```
+[CODE_BLOCK]
 
 ---
 
@@ -1957,7 +1957,7 @@ export const foodPosts: FoodPost[] = [
 
 **老火湯公式**：
 
-```
+[CODE_BLOCK]
     🍲 老火湯成功方程式 🔬
 
     ╔═══════════════════════════════════╗
@@ -1969,7 +1969,7 @@ export const foodPosts: FoodPost[] = [
     ║            = 😋 完美老火湯           ║
     ║                                       ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 **你今日就可以**：
 1. 🛒 去街市買材料
@@ -2000,7 +2000,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 香港燒烤統計
 
-```
+[CODE_BLOCK]
     🔥 香港燒烤數據大公開
 
     200萬+  ████████████████████████████░░
@@ -2013,7 +2013,7 @@ export const foodPosts: FoodPost[] = [
     🏆 大美督 | 🏆 灣仔 | 🏆 西貢
 
     💬 中秋節 = 燒烤高峰期！🔥
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2021,7 +2021,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 食材金字塔
 
-```
+[CODE_BLOCK]
     🍖 燒烤食材金字塔
 
               🔥 BBQ靈魂
@@ -2035,11 +2035,11 @@ export const foodPosts: FoodPost[] = [
       │
     蔬菜配菜
      🌽🥕🍆
-```
+[CODE_BLOCK]
 
 ### 肉類、海鮮、蔬菜分量圖
 
-```
+[CODE_BLOCK]
     ═══ 每人所需份量 ═══
 
     🍖 肉類（150-200g/人）
@@ -2050,11 +2050,11 @@ export const foodPosts: FoodPost[] = [
 
     🥬 蔬菜（100g/人）
     ▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░  50%
-```
+[CODE_BLOCK]
 
 ### 💰 預算參考
 
-```
+[CODE_BLOCK]
     💰 燒烤預算計算機
 
     👤 平民玩法 HK$80-120
@@ -2068,7 +2068,7 @@ export const foodPosts: FoodPost[] = [
     👤👤👤 豪華玩法 HK$300+
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%
     + 和牛、海膽、鮑魚
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2076,7 +2076,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 火候控制圖
 
-```
+[CODE_BLOCK]
     🔥🔥🔥 兩區燒烤法 🔥🔥🔥
 
     ┌─────────────────────────────────┐
@@ -2092,11 +2092,11 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     💡 肉類先高火封汁，再低火慢慢烤熟！
-```
+[CODE_BLOCK]
 
 ### ⏱️ 燒烤時間表
 
-```
+[CODE_BLOCK]
     ⏱️ 食材燒烤時間指南
 
     🥩 牛扒（1吋厚）
@@ -2118,7 +2118,7 @@ export const foodPosts: FoodPost[] = [
     🦐 大頭蝦
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  5-6分鐘 + 2分鐘
     難度：⭐⭐⭐  建議：殼面向火
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2126,7 +2126,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 三款醃料圖
 
-```
+[CODE_BLOCK]
     🧂 醃料配方一覽
 
     ╔═══════════════════════════════════╗
@@ -2162,7 +2162,7 @@ export const foodPosts: FoodPost[] = [
     ║  ────────────────────────────────  ║
     ║  適合：海鮮、雞翼 🦐                ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2170,7 +2170,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🦐 大頭蝦步驟圖
 
-```
+[CODE_BLOCK]
     🦐 完美燒大頭蝦步驟
 
     Step 1️⃣        Step 2️⃣        Step 3️⃣
@@ -2184,11 +2184,11 @@ export const foodPosts: FoodPost[] = [
        🔄            🦐❤️
        ↓              ↓
      2分鐘         殼脆肉嫩！
-```
+[CODE_BLOCK]
 
 ### Perfect蝦標準
 
-```
+[CODE_BLOCK]
     🦐 完美燒蝦評分表
 
     ════════════════════════════════════
@@ -2208,7 +2208,7 @@ export const foodPosts: FoodPost[] = [
     ════════════════════════════════════
 
     💡 香港人話：「燒大頭蝦，係夏天嘅味道！」
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2216,7 +2216,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 食材配酒建議
 
-```
+[CODE_BLOCK]
     🍺 完美燒烤配酒指南
 
     🥩 牛肉        ████████████████░░░░░  紅酒/啤酒
@@ -2224,13 +2224,13 @@ export const foodPosts: FoodPost[] = [
     🍗 雞翼        ████████████████░░░░░  啤酒/汽水
     🦐 海鮮        ██████████░░░░░░░░░░░  白葡萄酒/汽水
     🐑 羊肉        ██████████████░░░░░░░  紅酒/威士忌
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🏕️ 香港燒烤好去處
 
-```
+[CODE_BLOCK]
     🏕️ 香港燒烤聖地地圖
 
          深圳
@@ -2254,7 +2254,7 @@ export const foodPosts: FoodPost[] = [
     │   ├ 燒烤用品租借                      │
     │   └ 配套完善                          │
     └───────────────────────────────────────┘
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2262,7 +2262,7 @@ export const foodPosts: FoodPost[] = [
 
 ### ✅ VS ❌
 
-```
+[CODE_BLOCK]
     ┌─────────────────────────────────────┐
     │           燒烤 Do's & Don'ts         │
     ├─────────────────┬───────────────────┤
@@ -2288,13 +2288,13 @@ export const foodPosts: FoodPost[] = [
     │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓ │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓ │
     │ 安全！✅        │ 😱燙傷！❌       │
     └─────────────────┴───────────────────┘
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📸 打卡呃like攻略
 
-```
+[CODE_BLOCK]
     📷 打卡角度示意圖
 
     ① 炭火熊熊        ② 串燒叠起
@@ -2309,7 +2309,7 @@ export const foodPosts: FoodPost[] = [
        │ 🌅👤👤│        │  😄😄😄  │
        │ 日落   │        │  BBQ派對  │
        └────────┘        ╰───────────╯
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2317,7 +2317,7 @@ export const foodPosts: FoodPost[] = [
 
 **燒烤公式**：
 
-```
+[CODE_BLOCK]
     🔥 完美燒烤方程式 🔥
 
     ╔═══════════════════════════════════╗
@@ -2330,7 +2330,7 @@ export const foodPosts: FoodPost[] = [
     ║              = ❤️ 最正嘅夜晚         ║
     ║                                       ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 **你今日就可以**：
 1. 🛒 買材料
@@ -2360,7 +2360,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 廟街夜市數據
 
-```
+[CODE_BLOCK]
     🌙 廟街夜市數據大公開
 
     👥 每日人流
@@ -2375,13 +2375,13 @@ export const foodPosts: FoodPost[] = [
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  高峰期！
 
     💬 阿婆話：「以前男朋友帶我去廟街，就已經係好浪漫嘅事！」
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🏮 廟街 — 香港夜市之王
 
-```
+[CODE_BLOCK]
     🏮 廟街夜市示意圖
 
          ┌───────────────────────────┐
@@ -2407,7 +2407,7 @@ export const foodPosts: FoodPost[] = [
 
     📍 位置：佐敦 ↔ 油麻地
     ⏰ 時間：下午4點 - 凌晨1點
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2415,7 +2415,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 Top 8 小食人氣圖
 
-```
+[CODE_BLOCK]
     🔥 廟街小食人氣排行榜
 
     第一位：咖喱魚蛋  ⭐⭐⭐⭐⭐
@@ -2441,11 +2441,11 @@ export const foodPosts: FoodPost[] = [
 
     第八位：燒賣      ⭐⭐⭐
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░  70%
-```
+[CODE_BLOCK]
 
 ### 1️⃣ 咖喱魚蛋
 
-```
+[CODE_BLOCK]
     🍢 咖喱魚蛋
 
     ════════════════════════════════
@@ -2470,11 +2470,11 @@ export const foodPosts: FoodPost[] = [
     ════════════════════════════════
 
     「冇食過咖喱魚蛋，就唔算去過廟街！」
-```
+[CODE_BLOCK]
 
 ### 3️⃣ 碗仔翅
 
-```
+[CODE_BLOCK]
     🥣 碗仔翅
 
     ════════════════════════════════
@@ -2499,7 +2499,7 @@ export const foodPosts: FoodPost[] = [
 
     + 🛢️ 麻油      + 🍋 白醋
     + 🍄 冬菇      + 🌶️ 胡椒粉
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2507,7 +2507,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 預算規劃
 
-```
+[CODE_BLOCK]
     💰 掃街預算計算機
 
     💚 精打細算：HK$50-80
@@ -2521,11 +2521,11 @@ export const foodPosts: FoodPost[] = [
     💜 大吃大喝：HK$200+
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100%
     10款+
-```
+[CODE_BLOCK]
 
 ### 🎯 HK$100 完美組合
 
-```
+[CODE_BLOCK]
     🎯 HK$100 掃街攻略
 
     ┌─────────────────────────────────┐
@@ -2544,13 +2544,13 @@ export const foodPosts: FoodPost[] = [
     └─────────────────────────────────┘
 
     💡 小編私房攻略！唔好走寶！
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🛒 其他夜市美食地圖
 
-```
+[CODE_BLOCK]
     🗺️ 香港夜市地圖
 
          ┌───────────────────────────┐
@@ -2573,11 +2573,11 @@ export const foodPosts: FoodPost[] = [
          │  🏮 園圃街（太子）         │
          │                           │
          └───────────────────────────┘
-```
+[CODE_BLOCK]
 
 ### 📊 各大夜市特色
 
-```
+[CODE_BLOCK]
     ═══ 夜市特色對比 ═══
 
     🏮 廟街
@@ -2600,13 +2600,13 @@ export const foodPosts: FoodPost[] = [
     ⏰ 時間：下午3點 - 晚上11點
     🏷️ 特色：老人家至愛
     👥 人流：3,000+
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🚇 交通攻略
 
-```
+[CODE_BLOCK]
     🚇 前往各大夜市
 
     🏮 廟街
@@ -2623,7 +2623,7 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════
     💡 小編建議：港鐵最方便！🚇
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2631,7 +2631,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 時間人潮圖
 
-```
+[CODE_BLOCK]
     ⏰ 最佳掃街時間
 
     下午4-6點   ▓▓▓▓▓▓▓░░░░░░░░░░  30%
@@ -2645,11 +2645,11 @@ export const foodPosts: FoodPost[] = [
 
     凌晨12點後  ▓▓▓▓▓▓░░░░░░░░░░░░  30%
     準備收檔、執笠嘢
-```
+[CODE_BLOCK]
 
 ### 👔 着裝建議
 
-```
+[CODE_BLOCK]
     👔 掃街着裝指南
 
     ✅ 推薦                  ❌ 避免
@@ -2658,13 +2658,13 @@ export const foodPosts: FoodPost[] = [
     👟 波鞋/涼鞋            👠 高跟鞋
     🎒 小背包               💼 大袋 / 背囊
     👕 短褲/裙子            👖 焗身褲
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📸 打卡呃like攻略
 
-```
+[CODE_BLOCK]
     📷 打卡角度示意圖
 
     ① 霓虹燈夜景      ② 食物近拍
@@ -2680,13 +2680,13 @@ export const foodPosts: FoodPost[] = [
        │ 👤👤👤 │        │  🍢🥤🍬  │
        │ 掃街   │        │  開心   │
        └────────┘        ╰───────────╯
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🎯 小編私房心得
 
-```
+[CODE_BLOCK]
     📅 完美夜市掃街流程
 
     🕖 7點：到步，先去廟街
@@ -2716,7 +2716,7 @@ export const foodPosts: FoodPost[] = [
     ⏱️ 總時間：33分鐘
     💰 總消費：HK$95
     🍽️ 總款數：7款
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2724,7 +2724,7 @@ export const foodPosts: FoodPost[] = [
 
 **夜市公式**：
 
-```
+[CODE_BLOCK]
     🌙 香港夜市方程式 🌙
 
     ╔═══════════════════════════════════╗
@@ -2737,7 +2737,7 @@ export const foodPosts: FoodPost[] = [
     ║              = ❤️ 最靚嘅夜晚         ║
     ║                                       ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 **你今晚就可以**：
 1. 🚇 坐港鐵去廟街
@@ -2767,7 +2767,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 下午茶歷史時間線
 
-```
+[CODE_BLOCK]
     📅 下午茶發展史
 
     1840年  ───────▶ 安娜瑪麗亞公爵夫人發明
@@ -2781,7 +2781,7 @@ export const foodPosts: FoodPost[] = [
     今日    ───────▶ 全球流行
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
     「優雅生活方式嘅代表」
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2789,7 +2789,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 兩者對比圖
 
-```
+[CODE_BLOCK]
     ☕ VS 🍵 終極對比
 
     ╔═══════════════════════════════════════════╗
@@ -2819,13 +2819,13 @@ export const foodPosts: FoodPost[] = [
     ║  形式：正餐份量                            ║
     ║  份量：豐盛為主                            ║
     ╚═══════════════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 ---
 
 ## 🫖 標準三層架圖解
 
-```
+[CODE_BLOCK]
     🫖 英式下午茶三層架
 
     ════════════════════════════════════
@@ -2860,7 +2860,7 @@ export const foodPosts: FoodPost[] = [
     ════════════════════════════════════
 
     💡 進食順序：由下而上！鹹 → 甜
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2868,7 +2868,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 茶杯持法圖
 
-```
+[CODE_BLOCK]
     ☕ 正確茶杯持法
 
     ✅ 正確姿勢：
@@ -2893,11 +2893,11 @@ export const foodPosts: FoodPost[] = [
          ☕
           ╲
            🖐
-```
+[CODE_BLOCK]
 
 ### 📊 攪拌方式圖
 
-```
+[CODE_BLOCK]
     🥄 攪拌茶嘅正確方式
 
     ❌ 唔好划圈！
@@ -2913,7 +2913,7 @@ export const foodPosts: FoodPost[] = [
        │
 
     ⚠️ 唔好發出聲！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2921,7 +2921,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 價錢排行榜
 
-```
+[CODE_BLOCK]
     💰 香港下午茶價錢榜
 
     ❤️ 半島酒店  HK$450+
@@ -2947,11 +2947,11 @@ export const foodPosts: FoodPost[] = [
     💚 下午茶自助餐  HK$150-250
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  45%
     🏆 平民之選
-```
+[CODE_BLOCK]
 
 ### 🏆 精選推介
 
-```
+[CODE_BLOCK]
     🏆 精選下午茶推介
 
     ╔═══════════════════════════════════╗
@@ -2966,7 +2966,7 @@ export const foodPosts: FoodPost[] = [
     ║  ✨ 傳統三層架                     ║
     ║  ✨ 結婚周年必去                   ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 ---
 
@@ -2974,7 +2974,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 🧁 鬆餅食譜視覺圖
 
-```
+[CODE_BLOCK]
     🧁 提子鬆餅製作流程
 
     Step 1️⃣        Step 2️⃣        Step 3️⃣
@@ -2991,11 +2991,11 @@ export const foodPosts: FoodPost[] = [
     焗20分鐘       完成！
     ⏱️              🧁❤️
        🔥
-```
+[CODE_BLOCK]
 
 ### 🍓 Clotted Cream VS 果醬
 
-```
+[CODE_BLOCK]
     🧁 鬆餅塗抹順序
 
     第一步：先塗 Clotted Cream
@@ -3012,13 +3012,13 @@ export const foodPosts: FoodPost[] = [
     🍓🍓🍓🍓🍓🍓🍓🍓🍓  草莓醬
 
     💡 唔好切開！用手撕！
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📸 打卡呃like攻略
 
-```
+[CODE_BLOCK]
     📷 打卡角度示意圖
 
     ① 三層架全景      ② 維港景色
@@ -3033,13 +3033,13 @@ export const foodPosts: FoodPost[] = [
        │ ☕☕☕ │        │  👗👗👗  │
        │ 精緻  │        │  優雅   │
        └────────┘        ╰───────────╯
-```
+[CODE_BLOCK]
 
 ---
 
 ## 💡 小編嘅英國留學回憶
 
-```
+[CODE_BLOCK]
     🇬🇧 Cambridge College 下午茶
 
     ════════════════════════════════════
@@ -3058,7 +3058,7 @@ export const foodPosts: FoodPost[] = [
     ✅ 閒聊學術話題
 
     💬 教授話：「茶會係學術交流嘅延伸！」
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3066,7 +3066,7 @@ export const foodPosts: FoodPost[] = [
 
 **下午茶公式**：
 
-```
+[CODE_BLOCK]
     ☕ 優雅下午茶方程式 ☕
 
     ╔═══════════════════════════════════╗
@@ -3079,7 +3079,7 @@ export const foodPosts: FoodPost[] = [
     ║        = ❤️ 英式生活態度            ║
     ║                                       ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 **你今日就可以**：
 1. ☕ Book一間酒店
@@ -3111,7 +3111,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 壽司歷史時間線
 
-```
+[CODE_BLOCK]
     📅 壽司發展史
 
     4世紀   ───────▶ 起源於東南亞
@@ -3129,7 +3129,7 @@ export const foodPosts: FoodPost[] = [
     今日    ───────▶ 全球流行
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
     「日本文化代表」
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3137,7 +3137,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 三大壽司類型圖
 
-```
+[CODE_BLOCK]
     🍣 壽司分類金字塔
 
               Nigiri 🍣
@@ -3147,11 +3147,11 @@ export const foodPosts: FoodPost[] = [
        ╱    ╲        ╱    ╲
      細卷  粗卷     魚生   貝類
      手卷  卷物
-```
+[CODE_BLOCK]
 
 ### 1️⃣ Nigiri（握壽司）解剖圖
 
-```
+[CODE_BLOCK]
     🍣 握壽司結構圖
 
            魚生（ネタ）
@@ -3167,11 +3167,11 @@ export const foodPosts: FoodPost[] = [
     ╚═══════════════════════╝
 
     ✨ 完美比例：魚 60% + 飯 40%
-```
+[CODE_BLOCK]
 
 ### 📊 經典款式價錢表
 
-```
+[CODE_BLOCK]
     💰 壽司價錢金字塔
 
     馬糞海膽   ████████████████████████████  最貴
@@ -3188,7 +3188,7 @@ export const foodPosts: FoodPost[] = [
 
     甜蝦       ██████████████░░░░░░░░░░░░░░  入門
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░  $$
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3196,7 +3196,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 壽司刀圖鑑
 
-```
+[CODE_BLOCK]
     🔪 壽司師傅必備刀具
 
     ╔═══════════════════════════════════╗
@@ -3222,7 +3222,7 @@ export const foodPosts: FoodPost[] = [
     ║  特點：單刃、直                        ║
     ║  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░  60%  │
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3230,7 +3230,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 完美舍利標準
 
-```
+[CODE_BLOCK]
     🍚 舍利品質指標
 
     ════════════════════════════════════
@@ -3250,11 +3250,11 @@ export const foodPosts: FoodPost[] = [
     ════════════════════════════════════
 
     💡 小野二郎話：「舍利係壽司嘅靈魂！」
-```
+[CODE_BLOCK]
 
 ### 🧂 醋飯配方
 
-```
+[CODE_BLOCK]
     🍚 完美舍利配方
 
     ╔═══════════════════════════════════╗
@@ -3265,7 +3265,7 @@ export const foodPosts: FoodPost[] = [
     ║  糖 2湯匙        ▓▓▓░░░░░░░░░░░░░  ║
     ║  鹽 1茶匙        ▓░░░░░░░░░░░░░░░░  ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3273,7 +3273,7 @@ export const foodPosts: FoodPost[] = [
 
 ### ✅ VS ❌ 圖解
 
-```
+[CODE_BLOCK]
     ┌─────────────────────────────────────┐
     │         食壽司 Do's & Don'ts         │
     ├─────────────────┬───────────────────┤
@@ -3294,11 +3294,11 @@ export const foodPosts: FoodPost[] = [
     │ 慢慢品嚐        │ 食得太快          │
     │   😌             │   😰 ✗           │
     └─────────────────┴───────────────────┘
-```
+[CODE_BLOCK]
 
 ### 📊 進食順序圖
 
-```
+[CODE_BLOCK]
     🍣 壽司進食順序（由淡至濃）
 
     Step 1️⃣        Step 2️⃣        Step 3️⃣
@@ -3313,7 +3313,7 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════════
     💡 由淡至濃，體驗最佳口感！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3321,7 +3321,7 @@ export const foodPosts: FoodPost[] = [
 
 ### 📊 價錢排行榜
 
-```
+[CODE_BLOCK]
     💰 香港壽司店價錢榜
 
     ❤️ 極上 HK$800+
@@ -3347,13 +3347,13 @@ export const foodPosts: FoodPost[] = [
     爭鮮、元氣
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓  30%
     🏆 快餐之選
-```
+[CODE_BLOCK]
 
 ---
 
 ## 📸 打卡呃like攻略
 
-```
+[CODE_BLOCK]
     📷 打卡角度示意圖
 
     ① Omakase全景      ② 師傅手勢
@@ -3368,13 +3368,13 @@ export const foodPosts: FoodPost[] = [
        │ 🍣🍣🍣 │        │   🍣🍣   │
        │        │        │  特寫     │
        └────────┘        ╰───────────╯
-```
+[CODE_BLOCK]
 
 ---
 
 ## 💡 小編食壽司心得
 
-```
+[CODE_BLOCK]
     🍣 Omakase 體驗流程
 
     ════════════════════════════════════
@@ -3396,7 +3396,7 @@ export const foodPosts: FoodPost[] = [
 
     ════════════════════════════════════
     💡 完美嘅一餐：由師傅話事（Omakase）！
-```
+[CODE_BLOCK]
 
 ---
 
@@ -3404,7 +3404,7 @@ export const foodPosts: FoodPost[] = [
 
 **壽司公式**：
 
-```
+[CODE_BLOCK]
     🍣 完美壽司方程式 🍣
 
     ╔═══════════════════════════════════╗
@@ -3417,7 +3417,7 @@ export const foodPosts: FoodPost[] = [
     ║              = ❤️ 日本料理精髓       ║
     ║                                       ║
     ╚═══════════════════════════════════╝
-```
+[CODE_BLOCK]
 
 **你今日就可以**：
 1. 🏮 去一間壽司店
