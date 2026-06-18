@@ -1,10 +1,10 @@
 "use client";
 
-import Comments from "@/components/Comments";
+import Comments from "../../../components/Comments";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { TravelLanguage } from "@/data/travelTranslations";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+import { TravelLanguage } from "../../data/travelTranslations";
 
 // Multi-language content
 const eiffelTowerContent: Record<TravelLanguage, {

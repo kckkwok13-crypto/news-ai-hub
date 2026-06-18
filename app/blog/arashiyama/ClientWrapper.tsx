@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Comments from "@/components/Comments";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { TravelLanguage, languageInfo } from "@/data/travelTranslations";
+import Comments from "../../../components/Comments";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+import { TravelLanguage, languageInfo } from "../../data/travelTranslations";
 
 // Article-specific content in multiple languages
 const arashiyamaContent: Record<TravelLanguage, {

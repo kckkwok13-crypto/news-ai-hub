@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Comments from "@/components/Comments";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { TravelLanguage } from "@/data/travelTranslations";
+import Comments from "../../../components/Comments";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+import { TravelLanguage } from "../../data/travelTranslations";
 
 // Multi-language content
 const sensojiContent: Record<TravelLanguage, {

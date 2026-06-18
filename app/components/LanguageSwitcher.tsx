@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Globe, ChevronDown, Check } from "lucide-react";
-import { languageInfo, TravelLanguage } from "@/data/travelTranslations";
+import { languageInfo, TravelLanguage } from "../data/travelTranslations";
 
 interface LanguageSwitcherProps {
   currentLang?: TravelLanguage;
