@@ -5,6 +5,8 @@ import { ThemeProvider } from './components/ThemeProvider'
 import { FavoritesProvider } from './components/FavoritesProvider'
 import { RatingsProvider } from './components/RatingProvider'
 import ThemeToggle from './components/ThemeToggle'
+import SiteSearch from './components/SiteSearch'
+import NewsletterPopup from './components/NewsletterPopup'
 
 export const metadata: Metadata = {
   title: 'NewsFlow - AI 驅動的智能新聞平台 | 純粹旅人遊記',
@@ -148,6 +150,8 @@ export default function RootLayout({
           <FavoritesProvider>
             <RatingsProvider>
               <ThemeToggle />
+              <SiteSearch />
+              <NewsletterPopup />
               {children}
             </RatingsProvider>
           </FavoritesProvider>
