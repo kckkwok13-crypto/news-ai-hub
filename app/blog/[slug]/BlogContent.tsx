@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Script from "next/script";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const blogData: Record<string, any> = {
   "shibuya-crossing": {
@@ -318,8 +319,53 @@ export default function BlogContent({ slug }: { slug: string }) {
 
   const colors = colorClasses[blog.activeColor] || colorClasses.blue;
 
+  // Article Schema for SEO
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: blog.title,
+    image: blog.heroImage,
+    datePublished: blog.date,
+    dateModified: blog.date,
+    author: {
+      '@type': 'Person',
+      name: '純粹旅人',
+      url: 'https://www.newskingdom.store/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'NewsFlow',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.newskingdom.store/icon.svg',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.newskingdom.store/blog/${slug}`,
+    },
+    description: blog.content.find((item: any) => item.type === 'p')?.text?.replace(/<[^>]*>/g, '').slice(0, 160) || '',
+    articleSection: '旅遊攻略',
+    keywords: blog.tags || ['東京', '旅遊', '遊記'],
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* Breadcrumb Navigation */}
+      <div className="max-w-3xl mx-auto px-6 pt-8">
+        <Breadcrumb
+          items={[
+            { label: 'Blog', href: '/blog' },
+            { label: blog.title.slice(0, 20) + '...', href: `/blog/${slug}` },
+          ]}
+        />
+      </div>
+
       {/* Floating Summary Card */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
         <div className="bg-gradient-to-b from-zinc-900 to-zinc-900/95 backdrop-blur-xl border border-zinc-700/50 rounded-2xl p-5 w-60 shadow-2xl ${colors.glow}">
