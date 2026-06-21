@@ -156,9 +156,6 @@ export default function FoodArticleContent({ slug }: FoodArticleContentProps) {
       <article className="max-w-4xl mx-auto px-6 py-12">
         <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: renderContent(post.content) }} />
 
-        {/* Charts */}
-        <ArticleChart postSlug={post.slug} category="food" />
-
         {/* Actions */}
         <div className="flex items-center justify-between mt-12 pt-8 border-t border-slate-800">
           <button
