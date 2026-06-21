@@ -70,6 +70,7 @@ export default function NewsletterPopup() {
         {/* Close Button */}
         <button
           onClick={handleDismiss}
+          aria-label="關閉"
           className="absolute top-4 right-4 p-2 rounded-full bg-slate-800/50 hover:bg-slate-700/50 transition-colors z-10"
         >
           <X className="w-5 h-5 text-slate-400" />
