@@ -101,7 +101,7 @@ export default function FoodArticleContent({ slug }: FoodArticleContentProps) {
           return <ul key={i} className="list-disc list-inside space-y-2 my-4 text-slate-300">{items.map((item, j) => <li key={j} dangerouslySetInnerHTML={{ __html: item.replace('- ', '') }} />)}</ul>;
         }
         if (block.startsWith('| ')) {
-          return <div key={i} className="overflow-x-auto my-4" dangerouslySetInnerHTML={{ __html: `<table class="w-full border-collapse">${block.split('\n').map((row, ri) => `<tr>${row.split('|').filter(c => c.trim()).map(cell => `<td class="border border-slate-700 px-4 py-2 ${ri === 0 ? 'font-bold bg-slate-800' : ''}">${cell.trim()}</td>`).join('')}</tr>`).join('')}</table>` }} />;
+          return <div key={i} className="overflow-x-auto my-4" dangerouslySetInnerHTML={{ __html: `<table class="w-full border-collapse text-slate-300">${block.split('\n').map((row, ri) => `<tr>${row.split('|').filter(c => c.trim()).map(cell => `<td class="border border-slate-700 px-4 py-2 ${ri === 0 ? 'font-bold bg-slate-800 text-white' : 'text-slate-300'}">${cell.trim()}</td>`).join('')}</tr>`).join('')}</table>` }} />;
         }
         if (block.startsWith('```')) {
           return <pre key={i} className="bg-slate-800 rounded-xl p-4 my-4 overflow-x-auto text-slate-300"><code>{block.replace(/```\w*\n?/g, '')}</code></pre>;
