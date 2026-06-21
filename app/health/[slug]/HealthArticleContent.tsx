@@ -185,7 +185,7 @@ export default function HealthArticleContent({ slug }: HealthArticleContentProps
             <MessageCircle size={20} className="text-slate-400" />
             <h3 className="text-lg font-semibold text-white">評論</h3>
           </div>
-          <p className="text-slate-400 text-sm">登入後即可參與討論</p>
+          <p className="text-slate-400 text-sm">評論功能敬請期待</p>
         </div>
       </article>
     </div>
