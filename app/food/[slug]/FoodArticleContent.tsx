@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { foodPosts } from "../../data/foodData";
 import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, MessageCircle } from "lucide-react";
-import { ArticleChart } from "../../components/ArticleCharts";
+// ArticleChart removed
 
 interface FoodArticleContentProps {
   slug: string;

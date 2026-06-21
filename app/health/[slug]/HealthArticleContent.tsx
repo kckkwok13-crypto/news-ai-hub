@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { healthPosts } from "../../data/healthData";
 import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, MessageCircle } from "lucide-react";
-import { ArticleChart } from "../../components/ArticleCharts";
+// ArticleChart component removed - was causing [object Object] bug
 
 interface HealthArticleContentProps {
   slug: string;
@@ -151,9 +151,6 @@ export default function HealthArticleContent({ slug }: HealthArticleContentProps
       {/* Content */}
       <article className="max-w-4xl mx-auto px-6 py-12">
         <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: renderContent(post.content) }} />
-
-        {/* Charts */}
-        <ArticleChart postSlug={post.slug} category="health" />
 
         {/* Actions */}
         <div className="flex items-center justify-between mt-12 pt-8 border-t border-slate-800">
