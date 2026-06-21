@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { aiToolPosts } from "../../data/aiToolsData";
-import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, MessageCircle } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck } from "lucide-react";
 
 interface AIToolArticleContentProps {
   slug: string;
@@ -169,15 +169,6 @@ export default function AIToolArticleContent({ slug }: AIToolArticleContentProps
             已複製連結！
           </div>
         )}
-
-        {/* Comments placeholder */}
-        <div className="mt-12 p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50">
-          <div className="flex items-center gap-2 mb-4">
-            <MessageCircle size={20} className="text-slate-400" />
-            <h3 className="text-lg font-semibold text-white">評論</h3>
-          </div>
-          <p className="text-slate-400 text-sm">評論功能敬請期待</p>
-        </div>
       </article>
     </div>
   );
