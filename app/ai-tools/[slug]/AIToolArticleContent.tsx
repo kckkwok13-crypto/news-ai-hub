@@ -141,7 +141,9 @@ export default function AIToolArticleContent({ slug }: AIToolArticleContentProps
 
       {/* Content */}
       <article className="max-w-4xl mx-auto px-6 py-12">
-        <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: renderContent(post.content) }} />
+        <div className="prose prose-invert max-w-none">
+          {renderContent(post.content)}
+        </div>
 
         {/* Actions */}
         <div className="flex items-center justify-between mt-12 pt-8 border-t border-slate-800">
