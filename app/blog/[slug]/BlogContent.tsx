@@ -907,6 +907,67 @@ export default function BlogContent({ slug }: { slug: string }) {
             <p className="text-zinc-500 text-sm">發現更多東京旅遊景點與深度攻略</p>
           </div>
         </div>
+
+        {/* Cross-Category Internal Links for SEO */}
+        <div className="mt-12 pt-8 border-t border-zinc-800">
+          <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            探索更多內容
+          </h3>
+
+          {/* Category Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <Link href="/finance" className="group p-4 bg-gradient-to-br from-green-900/30 to-green-900/10 rounded-xl border border-green-800/30 hover:border-green-600/50 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-lg bg-green-600/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-green-300">財經資訊</span>
+              </div>
+              <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">最新財經新聞與分析</p>
+            </Link>
+
+            <Link href="/health" className="group p-4 bg-gradient-to-br from-red-900/30 to-red-900/10 rounded-xl border border-red-800/30 hover:border-red-600/50 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-lg bg-red-600/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-red-300">健康生活</span>
+              </div>
+              <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">健康資訊與養生建議</p>
+            </Link>
+
+            <Link href="/food" className="group p-4 bg-gradient-to-br from-orange-900/30 to-orange-900/10 rounded-xl border border-orange-800/30 hover:border-orange-600/50 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-lg bg-orange-600/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-orange-300">美食推薦</span>
+              </div>
+              <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">各地美食與餐廳推介</p>
+            </Link>
+
+            <Link href="/ai-tools" className="group p-4 bg-gradient-to-br from-purple-900/30 to-purple-900/10 rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-lg bg-purple-600/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-purple-300">AI工具</span>
+              </div>
+              <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">最新AI工具評測與教學</p>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

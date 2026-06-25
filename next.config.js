@@ -4,6 +4,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       { hostname: 'images.unsplash.com' },
       { hostname: 'picsum.photos' },
@@ -15,7 +18,10 @@ const nextConfig = {
       { hostname: 'upload.wikimedia.org' },
       { hostname: 'cdn.britannica.com' },
       { hostname: 'media.istockphoto.com' },
-    ]
+    ],
+    minimumCacheTTL: 31536000,
   },
+  compress: true,
+  poweredByHeader: false,
 }
 module.exports = nextConfig
