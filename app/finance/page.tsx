@@ -29,6 +29,24 @@ export default function FinancePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      {/* Financial Disclaimer Banner - AdSense Compliance */}
+      <div className="bg-amber-900/50 border-b border-amber-500/30">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
+          <div className="flex items-start gap-3">
+            <div className="text-2xl">⚠️</div>
+            <div>
+              <h3 className="text-amber-300 font-bold text-lg mb-1">重要聲明</h3>
+              <p className="text-amber-200/80 text-sm leading-relaxed">
+                本頁面所有內容僅供教育和參考用途，不構成任何投資建議。投資涉及風險，過往表現不代表未來回報。在作出任何投資決定前，請諮詢專業財務顧問。股票、ETF及其他投資产品的價值可能下跌，您可能會損失部分或全部投資本金。
+              </p>
+              <p className="text-amber-200/80 text-sm mt-1">
+                <strong>Disclaimer:</strong> This page is for educational purposes only and does not constitute financial advice. Always consult a qualified financial advisor before making investment decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Hero Banner */}
       <header className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-950 via-teal-950 to-cyan-950" />
