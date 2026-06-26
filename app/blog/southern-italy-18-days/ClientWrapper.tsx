@@ -84,7 +84,7 @@ const content = {
         title: "Day 2：托萊多藝術地鐵站、歷史老城尋味與夜市煙火",
         p1: "清晨，我們乘搭地鐵前往被譽為「全歐洲最美地鐵站」的 <strong>Toledo 地鐵站</strong>。站在扶手電梯上，抬頭望去是藝術家利用數萬塊藍白馬賽克瓷磚拼接出的巨型「璀璨星空海洋天窗」，陽光折射下來如夢似幻。隨後，我們慢步走入老城區核心的<strong>斯帕卡拿坡里老街步行街</strong>。我們走進老字號甜品店，品嚐了新鮮出爐的傳統甜點 <strong>Sfogliatella</strong>，配上一杯絲滑的義式咖啡，慢活感十足。",
         p2: "入夜後，<strong>普雷比席特廣場</strong>周邊變身為熱鬧的平民夜市。街頭藝人拉著手風琴，各種售賣手工藝品、炸海鮮小吃的攤檔霓虹閃爍。我們挑了一家露天大排檔，點了一大盤現炸的「椒鹽地中海小魷魚」，熱氣騰騰，鑊氣十足！",
-        image: { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80", alt: "蘇連多海岸風光", caption: "▲ 蘇連多海濱，眺望拿坡里灣的絕美風光" },
+        image: { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80", alt: "拿坡里 Toledo 地鐵站", caption: "▲ Toledo 地鐵站，被譽為「歐洲最美地鐵站」的藍白馬賽克星空海洋天窗" },
       },
       day3: {
         title: "Day 3：世界遺產龐貝古城深度歷史穿越",
@@ -251,7 +251,7 @@ const content = {
         title: "Day 2：托莱多艺术地铁站、历史老城寻味与夜市烟火",
         p1: "清晨，我们乘搭地铁前往被誉为「全欧洲最美地铁站」的 <strong>Toledo 地铁站</strong>。站在扶手电梯上，抬头望去是艺术家利用数万块蓝白马赛克瓷砖拼接出的巨型「璀璨星空海洋天窗」，阳光折射下来如梦似幻。",
         p2: "入夜后，<strong>普雷比席特广场</strong>周边变身为热闹的平民夜市。我们挑了一家露天大排档，点了一大盘现炸的「椒盐地中海小鱿鱼」，热气腾腾，镬气十足！",
-        image: { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80", alt: "苏连多海岸风光", caption: "▲ 苏连多海滨，眺望拿波里湾的绝美风光" },
+        image: { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80", alt: "拿波里 Toledo 地铁站", caption: "▲ Toledo 地铁站，被誉为「欧洲最美地铁站」的蓝白马赛克星空海洋天窗" },
       },
       day3: {
         title: "Day 3：世界遗产庞贝古城深度历史穿越",
@@ -740,7 +740,7 @@ export default function SouthernItalyPage() {
 
       {/* Language Switcher */}
       <div className="fixed top-4 left-4 z-50">
-        <LanguageSwitcher currentLang={lang} onLanguageChange={setLang} variant="minimal" />
+        <LanguageSwitcher currentLang={lang} onLanguageChange={setLang} variant="default" />
       </div>
 
       {/* Floating Summary Card */}
