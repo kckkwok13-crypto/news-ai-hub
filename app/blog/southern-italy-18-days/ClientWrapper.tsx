@@ -159,7 +159,7 @@ const content = {
         title: "Day 13：渡輪橫渡西里拿海峽、進駐巴勒莫",
         p1: "第十三天，我們開啟這趟旅程最豪邁的體驗 ── <strong>開著車直接開進巨型渡輪的船艙</strong>，橫渡著名的西里拿海峽，正式登陸神祕而熱情的<strong>西西里島（Sicily）</strong>！小朋友在渡輪甲板上看著海鷗齊飛，高興極了。",
         p2: "下午我們抵達首府<strong>巴勒莫（Palermo）</strong>，進駐位於新古典主義步行街核心的<strong>巴勒莫大劇院精品公寓</strong>。這間公寓客廳極大，推開落地玻璃窗就能看見宏偉的巴勒莫馬西莫劇院，下樓就是大型購物廣場與無數餐廳，物超所值！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/16._Mai_1897_An_diesem_Tag_wurde_die_Oper_von_Palermo_er%C3%B6ffnet._02.jpg", alt: "巴勒莫大教堂", caption: "▲ 巴勒莫的阿拉伯-諾曼式建築，融合了多種文化的精髓" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Teatro_Massimo_Vittorio_Emanuele_-_panoramio_%281%29.jpg/1280px-Teatro_Massimo_Vittorio_Emanuele_-_panoramio_%281%29.jpg", alt: "巴勒莫大教堂", caption: "▲ 巴勒莫的阿拉伯-諾曼式建築，融合了多種文化的精髓" },
       },
       day14: {
         title: "Day 14：巴勒莫主教座堂、巴拉羅夜市大快朵頤",
