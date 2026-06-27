@@ -850,7 +850,7 @@ export default function SouthernItalyPage() {
               {c.days1to5.day1.image && (
                 <div className="my-6">
                   <img src={c.days1to5.day1.image.src} alt={c.days1to5.day1.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days1to5.day1.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days1to5.day1.image.caption}</p>
                 </div>
               )}
             </div>
@@ -863,7 +863,7 @@ export default function SouthernItalyPage() {
               {c.days1to5.day2.image && (
                 <div className="my-6">
                   <img src={c.days1to5.day2.image.src} alt={c.days1to5.day2.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days1to5.day2.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days1to5.day2.image.caption}</p>
                 </div>
               )}
             </div>
@@ -876,7 +876,7 @@ export default function SouthernItalyPage() {
               {c.days1to5.day3.image && (
                 <div className="my-6">
                   <img src={c.days1to5.day3.image.src} alt={c.days1to5.day3.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days1to5.day3.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days1to5.day3.image.caption}</p>
                 </div>
               )}
             </div>
@@ -889,7 +889,7 @@ export default function SouthernItalyPage() {
               {c.days1to5.day4.image && (
                 <div className="my-6">
                   <img src={c.days1to5.day4.image.src} alt={c.days1to5.day4.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days1to5.day4.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days1to5.day4.image.caption}</p>
                 </div>
               )}
             </div>
@@ -902,7 +902,7 @@ export default function SouthernItalyPage() {
               {c.days1to5.day5.image && (
                 <div className="my-6">
                   <img src={c.days1to5.day5.image.src} alt={c.days1to5.day5.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days1to5.day5.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days1to5.day5.image.caption}</p>
                 </div>
               )}
             </div>
@@ -922,7 +922,7 @@ export default function SouthernItalyPage() {
               {c.days6to9.day6.image && (
                 <div className="my-6">
                   <img src={c.days6to9.day6.image.src} alt={c.days6to9.day6.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days6to9.day6.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days6to9.day6.image.caption}</p>
                 </div>
               )}
             </div>
@@ -935,7 +935,7 @@ export default function SouthernItalyPage() {
               {c.days6to9.day7.image && (
                 <div className="my-6">
                   <img src={c.days6to9.day7.image.src} alt={c.days6to9.day7.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days6to9.day7.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days6to9.day7.image.caption}</p>
                 </div>
               )}
             </div>
@@ -948,7 +948,7 @@ export default function SouthernItalyPage() {
               {c.days6to9.day8.image && (
                 <div className="my-6">
                   <img src={c.days6to9.day8.image.src} alt={c.days6to9.day8.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days6to9.day8.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days6to9.day8.image.caption}</p>
                 </div>
               )}
             </div>
@@ -961,7 +961,7 @@ export default function SouthernItalyPage() {
               {c.days6to9.day9.image && (
                 <div className="my-6">
                   <img src={c.days6to9.day9.image.src} alt={c.days6to9.day9.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days6to9.day9.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days6to9.day9.image.caption}</p>
                 </div>
               )}
             </div>
@@ -981,7 +981,7 @@ export default function SouthernItalyPage() {
               {c.days10to12.day10.image && (
                 <div className="my-6">
                   <img src={c.days10to12.day10.image.src} alt={c.days10to12.day10.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days10to12.day10.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days10to12.day10.image.caption}</p>
                 </div>
               )}
             </div>
@@ -994,7 +994,7 @@ export default function SouthernItalyPage() {
               {c.days10to12.day11.image && (
                 <div className="my-6">
                   <img src={c.days10to12.day11.image.src} alt={c.days10to12.day11.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days10to12.day11.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days10to12.day11.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1007,7 +1007,7 @@ export default function SouthernItalyPage() {
               {c.days10to12.day12.image && (
                 <div className="my-6">
                   <img src={c.days10to12.day12.image.src} alt={c.days10to12.day12.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days10to12.day12.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days10to12.day12.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1027,7 +1027,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day13.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day13.image.src} alt={c.days13to19.day13.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day13.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day13.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1040,7 +1040,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day14.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day14.image.src} alt={c.days13to19.day14.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day14.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day14.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1053,7 +1053,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day15.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day15.image.src} alt={c.days13to19.day15.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day15.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day15.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1066,7 +1066,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day16.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day16.image.src} alt={c.days13to19.day16.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day16.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day16.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1079,7 +1079,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day17.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day17.image.src} alt={c.days13to19.day17.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day17.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day17.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1092,7 +1092,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day18.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day18.image.src} alt={c.days13to19.day18.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day18.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day18.image.caption}</p>
                 </div>
               )}
             </div>
@@ -1106,7 +1106,7 @@ export default function SouthernItalyPage() {
               {c.days13to19.day19.image && (
                 <div className="my-6">
                   <img src={c.days13to19.day19.image.src} alt={c.days13to19.day19.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day19.image.caption}</p>
+                  <p className="text-center text-blue-300 text-sm mt-3 bg-slate-900/50 px-4 py-2 rounded-lg">{c.days13to19.day19.image.caption}</p>
                 </div>
               )}
             </div>
