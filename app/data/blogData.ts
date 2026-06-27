@@ -14,12 +14,12 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "southern-italy-18-days",
-    title: "🇮🇹 地中海驕陽與蔚藍：一家三口18天順序暢遊南意大利慢活全攻略",
-    excerpt: "南意大利深度慢活18天：拿坡里、龐貝、維蘇威火山、阿瑪菲海岸、卡布里島藍洞、蘑菇屋、馬泰拉石窟、西西里島全景遊記攻略！",
+    title: "🇮🇹 地中海驕陽與蔚藍：一家三口19天順序暢遊南意大利慢活全攻略",
+    excerpt: "南意大利深度慢活19天：拿坡里、龐貝、維蘇威火山、阿瑪菲海岸、卡布里島藍洞、蘑菇屋、馬泰拉石窟、西西里島全景遊記攻略！",
     date: "June 2026",
     image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=80",
     icon: "🇮🇹",
-    tags: ["南意大利", "拿坡里", "阿瑪菲海岸", "西西里島", "家庭旅遊", "18天遊記"],
+    tags: ["南意大利", "拿坡里", "阿瑪菲海岸", "西西里島", "家庭旅遊", "19天遊記"],
     accent: "from-blue-500 to-cyan-500",
     category: "local"
   },
