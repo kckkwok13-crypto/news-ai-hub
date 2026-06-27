@@ -129,7 +129,7 @@ const content = {
         title: "Day 9：阿瑪菲小鎮、拉維洛雲端花園的音樂狂想",
         p1: "第九天我們來到海岸得名的<strong>阿瑪菲小鎮（Amalfi）</strong>。慢步在小鎮中心的黑白碎石路上，雄偉的<strong>阿瑪菲主教座堂</strong>矗立在巨型台階頂端，帶有濃郁的摩爾式與拜占庭交織的炫彩花紋。午後，我們搭車前往隱藏在山頂的文青小鎮<strong>拉維洛（Ravello）</strong>。",
         p2: "走進著名的<strong>盧佛羅別墅（Villa Rufolo）</strong>，這裡擁有高聳在懸崖之巔的「雲端皇家花園」。站在白色大理石廊柱下往外望去，斑斕的鮮花、參天的古松與下方幾百米深、波光粼粼的翡翠色海面完美框在同一個畫面中。全家人坐在草坪上吹著海風，享受最奢侈的音樂慢活午後！",
-        image: { src: "https://images.unsplash.com/photo-1621160626444-d7e76d5f8dae?w=1200&q=80", alt: "拉維洛別墅花園", caption: "▲ 拉維洛盧佛羅別墅的雲端花園，俯瞰整個阿瑪菲海岸" },
+        image: { src: "https://www.italia.it/content/dam/tdh/it/destinations/campania/salerno/ravello/giardini-di-villa-rufolo/media/2480X1000_giardini_di_villa_rufolo_destination.jpg", alt: "拉維洛別墅花園", caption: "▲ 拉維洛盧佛羅別墅的雲端花園，俯瞰整個阿瑪菲海岸，如同一幅立體的風景畫" },
       },
     },
     days10to12: {
@@ -303,7 +303,7 @@ const content = {
         title: "Day 9：阿玛菲小镇、拉维洛云端花园的音乐狂想",
         p1: "第九天我们来到海岸得名的<strong>阿玛菲小镇（Amalfi）</strong>。漫步在小镇中心的黑白碎石路上，雄伟的<strong>阿玛菲主教座堂（Duomo di Amalfi）</strong>矗立在巨型台阶顶端，带有浓郁的摩尔式与拜占庭交织的炫彩花纹，外墙是用金色与蓝色的瓷砖装饰，非常耀眼！这座教堂建于9世纪，是当年海上共和国的政治与宗教中心。午后，我们搭车前往隐藏在山顶的文青小镇<strong>拉维洛（Ravello）</strong>。",
         p2: "走进著名的<strong>卢佛罗别墅（Villa Rufolo）</strong>，这里拥有高耸在悬崖之巅的「云端皇家花园」。站在白色大理石廊柱下往外望去，斑斓的鲜花、参天的古松与下方几百米深、波光粼粼的翡翠色海面完美框在同一个画面中。每年夏天，拉维洛都会举办<strong>拉维洛音乐节（Ravello Festival）</strong>，免费的户外古典音乐会在花园举行，音乐与悬崖海景融为一体。全家人坐在草坪上吹着海风，听住远处传来的小提琴声，享受最奢侈的音乐慢活午后！晚餐我们去了阿玛菲镇上的<strong>Trattoria Cartaro</strong>，必尝他们的<strong>阿玛菲柠檬炖饭（Risotto al Limone）</strong>，用当地柠檬皮与芝士炮制，酸香扑鼻，是必试的特色菜！",
-        image: { src: "https://images.unsplash.com/photo-1621160626444-d7e76d5f8dae?w=1200&q=80", alt: "拉维洛别墅花园", caption: "▲ 拉维洛卢佛罗别墅的云端花园，俯瞰整个阿玛菲海岸，如同一幅立体的风景画" },
+        image: { src: "https://www.italia.it/content/dam/tdh/it/destinations/campania/salerno/ravello/giardini-di-villa-rufolo/media/2480X1000_giardini_di_villa_rufolo_destination.jpg", alt: "拉维洛别墅花园", caption: "▲ 拉维洛卢佛罗别墅的云端花园，俯瞰整个阿玛菲海岸，如同一幅立体的风景画" },
       },
     },
     days10to12: {
@@ -477,7 +477,7 @@ const content = {
         title: "Day 9: Amalfi Town, Ravello Cloud Garden Music Fantasy",
         p1: "Day 9 we came to <strong>Amalfi Town</strong> that gave the coast its name. Walking on black and white pebble streets, the magnificent <strong>Amalfi Cathedral (Duomo di Amalfi)</strong> stands at the top of grand steps, with stunning Moorish-Byzantine architecture and gold-blue tile decorations - absolutely dazzling! Built in the 9th century, it was once the political and religious center of the Maritime Republic. In the afternoon, we traveled to the artsy mountain town <strong>Ravello</strong>.",
         p2: "We visited <strong>Villa Rufolo</strong>'s Cloud Royal Garden perched on cliff edges. Standing under white marble colonnades, the view frames colorful flowers, ancient pines, and the sparkling emerald sea hundreds of meters below - like a three-dimensional painting! Every summer, Ravello hosts the <strong>Ravello Festival</strong> with free outdoor classical concerts. Sitting on the lawn, sea breeze in our hair, listening to distant violins - the most luxurious slow-living afternoon! Dinner was at Amalfi's <strong>Trattoria Cartaro</strong>, where we tried <strong>Risotto al Limone</strong> - local lemon zest and cheese, tangy and fragrant - a must-try specialty!",
-        image: { src: "https://images.unsplash.com/photo-1621160626444-d7e76d5f8dae?w=1200&q=80", alt: "Ravello Gardens", caption: "▲ Villa Rufolo's cloud gardens overlooking Amalfi Coast - like a three-dimensional landscape painting" },
+        image: { src: "https://www.italia.it/content/dam/tdh/it/destinations/campania/salerno/ravello/giardini-di-villa-rufolo/media/2480X1000_giardini_di_villa_rufolo_destination.jpg", alt: "Ravello Gardens", caption: "▲ Villa Rufolo's cloud gardens overlooking Amalfi Coast - like a three-dimensional landscape painting" },
       },
     },
     days10to12: {
@@ -651,7 +651,7 @@ const content = {
         title: "Day 9：阿瑪菲小鎮、拉維洛雲端花園的音樂狂想",
         p1: "第九天我哋來到海岸得名的<strong>阿瑪菲小鎮（Amalfi）</strong>。慢步喺小鎮中心的黑白碎石路上，雄偉的<strong>阿瑪菲主教座堂（Duomo di Amalfi）</strong>矗立喺巨型台階頂端，帶有濃郁的摩爾式與拜占庭交織的炫彩花紋，外牆係用金色與藍色的瓷磚裝飾，非常耀眼！呢座教堂建於9世紀，係當年海上共和國的政治與宗教中心。午後，我哋搭車前往隱藏在山頂的文青小鎮<strong>拉維洛（Ravello）</strong>。",
         p2: "走進著名的<strong>盧佛羅別墅（Villa Rufolo）</strong>，呢度擁有高聳喺懸崖之巔的「雲端皇家花園」。站在白色大理石廊柱下往外望去，斑斕的鮮花、參天的古松與下方幾百米深、波光粼粼的翡翠色海面完美框在同一個畫面中。每年夏天，拉維洛都會舉辦<strong>拉維洛音樂節（Ravello Festival）</strong>，免費的戶外古典音樂會喺花園舉行，音樂與懸崖海景融為一體。全家人坐在草坪上吹著海風，聽住遠處傳嚟的小提琴聲，享受最奢侈的音樂慢活午後！晚餐我哋去咗阿瑪菲鎮上的<strong>Trattoria Cartaro</strong>，必試佢哋的<strong>阿瑪菲檸檬燉飯（Risotto al Limone）</strong>，用當地檸檬皮與芝士炮製，酸香撲鼻，係必試的特色菜！",
-        image: { src: "https://images.unsplash.com/photo-1621160626444-d7e76d5f8dae?w=1200&q=80", alt: "拉維洛別墅花園", caption: "▲ 拉維洛盧佛羅別墅的雲端花園，俯瞰整個阿瑪菲海岸，如同一幅立體的風景畫" },
+        image: { src: "https://www.italia.it/content/dam/tdh/it/destinations/campania/salerno/ravello/giardini-di-villa-rufolo/media/2480X1000_giardini_di_villa_rufolo_destination.jpg", alt: "拉維洛別墅花園", caption: "▲ 拉維洛盧佛羅別墅的雲端花園，俯瞰整個阿瑪菲海岸，如同一幅立體的風景畫" },
       },
     },
     days10to12: {
