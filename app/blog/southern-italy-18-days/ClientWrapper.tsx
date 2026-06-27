@@ -318,7 +318,7 @@ const content = {
         title: "Day 11：巴里历史老城、手作猫耳朵面大排档",
         p1: "第十一天我们开车前往海滨港口城市<strong>巴里（Bari）</strong>。漫步在巴里历史老城的<strong>开胃老街（Via Arco Basso）</strong>。这条步行街最动人的风景，就是每天都有几十位当地的老奶奶搬出木桌子，当街纯手工一揉一捏现做当地的特产 ── <strong>「猫耳朵面（Orecchiette）」</strong>。这款面因为形状似猫咪的耳朵而得名，全部是用粗粒小麦粉与水搓成，表面粗糙就是为了挂住更多的酱汁。老人家动作娴熟，还热情地拉着我们的的小朋友合照、教他捏面团，人情味十足！",
         p2: "午餐我们在街角的平民小酒馆里，点了一大盆的<strong>「鲜茄罗勒手作猫耳朵面（Pasta Orecchiette al Pomodoro）」</strong>。面条爽口弹牙，吸饱了鲜美的圣马扎诺番茄汁与羊起司香气，朴实无华却是最正的街坊老味道，价格平到偷笑！之后我们去了海滨长廊的<strong>Gianni's Bar</strong>，必尝他们的<strong>巴里式炸海鲜（Frittura di Paranza）</strong>，是用小鱼仔、虾与鱿鱼圈沾粉炸到金黄酥脆，配一杯冰冻的<strong>格拉巴酒（Grappa）</strong>，就是最正宗的南意海鲜体验！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Matera_boenisch_nov_2005.jpg", alt: "马泰拉石窟风光", caption: "▲ 马泰拉的千年石窟，是人类最古老的持续定居点之一" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Bari_-_Lungomare_Araldo_di_Crollalanza.jpg/3840px-Bari_-_Lungomare_Araldo_di_Crollalanza.jpg", alt: "巴里海滨长廊", caption: "▲ 巴里海滨长廊，连接历史与海洋的浪漫步道" },
       },
       day12: {
         title: "Day 12：马泰拉萨西石窟古城 ── 007电影的铁血蓝调",
@@ -681,7 +681,7 @@ const content = {
         title: "Day 13：渡輪橫渡西里拿海峽、入駐巴勒莫",
         p1: "第十三天，我哋開啟呢趟旅程最豪邁的體驗 ── <strong>開著車直接開進巨型渡輪的船艙</strong>，橫渡著名的西里拿海峽，正式登陸神秘而熱情的<strong>西西里島（Sicily）</strong>！呢個體驗對小朋友嚟講非常新奇，佢喺渡輪甲板上看著海鷗齊飛，高興極了。渡輪大約行駛一小時，沿途可以睇到對岸的雪山與海天一色的景色。",
         p2: "下午我哋抵達首府<strong>巴勒莫（Palermo）</strong>，進駐位於新古典主義步行街核心的<strong>巴勒莫大劇院精品公寓</strong>。呢間公寓客廳極大，推開落地玻璃窗就能睇見宏偉的巴勒莫馬西莫劇院，下樓就係大型購物廣場與無數餐廳，物超所值！晚餐我哋去咗歷史悠久的<strong>Antica Focacceria San Francesco</strong>，係1880年開業的老店，必試佢哋的<strong>西西里島炸飯糰（Arancini）</strong>，有別於拿坡里的版本，西西里島的炸飯糰入面係滿滿的番紅花忌廉飯、豌豆與火腿，份量大到如同拳頭，正！",
-        image: { src: "https://italiantripabroad.it/Blog/wp-content/uploads/2023/10/Food-stalls-in-Palermo-Ballaro-market-1024x575.jpg", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市係西西里島最具本土生命力的美食天堂" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Teatro_Massimo_Vittorio_Emanuele_-_panoramio_%281%29.jpg/1280px-Teatro_Massimo_Vittorio_Emanuele_-_panoramio_%281%29.jpg", alt: "巴勒莫大劇院", caption: "▲ 巴勒莫的阿拉伯-諾曼式建築，融合了多種文化的精髓" },
       },
       day14: {
         title: "Day 14：巴勒莫主教座堂、巴拉羅夜市大快朵頤",
