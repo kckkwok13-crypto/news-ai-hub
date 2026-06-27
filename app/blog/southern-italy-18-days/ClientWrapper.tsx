@@ -138,7 +138,7 @@ const content = {
         title: "Day 10：自駕開啟！入住阿爾貝羅貝洛精靈蘑菇屋",
         p1: "第十天，我們在蘇連多順利提了預約好的全新七人自駕車，正式開啟自駕流。我們橫跨義大利靴子版圖，開往東海岸的普利亞大區。當車子緩緩駛入童話小鎮<strong>阿爾貝羅貝洛（Alberobello）</strong>，小朋友興奮得貼在車窗上大喊大叫！這裡因為保留了上千棟始建於中世紀、用白色石灰岩砌成、圓錐形黑瓦頂的傳統巨型獨特小屋 ── <strong>「特魯利（Trulli）蘑菇屋」</strong>而名震全球。",
         p2: "為了帶給家人驚喜，我特意包棟入住了一間由百年特魯利改造而成的<strong>浪漫精靈精品民宿</strong>。內部乾淨涼爽，圓頂的天窗晚上還能平視看星星，全家人大讚如同住進了白雪公主與七個小矮人的童話城堡！",
-        image: { src: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&q=80&w=1600", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
+        image: { src: "https://i.natgeofe.com/n/a5a80d1d-6de5-4414-bb62-68910902499a/inside-trulli-alberobello-puglia-italy.jpg", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
       },
       day11: {
         title: "Day 11：巴里歷史老城、手作耳光麵大排檔",
@@ -660,7 +660,7 @@ const content = {
         title: "Day 10：自駕開啟！入住阿爾貝羅貝洛精靈蘑菇屋",
         p1: "第十天，我哋喺蘇連多順利提咗預約好的全新七人自駕車，正式開啟自駕流。我哋橫跨意大利靴子版圖，開往東海岸的普利亞大區。當車子緩緩駛入童話小鎮<strong>阿爾貝羅貝洛（Alberobello）</strong>，小朋友興奮得貼喺車窗上大喊大叫！呢度因為保留咗上千棟始建於中世紀、用白色石灰岩砌成、圓錐形黑瓦頂的傳統巨型獨特小屋 ── <strong>「特魯利（Trulli）蘑菇屋」</strong>而名震全球。",
         p2: "為咗帶俾家人驚喜，我特意包棟入住咗一間由百年特魯利改造而成的<strong>浪漫精靈精品民宿</strong>。內部乾淨涼爽，圓頂的天窗晚上仲可以平視睇星星，全家人大嗌如同住進咗白雪公主與七個小矮人的童話城堡！晚餐我哋去咗鎮上的<strong>Trattoria Il Poeta Contadino</strong>，必試佢哋的<strong>普利亞傳統小麵包（Taralli）</strong>與<strong>布拉塔起司沙律（Burrata Salad）</strong>，再配一杯當地的<strong>Primitivo紅酒</strong>，係用普利亞葡萄園的頂級葡萄炮製的濃郁紅酒，口感圓潤，配紅肉一流！",
-        image: { src: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&q=80&w=1600", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
+        image: { src: "https://i.natgeofe.com/n/a5a80d1d-6de5-4414-bb62-68910902499a/inside-trulli-alberobello-puglia-italy.jpg", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
       },
       day11: {
         title: "Day 11：巴里歷史老城、手作耳光麵大排檔",
