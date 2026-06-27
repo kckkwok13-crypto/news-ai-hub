@@ -183,7 +183,7 @@ const content = {
         title: "Day 17：陶爾米納古希臘劇場不朽落日、完美的終極謝幕",
         p1: "第十七天是這趟19天長征之旅的靈魂終章。我們開車來到西西里島最美麗的懸崖小鎮<strong>陶爾米納（Taormina）</strong>。小鎮高懸在海拔200米的懸崖之巔，面向浩瀚的愛琴海與依然在冒煙的<strong>埃特納活火山</strong>。傍晚時分，我們全家走進最震撼的<strong>古希臘劇場</strong>。",
         p2: "這座由古希臘人在兩千多年前依山純手工鑿刻而成的半圓形劇場，最天才的設計在於其舞台背景 ── <strong>沒有任何圍牆，而是直接將遠處白雪皚皚、正在冒煙的埃特納火山天際線與碧藍的愛琴海海平線無縫收納入鏡</strong>！當晚上夕陽緩緩沉入火山背後，整片天空幻化成瘋狂的絢麗金橙色與馬卡龍粉紫色。此時劇場中央隱隱傳來街頭小提琴手演奏的《教父》主題曲，古典的音符在幾千年的石牆間繾綣。全家人依偎在一起，太太將頭靠在我的肩膀上，小朋友安靜地看著晚霞。這幅無價的畫面，為我們19天的南義大利之旅劃上了最完美、最浪漫的終極句號！",
-        image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "陶爾米納古希臘劇場", caption: "▲ 陶爾米納古希臘劇場，背景是冒煙的埃特納火山與愛琴海" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a6/The_Greek_theatre_Taormina.jpg", alt: "陶爾米納古希臘劇場", caption: "▲ 陶爾米納古希臘劇場，背景是冒煙的埃特納火山與愛琴海" },
       },
       day18: {
         title: "Day 18：卡塔尼亞最後衝刺",
@@ -357,7 +357,7 @@ const content = {
         title: "Day 17：陶尔米纳古希腊剧场不朽落日、完美的终极谢幕",
         p1: "第十七天是这趟19天长征之旅的灵魂终章。我们开车来到西西里岛最美丽的悬崖小镇<strong>陶尔米纳（Taormina）</strong>。这个小镇高悬在海拔200米的悬崖之巅，面向浩瀚的爱琴海与依然在冒烟的<strong>埃特纳活火山（Mount Etna）</strong>。傍晚时分，我们全家走进最震撼的<strong>古希腊剧场（Teatro Greco）</strong>。",
         p2: "这座由古希腊人在两千多年前依山纯手工凿刻而成的半圆形剧场，最天才的设计在于其舞台背景 ── <strong>没有任何围墙，而是直接将远处白雪皑皑、正在冒烟的埃特纳火山天际线与碧蓝的爱琴海海平线无缝收纳入镜</strong>！这个设计就是古希腊建筑师的天才之处，利用自然景观作为舞台背景，令观众在观看表演的同时能够感受到大自然的宏伟。当晚上夕阳缓缓沉入火山背后，整片天空幻化成疯狂的绚丽金橙色与马卡龙粉紫色。此时剧场中央隐隐传来街头小提琴手演奏的《教父》主题曲，古典的音符在几千年的石墙间缱绻。全家人依偎在一起，太太将头靠在我的肩膀上，小朋友安静地看着晚霞。这幅无价的画面，为我们19天的南意大利之旅划上了最完美、最浪漫的终极句号！晚餐我们去了陶尔米纳的<strong>Villa Zuccaro</strong>，是一间由古老皇宫改建而成的餐厅，必尝他们的<strong>陶尔米纳薄饼</strong>，是用西西里岛特产的香肠与开心果炮制，配一杯冰冻的<strong>Etna Rosso红酒</strong>，就是完美的句号！",
-        image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "陶尔米纳古希腊剧场", caption: "▲ 陶尔米纳古希腊剧场，背景是冒烟的埃特纳火山与爱琴海，就是最佳的舞台背景" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a6/The_Greek_theatre_Taormina.jpg", alt: "陶尔米纳古希腊剧场", caption: "▲ 陶尔米纳古希腊剧场，背景是冒烟的埃特纳火山与爱琴海，就是最佳的舞台背景" },
       },
       day18: {
         title: "Day 18：卡塔尼亚最后冲刺",
@@ -531,7 +531,7 @@ const content = {
         title: "Day 17: Taormina Ancient Greek Theatre Eternal Sunset - Perfect Finale",
         p1: "Day 17 was the soul's final chapter. We drove to <strong>Taormina</strong>, Sicily's most beautiful cliff town perched 200 meters above sea level facing the Ionian Sea and smoking <strong>Mount Etna</strong>. In the evening, our family entered the <strong>Ancient Greek Theatre (Teatro Greco)</strong>.",
         p2: "This 2000-year-old semi-circular theater was carved into the mountain by ancient Greeks. Its genius design has <strong>no backdrop walls</strong> - instead, snow-capped smoking Mount Etna and the blue Ionian Sea are perfectly framed in the same view! This was ancient Greek architecture at its finest - using nature as a stage backdrop, letting audiences feel nature's grandeur while watching performances. When the sun sank behind Etna, the sky turned brilliant gold-orange and macaron pink-purple. Street violins played the Godfather theme through ancient stone walls. Our family huddled together - my wife resting her head on my shoulder, our child watching the sunset silently. This priceless moment closed our 19-day Southern Italy journey perfectly. Dinner was at <strong>Villa Zuccaro</strong>, a restaurant in a former royal palace, trying <strong>Taormina-style pizza</strong> with Sicilian sausage and pistachios, paired with ice-cold <strong>Etna Rosso red wine</strong> - the perfect ending!",
-        image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "Taormina Theatre", caption: "▲ Taormina Ancient Greek Theatre - Mount Etna and Ionian Sea as the ultimate natural backdrop" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a6/The_Greek_theatre_Taormina.jpg", alt: "Taormina Theatre", caption: "▲ Taormina Ancient Greek Theatre - Mount Etna and Ionian Sea as the ultimate natural backdrop" },
       },
       day18: {
         title: "Day 18: Catania Final Shopping & Syracuse Sunset",
@@ -705,7 +705,7 @@ const content = {
         title: "Day 17：陶爾米納古希臘劇場不朽落日、完美的終極謝幕",
         p1: "第十七天係呢趟19天長征之旅的靈魂終章。我哋開車嚟到西西里島最美麗的懸崖小鎮<strong>陶爾米納（Taormina）</strong>。呢個小鎮高懸喺海拔200米的懸崖之巔，面向浩瀚的愛琴海與依然喺冒煙的<strong>埃特納活火山（Mount Etna）</strong>。傍晚時分，我哋全家走進最震撼的<strong>古希臘劇場（Teatro Greco）</strong>。",
         p2: "呢座由古希臘人喺兩千多年前依山純手工鑿刻而成的半圓形劇場，最天才的設計喺於其舞台背景 ── <strong>冇任何圍牆，而係直接將遠處白雪皚皚、正在冒煙的埃特納火山天際線與碧藍的愛琴海海平線無縫收納入鏡</strong>！呢個設計就係古希臘建築師的天才之處，利用自然景觀作為舞台背景，令觀眾喺睇表演的同時能夠感受到大自然的宏偉。當晚上夕陽緩緩沉入火山背後，整片天空幻化成瘋狂的絢麗金橙色與馬卡龍粉紫色。此時劇場中央隱隱傳嚟街頭小提琴手演奏的《教父》主題曲，古典的音符喺幾千年的石牆間繾綣。全家人依偎在一起，太太將頭靠喺我的肩膀上，小朋友安靜地睇住晚霞。呢幅無價的畫面，為我哋19天的南意大利之旅劃上咗最完美、最浪漫的終極句號！晚餐我哋去咗陶爾米納的<strong>Villa Zuccaro</strong>，係一間由古老皇宮改建而成的餐廳，必試佢哋的<strong>陶爾米納薄餅</strong>，係用西西里島特產的香腸與開心果炮製，配一杯冰凍的<strong>Etna Rosso紅酒</strong>，就係完美的句號！",
-        image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "陶爾米納古希臘劇場", caption: "▲ 陶爾米納古希臘劇場，背景係冒煙的埃特納火山與愛琴海，就係最佳的舞台背景" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a6/The_Greek_theatre_Taormina.jpg", alt: "陶爾米納古希臘劇場", caption: "▲ 陶爾米納古希臘劇場，背景係冒煙的埃特納火山與愛琴海，就係最佳的舞台背景" },
       },
       day18: {
         title: "Day 18：卡塔尼亞最後衝刺",
