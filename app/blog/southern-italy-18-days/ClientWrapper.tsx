@@ -189,7 +189,7 @@ const content = {
         title: "Day 18：卡塔尼亞最後衝刺",
         p1: "第十八天，我們開車抵達<strong>卡塔尼亞（Catania）</strong>。在回港前，到核心商圈的大型購物廣場進行最後衝刺，搜羅最具南義特色、又物超所值的手信帶回給香港的親友老友：",
         p2: "傍晚時分，我們驅車南下，抵達西西里島最古老的城市 ── <strong>敘拉古（Syracuse）</strong>，入住海濱精品公寓，準備迎接這趟旅程的最後一天。",
-        image: { src: "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=1200&q=80", alt: "卡塔尼亞廣場", caption: "▲ 卡塔尼亞的繁華廣場" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/7/78/Catania%2C_Basilica_Collegiata_-_panoramio.jpg", alt: "卡塔尼亞廣場", caption: "▲ 卡塔尼亞的繁華廣場" },
       },
       day19: {
         title: "Day 19：敘拉古古蹟漫步與完美歸航",
@@ -363,7 +363,7 @@ const content = {
         title: "Day 18：卡塔尼亚最后冲刺",
         p1: "第十八天，我们开车抵达<strong>卡塔尼亚（Catania）</strong>。这座城市是西西里岛的第二大城市，以巴洛克建筑与街头美食闻名。我们在核心商圈的大型购物广场进行最后冲刺，搜罗最具南意大利特色、又物超所值的手信带回香港给亲友老友。必买包括：<strong>西西里岛开心果糖</strong>、<strong>阿玛菲柠檬酒</strong>、<strong>陶尔米纳彩绘陶瓷</strong>与<strong>意大利黑醋</strong>。",
         p2: "傍晚时分，我们驱车南下，抵达西西里岛最古老的城市 ── <strong>叙拉古（Syracuse / Siracusa）</strong>，入住海滨精品公寓，准备迎接这趟旅程的最后一天。晚餐我们去了叙拉古海边的<strong>Osteria da Rita</strong>，必尝他们的<strong>西西里式海鲜沙律（Insalata di Mare Siciliana）</strong>，是用新鲜八爪鱼、虾、青口与柠檬汁、橄榄油炮制，清新爽口，配一杯冰冻的<strong>Grillo白酒</strong>，就是最完美的海鲜体验！",
-        image: { src: "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=1200&q=80", alt: "卡塔尼亚广场", caption: "▲ 卡塔尼亚的繁华广场，以巴洛克建筑闻名" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/7/78/Catania%2C_Basilica_Collegiata_-_panoramio.jpg", alt: "卡塔尼亚广场", caption: "▲ 卡塔尼亚的繁华广场，以巴洛克建筑闻名" },
       },
       day19: {
         title: "Day 19：叙拉古古迹漫步与完美归航",
@@ -537,7 +537,7 @@ const content = {
         title: "Day 18: Catania Final Shopping & Syracuse Sunset",
         p1: "Day 18, we drove to <strong>Catania</strong> - Sicily's second largest city, famous for Baroque architecture and street food. We did final shopping at major malls for authentic Southern Italian souvenirs: <strong>Sicilian pistachio candy</strong>, <strong>Amalfi Limoncello</strong>, <strong>Taormina hand-painted ceramics</strong>, and <strong>Italian balsamic vinegar</strong>.",
         p2: "In the evening, we drove south to <strong>Syracuse (Siracusa)</strong> - Sicily's oldest city, checking into a seaside boutique apartment for our final night. Dinner was at <strong>Osteria da Rita</strong> by the sea, enjoying <strong>Insalata di Mare Siciliana</strong> - fresh octopus, shrimp, mussels with lemon and olive oil, refreshing and delicious, paired with ice-cold <strong>Grillo white wine</strong> - perfect seafood experience!",
-        image: { src: "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=1200&q=80", alt: "Catania Square", caption: "▲ Catania's bustling square - famous for stunning Baroque architecture" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/7/78/Catania%2C_Basilica_Collegiata_-_panoramio.jpg", alt: "Catania Square", caption: "▲ Catania's bustling square - famous for stunning Baroque architecture" },
       },
       day19: {
         title: "Day 19: Syracuse Ancient Ruins & Perfect Farewell",
@@ -711,7 +711,7 @@ const content = {
         title: "Day 18：卡塔尼亞最後衝刺",
         p1: "第十八天，我哋開車抵達<strong>卡塔尼亞（Catania）</strong>。呢座城市係西西里島的第二大城市，以巴洛克建築與街頭美食聞名。我哋喺核心商圈的大型購物廣場進行最後衝刺，搜羅最具南意大利特色、又物超所值的手信帶回香港俾親友老友。必買包括：<strong>西西里島開心果糖</strong>、<strong>阿瑪菲檸檬酒</strong>、<strong>陶爾米納彩繪陶瓷</strong>與<strong>意大利黑醋</strong>。",
         p2: "傍晚時分，我哋驅車南下，抵達西西里島最古老的城市 ── <strong>敘拉古（Syracuse / Siracusa）</strong>，入住海濱精品公寓，準備迎接呢趟旅程的最後一天。晚餐我哋去咗敘拉古海邊的<strong>Osteria da Rita</strong>，必試佢哋的<strong>西西里式海鮮沙律（Insalata di Mare Siciliana）</strong>，係用新鲜八爪魚、蝦、青口與檸檬汁、橄欖油炮製，清新爽口，配一杯冰凍的<strong>Grillo白酒</strong>，就係最完美的海鮮體驗！",
-        image: { src: "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=1200&q=80", alt: "卡塔尼亞廣場", caption: "▲ 卡塔尼亞的繁華廣場，以巴洛克建築聞名" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/7/78/Catania%2C_Basilica_Collegiata_-_panoramio.jpg", alt: "卡塔尼亞廣場", caption: "▲ 卡塔尼亞的繁華廣場，以巴洛克建築聞名" },
       },
       day19: {
         title: "Day 19：敘拉古古蹟漫步與完美歸航",
