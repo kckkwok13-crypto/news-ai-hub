@@ -77,6 +77,20 @@ const TRANSLATIONS = {
 
 const EDITORIAL_ARTICLES = [
   {
+    id: 'q3-2026-global-economy-forecast',
+    emoji: '📊',
+    readTime: 12,
+    date: '2026-06-27',
+    link: '/editorial/q3-2026-global-economy-forecast',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1000',
+    translations: {
+      'zh-TW': { title: '第三季全球經濟預測：通膨回升、利率僵局與貿易戰下半場的十字路口', category: '宏觀經濟', excerpt: '全球經濟正站在通膨回升與增長放緩的十字路口，第三季將是決定2026年經濟走向的關鍵分水嶺。' },
+      'en': { title: 'Q3 2026 Global Economic Forecast: Inflation Rebound, Rate Stalemate, and the Second Half of the Trade War', category: 'Macro Economy', excerpt: 'The global economy stands at a crossroads of inflation rebound and growth slowdown. Q3 will be a critical juncture determining the economic trajectory for 2026.' },
+      'zh-CN': { title: '第三季度全球经济预测：通胀回升、利率僵局与贸易战下半场的十字路口', category: '宏观经济', excerpt: '全球经济正站在通胀回升与增长放缓的十字路口，第三季度将是决定2026年经济走向的关键分水岭。' }
+    }
+  },
+  {
     id: 'bitcoin-etf',
     emoji: '₿',
     readTime: 10,
