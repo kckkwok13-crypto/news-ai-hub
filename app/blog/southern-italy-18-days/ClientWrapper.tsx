@@ -159,7 +159,7 @@ const content = {
         title: "Day 13：渡輪橫渡西里拿海峽、進駐巴勒莫",
         p1: "第十三天，我們開啟這趟旅程最豪邁的體驗 ── <strong>開著車直接開進巨型渡輪的船艙</strong>，橫渡著名的西里拿海峽，正式登陸神祕而熱情的<strong>西西里島（Sicily）</strong>！小朋友在渡輪甲板上看著海鷗齊飛，高興極了。",
         p2: "下午我們抵達首府<strong>巴勒莫（Palermo）</strong>，進駐位於新古典主義步行街核心的<strong>巴勒莫大劇院精品公寓</strong>。這間公寓客廳極大，推開落地玻璃窗就能看見宏偉的巴勒莫馬西莫劇院，下樓就是大型購物廣場與無數餐廳，物超所值！",
-        image: { src: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80", alt: "巴勒莫大教堂", caption: "▲ 巴勒莫的阿拉伯-諾曼式建築，融合了多種文化的精髓" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/16._Mai_1897_An_diesem_Tag_wurde_die_Oper_von_Palermo_er%C3%B6ffnet._02.jpg", alt: "巴勒莫大教堂", caption: "▲ 巴勒莫的阿拉伯-諾曼式建築，融合了多種文化的精髓" },
       },
       day14: {
         title: "Day 14：巴勒莫主教座堂、巴拉羅夜市大快朵頤",
@@ -171,7 +171,7 @@ const content = {
         title: "Day 15：切法盧純白沙灘慢活、崖壁小鎮的慵懶午後",
         p1: "第十五天我們開車前往風景如畫的海濱小鎮<strong>切法盧（Cefalù）</strong>。這裡也是殿堂級電影《天堂電影院》的故鄉。小鎮依山傍水，地勢平坦。我為太太同小朋友租了兩張靠海的躺椅與一把彩色遮陽傘。小朋友換上泳衣在清澈見底的翡翠色海水中嬉戲堆沙堡，太太則躺在椅子上大嘆冰鎮的西西里血橙汁、翻看小說。",
         p2: "午後，我們慢步在小鎮古老的大理石步行街上，看著兩岸粉白色的民居，時間彷彿在這裡變慢了。這才是最極致的歐洲慢活度假藝術！",
-        image: { src: "https://images.unsplash.com/photo-1618331835717-801e976710b2?w=1200&q=80", alt: "切法盧海濱小鎮", caption: "▲ 切法盧的海濱風光，如同一幅寧靜的地中海畫卷" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg/960px-Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg", alt: "切法盧海濱小鎮", caption: "▲ 切法盧的海濱風光，如同一幅寧靜的地中海畫卷" },
       },
       day16: {
         title: "Day 16：神殿之谷深度歷史穿越 ── 觸摸古希臘黃金美學",
@@ -345,7 +345,7 @@ const content = {
         title: "Day 15：切法卢纯白海滩慢活、崖壁小镇的慵懒午后",
         p1: "第十五天我们开车前往风景如画的海滨小镇<strong>切法卢（Cefalù）</strong>。这里也是殿堂级电影《天堂电影院（Cinema Paradiso）》的故乡，小镇依山傍水，地势平坦，沙滩是由干净的细白沙组成，海水呈现翡翠色，非常适合一家大小玩水。",
         p2: "我为太太同小朋友租了两张靠海的躺椅与一把彩色遮阳伞。小朋友换上泳衣在清澈见底的翡翠色海水中嬉戏堆沙堡，太太则躺在椅子上大叹冰镇的<strong>西西里血橙汁（Succo di Arance Rosse）</strong>、翻看小说。这款血橙是西西里岛的特产，因为火山灰土壤的关系特别清甜，颜色呈现深红宝石色，非常健康！午后，我们慢步在小镇古老的<strong>大理石步行街</strong>上，看着两岸粉白色的民居与哥德式大教堂，时间仿佛在这里变慢了。这才是最极致的欧洲慢活度假艺术！晚餐我们去了海边的<strong>Ristorante La Brace</strong>，必尝他们的<strong>西西里式烤鱼（Pesce alla Griglia Siciliana）</strong>，用海盐包住新鲜海鲈鱼慢烤，吃的时候再挤上柠檬汁，鲜甜到飞起！",
-        image: { src: "https://images.unsplash.com/photo-1618331835717-801e976710b2?w=1200&q=80", alt: "切法卢海滨小镇", caption: "▲ 切法卢的海滨风光，如同一幅宁静的地中海画卷" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg/960px-Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg", alt: "切法卢海滨小镇", caption: "▲ 切法卢的海滨风光，如同一幅宁静的地中海画卷" },
       },
       day16: {
         title: "Day 16：神殿之谷深度历史穿越 ── 触摸古希腊黄金美学",
@@ -519,7 +519,7 @@ const content = {
         title: "Day 15: Cefalù's White Sand Beach Slow Living",
         p1: "Day 15 we drove to the picturesque seaside town <strong>Cefalù</strong>, hometown of the classic film <strong>Cinema Paradiso</strong>. This town sits between mountains and sea with flat terrain and clean fine white sand beaches. The emerald waters are perfect for families!",
         p2: "I rented beach chairs and colorful umbrellas for my wife and child. Our kid splashed in crystal-clear emerald waters building sandcastles while my wife enjoyed ice-cold <strong>Sicilian Blood Orange Juice (Succo di Arance Rosse)</strong> - a Sicilian specialty grown in volcanic soil, extra sweet with deep ruby color! In the afternoon, we strolled through <strong>ancient marble streets</strong> admiring pink-white buildings and Gothic cathedral - time seemed to slow down. This is the ultimate European slow living! Dinner was at seaside <strong>Ristorante La Brace</strong>, trying <strong>Pesce alla Griglia Siciliana</strong> - fresh sea bass baked in salt crust, served with lemon - absolutely divine!",
-        image: { src: "https://images.unsplash.com/photo-1618331835717-801e976710b2?w=1200&q=80", alt: "Cefalù Beach", caption: "▲ Cefalù's seaside charm - a tranquil Mediterranean painting" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg/960px-Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg", alt: "Cefalù Beach", caption: "▲ Cefalù's seaside charm - a tranquil Mediterranean painting" },
       },
       day16: {
         title: "Day 16: Valley of Temples - Touching Ancient Greek Golden Aesthetics",
@@ -693,7 +693,7 @@ const content = {
         title: "Day 15：切法盧純白沙灘慢活、崖壁小鎮的慵懶午後",
         p1: "第十五天我哋開車前往風景如畫的海濱小鎮<strong>切法盧（Cefalù）</strong>。呢度亦都係殿堂級電影《天堂電影院（Cinema Paradiso）》的故鄉，小鎮依山傍水，地勢平坦，沙灘係由乾淨的細白沙組成，海水呈現翡翠色，非常適合一家大細玩水。",
         p2: "我為太太同小朋友租咗兩張靠海的躺椅與一把彩色遮陽傘。小朋友換上泳衣喺清澈見底的翡翠色海水中嬉戲堆沙堡，太太則躺在椅子上大嘆冰鎮的<strong>西西里血橙汁（Succo di Arance Rosse）</strong>、翻睇小說。呢款血橙係西西里島的特產，因為火山灰土壤的關係特別清甜，顏色呈現深紅寶石色，非常健康！午後，我哋慢步喺小鎮古老的<strong>大理石步行街</strong>上，睇住兩岸粉白色的民居與哥德式大教堂，時間彷彿喺呢度變慢咗。呢個先至係最極致的歐洲慢活度假藝術！晚餐我哋去咗海邊的<strong>Ristorante La Brace</strong>，必試佢哋的<strong>西西里式烤魚（Pesce alla Griglia Siciliana）</strong>，用海鹽包住新鮮海鱸魚慢烤，食嘅時候再擠上檸檬汁，鮮甜到飛起！",
-        image: { src: "https://images.unsplash.com/photo-1618331835717-801e976710b2?w=1200&q=80", alt: "切法盧海濱小鎮", caption: "▲ 切法盧的海濱風光，如同一幅寧靜的地中海畫卷" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg/960px-Cefalu_Cathedral_exterior_BW_2012-10-11_12-13-18.jpg", alt: "切法盧海濱小鎮", caption: "▲ 切法盧的海濱風光，如同一幅寧靜的地中海畫卷" },
       },
       day16: {
         title: "Day 16：神殿之谷深度歷史穿越 ── 觸摸古希臘黃金美學",
