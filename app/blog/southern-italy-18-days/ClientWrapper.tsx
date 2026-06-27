@@ -138,13 +138,13 @@ const content = {
         title: "Day 10：自駕開啟！入住阿爾貝羅貝洛精靈蘑菇屋",
         p1: "第十天，我們在蘇連多順利提了預約好的全新七人自駕車，正式開啟自駕流。我們橫跨義大利靴子版圖，開往東海岸的普利亞大區。當車子緩緩駛入童話小鎮<strong>阿爾貝羅貝洛（Alberobello）</strong>，小朋友興奮得貼在車窗上大喊大叫！這裡因為保留了上千棟始建於中世紀、用白色石灰岩砌成、圓錐形黑瓦頂的傳統巨型獨特小屋 ── <strong>「特魯利（Trulli）蘑菇屋」</strong>而名震全球。",
         p2: "為了帶給家人驚喜，我特意包棟入住了一間由百年特魯利改造而成的<strong>浪漫精靈精品民宿</strong>。內部乾淨涼爽，圓頂的天窗晚上還能平視看星星，全家人大讚如同住進了白雪公主與七個小矮人的童話城堡！",
-        image: { src: "https://images.squarespace-cdn.com/content/v1/561670ffe4b05ff450fd551f/1603456943874-Q6MP70953VGEV6S2CJ90/alberobello+puglia+italy+7+trulli+night", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Alberobello_Trulli.jpg/1280px-Alberobello_Trulli.jpg", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
       },
       day11: {
         title: "Day 11：巴里歷史老城、手作耳光麵大排檔",
         p1: "第十一天我們開車前往海濱港口城市<strong>巴里（Bari）</strong>。慢步在巴里歷史老城的<strong>開胃老街（Via Arco Basso）</strong>。這條步行街最動人的風景，是每天都有幾十位當地的老奶奶搬出木桌子，當街純手工一揉一捏現做當地的特產 ── <strong>「貓耳朵麵（Orecchiette）」</strong>。老人家動作嫻熟，熱情地拉著我們的小朋友合照、教他捏麵糰，人情味十足！",
         p2: "午餐我們在街角的平民小酒館裡，點了一大盤的<strong>「鮮茄羅勒手作貓耳朵麵」</strong>。麵條爽口彈牙，吸飽了鮮美的番茄汁與羊起司香氣，樸實無華卻是最正的街坊老味道，價格平到偷笑！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Matera_boenisch_nov_2005.jpg", alt: "馬泰拉石窟風光", caption: "▲ 馬泰拉的千年石窟，是人類最古老的持續定居點之一" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Bari_-_Lungomare_Araldo_di_Crollalanza.jpg/3840px-Bari_-_Lungomare_Araldo_di_Crollalanza.jpg", alt: "巴里海濱長廊", caption: "▲ 巴里的海濱長廊，充滿地中海風情" },
       },
       day12: {
         title: "Day 12：馬泰拉薩西石窟古城 ── 007電影的鐵血藍調",
@@ -660,13 +660,13 @@ const content = {
         title: "Day 10：自駕開啟！入住阿爾貝羅貝洛精靈蘑菇屋",
         p1: "第十天，我哋喺蘇連多順利提咗預約好的全新七人自駕車，正式開啟自駕流。我哋橫跨意大利靴子版圖，開往東海岸的普利亞大區。當車子緩緩駛入童話小鎮<strong>阿爾貝羅貝洛（Alberobello）</strong>，小朋友興奮得貼喺車窗上大喊大叫！呢度因為保留咗上千棟始建於中世紀、用白色石灰岩砌成、圓錐形黑瓦頂的傳統巨型獨特小屋 ── <strong>「特魯利（Trulli）蘑菇屋」</strong>而名震全球。",
         p2: "為咗帶俾家人驚喜，我特意包棟入住咗一間由百年特魯利改造而成的<strong>浪漫精靈精品民宿</strong>。內部乾淨涼爽，圓頂的天窗晚上仲可以平視睇星星，全家人大嗌如同住進咗白雪公主與七個小矮人的童話城堡！晚餐我哋去咗鎮上的<strong>Trattoria Il Poeta Contadino</strong>，必試佢哋的<strong>普利亞傳統小麵包（Taralli）</strong>與<strong>布拉塔起司沙律（Burrata Salad）</strong>，再配一杯當地的<strong>Primitivo紅酒</strong>，係用普利亞葡萄園的頂級葡萄炮製的濃郁紅酒，口感圓潤，配紅肉一流！",
-        image: { src: "https://images.squarespace-cdn.com/content/v1/561670ffe4b05ff450fd551f/1603456943874-Q6MP70953VGEV6S2CJ90/alberobello+puglia+italy+7+trulli+night", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Alberobello_Trulli.jpg/1280px-Alberobello_Trulli.jpg", alt: "阿爾貝羅貝洛蘑菇屋", caption: "▲ 阿爾貝羅貝洛的特魯利蘑菇屋，如同一座童話小鎮" },
       },
       day11: {
         title: "Day 11：巴里歷史老城、手作耳光麵大排檔",
         p1: "第十一天我哋開車前往海濱港口城市<strong>巴里（Bari）</strong>。慢步喺巴里歷史老城的<strong>開胃老街（Via Arco Basso）</strong>。呢條步行街最動人的風景，就係每天都有幾十位當地的老奶奶搬出木桌子，當街純手工一揉一捏現做當地的特產 ── <strong>「貓耳朵麵（Orecchiette）」</strong>。呢款麵因為形狀似貓咪的耳朵而得名，全部係用粗粒小麥粉與水搓成，表面粗糙就係為咗掛住更多的醬汁。老人家動作嫻熟，仲熱情地拉著我哋的小朋友合照、教佢捏麵糰，人情味十足！",
         p2: "午餐我哋喺街角的平民小酒館裡，點咗一大盤的<strong>「鮮茄羅勒手作貓耳朵麵（Pasta Orecchiette al Pomodoro）」</strong>。麵條爽口彈牙，吸飽咗鮮美的聖馬札諾番茄汁與羊起司香氣，樸實無華卻係最正的街坊老味道，價錢平到偷笑！之後我哋去咗海濱長廊的<strong>Gianni's Bar</strong>，必試佢哋的<strong>巴里式炸海鮮（Frittura di Paranza）</strong>，係用細魚仔、蝦與魷魚圈沾粉炸到金黃酥脆，配一杯冰凍的<strong>格拉巴酒（Grappa）</strong>，就係最正宗的南意海鮮體驗！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Matera_boenisch_nov_2005.jpg", alt: "馬泰拉石窟風光", caption: "▲ 馬泰拉的千年石窟，是人類最古老的持續定居點之一" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Bari_-_Lungomare_Araldo_di_Crollalanza.jpg/3840px-Bari_-_Lungomare_Araldo_di_Crollalanza.jpg", alt: "巴里海濱長廊", caption: "▲ 巴里的海濱長廊，充滿地中海風情" },
       },
       day12: {
         title: "Day 12：馬泰拉薩西石窟古城 ── 007電影的鐵血藍調",
