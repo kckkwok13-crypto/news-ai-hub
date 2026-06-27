@@ -17,7 +17,7 @@ const tocItems = {
     { id: "days-1-5", title: "Day 1-5 拿坡里", emoji: "🏛️" },
     { id: "days-6-9", title: "Day 6-9 阿瑪菲", emoji: "🌊" },
     { id: "days-10-12", title: "Day 10-12 普利亞", emoji: "🏘️" },
-    { id: "days-13-18", title: "Day 13-18 西西里", emoji: "🏝️" },
+    { id: "days-13-19", title: "Day 13-19 西西里", emoji: "🏝️" },
     { id: "tips", title: "實用提示", emoji: "💡" },
   ],
   "zh-CN": [
@@ -25,7 +25,7 @@ const tocItems = {
     { id: "days-1-5", title: "Day 1-5 拿波里", emoji: "🏛️" },
     { id: "days-6-9", title: "Day 6-9 阿玛菲", emoji: "🌊" },
     { id: "days-10-12", title: "Day 10-12 普利亚", emoji: "🏘️" },
-    { id: "days-13-18", title: "Day 13-18 西西里", emoji: "🏝️" },
+    { id: "days-13-19", title: "Day 13-19 西西里", emoji: "🏝️" },
     { id: "tips", title: "实用提示", emoji: "💡" },
   ],
   en: [
@@ -33,7 +33,7 @@ const tocItems = {
     { id: "days-1-5", title: "Days 1-5 Naples", emoji: "🏛️" },
     { id: "days-6-9", title: "Days 6-9 Amalfi", emoji: "🌊" },
     { id: "days-10-12", title: "Days 10-12 Puglia", emoji: "🏘️" },
-    { id: "days-13-18", title: "Days 13-18 Sicily", emoji: "🏝️" },
+    { id: "days-13-19", title: "Days 13-19 Sicily", emoji: "🏝️" },
     { id: "tips", title: "Travel Tips", emoji: "💡" },
   ],
   yue: [
@@ -41,7 +41,7 @@ const tocItems = {
     { id: "days-1-5", title: "Day 1-5 拿坡里", emoji: "🏛️" },
     { id: "days-6-9", title: "Day 6-9 阿瑪菲", emoji: "🌊" },
     { id: "days-10-12", title: "Day 10-12 普利亞", emoji: "🏘️" },
-    { id: "days-13-18", title: "Day 13-18 西西里", emoji: "🏝️" },
+    { id: "days-13-19", title: "Day 13-19 西西里", emoji: "🏝️" },
     { id: "tips", title: "實用提示", emoji: "💡" },
   ],
 };
@@ -69,7 +69,7 @@ const content = {
         { name: "第一板塊：拿坡里", days: "Day 1-5", desc: "拿坡里歷史城區、龐貝古城、維蘇威火山", color: "blue" },
         { name: "第二板塊：阿瑪菲", days: "Day 6-9", desc: "蘇連多、卡布里島藍洞、波西塔諾", color: "cyan" },
         { name: "第三板塊：普利亞", days: "Day 10-12", desc: "阿爾貝羅貝洛蘑菇屋、巴里、馬泰拉石窟", color: "amber" },
-        { name: "第四板塊：西西里島", days: "Day 13-18", desc: "巴勒莫、切法盧、神殿之谷、陶爾米納", color: "red" },
+        { name: "第四板塊：西西里島", days: "Day 13-19", desc: "巴勒莫、切法盧、神殿之谷、陶爾米納、敘拉古", color: "red" },
       ],
     },
     days1to5: {
@@ -153,7 +153,7 @@ const content = {
         image: { src: "https://images.unsplash.com/photo-1529480780361-1c0fb8507ef0?w=1200&q=80", alt: "馬泰拉日落時分", caption: "▲ 馬泰拉的黃昏，暖黃的壁燈亮起，呈現如同電影般的史詩場景" },
       },
     },
-    days13to18: {
+    days13to19: {
       title: "🏝️ Day 13-19：西西里島的熱情、切法盧海灘與陶爾米納古典謝幕",
       day13: {
         title: "Day 13：渡輪橫渡西里拿海峽、進駐巴勒莫",
@@ -327,7 +327,7 @@ const content = {
         image: { src: "https://images.unsplash.com/photo-1529480780361-1c0fb8507ef0?w=1200&q=80", alt: "马泰拉日落时分", caption: "▲ 马泰拉的黄昏" },
       },
     },
-    days13to18: {
+    days13to19: {
       title: "🏝️ Day 13-19：西西里岛的热情、切法卢海滩与陶尔米纳古典谢幕",
       day13: {
         title: "Day 13：渡轮横渡西里拿海峡、入驻巴勒莫",
@@ -501,7 +501,7 @@ const content = {
         image: { src: "https://images.unsplash.com/photo-1529480780361-1c0fb8507ef0?w=1200&q=80", alt: "Matera Sunset", caption: "▲ Matera at dusk, cinematic scene" },
       },
     },
-    days13to18: {
+    days13to19: {
       title: "🏝️ Days 13-19: Sicily热情, Cefalù Beach & Taormina Classical Finale",
       day13: {
         title: "Day 13: Ferry Across Strait of Messina, Settling in Palermo",
@@ -673,7 +673,7 @@ const content = {
         image: { src: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Matera_boenisch_nov_2005.jpg", alt: "馬泰拉日落時分", caption: "▲ 馬泰拉的黃昏" },
       },
     },
-    days13to18: {
+    days13to19: {
       title: "🏝️ Day 13-19：西西里島的熱情、切法盧海灘與陶爾米納古典謝幕",
       day13: {
         title: "Day 13：渡輪橫渡西里拿海峽、入駐巴勒莫",
@@ -1011,86 +1011,100 @@ export default function SouthernItalyPage() {
             </div>
           </div>
 
-          {/* Days 13-18 */}
-          <div id="days-13-18">
+          {/* Days 13-19 */}
+          <div id="days-13-19">
             <h2 className="text-2xl font-bold text-red-400 mb-6 flex items-center gap-2">
-              {c.days13to18.title}
+              {c.days13to19.title}
             </h2>
 
             {/* Day 13 */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to18.day13.title}</h3>
-              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to18.day13.p1 }} />
-              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to18.day13.p2 }} />
-              {c.days13to18.day13.image && (
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day13.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day13.p1 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day13.p2 }} />
+              {c.days13to19.day13.image && (
                 <div className="my-6">
-                  <img src={c.days13to18.day13.image.src} alt={c.days13to18.day13.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to18.day13.image.caption}</p>
+                  <img src={c.days13to19.day13.image.src} alt={c.days13to19.day13.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day13.image.caption}</p>
                 </div>
               )}
             </div>
 
             {/* Day 14 */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to18.day14.title}</h3>
-              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to18.day14.p1 }} />
-              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to18.day14.p2 }} />
-              {c.days13to18.day14.image && (
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day14.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day14.p1 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day14.p2 }} />
+              {c.days13to19.day14.image && (
                 <div className="my-6">
-                  <img src={c.days13to18.day14.image.src} alt={c.days13to18.day14.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to18.day14.image.caption}</p>
+                  <img src={c.days13to19.day14.image.src} alt={c.days13to19.day14.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day14.image.caption}</p>
                 </div>
               )}
             </div>
 
             {/* Day 15 */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to18.day15.title}</h3>
-              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to18.day15.p1 }} />
-              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to18.day15.p2 }} />
-              {c.days13to18.day15.image && (
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day15.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day15.p1 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day15.p2 }} />
+              {c.days13to19.day15.image && (
                 <div className="my-6">
-                  <img src={c.days13to18.day15.image.src} alt={c.days13to18.day15.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to18.day15.image.caption}</p>
+                  <img src={c.days13to19.day15.image.src} alt={c.days13to19.day15.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day15.image.caption}</p>
                 </div>
               )}
             </div>
 
             {/* Day 16 */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to18.day16.title}</h3>
-              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to18.day16.p1 }} />
-              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to18.day16.p2 }} />
-              {c.days13to18.day16.image && (
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day16.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day16.p1 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day16.p2 }} />
+              {c.days13to19.day16.image && (
                 <div className="my-6">
-                  <img src={c.days13to18.day16.image.src} alt={c.days13to18.day16.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to18.day16.image.caption}</p>
+                  <img src={c.days13to19.day16.image.src} alt={c.days13to19.day16.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day16.image.caption}</p>
                 </div>
               )}
             </div>
 
             {/* Day 17 */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to18.day17.title}</h3>
-              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to18.day17.p1 }} />
-              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to18.day17.p2 }} />
-              {c.days13to18.day17.image && (
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day17.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day17.p1 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day17.p2 }} />
+              {c.days13to19.day17.image && (
                 <div className="my-6">
-                  <img src={c.days13to18.day17.image.src} alt={c.days13to18.day17.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to18.day17.image.caption}</p>
+                  <img src={c.days13to19.day17.image.src} alt={c.days13to19.day17.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day17.image.caption}</p>
                 </div>
               )}
             </div>
 
             {/* Day 18 */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to18.day18.title}</h3>
-              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to18.day18.p1 }} />
-              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to18.day18.p2 }} />
-              {c.days13to18.day18.image && (
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day18.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day18.p1 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day18.p2 }} />
+              {c.days13to19.day18.image && (
                 <div className="my-6">
-                  <img src={c.days13to18.day18.image.src} alt={c.days13to18.day18.image.alt} className="w-full rounded-2xl" />
-                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to18.day18.image.caption}</p>
+                  <img src={c.days13to19.day18.image.src} alt={c.days13to19.day18.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day18.image.caption}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Day 19 */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-red-300 mb-3">{c.days13to19.day19.title}</h3>
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day19.p1 }} />
+              <p className="text-slate-300 mb-3" dangerouslySetInnerHTML={{ __html: c.days13to19.day19.p2 }} />
+              <p className="text-slate-300 mb-4" dangerouslySetInnerHTML={{ __html: c.days13to19.day19.p3 }} />
+              {c.days13to19.day19.image && (
+                <div className="my-6">
+                  <img src={c.days13to19.day19.image.src} alt={c.days13to19.day19.image.alt} className="w-full rounded-2xl" />
+                  <p className="text-center text-slate-500 text-sm mt-3">{c.days13to19.day19.image.caption}</p>
                 </div>
               )}
             </div>
