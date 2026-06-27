@@ -52,7 +52,7 @@ const content = {
     meta: {
       tag: "🇮🇹 南歐慢活 · 溫馨闔家歡",
       title: "地中海驕陽與蔚藍",
-      subtitle: "一家三口18天順序暢遊南意大利慢活全攻略",
+      subtitle: "一家三口19天順序暢遊南意大利慢活全攻略",
       author: "純粹旅人",
       date: "June 2026",
       imageAlt: "南意大利海岸風光",
@@ -60,11 +60,11 @@ const content = {
       tags: ["南意大利", "拿坡里", "阿瑪菲海岸", "西西里島", "家庭旅遊"],
     },
     intro: {
-      p1: "大半生在香港打拼，退下火線後最珍貴的，莫過於牽著太太的手，帶著小朋友，來一場不趕時間的長途旅行。<strong>南意大利</strong>，這片被上帝親吻過的蔚藍海岸，有著燃燒的火山、沉睡的古城與無盡的檸檬香氣。18天，由拿坡里到西西里，每一天都是我們一家人的金色記憶。",
-      p2: "這趟長達18天的深度慢活之旅，我全副心思盡出 ── <strong>前半段活用平穩的義大利國鐵與網約大車，後半段在西西里島開啟無痛自駕</strong>。我們挑選了多間位於核心商圈、出入極方便且物超所值的精品公寓酒店，既能大嘆冷氣看風景，又能瘋狂品嚐米芝蓮級別的平民薄餅與手工海鮮，全家玩得省心又大大滿足！",
+      p1: "大半生在香港打拼，退下火線後最珍貴的，莫過於牽著太太的手，帶著小朋友，來一場不趕時間的長途旅行。<strong>南意大利</strong>，這片被上帝親吻過的蔚藍海岸，有著燃燒的火山、沉睡的古城與無盡的檸檬香氣。19天，由拿坡里到西西里，每一天都是我們一家人的金色記憶。",
+      p2: "這趟長達19天的深度慢活之旅，我全副心思盡出 ── <strong>前半段活用平穩的義大利國鐵與網約大車，後半段在西西里島開啟無痛自駕</strong>。我們挑選了多間位於核心商圈、出入極方便且物超所值的精品公寓酒店，既能大嘆冷氣看風景，又能瘋狂品嚐米芝蓮級別的平民薄餅與手工海鮮，全家玩得省心又大大滿足！",
     },
     itinerary: {
-      title: "🗺️ 18天南意大利闔家歡行程 ── 四大核心板塊",
+      title: "🗺️ 19天南意大利闔家歡行程 ── 四大核心板塊",
       zones: [
         { name: "第一板塊：拿坡里", days: "Day 1-5", desc: "拿坡里歷史城區、龐貝古城、維蘇威火山", color: "blue" },
         { name: "第二板塊：阿瑪菲", days: "Day 6-9", desc: "蘇連多、卡布里島藍洞、波西塔諾", color: "cyan" },
@@ -181,8 +181,8 @@ const content = {
       },
       day17: {
         title: "Day 17：陶爾米納古希臘劇場不朽落日、完美的終極謝幕",
-        p1: "第十七天是這趟18天長征之旅的靈魂終章。我們開車來到西西里島最美麗的懸崖小鎮<strong>陶爾米納（Taormina）</strong>。小鎮高懸在海拔200米的懸崖之巔，面向浩瀚的愛琴海與依然在冒煙的<strong>埃特納活火山</strong>。傍晚時分，我們全家走進最震撼的<strong>古希臘劇場</strong>。",
-        p2: "這座由古希臘人在兩千多年前依山純手工鑿刻而成的半圓形劇場，最天才的設計在於其舞台背景 ── <strong>沒有任何圍牆，而是直接將遠處白雪皚皚、正在冒煙的埃特納火山天際線與碧藍的愛琴海海平線無縫收納入鏡</strong>！當晚上夕陽緩緩沉入火山背後，整片天空幻化成瘋狂的絢麗金橙色與馬卡龍粉紫色。此時劇場中央隱隱傳來街頭小提琴手演奏的《教父》主題曲，古典的音符在幾千年的石牆間繾綣。全家人依偎在一起，太太將頭靠在我的肩膀上，小朋友安靜地看著晚霞。這幅無價的畫面，為我們18天的南義大利之旅劃上了最完美、最浪漫的終極句號！",
+        p1: "第十七天是這趟19天長征之旅的靈魂終章。我們開車來到西西里島最美麗的懸崖小鎮<strong>陶爾米納（Taormina）</strong>。小鎮高懸在海拔200米的懸崖之巔，面向浩瀚的愛琴海與依然在冒煙的<strong>埃特納活火山</strong>。傍晚時分，我們全家走進最震撼的<strong>古希臘劇場</strong>。",
+        p2: "這座由古希臘人在兩千多年前依山純手工鑿刻而成的半圓形劇場，最天才的設計在於其舞台背景 ── <strong>沒有任何圍牆，而是直接將遠處白雪皚皚、正在冒煙的埃特納火山天際線與碧藍的愛琴海海平線無縫收納入鏡</strong>！當晚上夕陽緩緩沉入火山背後，整片天空幻化成瘋狂的絢麗金橙色與馬卡龍粉紫色。此時劇場中央隱隱傳來街頭小提琴手演奏的《教父》主題曲，古典的音符在幾千年的石牆間繾綣。全家人依偎在一起，太太將頭靠在我的肩膀上，小朋友安靜地看著晚霞。這幅無價的畫面，為我們19天的南義大利之旅劃上了最完美、最浪漫的終極句號！",
         image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "陶爾米納古希臘劇場", caption: "▲ 陶爾米納古希臘劇場，背景是冒煙的埃特納火山與愛琴海" },
       },
       day18: {
@@ -200,7 +200,7 @@ const content = {
       },
     },
     tips: {
-      title: "💡 闔家歡 ‧ 南意大利18天慢活自由行隨身手札",
+      title: "💡 闔家歡 ‧ 南意大利19天慢活自由行隨身手札",
       items: [
         { icon: "🏨", label: "公寓酒店的無上智慧：", content: "帶一家人長途出行，精品公寓式酒店（特別是自帶小廚房的房型）是絕對首選。房內有獨立餐桌，晚上可以去當地的傳統市場買頂級新鮮的紅蝦、無花果、起司回來簡單加工，全家圍坐吃宵夜，溫馨、空間大且性價比極高。" },
         { icon: "🚗", label: "前半段地鐵與後半段自駕的「黃金無痛切換」：", content: "拿坡里和阿瑪菲海岸歷史老城區道路狹窄、塞車極其嚴重且伴隨變態的限行區（ZTL）。<strong>前半段千萬不要自駕</strong>，全靠高鐵接駁與網約大車；<strong>後半段去普利亞和西西里島則必須提早網上租好一部7人大型自駕車</strong>。" },
@@ -235,7 +235,7 @@ const content = {
     meta: {
       tag: "🇮🇹 南欧慢活 · 温馨阖家欢",
       title: "地中海骄阳与蔚蓝",
-      subtitle: "一家三口18天顺序畅游南意大利慢活全攻略",
+      subtitle: "一家三口19天顺序畅游南意大利慢活全攻略",
       author: "纯粹旅人",
       date: "June 2026",
       imageAlt: "南意大利海岸风光",
@@ -243,8 +243,8 @@ const content = {
       tags: ["南意大利", "拿波里", "阿玛菲海岸", "西西里岛", "家庭旅游"],
     },
     intro: {
-      p1: "大半生在港打拼，退下火线后最珍贵的，莫过于牵着太太的手，带着小朋友，来一场不赶时间的长途旅行。<strong>南意大利</strong>，这片被上帝亲吻过的蔚蓝海岸，有着燃烧的火山、沉睡的古城与无尽的柠檬香气。18天，由拿波里到西西里，每一天都是我们一家人的金色记忆。",
-      p2: "这趟长达18天的深度慢活之旅，我全副心思尽出 ── <strong>前半段活用平稳的意大利国铁与网约大车，后半段在西西里岛开启无痛自驾</strong>。我们挑选了多间位于核心商圈、出入极方便且物超所值的精品公寓酒店，既能大叹冷气看风景，又能疯狂品尝米芝莲级别的平民薄饼与手工海鲜，全家玩得省心又大大满足！",
+      p1: "大半生在港打拼，退下火线后最珍贵的，莫过于牵着太太的手，带着小朋友，来一场不赶时间的长途旅行。<strong>南意大利</strong>，这片被上帝亲吻过的蔚蓝海岸，有着燃烧的火山、沉睡的古城与无尽的柠檬香气。19天，由拿波里到西西里，每一天都是我们一家人的金色记忆。",
+      p2: "这趟长达19天的深度慢活之旅，我全副心思尽出 ── <strong>前半段活用平稳的意大利国铁与网约大车，后半段在西西里岛开启无痛自驾</strong>。我们挑选了多间位于核心商圈、出入极方便且物超所值的精品公寓酒店，既能大叹冷气看风景，又能疯狂品尝米芝莲级别的平民薄饼与手工海鲜，全家玩得省心又大大满足！",
     },
     days1to5: {
       title: "🏛️ Day 1-5：拿波里的热情、沉睡的庞贝与火山奇迹",
@@ -409,7 +409,7 @@ const content = {
     meta: {
       tag: "🇮🇹 Southern Italy · Family Adventure",
       title: "Mediterranean Sunshine & Azure Blue",
-      subtitle: "18-Day Family Journey Through Southern Italy",
+      subtitle: "19-Day Family Journey Through Southern Italy",
       author: "Pure Traveler",
       date: "June 2026",
       imageAlt: "Southern Italy Coast",
@@ -417,8 +417,8 @@ const content = {
       tags: ["Southern Italy", "Naples", "Amalfi Coast", "Sicily", "Family Travel"],
     },
     intro: {
-      p1: "After decades of hard work in Hong Kong, nothing is more precious than holding my wife's hand and bringing our child on a leisurely long journey. <strong>Southern Italy</strong>, this azure coast kissed by God, features burning volcanoes, sleeping ancient cities, and endless lemon fragrance. 18 days, from Naples to Sicily, every day is a golden memory for our family.",
-      p2: "This 18-day deep slow-travel journey took all my care ── <strong>using smooth Italian trains and private cars in the first half, then starting comfortable self-driving in Sicily in the second half</strong>. We chose boutique apartments in central locations that were convenient and great value, enjoying both air-conditioned views and Michelin-level pizza and fresh seafood.",
+      p1: "After decades of hard work in Hong Kong, nothing is more precious than holding my wife's hand and bringing our child on a leisurely long journey. <strong>Southern Italy</strong>, this azure coast kissed by God, features burning volcanoes, sleeping ancient cities, and endless lemon fragrance. 19 days, from Naples to Sicily, every day is a golden memory for our family.",
+      p2: "This 19-day deep slow-travel journey took all my care ── <strong>using smooth Italian trains and private cars in the first half, then starting comfortable self-driving in Sicily in the second half</strong>. We chose boutique apartments in central locations that were convenient and great value, enjoying both air-conditioned views and Michelin-level pizza and fresh seafood.",
     },
     days1to5: {
       title: "🏛️ Days 1-5: Naples热情, 庞贝古城 & 火山奇迹",
@@ -530,7 +530,7 @@ const content = {
       day17: {
         title: "Day 17: Taormina Ancient Greek Theatre Eternal Sunset - Perfect Finale",
         p1: "Day 17 was the soul's final chapter. We drove to <strong>Taormina</strong>, Sicily's most beautiful cliff town perched 200 meters above sea level facing the Ionian Sea and smoking <strong>Mount Etna</strong>.",
-        p2: "In the evening, our family entered the <strong>Ancient Greek Theatre</strong>. This 2000-year-old semi-circular theater's genius design has <strong>no backdrop walls</strong> ── instead, snow-capped smoking Mount Etna and the blue Ionian Sea are perfectly framed in the same view! When the sun sank behind Etna, the sky turned疯狂的绚丽金橙色. The sound of street violin playing the Godfather theme echoed through ancient walls. As our family huddled together watching the sunset, this priceless moment closed our 18-day Southern Italy journey perfectly.",
+        p2: "In the evening, our family entered the <strong>Ancient Greek Theatre</strong>. This 2000-year-old semi-circular theater's genius design has <strong>no backdrop walls</strong> ── instead, snow-capped smoking Mount Etna and the blue Ionian Sea are perfectly framed in the same view! When the sun sank behind Etna, the sky turned疯狂的绚丽金橙色. The sound of street violin playing the Godfather theme echoed through ancient walls. As our family huddled together watching the sunset, this priceless moment closed our 19-day Southern Italy journey perfectly.",
         image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "Taormina Theatre", caption: "▲ Taormina Ancient Greek Theatre with Mt Etna" },
       },
       day18: {
@@ -548,7 +548,7 @@ const content = {
       },
     },
     tips: {
-      title: "💡 Family Expert Tips - Southern Italy 18-Day Slow Travel",
+      title: "💡 Family Expert Tips - Southern Italy 19-Day Slow Travel",
       items: [
         { icon: "🏨", label: "Apartment Hotel Wisdom:", content: "For family travel, boutique apartments (especially with kitchens) are the top choice. Having a kitchen lets you buy fresh seafood from local markets and cook together as a family." },
         { icon: "🚗", label: "Train First, Drive Later:", content: "<strong>Do NOT self-drive in Naples or Amalfi Coast</strong> ── roads are narrow and ZTL zones are tricky. <strong>Do self-drive in Puglia and Sicily</strong> for comfort." },
@@ -583,7 +583,7 @@ const content = {
     meta: {
       tag: "🇮🇹 南歐慢活 · 溫馨闔家歡",
       title: "地中海驕陽與蔚藍",
-      subtitle: "一家三口18天順序暢遊南意大利慢活全攻略",
+      subtitle: "一家三口19天順序暢遊南意大利慢活全攻略",
       author: "純粹旅人",
       date: "June 2026",
       imageAlt: "南意大利海岸風光",
@@ -591,8 +591,8 @@ const content = {
       tags: ["南意大利", "拿坡里", "阿瑪菲海岸", "西西里島", "家庭旅遊"],
     },
     intro: {
-      p1: "大半生喺香港打拼，退下火線後最珍貴的，莫過於牽著太太的手，帶著小朋友，來一場唔趕時間的長途旅行。<strong>南意大利</strong>，呢片被上帝親咀過的蔚藍海岸，有著燃燒的火山、沉睡的古城與無盡的檸檬香氣。18天，由拿坡里到西西里，每一天都係我哋一家人的金色回憶。",
-      p2: "呢趟長達18天的深度慢活之旅，我全副心思盡出 ── <strong>前半段活用平穩的義大利國鐵與網約大車，後半段喺西西里島開啟無痛自駕</strong>。我哋揀選咗多間位於核心商圈、出入極方便且物超所值的精品公寓酒店，全家玩得省心又大大滿足！",
+      p1: "大半生喺香港打拼，退下火線後最珍貴的，莫過於牽著太太的手，帶著小朋友，來一場唔趕時間的長途旅行。<strong>南意大利</strong>，呢片被上帝親咀過的蔚藍海岸，有著燃燒的火山、沉睡的古城與無盡的檸檬香氣。19天，由拿坡里到西西里，每一天都係我哋一家人的金色回憶。",
+      p2: "呢趟長達19天的深度慢活之旅，我全副心思盡出 ── <strong>前半段活用平穩的義大利國鐵與網約大車，後半段喺西西里島開啟無痛自駕</strong>。我哋揀選咗多間位於核心商圈、出入極方便且物超所值的精品公寓酒店，全家玩得省心又大大滿足！",
     },
     days1to5: {
       title: "🏛️ Day 1-5：拿坡里的熱情、沉睡的龐貝與火山奇蹟",
@@ -701,8 +701,8 @@ const content = {
       },
       day17: {
         title: "Day 17：陶爾米納古希臘劇場不朽落日、完美的終極謝幕",
-        p1: "第十七天係呢趟18天長征之旅的靈魂終章。我哋開車來到<strong>陶爾米納</strong>，走進最震撼的<strong>古希臘劇場</strong>。",
-        p2: "呢座劇場最天才的設計在於其舞台背景 ── <strong>直接將遠處冒煙的埃特納火山天際線與碧藍的愛琴海海平線無縫收納入鏡</strong>！當夕陽沉入火山背後，整片天空幻化成絢麗金橙色。全家人依偎在一起，為我哋18天的南意大利之旅劃上咗最完美的終極句號！",
+        p1: "第十七天係呢趟19天長征之旅的靈魂終章。我哋開車來到<strong>陶爾米納</strong>，走進最震撼的<strong>古希臘劇場</strong>。",
+        p2: "呢座劇場最天才的設計在於其舞台背景 ── <strong>直接將遠處冒煙的埃特納火山天際線與碧藍的愛琴海海平線無縫收納入鏡</strong>！當夕陽沉入火山背後，整片天空幻化成絢麗金橙色。全家人依偎在一起，為我哋19天的南意大利之旅劃上咗最完美的終極句號！",
         image: { src: "https://images.unsplash.com/photo-1601933977570-21974af8c7bb?w=1200&q=80", alt: "陶爾米納古希臘劇場", caption: "▲ 陶爾米納古希臘劇場" },
       },
       day18: {
@@ -720,7 +720,7 @@ const content = {
       },
     },
     tips: {
-      title: "💡 闔家歡 ‧ 南意大利18天慢活自由行隨身手札",
+      title: "💡 闔家歡 ‧ 南意大利19天慢活自由行隨身手札",
       items: [
         { icon: "🏨", label: "公寓酒店的無上智慧：", content: "帶一家人長途出行，精品公寓式酒店（特別係自帶小廚房的房型）係絕對首選。" },
         { icon: "🚗", label: "前半段地鐵與後半段自駕的「黃金無痛切換」：", content: "<strong>前半段千祈唔好自駕</strong>，全靠高鐵接駁與網約大車；<strong>後半段去普利亞和西西里島則必須提早網上租好一部7人大型自駕車</strong>。" },
