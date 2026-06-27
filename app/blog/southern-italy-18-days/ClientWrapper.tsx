@@ -196,7 +196,7 @@ const content = {
         p1: "第十九天是我們南意大利之旅的最終章。我們在<strong>敘拉古（Siracusa）</strong>這座擁有2700年歷史的古希臘城市度過最後一個悠閒的早晨。慢步在<strong>阿基米德廣場（Piazza Archimede）</strong>，感受這座古城的悠閒氛圍。",
         p2: "接著，我們來到名震全球的<strong>尼泊斯古蹟區（Parco Archeologico della Neapolis）</strong>，參觀由古希臘人在西元前挖掘的巨型<strong>露天劇場</strong>，以及傳說中阿基米德使用巨大鏡片反射陽光焚燒敵艦的<strong>「阿基米德之鏡」</strong>。小朋友在古蹟區內的橄欖樹下奔跑，玩得樂不思蜀！",
         p3: "下午四點，全家提著沉甸甸的手信與滿滿的歡笑療癒回憶，齊齊在卡塔尼亞機場還了自駕車，登機順利回港。這19天的南意大利行程，雖然時間長，但憑著前半段網約車錯峰與後半段無痛自駕，我們不僅省下了大筆銀両，更真正深入了地中海的骨血與市井。慢下來才驚覺，幸福其實很簡單 ── 不過是陪著最珍貴的太太同小朋友，在海岸的微風下慢步、在火山的晚霞中大笑相聚。南意大利這一趟，全家都話下次還要再來！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Syracuse_Italy.jpg/1280px-Syracuse_Italy.jpg", alt: "敘拉古風光", caption: "▲ 敘拉古的古老港口，承載著2700年的文明" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Siracuse_OrtigiaSeafront_010_2007.jpg/1280px-Siracuse_OrtigiaSeafront_010_2007.jpg", alt: "敘拉古風光", caption: "▲ 敘拉古的古老港口，承載著2700年的文明" },
       },
     },
     tips: {
@@ -370,7 +370,7 @@ const content = {
         p1: "第十九天是我们南意大利之旅的最终章。我们在<strong>叙拉古（Siracusa）</strong>这座拥有2700年历史的古希腊城市度过最后一个悠闲的早晨。漫步在<strong>阿基米德广场（Piazza Archimede）</strong>，感受这座古城的悠闲氛围，广场上有一座青铜雕像，就是为了纪念出生于叙拉古的著名科学家阿基米德而建。",
         p2: "接着，我们来到名震全球的<strong>尼泊斯古迹区（Parco Archeologico della Neapolis）</strong>，参观由古希腊人在公元前挖掘的巨型<strong>露天剧场</strong>，以及传说中阿基米德使用巨大镜片反射阳光焚烧敌舰的<strong>「阿基米德之镜」</strong>。这个古迹区还包括<strong>Latomia del Paradiso</strong>石窟花园，就是电影《基督的最后诱惑》与《宾汉》的取景地！小朋友在古迹区内的橄榄树下奔跑，玩得不亦乐乎！午餐我们去了古城内的<strong>Ristorante Don Camillo</strong>，是一间由古老石屋改建而成的餐厅，必尝他们的<strong>叙拉古传统意粉（Pasta alla Siracusana）</strong>，是用番茄、酸豆、橄榄与凤尾鱼炮制的当地特色酱汁，配上新鲜罗勒，就是最正宗的古希腊风味！",
         p3: "下午四点，全家提着沉甸甸的手信与满满的欢笑回忆，齐齐在卡塔尼亚机场还了自驾车，登机顺利回港。这19天的南意大利行程，虽然时间长，但凭前半段网约车错峰与后半段无痛自驾，我们不仅省下了大笔银两，更真正深入了地中海的骨血与市井。慢下来才惊觉，幸福其实很简单 ── 不过陪着最珍贵的太太同小朋友，在海岸的微风下慢步、在火山的晚霞中大笑相聚。南意大利这一趟，全家都说下次还要再来！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Syracuse_Italy.jpg/1280px-Syracuse_Italy.jpg", alt: "叙拉古风光", caption: "▲ 叙拉古的古老港口，承载着2700年的文明" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Siracuse_OrtigiaSeafront_010_2007.jpg/1280px-Siracuse_OrtigiaSeafront_010_2007.jpg", alt: "叙拉古风光", caption: "▲ 叙拉古的古老港口，承载着2700年的文明" },
       },
     },
     tips: {
@@ -544,7 +544,7 @@ const content = {
         p1: "Day 19 was the final chapter of our Southern Italy journey. We spent our last morning in <strong>Syracuse (Siracusa)</strong>, a 2,700-year-old ancient Greek city. We strolled through <strong>Piazza Archimede</strong> - home to a bronze statue of mathematician Archimedes born in Syracuse. Then we visited the world-famous <strong>Neapolis Archaeological Park</strong>, featuring an ancient Greek <strong>open-air theater</strong> carved in the 5th century BC, and the legendary quarry where Archimedes supposedly used mirrors to burn enemy ships. This site also includes <strong>Latomia del Paradiso</strong> - filming location for The Last Temptation of Christ and Ben-Hur! Our child ran joyfully under ancient olive trees!",
         p2: "Lunch was at <strong>Ristorante Don Camillo</strong> in the old town - a restaurant in a historic stone building. We tried <strong>Pasta alla Siracusana</strong> - local specialty with tomatoes, capers, olives, and anchovies, topped with fresh basil - authentic ancient Greek flavor!",
         p3: "At 4pm, carrying heavy souvenirs and full of happy memories, we returned the rental car at Catania airport and flew home. This 19-day Southern Italy journey, though long, let us truly experience the Mediterranean spirit through smart transport choices. Slowing down, we realized happiness is simple - just being with our most precious wife and child, strolling by the coast, laughing together at sunset. Our whole family says we'll be back!",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Syracuse_Italy.jpg/1280px-Syracuse_Italy.jpg", alt: "Syracuse View", caption: "▲ Syracuse's ancient harbor - carrying 2,700 years of civilization" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Siracuse_OrtigiaSeafront_010_2007.jpg/1280px-Siracuse_OrtigiaSeafront_010_2007.jpg", alt: "Syracuse View", caption: "▲ Syracuse's ancient harbor - carrying 2,700 years of civilization" },
       },
     },
     tips: {
@@ -718,7 +718,7 @@ const content = {
         p1: "第十九天係我哋南意大利之旅的最終章。我哋喺<strong>敘拉古（Siracusa）</strong>呢座擁有2700年歷史的古希臘城市度過最後一個悠閒的早晨。慢步喺<strong>阿基米德廣場（Piazza Archimede）</strong>，感受呢座古城的悠閒氛圍，廣場上有一座青銅雕像，就係為紀念出生於敘拉古的著名科學家阿基米德而建。",
         p2: "跟著，我哋來到名震全球的<strong>尼泊斯古蹟區（Parco Archeologico della Neapolis）</strong>，參觀由古希臘人喺西元前挖掘的巨型<strong>露天劇場</strong>，以及傳說中阿基米德使用巨大鏡片反射陽光焚燒敵艦的<strong>「阿基米德之鏡」</strong>。呢個古蹟區仲包括<strong>Latomia del Paradiso</strong>石窟花園，就係電影《基督的最後誘惑》與《賓漢》的取景地！小朋友喺古蹟區內的橄欖樹下奔跑，玩得樂不思蜀！午餐我哋去咗古城內的<strong>Ristorante Don Camillo</strong>，係一間由古老石屋改建而成的餐廳，必試佢哋的<strong>敘拉古傳統意粉（Pasta alla Siracusana）</strong>，係用番茄、酸豆、橄欖與鳳尾魚炮製的當地特色醬汁，配埋新鮮羅勒，就係最正宗的古希臘風味！",
         p3: "下午四點，全家提著沉甸甸的手信與滿滿的歡笑回憶，齊齊喺卡塔尼亞機場還咗自駕車，登機順利回港。呢19天的南意大利行程，雖然時間長，但憑著前半段網約車錯峰與後半段無痛自駕，我哋不僅省下咗大筆銀両，更真正深入咗地中海的骨血與市井。慢落嚟至驚覺，幸福其實好簡單 ── 不過係陪著最珍貴的太太同小朋友，喺海岸的微風下慢步、喺火山的晚霞中大笑相聚。南意大利呢一趟，全家都話下次仲要再嚟！",
-        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Syracuse_Italy.jpg/1280px-Syracuse_Italy.jpg", alt: "敘拉古風光", caption: "▲ 敘拉古的古老港口，承載著2700年的文明" },
+        image: { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Siracuse_OrtigiaSeafront_010_2007.jpg/1280px-Siracuse_OrtigiaSeafront_010_2007.jpg", alt: "敘拉古風光", caption: "▲ 敘拉古的古老港口，承載著2700年的文明" },
       },
     },
     tips: {
