@@ -96,7 +96,7 @@ const content = {
         title: "Day 4：征服維蘇威火山之巔、俯瞰拿坡里灣全景",
         p1: "這天，我們搭乘舒適的登山專線巴士直達<strong>維蘇威火山</strong>海拔1,000米的登山口。剩下的200米垂直高度需要純步行。這是一條平緩但略帶碎石的z字形登山步道，沿途空氣清新。我牽著小朋友，太太在一旁給我們加油。",
         p2: "當我們全家終於登上火山口邊緣，看著那個巨大的火山深坑，往外望去，整片湛藍的拿坡里灣、遠處錯落有致的城市紅屋頂如同一幅360度的巨幅風景長卷在腳下鋪開，震撼得讓人屏息！我們在火山口前擺出功夫姿勢拍下了全家福留念，小朋友興奮得連連讚嘆！",
-        image: { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80", alt: "維蘇威火山火山口全景", caption: "▲ 站在維蘇威火山之巔，俯瞰拿坡里灣的360度全景，壯闘人心" },
+        image: { src: "https://www.leisure-italy.com/wp-content/uploads/2020/08/visit-Mount-Vesuvius-7.jpg", alt: "維蘇威火山火山口全景", caption: "▲ 站在維蘇威火山之巔，俯瞰拿坡里灣的360度全景，壯闘人心" },
       },
       day5: {
         title: "Day 5：國立考古博物館與蛋堡藍調時刻",
@@ -270,7 +270,7 @@ const content = {
         title: "Day 4：征服维苏威火山之巅、俯瞰拿波里湾全景",
         p1: "这天，我们搭乘舒适的登山专线巴士直达<strong>维苏威火山</strong>海拔1,000米的登山口。剩下的200米垂直高度需要纯步行。",
         p2: "当我们全家终于登上火山口边缘，看着那个巨大的火山深坑，往外望去，整片湛蓝的拿波里湾、远处错落有致的城市红屋顶如同幅360度的巨幅风景长卷在脚下铺开，震撼得让人屏息！",
-        image: { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80", alt: "维苏威火山火山口全景", caption: "▲ 站在维苏威火山之巅，俯瞰拿波里湾的360度全景" },
+        image: { src: "https://www.leisure-italy.com/wp-content/uploads/2020/08/visit-Mount-Vesuvius-7.jpg", alt: "维苏威火山火山口全景", caption: "▲ 站在维苏威火山之巅，俯瞰拿波里湾的360度全景" },
       },
       day5: {
         title: "Day 5：国立考古博物馆与蛋堡蓝调时刻",
@@ -444,7 +444,7 @@ const content = {
         title: "Day 4: Conquering Mount Vesuvius Summit",
         p1: "We took the comfortable mountain shuttle bus to <strong>Mount Vesuvius</strong> at 1,000 meters altitude. The remaining 200 meters required walking. This is a gentle zigzag trail with fresh air along the way.",
         p2: "When we finally reached the crater's edge, looking at the massive volcanic crater and the panoramic view of the Bay of Naples below ── it was breathtaking! We took a family martial arts pose photo at the crater!",
-        image: { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80", alt: "Vesuvius Crater", caption: "▲ Standing on Vesuvius crater, 360° view of Bay of Naples" },
+        image: { src: "https://www.leisure-italy.com/wp-content/uploads/2020/08/visit-Mount-Vesuvius-7.jpg", alt: "Vesuvius Crater", caption: "▲ Standing on Vesuvius crater, 360° view of Bay of Naples" },
       },
       day5: {
         title: "Day 5: National Archaeological Museum & Castel dell'Ovo Blue Hour",
@@ -616,7 +616,7 @@ const content = {
         title: "Day 4：征服維蘇威火山之巔",
         p1: "呢天，我哋搭乘舒適的登山專線巴士直達<strong>維蘇威火山</strong>海拔1,000米的登山口。剩下的200米垂直高度需要純步行。",
         p2: "當我哋全家終於登上火山口邊緣，看著那個巨大的火山深坑，往外望去，整片湛藍的拿坡里灣如同一幅360度的巨幅風景長卷在腳下鋪開，震撼得讓人屏息！",
-        image: { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80", alt: "維蘇威火山火山口全景", caption: "▲ 站在維蘇威火山之巔" },
+        image: { src: "https://www.leisure-italy.com/wp-content/uploads/2020/08/visit-Mount-Vesuvius-7.jpg", alt: "維蘇威火山火山口全景", caption: "▲ 站在維蘇威火山之巔" },
       },
       day5: {
         title: "Day 5：國立考古博物館與蛋堡藍調時刻",
