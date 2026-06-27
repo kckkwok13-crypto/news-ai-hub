@@ -77,188 +77,6 @@ const TRANSLATIONS = {
 
 const EDITORIAL_ARTICLES = [
   {
-    id: 'q3-2026-global-economy-forecast',
-    emoji: '📊',
-    readTime: 12,
-    date: '2026-06-27',
-    link: '/editorial/q3-2026-global-economy-forecast',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '第三季全球經濟預測：通膨回升、利率僵局與貿易戰下半場的十字路口', category: '宏觀經濟', excerpt: '全球經濟正站在通膨回升與增長放緩的十字路口，第三季將是決定2026年經濟走向的關鍵分水嶺。' },
-      'en': { title: 'Q3 2026 Global Economic Forecast: Inflation Rebound, Rate Stalemate, and the Second Half of the Trade War', category: 'Macro Economy', excerpt: 'The global economy stands at a crossroads of inflation rebound and growth slowdown. Q3 will be a critical juncture determining the economic trajectory for 2026.' },
-      'zh-CN': { title: '第三季度全球经济预测：通胀回升、利率僵局与贸易战下半场的十字路口', category: '宏观经济', excerpt: '全球经济正站在通胀回升与增长放缓的十字路口，第三季度将是决定2026年经济走向的关键分水岭。' }
-    }
-  },
-  {
-    id: 'bitcoin-58k-analysis-2026',
-    emoji: '₿',
-    readTime: 10,
-    date: '2026-06-27',
-    link: '/editorial/bitcoin-58k-analysis-2026',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '比特幣跌破58,000美元！係咪抄底時機？2026加密貨幣走勢深度分析', category: '加密貨幣', excerpt: '比特幣單日暴跌5%，跌至2024年9月以來最低水平，$1.26B期貨被清算。通脹過熱、聯儲減息期望消散。' },
-      'en': { title: 'Bitcoin Plunges to $58,000! Is It Time to Buy the Dip? 2026 Crypto Analysis', category: 'Crypto', excerpt: 'Bitcoin crashed 5% in a single day to its lowest since September 2024. With $1.26B in liquidations, is this the buying opportunity?' },
-      'zh-CN': { title: '比特币跌破58,000美元！是不是抄底时机？2026加密货币走势深度分析', category: '加密货币', excerpt: '比特币单日暴跌5%，跌至2024年9月以来最低水平，$1.26B期货被清算。通胀过热、联储减息期望消散。' }
-    }
-  },
-  {
-    id: 'ai-ethics-importance-2026',
-    emoji: '🤖',
-    readTime: 11,
-    date: '2026-06-27',
-    link: '/editorial/ai-ethics-importance-2026',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: 'AI倫理點解突然咁重要？2026年你必須知嘅8大AI道德爭議', category: 'AI倫理', excerpt: '從「數據掠奪」到「演算法歧視」，AI倫理已成為2026年全球最受關注嘅議題之一。弗吉尼亞大學教授警告：未來5年決定一切。' },
-      'en': { title: 'Why AI Ethics Suddenly Matters: 8 Major AI Ethical Controversies You Must Know in 2026', category: 'AI Ethics', excerpt: 'From data plundering to algorithmic discrimination, AI ethics has become one of the most watched topics globally in 2026.' },
-      'zh-CN': { title: 'AI伦理为什么突然这么重要？2026年你必须知道的8大AI道德争议', category: 'AI伦理', excerpt: '从「数据掠夺」到「算法歧视」，AI伦理已成为2026年全球最受关注的议题之一。' }
-    }
-  },
-  {
-    id: 'bitcoin-etf',
-    emoji: '₿',
-    readTime: 10,
-    date: '2026-05-28',
-    link: '/editorial/bitcoin-etf-deep-analysis',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '比特幣ETF獲批後：加密貨幣市場結構性改變的深度分析', category: '加密貨幣', excerpt: '比特幣現貨ETF的批准不僅是監管的勝利，更標誌著傳統金融與加密市場之間那道曾經不可逾越的鴻溝正在加速消亡。' },
-      'en': { title: 'After Bitcoin ETF Approval: In-depth Analysis of Structural Changes in the Crypto Market', category: 'Crypto', excerpt: 'The approval of spot Bitcoin ETFs is not just a regulatory victory; it marks the accelerating dissolution of the once insurmountable gap between traditional finance and crypto markets.' },
-      'zh-CN': { title: '比特币ETF获批后：加密货币市场结构性改变的深度分析', category: '加密货币', excerpt: '比特币现货ETF的批准不仅是监管的胜利，更标志着传统金融与加密市场之间那道曾经不可逾越的鸿沟正在加速消亡。' }
-    }
-  },
-  {
-    id: 'ai-translation-ethics',
-    emoji: '🤖',
-    readTime: 9,
-    date: '2026-05-25',
-    link: '/editorial/ai-translation-ethics',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: 'AI 翻譯新聞的倫理邊界：如何在技術便利與保護原創價值之間取得平衡？', category: '科技評論', excerpt: '當AI能夠在數秒內將一篇英文新聞翻譯成繁體中文，新聞的本質是否正在被稀釋？本文從編輯政策角度探討AI輔助翻譯的倫理邊界。' },
-      'en': { title: 'Ethical Boundaries of AI News Translation: Balancing Tech Convenience and Original Value', category: 'Tech Opinion', excerpt: 'When AI can translate English news into Traditional Chinese in seconds, is the essence of journalism being diluted? This article explores ethical boundaries.' },
-      'zh-CN': { title: 'AI 翻译新闻的伦理边界：如何在技术便利与保护原创价值之间取得平衡？', category: '科技评论', excerpt: '当AI能够在数秒内将一篇英文新闻翻译成简体中文，新闻的本质是否正在被稀释？本文从编辑政策角度探讨AI辅助翻译的伦理边界。' }
-    }
-  },
-  {
-    id: 'twohumans-vs-ai',
-    emoji: '⚖️',
-    readTime: 11,
-    date: '2026-05-20',
-    link: '/editorial/twohumans-vs-ai-analysis',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '新聞App的AI分析功能：兩個不同背景的人 VS 一個AI，你信哪個？', category: '科技評論', excerpt: '當演算法可以瞬間總結全球新聞，「人性」與「效率」之間的取捨，究竟誰更能代表真相？' },
-      'en': { title: 'AI Analysis in News Apps: Two Humans VS One AI, Who Do You Trust?', category: 'Tech Opinion', excerpt: 'When algorithms can instantly summarize global news, which represents the truth better: humanity or efficiency?' },
-      'zh-CN': { title: '新闻App的AI分析功能：两个不同背景的人 VS 一个AI，你信哪个？', category: '科技评论', excerpt: '当算法可以瞬间总结全球新闻，“人性”与“效率”之间的取舍，究竟谁更能代表真相？' }
-    }
-  },
-  {
-    id: 'cbdc',
-    emoji: '🏦',
-    readTime: 10,
-    date: '2026-05-15',
-    link: '/editorial/cbdc-global-race',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '全球央行數字貨幣競賽：美元霸權的終結還是進化？', category: '金融', excerpt: '從中國的數字人民幣到歐洲央行的數字歐元，各國央行正在加速布局數字貨幣。這場競賽將如何重塑全球金融秩序？' },
-      'en': { title: 'Global CBDC Race: The End or Evolution of Dollar Hegemony?', category: 'Finance', excerpt: 'From China\'s e-CNY to the ECB\'s Digital Euro, central banks are racing to deploy digital currencies. How will this reshape the financial order?' },
-      'zh-CN': { title: '全球央行数字货币竞赛：美元霸权的终结还是进化？', category: '金融', excerpt: '从中国的数字人民币到欧洲央行的数字欧元，各国央行正在加速布局数字货币。这场竞赛将如何重塑全球金融秩序？' }
-    }
-  },
-  {
-    id: 'stablecoin',
-    emoji: '🪙',
-    readTime: 11,
-    date: '2026-05-12',
-    link: '/editorial/stablecoin-war',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '穩定幣大戰：USDT/USDC/USDJ誰能笑到最後？', category: '加密貨幣', excerpt: '當傳統銀行、加密原生公司、科技巨頭全部湧入穩定幣賽道，這場戰爭將如何改變我們的貨幣體系？' },
-      'en': { title: 'Stablecoin War: USDT, USDC, or USDJ—Who Will Prevail?', category: 'Crypto', excerpt: 'As traditional banks and tech giants enter the stablecoin arena, how will this war transform our monetary system?' },
-      'zh-CN': { title: '稳定币大战：USDT/USDC/USDJ谁能笑到最后？', category: '加密货币', excerpt: '当传统银行、加密原生公司、科技巨头全部湧入稳定币赛道，这场战争将如何改变我们的货币体系？' }
-    }
-  },
-  {
-    id: 'decentralized-finance',
-    emoji: '💱',
-    readTime: 10,
-    date: '2026-05-10',
-    link: '/editorial/decentralized-finance-guide',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '去中心化金融DeFi：銀行業務的革命還是投機的溫床？', category: '金融科技', excerpt: '去中心化金融協議正在挑戰傳統銀行系統。從借貸到衍生品交易，用戶可以在無需中介的情況下進行金融活動。' },
-      'en': { title: 'Decentralized Finance (DeFi): Banking Revolution or Speculative Bubble?', category: 'FinTech', excerpt: 'DeFi protocols are challenging traditional banking. From lending to derivatives, users can transact without intermediaries.' },
-      'zh-CN': { title: '去中心化金融DeFi：银业务的革命还是投机的温床？', category: '金融科技', excerpt: '去中心化金融协议正在挑战传统银行系统。从借贷到衍生品交易，用户可以在无需中介的情况下进行金融活动。' }
-    }
-  },
-  {
-    id: 'ai-image-generator',
-    emoji: '🎨',
-    readTime: 9,
-    date: '2026-05-08',
-    link: '/editorial/ai-image-generators',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: 'AI圖像生成器大爆發：Midjourney、DALL-E、Stable Diffusion如何改變創意產業？', category: 'AI應用', excerpt: '當任何人都可以通過文字描述在幾秒鐘內生成專業級圖像，傳統創意工作者如何生存？' },
-      'en': { title: 'AI Image Generator Boom: How Midjourney and DALL-E are Changing Creative Industries', category: 'AI Application', excerpt: 'When anyone can generate professional images in seconds via text, how do traditional creators survive?' },
-      'zh-CN': { title: 'AI图像生成器大爆发：Midjourney、DALL-E、Stable Diffusion如何改变创意产业？', category: 'AI应用', excerpt: '当任何人都可以通过文字描述在几秒钟内生成专业级图像，传统创意工作者如何生存？' }
-    }
-  },
-  {
-    id: 'web3-gaming',
-    emoji: '🎮',
-    readTime: 10,
-    date: '2026-05-06',
-    link: '/editorial/web3-gaming-future',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: 'Web3遊戲的未來：玩遊戲不再只是消費，而是賺錢？', category: '區塊鏈', excerpt: '區塊鏈遊戲正在重新定義玩家與開發者之間的關係。從「Play-to-Earn」到完全所有權的遊戲資產。' },
-      'en': { title: 'Future of Web3 Gaming: Is Playing Games No Longer Just Consumption, But Earning?', category: 'Blockchain', excerpt: 'Blockchain games are redefining player-developer relationships through Play-to-Earn models.' },
-      'zh-CN': { title: 'Web3游戏的未来：玩游戏不再只是消费，而是赚钱？', category: '区块链', excerpt: '区块链游戏正在重新定义玩家与开发者之间的关系。从“Play-to-Earn”到完全所有权的游戏资产。' }
-    }
-  },
-  {
-    id: 'metaverse-workplace',
-    emoji: '🏢',
-    readTime: 9,
-    date: '2026-05-04',
-    link: '/editorial/metaverse-workplace',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '元宇宙工作場所：虛擬辦公室的崛起與人力資源管理的未來', category: '科技職場', excerpt: '遠程辦公的普及，而元宇宙技術正在將這一趨勢推向新的維度。虛擬辦公室將是什麼樣子？' },
-      'en': { title: 'Metaverse Workplace: Rise of Virtual Offices and the Future of HR Management', category: 'Tech Career', excerpt: 'Metaverse tech is pushing remote work into new dimensions. What will virtual offices look like?' },
-      'zh-CN': { title: '元宇宙工作场所：虚拟办公室的崛起与人力资源管理的未来', category: '科技职场', excerpt: '远程办公的普及，而元宇宙技术正在将这一趋势推向新的维度。虚拟办公室将是什么样子？' }
-    }
-  },
-  {
-    id: 'quantum-computing',
-    emoji: '⚛️',
-    readTime: 10,
-    date: '2026-05-02',
-    link: '/editorial/quantum-computing-ai',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '量子計算與AI：當兩大革命性技術結合會發生什麼？', category: '前沿科技', excerpt: '量子計算機被譽為解決當前AI瓶頸的關鍵。量子AI的結合可能會徹底改變我們解決複雜問題的方式。' },
-      'en': { title: 'Quantum Computing and AI: What Happens When Two Revolutionary Techs Combine?', category: 'Frontier Tech', excerpt: 'Quantum computers are seen as the key to solving AI bottlenecks. Quantum AI could change everything.' },
-      'zh-CN': { title: '量子计算与AI：当两大革命性技术结合会发生什么？', category: '前沿科技', excerpt: '量子计算机被誉为解决当前AI瓶颈的关键。量子AI的结合可能会彻底改变我们解决复杂问题的方式。' }
-    }
-  },
-  {
     id: 'space-tourism',
     emoji: '🚀',
     readTime: 9,
@@ -284,34 +102,6 @@ const EDITORIAL_ARTICLES = [
       'zh-TW': { title: '永續加密貨幣：區塊鏈如何實現碳中和承諾？', category: '環境科技', excerpt: '比特幣挖礦被指責為碳排放大戶，但新的共識機制正在改變這一切。' },
       'en': { title: 'Sustainable Crypto: How Blockchain Can Achieve Carbon Neutrality', category: 'Green Tech', excerpt: 'Bitcoin mining is often blamed for emissions, but new consensus mechanisms are changing that.' },
       'zh-CN': { title: '永续加密货币：区块链如何实现碳中和承诺？', category: '环境科技', excerpt: '比特币挖矿被指责为碳排放大户，但新的共识机制正在改变这一切。' }
-    }
-  },
-  {
-    id: 'regenerative-ai',
-    emoji: '⚖️',
-    readTime: 10,
-    date: '2026-04-26',
-    link: '/editorial/regenerative-ai',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '生成式AI的倫理邊界：我們如何確保AI發展符合人類價值觀？', category: 'AI倫理', excerpt: '當AI能夠生成足以欺騙人類的假新聞、假圖片和假視頻，社會需要建立新的規範框架。' },
-      'en': { title: 'Ethical Boundaries of Generative AI: Ensuring AI Aligns with Human Values', category: 'AI Ethics', excerpt: 'As AI generates convincing fake news and media, society needs new regulatory frameworks.' },
-      'zh-CN': { title: '生成式AI的伦理边界：我们如何确保AI发展符合人类价值观？', category: 'AI伦理', excerpt: '当AI能够生成足以欺骗人类的假新闻、假图片和假视频，社会需要建立新的规范框架。' }
-    }
-  },
-  {
-    id: 'tech-giants-ai',
-    emoji: '🏆',
-    readTime: 10,
-    date: '2026-04-24',
-    link: '/editorial/tech-giants-ai-race',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000',
-    translations: {
-      'zh-TW': { title: '科技巨頭的AI競賽：Google、Microsoft、Meta誰能勝出？', category: '科技評論', excerpt: '人工智能領域的競爭日益激烈，科技巨頭們都在爭奪AI霸主地位。' },
-      'en': { title: 'Tech Giants\' AI Race: Google, Microsoft vs Meta', category: 'Tech Opinion', excerpt: 'Competition in AI is heating up as tech giants battle for dominance in the next frontier.' },
-      'zh-CN': { title: '科技巨头的AI竞赛：Google、Microsoft、Meta谁能胜出？', category: '科技评论', excerpt: '人工智能领域的竞争日益激烈，科技巨头们都在争夺AI霸主地位。' }
     }
   },
   {
@@ -357,31 +147,31 @@ const EDITORIAL_ARTICLES = [
     }
   },
   {
-    id: 'ai-job-revolution',
-    emoji: '🤖',
-    readTime: 12,
-    date: '2026-04-16',
-    link: '/editorial/ai-job-revolution',
+    id: 'web3-gaming',
+    emoji: '🎮',
+    readTime: 10,
+    date: '2026-05-06',
+    link: '/editorial/web3-gaming-future',
     featured: false,
-    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1000',
     translations: {
-      'zh-TW': { title: 'AI 搶工潮：這個時代我們如何自救？', category: '科技評論', excerpt: '當ChatGPT改變遊戲規則，打工仔、Freelancer要如何應對？' },
-      'en': { title: 'AI Job Revolution: How to Future-Proof Your Career', category: 'Tech Opinion', excerpt: 'As ChatGPT redefines the workplace, how should employees and freelancers adapt?' },
-      'zh-CN': { title: 'AI 抢工潮：这个时代我们如何自救？', category: '科技评论', excerpt: '当ChatGPT改变游戏规则，打工仔、Freelancer要如何应对？' }
+      'zh-TW': { title: 'Web3遊戲的未來：玩遊戲不再只是消費，而是賺錢？', category: '區塊鏈', excerpt: '區塊鏈遊戲正在重新定義玩家與開發者之間的關係。從「Play-to-Earn」到完全所有權的遊戲資產。' },
+      'en': { title: 'Future of Web3 Gaming: Is Playing Games No Longer Just Consumption, But Earning?', category: 'Blockchain', excerpt: 'Blockchain games are redefining player-developer relationships through Play-to-Earn models.' },
+      'zh-CN': { title: 'Web3游戏的未来：玩游戏不再只是消费，而是赚钱？', category: '区块链', excerpt: '区块链游戏正在重新定义玩家与开发者之间的关系。从"Play-to-Earn"到完全所有权的游戏资产。' }
     }
   },
   {
-    id: 'ai-healthcare',
-    emoji: '🏥',
-    readTime: 10,
-    date: '2026-04-14',
-    link: '/editorial/ai-healthcare-revolution',
+    id: 'metaverse-workplace',
+    emoji: '🏢',
+    readTime: 9,
+    date: '2026-05-04',
+    link: '/editorial/metaverse-workplace',
     featured: false,
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1000',
     translations: {
-      'zh-TW': { title: 'AI 醫療革命：演算法能比醫生更準確嗎？', category: '健康科技', excerpt: '從早期癌症檢測到藥物研發，AI正在重塑醫療行業。但隱私與責任歸屬仍是難題。' },
-      'en': { title: 'AI Healthcare Revolution: Can Algorithms Be More Accurate Than Doctors?', category: 'HealthTech', excerpt: 'From early cancer detection to drug discovery, AI is reshaping medicine. But challenges remain.' },
-      'zh-CN': { title: 'AI 医疗革命：算法能比医生更准确吗？', category: '健康科技', excerpt: '从早期癌症检测到药物研发，AI正在重塑医疗行业。但隐私与责任归属仍是难题。' }
+      'zh-TW': { title: '元宇宙工作場所：虛擬辦公室的崛起與人力資源管理的未來', category: '科技職場', excerpt: '遠程辦公的普及，而元宇宙技術正在將這一趨勢推向新的維度。虛擬辦公室將是什麼樣子？' },
+      'en': { title: 'Metaverse Workplace: Rise of Virtual Offices and the Future of HR Management', category: 'Tech Career', excerpt: 'Metaverse tech is pushing remote work into new dimensions. What will virtual offices look like?' },
+      'zh-CN': { title: '元宇宙工作场所：虚拟办公室的崛起与人力资源管理的未来', category: '科技职场', excerpt: '远程办公的普及，而元宇宙技术正在将这一趋势推向新的维度。虚拟办公室将是什么样子？' }
     }
   },
   {
