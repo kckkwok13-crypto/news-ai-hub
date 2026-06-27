@@ -165,7 +165,7 @@ const content = {
         title: "Day 14：巴勒莫主教座堂、巴拉羅夜市大快朵頤",
         p1: "第十四天早上，我們來到宏偉的<strong>巴勒莫主教座堂</strong>。這座教堂融匯了哥德式、摩爾式與文藝復興式，宛如一座巨大的沙雕城堡。我帶著太太同小朋友花費幾歐元，登上了大教堂的<strong>黃金弧形屋頂步道</strong>。站在上面，往外望去能360度鳥瞰整座百塔之城的歷史街區，視野一流！",
         p2: "入夜後，西西里島的夜生活重頭戲降臨！我們一頭扎進全島最具本土生命力的<strong>巴拉羅老街夜市</strong>。這裡一到晚上霓虹燈亮起，熱氣騰騰。我們點了歷史悠久的街頭平民美味<strong>「牛脾包」</strong>、碩大如拳頭的<strong>「炸飯糰」</strong>與現烤的<strong>巨型地中海章魚腳</strong>，大快朵頤！",
-        image: { src: "https://images.unsplash.com/photo-1596731498067-2a57e52a61c8?w=1200&q=80", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市是西西里島最具本土生命力的美食天堂" },
+        image: { src: "https://italiantripabroad.it/Blog/wp-content/uploads/2023/10/Food-stalls-in-Palermo-Ballaro-market-1024x575.jpg", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市是西西里島最具本土生命力的美食天堂" },
       },
       day15: {
         title: "Day 15：切法盧純白沙灘慢活、崖壁小鎮的慵懶午後",
@@ -339,7 +339,7 @@ const content = {
         title: "Day 14：巴勒莫主教座堂、巴拉罗夜市大快朵颐",
         p1: "第十四天早上，我们来到宏伟的<strong>巴勒莫主教座堂（Cattedrale di Palermo）</strong>。这座教堂融汇了哥德式、摩尔式与文艺复兴式多种建筑风格，宛如一座巨大的文化熔炉。我带着太太同小朋友花费几欧元，登上了大教堂的<strong>黄金弧形屋顶步道</strong>。站在上面，往外望去能360度鸟瞰整座百塔之城的历史街区，视野一流！",
         p2: "入夜后，西西里岛的夜生活重头戏降临！我们一头扎进全岛最具本土生命力的<strong>巴拉罗老街夜市（Ballarò Market）</strong>。这里一到晚上霓虹灯亮起，热气腾腾，空气中充满香料与海鲜的气味。我们点了历史悠久的街头平民美味<strong>「牛脾包（Panino con la Milza）」</strong>，是将牛脾脏切碎后夹入软包，配合柠檬汁与香草，香脆惹味！再配一个硕大如拳头的<strong>炸饭团</strong>与现烤的<strong>巨型地中海章鱼脚（Polpo alla Brace）</strong>，大快朵颐！",
-        image: { src: "https://images.unsplash.com/photo-1596731498067-2a57e52a61c8?w=1200&q=80", alt: "巴拉罗夜市", caption: "▲ 巴拉罗夜市是西西里岛最具本土生命力的美食天堂" },
+        image: { src: "https://italiantripabroad.it/Blog/wp-content/uploads/2023/10/Food-stalls-in-Palermo-Ballaro-market-1024x575.jpg", alt: "巴拉罗夜市", caption: "▲ 巴拉罗夜市是西西里岛最具本土生命力的美食天堂" },
       },
       day15: {
         title: "Day 15：切法卢纯白海滩慢活、崖壁小镇的慵懒午后",
@@ -513,7 +513,7 @@ const content = {
         title: "Day 14: Palermo Cathedral Roof, Ballarò Night Market Feast",
         p1: "Day 14 morning, we visited the magnificent <strong>Palermo Cathedral (Cattedrale di Palermo)</strong>. This cathedral blends Gothic, Moorish, and Renaissance styles - a true architectural melting pot! We climbed to the <strong>golden curved roof walkway</strong> for just a few euros, enjoying 360° panoramic views of Palermo's historic 'City of 100 Towers' - absolutely breathtaking!",
         p2: "At night, we dived into <strong>Ballarò Market</strong>, Sicily's most vibrant night market. Neon lights flickered, the air filled with spices and seafood aromas. We feasted on traditional <strong>Panino con la Milza</strong> - minced beef spleen in soft bread with lemon and herbs, crispy and savory! Paired with giant <strong>arancini</strong> and grilled <strong>Mediterranean octopus (Polpo alla Brace)</strong> - absolutely delicious!",
-        image: { src: "https://images.unsplash.com/photo-1596731498067-2a57e52a61c8?w=1200&q=80", alt: "Ballarò Market", caption: "▲ Ballarò Market - Sicily's most vibrant food paradise with authentic street flavors" },
+        image: { src: "https://italiantripabroad.it/Blog/wp-content/uploads/2023/10/Food-stalls-in-Palermo-Ballaro-market-1024x575.jpg", alt: "Ballarò Market", caption: "▲ Ballarò Market - Sicily's most vibrant food paradise with authentic street flavors" },
       },
       day15: {
         title: "Day 15: Cefalù's White Sand Beach Slow Living",
@@ -681,13 +681,13 @@ const content = {
         title: "Day 13：渡輪橫渡西里拿海峽、入駐巴勒莫",
         p1: "第十三天，我哋開啟呢趟旅程最豪邁的體驗 ── <strong>開著車直接開進巨型渡輪的船艙</strong>，橫渡著名的西里拿海峽，正式登陸神秘而熱情的<strong>西西里島（Sicily）</strong>！呢個體驗對小朋友嚟講非常新奇，佢喺渡輪甲板上看著海鷗齊飛，高興極了。渡輪大約行駛一小時，沿途可以睇到對岸的雪山與海天一色的景色。",
         p2: "下午我哋抵達首府<strong>巴勒莫（Palermo）</strong>，進駐位於新古典主義步行街核心的<strong>巴勒莫大劇院精品公寓</strong>。呢間公寓客廳極大，推開落地玻璃窗就能睇見宏偉的巴勒莫馬西莫劇院，下樓就係大型購物廣場與無數餐廳，物超所值！晚餐我哋去咗歷史悠久的<strong>Antica Focacceria San Francesco</strong>，係1880年開業的老店，必試佢哋的<strong>西西里島炸飯糰（Arancini）</strong>，有別於拿坡里的版本，西西里島的炸飯糰入面係滿滿的番紅花忌廉飯、豌豆與火腿，份量大到如同拳頭，正！",
-        image: { src: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市係西西里島最具本土生命力的美食天堂" },
+        image: { src: "https://italiantripabroad.it/Blog/wp-content/uploads/2023/10/Food-stalls-in-Palermo-Ballaro-market-1024x575.jpg", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市係西西里島最具本土生命力的美食天堂" },
       },
       day14: {
         title: "Day 14：巴勒莫主教座堂、巴拉羅夜市大快朵頤",
         p1: "第十四天早上，我哋來到宏偉的<strong>巴勒莫主教座堂（Cattedrale di Palermo）</strong>。呢座教堂融匯咗哥德式、摩爾式與文藝復興式多種建築風格，宛如一座巨大的文化熔爐。我帶著太太同小朋友花費幾歐元，登咗上大教堂的<strong>黃金弧形屋頂步道</strong>。站在上面，往外望去能360度鳥瞰整座百塔之城的歷史街區，視野一流！",
         p2: "入夜後，西西里島的夜生活重頭戲降臨！我哋一頭扎進全島最具本土生命力的<strong>巴拉羅老街夜市（Ballarò Market）</strong>。呢度一到晚上霓虹燈亮起，熱氣騰騰，空氣中充滿晒香料與海鮮的氣味。我哋點咗歷史悠久的街頭平民美味<strong>「牛脾包（Panino con la Milza）」</strong>，係將牛脾臟切碎後夾入軟包，配合檸檬汁與香草，香脆惹味！再配一個碩大如拳頭的<strong>炸飯糰</strong>與現烤的<strong>巨型地中海章魚腳（Polpo alla Brace）</strong>，大快朵頤！",
-        image: { src: "https://images.unsplash.com/photo-1596731498067-2a57e52a61c8?w=1200&q=80", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市係西西里島最具本土生命力的美食天堂" },
+        image: { src: "https://italiantripabroad.it/Blog/wp-content/uploads/2023/10/Food-stalls-in-Palermo-Ballaro-market-1024x575.jpg", alt: "巴拉羅夜市", caption: "▲ 巴拉羅夜市係西西里島最具本土生命力的美食天堂" },
       },
       day15: {
         title: "Day 15：切法盧純白沙灘慢活、崖壁小鎮的慵懶午後",
