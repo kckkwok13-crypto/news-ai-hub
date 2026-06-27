@@ -91,6 +91,34 @@ const EDITORIAL_ARTICLES = [
     }
   },
   {
+    id: 'bitcoin-58k-analysis-2026',
+    emoji: '₿',
+    readTime: 10,
+    date: '2026-06-27',
+    link: '/editorial/bitcoin-58k-analysis-2026',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=1000',
+    translations: {
+      'zh-TW': { title: '比特幣跌破58,000美元！係咪抄底時機？2026加密貨幣走勢深度分析', category: '加密貨幣', excerpt: '比特幣單日暴跌5%，跌至2024年9月以來最低水平，$1.26B期貨被清算。通脹過熱、聯儲減息期望消散。' },
+      'en': { title: 'Bitcoin Plunges to $58,000! Is It Time to Buy the Dip? 2026 Crypto Analysis', category: 'Crypto', excerpt: 'Bitcoin crashed 5% in a single day to its lowest since September 2024. With $1.26B in liquidations, is this the buying opportunity?' },
+      'zh-CN': { title: '比特币跌破58,000美元！是不是抄底时机？2026加密货币走势深度分析', category: '加密货币', excerpt: '比特币单日暴跌5%，跌至2024年9月以来最低水平，$1.26B期货被清算。通胀过热、联储减息期望消散。' }
+    }
+  },
+  {
+    id: 'ai-ethics-importance-2026',
+    emoji: '🤖',
+    readTime: 11,
+    date: '2026-06-27',
+    link: '/editorial/ai-ethics-importance-2026',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
+    translations: {
+      'zh-TW': { title: 'AI倫理點解突然咁重要？2026年你必須知嘅8大AI道德爭議', category: 'AI倫理', excerpt: '從「數據掠奪」到「演算法歧視」，AI倫理已成為2026年全球最受關注嘅議題之一。弗吉尼亞大學教授警告：未來5年決定一切。' },
+      'en': { title: 'Why AI Ethics Suddenly Matters: 8 Major AI Ethical Controversies You Must Know in 2026', category: 'AI Ethics', excerpt: 'From data plundering to algorithmic discrimination, AI ethics has become one of the most watched topics globally in 2026.' },
+      'zh-CN': { title: 'AI伦理为什么突然这么重要？2026年你必须知道的8大AI道德争议', category: 'AI伦理', excerpt: '从「数据掠夺」到「算法歧视」，AI伦理已成为2026年全球最受关注的议题之一。' }
+    }
+  },
+  {
     id: 'bitcoin-etf',
     emoji: '₿',
     readTime: 10,
