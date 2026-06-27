@@ -102,7 +102,7 @@ const content = {
         title: "Day 5：國立考古博物館與蛋堡藍調時刻",
         p1: "連續兩天的戶外活動後，第五天我們放慢步調，走進冷氣充足、地面全平坦的<strong>拿坡里國立考古博物館</strong>。這裏是全球收藏龐貝古城壁畫與馬賽克珍品最頂級的聖地。我們悠閒地推著租來的嬰兒車，在宏偉的展廳裡欣賞那幅名震全球的《亞歷山大大戰大流士》巨幅馬賽克，線條之細膩，視覺震撼度100%。",
         p2: "傍晚時分，我們來到海濱的<strong>蛋堡（Castel dell'Ovo）</strong>。坐在海濱木棧道的長椅上，看著落日晚霞將整片天空染成夢幻的紫紅色，隨後天空轉為深邃的皇家藍，蛋堡點亮暖黃色的夜燈倒影水中，美得動人心魄！",
-        image: { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80", alt: "蛋堡日落風光", caption: "▲ 蛋堡的黃昏藍調時刻，天空呈現夢幻的紫紅與皇家藍" },
+        image: { src: "https://www.italyscape.com/sites/default/files/styles/cover_large/public/2023-07/Castel%20dell%27Ovo%2C%20Naples%2C%20Campania%2C%20Italy_.jpeg?h=790be497&itok=YUDVlyeY", alt: "蛋堡日落風光", caption: "▲ 蛋堡的黃昏藍調時刻，天空呈現夢幻的紫紅與皇家藍" },
       },
     },
     days6to9: {
@@ -276,7 +276,7 @@ const content = {
         title: "Day 5：国立考古博物馆与蛋堡蓝调时刻",
         p1: "第五天我们放慢步调，走进冷气充足、地面全平坦的<strong>拿波里国立考古博物馆</strong>。这里收藏了庞贝古城壁画与马赛克珍品最顶级的圣地。",
         p2: "傍晚时分，我们来到海滨的<strong>蛋堡（Castel dell'Ovo）</strong>。看着落日晚霞将整片天空染成梦幻的紫红色，蛋堡点亮暖黄色的夜灯倒影水中，美得动人心魄！",
-        image: { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80", alt: "蛋堡日落风光", caption: "▲ 蛋堡的黄昏蓝调时刻" },
+        image: { src: "https://www.italyscape.com/sites/default/files/styles/cover_large/public/2023-07/Castel%20dell%27Ovo%2C%20Naples%2C%20Campania%2C%20Italy_.jpeg?h=790be497&itok=YUDVlyeY", alt: "蛋堡日落风光", caption: "▲ 蛋堡的黄昏蓝调时刻" },
       },
     },
     days6to9: {
@@ -450,7 +450,7 @@ const content = {
         title: "Day 5: National Archaeological Museum & Castel dell'Ovo Blue Hour",
         p1: "After two days outdoors, Day 5 we slowed down and visited the air-conditioned <strong>Naples National Archaeological Museum</strong>, home to the world's finest Pompeii frescoes and mosaic collections.",
         p2: "In the evening, we came to the seaside <strong>Castel dell'Ovo</strong>. Watching the sunset paint the sky dreamy purple-red, then turning into deep royal blue, with the castle's warm yellow lights reflected in the water ── absolutely breathtaking!",
-        image: { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80", alt: "Castel dell'Ovo Sunset", caption: "▲ Castel dell'Ovo at blue hour" },
+        image: { src: "https://www.italyscape.com/sites/default/files/styles/cover_large/public/2023-07/Castel%20dell%27Ovo%2C%20Naples%2C%20Campania%2C%20Italy_.jpeg?h=790be497&itok=YUDVlyeY", alt: "Castel dell'Ovo Sunset", caption: "▲ Castel dell'Ovo at blue hour" },
       },
     },
     days6to9: {
@@ -622,7 +622,7 @@ const content = {
         title: "Day 5：國立考古博物館與蛋堡藍調時刻",
         p1: "第五天我哋放慢步調，走進冷氣充足的<strong>拿坡里國立考古博物館</strong>。呢度係全球收藏龐貝古城壁畫與馬賽克珍品最頂級的聖地。",
         p2: "傍晚時分，我哋來到海濱的<strong>蛋堡</strong>。看著落日晚霞將整片天空染成夢幻的紫紅色，美得動人心魄！",
-        image: { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80", alt: "蛋堡日落風光", caption: "▲ 蛋堡的黃昏藍調時刻" },
+        image: { src: "https://www.italyscape.com/sites/default/files/styles/cover_large/public/2023-07/Castel%20dell%27Ovo%2C%20Naples%2C%20Campania%2C%20Italy_.jpeg?h=790be497&itok=YUDVlyeY", alt: "蛋堡日落風光", caption: "▲ 蛋堡的黃昏藍調時刻" },
       },
     },
     days6to9: {
