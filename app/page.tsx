@@ -833,6 +833,9 @@ export default function NewsPage() {
               <Link href="/ai-tools" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
                 🤖 AI工具
               </Link>
+              <Link href="/gaming" className={`px-3 py-2 rounded-xl text-sm font-medium transition bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-90 text-white flex items-center gap-1.5`}>
+                🎮 電玩
+              </Link>
               <div className="relative">
                 <button onClick={() => setShowLangMenu(v => !v)} className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition ${darkMode ? "bg-gray-800 text-gray-300 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   {LANG_OPTIONS.find(l => l.id === lang)?.flag}
@@ -913,7 +916,7 @@ export default function NewsPage() {
         </div>
 
         {/* Glamorous Featured Topics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5">
           {/* Finance Section - Golden Glamour */}
           <Link href="/finance" className="group relative">
             {/* Glow Effect */}
@@ -1036,6 +1039,38 @@ export default function NewsPage() {
 
               {/* Hover Reveal */}
               <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2 text-xs text-cyan-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                <span>探索更多</span>
+                <span>→</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Gaming Section - Purple Neon */}
+          <Link href="/gaming" className="group relative">
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/60 via-fuchsia-900/40 to-pink-900/60 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-500 p-4 md:p-5 h-full min-h-[160px] md:min-h-[180px] flex flex-col items-center justify-center text-center">
+              {/* Animated Top Line */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-shimmer" />
+
+              {/* Floating Particles */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-purple-400/50 rounded-full animate-float" />
+              <div className="absolute bottom-8 left-4 w-1.5 h-1.5 bg-pink-400/40 rounded-full animate-float-delayed" />
+
+              {/* Icon Container with Glow */}
+              <div className="relative mb-3 md:mb-4">
+                <div className="absolute inset-0 bg-purple-400/30 rounded-2xl blur-xl group-hover:bg-purple-400/50 transition-all duration-500" />
+                <div className="relative w-16 h-16 md:w-18 md:h-18 rounded-2xl bg-gradient-to-br from-purple-500/30 to-pink-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-purple-400/30">
+                  <span className="text-3xl md:text-4xl filter drop-shadow-lg">🎮</span>
+                </div>
+              </div>
+
+              <h3 className="text-sm md:text-base font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">電玩遊戲</h3>
+              <p className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">2026主機大戰</p>
+
+              {/* Hover Reveal */}
+              <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2 text-xs text-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <span>探索更多</span>
                 <span>→</span>
               </div>
