@@ -90,7 +90,7 @@ const content = {
         title: "Day 3：世界遺產龐貝古城深度歷史穿越",
         p1: "第三天是屬於歷史的震撼日。我們乘搭平穩的維蘇威環線火車直達<strong>龐貝古城</strong>大門口。考慮到龐貝古城面積高達66公頃且完全毫無遮擋，我為家人安排了<strong>黃金避熱特權</strong> ── 提早預約了早上08:30的頭班車電子票，並聘請了一位專業的官方中文導覽員。",
         p2: "走在古老、粗糙的羅馬石磚路上，穿過保存完好的阿波羅神廟、巨型圓形劇場與古羅馬大浴場。導覽員用生動的故事向小朋友講述兩千年前那場火山爆發的史詩悲劇。看著那些被火山灰定格的歷史殘垣與壁畫，全家都深深震撼，這是一場好玩又極具教育意義的時空穿越之旅！",
-        image: { src: "https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=1200&q=80", alt: "龐貝古城與維蘇威火山", caption: "▲ 龐貝古城遺址，背後是雄偉的維蘇威火山，見證兩千年前的歷史悲劇" },
+        image: { src: "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/028/137/original/2a0a7c66a7107b164e0e05347065b0a4/italy-pompeii-street-052120-am.jpg", alt: "龐貝古城與維蘇威火山", caption: "▲ 龐貝古城遺址，背後是雄偉的維蘇威火山，見證兩千年前的歷史悲劇" },
       },
       day4: {
         title: "Day 4：征服維蘇威火山之巔、俯瞰拿坡里灣全景",
@@ -257,7 +257,7 @@ const content = {
         title: "Day 3：世界遗产庞贝古城深度历史穿越",
         p1: "第三天是属于历史的震撼日。我们乘搭平稳的维苏威环线火车直达<strong>庞贝古城</strong>大门口。我为家人安排了<strong>黄金避热特权</strong> ── 提早预约了早上08:30的头班车电子票，并聘请了一位专业的官方中文导游员。",
         p2: "走在古老、粗糙的罗马石砖路上，穿过保存完好的阿波罗神庙、巨型圆形剧场与古罗马大浴场。这是一场好玩又极具教育意义的时空穿越之旅！",
-        image: { src: "https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=1200&q=80", alt: "庞贝古城与维苏威火山", caption: "▲ 庞贝古城遗址，背后是雄伟的维苏威火山" },
+        image: { src: "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/028/137/original/2a0a7c66a7107b164e0e05347065b0a4/italy-pompeii-street-052120-am.jpg", alt: "庞贝古城与维苏威火山", caption: "▲ 庞贝古城遗址，背后是雄伟的维苏威火山" },
       },
       day4: {
         title: "Day 4：征服维苏威火山之巅、俯瞰拿波里湾全景",
@@ -424,7 +424,7 @@ const content = {
         title: "Day 3: UNESCO Pompeii Ancient City - Deep Historical Journey",
         p1: "Day 3 was a day of historical震撼. We took the smooth Circumvesuviana train directly to the entrance of <strong>Pompeii</strong>. I booked 08:30 tickets and hired an official Chinese-speaking guide for our family.",
         p2: "Walking on ancient Roman stone roads, passing the well-preserved Temple of Apollo, giant amphitheater, and ancient Roman baths. The guide told vivid stories about the volcanic eruption 2000 years ago. This was truly an educational and exciting time-travel experience!",
-        image: { src: "https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=1200&q=80", alt: "Pompeii and Vesuvius", caption: "▲ Pompeii ruins with majestic Mount Vesuvius in background" },
+        image: { src: "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/028/137/original/2a0a7c66a7107b164e0e05347065b0a4/italy-pompeii-street-052120-am.jpg", alt: "Pompeii and Vesuvius", caption: "▲ Pompeii ruins with majestic Mount Vesuvius in background" },
       },
       day4: {
         title: "Day 4: Conquering Mount Vesuvius Summit",
@@ -589,7 +589,7 @@ const content = {
       day3: {
         title: "Day 3：世界遺產龐貝古城深度歷史穿越",
         p1: "第三天係屬於歷史的震撼日。我哋乘搭平穩的維蘇威環線火車直達<strong>龐貝古城</strong>大門口。我為家人安排咗<strong>黃金避熱特權</strong> ── 提早預約咗早上08:30的頭班車電子票，並聘請咗一位專業的官方中文導覽員。",
-        image: { src: "https://images.unsplash.com/photo-1570459027562-4a916cc6113f?w=1200&q=80", alt: "龐貝古城與維蘇威火山", caption: "▲ 龐貝古城遺址，背後係雄偉的維蘇威火山" },
+        image: { src: "https://d3dqioy2sca31t.cloudfront.net/Projects/cms/production/000/028/137/original/2a0a7c66a7107b164e0e05347065b0a4/italy-pompeii-street-052120-am.jpg", alt: "龐貝古城與維蘇威火山", caption: "▲ 龐貝古城遺址，背後係雄偉的維蘇威火山" },
       },
       day4: {
         title: "Day 4：征服維蘇威火山之巔",
