@@ -26,6 +26,9 @@ const regionStats = blogPosts.reduce((acc, post) => {
 // GBA retirement travel posts
 const gbaPosts = blogPosts.filter(post => post.category === 'gba');
 
+// Gaming posts
+const gamingPosts = blogPosts.filter(post => post.category === 'gaming');
+
 // Local travel posts (Europe)
 const localPosts = blogPosts.filter(post => post.category === 'local');
 
@@ -447,6 +450,94 @@ export default function BlogPage() {
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
                       <span className="text-white text-xl ml-1">▶</span>
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ===== 電玩遊戲專欄 ===== */}
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-2xl shadow-lg">
+                🎮
+              </div>
+              <div>
+                <h2 className="text-white text-xl md:text-2xl font-bold">電玩遊戲</h2>
+                <p className="text-purple-300/60 text-sm">2026年遊戲趨勢 · 主機大戰 · 電競熱潮</p>
+              </div>
+            </div>
+            <span className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30">
+              🆕 {gamingPosts.length} 篇文章
+            </span>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {gamingPosts.map((post, index) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className={`block group transition-all duration-500 ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                onMouseEnter={() => setHoveredSlug(post.slug)}
+                onMouseLeave={() => setHoveredSlug(null)}
+              >
+                <article className={`relative h-full bg-slate-800/40 md:bg-slate-800/50 rounded-xl md:rounded-2xl overflow-hidden border border-slate-700/40 md:border-slate-700/50 hover:border-purple-500/40 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/10 ${hoveredSlug === post.slug ? 'ring-2 ring-purple-500/30' : ''}`}>
+                  {/* Top Accent Line */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${post.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
+
+                  {/* Image Section */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className={`w-full object-cover transition-all duration-700 group-hover:scale-110 ${index === 0 ? 'h-48 md:h-56' : 'h-36'}`}
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=800&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+
+                    {/* Icon Badge */}
+                    <div className={`absolute top-3 left-3 bg-gradient-to-r ${post.accent} rounded-xl p-2.5 text-xl shadow-lg backdrop-blur-sm`}>
+                      {post.icon}
+                    </div>
+
+                    {/* Reading Time */}
+                    <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white/80 text-xs px-2.5 py-1 rounded-full">
+                      ⏱️ {estimateReadingTime(post.excerpt)} min
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-5">
+                    {/* Tags */}
+                    <div className="flex gap-1.5 mb-3 flex-wrap">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-bold mb-2 text-base md:text-lg text-white group-hover:text-purple-400 transition-colors leading-snug">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="text-slate-400 text-sm mb-4 line-clamp-2 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">
+                      <span className="text-slate-500 text-xs">{post.date}</span>
+                      <span className={`text-sm font-medium bg-gradient-to-r ${post.accent} bg-clip-text text-transparent`}>
+                        閱讀 →
+                      </span>
                     </div>
                   </div>
                 </article>
