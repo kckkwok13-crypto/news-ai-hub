@@ -360,7 +360,7 @@ export default function ClientWrapper() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.stockcake.com/public/1/f/b/1fb4d531-f86d-4ed9-bb10-786706277297_medium/pixel-art-evolution-stockcake.jpg"
+            src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80"
             alt="Retro Pixel Gaming"
             className="w-full h-full object-cover opacity-40"
           />
@@ -405,7 +405,7 @@ export default function ClientWrapper() {
         {/* Main Image */}
         <div className="rounded-2xl overflow-hidden mb-12 border border-slate-700/50">
           <img
-            src="https://gamexpert.co.uk/wp-content/uploads/2025/10/Whisk_0e7cece5e9479938f5f4353a5dad5bc9dr.jpeg"
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80"
             alt="Pixel Art Gaming"
             className="w-full h-auto"
           />

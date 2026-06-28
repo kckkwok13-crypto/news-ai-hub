@@ -258,7 +258,7 @@ export default function ClientWrapper() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://cdn.thewirecutter.com/wp-content/media/2024/11/BEST-HANDHELD-GAMING-CONSOLES-2048px-09702-3x2-1.jpg?auto=webp&quality=75&crop=3:2&width=1024"
+            src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=1920&q=80"
             alt="Gaming Consoles"
             className="w-full h-full object-cover opacity-40"
           />
@@ -303,8 +303,8 @@ export default function ClientWrapper() {
         {/* Main Image */}
         <div className="rounded-2xl overflow-hidden mb-12 border border-slate-700/50">
           <img
-            src="https://i.pcmag.com/imagery/articles/04iOseRfAe3zz3UWdPAsE4G-3..v1673373262.jpg"
-            alt="Steam Deck vs Gaming Consoles"
+            src="https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=1200&q=80"
+            alt="Gaming Console Setup"
             className="w-full h-auto"
           />
         </div>

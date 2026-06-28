@@ -300,7 +300,7 @@ export default function ClientWrapper() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://cdn.mos.cms.futurecdn.net/u5cggJUjzeNhRQnAo2bdtm.jpg"
+            src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=1920&q=80"
             alt="VR Gaming"
             className="w-full h-full object-cover opacity-40"
           />
@@ -345,8 +345,8 @@ export default function ClientWrapper() {
         {/* Main Image */}
         <div className="rounded-2xl overflow-hidden mb-12 border border-slate-700/50">
           <img
-            src="https://www.cnet.com/a/img/resize/1808d7dcca0af8a52560fe90688ee26c1f4ea8ea/hub/2024/10/11/a2c373a9-aa5c-4c5a-b092-2d78051b8e5e/meta-quest-3s-1.jpg"
-            alt="Meta Quest VR Headset"
+            src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=1200&q=80"
+            alt="VR Headset"
             className="w-full h-auto"
           />
         </div>

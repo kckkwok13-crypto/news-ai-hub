@@ -324,7 +324,7 @@ export default function ClientWrapper() {
       <header className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://rog.asus.com/media/1750819347745.jpg"
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1920&q=80"
             alt="Mobile Gaming"
             className="w-full h-full object-cover opacity-40"
           />
@@ -369,7 +369,7 @@ export default function ClientWrapper() {
         {/* Main Image */}
         <div className="rounded-2xl overflow-hidden mb-12 border border-slate-700/50">
           <img
-            src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2024/09/an-excited-girl-playing-a-game-on-her-phone-with-icons-of-some-games-floating-around.jpg"
+            src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=1200&q=80"
             alt="Mobile Gaming"
             className="w-full h-auto"
           />
