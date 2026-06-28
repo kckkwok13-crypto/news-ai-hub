@@ -359,16 +359,28 @@ export default function ClientWrapper() {
             </svg>
             <span className="text-pink-400 text-sm font-bold">📺 文章配圖影片</span>
           </div>
-          <div className="relative aspect-video">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/o2mTqT51W5A"
-              title="VR Gaming Future"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+          <a
+            href="https://www.youtube.com/watch?v=o2mTqT51W5A"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block relative aspect-video group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=1200&q=80"
+              alt="VR Gaming Future"
+              className="w-full h-full object-cover"
             />
-          </div>
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/40 transition-all">
+              <div className="w-20 h-20 rounded-full bg-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                <svg className="w-10 h-10 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-white text-sm font-medium">▶ 點擊觀看：VR 遊戲未來發展</p>
+            </div>
+          </a>
         </div>
 
         {/* Sections */}
