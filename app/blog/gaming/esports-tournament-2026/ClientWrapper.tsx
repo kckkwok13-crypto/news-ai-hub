@@ -277,12 +277,32 @@ export default function ClientWrapper() {
         </div>
 
         {/* Main Image */}
-        <div className="rounded-2xl overflow-hidden mb-12 border border-slate-700/50">
+        <div className="rounded-2xl overflow-hidden mb-6 border border-slate-700/50">
           <img
             src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=80"
             alt="Esports Gaming"
             className="w-full h-auto"
           />
+        </div>
+
+        {/* Featured Video */}
+        <div className="rounded-2xl overflow-hidden mb-12 border border-purple-500/30 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
+          <div className="flex items-center gap-3 px-5 py-3 border-b border-purple-500/20">
+            <svg className="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span className="text-purple-400 text-sm font-bold">📺 文章配圖影片</span>
+          </div>
+          <div className="relative aspect-video">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/aXMhH6CVn9Y"
+              title="Esports Tournament Highlights"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </div>
 
         {/* Sections */}

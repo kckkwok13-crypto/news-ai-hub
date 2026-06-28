@@ -343,12 +343,32 @@ export default function ClientWrapper() {
         </div>
 
         {/* Main Image */}
-        <div className="rounded-2xl overflow-hidden mb-12 border border-slate-700/50">
+        <div className="rounded-2xl overflow-hidden mb-6 border border-slate-700/50">
           <img
             src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=1200&q=80"
             alt="VR Headset"
             className="w-full h-auto"
           />
+        </div>
+
+        {/* Featured Video */}
+        <div className="rounded-2xl overflow-hidden mb-12 border border-pink-500/30 bg-gradient-to-r from-pink-900/20 to-purple-900/20">
+          <div className="flex items-center gap-3 px-5 py-3 border-b border-pink-500/20">
+            <svg className="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span className="text-pink-400 text-sm font-bold">📺 文章配圖影片</span>
+          </div>
+          <div className="relative aspect-video">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/o2mTqT51W5A"
+              title="VR Gaming Future"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </div>
 
         {/* Sections */}
