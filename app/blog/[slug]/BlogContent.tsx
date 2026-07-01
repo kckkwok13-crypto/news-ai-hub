@@ -411,11 +411,17 @@ export default function BlogContent({ slug }: { slug: string }) {
           <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl -z-10" />
 
           {/* Category Badge */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-6 flex-wrap">
             <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-r ${colors.active} shadow-lg ${colors.glow}`}>
               {blog.tocItems[0]?.emoji} 遊記攻略
             </span>
             <span className="text-zinc-500 text-sm">{blog.date}</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              純粹旅人
+            </span>
           </div>
 
           {/* Title */}

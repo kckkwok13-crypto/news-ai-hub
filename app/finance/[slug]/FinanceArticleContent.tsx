@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { financePosts } from "../../data/financeData";
-import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, User } from "lucide-react";
 // ArticleChart removed
 
 interface FinanceArticleContentProps {
@@ -140,10 +140,13 @@ export default function FinanceArticleContent({ slug }: FinanceArticleContentPro
 
           <p className="text-lg text-slate-300 mb-6">{post.excerpt}</p>
 
-          <div className="flex items-center gap-4 text-sm text-slate-400">
+          <div className="flex items-center gap-4 text-sm text-slate-400 flex-wrap">
             <span className="flex items-center gap-1"><Calendar size={16} /> {post.date}</span>
             <span className="flex items-center gap-1"><Clock size={16} /> 約{post.readingTime}分鐘</span>
             <span className="flex items-center gap-1"><Tag size={16} /> {post.category}</span>
+            {post.author && (
+              <span className="flex items-center gap-1 text-teal-400"><User size={16} /> {post.author}</span>
+            )}
           </div>
         </div>
       </header>
@@ -178,6 +181,83 @@ export default function FinanceArticleContent({ slug }: FinanceArticleContentPro
             已複製連結！
           </div>
         )}
+
+        {/* Related Articles Section */}
+        {post.relatedSlugs && post.relatedSlugs.length > 0 && (
+          <div className="mt-16 pt-8 border-t border-slate-800">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <svg className="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              相關文章推薦
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {post.relatedSlugs.map((relatedSlug) => {
+                const relatedPost = financePosts.find((p) => p.slug === relatedSlug);
+                if (!relatedPost) return null;
+                return (
+                  <Link
+                    key={relatedSlug}
+                    href={`/finance/${relatedSlug}`}
+                    className="group p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-teal-500/50 transition-all duration-300 hover:bg-slate-800/70"
+                  >
+                    <div className="aspect-video w-full mb-3 rounded-lg overflow-hidden">
+                      <img
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <h4 className="text-white font-medium text-sm line-clamp-2 group-hover:text-teal-400 transition-colors">
+                      {relatedPost.title}
+                    </h4>
+                    <p className="text-slate-400 text-xs mt-2 flex items-center gap-1">
+                      <Clock size={12} /> 約{relatedPost.readingTime}分鐘
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Affiliate Marketing Section */}
+        <div className="mt-16 pt-8 border-t border-slate-800">
+          <div className="bg-gradient-to-r from-teal-900/30 to-emerald-900/30 rounded-2xl p-6 border border-teal-500/20">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">精選理財服務推薦</h3>
+                <p className="text-slate-300 text-sm mb-4">以下是我們精選的合作夥伴，幫助你更輕鬆開始投資之旅：</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <a href="https://www.futuhk.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:border-teal-500/50 transition-colors group">
+                    <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                      <span className="text-blue-400 font-bold text-sm">FT</span>
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-medium group-hover:text-teal-400 transition-colors">富途牛牛</p>
+                      <p className="text-slate-400 text-xs">港美股開戶優惠</p>
+                    </div>
+                  </a>
+                  <a href="https://www.longbridge.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:border-teal-500/50 transition-colors group">
+                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                      <span className="text-green-400 font-bold text-sm">LB</span>
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-medium group-hover:text-teal-400 transition-colors">Longbridge</p>
+                      <p className="text-slate-400 text-xs">新加坡股票交易</p>
+                    </div>
+                  </a>
+                </div>
+                <p className="text-slate-500 text-xs mt-4">* 點擊上方連結開戶，我們可能獲得推薦佣金，但這不影響你的實際優惠</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </article>
     </div>
   );

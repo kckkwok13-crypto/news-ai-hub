@@ -11,6 +11,8 @@ export interface FinancePost {
   category: string;
   readingTime: number;
   featured?: boolean;
+  author?: string;
+  relatedSlugs?: string[];
 }
 
 export const financePosts: FinancePost[] = [
@@ -18,6 +20,8 @@ export const financePosts: FinancePost[] = [
     slug: "etf-index-fund-guide",
     title: "🎯 ETF指數基金新手攻略：每月呢些位投資，躺著都能賺錢！",
     excerpt: "想投資但又怕麻煩？ETF指數基金幫你自動分散風險！每月只需几百蚊，輕鬆追蹤大市，連巴菲特都推薦！",
+    author: "財經分析師 Eric",
+    relatedSlugs: ["dollar-cost-averaging", "investment-risk-management", "stock-investing-basics"],
     content: `
 ## 🌟 你有冇聽過「懶人投資法」？
 
@@ -247,6 +251,8 @@ export const financePosts: FinancePost[] = [
     slug: "retirement-planning-hongkong",
     title: "香港退休規劃攻略：50歲開始準備也不晚",
     excerpt: "香港生活成本高，退休需要多少錢？如何在有限時間內做好財務準備？本文為你詳細分析。",
+    author: "退休規劃顧問 Michelle",
+    relatedSlugs: ["mpf-super-guide", "etf-index-fund-guide", "passive-income-2026"],
     content: `
 ## 香港退休需要多少錢？
 
@@ -1715,6 +1721,8 @@ ETF嘅出現大大提升咗比特幣市場嘅流動性，降低咗交易成本�
     slug: "h2-2026-investment-outlook",
     title: "📊 2026下半年投資展望：香港與海外市場全景分析",
     excerpt: "2026下半年投資攻略！深入分析香港、中國、美股、歐洲及東盟市場走向，幫你把握機遇、避開風險！",
+    author: "首席分析師 Alex",
+    relatedSlugs: ["etf-index-fund-guide", "investment-risk-management", "retirement-planning-hongkong"],
     content: `
 ## 🌟 2026下半年投資展望：香港與海外市場全景分析
 
