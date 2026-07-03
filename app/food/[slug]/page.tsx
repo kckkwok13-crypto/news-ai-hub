@@ -4,7 +4,8 @@ import FoodArticlePage from "./FoodArticleContent";
 const foodSlugs = [
   'bbq-master', 'boba-tea-guide', 'breakfast-guide', 'cantonese-soup-guide',
   'coffee-culture', 'dessert-heaven', 'hongkong-dim-sum-guide', 'hotpot-heaven',
-  'noodle-master', 'sushi-master-guide', 'thai-food-paradise'
+  'noodle-master', 'sushi-master-guide', 'thai-food-paradise',
+  '2026-food-trends-analysis', 'nutrition-science-guide', 'superfoods-hongkong', 'michelin-restaurants-hongkong'
 ];
 
 export function generateStaticParams() {

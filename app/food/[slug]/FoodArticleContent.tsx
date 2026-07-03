@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { foodPosts } from "../../data/foodData";
-import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Tag, Share2, Bookmark, BookmarkCheck, User } from "lucide-react";
 // ArticleChart removed
 
 interface FoodArticleContentProps {
@@ -144,10 +144,13 @@ export default function FoodArticleContent({ slug }: FoodArticleContentProps) {
 
           <p className="text-lg text-slate-300 mb-6">{post.excerpt}</p>
 
-          <div className="flex items-center gap-4 text-sm text-slate-400">
+          <div className="flex items-center gap-4 text-sm text-slate-400 flex-wrap">
             <span className="flex items-center gap-1"><Calendar size={16} /> {post.date}</span>
             <span className="flex items-center gap-1"><Clock size={16} /> 約{post.readingTime}分鐘</span>
             <span className="flex items-center gap-1"><Tag size={16} /> {post.category}</span>
+            {post.author && (
+              <span className="flex items-center gap-1 text-rose-400"><User size={16} /> {post.author}</span>
+            )}
           </div>
         </div>
       </header>
@@ -180,6 +183,45 @@ export default function FoodArticleContent({ slug }: FoodArticleContentProps) {
         {showShareToast && (
           <div className="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-emerald-500 text-white rounded-xl shadow-lg animate-fade-in">
             已複製連結！
+          </div>
+        )}
+
+        {/* Related Articles Section */}
+        {post.relatedSlugs && post.relatedSlugs.length > 0 && (
+          <div className="mt-16 pt-8 border-t border-slate-800">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <svg className="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              相關文章推薦
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {post.relatedSlugs.map((relatedSlug) => {
+                const relatedPost = foodPosts.find((p) => p.slug === relatedSlug);
+                if (!relatedPost) return null;
+                return (
+                  <Link
+                    key={relatedSlug}
+                    href={`/food/${relatedSlug}`}
+                    className="group p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-rose-500/50 transition-all duration-300 hover:bg-slate-800/70"
+                  >
+                    <div className="aspect-video w-full mb-3 rounded-lg overflow-hidden">
+                      <img
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <h4 className="text-white font-medium text-sm line-clamp-2 group-hover:text-rose-400 transition-colors">
+                      {relatedPost.title}
+                    </h4>
+                    <p className="text-slate-400 text-xs mt-2 flex items-center gap-1">
+                      <Clock size={12} /> 約{relatedPost.readingTime}分鐘
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         )}
       </article>
