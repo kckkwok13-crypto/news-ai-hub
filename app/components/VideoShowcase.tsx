@@ -5,25 +5,25 @@ import YouTubeEmbed from "./YouTubeEmbed";
 
 const featuredVideos = [
   {
-    videoId: "oN2C-p3eM4U",
-    title: "東京澀谷十字路口",
+    videoId: "wdua3bKqJ7w",
+    title: "東京旅遊指南",
     slug: "shibuya-crossing",
     category: "旅遊",
-    desc: "世界最繁忙的十字路口繁華景象"
+    desc: "探索東京最繁華的十字路口"
   },
   {
-    videoId: "6O3_QUd2vOI",
-    title: "淺草寺雷門",
-    slug: "sensoji",
-    category: "旅遊",
-    desc: "東京最古老寺廟的千年風情"
-  },
-  {
-    videoId: "2z3cPTfU4Lg",
-    title: "明治神宮",
+    videoId: "1-IJ6I-qCdk",
+    title: "日本旅遊亮點",
     slug: "meiji-shrine",
     category: "旅遊",
-    desc: "東京市中心的神秘森林聖地"
+    desc: "體驗日本傳統文化魅力"
+  },
+  {
+    videoId: "pIUMCvgbHgA",
+    title: "全球旅遊勝地",
+    slug: "sensoji",
+    category: "旅遊",
+    desc: "發掘世界最美旅遊目的地"
   }
 ];
 

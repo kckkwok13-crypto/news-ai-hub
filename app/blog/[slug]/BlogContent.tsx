@@ -22,7 +22,7 @@ const blogData: Record<string, any> = {
     activeColor: "blue",
     content: [
       { type: "p", id: "intro", text: "如果要選一個最能代表現代東京、甚至全日本繁華景象的地標，<strong>澀谷十字路口（Shibuya Crossing）</strong>絕對當之無愧！每次綠燈一亮，成千上萬的人潮從四面八方湧入，卻又能神奇地錯身而過、亂中有序。" },
-      { type: "youtube", videoId: "oN2C-p3eM4U", title: "澀谷十字路口繁華景象" },
+      { type: "youtube", videoId: "wdua3bKqJ7w", title: "澀谷十字路口繁華景象" },
       { type: "p", text: "不論你是第一次去東京，還是已經去過無數次，這個十字路口都有種讓人百看不厭的魔力。今天這篇Blog就帶大家全方位解鎖澀谷十字路口，還會附上最頂級的打卡拍照位！" },
       { type: "h2", text: "終極打卡位推薦" },
       { type: "h3", text: "1. SHIBUYA SKY（澀谷上空）—— 終極上帝視角" },
@@ -58,7 +58,7 @@ const blogData: Record<string, any> = {
     activeColor: "green",
     content: [
       { type: "p", id: "intro", text: "緊鄰著潮流發源地原宿與竹下通，很難想像只要走過一條橋，就能瞬間從喧囂的都市切換到蟬鳴鳥叫的原始森林。這裏就是<strong>明治神宮（Meiji Jingu）</strong>。它不僅是東京必去的景點，更是供奉明治天皇與昭憲皇太后靈位、地位崇高的神道教聖地。" },
-      { type: "youtube", videoId: "2z3cPTfU4Lg", title: "明治神宮神秘森林導覽" },
+      { type: "youtube", videoId: "1-IJ6I-qCdk", title: "明治神宮神秘森林導覽" },
       { type: "p", text: "今天這篇Blog就帶大家深入走訪這座佔地高達 70 公頃的人造神祕森林，解鎖那些走過路過極易錯過的隱藏亮點與旅行故事！" },
       { type: "h2", text: "隱藏在參道上的 3 個歷史秘密" },
       { type: "h3", text: "1. 全日本最大的木造鳥居 —— 來自台灣的緣分" },
@@ -98,7 +98,7 @@ const blogData: Record<string, any> = {
     activeColor: "red",
     content: [
       { type: "p", id: "intro", text: "如果想在現代化的東京尋找一抹傳統的江戶風情，<strong>淺草寺（Sensō-ji）</strong>絕對是不可錯過的第一站。創建於公元 628 年的淺草寺，是東京都內最古老的寺廟。這裡常年香火鼎盛，無論是莊嚴的佛教建築，還是充滿下町活力的商店街，都讓人彷彿穿越時空，回到了數百年前的江戶時代。" },
-      { type: "youtube", videoId: "6O3_QUd2vOI", title: "淺草寺雷門與仲見世通" },
+      { type: "youtube", videoId: "pIUMCvgbHgA", title: "淺草寺雷門與仲見世通" },
       { type: "p", text: "今天這篇Blog就為大家整理了淺草寺的經典必看亮點、傳統參拜與求籤流程，帶你玩轉這個東京最經典的地標！" },
       { type: "h2", text: "淺草寺經典散策路線：從雷門走到本堂" },
       { type: "h3", text: "1. 第一站：震撼力十足的「雷門」與巨大燈籠" },
