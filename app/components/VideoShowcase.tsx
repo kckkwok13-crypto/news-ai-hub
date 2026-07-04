@@ -5,21 +5,21 @@ import YouTubeEmbed from "./YouTubeEmbed";
 
 const featuredVideos = [
   {
-    videoId: "wdua3bKqJ7w",
+    videoId: "ajOIjwATsrU",
     title: "東京旅遊指南",
     slug: "shibuya-crossing",
     category: "旅遊",
     desc: "探索東京最繁華的十字路口"
   },
   {
-    videoId: "1-IJ6I-qCdk",
+    videoId: "clf0fog_KEw",
     title: "日本旅遊亮點",
     slug: "meiji-shrine",
     category: "旅遊",
     desc: "體驗日本傳統文化魅力"
   },
   {
-    videoId: "pIUMCvgbHgA",
+    videoId: "8j-nmwy0RN4",
     title: "全球旅遊勝地",
     slug: "sensoji",
     category: "旅遊",
