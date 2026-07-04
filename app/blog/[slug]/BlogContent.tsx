@@ -141,6 +141,7 @@ const blogData: Record<string, any> = {
     activeColor: "pink",
     content: [
       { type: "p", id: "intro", text: "如果說荷蘭的冬天是一幅沉穩的單色水墨畫，那麼當每年三月下旬<strong>庫肯霍夫花園（Keukenhof）</strong>的大門徐徐開啟，整片荷蘭大地就像是被打翻了造物主的終極調色盤！這座位於利瑟（Lisse）小鎮、名列<strong>全球最大規模春季花卉公園</strong>的聖地，每年僅僅對外開放短短的 8 星期。" },
+      { type: "youtube", videoId: "iqGNmZxySYg", title: "庫肯霍夫花園720度全景導覽" },
       { type: "p", text: "<em>「世界上如果有一個地方，能將春天所有的色彩一次過燃燒殆盡，那絕對是庫肯霍夫。當你站在32公頃鋪天蓋地的花毯中央，看著紅的似火、黃的如金、紫的若霞的鬱金香瘋狂綻放，你才會明白：大自然才是最偉大、最放肆的抽象派畫家。」</em>" },
       { type: "p", text: "今日這篇Blog，我將帶上最絢麗的色彩與精確的數據，帶大家深度走入這片驚艷全球的七彩夢境！" },
       { type: "h2", text: "700萬株花卉：王國的數字密碼" },
@@ -171,6 +172,7 @@ const blogData: Record<string, any> = {
       { type: "h3", text: "3. 浪漫運河花舟（Whisper Boat Cruise）" },
       { type: "p", text: "坐在平緩的電動木船上，雙手划過清澈的運河水，兩岸是高低錯落、如彩虹般向後延伸幾公里的<strong>鬱金香梯田</strong>，聽著水鳥啼鳴，享受最奢侈的浪漫午後。這是庫肯霍夫最獨特、最愜意的遊覽方式！" },
       { type: "highlight", title: "🌈 拍照秘笈：如何拍出明信片級別的花海大片", text: "• <strong>光線選擇</strong>：清晨8-10點或下午4-6點的側光最能展現花瓣質感<br/>• <strong>構圖技巧</strong>：低角度拍攝可以將花田延伸感最大化<br/>• <strong>服裝搭配</strong>：白色或淺粉色裙子與彩虹花海形成完美對比<br/>• <strong>必備道具</strong>：草帽、編織籃、相機——田園風格的標配三件套" },
+      { type: "youtube", videoId: "DNaMkg5CrAo", title: "庫肯霍夫花車巡遊盛況" },
       { type: "tips", title: "庫肯霍夫花園「無痛避開人海」生存指南 (Travel Tips)", items: ["<strong>100% 嚴格網上定時預約制：</strong>庫肯霍夫現在取消了現場實體售票處！所有門票（成人約 €20）必須提前在官方網站實名預訂，否則大老遠來到只能吃閉門羹。", "<strong>推薦購買 Combiticket 套票：</strong>包含「阿姆斯特丹 ─> 花園直達穿梭巴士」的套票，巴士有專用公交車道，能省下至少 1 小時排隊時間。852、858號線直達。", "<strong>穿著裝備：</strong>32公頃的公園全靠雙腿漫步，且荷蘭春季海風極大。務必穿著<strong>防滑舒適的運動鞋</strong>，隨身帶備<strong>防風外套</strong>。", "<strong>餐飲建議：</strong>園區內餐廳價格偏貴，建議自備簡便午餐在花田中野餐，體驗不一樣的田園風情！", "<strong>最佳遊覽時間：</strong>避開週末和復活節假期，平日遊客少一半，拍照體驗完全不同。"] },
     ],
     infoCards: [
@@ -197,6 +199,7 @@ const blogData: Record<string, any> = {
     activeColor: "amber",
     content: [
       { type: "p", id: "intro", text: "在阿姆斯特丹市中心王子運河畔，有一棟外表低調的褐色磚樓。這裏曾是一個猶太女孩的秘密藏身之所，也是一座讓世人永遠記住二戰暴行的紀念館。這就是<strong>安妮之家（Anne Frank House）</strong>——一個承載著希望、恐懼、勇氣與悲傷的地方。" },
+      { type: "youtube", videoId: "56vC8zpn_IM", title: "安妮之家內部導覽 tour" },
       { type: "p", text: "<em>「我希望我能死後繼續活著。」</em> —— 安妮·弗蘭克，《安妮日記》" },
       { type: "p", text: "這句話在她短暫的一生中或許只是少女的願望，但如今，安妮·弗蘭克確實以另一種方式「活」在了全世界每個人的心中。" },
       { type: "highlight", title: "安妮·弗蘭克的一生", text: "1929年出生於德國法蘭克福，1934年隨家人移民荷蘭，1942年躲入秘密側樓，1944年被納粹逮捕，1945年死於集中營。她的一生雖然短暫（1929-1945），但她留下的《安妮日記》成為了二十世紀最具影響力的書籍之一，被翻譯成超過70種語言。" },
@@ -221,6 +224,7 @@ const blogData: Record<string, any> = {
       { type: "h3", text: "參觀重點" },
       { type: "p", text: "<strong>1. 入口與電梯</strong>——建議乘坐電梯直達頂層，然後從上往下遊覽，這樣可以避開人群。<br/><br/><strong>2. 展覽區</strong>——了解安妮·弗蘭克的生平、二戰歷史、以及大屠殺的背景。<br/><br/><strong>3. 秘密側樓</strong>——實際走進安妮一家曾經躲藏的空間，感受那份壓抑與絕望。<br/><br/><strong>4. 安妮日記原本</strong>——博物館保存著安妮日記的原稿，展示她作為作家的才華。" },
       { type: "image", src: "https://cdn.360stories.com/image/eyJidWNrZXQiOiJjZG4uMzYwc3Rvcmllcy5jb20iLCJrZXkiOiJ1cGxvYWRzXC9waWN0dXJlc1wvMTUzMjUyNjA4OWE4NGY0YzYzMWE1NzkyNWQ3MWY2Njk0NDIzNjhlOWM3LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6NjMwLCJmaXQiOiJjb3ZlciJ9fX0=", alt: "安妮之家運河畔風光", caption: "安妮之家所在的王子運河畔，風景優美卻承載著沉重的歷史" },
+      { type: "youtube", videoId: "M2QyVovy8ic", title: "Rick Steves 帶你遊覽安妮之家" },
       { type: "h2", text: "參觀感受" },
       { type: "p", text: "走進安妮之家，你會發現這裏的樓梯狹窄、光線昏暗、空氣中似乎還殘留著75年前的緊張氣息。每一面牆、每一扇窗、每一級台階，都在默默訴說著那段不能被遺忘的歷史。" },
       { type: "highlight", title: "🕊️ 歷史的警示", text: "安妮之家不僅是一座博物館，更是一座人性的燈塔。它提醒我們：戰爭、歧視、仇恨的代價，往往由最無辜的人承擔。願這段歷史永遠被人們記住，願世界再無種族滅絕的悲劇。" },
