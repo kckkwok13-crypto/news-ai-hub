@@ -22,7 +22,7 @@ const blogData: Record<string, any> = {
     activeColor: "blue",
     content: [
       { type: "p", id: "intro", text: "如果要選一個最能代表現代東京、甚至全日本繁華景象的地標，<strong>澀谷十字路口（Shibuya Crossing）</strong>絕對當之無愧！每次綠燈一亮，成千上萬的人潮從四面八方湧入，卻又能神奇地錯身而過、亂中有序。" },
-      { type: "youtube", videoId: "ajOIjwATsrU", title: "澀谷十字路口繁華景象" },
+      { type: "youtube", videoId: "Cqc9P7Dd3D4", title: "澀谷十字路口繁華景象" },
       { type: "p", text: "不論你是第一次去東京，還是已經去過無數次，這個十字路口都有種讓人百看不厭的魔力。今天這篇Blog就帶大家全方位解鎖澀谷十字路口，還會附上最頂級的打卡拍照位！" },
       { type: "h2", text: "終極打卡位推薦" },
       { type: "h3", text: "1. SHIBUYA SKY（澀谷上空）—— 終極上帝視角" },
@@ -32,6 +32,7 @@ const blogData: Record<string, any> = {
       { type: "h3", text: "3. 澀谷車站聯絡通道 —— 免費的在地人秘境" },
       { type: "image", src: "https://images.unsplash.com/photo-1603666659847-43cffb58a176?w=1200&q=80", alt: "澀谷十字路口繁忙場面", caption: "人潮湧動的澀谷十字路口全景" },
       { type: "p", id: "spot3", text: "連接JR澀谷站和井之頭線的行人通道，有一整面大玻璃。這裡不用花一分錢，就能拍到非常壯觀的十字路口全景。" },
+      { type: "youtube", videoId: "at4paCX49uo", title: "澀谷十字路口夜景" },
     ],
     infoCards: [
       { label: "📍 地址", value: "Shibuya, Tokyo" },
@@ -58,7 +59,7 @@ const blogData: Record<string, any> = {
     activeColor: "green",
     content: [
       { type: "p", id: "intro", text: "緊鄰著潮流發源地原宿與竹下通，很難想像只要走過一條橋，就能瞬間從喧囂的都市切換到蟬鳴鳥叫的原始森林。這裏就是<strong>明治神宮（Meiji Jingu）</strong>。它不僅是東京必去的景點，更是供奉明治天皇與昭憲皇太后靈位、地位崇高的神道教聖地。" },
-      { type: "youtube", videoId: "clf0fog_KEw", title: "明治神宮神秘森林導覽" },
+      { type: "youtube", videoId: "fFMpQjh53KI", title: "明治神宮神秘森林導覽" },
       { type: "p", text: "今天這篇Blog就帶大家深入走訪這座佔地高達 70 公頃的人造神祕森林，解鎖那些走過路過極易錯過的隱藏亮點與旅行故事！" },
       { type: "h2", text: "隱藏在參道上的 3 個歷史秘密" },
       { type: "h3", text: "1. 全日本最大的木造鳥居 —— 來自台灣的緣分" },
@@ -68,7 +69,9 @@ const blogData: Record<string, any> = {
       { type: "image", src: "https://dashboard.japantravel.com/photo/poi-8-214215/1440x960!/tokyo-meiji-jingu-shrine-214215.webp", alt: "清酒桶與葡萄酒桶牆", caption: "代表和洋折衷、極具文化特色的清酒與葡萄酒桶牆" },
       { type: "h3", text: "3. 東西文化交融：清酒桶與西洋葡萄酒桶" },
       { type: "p", id: "sake", text: "在南參道兩旁，一邊排列著各個酒廠奉納、色彩斑斕的日本清酒菰樽（Kodotaru）；而對面居然罕見地出現了法國勃艮第產區的西洋葡萄酒桶！這是因為明治天皇在位時极力推行「明治維新」，積極吸收西方文化，他本身也非常喜愛飲用葡萄酒，因此這裡才留下了這幅和洋並存的獨特奇觀。" },
-      { type: "highlight", title: "🕊️ 幸運限定：你有機會遇見「神前結婚式」嗎？", text: "明治神宮是日本年輕人舉辦傳統婚禮的夢幻聖地。如果運氣好，在週末的上午前往，你很有機會在正殿前的廣場目睹一場傳統的「神前結婚式」—— 新娘身穿純白的「白無垢」，在神職人員與巫女的引領下緩步前行。現場氣氛極其莊重肅穆，是非常珍貴的文化體驗。" },
+      { type: "highlight", title: "🕊️ 幸運限定：你有機會遇見「神前</minimax:tool_call>婚禮」嗎？", text: "明治神宮是日本年輕人舉辦傳統婚禮的夢幻聖地。如果運氣好，在週末的上午前往，你很有機會在正殿前的廣場目睹一場傳統的「神前結婚式」—— 新娘身穿純白的「白無垢」，在神職人員與巫女的引領下緩步前行。現場氣氛極其莊重肅穆，是非常珍貴的文化體驗。" },
+      { type: "youtube", videoId: "fxAIBywb7Vk", title: "明治神宮完整導覽" },
+      { type: "h2", text: "參觀遊記影片分享" },
       { type: "h2", text: "內苑散策：清正之井與明治神宮御苑" },
       { type: "p", id: "well", text: "如果你有額外的時間，非常推薦花 500 日圓門票進入「明治神宮御苑」。這裡在江戶時代曾是加藤家和伊伊家的庭園。裡面隱藏著全東京最知名的開運能量景點 —— <strong>「清正之井」</strong>（Kiyomasa's Well）。這是一口由名將加藤清正挖掘的古井，泉水四季不斷，據說將井水照片設為手機桌布能帶來好運呢！" },
       { type: "tips", title: "💡 明治神宮 旅遊實用小貼士 (Travel Tips)", items: ["<strong>開放時間：</strong>明治神宮的開門與關門時間是跟隨「太陽升落」而每個月變動的。基本上日出開門、日落關門，去之前記得先上官網確認當月時間。", "<strong>參拜禮儀：</strong>走在參道上時，記得走兩側。因為參道的正中央（稱為「正中」）是留給神明通行的。經過大鳥居時，也可以微微鞠躬以示敬意。", "<strong>交通方式：</strong>搭乘 JR 山手線至「原宿站」或東京地下鐵至「明治神宮前站」，出站步行 1 分鐘即可到達神宮入口（神宮橋）。"] },
@@ -98,7 +101,7 @@ const blogData: Record<string, any> = {
     activeColor: "red",
     content: [
       { type: "p", id: "intro", text: "如果想在現代化的東京尋找一抹傳統的江戶風情，<strong>淺草寺（Sensō-ji）</strong>絕對是不可錯過的第一站。創建於公元 628 年的淺草寺，是東京都內最古老的寺廟。這裡常年香火鼎盛，無論是莊嚴的佛教建築，還是充滿下町活力的商店街，都讓人彷彿穿越時空，回到了數百年前的江戶時代。" },
-      { type: "youtube", videoId: "8j-nmwy0RN4", title: "淺草寺雷門與仲見世通" },
+      { type: "youtube", videoId: "rseB7XMoFRs", title: "淺草寺雷門與仲見世通" },
       { type: "p", text: "今天這篇Blog就為大家整理了淺草寺的經典必看亮點、傳統參拜與求籤流程，帶你玩轉這個東京最經典的地標！" },
       { type: "h2", text: "淺草寺經典散策路線：從雷門走到本堂" },
       { type: "h3", text: "1. 第一站：震撼力十足的「雷門」與巨大燈籠" },
@@ -108,6 +111,7 @@ const blogData: Record<string, any> = {
       { type: "image", src: "https://live.staticflickr.com/7372/9096936531_e3c87b77f4_b.jpg", alt: "仲見世通與寶藏門", caption: "宏偉的寶藏門與左側高聳的五重塔互相輝映" },
       { type: "h3", text: "3. 第三站：本堂參拜與常香爐的神秘力量" },
       { type: "p", id: "hondo", text: "穿過第二道大門「寶藏門」後，就會看到供奉本尊聖觀音菩薩的「本堂」（大殿）。在進入本堂前，你會經過一個煙霧繚繞的<strong>常香爐</strong>。日本信眾相信，將香爐排出的煙霧撥到自己身上，能夠驅除百病、帶來智慧與健康。來到這裡記得學著當地人，把福氣「撥」向自己喔！" },
+      { type: "youtube", videoId: "8j-nmwy0RN4", title: "淺草寺夜景風光" },
       { type: "highlight", title: "🔮 實用教學：淺草寺「觀音靈籤」求籤步驟", text: "淺草寺的「觀音靈籤」非常有名，據說這裡抽到「凶」的機率相對比較高，但不用擔心，這才是最真實的指引！求籤流程如下：1. 在心裡默默向觀音菩薩許願、詢問你想請教的事情。2. 投入 100 日圓硬幣到油錢箱。3. 拿起木製籤筒，誠心搖晃直到其中一根籤「御籤」從小孔掉出。4. 看清楚數字，到對應的小木櫃抽屜中拿取你的籤詩。5. 如果是吉：把喜悅帶回家；如果是凶：別擔心！將籤詩摺好，綁在寺廟專用的鐵架上，代表將厄運留在寺廟，由神明為你化解。" },
       { type: "h2", text: "隱藏加碼：新舊交織的絕佳拍照位" },
       { type: "p", text: "在淺草寺境內，你可以拍到一個非常奇妙的畫面 —— 古色古香的<strong>五重塔</strong>與現代科技感十足的<strong>東京晴空塔（Tokyo Skytree）</strong>同框！這種歷史與現代在空中交匯的強烈對比，是淺草獨有的浪漫景致，千萬不要錯過這個構圖。" },
