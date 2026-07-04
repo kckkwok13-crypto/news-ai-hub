@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { Globe, BookOpen, Sun, Moon, Star, Search, Bell, Mail, X, ChevronDown, RefreshCw, ExternalLink, Bookmark, BookmarkCheck, Share2, TrendingUp, Zap, Menu, Play, Pause, Pen } from "lucide-react";
+import VideoShowcase from "./components/VideoShowcase";
 
 // In-Feed Ad component - shows between news cards
 function InFeedAd({ index }: { index: number }) {
@@ -900,6 +901,9 @@ export default function NewsPage() {
           </div>
         </div>
       </Link>
+
+      {/* Video Showcase Section */}
+      <VideoShowcase />
 
       {/* 精彩專題 Section - Glamorous Version */}
       <div className="mt-8 px-2">
