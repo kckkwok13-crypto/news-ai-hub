@@ -315,7 +315,7 @@ export default function ClientWrapper() {
 
         {/* Featured Video */}
         <div className="mb-8">
-          <YouTubeEmbed videoId="bhaLQJ2L6_0" title="RTX 5090 評測影片" />
+          <YouTubeEmbed videoId="Q82tQJyJwgk" title="RTX 5090 評測影片" />
         </div>
 
         {/* Main Image */}

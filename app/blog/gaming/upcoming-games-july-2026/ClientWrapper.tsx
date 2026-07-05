@@ -328,7 +328,7 @@ export default function ClientWrapper() {
 
         {/* Featured Video */}
         <div className="mb-8">
-          <YouTubeEmbed videoId="qc3F2eM8yGk" title="2026年7月必玩遊戲預告" />
+          <YouTubeEmbed videoId="j151ek2rYs0" title="王國之心4 官方預告" />
         </div>
 
         {/* Main Image */}
@@ -383,7 +383,7 @@ export default function ClientWrapper() {
 
         {/* Game Video */}
         <div className="mb-8">
-          <YouTubeEmbed videoId="H5yKfwfhQ_4" title="艾爾登法環 DLC 實機遊玩" />
+          <YouTubeEmbed videoId="6uT8wGtB3yQ" title="艾爾登法環 DLC 黃金樹幽影 預告" />
         </div>
 
         {/* Tags */}

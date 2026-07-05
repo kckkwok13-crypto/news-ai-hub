@@ -306,7 +306,7 @@ export default function ClientWrapper() {
 
         {/* Featured Video */}
         <div className="mb-8">
-          <YouTubeEmbed videoId="uHGvHcNSK4c" title="Switch 2 薩爾達預告片" />
+          <YouTubeEmbed videoId="uHGShqcAHlQ" title="薩爾達傳說 官方預告" />
         </div>
 
         {/* Main Image */}

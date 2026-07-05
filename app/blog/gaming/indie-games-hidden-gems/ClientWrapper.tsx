@@ -303,7 +303,7 @@ export default function ClientWrapper() {
 
         {/* Featured Video */}
         <div className="mb-8">
-          <YouTubeEmbed videoId="v1uyQZNg2vE" title="空洞騎士：絲之歌2 預告片" />
+          <YouTubeEmbed videoId="6XGeJwsUP9c" title="空洞騎士：絲之歌2 官方預告" />
         </div>
 
         {/* Main Image */}

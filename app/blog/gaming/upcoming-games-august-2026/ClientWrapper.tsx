@@ -288,7 +288,7 @@ export default function ClientWrapper() {
 
         {/* Featured Video */}
         <div className="mb-8">
-          <YouTubeEmbed videoId="El3IzA1Wv9Q" title="魔物獵人 荒野 官方預告" />
+          <YouTubeEmbed videoId="HXGa-6K4_SY" title="魔物獵人 荒野 官方預告" />
         </div>
 
         {/* Main Image */}
