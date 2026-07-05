@@ -6,7 +6,10 @@ const blogContentSlugs = [
   'meiji-shrine',
   'sensoji',
   'keukenhof',
-  'anne-frank-house'
+  'anne-frank-house',
+  'paris-france',
+  'rome-colosseum',
+  'london-uk'
 ];
 
 export function generateStaticParams() {

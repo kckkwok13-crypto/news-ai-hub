@@ -5,25 +5,25 @@ import YouTubeEmbed from "./YouTubeEmbed";
 
 const featuredVideos = [
   {
-    videoId: "Cqc9P7Dd3D4",
-    title: "東京旅遊指南",
-    slug: "shibuya-crossing",
-    category: "旅遊",
-    desc: "探索東京最繁華的十字路口"
+    videoId: "DRs9sZsbqk8",
+    title: "法國巴黎",
+    slug: "paris-france",
+    category: "歐洲",
+    desc: "浪漫之都的深度之旅"
   },
   {
-    videoId: "fFMpQjh53KI",
-    title: "日本旅遊亮點",
-    slug: "meiji-shrine",
-    category: "旅遊",
-    desc: "體驗日本傳統文化魅力"
+    videoId: "da-XDINTtQc",
+    title: "意大利羅馬",
+    slug: "rome-colosseum",
+    category: "歐洲",
+    desc: "永恆之城的古蹟探索"
   },
   {
-    videoId: "rseB7XMoFRs",
-    title: "全球旅遊勝地",
-    slug: "sensoji",
-    category: "旅遊",
-    desc: "發掘世界最美旅遊目的地"
+    videoId: "W4P_YhU22_Y",
+    title: "英國倫敦",
+    slug: "london-uk",
+    category: "歐洲",
+    desc: "皇室與現代的完美融合"
   }
 ];
 
