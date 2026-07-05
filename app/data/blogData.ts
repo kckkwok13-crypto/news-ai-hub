@@ -717,5 +717,61 @@ export const blogPosts: BlogPost[] = [
     tags: ["元宇宙", "NFT", "虛擬地產", "Decentraland", "2026", "科技"],
     accent: "from-violet-500 to-purple-600",
     category: "tech"
+  },
+  // Gaming articles
+  {
+    slug: "gaming/upcoming-games-july-2026",
+    title: "🎮 2026年7月必玩新作遊戲：評分與分析報告",
+    excerpt: "7月遊戲大作雲集！《王國之心4》、《暗黑破壞神4》主機版、《艾爾登法環》DLC等矚目作品深度評測與評分分析！",
+    date: "July 2026",
+    image: "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=800&q=80",
+    icon: "🎮",
+    tags: ["2026年7月", "新遊戲", "評分", "王國之心4", "艾爾登法環"],
+    accent: "from-purple-500 to-pink-600",
+    category: "gaming"
+  },
+  {
+    slug: "gaming/upcoming-games-august-2026",
+    title: "🔥 2026年8月遊戲前瞻：獨家評測與評分",
+    excerpt: "8月遊戲黃金檔期！《魔物獵人 荒野》、《霍格華茲的傳承》續作等備受期待作品搶先評測與評分搶先看！",
+    date: "August 2026",
+    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80",
+    icon: "🔥",
+    tags: ["2026年8月", "新遊戲", "評分", "魔物獵人", "霍格華茲"],
+    accent: "from-amber-500 to-orange-600",
+    category: "gaming"
+  },
+  {
+    slug: "gaming/pc-gaming-build-guide",
+    title: "💻 2026年電腦遊戲配備指南：分析師評測報告",
+    excerpt: "組裝電腦玩3A大作！2026年最新顯示卡、CPU推薦，以及不同預算的遊戲電腦配置方案與性能評測！",
+    date: "July 2026",
+    image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
+    icon: "💻",
+    tags: ["PC遊戲", "電腦配備", "顯示卡", "RTX 5090", "組裝電腦"],
+    accent: "from-cyan-500 to-blue-600",
+    category: "gaming"
+  },
+  {
+    slug: "gaming/indie-games-hidden-gems",
+    title: "🌟 2026年獨立遊戲評分：被低估的神作推薦",
+    excerpt: "獨立遊戲往往被忽略！2026年評分最高但最少人玩的隱藏神作推薦，包括《空洞騎士：絲之歌》續作等佳作！",
+    date: "June 2026",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
+    icon: "🌟",
+    tags: ["獨立遊戲", "Indie Game", "隱藏神作", "空洞騎士", "2026"],
+    accent: "from-emerald-500 to-teal-600",
+    category: "gaming"
+  },
+  {
+    slug: "gaming/nintendo-switch-2-games",
+    title: "🕹️ Nintendo Switch 2 獨家遊戲評分與分析",
+    excerpt: "Switch 2必玩遊戲評分出爐！《薩爾達傳說：夢幻之淚》領銜，分析師深度評測Switch 2獨家作品陣容！",
+    date: "July 2026",
+    image: "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80",
+    icon: "🕹️",
+    tags: ["Nintendo", "Switch 2", "薩爾達", "獨家遊戲", "評分"],
+    accent: "from-red-500 to-pink-600",
+    category: "gaming"
   }
 ];
