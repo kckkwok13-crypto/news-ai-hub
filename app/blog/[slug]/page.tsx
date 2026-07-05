@@ -16,6 +16,7 @@ export function generateStaticParams() {
   return blogContentSlugs.map((slug) => ({ slug }));
 }
 
+// European blog articles: Paris, Rome, London - with YouTube videos
 export default function BlogSlugPage({ params }: { params: { slug: string } }) {
   return <BlogContent slug={params.slug} />;
 }
