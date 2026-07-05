@@ -173,6 +173,7 @@ const blogData: Record<string, any> = {
       { type: "p", text: "坐在平緩的電動木船上，雙手划過清澈的運河水，兩岸是高低錯落、如彩虹般向後延伸幾公里的<strong>鬱金香梯田</strong>，聽著水鳥啼鳴，享受最奢侈的浪漫午後。這是庫肯霍夫最獨特、最愜意的遊覽方式！" },
       { type: "highlight", title: "🌈 拍照秘笈：如何拍出明信片級別的花海大片", text: "• <strong>光線選擇</strong>：清晨8-10點或下午4-6點的側光最能展現花瓣質感<br/>• <strong>構圖技巧</strong>：低角度拍攝可以將花田延伸感最大化<br/>• <strong>服裝搭配</strong>：白色或淺粉色裙子與彩虹花海形成完美對比<br/>• <strong>必備道具</strong>：草帽、編織籃、相機——田園風格的標配三件套" },
       { type: "youtube", videoId: "DNaMkg5CrAo", title: "庫肯霍夫花車巡遊盛況" },
+      { type: "youtube", videoId: "a8_xcoCNot8", title: "庫肯霍夫航拍全景之旅" },
       { type: "tips", title: "庫肯霍夫花園「無痛避開人海」生存指南 (Travel Tips)", items: ["<strong>100% 嚴格網上定時預約制：</strong>庫肯霍夫現在取消了現場實體售票處！所有門票（成人約 €20）必須提前在官方網站實名預訂，否則大老遠來到只能吃閉門羹。", "<strong>推薦購買 Combiticket 套票：</strong>包含「阿姆斯特丹 ─> 花園直達穿梭巴士」的套票，巴士有專用公交車道，能省下至少 1 小時排隊時間。852、858號線直達。", "<strong>穿著裝備：</strong>32公頃的公園全靠雙腿漫步，且荷蘭春季海風極大。務必穿著<strong>防滑舒適的運動鞋</strong>，隨身帶備<strong>防風外套</strong>。", "<strong>餐飲建議：</strong>園區內餐廳價格偏貴，建議自備簡便午餐在花田中野餐，體驗不一樣的田園風情！", "<strong>最佳遊覽時間：</strong>避開週末和復活節假期，平日遊客少一半，拍照體驗完全不同。"] },
     ],
     infoCards: [
@@ -200,6 +201,7 @@ const blogData: Record<string, any> = {
     content: [
       { type: "p", id: "intro", text: "在阿姆斯特丹市中心王子運河畔，有一棟外表低調的褐色磚樓。這裏曾是一個猶太女孩的秘密藏身之所，也是一座讓世人永遠記住二戰暴行的紀念館。這就是<strong>安妮之家（Anne Frank House）</strong>——一個承載著希望、恐懼、勇氣與悲傷的地方。" },
       { type: "youtube", videoId: "56vC8zpn_IM", title: "安妮之家內部導覽 tour" },
+      { type: "youtube", videoId: "CrIP1e15ry8", title: "阿姆斯特丹運河之旅" },
       { type: "p", text: "<em>「我希望我能死後繼續活著。」</em> —— 安妮·弗蘭克，《安妮日記》" },
       { type: "p", text: "這句話在她短暫的一生中或許只是少女的願望，但如今，安妮·弗蘭克確實以另一種方式「活」在了全世界每個人的心中。" },
       { type: "highlight", title: "安妮·弗蘭克的一生", text: "1929年出生於德國法蘭克福，1934年隨家人移民荷蘭，1942年躲入秘密側樓，1944年被納粹逮捕，1945年死於集中營。她的一生雖然短暫（1929-1945），但她留下的《安妮日記》成為了二十世紀最具影響力的書籍之一，被翻譯成超過70種語言。" },
