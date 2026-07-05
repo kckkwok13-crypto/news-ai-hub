@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Comments from "../../../components/Comments";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 import { TravelLanguage } from "../../data/travelTranslations";
+import YouTubeEmbed from "../../components/YouTubeEmbed";
 
 const meijiContent: Record<TravelLanguage, {
   meta: {
@@ -371,6 +372,8 @@ export default function MeijiShrinePage() {
             ))}
           </div>
 
+          <YouTubeEmbed videoId="fFMpQjh53KI" title="明治神宮神秘森林導覽" />
+
           <h2 id="torii" className="text-[#1a2a3a] border-b-2 border-[#4a7c59] pb-2 mt-10 mb-4">
             {content.toc[1]?.emoji} {content.sections.torii.title}
           </h2>
@@ -401,6 +404,8 @@ export default function MeijiShrinePage() {
               ))}
             </ul>
           </div>
+
+          <YouTubeEmbed videoId="fxAIBywb7Vk" title="明治神宮完整導覽" />
 
           <h2 className="text-[#1a2a3a] border-b-2 border-[#4a7c59] pb-2 mt-10 mb-4">{content.infoTitle}</h2>
           <div className="grid grid-cols-2 gap-4 my-6">

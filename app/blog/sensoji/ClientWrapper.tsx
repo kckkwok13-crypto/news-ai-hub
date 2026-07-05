@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Comments from "../../../components/Comments";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 import { TravelLanguage } from "../../data/travelTranslations";
+import YouTubeEmbed from "../../components/YouTubeEmbed";
 
 // Multi-language content
 const sensojiContent: Record<TravelLanguage, {
@@ -389,6 +390,8 @@ export default function SensojiPage() {
             {content.sections.intro[1]}
           </p>
 
+          <YouTubeEmbed videoId="rseB7XMoFRs" title="淺草寺雷門與仲見世通" />
+
           <h2 id="kaminarimon" className="text-[#1a2a3a] border-b-2 border-[#b8975a] pb-2 mt-10 mb-4">
             {content.sections.route.title}
           </h2>
@@ -443,6 +446,8 @@ export default function SensojiPage() {
               <li><strong>{currentLang === "en" ? "Transportation:" : "交通方式："}</strong>{content.sections.tips[2]}</li>
             </ul>
           </div>
+
+          <YouTubeEmbed videoId="8j-nmwy0RN4" title="淺草寺夜景風光" />
 
           <h2 className="text-[#1a2a3a] border-b-2 border-[#b8975a] pb-2 mt-10 mb-4">
             📊 {currentLang === "en" ? "Attraction Information" : "景點資訊一覽"}

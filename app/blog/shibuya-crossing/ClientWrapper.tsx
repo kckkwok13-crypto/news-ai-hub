@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 import { TravelLanguage } from "../../data/travelTranslations";
+import YouTubeEmbed from "../../components/YouTubeEmbed";
 
 const shibuyaContent: Record<TravelLanguage, {
   meta: {
@@ -359,6 +360,8 @@ export default function ShibuyaCrossingPage() {
             ))}
           </div>
 
+          <YouTubeEmbed videoId="Cqc9P7Dd3D4" title="澀谷十字路口繁華景象" />
+
           <h2 id="crossing">{content.toc[1]?.emoji} {content.toc[1]?.title}</h2>
           <p>{content.sections.crossing}</p>
 
@@ -408,6 +411,8 @@ export default function ShibuyaCrossingPage() {
               ))}
             </ul>
           </div>
+
+          <YouTubeEmbed videoId="at4paCX49uo" title="澀谷十字路口夜景" />
 
           <h2>{content.infoTitle}</h2>
           <div className="grid grid-cols-2 gap-4 my-6">
