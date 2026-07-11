@@ -270,6 +270,7 @@ export default function ShibuyaCrossingPage() {
   const [activeSection, setActiveSection] = useState("intro");
   const [currentLang, setCurrentLang] = useState<TravelLanguage>("zh-TW");
   const content = shibuyaContent[currentLang];
+  const lastUpdated = "2026-07-11";
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });

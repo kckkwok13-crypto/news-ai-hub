@@ -4,6 +4,7 @@ export interface HealthPost {
   excerpt: string;
   content: string;
   date: string;
+  lastUpdated: string;
   tags: string[];
   icon: string;
   accent: string;
@@ -101,6 +102,7 @@ export const healthPosts: HealthPost[] = [
 這種生活方式可以讓你更健康、更長壽！
     `,
     date: "2026-06-11",
+    lastUpdated: "2026-07-11",
     tags: ["健康飲食", "地中海飲食", "減肥", "營養", "長壽"],
     icon: "🥗",
     accent: "from-green-500 to-emerald-600",
@@ -196,6 +198,7 @@ export const healthPosts: HealthPost[] = [
 堅持一週，你會感受到明顯的不同！
     `,
     date: "2026-06-09",
+    lastUpdated: "2026-07-11",
     tags: ["睡眠", "健康", "改善睡眠", "養生", "生活質量"],
     icon: "😴",
     accent: "from-indigo-500 to-purple-600",
@@ -295,6 +298,7 @@ export const healthPosts: HealthPost[] = [
 從今天開始，每天動一動！
     `,
     date: "2026-06-07",
+    lastUpdated: "2026-07-11",
     tags: ["銀髮族", "運動", "健康", "50歲", "活力"],
     icon: "🏃",
     accent: "from-orange-500 to-red-600",
@@ -531,6 +535,7 @@ export const healthPosts: HealthPost[] = [
 **記住**：你值得過輕鬆、快樂的生活！從今天開始，踏出減壓第一步。 💪✨
     `,
     date: "2026-06-05",
+    lastUpdated: "2026-07-11",
     tags: ["壓力管理", "焦慮", "心理健康", "減壓", "生活質量", "圖表"],
     icon: "🧘",
     accent: "from-violet-500 to-indigo-600",
@@ -747,6 +752,7 @@ export const healthPosts: HealthPost[] = [
 *溫馨提示：本文僅供養生保健參考，如有疾病困擾，請諮詢註冊中醫師作專業診治。*
     `,
     date: "2026-06-13",
+    lastUpdated: "2026-07-11",
     tags: ["中醫養生", "陰陽平衡", "氣血調和", "四時養生", "藥食同源"],
     icon: "☯",
     accent: "from-emerald-500 to-teal-600",
@@ -863,6 +869,7 @@ export const healthPosts: HealthPost[] = [
 你的心臟，你來保護！
     `,
     date: "2026-06-01",
+    lastUpdated: "2026-07-11",
     tags: ["心臟健康", "健康", "三高", "心血管", "養生"],
     icon: "❤️",
     accent: "from-red-500 to-pink-600",
@@ -1052,6 +1059,7 @@ export const healthPosts: HealthPost[] = [
 記住：持之以恆，先有效果！🧘‍♀️
 `,
     date: "2026年5月20日",
+    lastUpdated: "2026-07-11",
     tags: ["瑜伽", "運動", "健身", "新手", "靈活性"],
     icon: "🧘",
     accent: "from-purple-500 to-indigo-600",
@@ -1222,6 +1230,7 @@ export const healthPosts: HealthPost[] = [
 每30分鐘郁一郁，遠離辦公室綜合症！
 `,
     date: "2026年5月15日",
+    lastUpdated: "2026-07-11",
     tags: ["辦公室", "坐姿", "健康", "打工仔", "自救"],
     icon: "💼",
     accent: "from-blue-500 to-cyan-600",
@@ -1364,6 +1373,7 @@ export const healthPosts: HealthPost[] = [
 記住：**求助係強者嘅表現！**
 `,
     date: "2026年5月10日",
+    lastUpdated: "2026-07-11",
     tags: ["心理健康", "職場", "壓力", "打工仔", "精神健康"],
     icon: "🧠",
     accent: "from-violet-500 to-purple-600",
@@ -1536,6 +1546,7 @@ export const healthPosts: HealthPost[] = [
 記住：**健康生活，免疫力自然強！**
 `,
     date: "2026年5月5日",
+    lastUpdated: "2026-07-11",
     tags: ["免疫力", "健康", "防疫", "抵抗力", "養生"],
     icon: "🛡️",
     accent: "from-green-500 to-emerald-600",
@@ -1727,6 +1738,7 @@ export const healthPosts: HealthPost[] = [
 記住：**健康生活方式係最好嘅預防！**
 `,
     date: "2026年4月28日",
+    lastUpdated: "2026-07-11",
     tags: ["糖尿病", "健康", "預防", "血糖", "慢性病"],
     icon: "🩺",
     accent: "from-blue-500 to-indigo-600",
@@ -2000,6 +2012,7 @@ export const healthPosts: HealthPost[] = [
 *報告更新日期：2026年1月*
 `,
     date: "2026-06-20",
+    lastUpdated: "2026-07-11",
     tags: ["香港健康", "健康數據", "統計分析", "慢性病", "健康趨勢"],
     icon: "📊",
     accent: "from-blue-500 to-cyan-600",
@@ -2176,6 +2189,7 @@ export const healthPosts: HealthPost[] = [
 **記住**：冥想係一項技能，需要時間培養。唔好因為初期分心而放棄！堅持每日練習，你會發現內心變得更加平靜、專注。 🙏
     `,
     date: "2026-06-15",
+    lastUpdated: "2026-07-11",
     tags: ["冥想", "正念", "壓力管理", "心理健康", "減壓"],
     icon: "🧘",
     accent: "from-purple-500 to-indigo-600",
@@ -2394,6 +2408,7 @@ export const healthPosts: HealthPost[] = [
 **記住**：骨骼健康係終身事業！由今天開始，為骨骼健康投資。 💪
     `,
     date: "2026-06-12",
+    lastUpdated: "2026-07-11",
     tags: ["骨骼健康", "骨質疏鬆", "補鈣", "運動", "預防"],
     icon: "🦴",
     accent: "from-amber-500 to-orange-600",
@@ -2594,6 +2609,7 @@ export const healthPosts: HealthPost[] = [
 **記住**：腸道健康係全身健康嘅基礎！由今天開始，好好照顧你的「第二個大腦」。 🌟
     `,
     date: "2026-06-10",
+    lastUpdated: "2026-07-11",
     tags: ["腸道健康", "益生菌", "腸胃健康", "微生物", "消化系統"],
     icon: "🔬",
     accent: "from-teal-500 to-green-600",
@@ -2882,6 +2898,7 @@ export const healthPosts: HealthPost[] = [
 *數據來源：國際肥胖研究期刊、美國臨床營養學雜誌、Cochrane數據庫、哈佛公共衞生學院研究*
 `,
     date: "2026-06-18",
+    lastUpdated: "2026-07-11",
     tags: ["減肥", "科學減肥", "營養學", "運動", "體重管理"],
     icon: "🧬",
     accent: "from-green-500 to-emerald-600",

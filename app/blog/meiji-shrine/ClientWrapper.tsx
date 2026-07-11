@@ -283,6 +283,7 @@ export default function MeijiShrinePage() {
   const [activeSection, setActiveSection] = useState("intro");
   const [currentLang, setCurrentLang] = useState<TravelLanguage>("zh-TW");
   const content = meijiContent[currentLang];
+  const lastUpdated = "2026-07-11";
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -328,7 +329,7 @@ export default function MeijiShrinePage() {
             {content.meta.title}
           </h1>
           <h2 className="text-xl text-[#4a7c59] font-semibold mb-4">{content.meta.subtitle}</h2>
-          <p className="text-[#94a3b8]">May 2026 · 作者：純粹旅人</p>
+          <p className="text-[#94a3b8]">May 2026 · Last Updated: 2026-07-11 · 作者：純粹旅人</p>
         </header>
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#4a7c59]/20">

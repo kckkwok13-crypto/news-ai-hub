@@ -540,6 +540,7 @@ export default function ShenzhenPage() {
   const [currentLang, setCurrentLang] = useState<TravelLanguage>("zh-TW");
 
   const content = shenzhenContent[currentLang];
+  const lastUpdated = "2026-07-11";
   const tocItems = content.toc;
 
   useEffect(() => {

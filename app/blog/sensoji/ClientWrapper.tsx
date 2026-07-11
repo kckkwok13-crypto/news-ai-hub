@@ -296,6 +296,7 @@ export default function SensojiPage() {
   const [currentLang, setCurrentLang] = useState<TravelLanguage>("zh-TW");
 
   const content = sensojiContent[currentLang];
+  const lastUpdated = "2026-07-11";
   const tocItems = content.toc;
 
   useEffect(() => {
@@ -368,7 +369,7 @@ export default function SensojiPage() {
             {content.meta.title}
           </h1>
           <h2 className="text-xl text-[#b8975a] font-semibold mb-4">{content.meta.subtitle}</h2>
-          <p className="text-[#94a3b8]">May 2026 · {currentLang === "en" ? "Author: Pure Traveler" : currentLang === "zh-CN" ? "作者：纯粹旅人" : currentLang === "yue" ? "作者：純粹旅人" : "作者：純粹旅人"}</p>
+          <p className="text-[#94a3b8]">May 2026 · Last Updated: 2026-07-11 · {currentLang === "en" ? "Author: Pure Traveler" : currentLang === "zh-CN" ? "作者：纯粹旅人" : currentLang === "yue" ? "作者：純粹旅人" : "作者：純粹旅人"}</p>
         </header>
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#b8975a]/20">

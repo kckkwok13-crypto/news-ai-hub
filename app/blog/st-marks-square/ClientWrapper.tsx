@@ -62,7 +62,7 @@ export default function StMarksSquarePage() {
             漫步歐洲最美的客廳：威尼斯聖馬可廣場
           </h1>
           <h2 className="text-xl text-[#8b0000] font-semibold mb-4">Piazza San Marco 深度一日遊全攻略</h2>
-          <p className="text-[#94a3b8]">May 2026 · 作者：純粹旅人</p>
+          <p className="text-[#94a3b8]">May 2026 · Last Updated: 2026-07-11 · 作者：純粹旅人</p>
         </header>
 
         <div className="my-12 rounded-2xl overflow-hidden shadow-2xl shadow-[#8b0000]/20">

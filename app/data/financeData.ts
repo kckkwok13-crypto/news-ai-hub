@@ -4,6 +4,7 @@ export interface FinancePost {
   excerpt: string;
   content: string;
   date: string;
+  lastUpdated: string;
   tags: string[];
   icon: string;
   accent: string;
@@ -239,6 +240,7 @@ export const financePosts: FinancePost[] = [
 *⚠️ 投資有風險，本文只供參考，不構成投資建議。投資前請先了解自己嘅風險承受能力。*
     `,
     date: "2026-06-12",
+    lastUpdated: "2026-07-11",
     tags: ["ETF", "指數基金", "新手入門", "投資攻略", "懶人投資"],
     icon: "📈",
     accent: "from-emerald-500 to-teal-600",
@@ -313,6 +315,7 @@ export const financePosts: FinancePost[] = [
 退休規劃沒有太晚的開始，只有不開始的遺憾。從今天起，每個月多存HK$1,000，30年後就是HK$36萬 + 投資回報。
     `,
     date: "2026-06-08",
+    lastUpdated: "2026-07-11",
     tags: ["退休規劃", "強積金", "理財", "銀髮族", "香港"],
     icon: "🏖️",
     accent: "from-amber-500 to-orange-600",
@@ -417,6 +420,7 @@ export const financePosts: FinancePost[] = [
 建議從今天開始，每個月新增一個收入來源。
     `,
     date: "2026-06-06",
+    lastUpdated: "2026-07-11",
     tags: ["被動收入", "財務自由", "多元收入", "投資", "被動收入"],
     icon: "💰",
     accent: "from-purple-500 to-pink-600",
@@ -501,6 +505,7 @@ export const financePosts: FinancePost[] = [
 每月固定投入，10年後你會感謝今天的自己。
     `,
     date: "2026-06-04",
+    lastUpdated: "2026-07-11",
     tags: ["股票", "港股", "美股", "投資入門", "股票投資"],
     icon: "📊",
     accent: "from-blue-500 to-indigo-600",
@@ -590,6 +595,7 @@ export const financePosts: FinancePost[] = [
 建議先用少量資金學習，了解市場運作後再逐步增加投資。
     `,
     date: "2026-06-02",
+    lastUpdated: "2026-07-11",
     tags: ["加密貨幣", "比特幣", "以太坊", "區塊鏈", "虛擬貨幣"],
     icon: "₿",
     accent: "from-orange-500 to-yellow-600",
@@ -680,6 +686,7 @@ A: 設定明確的財務目標，讓金錢為你服務
 現在開始，每個月多存HK$2,000，10年後就是HK$24萬 + 投資回報。時間是你最大的資產。
     `,
     date: "2026-05-30",
+    lastUpdated: "2026-07-11",
     tags: ["理財規劃", "30歲", "財務自由", "年輕人", "投資策略"],
     icon: "🎯",
     accent: "from-green-500 to-emerald-600",
@@ -845,6 +852,7 @@ A: 設定明確的財務目標，讓金錢為你服務
 *⚠️ 保險產品複雜，投保前請先諮詢獨立保險顧問。*
 `,
     date: "2026-05-25日",
+    lastUpdated: "2026-07-11",
     tags: ["保險", "醫療保險", "危疾保險", "香港", "保障"],
     icon: "🏥",
     accent: "from-blue-500 to-indigo-600",
@@ -1000,6 +1008,7 @@ A: 設定明確的財務目標，讓金錢為你服務
 *⚠️ 投資涉及風險，強積金投資選擇應根據個人情況及風險承受能力決定。*
 `,
     date: "2026年5月20日",
+    lastUpdated: "2026-07-11",
     tags: ["強積金", "MPF", "退休", "投資", "打工仔"],
     icon: "💰",
     accent: "from-emerald-500 to-teal-600",
@@ -1147,6 +1156,7 @@ A: 設定明確的財務目標，讓金錢為你服務
 *⚠️ 投資涉及風險，本文僅供參考，不構成投資建議。*
 `,
     date: "2026年5月15日",
+    lastUpdated: "2026-07-11",
     tags: ["風險管理", "投資", "止蝕", "分散投資", "心理學"],
     icon: "🛡️",
     accent: "from-red-500 to-orange-600",
@@ -1344,6 +1354,7 @@ A: 設定明確的財務目標，讓金錢為你服務
 *⚠️ 投資涉及風險，月供股票唔擔保回報。投資前請了解自己嘅風險承受能力。*
 `,
     date: "2026年5月10日",
+    lastUpdated: "2026-07-11",
     tags: ["月供股票", "平均成本", "儲蓄", "投資", "打工仔"],
     icon: "📅",
     accent: "from-teal-500 to-cyan-600",
@@ -1453,6 +1464,7 @@ A: 設定明確的財務目標，讓金錢為你服務
 *⚠️ 本文僅供參考，不構成投資建議。投資涉及風險，請根據個人風險承受能力作出獨立判斷。*
 `,
     date: "2026年6月27日",
+    lastUpdated: "2026-07-11",
     tags: ["全球經濟", "宏觀經濟", "聯儲利率", "中美貿易戰", "通脹", "投資策略"],
     icon: "📊",
     accent: "from-blue-500 to-indigo-600",
@@ -1509,6 +1521,7 @@ $55,000-$58,000區間係關鍵支持。
 *⚠️ 比特幣波動性極大，本文僅供參考，不構成投資建議。*
 `,
     date: "2026年6月27日",
+    lastUpdated: "2026-07-11",
     tags: ["比特幣", "加密貨幣", "抄底", "2028減半"],
     icon: "₿",
     accent: "from-orange-500 to-amber-600",
@@ -1551,6 +1564,7 @@ ETF嘅出現大大提升咗比特幣市場嘅流動性，降低咗交易成本�
 *⚠️ 加密貨幣投資涉及風險，本文僅供參考。*
 `,
     date: "2026年5月28日",
+    lastUpdated: "2026-07-11",
     tags: ["比特幣ETF", "機構投資", "加密貨幣"],
     icon: "₿",
     accent: "from-orange-500 to-amber-600",
@@ -1596,6 +1610,7 @@ ETF嘅出現大大提升咗比特幣市場嘅流動性，降低咗交易成本�
 *⚠️ CBDC發展存在不確定性，本文僅供參考。*
 `,
     date: "2026年5月15日",
+    lastUpdated: "2026-07-11",
     tags: ["CBDC", "數字貨幣", "央行", "美元霸權"],
     icon: "🏦",
     accent: "from-blue-500 to-cyan-600",
@@ -1653,6 +1668,7 @@ ETF嘅出現大大提升咗比特幣市場嘅流動性，降低咗交易成本�
 *⚠️ 穩定幣投資涉及風險，請自行評估。*
 `,
     date: "2026年5月12日",
+    lastUpdated: "2026-07-11",
     tags: ["穩定幣", "USDT", "USDC", "DeFi"],
     icon: "🪙",
     accent: "from-emerald-500 to-teal-600",
@@ -1710,6 +1726,7 @@ ETF嘅出現大大提升咗比特幣市場嘅流動性，降低咗交易成本�
 *⚠️ DeFi投資涉及極高風險，本文僅供參考。*
 `,
     date: "2026年5月10日",
+    lastUpdated: "2026-07-11",
     tags: ["DeFi", "借貸", "DEX", "區塊鏈"],
     icon: "💱",
     accent: "from-violet-500 to-purple-600",
@@ -2035,6 +2052,7 @@ ETF嘅出現大大提升咗比特幣市場嘅流動性，降低咗交易成本�
 *⚠️ 本文僅供參考，不構成投資建議。投資涉及風險，過往表現唔代表未來回報。在作出任何投資決定前，請諮詢專業財務顧問，並根據個人嘅風險承受能力作出獨立判斷。*
 `,
     date: "2026年7月1日",
+    lastUpdated: "2026-07-11",
     tags: ["投資展望", "港股", "美股", "A股", "東盟", "資產配置", "2026下半年"],
     icon: "📊",
     accent: "from-emerald-500 to-teal-600",

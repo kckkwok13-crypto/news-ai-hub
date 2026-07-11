@@ -4,6 +4,7 @@ export interface FoodPost {
   excerpt: string;
   content: string;
   date: string;
+  lastUpdated: string;
   tags: string[];
   icon: string;
   accent: string;
@@ -147,6 +148,7 @@ export const foodPosts: FoodPost[] = [
 記住：早起身！晏去啲好野冇嗮啦！🥟🍵
 `,
     date: "2026年6月10日",
+    lastUpdated: "2026-07-11",
     tags: ["香港", "點心", "粵菜", "飲茶"],
     icon: "🥟",
     accent: "from-red-500 to-orange-500",
@@ -363,6 +365,7 @@ export const foodPosts: FoodPost[] = [
 記住：日日飲湯，身體健康！🍲❤️
 `,
     date: "2026年6月8日",
+    lastUpdated: "2026-07-11",
     tags: ["廣東", "湯水", "健康", "食譜"],
     icon: "🍲",
     accent: "from-amber-500 to-yellow-500",
@@ -515,6 +518,7 @@ export const foodPosts: FoodPost[] = [
 記住：欣賞壽司，係欣賞師傅嘅心意！🍣✨
 `,
     date: "2026年6月5日",
+    lastUpdated: "2026-07-11",
     tags: ["日本", "壽司", "刺身", "美食"],
     icon: "🍣",
     accent: "from-blue-500 to-indigo-500",
@@ -665,6 +669,7 @@ export const foodPosts: FoodPost[] = [
 記住：打邊爐最緊要係氣氛！一齊吹水一齊食先最正！🍲🔥
 `,
     date: "2026年6月3日",
+    lastUpdated: "2026-07-11",
     tags: ["香港", "火鍋", "冬天", "打邊爐"],
     icon: "🍲",
     accent: "from-red-600 to-orange-500",
@@ -868,6 +873,7 @@ export const foodPosts: FoodPost[] = [
 記住：泰國街邊檔，先係最正嘅味道！🇹🇭🍜
 `,
     date: "2026年5月28日",
+    lastUpdated: "2026-07-11",
     tags: ["泰國", "泰式", "街頭美食", "曼谷"],
     icon: "🥘",
     accent: "from-yellow-500 to-orange-500",
@@ -1067,6 +1073,7 @@ export const foodPosts: FoodPost[] = [
 記住：靚咖啡係需要時間慢慢品嚐嘅！☕✨
 `,
     date: "2026年5月25日",
+    lastUpdated: "2026-07-11",
     tags: ["咖啡", "咖啡店", "生活態度"],
     icon: "☕",
     accent: "from-amber-700 to-brown-600",
@@ -1254,6 +1261,7 @@ export const foodPosts: FoodPost[] = [
 記住：燒烤最緊要係開心！🔥🥩
 `,
     date: "2026年5月20日",
+    lastUpdated: "2026-07-11",
     tags: ["燒烤", "BBQ", "夏天", "户外"],
     icon: "🔥",
     accent: "from-orange-600 to-red-500",
@@ -1488,6 +1496,7 @@ export const foodPosts: FoodPost[] = [
 記住：整甜品最緊要係心意！🍰💕
 `,
     date: "2026年5月15日",
+    lastUpdated: "2026-07-11",
     tags: ["甜品", "整甜品", "簡單食譜"],
     icon: "🍰",
     accent: "from-pink-400 to-rose-500",
@@ -1678,6 +1687,7 @@ export const foodPosts: FoodPost[] = [
 記住：一碗好麵，係師傅嘅心血！🍜💪
 `,
     date: "2026年5月10日",
+    lastUpdated: "2026-07-11",
     tags: ["香港", "麵食", "雲吞麵", "車仔麵"],
     icon: "🍜",
     accent: "from-yellow-400 to-amber-500",
@@ -1870,6 +1880,7 @@ export const foodPosts: FoodPost[] = [
 記住：千祈唔好空肚！🥐☀️
 `,
     date: "2026年5月5日",
+    lastUpdated: "2026-07-11",
     tags: ["早餐", "茶餐廳", "香港", "美食"],
     icon: "🥐",
     accent: "from-yellow-300 to-orange-400",
@@ -2077,6 +2088,7 @@ export const foodPosts: FoodPost[] = [
 記住：少糖少冰更健康！🧋💪
 `,
     date: "2026年4月28日",
+    lastUpdated: "2026-07-11",
     tags: ["手搖茶", "珍珠奶茶", "消暑", "飲品"],
     icon: "🧋",
     accent: "from-pink-400 to-purple-500",
@@ -2305,6 +2317,7 @@ AI廚師助手成為家庭標配！
 - 香港餐飲聯業大同盟統計報告
 `,
     date: "2026年6月15日",
+    lastUpdated: "2026-07-11",
     tags: ["美食趨勢", "2026", "數據分析", "餐飲業", "香港美食"],
     icon: "🍽️",
     accent: "from-orange-500 to-red-500",
@@ -2514,6 +2527,7 @@ AI廚師助手成為家庭標配！
 - 世界衞生組織全球營養報告
 `,
     date: "2026年6月12日",
+    lastUpdated: "2026-07-11",
     tags: ["營養學", "健康飲食", "蛋白質", "維他命", "數據分析"],
     icon: "🧬",
     accent: "from-green-500 to-teal-500",
@@ -2876,6 +2890,7 @@ AI廚師助手成為家庭標配！
 - Journal of Nutritional Science 研究報告
 `,
     date: "2026年6月8日",
+    lastUpdated: "2026-07-11",
     tags: ["超級食物", "健康飲食", "超級食物分析", "香港超市", "營養價值"],
     icon: "🥑",
     accent: "from-green-400 to-emerald-500",
@@ -3181,6 +3196,7 @@ AI廚師助手成為家庭標配！
 - 50位本地食家匿名評分
 `,
     date: "2026年6月5日",
+    lastUpdated: "2026-07-11",
     tags: ["米芝蓮", "星級餐廳", "香港美食", "高級餐廳", "預訂攻略"],
     icon: "⭐",
     accent: "from-yellow-400 to-amber-500",
@@ -3400,6 +3416,7 @@ AI廚師助手成為家庭標配！
 記住：最好味嘅拉麵，係你最享受嗰碗！🍜
 `,
     date: "2026年7月5日",
+    lastUpdated: "2026-07-11",
     tags: ["日本拉麵", "美食文化", "日本料理", "拉麵之旅"],
     icon: "🍜",
     accent: "from-orange-400 to-red-500",
@@ -3628,6 +3645,7 @@ AI廚師助手成為家庭標配！
 記住：最好味嘅泰國美食，永遠喺路邊嗰檔！🌶️🍜
 `,
     date: "2026年7月4日",
+    lastUpdated: "2026-07-11",
     tags: ["泰國美食", "街頭美食", "曼谷旅遊", "東南亞料理", "平靚正"],
     icon: "🌶️",
     accent: "from-yellow-400 to-orange-500",
