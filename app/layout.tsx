@@ -12,11 +12,11 @@ const BASE_URL = 'https://www.newskingdom.store';
 
 export const metadata: Metadata = {
   title: {
-    default: 'NewsFlow - AI 驅動的智能新聞平台 | 純粹旅人遊記',
-    template: '%s | NewsFlow',
+    default: '旅遊王國 | 純粹旅人原創深度遊記攻略',
+    template: '%s | 旅遊王國',
   },
-  description: 'AI驅動的新聞聚合平台，支持多語言即時翻譯。純粹旅人原創深度遊記，涵蓋大灣區退休遊、日本、歐洲等旅遊攻略。免費旅遊博客、新聞資訊。',
-  keywords: ['AI新聞', '智能新聞', '新聞聚合', '多語言新聞', '財經新聞', '科技新聞', 'AI翻譯', 'News AI Hub', '旅遊博客', '遊記', '日本旅遊', '歐洲旅遊', '大灣區'],
+  description: '純粹旅人原創深度遊記平台，涵蓋日本、歐洲、東南亞等全球旅遊攻略。免費旅遊博客、簽證資訊、行程規劃工具，大灣區出發的最佳旅行參考。',
+  keywords: ['旅遊王國', '旅遊博客', '遊記', '日本旅遊', '歐洲旅遊', '東南亞旅遊', '大灣區', '簽證攻略', '行程規劃', '自由行', '深度遊', '純粹旅人'],
   authors: [{ name: '純粹旅人', url: BASE_URL }],
   creator: '純粹旅人',
   publisher: 'NewsFlow',
@@ -38,28 +38,28 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.svg',
   },
   openGraph: {
-    title: 'NewsFlow - AI 驅動的智能新聞平台',
-    description: '即時翻譯 · AI 分析 · 多元分類 · 純粹旅人深度遊記',
+    title: '旅遊王國 | 純粹旅人原創深度遊記攻略',
+    description: '原創深度旅遊遊記，涵蓋日本、歐洲、東南亞等全球目的地。簽證攻略、行程規劃、旅行工具，大灣區出發的最佳旅行參考。',
     type: 'website',
     locale: 'zh_HK',
-    siteName: 'NewsFlow',
+    siteName: '旅遊王國',
     url: BASE_URL,
     images: [{
       url: '/og-image.png',
       width: 1200,
       height: 630,
-      alt: 'NewsFlow - AI 驅動的智能新聞平台',
+      alt: '旅遊王國 - 純粹旅人原創深度遊記',
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NewsFlow - AI 驅動的智能新聞平台',
-    description: '即時翻譯 · AI 分析 · 多元分類 · 純粹旅人深度遊記',
+    title: '旅遊王國 | 純粹旅人原創深度遊記攻略',
+    description: '原創深度旅遊遊記，涵蓋日本、歐洲、東南亞等全球目的地',
     site: '@puretraveler',
     creator: '@puretraveler',
     images: {
       url: '/og-image.png',
-      alt: 'NewsFlow - AI 驅動的智能新聞平台',
+      alt: '旅遊王國 - 純粹旅人原創深度遊記',
     },
   },
   robots: {
@@ -81,11 +81,11 @@ export const metadata: Metadata = {
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'NewsFlow',
+  name: '旅遊王國',
   url: 'https://www.newskingdom.store',
-  description: 'AI驅動的新聞聚合平台，支持多語言即時翻譯。純粹旅人原創深度遊記，涵蓋大灣區退休遊、日本、歐洲等旅遊攻略。',
+  description: '純粹旅人原創深度遊記平台，涵蓋日本、歐洲、東南亞等全球旅遊攻略。簽證資訊、行程規劃工具，大灣區出發的最佳旅行參考。',
   publisher: {
-    '@type': 'Organization',
+    '@type': 'Person',
     name: '純粹旅人',
     logo: {
       '@type': 'ImageObject',
@@ -104,19 +104,15 @@ const websiteJsonLd = {
 
 const organizationJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'NewsFlow',
+  '@type': 'Person',
+  name: '純粹旅人',
   url: 'https://www.newskingdom.store',
   logo: 'https://www.newskingdom.store/icon.svg',
+  description: '熱愛旅行的部落客，專注於原創深度遊記和旅遊攻略',
   sameAs: [
     'https://twitter.com/puretraveler',
   ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer service',
-    email: 'contact@newskingdom.store',
-    availableLanguage: ['Chinese', 'English', 'Traditional Chinese'],
-  },
+  email: 'contact@newskingdom.store',
 };
 
 export default function RootLayout({

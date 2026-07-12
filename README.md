@@ -1,119 +1,45 @@
-# NewsFlow - AI-Powered Global News Aggregator 🌐
+# 旅遊王國 | Travel Kingdom - 純粹旅人原創深度遊記
 
-[English below](#english)
+🌏 **一個退休旅遊愛好者的原創深度遊記平台**
 
-## 最新更新 (2026-06-17)
-- 🍲 新增10篇飲食天地原創文章
-- 🔧 修復Vercel部署問題
-
-## 🚀 部署指南
-
-### 必要設置
-
-#### 1️⃣ 設定 OpenRouter API Key（AI 功能）
-
-**方法一：Vercel Dashboard（推薦）**
-1. 登入 [Vercel Dashboard](https://vercel.com/dashboard)
-2. 選擇 `news-ai-hub` 項目
-3. 前往 **Settings** → **Environment Variables**
-4. 添加：
-   - **Name**: `OPENROUTER_API_KEY`
-   - **Value**: 你的 OpenRouter API Key（從 https://openrouter.ai/ 獲取）
-5. 點擊 **Save**
-6. 前往 **Deployments**，點擊 **Redeploy**
-
-**方法二：本地開發**
-```bash
-echo "OPENROUTER_API_KEY=你的API_KEY" > .env.local
-npm run dev
-```
-
----
-
-## 🎯 功能
-
-| 功能 | 說明 |
-|------|------|
-| 🌍 多來源新聞 | 薈萃 50+ 新聞源，涵蓋國際、財經、加密幣、香港、台灣、中國、商業、科技、天文學、神秘學 |
-| 🗣️ 雙語翻譯 | 廣東話 / English 实时翻译 |
-| 🎙️ AI 網台分析 | 主持人風格深度分析、立場偵測、影響評估 |
-| 📊 情緒追蹤 | 正面/負面/中立 情緒分析 |
-| 🧭 立場分析 | 親中、親美、親歐等立場偵測 |
-| 🔍 多元化觀點 | 減少資訊繭房，提供平衡視角 |
-| 📱 黑暗模式 | 保護眼睛嘅深色主題 |
-| 🔔 自訂關鍵字追蹤 | 追蹤你感興趣嘅話題 |
-| 💾 收藏功能 | 收藏新聞離線閱讀 |
-
----
-
-## 🛠️ 開發
-
-```bash
-# 安裝依賴
-npm install
-
-# 本地開發
-npm run dev
-
-# 構建生產版本
-npm run build
-
-# 推送更改
-git push
-```
-
----
-
-## 🌐 新聞來源
-
-| 分類 | 來源 |
-|------|------|
-| 國際 | BBC World, NYTimes, Al Jazeera, DW, SCMP |
-| 財經 | Yahoo Finance, MarketWatch, Investing.com, Nikkei Asia, CNBC |
-| 加密幣 | CoinTelegraph, CoinDesk, CryptoPanic |
-| 香港 | Google News HK, SCMP HK |
-| 港股 | Google News HK (股票相關) |
-| 台灣 | Google News TW |
-| 中國 | Google News China |
-| 商業 | Reuters, Nikkei Asia, Investing.com |
-| 科技 | TechCrunch, The Verge, Wired |
-| 天文學 | Space.com, NASA, Universe Today |
-| 神秘學 | Unexplained Mysteries, ScienceAlert |
-| Podcast | Nature Podcast, Science Podcast, NASA, Tech Podcasts |
-
----
-
-## 📄 许可证
-
-MIT License
+[English](#english) | [繁體中文](#繁體中文)
 
 ---
 
 <a name="english"></a>
 
-## 🇭🇰 NewsFlow - AI-Powered Global News Aggregator
-
 ## 🚀 Deployment Guide
 
-### Required Setup
+### Quick Deploy to Vercel
 
-#### 1️⃣ Set OpenRouter API Key (for AI features)
+**Option 1: Via Git (Recommended)**
+1. Push this code to your GitHub/GitLab repository
+2. Go to [vercel.com](https://vercel.com)
+3. Click "New Project"
+4. Import your repository
+5. Vercel will auto-detect Next.js
+6. Click "Deploy"
 
-**Method 1: Vercel Dashboard (Recommended)**
-1. Login to [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select `news-ai-hub` project
-3. Go to **Settings** → **Environment Variables**
-4. Add:
-   - **Name**: `OPENROUTER_API_KEY`
-   - **Value**: Your OpenRouter API Key (get from https://openrouter.ai/)
-5. Click **Save**
-6. Go to **Deployments** → **Redeploy**
-
-**Method 2: Local Development**
+**Option 2: Manual Deploy**
 ```bash
-echo "OPENROUTER_API_KEY=your_api_key" > .env.local
-npm run dev
+# Install Vercel CLI
+npm i -g vercel
+
+# Login
+vercel login
+
+# Deploy
+vercel --prod
 ```
+
+### Connect Custom Domain (newskingdom.store)
+
+1. Go to Vercel Dashboard → Your Project → Settings → Domains
+2. Add `newskingdom.store`
+3. Configure DNS:
+   - Add CNAME record: `www` → `cname.vercel-dns.com`
+   - Or add A record: `@` → `76.76.21.21`
+4. Wait for SSL certificate (automatic)
 
 ---
 
@@ -121,15 +47,11 @@ npm run dev
 
 | Feature | Description |
 |---------|-------------|
-| 🌍 Multi-source News | 50+ news sources covering World, Finance, Crypto, HK, TW, China, Business, Tech, Astronomy, Mystery |
-| 🗣️ Bilingual Translation | Cantonese / English real-time translation |
-| 🎙️ AI Host Analysis | Host style analysis, bias detection, impact assessment |
-| 📊 Emotion Tracking | Positive/Negative/Neutral sentiment analysis |
-| 🧭 Stance Analysis | Pro-China, Pro-Western, etc. detection |
-| 🔍 Diverse Perspectives | Reduce filter bubble, balanced viewpoints |
-| 📱 Dark Mode | Eye-friendly dark theme |
-| 🔔 Custom Keyword Tracking | Track topics you're interested in |
-| 💾 Bookmark | Save news for offline reading |
+| 🌏 目的地探索 | 亞洲、歐洲、大灣區旅遊攻略 |
+| 📖 原創遊記 | 32+ 國家、69+ 遊記、128+ 城市 |
+| 🛠️ 旅行工具 | 簽證、匯率、天氣、預算計算 |
+| 📱 響應式設計 | 完美適配桌面和移動設備 |
+| 🔍 SEO 優化 | 符合 Google AdSense 標準 |
 
 ---
 
@@ -145,7 +67,7 @@ npm run dev
 # Build for production
 npm run build
 
-# Push changes
+# Push to Git (auto-deploys to Vercel)
 git push
 ```
 
@@ -155,4 +77,75 @@ git push
 
 MIT License
 
+---
 
+<a name="繁體中文"></a>
+
+## 🚀 部署指南
+
+### 快速部署到 Vercel
+
+**方法一：通過 Git 部署（推薦）**
+1. 將此代碼推送到您的 GitHub/GitLab 倉庫
+2. 前往 [vercel.com](https://vercel.com)
+3. 點擊 "New Project"
+4. 導入您的倉庫
+5. Vercel 會自動檢測 Next.js
+6. 點擊 "Deploy"
+
+**方法二：手動部署**
+```bash
+# 安裝 Vercel CLI
+npm i -g vercel
+
+# 登錄
+vercel login
+
+# 部署
+vercel --prod
+```
+
+### 連接自訂域名 (newskingdom.store)
+
+1. 前往 Vercel Dashboard → 您的項目 → Settings → Domains
+2. 添加 `newskingdom.store`
+3. 配置 DNS：
+   - 添加 CNAME 記錄：`www` → `cname.vercel-dns.com`
+   - 或添加 A 記錄：`@` → `76.76.21.21`
+4. 等待 SSL 證書（自動）
+
+---
+
+## 🎯 功能特色
+
+| 功能 | 描述 |
+|------|------|
+| 🌏 目的地探索 | 亞洲、歐洲、大灣區旅遊攻略 |
+| 📖 原創遊記 | 32+ 國家、69+ 遊記、128+ 城市 |
+| 🛠️ 旅行工具 | 簽證、匯率、天氣、預算計算 |
+| 📱 響應式設計 | 完美適配桌面和移動設備 |
+| 🔍 SEO 優化 | 符合 Google AdSense 標準 |
+
+---
+
+## 🛠️ 開發
+
+```bash
+# 安裝依賴
+npm install
+
+# 本地開發
+npm run dev
+
+# 構建生產版本
+npm run build
+
+# 推送到 Git（自動部署到 Vercel）
+git push
+```
+
+---
+
+## 📄 許可證
+
+MIT License
