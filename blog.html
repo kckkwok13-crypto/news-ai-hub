@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊記攻略 | 純粹旅人 Journey</title>
+    <meta name="description" content="69篇原創深度遊記，覆蓋32+國家、128城市。從歐洲古堡到亞洲街頭，每一篇都是實地考察後的第一手分享。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Noto Sans TC', sans-serif; }
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover:hover { transform: translateY(-4px); }
+        .filter-btn.active { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-white">純粹旅人</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white/60 hover:text-white font-medium">首頁</a>
+                    <a href="blog.html" class="text-white font-medium">遊記攻略</a>
+                    <a href="videos.html" class="text-white/60 hover:text-white font-medium">視頻專區</a>
+                    <a href="#subscribe" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-full">訂閱更新</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="py-16 px-4 bg-gradient-to-b from-slate-800 to-slate-900">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="inline-block px-4 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium mb-4">Travel Guides</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">遊記攻略</h1>
+            <p class="text-white/60 text-lg max-w-2xl mx-auto mb-6">69篇原創深度遊記，覆蓋32+國家、128城市。從歐洲古堡到亞洲街頭，每一篇都是實地考察後的第一手分享。</p>
+
+            <!-- Stats -->
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">69</div>
+                    <div class="text-white/50 text-sm">遊記</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">32+</div>
+                    <div class="text-white/50 text-sm">國家</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">128</div>
+                    <div class="text-white/50 text-sm">城市</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-white">47</div>
+                    <div class="text-white/50 text-sm">目的地</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="sticky top-16 z-40 bg-slate-900/95 backdrop-blur-md py-4 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap items-center gap-3">
+                <button onclick="filterArticles('all')" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white/80 hover:bg-white/20 transition-all">全部遊記</button>
+                <button onclick="filterArticles('europe')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white/80 hover:bg-white/20 transition-all">🏰 歐洲 (34)</button>
+                <button onclick="filterArticles('asia')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white/80 hover:bg-white/20 transition-all">🌸 亞洲 (8)</button>
+                <button onclick="filterArticles('bay')" class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white/80 hover:bg-white/20 transition-all">🌆 大灣區 (9)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Europe Articles -->
+            <div id="europe-section" class="mb-16">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span>🏰</span> 歐洲深度漫遊 · 歷史文化探索
+                    <span class="text-white/40 text-lg font-normal">(34篇)</span>
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Article 1 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80" alt="南意大利" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🇮🇹 地中海驕陽與蔚藍：一家三口19天順序暢遊南意大利慢活全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">拿坡里、龐貝、維蘇威火山、阿瑪菲海岸、卡布里島藍洞、蘑菇屋、馬泰拉石窟、西西里島全景遊記攻略！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 2 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=600&q=80" alt="大笨鐘" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇬🇧 英國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🕰️ 聆聽英倫的時光心跳：倫敦大笨鐘深度打卡與泰晤士河散策攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">哥德復興式巨型時鐘塔！大笨鐘的3大歷史密碼、4大終極打卡機位，以及走進國會大廈的完整攻略！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 3 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=600&q=80" alt="塔橋" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇬🇧 英國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌉 泰晤士河上的藍色童話：倫敦塔橋深度打卡與高空玻璃走廊攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">結合維多利亞哥德式城堡與現代懸索橋工藝的工業傑作！解鎖被誤會的歷史秘密、挑戰離地42米高空玻璃走廊！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 4 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1509037024773-5900f7e7d2c4?w=600&q=80" alt="倫敦眼" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇬🇧 英國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🎡 轉動在千禧年的浪漫：倫敦眼終極打卡與高空落日觀景攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">高達135米的全球首座巨型觀景摩天輪！解鎖消失的13號太空艙之謎、兩大私藏拍照機位、黃昏日落最佳時段攻略！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 5 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1597074866923-dc05891512a3?w=600&q=80" alt="慕尼黑" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇩🇪 德國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🦁 走進巴伐利亞的心臟：慕尼黑瑪利亞廣場深度打卡與百年木偶鐘全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">始建於1158年！解鎖新市政廳43個木偶壁鐘、聖母教堂雙洋蔥頭、306級老彼得教堂天際線！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 6 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="英國花園" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇩🇪 德國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌲 城市中心的自然狂歡：慕尼黑英國花園深度散策與冰川衝浪攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">全歐洲最大城市公園！解鎖艾斯巴赫河人工冰川衝浪、圓頂希臘神廟360度全景、正宗中國塔7000人啤酒花園！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 7 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="愛丁堡" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🏴󠁧󠁢󠁳󠁣󠁴󠁿 蘇格蘭</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏰 矗立在火山岩上的蘇格蘭之魂：愛丁堡城堡深度打卡與避坑全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">名列聯合國教科文組織世界文化遺產！解鎖「命運之石」與最古老皇冠、下午一點鐘大砲儀式！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 8 -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=600&q=80" alt="柏林" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇩🇪 德國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏛️ 見證德意志的世紀風雲：柏林勃蘭登堡門深度打卡與和平祭壇攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">落成於1791年！解鎖勝利女神四馬戰車被拿破崙擄走的屈辱歷史、柏林圍牆分裂傷痕！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 9 - Sagrada Familia -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1583779457168-ad7e2544a133?w=600&q=80" alt="聖家堂" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇪🇸 西班牙</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🦎 上帝的建築巨作：巴塞隆納聖家堂百年未完工的奇幻光影全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">高第傾注43年心血的傳奇神作！深度解讀兩大經典立面、大殿內仿生森林、黃昏日落夢幻拍攝時刻與搶票生存指南！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 10 - Park Guell -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80" alt="古埃爾公園" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇪🇸 西班牙</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏡 走進高第的彩色童話糖果屋：古埃爾公園深度打卡與浪漫散策攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">世界遺產！彩色波浪馬賽克長椅、大蜥蜴噴泉、百柱廳與石柱長廊的童話王國，附避開人潮完美拍照攻略！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 11 - Prague Castle -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541849546-216549ae216d?w=600&q=80" alt="布拉格城堡" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇨🇿 捷克</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏰 查理四世的黃金夢：布拉格城堡世界最大古堡群深度攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">全球規模最大的連體古堡建築群！聖維特大教堂、黃金巷、舊皇宮與慕夏彩繪玻璃窗的千年史詩。</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 12 - Charles Bridge -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=600&q=80" alt="查理大橋" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇨🇿 捷克</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌉 東歐最美的黃金絲帶：布拉格查理大橋650年星象密碼與反思散策</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">始建於1357年的中世紀砂岩石拱橋！516米橋身長廊、30尊巴洛克聖人雕像、1357黃金回文密碼！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 13 - Schoenbrunn -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=600&q=80" alt="美泉宮" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇦🇹 奧地利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏰 帝國的黃金夏日：維也納美泉宮1441間房的皇家大數據與深度攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">落成於1749年的巨型巴洛克宮殿！瑪麗亞·特蕾莎與茜茜公主的傳奇、1441房僅45間開放！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 14 - St Stephen's -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=600&q=80" alt="聖斯蒂芬" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇦🇹 奧地利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">⛪ 聆聽維也納的心跳：聖斯蒂芬大教堂深度遊覽與周邊散策攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">維也納的心臟地標！800年歷史的哥德式巨作、四大時代建築疊加、登上136米南塔俯瞰全城！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 15 - Hohensalzburg -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="薩爾茨堡" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇦🇹 奧地利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏰 俯瞰莫扎特故鄉的天際線：薩爾茨堡城堡深度遊覽全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">中歐最大、保存最完好的城堡！建於1077年、900年未被攻破的防禦奇蹟！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 16 - Lake Zurich -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="蘇黎世湖" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇨🇭 瑞士</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏞️ 阿爾卑斯山下的翡翠淚珠：瑞士蘇黎世湖深度遊覽與湖畔散策攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">瑞士最迷人的高山湖泊！阿爾卑斯山倒影、蒸汽船遊湖、湖畔騎單車與游泳！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 17 - Chapel Bridge -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="卡貝爾橋" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇨🇭 瑞士</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌉 歐洲最古老的廊橋：瑞士琉森卡貝爾橋深度遊覽攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">建於1333年！歐洲最古老木製廊橋、120幅三角形油畫、1993年浴火重生的傳奇！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 18 - Lion Monument -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="獅子紀念碑" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇨🇭 瑞士</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🦁 世界上最悲傷的石頭：瑞士琉森獅子紀念碑深度遊覽攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">馬克·吐溫說，這是世界上最讓人心碎、最感人的一塊石頭。1792年瑞士雇傭兵血染巴黎的忠誠悲歌！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 19 - Santorini -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="聖托里尼" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇬🇷 希臘</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌅 愛琴海燃燒的終極終章：希臘聖托里尼伊亞落日熔金攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">全球最美落日！探索希臘聖托里尼伊亞小鎮，藍頂教堂、白牆洞穴屋與熔金晚霞的浪漫極致慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 20 - Parthenon -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="帕特農" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇬🇷 希臘</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏛️ 黃金比例的永恆凝視：雅典衛城帕特農神廟2500年建築幾何攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">2500年人類美學巔峰！探索帕特農神廟的黃金分割建築奇蹟、光學視差修正結構！</p>
+                        </div>
+                    </a>
+
+                    <!-- Article 21-34 (More Europe Articles - Condensed for brevity, showing structure) -->
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1543922596-b3bb8c7d7c4e?w=600&q=80" alt="里斯本" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇵🇹 葡萄牙</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>July 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏰 大航海時代的蔚藍起點：里斯本貝倫塔500年星海密碼攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">世界文化遺產！1519年落成的曼努埃爾式江海碉堡，達伽馬、麥哲倫出海遠征的終極起航點！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1543922596-b3bb8c7d7c4e?w=600&q=80" alt="萊羅書店" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇵🇹 葡萄牙</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>July 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">📚 通往霍格華茲的魔幻階梯：波爾圖萊羅書店百年書香攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">全球第三美書店！1906年新哥德式百年書海聖地，與哈利波特的千絲萬縷！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="馬德里皇宮" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇪🇸 西班牙</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏛️ 走進西歐最大的奢華宮殿：馬德里皇宮深度打卡與無痛避坑攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">西歐最大皇室宮殿！解鎖帝王主樓梯、王座廳、瓷器廳與黃昏日落拍照攻略！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="艾菲爾鐵塔" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇫🇷 法國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🗼 遇見巴黎的浪漫定義：艾菲爾鐵塔深度打卡與登塔全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">全球最浪漫的時尚地標！從夏樂宮最佳拍攝位到戰神廣場野餐體驗！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=600&q=80" alt="梵蒂岡" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇻🇦 梵蒂岡</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏛️ 走進全球最大的教堂：梵蒂岡聖伯多祿大殿深度遊</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">文藝復興與巴洛克藝術的巔峰之作！米開朗基羅的圓頂、貝尼尼的 Baldacchino！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=600&q=80" alt="西斯汀小堂" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇻🇦 梵蒂岡</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🎨 米開朗基羅的世紀畫布：西斯汀小堂深度遊</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">抬頭仰望《創世紀》與《末日審判》—— 一場跨越五百年的藝術心靈之旅！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80" alt="許願池" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">⛲ 許願池的秘密：羅馬特萊維噴泉深度遊</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">傳說硬幣許願、品味巴洛克美學！羅馬最標誌性的噴泉！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80" alt="羅馬鬥獸場" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏟️ 羅馬鬥獸場：古羅馬最殘酷與最輝煌的競技場</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">角鬥士的生死之戰、獅子與野獸的怒吼！站在這座2000年前的橢圓巨型競技場！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="佛羅倫斯" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🧱 佛羅倫斯大教堂：布魯內萊斯基的永恆奇蹟</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">文藝復興的搖籃！走進佛羅倫斯聖母百花大教堂，探索那個震撼世界的無木架巨型圓頂！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="老橋" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌅 繾綣阿諾河的黃昏浪漫：佛羅倫斯老橋深度散策</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">橫跨1345年！走過二戰奇蹟存活的欧洲最古老石桥，揭開美第奇家族的神秘走廊！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80" alt="威尼斯" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🎭 歐洲最美的客廳：威尼斯聖馬可廣場深度一日遊攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">漫步聖馬可廣場，探索金色大教堂、總督宮與聖馬可鐘樓的千年風華！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80" alt="里奧托橋" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇮🇹 意大利</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌉 繾綣大運河的黃昏餘暉：威尼斯里奧托橋深度打卡攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">橫跨1591年的白色大理石單拱石橋，打敗米開朗基羅的建築奇蹟！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1538760547-76804c2a5b25?w=600&q=80" alt="安妮之家" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇳🇱 荷蘭</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🏠 走進那段不能被遺忘的歷史：阿姆斯特丹安妮之家深度遊記</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">走進那段不能被遺忘的歷史：阿姆斯特丹安妮之家深度遊記。探索安妮·弗蘭克的秘密側樓！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="europe">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1538760547-76804c2a5b25?w=600&q=80" alt="庫肯霍夫" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-blue-500/80 text-white text-xs font-medium rounded-full">🇳🇱 荷蘭</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>April 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🌷 狂歡大自然的調色盤：荷蘭庫肯霍夫花園700萬株鬱金香極致賞花全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">全球最大規模春季花卉公園！32公頃鋪天蓋地的七彩花毯！</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Asia Articles -->
+            <div id="asia-section" class="mb-16">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span>🌸</span> 世界任我行 · 亞洲深度探索
+                    <span class="text-white/40 text-lg font-normal">(8篇)</span>
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="淺草寺" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇯🇵 日本</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">東京最古老寺廟：淺草寺（Sensō-ji）深度一日遊全攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">創建於公元628年，是東京都內最古老的寺廟。從雷門巨大紅燈籠、仲見世通商店街到本堂參拜！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="京都" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇯🇵 日本</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🗾 關西和風漫步：京阪神六日慢活家庭遊</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">大阪、京都、神戶6天5夜家庭慢活之旅，帶家人走訪嵐山竹林、金閣寺、神戶港夜景與大阪城！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="澀谷" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇯🇵 日本</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">走進世界最繁忙的十字路口：東京澀谷十字路口全攻略！</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">如果要選一個最能代表現代東京的地標，澀谷十字路口絕對當之無愧！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="明治神宮" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇯🇵 日本</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">東京市中心的森林秘境：明治神宮深度半日遊攻略</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">緊鄰原宿與竹下通，只要走過一條橋，就能瞬間從喧囂都市切換到原始森林！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=600&q=80" alt="道頓堀" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇯🇵 日本</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">大阪不夜城：道頓堀運河（Dotonbori）全攻略！吃貨與霓虹夜景的天堂</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">17世紀開鑿的古老運河，現今已經蛻變成全日本最誇張、最迷幻的娛樂與美食重鎮！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="嵐山" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇯🇵 日本</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🎋 京都避世仙境：嵐山竹林小徑深度散策！尋找那一抹翠綠與心靈寧靜</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">穿越千年竹林、踏足渡月橋、乘搭嵐山小火車。一條通往異世界的神秘小徑！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1543922596-b3bb8c7d7c4e?w=600&q=80" alt="明洞" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇰🇷 韓國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">🛍️ 首爾潮流不夜城：明洞購物街（Myeongdong）終極狂歡攻略！</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">K-Beauty、潮人服飾、街頭美食、換錢攻略——全部一站式滿足你！</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="asia">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80" alt="大皇宮" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-red-500/80 text-white text-xs font-medium rounded-full">🇹🇭 泰國</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>May 2026</span>
+                                <span>•</span>
+                                <span>3 min</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">👑 曼谷金碧輝煌：大皇宮（Grand Palace）深度遊</h3>
+                            <p class="text-white/50 text-sm line-clamp-2">泰國皇室的莊嚴聖地！玉佛寺、節基皇殿、皇家儀式——走進這座金光閃閃的建築群！</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Greater Bay Area Articles -->
+            <div id="bay-section" class="mb-16">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span>🌆</span> 大灣區退休遊記 · 銀髮族慢活之旅
+                    <span class="text-white/40 text-lg font-normal">(9篇)</span>
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="深圳" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 深圳</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">2天1夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">深圳2天慢活遊：東門老街懷舊 + 華強北科技尋寶 + 深圳灣日落</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="廣州" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 廣州</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">3天2夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">廣州3天慢活遊：北京路尋古 · 上下九淘貨 · 珠江夜遊</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="澳門" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇲🇴 澳門</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">2天1夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">澳門2天奢華遊：五星酒店試住 + 葡撻尋味 + 氹仔舊城區漫步</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="珠海" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 珠海</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">3天2夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">珠海3天2夜銀髮慢活遊：情侶路 + 日月貝 + 御溫泉</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="長隆" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 長隆</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">3天2夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">橫琴長隆3天2夜銀髮浪漫遊：鯨鯊館 + 企鵝共餐 + 海洋煙花</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="香港" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇭🇰 香港</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">3天2夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">香港3天2夜親友同遊：物超所值、有情懷、有鑊氣的東方之珠暢遊攻略</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="東莞" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 東莞</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">2天1夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">東莞2天1夜銀髮族深度慢活之旅：可園嶺南詩意 + 南社古村 + 光明路夜市</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="佛山" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 佛山</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">2天1夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">佛山2天1夜老友同遊功夫與順德美食慢活隨筆：祖廟醒獅 + 嶺南天地 + 逢簡水鄉</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="article-card group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all card-hover" data-category="bay">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80" alt="虎門" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-3 py-1 bg-emerald-500/80 text-white text-xs font-medium rounded-full">🇨🇳 虎門</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2 py-1 bg-black/50 text-white text-xs rounded">2天1夜</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-white/40 text-xs mb-2">
+                                <span>June 2026</span>
+                            </div>
+                            <h3 class="font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">虎門2天1夜一人獨闖慢活之旅：銷煙池 + 萬達廣場 + 光明路夜市</h3>
+                            <p class="text-white/50 text-sm">精選2-3天短途行程，銀髮族慢活之旅。</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold">純粹旅人</span>
+            </div>
+            <p class="text-white/40 mb-6">用心感受每一個城市的溫度。69篇原創遊記，帶你走遍全球47個目的地。</p>
+            <p class="text-white/30 text-sm">© 2024 純粹旅人 Journey · All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        function filterArticles(category) {
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show/hide sections
+            const sections = {
+                'all': ['europe-section', 'asia-section', 'bay-section'],
+                'europe': ['europe-section'],
+                'asia': ['asia-section'],
+                'bay': ['bay-section']
+            };
+
+            document.querySelectorAll('#europe-section, #asia-section, #bay-section').forEach(section => {
+                if (sections[category].includes(section.id)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Scroll to top of articles
+            document.querySelector('.max-w-7xl').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
