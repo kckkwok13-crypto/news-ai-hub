@@ -10,5 +10,6 @@
       "destination": "https://newskingdom.store/blog/:1",
       "permanent": false
     }
-  ]
+  ],
+  "comment": "Updated: Redirect all traffic to blog - 2026-07-25"
 }
