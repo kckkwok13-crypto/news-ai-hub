@@ -1,12 +1,14 @@
 {
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "installCommand": null,
-  "framework": null,
-  "routes": [
+  "redirects": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/",
+      "destination": "https://newskingdom.store/blog",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://newskingdom.store/blog/:1",
+      "permanent": false
     }
   ]
 }
