@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
 const nextConfig = {
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias['@/components'] = path.join(__dirname, 'components');
+    config.resolve.alias['@/app/components'] = path.join(__dirname, 'app', 'components');
+    return config;
   },
   images: {
     formats: ['image/avif', 'image/webp'],
