@@ -5,10 +5,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  webpack: (config) => {
-    config.resolve.alias['@/components'] = path.join(__dirname, 'components');
-    config.resolve.alias['@/app/components'] = path.join(__dirname, 'app', 'components');
-    return config;
+  turbopack: {
+    resolveAlias: {
+      '@/components': path.join(__dirname, 'components'),
+      '@/app/components': path.join(__dirname, 'app', 'components'),
+    },
   },
   images: {
     formats: ['image/avif', 'image/webp'],
