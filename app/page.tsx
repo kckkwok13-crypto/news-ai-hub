@@ -41,7 +41,7 @@ const featuredArticles = [
     title: "巴塞隆納聖家堂：高第傾注43年的傳奇神作",
     excerpt: "深度解讀兩大經典立面與黃昏日落夢幻拍攝時刻",
     location: "西班牙",
-    image: "https://images.unsplash.com/photo-1583779457168-ad7e2544a133?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1583779457168-ad44b0321e9b?w=800&q=80",
     slug: "sagrada-familia"
   },
   {
@@ -49,7 +49,7 @@ const featuredArticles = [
     title: "布拉格城堡：全球最大古堡群的千年史詩",
     excerpt: "聖維特大教堂、黃金巷、舊皇宮與慕夏彩繪玻璃窗",
     location: "捷克",
-    image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?w=800&q=80",
     slug: "prague-castle"
   },
   {
@@ -65,7 +65,7 @@ const featuredArticles = [
     title: "維也納美泉宮：哈布斯堡皇室的黃金夏日",
     excerpt: "瑪麗亞·特蕾莎與茜茜公主的傳奇、1441房僅45間開放",
     location: "奧地利",
-    image: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1565019015922-04712593b54e?w=800&q=80",
     slug: " schonbrunn-palace"
   }
 ]
@@ -125,7 +125,7 @@ const videoShowcase = [
     id: 4,
     title: "城市夜景延时",
     description: "紐約、巴黎、東京、香港的璀璨夜景",
-    thumbnail: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80",
     duration: "6:18",
     views: "45.6K"
   }
