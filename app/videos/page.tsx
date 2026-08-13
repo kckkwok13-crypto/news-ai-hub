@@ -19,7 +19,7 @@ const videos = [
     title: "歐洲鐵路之旅：阿爾卑斯山脈全景",
     description: "乘坐火車穿越瑞士、阿根廷、奧地利，飽覽阿爾卑斯山脈的雪山、湖泊和小鎮風光",
     thumbnail: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-    youtubeId: "ZueJhG3Vv3s", // Swiss Alps scenic train
+    youtubeId: "kE7Bq-TTR4g", // Glacier Express Swiss Alps
     category: "europe",
     duration: "12:34",
     views: "25.3K",
@@ -31,7 +31,7 @@ const videos = [
     title: "日本賞櫻攻略：東京京都之美",
     description: "2024年日本賞櫻最佳時間、地點推薦，以及拍攝櫻花的技巧分享",
     thumbnail: "https://images.unsplash.com/photo-1522383225653-ed111181a951?w=800&q=80",
-    youtubeId: "YT7lQ-5W3fU", // Japan cherry blossom
+    youtubeId: "m4KJsovz1TQ", // Tokyo Cherry Blossoms
     category: "asia",
     duration: "8:45",
     views: "18.7K",
@@ -40,10 +40,10 @@ const videos = [
   },
   {
     id: 3,
-    title: "地中海風情：意大利與希臘海岸線",
-    description: "沿著蔚藍海岸線，從阿瑪菲到聖托里尼，探索地中海最浪漫的港灣",
+    title: "地中海風情：意大利阿瑪菲海岸",
+    description: "沿著蔚藍海岸線，從阿瑪菲到波西塔諾，探索地中海最浪漫的港灣",
     thumbnail: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80",
-    youtubeId: "mSfZnTmQM1k", // Mediterranean coast
+    youtubeId: "L9J5n2O5oxE", // Amalfi Coast Italy
     category: "europe",
     duration: "15:20",
     views: "32.1K",
@@ -55,7 +55,7 @@ const videos = [
     title: "香港維港風情：都市霓虹夜景",
     description: "從太平山頂到維多利亞港，感受香港這個東方之珠的璀璨夜景",
     thumbnail: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80",
-    youtubeId: "kX-YmZL7R9s", // Hong Kong nightscape
+    youtubeId: "6N3a10o81Kg", // Hong Kong Victoria Harbour Night
     category: "bay",
     duration: "7:45",
     views: "15.3K",
@@ -67,7 +67,7 @@ const videos = [
     title: "瑞士少女峰：冰川奇觀",
     description: "乘坐齒軌火車登上歐洲之巔，探索千年冰川的壯麗與神秘",
     thumbnail: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80",
-    youtubeId: "4-rJvT3_GqU", // Swiss Alps
+    youtubeId: "nqc-Le6esy8", // Swiss Alps scenic train
     category: "europe",
     duration: "11:08",
     views: "22.4K",
@@ -79,7 +79,7 @@ const videos = [
     title: "泰國曼谷：大皇宮金碧輝煌",
     description: "走進泰國皇室聖地，感受佛教文化與皇家氣派的完美結合",
     thumbnail: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80",
-    youtubeId: "8K3C5NkzWqI", // Bangkok Grand Palace
+    youtubeId: "SC1fRcl_4Ws", // Bangkok Grand Palace Thailand
     category: "asia",
     duration: "9:33",
     views: "12.1K",
@@ -91,7 +91,7 @@ const videos = [
     title: "巴黎浪漫之旅：埃菲爾鐵塔日落",
     description: "在巴黎最浪漫的時刻記錄鐵塔風情，從夏樂宮到战神广场的完美視角",
     thumbnail: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80",
-    youtubeId: "9XjnhjBt5h8", // Paris Eiffel Tower
+    youtubeId: "ORfbeJHAifs", // Paris Eiffel Tower Night
     category: "europe",
     duration: "10:22",
     views: "28.9K",
@@ -103,7 +103,7 @@ const videos = [
     title: "澳門大三巴：歷史與美食",
     description: "探索澳門世界文化遺產，品嚐地道葡式美食，感受中西文化交融",
     thumbnail: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    youtubeId: "p8X9YJX4S5k", // Macau ruins
+    youtubeId: "KpqVMPKD5Bg", // Macau Ruins of St Paul's
     category: "bay",
     duration: "8:12",
     views: "9.8K",
