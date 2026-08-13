@@ -41,7 +41,7 @@ const featuredArticles = [
     title: "巴塞隆納聖家堂：高第傾注43年的傳奇神作",
     excerpt: "深度解讀兩大經典立面與黃昏日落夢幻拍攝時刻",
     location: "西班牙",
-    image: "https://images.unsplash.com/photo-1583779457168-ad44b0321e9b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1523495671450-70f8c5a84f1e?w=800&q=80",
     slug: "sagrada-familia"
   },
   {
